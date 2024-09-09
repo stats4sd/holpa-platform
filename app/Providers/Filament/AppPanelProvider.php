@@ -6,6 +6,7 @@ use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -54,6 +55,13 @@ class AppPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationItems([
+                NavigationItem::make()
+                ->label(__('Admin Panel'))
+                ->icon('heroicon-o-adjustments-horizontal')
+                ->url(url('admin'))
+                ->visible(fn () => auth()->user()->can('view the admin panel')),
             ])
             ->plugins([
                 new LocalLogins(),
