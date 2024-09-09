@@ -63,6 +63,8 @@ class AppPanelProvider extends PanelProvider
                 ->url(url('admin'))
                 ->visible(fn () => auth()->user()->can('view the admin panel')),
             ])
+            ->topNavigation()
+            ->darkMode(false)
             ->plugins([
                 new LocalLogins(),
             ]);
