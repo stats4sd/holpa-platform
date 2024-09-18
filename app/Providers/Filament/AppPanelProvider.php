@@ -57,7 +57,7 @@ class AppPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->navigationItems([
-                NavigationItem::make()
+                    NavigationItem::make()
                 ->label(__('Admin Panel'))
                 ->icon('heroicon-o-adjustments-horizontal')
                 ->url(url('admin'))
