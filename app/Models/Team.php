@@ -27,35 +27,35 @@ class Team extends Model
     /**
      * Generate an invitation to join this team for each of the provided email addresses
      */
-    // public function sendInvites(array $emails): void
-    // {
-    //     foreach ($emails as $email) {
-    //         // if email is empty, skip to next email
-    //         if ($email == null || $email == '') {
-    //             continue;
-    //         }
+    public function sendInvites(array $emails): void
+    {
+        foreach ($emails as $email) {
+            // if email is empty, skip to next email
+            if ($email == null || $email == '') {
+                continue;
+            }
 
-    //         $invite = $this->invites()->create([
-    //             'email' => $email,
-    //             'inviter_id' => auth()->id(),
-    //             'token' => Str::random(24),
-    //         ]);
+            $invite = $this->invites()->create([
+                'email' => $email,
+                'inviter_id' => auth()->id(),
+                'token' => Str::random(24),
+            ]);
 
-    //         Mail::to($invite->email)->send(new InviteMember($invite));
+            Mail::to($invite->email)->send(new InviteMember($invite));
 
-    //         // show notification after sending invitation email to user
-    //         Notification::make()
-    //             ->success()
-    //             ->title('Invitation Sent')
-    //             ->body('An email invitation has been successfully sent to ' . $email)
-    //             ->send();
-    //     }
-    // }
+            // show notification after sending invitation email to user
+            Notification::make()
+                ->success()
+                ->title('Invitation Sent')
+                ->body('An email invitation has been successfully sent to ' . $email)
+                ->send();
+        }
+    }
 
-    // public function invites(): HasMany
-    // {
-    //     return $this->hasMany(TeamInvite::class);
-    // }
+    public function invites(): HasMany
+    {
+        return $this->hasMany(TeamInvite::class);
+    }
 
     public function users(): BelongsToMany
     {
