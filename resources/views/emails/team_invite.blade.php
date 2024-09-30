@@ -14,6 +14,7 @@ Click the link below to register on the platform. If you use the same email addr
 
 If you do not wish to register, or you have been sent this email by mistake, please ignore this message.
 
+
 Best regards,
 Site Admin,
 {{ config('app.name') }}
