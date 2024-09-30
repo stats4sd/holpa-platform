@@ -3,15 +3,21 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
-use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Support\Collection;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\HasTenants;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasDefaultTenant;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, HasTenants, HasDefaultTenant
 {
     use HasFactory, Notifiable;
     use HasRoles;
@@ -51,8 +57,49 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    public function teams(): BelongsToMany
+    {
+        return $this->belongsToMany(Team::class, 'team_members')->withPivot('is_admin');
+    }
+
+    public function belongsToTeam(Team $team): bool
+    {
+        return $this->teams->contains($team);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('Super Admin');
+    }
+
+    // ****** FILAMENT PANEL STUFF ******
+
     public function canAccessPanel(Panel $panel): bool
     {
         return true;
+    }
+
+    // ****** MULTI-TENANCY STUFF ******
+
+    // Admin users can access all teams
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this->can('view all teams') || $this->teams->contains($tenant);
+    }
+
+    public function getTenants(Panel $panel): array|Collection
+    {
+        return $this->can('view all teams') ? Team::all() : $this->teams;
+    }
+
+    // The last team the user was on.
+    public function latestTeam(): BelongsTo
+    {
+        return $this->belongsTo(Team::class, 'latest_team_id');
+    }
+
+    public function getDefaultTenant(Panel $panel): ?Model
+    {
+        return $this->latestTeam;
     }
 }
