@@ -60,7 +60,7 @@ class AdminPanelProvider extends PanelProvider
                 NavigationItem::make()
                     ->label(__('Return to Front end'))
                     ->icon('heroicon-o-home')
-                    ->url(url('/'))
+                    ->url(url('/app'))
             ])
             ->darkMode(false)
             ->plugins([]);

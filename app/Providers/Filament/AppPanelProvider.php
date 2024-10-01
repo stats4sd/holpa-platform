@@ -30,7 +30,9 @@ class AppPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('app')
-            ->path('')
+            // Note: To make the register link working properly, we need to specify path as "app" instead of "" for app panel
+            // ->path('')
+            ->path('app')
             ->tenant(Team::class)
             // disable "Register New Team" option in multi-tenancy
             // new team should be created by admin, user should not be able to create a new team
