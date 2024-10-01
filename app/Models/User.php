@@ -70,17 +70,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
      */
     public function sendInvites(array $items): void
     {
-        logger("User.sendInvites()...");
-
-        logger($items);
-
         foreach ($items as $item) {
             // if email is empty, skip to next email
             if ($item['email'] == null || $item['email'] == '') {
                 continue;
             }
-
-            logger($item['email']);
 
             $invite = $this->invites()->create([
                 'email' => $item['email'],
@@ -107,6 +101,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'team_members')->withPivot('is_admin');
+    }
+
+    public function programs(): BelongsToMany
+    {
+        return $this->belongsToMany(Program::class);
     }
 
     public function belongsToTeam(Team $team): bool

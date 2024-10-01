@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\StudyCase;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Database\Eloquent\Model;
@@ -11,10 +10,6 @@ use App\Mail\TeamManagement\InviteMember;
 use App\Models\TeamManagement\TeamInvite;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\Image\Enums\Fit;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Team extends Model
 {
@@ -75,5 +70,10 @@ class Team extends Model
         return $this->belongsToMany(User::class, 'team_members')
             ->withPivot('is_admin')
             ->wherePivot('is_admin', 0);
+    }
+
+    public function programs(): BelongsToMany
+    {
+        return $this->belongsToMany(Program::class);
     }
 }
