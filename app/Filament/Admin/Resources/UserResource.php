@@ -89,6 +89,9 @@ class UserResource extends Resource
 
     public static function getRelations(): array
     {
+        // Note: It would be nice to have a role invites relation manager to show all role_invites sent
+        // Considering we should have small amount of role_invites, categorise it as "Nice to have" and develop it at later stage when we have time
+
         return [
             //
         ];

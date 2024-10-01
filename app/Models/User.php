@@ -4,13 +4,19 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Panel;
+use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Traits\HasRoles;
+use App\Mail\TeamManagement\InviteUser;
 use Illuminate\Database\Eloquent\Model;
+use Filament\Notifications\Notification;
 use Illuminate\Notifications\Notifiable;
+use App\Models\TeamManagement\RoleInvite;
 use Filament\Models\Contracts\HasTenants;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasDefaultTenant;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -55,6 +61,47 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // ****** TEAM MANAGEMENT STUFF ******
+
+    /**
+     * Generate an invitation to be a role for each of the provided email addresses
+     */
+    public function sendInvites(array $items): void
+    {
+        logger("User.sendInvites()...");
+
+        logger($items);
+
+        foreach ($items as $item) {
+            // if email is empty, skip to next email
+            if ($item['email'] == null || $item['email'] == '') {
+                continue;
+            }
+
+            logger($item['email']);
+
+            $invite = $this->invites()->create([
+                'email' => $item['email'],
+                'role_id' => $item['role'],
+                'token' => Str::random(24),
+            ]);
+
+            Mail::to($invite->email)->send(new InviteUser($invite));
+
+            // show notification after sending invitation email to user
+            Notification::make()
+                ->success()
+                ->title('Invitation Sent')
+                ->body('An email invitation has been successfully sent to ' . $item['email'])
+                ->send();
+        }
+    }
+
+    public function invites(): HasMany
+    {
+        return $this->hasMany(RoleInvite::class, 'inviter_id');
     }
 
     public function teams(): BelongsToMany
