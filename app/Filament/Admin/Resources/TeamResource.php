@@ -21,7 +21,7 @@ use Filament\Resources\Resource;
 class TeamResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
-    protected static ?string $navigationGroup = 'Users and Teams';
+    protected static ?string $navigationGroup = 'Programs, Teams and Users';
     protected static ?string $model = Team::class;
 
     public static function form(Form $form): Form

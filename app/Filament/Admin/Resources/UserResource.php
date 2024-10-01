@@ -14,7 +14,7 @@ use Filament\Tables\Table;
 class UserResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-users';
-    protected static ?string $navigationGroup = 'Users and Teams';
+    protected static ?string $navigationGroup = 'Programs, Teams and Users';
     protected static ?string $model = User::class;
 
     public static function form(Form $form): Form
