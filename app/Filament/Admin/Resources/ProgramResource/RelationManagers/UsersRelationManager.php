@@ -46,7 +46,9 @@ class UsersRelationManager extends RelationManager
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DetachBulkAction::make()->label('Remove selected')
+                        ->modalSubmitActionLabel('Remove Selected Users')
+                        ->modalHeading('Remove Selected Users from Program'),
                 ]),
             ]);
     }
