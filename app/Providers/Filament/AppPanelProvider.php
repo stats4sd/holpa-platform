@@ -73,11 +73,20 @@ class AppPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->navigationItems([
+
+                // TODO: why it works when there is no permission record "view the admin panel"...?
                 NavigationItem::make()
                     ->label(__('Admin Panel'))
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
                     ->visible(fn() => auth()->user()->can('view the admin panel')),
+
+                // show Program Admin Panel button if user belongs to any program
+                NavigationItem::make()
+                    ->label(__('Program Admin Panel'))
+                    ->icon('heroicon-o-adjustments-horizontal')
+                    ->url(url('program'))
+                    ->visible(fn() => count(auth()->user()->programs) > 0),
             ])
             ->topNavigation()
             ->darkMode(false)
