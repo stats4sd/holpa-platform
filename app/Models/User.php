@@ -157,29 +157,35 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
         if ($this->can('view all teams')) {
             return Team::all();
         } else {
-            // find all teams belong to all programs of user
-            $allTeamsIdInPrograms = array();
-
-            foreach ($this->programs as $program) {
-                $allPrograms = $program->teams->pluck('id');
-                array_push($allTeamsIdInPrograms, $allPrograms);
-            }
-
-            // flatten array
-            $allTeamsIdInPrograms = Arr::flatten($allTeamsIdInPrograms);
-
-            // find all teams belong to user
-            $allTeamIds = $this->teams->pluck('id');
-
-            // all accessible teams = all teams belong to all programs of user + all teams belong to user
-            $allAccessibleTeamIds = array();
-            array_push($allAccessibleTeamIds, Arr::flatten($allTeamsIdInPrograms), Arr::flatten($allTeamIds));
-
             // find all accessible Team models
-            $allAccessibleTeams = Team::whereIn('id', Arr::flatten($allAccessibleTeamIds))->get();
+            $allAccessibleTeams = Team::whereIn('id', $this->getAllAccessibleTeamIds())->get();
 
             return $allAccessibleTeams;
         }
+    }
+
+
+    public function getAllAccessibleTeamIds(): array
+    {
+        // find all teams belong to all programs of user
+        $allTeamsIdInPrograms = array();
+
+        foreach ($this->programs as $program) {
+            $allPrograms = $program->teams->pluck('id');
+            array_push($allTeamsIdInPrograms, $allPrograms);
+        }
+
+        // flatten array
+        $allTeamsIdInPrograms = Arr::flatten($allTeamsIdInPrograms);
+
+        // find all teams belong to user
+        $allTeamIds = $this->teams->pluck('id');
+
+        // all accessible teams = all teams belong to all programs of user + all teams belong to user
+        $allAccessibleTeamIds = array();
+        array_push($allAccessibleTeamIds, Arr::flatten($allTeamsIdInPrograms), Arr::flatten($allTeamIds));
+
+        return Arr::flatten($allAccessibleTeamIds);
     }
 
     // The last team the user was on.
