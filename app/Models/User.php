@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Filament\Panel;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Mail;
@@ -130,12 +131,55 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
     // Admin users can access all teams
     public function canAccessTenant(Model $tenant): bool
     {
-        return $this->can('view all teams') || $this->teams->contains($tenant);
+        // check permission
+        if ($this->can('view all teams')) {
+            return true;
+        }
+
+        // check if user belong to this team
+        if ($this->teams->contains($tenant)) {
+            return true;
+        }
+
+        // check if this team belong to any program belong to user
+        foreach ($this->programs as $program) {
+            if ($program->teams->contains($tenant)) {
+                return true;
+            }
+        }
+
+        // user cannot access this team
+        return false;
     }
 
     public function getTenants(Panel $panel): array|Collection
     {
-        return $this->can('view all teams') ? Team::all() : $this->teams;
+        if ($this->can('view all teams')) {
+            return Team::all();
+        } else {
+            // find all teams belong to all programs of user
+            $allTeamsIdInPrograms = array();
+
+            foreach ($this->programs as $program) {
+                $allPrograms = $program->teams->pluck('id');
+                array_push($allTeamsIdInPrograms, $allPrograms);
+            }
+
+            // flatten array
+            $allTeamsIdInPrograms = Arr::flatten($allTeamsIdInPrograms);
+
+            // find all teams belong to user
+            $allTeamIds = $this->teams->pluck('id');
+
+            // all accessible teams = all teams belong to all programs of user + all teams belong to user
+            $allAccessibleTeamIds = array();
+            array_push($allAccessibleTeamIds, Arr::flatten($allTeamsIdInPrograms), Arr::flatten($allTeamIds));
+
+            // find all accessible Team models
+            $allAccessibleTeams = Team::whereIn('id', Arr::flatten($allAccessibleTeamIds))->get();
+
+            return $allAccessibleTeams;
+        }
     }
 
     // The last team the user was on.
