@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -32,6 +33,10 @@ class AdminPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
+            ->resources([
+                // Bring in ODK Link Resources
+                XlsformTemplateResource::class,
+            ])
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->pages([
@@ -54,11 +59,11 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]) ->navigationItems([
+            ])->navigationItems([
                 NavigationItem::make()
-                ->label(__('Return to Front end'))
-                ->icon('heroicon-o-home')
-                ->url(url('/'))
+                    ->label(__('Return to Front end'))
+                    ->icon('heroicon-o-home')
+                    ->url(url('/')),
             ])
             ->darkMode(false)
             ->plugins([]);
