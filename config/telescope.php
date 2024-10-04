@@ -142,12 +142,6 @@ return [
 
         Watchers\ClientRequestWatcher::class => env('TELESCOPE_CLIENT_REQUEST_WATCHER', true),
 
-        // Watchers\ClientRequestWatcher::class => [
-        //     'enabled' => env('TELESCOPE_CLIENT_REQUEST_WATCHER', true),
-        //     // 'ignore' => [],
-        //     'hidden' => [],
-        // ],
-
         Watchers\CommandWatcher::class => [
             'enabled' => env('TELESCOPE_COMMAND_WATCHER', true),
             'ignore' => [],
