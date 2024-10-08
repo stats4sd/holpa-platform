@@ -19,14 +19,16 @@ class XlsformResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
+    // do not show Xlsform resource in side bar
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
             ->schema([
                 ViewEntry::make('submission_summary')
-                ->view('submission_summary_wrapper')
-                ->columnSpanFull()
+                    ->view('submission_summary_wrapper')
+                    ->columnSpanFull()
             ]);
     }
 
