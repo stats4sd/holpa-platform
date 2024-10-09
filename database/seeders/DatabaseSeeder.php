@@ -6,6 +6,7 @@ use App\Models\User;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\LanguageSeeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,6 +21,7 @@ class DatabaseSeeder extends Seeder
             Test\TestUserSeeder::class,
             Test\ModelHasRolesTableSeeder::class,
             Test\TeamMembersTableSeeder::class,
+            LanguageSeeder::class
         ]);
 
         $this->call(PlatformSeeder::class);
