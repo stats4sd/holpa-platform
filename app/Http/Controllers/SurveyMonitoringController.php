@@ -31,10 +31,10 @@ class SurveyMonitoringController extends Controller
 
         $count = count($results);
         $latestSubmission = collect($results)
-            ->sort(fn ($submission) => $submission['createdAt'])
+            ->sort(fn($submission) => $submission['createdAt'])
             ->last();
 
-        if($count === 0) {
+        if ($count === 0) {
             return [
                 'count' => 0,
                 'latestSubmissionDate' => null,
@@ -44,15 +44,26 @@ class SurveyMonitoringController extends Controller
         // Submission Summary based on pulled data
         $submissions = Submission::all();
 
-        $successfulSurveys = $submissions->filter(fn (Submission $submission) => $submission->content['reg']['respondent_check']['respondent_available'] === "1" &&
-            $submission->content['consent_grp']['consent'] === "1");
+        // temporary comment below code
+        // short summary content to be determined for HOLPA
 
-        $surveysWithoutRespondentPresent = $submissions->filter(fn (Submission $submission) => $submission->content['reg']['respondent_check']['respondent_available'] === "0")->count();
+        // $successfulSurveys = $submissions->filter(fn (Submission $submission) => $submission->content['reg']['respondent_check']['respondent_available'] === "1" &&
+        //     $submission->content['consent_grp']['consent'] === "1");
 
-        $surveysWithNonConsentingRespondent = $submissions->filter(fn (Submission $submission) => $submission->content['consent_grp']['consent'] === "0")->count();
+        // $surveysWithoutRespondentPresent = $submissions->filter(fn (Submission $submission) => $submission->content['reg']['respondent_check']['respondent_available'] === "0")->count();
 
-        $beneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] !== "-99")->count();
-        $nonBeneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] === "-99")->count();
+        // $surveysWithNonConsentingRespondent = $submissions->filter(fn (Submission $submission) => $submission->content['consent_grp']['consent'] === "0")->count();
+
+        // $beneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] !== "-99")->count();
+        // $nonBeneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] === "-99")->count();
+
+
+        // hardcode all figures to 0 for testing temporary
+        $successfulSurveys = $submissions;
+        $surveysWithoutRespondentPresent = 0;
+        $surveysWithNonConsentingRespondent = 0;
+        $beneficiaryFarmsSurveyed = 0;
+        $nonBeneficiaryFarmsSurveyed = 0;
 
 
         return [

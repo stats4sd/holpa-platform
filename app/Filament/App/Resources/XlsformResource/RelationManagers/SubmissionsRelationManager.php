@@ -46,27 +46,30 @@ class SubmissionsRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('odk_id'),
                 Tables\Columns\TextColumn::make('submitted_at')
-                ->sortable(),
-                 Tables\Columns\TextColumn::make('enumerator')
-                 ->getStateUsing(function ($record) {
-                     $enumeratorId = $record->content['survey_start']['inquirer_choice'];
-                     if($enumeratorId === "77") {
-                         return $record->content['survey_start']['inquirer_text'];
-                     }
-                     return Enumerator::firstWhere('name', $record->content['survey_start']['inquirer_choice'])->label ?? '~not found~';
-                 }),
-                 Tables\Columns\TextColumn::make('farm_name')
-                     ->getStateUsing(function ($record) {
-                         return $record->content['reg']['farm_name'];
-                     }),
-                 Tables\Columns\TextColumn::make('respondent_available')
-                     ->getStateUsing(function ($record) {
-                         return $record->content['reg']['respondent_check']['respondent_available'];
-                     }),
-                 Tables\Columns\TextColumn::make('consent')
-                     ->getStateUsing(function ($record) {
-                         return $record->content['consent_grp']['consent'] === "1" ? "Yes" : "No";
-                     }),
+                    ->sortable(),
+
+                // comment below code temporary, customisation is required for HOLPA
+
+                //  Tables\Columns\TextColumn::make('enumerator')
+                //  ->getStateUsing(function ($record) {
+                //      $enumeratorId = $record->content['survey_start']['inquirer_choice'];
+                //      if($enumeratorId === "77") {
+                //          return $record->content['survey_start']['inquirer_text'];
+                //      }
+                //      return Enumerator::firstWhere('name', $record->content['survey_start']['inquirer_choice'])->label ?? '~not found~';
+                //  }),
+                //  Tables\Columns\TextColumn::make('farm_name')
+                //      ->getStateUsing(function ($record) {
+                //          return $record->content['reg']['farm_name'];
+                //      }),
+                //  Tables\Columns\TextColumn::make('respondent_available')
+                //      ->getStateUsing(function ($record) {
+                //          return $record->content['reg']['respondent_check']['respondent_available'];
+                //      }),
+                //  Tables\Columns\TextColumn::make('consent')
+                //      ->getStateUsing(function ($record) {
+                //          return $record->content['consent_grp']['consent'] === "1" ? "Yes" : "No";
+                //      }),
             ])
             ->filters([
                 //
