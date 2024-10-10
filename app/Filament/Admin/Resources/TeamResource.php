@@ -17,8 +17,9 @@ use Filament\Forms\Form;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Resources\Resource;
+use Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 
-class TeamResource extends Resource
+class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource
 {
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
     protected static ?string $navigationGroup = 'Programs, Teams and Users';
@@ -51,24 +52,16 @@ class TeamResource extends Resource
                 Tables\Columns\TextColumn::make('website')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('xlsforms_count')
+                    ->label('# Xlsforms')
+                    ->counts('xlsforms')
+                    ->sortable(),
                 TextColumn::make('users_count')
                     ->label('# Users')
                     ->counts('users')
                     ->sortable(),
                 TextColumn::make('created_at')
                     ->sortable(),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
             ]);
     }
 
@@ -87,6 +80,7 @@ class TeamResource extends Resource
         return [
             UsersRelationManager::class,
             InvitesRelationManager::class,
+            XlsformsRelationManager::class,
         ];
     }
 

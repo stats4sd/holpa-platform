@@ -88,7 +88,6 @@ class AppPanelProvider extends PanelProvider
                     ->url(url('program'))
                     ->visible(fn() => count(auth()->user()->programs) > 0),
             ])
-            ->topNavigation()
             ->darkMode(false)
             ->plugins([
                 new LocalLogins(),
