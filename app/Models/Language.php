@@ -2,25 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Language extends Model
 {
 
-    // gets the column header for use in XLSforms (e.g. the "English (en)" part of "label::English (en)")
-    public function columnHeader(): Attribute
-    {
-        return new Attribute(
-            get: fn (): string => Str::ascii($this->label) . ' (' . $this->code . ')',
-        );
-    }
-
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class);
+    }
+
+    public function xlsformTemplateLanguages(): HasMany
+    {
+        return $this->hasMany(XlsformTemplateLanguage::class);
     }
 }

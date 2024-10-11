@@ -8,6 +8,7 @@ use App\Models\User;
 use Database\Seeders\Prep\CropTableSeeder;
 use Database\Seeders\Prep\UnitTableSeeder;
 use Illuminate\Database\Seeder;
+use Database\Seeders\LanguageSeeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,6 +19,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+
         if(app()->environment('local')) {
             $this->call([
                 Test\TeamsTableSeeder::class,
@@ -25,8 +27,8 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
+        $this->call(LanguageSeeder::class);
         $this->call(PlatformSeeder::class);
-        $this->call(LanguageTableSeeder::class);
 
         $this->call([
             CropTableSeeder::class,
