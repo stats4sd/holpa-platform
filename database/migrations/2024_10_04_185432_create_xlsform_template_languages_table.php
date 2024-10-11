@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('xlsform_template_id');
             $table->foreignId('language_id');
-            $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
         });
