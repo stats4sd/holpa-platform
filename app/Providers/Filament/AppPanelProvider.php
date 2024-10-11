@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Pages\EditTeamPage;
 use Filament\Pages;
 use Filament\Panel;
 use App\Models\Team;
@@ -37,6 +38,7 @@ class AppPanelProvider extends PanelProvider
             // disable "Register New Team" option in multi-tenancy
             // new team should be created by admin, user should not be able to create a new team
             ->tenantRegistration(RegisterTeam::class)
+            ->tenantProfile(EditTeamPage::class)
             ->tenantMiddleware([
                 SetLatestTeamMiddleware::class,
             ])
