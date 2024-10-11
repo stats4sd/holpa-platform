@@ -2,17 +2,17 @@
 
 namespace App\Models;
 
-use App\Models\Language;
 use App\Models\SurveyRow;
 use App\Models\XlsformTemplateLanguage;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
 
 class XlsformTemplate extends OdkLinkXlsformTemplate
 {
     use HasFactory;
 
-    public function xlsformTemplatelanguages(): HasMany
+    public function xlsformTemplateLanguages(): HasMany
     {
         return $this->hasMany(XlsformTemplateLanguage::class);
     }
