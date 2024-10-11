@@ -13,3 +13,7 @@ Route::get('register', Register::class)
 Route::get('roleregister', Roleregister::class)
     ->name('filament.app.roleregister')
     ->middleware('signed');
+
+Route::get('/', function () {
+    return redirect('app');
+});
