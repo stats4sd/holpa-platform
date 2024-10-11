@@ -25,7 +25,7 @@ class TeamsTableSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Test User Team',
                 'website' => NULL,
-                'description' => NULL,
+                'description' => 'Important Note: This team is created by seeder file. It does not have ODK project ID. Please create a new team for xlsform related testing',
                 'created_at' => '2024-08-15 10:22:09',
                 'updated_at' => '2024-08-15 10:22:09',
             ),
