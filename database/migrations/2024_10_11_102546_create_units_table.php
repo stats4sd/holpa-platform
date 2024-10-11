@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('unit_type_id');
             $table->nullableMorphs('owner');
             $table->string('name');
-            $table->string('label');
+            $table->json('label');
             $table->decimal('conversion_rate', 20, 10);
             $table->timestamps();
         });

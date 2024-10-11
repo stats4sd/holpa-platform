@@ -4,10 +4,18 @@ namespace App\Models\LookupTables;
 
 use App\Models\UnitType;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\Translatable\HasTranslations;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class Unit extends LookupEntry
 {
+
+    use HasTranslations;
+
+    public array $translatable = [
+        'label',
+    ];
+
     public function unitType(): BelongsTo
     {
         return $this->belongsTo(UnitType::class);

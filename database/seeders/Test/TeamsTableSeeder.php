@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Team;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -15,20 +16,11 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
-
-
         DB::table('teams')->delete();
 
-        DB::table('teams')->insert(array(
-            0 =>
-            array(
-                'id' => 1,
-                'name' => 'Test User Team',
-                'website' => NULL,
-                'description' => NULL,
-                'created_at' => '2024-08-15 10:22:09',
-                'updated_at' => '2024-08-15 10:22:09',
-            ),
-        ));
+        Team::create([
+            'name' => 'Test Team',
+            'description' => 'This is a test team',
+        ]);
     }
 }

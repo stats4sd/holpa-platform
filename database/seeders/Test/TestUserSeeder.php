@@ -17,16 +17,16 @@ class TestUserSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => 1,
         ]);
 
         $admin = User::create([
             'name' => 'Test Admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => NULL,
         ]);
 
         $admin->assignRole('Super Admin');
+        $user->teams()->attach(1);
+
     }
 }

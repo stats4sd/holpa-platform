@@ -113,4 +113,9 @@ class Team extends \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team
     {
         return $this->belongsToMany(Program::class);
     }
+
+    public function languages(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class);
+    }
 }
