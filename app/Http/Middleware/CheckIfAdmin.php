@@ -17,8 +17,8 @@ class CheckIfAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if the user is an admin
-        if (! auth()->user()->isAdmin()) {
+        // Check if the user has permission to access admin panel
+        if (! auth()->user()->can('access admin panel')) {
             abort(403, 'Only platform administrators can access this page');
         }
 
