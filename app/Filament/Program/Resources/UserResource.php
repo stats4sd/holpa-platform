@@ -23,6 +23,8 @@ class UserResource extends Resource
 
     // only show users belong to logged in user's all accessible teams
     // user will get error 404 when access user record not belong to user
+
+    // TODO: to be revised when using Program model for mutli-tenancy in program admin panel
     public static function getEloquentQuery(): Builder
     {
         // find logged in user's all accessible team
@@ -37,7 +39,7 @@ class UserResource extends Resource
         }
 
         // show all users of all accessible teams only
-        return parent::getEloquentQuery()->whereIn('id', $allAccessibleUserIds);
+        return parent::getEloquentQuery()->whereIn('id', Arr::flatten($allAccessibleUserIds));
     }
 
 
