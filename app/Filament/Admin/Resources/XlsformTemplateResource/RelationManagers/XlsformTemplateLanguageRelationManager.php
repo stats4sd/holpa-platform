@@ -24,16 +24,16 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
+                Forms\Components\TextInput::make('description')
                     ->required()
                     ->maxLength(255),
-            ]);
+            ])->columns(1);
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('name')
+            ->recordTitleAttribute('language.name')
             ->heading('Languages')
             ->columns([
                 Tables\Columns\TextColumn::make('language.name')
@@ -44,10 +44,13 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     ->label('Translation Description'),
             ])
             ->actions([
+                Tables\Actions\EditAction::make()
+                ->modalHeading(function (XlsformTemplateLanguage $record) {
+                    return 'Edit xlsform template language ' . $record->language->name;
+                }),
                 Tables\Actions\Action::make('download_translation')
-                ->icon('heroicon-o-arrow-down-circle')
-            ]
-            )
+                    ->icon('heroicon-o-arrow-down-circle')
+            ])
             ->filters([
                 //
             ])
