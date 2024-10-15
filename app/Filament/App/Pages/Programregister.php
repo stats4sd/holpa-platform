@@ -4,6 +4,7 @@ namespace App\Filament\App\Pages;
 
 use Filament\Forms;
 use App\Models\User;
+use App\Models\Program;
 use Livewire\Attributes\Url;
 use App\Models\UserInvitation;
 use Filament\Facades\Filament;
@@ -14,22 +15,23 @@ use App\Http\Responses\RegisterResponse;
 use Filament\Forms\Components\Component;
 use Filament\Notifications\Notification;
 use App\Models\TeamManagement\RoleInvite;
+use App\Models\TeamManagement\ProgramInvite;
 use Filament\Pages\Auth\Register as BaseRegister;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
-class Roleregister extends BaseRegister
+class Programregister extends BaseRegister
 {
     #[Url]
     public $token = '';
 
-    public ?RoleInvite $invite = null;
+    public ?ProgramInvite $invite = null;
 
     public ?array $data = [];
 
     public function mount(): void
     {
-        $this->invite = RoleInvite::where('token', $this->token)->firstOrFail();
+        $this->invite = ProgramInvite::where('token', $this->token)->firstOrFail();
 
         $this->form->fill([
             'email' => $this->invite->email,
@@ -66,9 +68,13 @@ class Roleregister extends BaseRegister
         $this->invite->is_confirmed = 1;
         $this->invite->save();
 
-        // add role to user
+        // add program admin role to user
         $role = Role::find($this->invite->role_id);
         $user->assignRole($role);
+
+        // add the newly created user to the dedicated program
+        $this->invite->program->users()->attach($user);
+
 
         app()->bind(
             \Illuminate\Auth\Listeners\SendEmailVerificationNotification::class,

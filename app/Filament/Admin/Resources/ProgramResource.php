@@ -46,27 +46,7 @@ class ProgramResource extends Resource
                 Tables\Columns\TextColumn::make('note')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                // TODO: In Team resource view page, users relation manager show table header buttons "Invite users" and "Add Existing User to team"
-                // Not sure why Program resource view page cannot do the same...
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    ->sortable(),
             ]);
     }
 
@@ -75,6 +55,7 @@ class ProgramResource extends Resource
         return [
             RelationManagers\TeamsRelationManager::class,
             RelationManagers\UsersRelationManager::class,
+            RelationManagers\InvitesRelationManager::class,
         ];
     }
 
@@ -86,5 +67,13 @@ class ProgramResource extends Resource
             'edit' => Pages\EditProgram::route('/{record}/edit'),
             'view' => Pages\ViewProgram::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('description')->hiddenLabel(),
+            ]);
     }
 }
