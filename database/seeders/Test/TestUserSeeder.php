@@ -20,6 +20,7 @@ class TestUserSeeder extends Seeder
         $permissions = [
             ['name' => 'access admin panel'],
             ['name' => 'access program admin panel'],
+            ['name' => 'view all teams'],
         ];
 
         $superAdminRole->permissions()->createMany($permissions);
