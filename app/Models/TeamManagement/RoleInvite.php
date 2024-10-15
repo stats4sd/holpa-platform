@@ -23,6 +23,8 @@ class RoleInvite extends Model
         'is_confirmed' => 'boolean',
     ];
 
+    // do not use global scope, to show all invitation emails sent
+    //
     // protected static function booted(): void
     // {
     //     static::addGlobalScope('unconfirmed', static function (Builder $builder) {

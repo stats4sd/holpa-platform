@@ -18,7 +18,7 @@ use Filament\Pages\Auth\Register as BaseRegister;
 use Filament\Http\Responses\Auth\Contracts\RegistrationResponse;
 use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
 
-class Roleregister extends BaseRegister
+class RoleRegister extends BaseRegister
 {
     #[Url]
     public $token = '';
@@ -59,8 +59,10 @@ class Roleregister extends BaseRegister
         $data = $this->form->getState();
         $user = $this->getUserModel()::create($data);
 
-        // Question: If we do not delete role_invites record, can it be used for registration again?
+        // do not delete rote_invites record, keep them as reference.
+        // System will not allow the invited user to register again with the same email address.
         // $this->invite->delete();
+
         $this->invite->is_confirmed = 1;
         $this->invite->save();
 
