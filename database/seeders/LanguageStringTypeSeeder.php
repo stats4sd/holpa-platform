@@ -18,7 +18,14 @@ class LanguageStringTypeSeeder extends Seeder
             ['name' => 'hint'],
             ['name' => 'required_message'],
             ['name' => 'constraint_message'],
+            ['name' => 'guidance_hint'],
             ['name' => 'mediaimage'],
+            ['name' => 'mediaaudio'],
+            ['name' => 'mediavideo'],
+            ['name' => 'image'],
+            ['name' => 'audio'],
+            ['name' => 'video'],
+
         ];
 
         DB::table('language_string_types')->insert($languageStringTypes);
