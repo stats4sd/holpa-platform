@@ -61,6 +61,10 @@ class Programregister extends BaseRegister
         $data = $this->form->getState();
         $user = $this->getUserModel()::create($data);
 
+        // set user's latest program id, to avoid asking user to register a new prorgram in program admin panel
+        $user->latest_program_id = $this->invite->program_id;
+        $user->save();
+
         // do not delete rote_invites record, keep them as reference.
         // System will not allow the invited user to register again with the same email address.
         // $this->invite->delete();

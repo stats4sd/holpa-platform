@@ -5,13 +5,16 @@ namespace App\Providers\Filament;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
+use App\Models\Program;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
+use App\Filament\App\Pages\RegisterProgram;
 use App\Http\Middleware\CheckIfProgramAdmin;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use App\Http\Middleware\SetLatestProgramMiddleware;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -27,6 +30,13 @@ class ProgramPanelProvider extends PanelProvider
         return $panel
             ->id('program')
             ->path('program')
+            ->tenant(Program::class)
+            // disable "Register New Program" option in multi-tenancy
+            // new program should be created by admin, user should not be able to create a new program
+            ->tenantRegistration(RegisterProgram::class)
+            ->tenantMiddleware([
+                SetLatestProgramMiddleware::class,
+            ])
             ->login()
             ->colors([
                 'primary' => Color::Amber,

@@ -20,6 +20,7 @@ class TestUserSeeder extends Seeder
         $permissions = [
             ['name' => 'access admin panel'],
             ['name' => 'access program admin panel'],
+            ['name' => 'view all prorgrams'],
             ['name' => 'view all teams'],
         ];
 
@@ -32,20 +33,23 @@ class TestUserSeeder extends Seeder
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
             'latest_team_id' => 1,
+            'latest_program_id' => NULL,
         ]);
 
         $admin = User::create([
             'name' => 'Test Admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => NULL,
+            'latest_team_id' => 1,
+            'latest_program_id' => 1,
         ]);
 
         $programAdmin = User::create([
             'name' => 'Test Program Admin',
             'email' => 'program_admin@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => NULL,
+            'latest_team_id' => 2,
+            'latest_program_id' => 1,
         ]);
 
 
