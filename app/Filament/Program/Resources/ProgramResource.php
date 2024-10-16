@@ -39,34 +39,19 @@ class ProgramResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('note')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                // Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    // Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('note'),
+                Tables\Columns\TextColumn::make('teams_count')
+                    ->label('# Teams')
+                    ->counts('teams'),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->label('# Users')
+                    ->counts('users'),
+                Tables\Columns\TextColumn::make('invites_count')
+                    ->label('# Invites')
+                    ->counts('invites'),
+                Tables\Columns\TextColumn::make('created_at'),
             ]);
     }
 
