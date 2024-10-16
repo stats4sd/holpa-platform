@@ -19,13 +19,16 @@ class AddProgramAdminMenuItems
     {
         logger("AddProgramAdminMenuItems.handle()...");
 
-        logger('users.latest_program_id: ' . auth()->user()->latest_program_id);
+        if (auth()->user()) {
 
-        filament()->getCurrentPanel()->userMenuItems([
-            MenuItem::make()
-                ->label('Profile')
-                ->url(url('/program/1/programs/1')),
-        ]);
+            logger('users.latest_program_id: ' . auth()->user()->latest_program_id);
+
+            filament()->getCurrentPanel()->userMenuItems([
+                MenuItem::make()
+                    ->label('Profile')
+                    ->url(url('/program/1/programs/1')),
+            ]);
+        }
 
         return $next($request);
     }
