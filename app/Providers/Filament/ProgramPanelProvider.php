@@ -15,7 +15,6 @@ use App\Filament\App\Pages\RegisterProgram;
 use App\Http\Middleware\CheckIfProgramAdmin;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use App\Http\Middleware\AddProgramAdminMenuItems;
 use App\Http\Middleware\SetLatestProgramMiddleware;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
@@ -63,9 +62,6 @@ class ProgramPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-
-                // TODO: add menu item via middleware
-                AddProgramAdminMenuItems::class,
             ])
             ->authMiddleware([
                 Authenticate::class,
@@ -76,18 +72,6 @@ class ProgramPanelProvider extends PanelProvider
                     ->label(__('Return to Front end'))
                     ->icon('heroicon-o-home')
                     ->url(url('/app')),
-
-                // TODO: create a "My Program" item in sidebar, link to the selected program view page directly
-                // e.g. http://holpa-platform.test/program/1/programs/1
-                //
-                // issue: cannot get logged in user at this point, auth()->user() returns null...
-                // auth()->user()->latestProgram()->id
-
-                // NavigationItem::make()
-                //     ->label(__('My Program'))
-                //     ->icon('heroicon-o-home')
-                //     ->group('My group')
-                //     ->url(url('/program/1/programs/1')),
             ])
             ->darkMode(false)
             ->plugins([]);

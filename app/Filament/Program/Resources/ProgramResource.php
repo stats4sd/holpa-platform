@@ -7,8 +7,10 @@ use Filament\Tables;
 use App\Models\Program;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Facades\Filament;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\TextEntry;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -20,6 +22,18 @@ class ProgramResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $model = Program::class;
+
+    // when user click on sidebar item, it shows the view page of the selected program directly
+    public static function getNavigationItems(): array
+    {
+        return [
+            NavigationItem::make()
+                ->label(__('My Program'))
+                ->icon('heroicon-o-home')
+                ->group('Settings')
+                ->url(self::getUrl('view', ['record' => Filament::getTenant()]))
+        ];
+    }
 
     public static function form(Form $form): Form
     {

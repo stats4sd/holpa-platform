@@ -7,8 +7,10 @@ use App\Models\Team;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Filament\Facades\Filament;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
 use Illuminate\Database\Eloquent\Builder;
 use Filament\Infolists\Components\TextEntry;
 use App\Filament\App\Resources\TeamResource\Pages;
@@ -20,6 +22,18 @@ class TeamResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
     protected static ?string $navigationGroup = 'Settings';
     protected static ?string $model = Team::class;
+
+    // when user click on sidebar item, it shows the view page of the selected team directly
+    public static function getNavigationItems(): array
+    {
+        return [
+            NavigationItem::make()
+                ->label(__('My Team'))
+                ->icon('heroicon-o-home')
+                ->group('Settings')
+                ->url(self::getUrl('view', ['record' => Filament::getTenant()]))
+        ];
+    }
 
     public static function form(Form $form): Form
     {
