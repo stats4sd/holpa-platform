@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Notifications\Notification;
 use App\Models\TeamManagement\ProgramInvite;
 use App\Mail\TeamManagement\InviteProgramAdmin;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -65,5 +66,11 @@ class Program extends Model
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class)->withTimestamps();
+    }
+
+    // add relationship to refer to program model itself, so that program admin panel > Programs resource can show the selected program for editing
+    public function program(): HasOne
+    {
+        return $this->hasOne(Program::class, 'id');
     }
 }

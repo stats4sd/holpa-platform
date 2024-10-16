@@ -49,16 +49,24 @@ class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamReso
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('programs.name')
+                    ->searchable()
+                    ->badge()
+                    ->color('success'),
                 Tables\Columns\TextColumn::make('website')
                     ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('xlsforms_count')
-                    ->label('# Xlsforms')
-                    ->counts('xlsforms')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('users_count')
                     ->label('# Users')
                     ->counts('users')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('invites_count')
+                    ->label('# Invites')
+                    ->counts('invites')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('xlsforms_count')
+                    ->label('# Xlsforms')
+                    ->counts('xlsforms')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->sortable(),

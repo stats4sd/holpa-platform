@@ -40,11 +40,26 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('note')
+                    ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('teams_count')
+                    ->label('# Teams')
+                    ->counts('teams')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->label('# Users')
+                    ->counts('users')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('invites_count')
+                    ->label('# Invites')
+                    ->counts('invites')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->sortable(),
             ]);

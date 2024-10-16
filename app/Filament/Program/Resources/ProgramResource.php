@@ -2,31 +2,24 @@
 
 namespace App\Filament\Program\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\Program;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\TextEntry;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Program\Resources\ProgramResource\Pages;
 use App\Filament\Program\Resources\ProgramResource\RelationManagers;
-use App\Models\Program;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProgramResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
     protected static ?string $navigationGroup = 'Programs, Teams and Users';
     protected static ?string $model = Program::class;
-
-    // only show programs belong to user
-    // user will get error 404 when access program record not belong to user
-    public static function getEloquentQuery(): Builder
-    {
-        $programIds = auth()->user()->programs->pluck('id');
-
-        return parent::getEloquentQuery()->whereIn('id', $programIds);
-    }
 
     public static function form(Form $form): Form
     {
@@ -68,7 +61,7 @@ class ProgramResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                // Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -91,6 +84,15 @@ class ProgramResource extends Resource
             'index' => Pages\ListPrograms::route('/'),
             'create' => Pages\CreateProgram::route('/create'),
             'edit' => Pages\EditProgram::route('/{record}/edit'),
+            'view' => Pages\ViewProgram::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('description')->hiddenLabel(),
+            ]);
     }
 }

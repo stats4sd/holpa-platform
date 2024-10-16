@@ -189,7 +189,7 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
             }
         } else {
             // program admin panel
-            return $this->can('view all programs') ? Program::all() : $this->teams;
+            return $this->can('view all programs') ? Program::all() : $this->programs;
         }
     }
 
