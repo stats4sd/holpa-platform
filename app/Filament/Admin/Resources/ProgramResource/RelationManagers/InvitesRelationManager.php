@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Program\Resources\TeamResource\RelationManagers;
+namespace App\Filament\Admin\Resources\ProgramResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,6 +14,16 @@ class InvitesRelationManager extends RelationManager
 {
     protected static string $relationship = 'invites';
 
+    // public function form(Form $form): Form
+    // {
+    //     return $form
+    //         ->schema([
+    //             Forms\Components\TextInput::make('name')
+    //                 ->required()
+    //                 ->maxLength(255),
+    //         ]);
+    // }
+
     public function table(Table $table): Table
     {
         return $table
@@ -22,7 +32,7 @@ class InvitesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('team.name')
+                Tables\Columns\TextColumn::make('program.name')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('inviter.name')
