@@ -2,12 +2,15 @@
 
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 
+use Carbon\Carbon;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Builder;
+use App\Exports\XlsformTemplateLanguageExport;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\RelationManagers\RelationManager;
 
@@ -48,19 +51,25 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 ->modalHeading(function (XlsformTemplateLanguage $record) {
                     return 'Edit xlsform template language ' . $record->language->name;
                 }),
-                Tables\Actions\Action::make('download_translation')
-                    ->icon('heroicon-o-arrow-down-circle')
             ])
             ->filters([
                 //
             ])
             ->headerActions([
                 Tables\Actions\Action::make('download_translation')
-                    ->label('Download file to add translations')
-                    ->icon('heroicon-o-arrow-down-circle'),
+                    ->label('Download translation file')
+                    ->icon('heroicon-o-arrow-down-circle')
+                    ->action(function () {
+                        $templateId = $this->ownerRecord->id;
+                        $templateTitle = $this->ownerRecord->title;
+                        $currentDate = Carbon::now()->format('Y-m-d');
+                        $filename = "HOLPA - {$templateTitle} - translations - {$currentDate}.xlsx";
+
+                        return Excel::download(new XlsformTemplateLanguageExport($templateId), $filename);
+                    }),
                 Tables\Actions\CreateAction::make()
-                    ->label('Upload translation file')
-                    ->icon('heroicon-o-arrow-up-circle'),
+                    ->label('Upload completed translation file')
+                    ->icon('heroicon-o-arrow-up-circle')
             ]);
     }
 }
