@@ -23,4 +23,9 @@ class LanguageString extends Model
     {
         return $this->belongsTo(LanguageStringType::class);
     }
+
+    public function xlsformTemplateLanguage(): BelongsTo
+    {
+        return $this->belongsTo(XlsformTemplateLanguage::class);
+    }
 }
