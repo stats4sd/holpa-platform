@@ -102,6 +102,11 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
         return $this->teams->contains($team);
     }
 
+    public function belongsToProgram(Program $program): bool
+    {
+        return $this->programs->contains($program);
+    }
+
     public function isAdmin(): bool
     {
         return $this->hasRole('Super Admin');
@@ -119,40 +124,64 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
     // Admin users can access all teams
     public function canAccessTenant(Model $tenant): bool
     {
-        // check permission
-        if ($this->can('view all teams')) {
-            return true;
-        }
-
-        // check if user belong to this team
-        if ($this->teams->contains($tenant)) {
-            return true;
-        }
-
-        // check if this team belong to any program belong to user
-        foreach ($this->programs as $program) {
-            if ($program->teams->contains($tenant)) {
+        // add different handling for different panel
+        if ($tenant->getTable() == 'teams') {
+            // app panel
+            // check permission
+            if ($this->can('view all teams')) {
                 return true;
             }
-        }
 
-        // user cannot access this team
-        return false;
+            // check if user belong to this team
+            if ($this->teams->contains($tenant)) {
+                return true;
+            }
+
+            // check if this team belong to any program belong to user
+            $allAccessibleTeams = Team::whereIn('id', $this->getAllAccessibleTeamIds())->get();
+            if ($allAccessibleTeams->contains($tenant)) {
+                return true;
+            }
+
+            // user cannot access this team
+            return false;
+        } else if ($tenant->getTable() == 'programs') {
+            // program admin panel
+            // check permission
+            if ($this->can('view all programs')) {
+                return true;
+            }
+
+            // check if user belong to this program
+            if ($this->programs->contains($tenant)) {
+                return true;
+            }
+
+            // user cannot access this team
+            return false;
+        }
     }
 
     public function getTenants(Panel $panel): array|Collection
     {
-        if ($this->can('view all teams')) {
-            return Team::all();
-        } else {
-            // find all accessible Team models
-            $allAccessibleTeams = Team::whereIn('id', $this->getAllAccessibleTeamIds())->get();
+        // add different handling for different panel
+        if ($panel->isDefault()) {
+            // app panel
+            if ($this->can('view all teams')) {
+                return Team::all();
+            } else {
+                // find all accessible Team models
+                $allAccessibleTeams = Team::whereIn('id', $this->getAllAccessibleTeamIds())->get();
 
-            return $allAccessibleTeams;
+                return $allAccessibleTeams;
+            }
+        } else {
+            // program admin panel
+            return $this->can('view all programs') ? Program::all() : $this->programs;
         }
     }
 
-
+    // to be revised, may not require after using Program model as program admin panel multi-tenancy
     public function getAllAccessibleTeamIds(): array
     {
         // find all teams belong to all programs of user
@@ -182,8 +211,21 @@ class User extends Authenticatable implements FilamentUser, HasTenants, HasDefau
         return $this->belongsTo(Team::class, 'latest_team_id');
     }
 
+    // The last program the user was on.
+    public function latestProgram(): BelongsTo
+    {
+        return $this->belongsTo(Program::class, 'latest_program_id');
+    }
+
     public function getDefaultTenant(Panel $panel): ?Model
     {
-        return $this->latestTeam;
+        // add different handling for different tenant
+        if ($panel->isDefault()) {
+            // app panel
+            return $this->latestTeam;
+        } else {
+            // program admin panel
+            return $this->latestProgram;
+        }
     }
 }

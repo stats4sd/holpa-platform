@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ProgramResource\Pages;
+namespace App\Filament\App\Resources\TeamResource\Pages;
 
-use App\Filament\Admin\Resources\ProgramResource;
+use App\Filament\Admin\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 
-class ViewProgram extends ViewRecord
+class ViewTeam extends ViewRecord
 {
-    protected static string $resource = ProgramResource::class;
+    protected static string $resource = TeamResource::class;
 
     public function getTitle(): string|Htmlable
     {

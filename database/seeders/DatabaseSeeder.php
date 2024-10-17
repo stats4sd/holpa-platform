@@ -19,10 +19,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
+        $this->call(RoleAndPermissionSeeder::class);
 
-        if(app()->environment('local')) {
+        if (app()->environment('local')) {
             $this->call([
                 Test\TeamsTableSeeder::class,
+                Test\ProgramsTableSeeder::class,
                 Test\TestUserSeeder::class,
             ]);
         }
@@ -30,10 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(LanguageSeeder::class);
         $this->call(PlatformSeeder::class);
 
-        $this->call([
-            CropTableSeeder::class,
-            UnitTableSeeder::class,
-        ]);
-
+        $this->call(CropTableSeeder::class);
+        $this->call(UnitTableSeeder::class);
     }
 }

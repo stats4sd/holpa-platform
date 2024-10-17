@@ -2,9 +2,9 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Program;
 use App\Models\Team;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class TeamsTableSeeder extends Seeder
 {
@@ -16,11 +16,9 @@ class TeamsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('teams')->delete();
-
         Team::create([
-            'name' => 'Test Team',
-            'description' => 'This is a test team',
+            'name' => 'Test Team Without Program',
         ]);
+
     }
 }

@@ -25,13 +25,16 @@ class ProgramResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('note')
-                    ->maxLength(255),
+                Forms\Components\Section::make('Program Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('description')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('note')
+                            ->maxLength(255),
+                    ]),
             ]);
     }
 
@@ -40,33 +43,28 @@ class ProgramResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('note')
+                    ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('teams_count')
+                    ->label('# Teams')
+                    ->counts('teams')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->label('# Users')
+                    ->counts('users')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('invites_count')
+                    ->label('# Invites')
+                    ->counts('invites')
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                // TODO: In Team resource view page, users relation manager show table header buttons "Invite users" and "Add Existing User to team"
-                // Not sure why Program resource view page cannot do the same...
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                    ->sortable(),
             ]);
     }
 
@@ -75,6 +73,7 @@ class ProgramResource extends Resource
         return [
             RelationManagers\TeamsRelationManager::class,
             RelationManagers\UsersRelationManager::class,
+            RelationManagers\InvitesRelationManager::class,
         ];
     }
 
@@ -86,5 +85,13 @@ class ProgramResource extends Resource
             'edit' => Pages\EditProgram::route('/{record}/edit'),
             'view' => Pages\ViewProgram::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('description')->hiddenLabel(),
+            ]);
     }
 }

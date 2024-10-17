@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Program\Resources\TeamResource\Pages;
+namespace App\Filament\App\Resources\TeamResource\Pages;
 
-use App\Filament\Program\Resources\TeamResource;
+use App\Filament\App\Resources\TeamResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

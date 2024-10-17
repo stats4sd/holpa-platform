@@ -3,18 +3,19 @@
 namespace App\Models\TeamManagement;
 
 use App\Models\User;
-use Spatie\Permission\Models\Role;
+use App\Models\Program;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class RoleInvite extends Model
+class ProgramInvite extends Model
 {
-    protected $table = 'role_invites';
+    protected $table = 'program_invites';
 
     protected $fillable = [
         'email',
         'inviter_id',
+        'program_id',
         'role_id',
         'token',
     ];
@@ -38,9 +39,9 @@ class RoleInvite extends Model
         return $this->belongsTo(User::class, 'inviter_id');
     }
 
-    public function role(): BelongsTo
+    public function program(): BelongsTo
     {
-        return $this->belongsTo(Role::class);
+        return $this->belongsTo(Program::class);
     }
 
     public function confirm(): bool

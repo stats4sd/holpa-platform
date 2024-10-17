@@ -2,17 +2,19 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Program;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
 class TestUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $superAdmin = Role::create(['name' => 'Super Admin']);
-
+        // create users
         $user = User::create([
             'name' => 'Test User',
             'email' => 'test@example.com',
@@ -25,8 +27,19 @@ class TestUserSeeder extends Seeder
             'password' => bcrypt('password'),
         ]);
 
-        $admin->assignRole('Super Admin');
-        $user->teams()->attach(1);
+        $programAdmin = User::create([
+            'name' => 'Test Program Admin',
+            'email' => 'program_admin@example.com',
+            'password' => bcrypt('password'),
+        ]);
 
+
+        // assign role to users
+        $user->teams()->attach(Team::first());
+
+        $admin->assignRole('Super Admin');
+
+        $programAdmin->assignRole('Program Admin');
+        $programAdmin->programs()->attach(Program::first());
     }
 }
