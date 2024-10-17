@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Program\Resources\TeamResource\RelationManagers;
+namespace App\Filament\App\Resources\TeamResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,7 +17,7 @@ class InvitesRelationManager extends RelationManager
     public function table(Table $table): Table
     {
         return $table
-            ->recordTitleAttribute('email')
+            ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('email')
                     ->searchable()
@@ -39,17 +39,8 @@ class InvitesRelationManager extends RelationManager
             ->filters([
                 //
             ])
-            ->headerActions([
-                Tables\Actions\CreateAction::make(),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+            ->headerActions([])
+            ->actions([])
+            ->bulkActions([]);
     }
 }

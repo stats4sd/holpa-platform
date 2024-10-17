@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Filament\Notifications\Notification;
 use App\Mail\TeamManagement\InviteMember;
 use App\Models\TeamManagement\TeamInvite;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -112,5 +114,11 @@ class Team extends \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team
     public function programs(): BelongsToMany
     {
         return $this->belongsToMany(Program::class);
+    }
+
+    // add relationship to refer to team model itself, so that app panel > Teams resource can show the selected team for editing
+    public function team(): HasOne
+    {
+        return $this->hasOne(Team::class, 'id');
     }
 }

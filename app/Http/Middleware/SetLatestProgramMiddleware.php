@@ -2,12 +2,12 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\User;
 use Closure;
+use Filament\Facades\Filament;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckIfProgramAdmin
+class SetLatestProgramMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,10 +16,8 @@ class CheckIfProgramAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // Check if the user has permission to access program admin panel
-        if (! auth()->user()->can('access program admin panel')) {
-            abort(403, 'Only program admin can access this page');
-        }
+
+        auth()->user()->latestProgram()->associate(Filament::getTenant())->save();
 
         return $next($request);
     }

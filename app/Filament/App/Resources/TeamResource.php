@@ -1,29 +1,39 @@
 <?php
 
-namespace App\Filament\Admin\Resources;
+namespace App\Filament\App\Resources;
 
-use App\Filament\Admin\Resources\TeamResource\Pages;
-use App\Filament\Admin\Resources\TeamResource\RelationManagers\UsersRelationManager;
-use App\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
-use App\Models\Team;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables;
-use Filament\Tables\Table;
 use Filament\Forms;
+use App\Models\Team;
+use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Infolists\Components\Section;
-use Filament\Infolists\Components\ViewEntry;
+use Filament\Tables\Table;
+use Filament\Facades\Filament;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
-use Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
+use Filament\Navigation\NavigationItem;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\TextEntry;
+use App\Filament\App\Resources\TeamResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\App\Resources\TeamResource\RelationManagers;
 
-class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource
+class TeamResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-building-office-2';
-    protected static ?string $navigationGroup = 'Programs, Teams and Users';
+    protected static ?string $navigationGroup = 'Settings';
     protected static ?string $model = Team::class;
+
+    // when user click on sidebar item, it shows the view page of the selected team directly
+    public static function getNavigationItems(): array
+    {
+        return [
+            NavigationItem::make()
+                ->label(__('My Team'))
+                ->icon('heroicon-o-home')
+                ->group('Settings')
+                ->url(self::getUrl('view', ['record' => Filament::getTenant()]))
+        ];
+    }
 
     public static function form(Form $form): Form
     {
@@ -49,10 +59,6 @@ class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamReso
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('programs.name')
-                    ->searchable()
-                    ->badge()
-                    ->color('success'),
                 Tables\Columns\TextColumn::make('website')
                     ->searchable()
                     ->sortable(),
@@ -73,6 +79,15 @@ class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamReso
             ]);
     }
 
+    public static function getRelations(): array
+    {
+        return [
+            RelationManagers\UsersRelationManager::class,
+            RelationManagers\InvitesRelationManager::class,
+            RelationManagers\XlsformsRelationManager::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
@@ -80,15 +95,6 @@ class TeamResource extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamReso
             'create' => Pages\CreateTeam::route('/create'),
             'edit' => Pages\EditTeam::route('/{record}/edit'),
             'view' => Pages\ViewTeam::route('/{record}'),
-        ];
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            UsersRelationManager::class,
-            InvitesRelationManager::class,
-            XlsformsRelationManager::class,
         ];
     }
 

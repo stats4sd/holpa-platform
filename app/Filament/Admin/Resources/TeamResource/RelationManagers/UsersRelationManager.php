@@ -16,6 +16,7 @@ class UsersRelationManager extends RelationManager
 {
     protected static string $relationship = 'users';
 
+    // turn on Edit mode so that "Add Existing User to team" button will be showed when viewing team record
     public function isReadOnly(): bool
     {
         return false;

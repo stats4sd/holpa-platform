@@ -15,13 +15,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $this->call(PlatformSeeder::class);
+
         $this->call([
+            Test\ProgramsTableSeeder::class,
             Test\TeamsTableSeeder::class,
+            Test\ProgramTeamTableSeeder::class,
+
             Test\TestUserSeeder::class,
             Test\ModelHasRolesTableSeeder::class,
+            Test\RoleHasPermissionsTableSeeder::class,
+
+            Test\ProgramUserTableSeeder::class,
             Test\TeamMembersTableSeeder::class,
         ]);
-
-        $this->call(PlatformSeeder::class);
     }
 }

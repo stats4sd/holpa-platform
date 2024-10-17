@@ -28,8 +28,12 @@ class ListUsers extends ListRecords
                             Forms\Components\TextInput::make('email')
                                 ->email()
                                 ->required(),
+
+                            // Only show "Super Admin" in role selection box.
+                            // This is to avoid admin invite program admin via role-invite.
+                            // Super admin should create a program then invite program admin for that program
                             Forms\Components\Select::make('role')
-                                ->options(Role::all()->pluck('name', 'id'))
+                                ->options(Role::where('name', 'Super Admin')->pluck('name', 'id'))
                                 ->required()
                         ])
                         ->reorderable(false)

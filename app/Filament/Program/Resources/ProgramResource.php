@@ -2,43 +2,53 @@
 
 namespace App\Filament\Program\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\Program;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Facades\Filament;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Infolists\Components\TextEntry;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Program\Resources\ProgramResource\Pages;
 use App\Filament\Program\Resources\ProgramResource\RelationManagers;
-use App\Models\Program;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ProgramResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-building-library';
-    protected static ?string $navigationGroup = 'Programs, Teams and Users';
+    protected static ?string $navigationGroup = 'Settings';
     protected static ?string $model = Program::class;
 
-    // only show programs belong to user
-    // user will get error 404 when access program record not belong to user
-    public static function getEloquentQuery(): Builder
+    // when user click on sidebar item, it shows the view page of the selected program directly
+    public static function getNavigationItems(): array
     {
-        $programIds = auth()->user()->programs->pluck('id');
-
-        return parent::getEloquentQuery()->whereIn('id', $programIds);
+        return [
+            NavigationItem::make()
+                ->label(__('My Program'))
+                ->icon('heroicon-o-home')
+                ->group('Settings')
+                ->url(self::getUrl('view', ['record' => Filament::getTenant()]))
+        ];
     }
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('description')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('note')
-                    ->maxLength(255),
+                Forms\Components\Section::make('Program Details')
+                    ->schema([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('description')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('note')
+                            ->maxLength(255),
+                    ]),
             ]);
     }
 
@@ -46,34 +56,19 @@ class ProgramResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('description')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('note')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    // Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('note'),
+                Tables\Columns\TextColumn::make('teams_count')
+                    ->label('# Teams')
+                    ->counts('teams'),
+                Tables\Columns\TextColumn::make('users_count')
+                    ->label('# Users')
+                    ->counts('users'),
+                Tables\Columns\TextColumn::make('invites_count')
+                    ->label('# Invites')
+                    ->counts('invites'),
+                Tables\Columns\TextColumn::make('created_at'),
             ]);
     }
 
@@ -91,6 +86,15 @@ class ProgramResource extends Resource
             'index' => Pages\ListPrograms::route('/'),
             'create' => Pages\CreateProgram::route('/create'),
             'edit' => Pages\EditProgram::route('/{record}/edit'),
+            'view' => Pages\ViewProgram::route('/{record}'),
         ];
+    }
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                TextEntry::make('description')->hiddenLabel(),
+            ]);
     }
 }
