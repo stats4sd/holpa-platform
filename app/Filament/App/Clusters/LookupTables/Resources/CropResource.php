@@ -5,7 +5,7 @@ namespace App\Filament\App\Clusters\LookupTables\Resources;
 use App\Filament\App\Clusters\LookupTables;
 use App\Filament\App\Clusters\LookupTables\Resources\CropResource\Pages;
 use App\Filament\App\Clusters\LookupTables\Resources\CropResource\RelationManagers;
-use App\Models\Crop;
+use App\Models\LookupTables\Crop;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
