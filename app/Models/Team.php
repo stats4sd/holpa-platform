@@ -126,4 +126,30 @@ class Team extends \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team
     {
         return $this->belongsToMany(Language::class);
     }
+
+    public function lookupTables(): BelongsToMany
+    {
+        return $this->belongsToMany(Dataset::class, 'team_lookup_tables', 'team_id', 'lookup_table_id')
+            ->withPivot('is_complete')
+            ->where('lookup_table', true);
+    }
+
+    public function markLookupListAsComplete($lookupTable): ?bool
+    {
+        $dataset = $this->lookupTables()->sync([$lookupTable->id => ['is_complete' => 1]], detaching: false);
+
+        return $this->hasCompletedLookupList($lookupTable);
+    }
+
+    public function markLookupListAsInComplete($lookupTable): ?bool
+    {
+        $dataset = $this->lookupTables()->sync([$lookupTable->id => ['is_complete' => 0]], detaching: false);
+
+        return $this->hasCompletedLookupList($lookupTable);
+    }
+
+    public function hasCompletedLookupList($lookupTable): ?bool
+    {
+        return $this->lookupTables->where('id', $lookupTable->id)->first()?->pivot->is_complete;
+    }
 }

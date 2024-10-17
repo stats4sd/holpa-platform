@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CropResource extends Resource
 {
+
     protected static ?string $model = Crop::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

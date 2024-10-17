@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Program;
 use App\Models\Team;
 use Filament\Facades\Filament;
 use Illuminate\Support\Collection;
@@ -87,14 +88,15 @@ class HelperService
 
     // helper function to return the currently selected team in a Filament panel.
     // useful because it always returns a Team::class (or null), so you can use it in a type hint.
-    public static function getSelectedTeam(): Team|Model|null
+    public static function getCurrentTenant(): Team|Program|Model|null
     {
-        if (Filament::hasTenancy() && Filament::getTenant() instanceof Team) {
+        if (Filament::hasTenancy() && (Filament::getTenant() instanceof Team || Filament::getTenant() instanceof Program)) {
             return Filament::getTenant();
         }
 
         return null;
     }
+
 
     // helper function to get model by table name
     public static function getModelByTablename($tableName)
