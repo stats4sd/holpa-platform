@@ -10,6 +10,7 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\XlsformTemplateLanguage;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
@@ -98,21 +99,18 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         ];
                     })
                     ->action(function (array $data, $livewire) {
-                        // Retrieve the uploaded file from Livewire's 'data' array
-                        $uploadedFile = $livewire->data['translation_file'] ?? null;
+                        // Get the translation file
+                        $uploadedFile = $data['translation_file'];
+                        $file = Storage::path($uploadedFile);
+                        
+                        // Create new template language
+                        $templateLanguage = XlsformTemplateLanguage::create([
+                            'language_id' => $data['language_id'],
+                            'xlsform_template_id' => $livewire->ownerRecord->id,
+                            'description' => $data['description'] ?? null,
+                        ]);
 
-                        // Check if the file was uploaded correctly
-                        if ($uploadedFile instanceof \Livewire\TemporaryUploadedFile) {
-                            // Move the uploaded file to a temporary directory
-                            $filePath = $uploadedFile->store('uploads/temp');
-
-                            // Generate full file path
-                            $fullFilePath = storage_path('app/' . $filePath);
-
-                            // Import the file
-                            Excel::import(new XlsformTemplateLanguageImport($livewire->ownerRecord->id), $fullFilePath);
-
-                        }
+                        Excel::import(new XlsformTemplateLanguageImport($livewire->ownerRecord->id, $templateLanguage->id), $file);
                     })
             ]);
     }

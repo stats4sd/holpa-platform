@@ -22,8 +22,8 @@ class XlsformTemplateLanguageImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         $surveyRowName = $row['name'];
-        $newTranslation = $row['new translation'];
-        $translationType = $row['translation type'];
+        $newTranslation = $row['new_translation'];
+        $translationType = $row['translation_type'];
 
         // Find the survey row
         $surveyRow = SurveyRow::where('xlsform_template_id', $this->templateId)
