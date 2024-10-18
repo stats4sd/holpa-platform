@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Support\Facades\Storage;
+use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
@@ -102,15 +103,51 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         // Get the translation file
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);
-                        
-                        // Create new template language
+                    
+                        // Load the file as an array, getting the first sheet
+                        $rows = Excel::toArray([], $file)[0];
+                    
+                        // Get the headers from the first row and indices for name and new translation columns
+                        $headers = $rows[0];
+                        $nameIndex = array_search('name', $headers);
+                        $newTranslationIndex = array_search('new translation', $headers);
+                    
+                        // Remove the header row
+                        array_shift($rows);
+                    
+                        // Check for missing 'new_translation' when 'name' is not null
+                        $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $newTranslationIndex) {
+                            $name = $row[$nameIndex] ?? null;
+                            $newTranslation = $row[$newTranslationIndex] ?? null;
+                            return !empty($name) && (is_null($newTranslation) || trim($newTranslation) === '');
+                        });
+                    
+                        // If there are missing translations, display an error and prevent the import
+                        if ($invalidRows->isNotEmpty()) {
+                            Notification::make()
+                                ->title('Upload unsuccessful')
+                                ->body('The translations file cannot be uploaded as some translations are missing')
+                                ->danger()
+                                ->send();
+                            return;
+                        }
+                    
+                        // If translations are complete, create new template language
                         $templateLanguage = XlsformTemplateLanguage::create([
                             'language_id' => $data['language_id'],
                             'xlsform_template_id' => $livewire->ownerRecord->id,
                             'description' => $data['description'] ?? null,
                         ]);
-
+                    
+                        // Proceed with the import
                         Excel::import(new XlsformTemplateLanguageImport($templateLanguage), $file);
+                    
+                        // Display success message
+                        Notification::make()
+                            ->title('Success')
+                            ->body('Translations uploaded successfully.')
+                            ->success()
+                            ->send();
                     })
             ]);
     }
