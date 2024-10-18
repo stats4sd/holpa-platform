@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\App\Clusters\LookupTables;
-use App\Filament\App\Clusters\LookupTables\Resources\CropResource\Pages;
-use App\Filament\App\Clusters\LookupTables\Resources\CropResource\RelationManagers;
-use App\Models\LookupTables\Crop;
+use App\Filament\Admin\Resources\ChoiceListResource\Pages;
+use App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
+use App\Models\ChoiceList;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,14 +13,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class CropResource extends Resource
+class ChoiceListResource extends Resource
 {
+    protected static ?string $model = ChoiceList::class;
 
-    protected static ?string $model = Crop::class;
-
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $cluster = LookupTables::class;
+    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
 
     public static function form(Form $form): Form
     {
@@ -35,7 +31,11 @@ class CropResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('xlsformTemplate.title'),
+                Tables\Columns\TextColumn::make('list_name'),
+                Tables\Columns\IconColumn::make('is_localisable')->boolean(),
+                Tables\Columns\IconColumn::make('is_dataset')->boolean(),
+
             ])
             ->filters([
                 //
@@ -60,9 +60,9 @@ class CropResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCrops::route('/'),
-            'create' => Pages\CreateCrop::route('/create'),
-            'edit' => Pages\EditCrop::route('/{record}/edit'),
+            'index' => Pages\ListChoiceLists::route('/'),
+            'create' => Pages\CreateChoiceList::route('/create'),
+            'edit' => Pages\EditChoiceList::route('/{record}/edit'),
         ];
     }
 }

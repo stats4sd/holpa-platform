@@ -30,9 +30,7 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(LanguageSeeder::class);
+        $this->call(LanguageStringTypesSeeder::class);
         $this->call(PlatformSeeder::class);
-
-        $this->call(CropTableSeeder::class);
-        $this->call(UnitTableSeeder::class);
     }
 }

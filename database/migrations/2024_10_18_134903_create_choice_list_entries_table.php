@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('unit_types', function (Blueprint $table) {
+        Schema::create('choice_list_entries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('choice_list_id')->constrained()->onDelete('cascade');
+
+            // entries may be owned by a team; they may not be. They are never owned by a team if the choice list is not localisable.
+            $table->nullableMorphs('owner');
             $table->string('name');
-            $table->string('si_unit');
+
+            // labels are stored as language_strings;
+
             $table->timestamps();
         });
     }
@@ -24,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('unit_types');
+        Schema::dropIfExists('choice_list_entries');
     }
 };

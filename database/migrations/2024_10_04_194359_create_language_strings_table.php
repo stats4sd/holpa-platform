@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('language_strings', function (Blueprint $table) {
             $table->id();
+            $table->morphs('item');
             $table->foreignId('xlsform_template_language_id');
-            $table->foreignId('survey_row_id');
             $table->foreignId('language_string_type_id');
             $table->text('text');
             $table->timestamps();

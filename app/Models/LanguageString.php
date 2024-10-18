@@ -9,6 +9,7 @@ use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class LanguageString extends Model
 {
@@ -17,6 +18,11 @@ class LanguageString extends Model
     public function surveyRow(): BelongsTo
     {
         return $this->belongsTo(SurveyRow::class);
+    }
+
+    public function item(): MorphTo
+    {
+        return $this->morphTo();
     }
 
     public function languageStringType(): BelongsTo

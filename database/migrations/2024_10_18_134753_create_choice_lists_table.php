@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('units', function (Blueprint $table) {
+        Schema::create('choice_lists', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('unit_type_id');
-            $table->nullableMorphs('owner');
-            $table->string('name');
-            $table->json('label');
-            $table->decimal('conversion_rate', 20, 10);
+            $table->foreignId('xlsform_template_id')->constrained()->onDelete('cascade');
+            $table->string('list_name');
+            $table->text('description')->nullable();
+            $table->boolean('is_localisable')->default(false);
+            $table->boolean('is_dataset')->default(false);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('units');
+        Schema::dropIfExists('choice_lists');
     }
 };
