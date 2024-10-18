@@ -11,11 +11,11 @@ use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Auth;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
-use App\Filament\App\Pages\RegisterProgram;
-use App\Http\Middleware\CheckIfProgramAdmin;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use App\Http\Middleware\SetLatestProgramMiddleware;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -42,7 +42,7 @@ class ProgramPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Program/Resources'), for: 'App\\Filament\\Program\\Resources')
+            ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/Program/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\Program\\Resources')
             ->discoverPages(in: app_path('Filament/Program/Pages'), for: 'App\\Filament\\Program\\Pages')
             ->pages([
                 Pages\Dashboard::class,

@@ -7,7 +7,7 @@ use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use App\Http\Middleware\CheckIfAdmin;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
@@ -33,7 +33,7 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
+            ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/Admin/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\Admin\\Resources')
             ->resources([
                 // Bring in ODK Link Resources
                 XlsformTemplateResource::class,

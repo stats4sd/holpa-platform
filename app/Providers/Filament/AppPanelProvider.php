@@ -9,10 +9,10 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
-use App\Filament\App\Pages\RegisterTeam;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
-use App\Http\Middleware\SetLatestTeamMiddleware;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
@@ -44,7 +44,7 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
-            ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
+            ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
             ->pages([
                 // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part
