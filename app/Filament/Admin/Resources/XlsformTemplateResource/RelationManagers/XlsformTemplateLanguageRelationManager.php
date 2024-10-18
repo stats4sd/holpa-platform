@@ -63,12 +63,12 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     ->label('Download translation file')
                     ->icon('heroicon-o-arrow-down-circle')
                     ->action(function () {
-                        $templateId = $this->ownerRecord->id;
+                        $template = $this->ownerRecord;
                         $templateTitle = $this->ownerRecord->title;
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$templateTitle} - translations - {$currentDate}.xlsx";
 
-                        return Excel::download(new XlsformTemplateLanguageExport($templateId), $filename);
+                        return Excel::download(new XlsformTemplateLanguageExport($template), $filename);
                     }),
                 Tables\Actions\CreateAction::make()
                     ->label('Upload completed translation file')
@@ -110,7 +110,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                             'description' => $data['description'] ?? null,
                         ]);
 
-                        Excel::import(new XlsformTemplateLanguageImport($livewire->ownerRecord->id, $templateLanguage->id), $file);
+                        Excel::import(new XlsformTemplateLanguageImport($templateLanguage), $file);
                     })
             ]);
     }

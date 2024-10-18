@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\SurveyRow;
 use App\Models\LanguageString;
+use App\Models\XlsformTemplate;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
@@ -19,18 +20,17 @@ use Maatwebsite\Excel\Concerns\WithBackgroundColor;
 
 class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitle, WithColumnWidths, WithStyles, WithBackgroundColor
 {
-    private $xlsformTemplateId;
+    private $xlsformTemplate;
 
-    public function __construct($templateId)
+    public function __construct(XlsformTemplate $template)
     {
-        $this->xlsformTemplateId = $templateId;
+        $this->xlsformTemplate = $template;
     }
 
     public function headings(): array
     {
         // Get all XlsformTemplateLanguages for this template
-        $templateLanguages = XlsformTemplateLanguage::where('xlsform_template_id', $this->xlsformTemplateId)
-            ->get()
+        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
             ->map(function ($templateLanguage) {
                 // Create a heading for the template language
                 $languageName = $templateLanguage->language->name;
@@ -50,23 +50,20 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
         $exportData = [];
 
         // Get all survey rows linked to the template
-        $surveyRows = SurveyRow::where('xlsform_template_id', $this->xlsformTemplateId)->get();
+        $surveyRows = $this->xlsformTemplate->surveyRows;
 
         // Get all XlsformTemplateLanguages for this template
-        $templateLanguages = XlsformTemplateLanguage::where('xlsform_template_id', $this->xlsformTemplateId)->get();
+        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages;
 
         foreach ($surveyRows as $surveyRow) {
-            // Get all language strings for this survey row
-            $languageStrings = LanguageString::where('survey_row_id', $surveyRow->id)->get();
-
-            // Group the language strings by their 'type' (e.g., 'label', 'hint')
-            $groupedByTypeId = $languageStrings->groupBy('language_string_type_id');
+            // Get all language strings for this survey row grouped by type
+            $languageStrings = $surveyRow->languageStrings->groupBy('language_string_type_id');
 
             // Process each type (label, hint, required_message, etc.)
-            foreach ($groupedByTypeId as $typeId => $strings) {
+            foreach ($languageStrings as $typeId => $strings) {
 
                 // Get the LanguageStringType name
-                $languageStringType = LanguageStringType::find($typeId);
+                $languageStringType = $strings->first()->languageStringType;
                 $typeName = $languageStringType->name;
 
                 // Create the initial row with the SurveyRow 'name' and 'type'
@@ -74,7 +71,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
 
                 // For each language in XlsformTemplateLanguage, add the corresponding text
                 foreach ($templateLanguages as $templateLanguage) {
-                    // Find the language string for this language (if it exists)
+                    // Find the language string for this language
                     $stringForLanguage = $strings->firstWhere('xlsform_template_language_id', $templateLanguage->id);
                     
                     // Add the 'text' if found, or leave the cell empty

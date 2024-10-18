@@ -2,33 +2,34 @@
 
 namespace App\Imports;
 
-use App\Models\LanguageString;
 use App\Models\SurveyRow;
+use App\Models\LanguageString;
 use App\Models\LanguageStringType;
-use Maatwebsite\Excel\Concerns\ToModel;
+use App\Models\XlsformTemplateLanguage;
+use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Row;
 
-class XlsformTemplateLanguageImport implements ToModel, WithHeadingRow
+class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
 {
-    protected $templateId;
-    protected $templateLanguageId;
+    protected $templateLanguage;
 
-    public function __construct($templateId, $templateLanguageId)
+    public function __construct(XlsformTemplateLanguage $xlsformTemplateLanguage)
     {
-        $this->templateId = $templateId;
-        $this->templateLanguageId = $templateLanguageId;
+        $this->xlsformTemplateLanguage = $xlsformTemplateLanguage;
     }
 
-    public function model(array $row)
+    public function onRow(Row $row)
     {
-        $surveyRowName = $row['name'];
-        $newTranslation = $row['new_translation'];
-        $translationType = $row['translation_type'];
+        $rowData = $row->toArray();
 
-        // Find the survey row
-        $surveyRow = SurveyRow::where('xlsform_template_id', $this->templateId)
-            ->where('name', $surveyRowName)
-            ->first();
+        $surveyRowName = $rowData['name'];
+        $newTranslation = $rowData['new_translation'];
+        $translationType = $rowData['translation_type'];
+
+        // Find the template and survey row
+        $template = $this->xlsformTemplateLanguage->xlsformTemplate;
+        $surveyRow = $template->surveyRows()->where('name', $surveyRowName)->first();
 
         if ($surveyRow) {
             // Find the language string type
@@ -36,9 +37,8 @@ class XlsformTemplateLanguageImport implements ToModel, WithHeadingRow
 
             if ($languageStringType) {
                 // Create a new language string
-                LanguageString::create([
-                    'xlsform_template_language_id' => $this->templateLanguageId,
-                    'survey_row_id' => $surveyRow->id,
+                $surveyRow->languageStrings()->create([
+                    'xlsform_template_language_id' => $this->xlsformTemplateLanguage->id,
                     'language_string_type_id' => $languageStringType->id,
                     'text' => $newTranslation,
                 ]);
