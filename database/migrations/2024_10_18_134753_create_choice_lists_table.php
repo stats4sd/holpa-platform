@@ -11,10 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('teams', function (Blueprint $table) {
+        Schema::create('choice_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('xlsform_template_id')->constrained()->onDelete('cascade');
+            $table->string('list_name');
             $table->text('description')->nullable();
+            $table->boolean('is_localisable')->default(false);
+            $table->boolean('is_dataset')->default(false);
             $table->timestamps();
         });
     }
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('teams');
+        Schema::dropIfExists('choice_lists');
     }
 };
