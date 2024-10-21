@@ -5,15 +5,19 @@ namespace App\Providers\Filament;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
-use App\Models\Program;
+
+// use App\Models\Program;
+
+use Stats4sd\FilamentTeamManagement\Models\Program;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
+
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Auth;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
