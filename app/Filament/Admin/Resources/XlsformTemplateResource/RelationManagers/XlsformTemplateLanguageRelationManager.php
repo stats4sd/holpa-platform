@@ -115,13 +115,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
 
                                         // If there are missing translations, display an error and prevent the import
                                         if ($invalidRows->isNotEmpty()) {
-                                            Notification::make()
-                                                ->title('Upload unsuccessful')
-                                                ->body('The translations file cannot be uploaded as some translations are missing')
-                                                ->danger()
-                                                ->send();
-
-                                            return $fail('The translations file cannot be uploaded as some translations are missing in the "new translation" column for the following rows: ' . $invalidRows->pluck($nameIndex)->implode(', '));
+                                            return $fail('The translations file cannot be uploaded as there are missing translations in the "new translation" column for the following: ' . $invalidRows->pluck($nameIndex)->implode(', '));
                                         }
 
                                         return true;
