@@ -3,11 +3,15 @@
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 
 use Carbon\Carbon;
+use Closure;
 use Filament\Forms;
+use Filament\Forms\Get;
 use Filament\Tables;
 use App\Models\Language;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Support\Facades\Storage;
@@ -52,9 +56,9 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                ->modalHeading(function (XlsformTemplateLanguage $record) {
-                    return 'Edit xlsform template language ' . $record->language->name;
-                }),
+                    ->modalHeading(function (XlsformTemplateLanguage $record) {
+                        return 'Edit xlsform template language ' . $record->language->name;
+                    }),
             ])
             ->filters([
                 //
@@ -82,7 +86,47 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                 ->label('Translation File')
                                 ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                                 ->maxSize(10240)
-                                ->required(),
+                                ->required()
+                                ->rules([
+                                    fn(Get $get): Closure => function (string $attribute, string $value, \Closure $fail) use ($get) {
+
+                                        // get the file from $get
+                                        $file = collect($get('translation_file'))->first();
+
+                                        //dd($file);
+
+                                        // Load the file as an array, getting the first sheet
+                                        $rows = Excel::toArray([], $file)[0];
+
+                                        // Get the headers from the first row and indices for name and new translation columns
+                                        $headers = $rows[0];
+                                        $nameIndex = array_search('name', $headers);
+                                        $newTranslationIndex = array_search('new translation', $headers);
+
+                                        // Remove the header row
+                                        array_shift($rows);
+
+                                        // Check for missing 'new_translation' when 'name' is not null
+                                        $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $newTranslationIndex) {
+                                            $name = $row[$nameIndex] ?? null;
+                                            $newTranslation = $row[$newTranslationIndex] ?? null;
+                                            return !empty($name) && (is_null($newTranslation) || trim($newTranslation) === '');
+                                        });
+
+                                        // If there are missing translations, display an error and prevent the import
+                                        if ($invalidRows->isNotEmpty()) {
+                                            Notification::make()
+                                                ->title('Upload unsuccessful')
+                                                ->body('The translations file cannot be uploaded as some translations are missing')
+                                                ->danger()
+                                                ->send();
+
+                                            return $fail('The translations file cannot be uploaded as some translations are missing in the "new translation" column for the following rows: ' . $invalidRows->pluck($nameIndex)->implode(', '));
+                                        }
+
+                                        return true;
+                                    },
+                                ]),
                             Forms\Components\Select::make('language_id')
                                 ->label('Select the language for the new translation')
                                 ->options(function () {
@@ -103,52 +147,24 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         // Get the translation file
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);
-                    
-                        // Load the file as an array, getting the first sheet
-                        $rows = Excel::toArray([], $file)[0];
-                    
-                        // Get the headers from the first row and indices for name and new translation columns
-                        $headers = $rows[0];
-                        $nameIndex = array_search('name', $headers);
-                        $newTranslationIndex = array_search('new translation', $headers);
-                    
-                        // Remove the header row
-                        array_shift($rows);
-                    
-                        // Check for missing 'new_translation' when 'name' is not null
-                        $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $newTranslationIndex) {
-                            $name = $row[$nameIndex] ?? null;
-                            $newTranslation = $row[$newTranslationIndex] ?? null;
-                            return !empty($name) && (is_null($newTranslation) || trim($newTranslation) === '');
-                        });
-                    
-                        // If there are missing translations, display an error and prevent the import
-                        if ($invalidRows->isNotEmpty()) {
-                            Notification::make()
-                                ->title('Upload unsuccessful')
-                                ->body('The translations file cannot be uploaded as some translations are missing')
-                                ->danger()
-                                ->send();
-                            return;
-                        }
-                    
+
                         // If translations are complete, create new template language
                         $templateLanguage = XlsformTemplateLanguage::create([
                             'language_id' => $data['language_id'],
                             'xlsform_template_id' => $livewire->ownerRecord->id,
                             'description' => $data['description'] ?? null,
                         ]);
-                    
+
                         // Proceed with the import
                         Excel::import(new XlsformTemplateLanguageImport($templateLanguage), $file);
-                    
+
                         // Display success message
                         Notification::make()
                             ->title('Success')
                             ->body('Translations uploaded successfully.')
                             ->success()
                             ->send();
-                    })
+                    }),
             ]);
     }
 }
