@@ -46,10 +46,11 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            // to include "My Team" filament resource from submodule
             ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
-            // to include ODk Form Management page
+            // to include ODk Form Management filament page
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
-            // to include role register, program register, register page
+            // to include role register, program register, register filament pages
             ->discoverPages(in: app_path('../packages/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
             ->pages([
                 // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part

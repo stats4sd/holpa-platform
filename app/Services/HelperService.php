@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
-use App\Models\Team;
+// use App\Models\Team;
+use Stats4sd\FilamentTeamManagement\Models\Team;
+
 use Filament\Facades\Filament;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;

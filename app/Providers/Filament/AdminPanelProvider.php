@@ -33,9 +33,10 @@ class AdminPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            // to include "Programs", "Teams", "Users", "Permissions", "Roles" filament resource from submodule
             ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/Admin/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\Admin\\Resources')
             ->resources([
-                // Bring in ODK Link Resources
+                // Bring in ODK Link Resources "Xlsform Templates"
                 XlsformTemplateResource::class,
             ])
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
