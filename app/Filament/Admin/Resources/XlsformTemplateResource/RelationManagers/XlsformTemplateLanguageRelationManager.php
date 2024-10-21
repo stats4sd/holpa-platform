@@ -91,9 +91,9 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                     fn(Get $get): Closure => function (string $attribute, string $value, \Closure $fail) use ($get) {
 
                                         // get the file from $get
+                                        // (normally, we can use $value, but for FileUploads it is easier to use $get)
                                         $file = collect($get('translation_file'))->first();
 
-                                        //dd($file);
 
                                         // Load the file as an array, getting the first sheet
                                         $rows = Excel::toArray([], $file)[0];
@@ -148,7 +148,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);
 
-                        // If translations are complete, create new template language
+                        // create new template language
                         $templateLanguage = XlsformTemplateLanguage::create([
                             'language_id' => $data['language_id'],
                             'xlsform_template_id' => $livewire->ownerRecord->id,
