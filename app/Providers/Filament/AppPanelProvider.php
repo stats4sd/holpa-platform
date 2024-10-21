@@ -9,10 +9,7 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
 
-// use App\Models\Team;
-
 use Stats4sd\FilamentTeamManagement\Models\Team;
-
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
 
@@ -50,7 +47,10 @@ class AppPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
+            // to include ODk Form Management page
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
+            // to include role register, program register, register page
+            ->discoverPages(in: app_path('../packages/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
             ->pages([
                 // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part
                 Pages\Dashboard::class,
