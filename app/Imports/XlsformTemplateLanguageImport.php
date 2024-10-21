@@ -44,5 +44,8 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
                 ]);
             }
         }
+
+        // Update the template language
+        $this->xlsformTemplateLanguage->update(['has_language_strings' => 1]);
     }
 }

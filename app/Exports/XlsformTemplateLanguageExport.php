@@ -31,6 +31,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
     {
         // Get all XlsformTemplateLanguages for this template
         $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
+            ->where('has_language_strings', true)
             ->map(function ($templateLanguage) {
                 // Create a heading for the template language
                 $languageName = $templateLanguage->language->name;
@@ -53,7 +54,8 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
         $surveyRows = $this->xlsformTemplate->surveyRows;
 
         // Get all XlsformTemplateLanguages for this template
-        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages;
+        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
+                                ->where('has_language_strings', true);
 
         foreach ($surveyRows as $surveyRow) {
             // Get all language strings for this survey row grouped by type

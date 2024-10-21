@@ -35,6 +35,17 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('language_id')
+                ->label('Select the language for the new translation')
+                ->options(function () {
+                    return Language::all()
+                        ->mapWithKeys(function ($language) {
+                            return [$language->id => $language->name . ' (' . $language->iso_alpha2 . ')'];
+                        })
+                        ->toArray();
+                })
+                ->required()
+                ->disabledOn('edit'),
                 Forms\Components\TextInput::make('description')
                     ->placeholder('Optional description e.g., specify if this translation is for a particular dialect or region')
                     ->maxLength(255),
@@ -53,6 +64,8 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     }),
                 Tables\Columns\TextColumn::make('description')
                     ->label('Translation Description'),
+                Tables\Columns\IconColumn::make('has_language_strings')->boolean()
+                    ->label('Translations Uploaded'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
@@ -64,9 +77,12 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
+                Tables\Actions\CreateAction::make()
+                    ->disableCreateAnother()
+                    ->label('Step 1 - Add new language'),
                 Tables\Actions\Action::make('download_translation')
-                    ->label('Download translation file')
-                    ->icon('heroicon-o-arrow-down-circle')
+                    ->label('Step 2 - Download translation file')
+                    // ->icon('heroicon-o-arrow-down-circle')
                     ->action(function () {
                         $template = $this->ownerRecord;
                         $templateTitle = $this->ownerRecord->title;
@@ -75,9 +91,9 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
 
                         return Excel::download(new XlsformTemplateLanguageExport($template), $filename);
                     }),
-                Tables\Actions\CreateAction::make()
-                    ->label('Upload completed translation file')
-                    ->icon('heroicon-o-arrow-up-circle')
+                Tables\Actions\CreateAction::make('translations')
+                    ->label('Step 3 - Upload completed translation file')
+                    // ->icon('heroicon-o-arrow-up-circle')
                     ->modalHeading('Upload Completed Translation File')
                     ->disableCreateAnother()
                     ->form(function (Tables\Actions\CreateAction $action) {
@@ -121,20 +137,24 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                         return true;
                                     },
                                 ]),
-                            Forms\Components\Select::make('language_id')
-                                ->label('Select the language for the new translation')
+                                Forms\Components\Select::make('template_language_id')
+                                ->label('Select the Template Language for the new translation')
                                 ->options(function () {
-                                    return Language::all()
-                                        ->mapWithKeys(function ($language) {
-                                            return [$language->id => $language->name . ' (' . $language->iso_alpha2 . ')'];
+                                    return XlsformTemplateLanguage::with('language')
+                                        ->get()
+                                        ->mapWithKeys(function ($templateLanguage) {
+                                            $language = $templateLanguage->language;
+                                            // Check if the description exists
+                                            $displayText = $language->name . ' (' . $language->iso_alpha2 . ')' . 
+                                                ($templateLanguage->description ? ' - ' . $templateLanguage->description : '');
+                            
+                                            return [
+                                                $templateLanguage->id => $displayText
+                                            ];
                                         })
                                         ->toArray();
                                 })
                                 ->required(),
-                            Forms\Components\TextInput::make('description')
-                                ->label('Description')
-                                ->maxLength(255)
-                                ->placeholder('Optional description e.g., specify if this translation is for a particular dialect or region'),
                         ];
                     })
                     ->action(function (array $data, $livewire) {
@@ -142,12 +162,8 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);
 
-                        // create new template language
-                        $templateLanguage = XlsformTemplateLanguage::create([
-                            'language_id' => $data['language_id'],
-                            'xlsform_template_id' => $livewire->ownerRecord->id,
-                            'description' => $data['description'] ?? null,
-                        ]);
+                        // Get the template language model
+                        $templateLanguage = XlsformTemplateLanguage::find($data['template_language_id']);
 
                         // Proceed with the import
                         Excel::import(new XlsformTemplateLanguageImport($templateLanguage), $file);

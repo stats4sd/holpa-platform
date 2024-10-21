@@ -98,7 +98,10 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
                     $xlsformTemplateLanguage = XlsformTemplateLanguage::firstOrCreate([
                         'language_id' => $languageModel->id,
                         'xlsform_template_id' => $this->xlsformTemplateId,
-                    ]);
+                    ],[
+                        'has_language_strings' => 1,
+                    ]
+                );
     
                     // Store the created language id for later use
                     $this->uniqueTemplateLanguages[$language] = $xlsformTemplateLanguage->id;
