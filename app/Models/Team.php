@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
+use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
 class Team extends FilamentTeamManagementTeam implements WithXlsforms
 {
