@@ -9,7 +9,9 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Navigation\NavigationItem;
 
-use Stats4sd\FilamentTeamManagement\Models\Team;
+// use Stats4sd\FilamentTeamManagement\Models\Team;
+use App\Models\Team;
+
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
 
@@ -46,6 +48,8 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            // to include XlsformResource from main repo
+            ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             // to include "My Team" filament resource from submodule
             ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
             // to include ODk Form Management filament page
