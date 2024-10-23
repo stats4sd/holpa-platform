@@ -44,12 +44,12 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
 
     public function getRecord(): Team
     {
-        return HelperService::getSelectedTeam();
+        return HelperService::getCurrentTenant();
     }
 
     public function infolist(Infolist $infolist): Infolist
     {
-        $team = HelperService::getSelectedTeam()->load('odkProject.appUsers');
+        $team = HelperService::getCurrentTenant()->load('odkProject.appUsers');
 
         return $infolist
             ->state($team->toArray())
@@ -64,7 +64,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): MorphMany => HelperService::getSelectedTeam()->xlsforms())
+            ->relationship(fn(): MorphMany => HelperService::getCurrentTenant()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([

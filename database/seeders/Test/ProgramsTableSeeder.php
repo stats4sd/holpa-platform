@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Program;
 use Illuminate\Database\Seeder;
 
 class ProgramsTableSeeder extends Seeder
@@ -15,19 +16,14 @@ class ProgramsTableSeeder extends Seeder
     public function run()
     {
 
+        $program = Program::create([
+            'name' => 'Test Program',
+        ]);
 
-        \DB::table('programs')->delete();
+        $program->teams()->createMany([
+            ['name' => 'Test Team 1'],
+            ['name' => 'Test Team 2'],
+        ]);
 
-        \DB::table('programs')->insert(array(
-            0 =>
-            array(
-                'id' => 1,
-                'name' => 'Test Program',
-                'description' => NULL,
-                'note' => NULL,
-                'created_at' => '2024-10-14 11:00:00',
-                'updated_at' => '2024-10-14 11:00:00',
-            ),
-        ));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Pages\EditTeamPage;
 use Filament\Pages;
 use Filament\Panel;
 use App\Models\Team;
@@ -35,6 +36,7 @@ class AppPanelProvider extends PanelProvider
             // disable "Register New Team" option in multi-tenancy
             // new team should be created by admin, user should not be able to create a new team
             ->tenantRegistration(RegisterTeam::class)
+            ->tenantProfile(EditTeamPage::class)
             ->tenantMiddleware([
                 SetLatestTeamMiddleware::class,
             ])
@@ -46,6 +48,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
+            ->discoverClusters(in: app_path('Filament/App/Clusters'), for: 'App\\Filament\\App\\Clusters')
             ->pages([
                 // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part
                 Pages\Dashboard::class,
