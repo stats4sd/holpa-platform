@@ -5,14 +5,10 @@ namespace App\Providers\Filament;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
-
-// use App\Models\Program;
-
 use Stats4sd\FilamentTeamManagement\Models\Program;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
-
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Illuminate\Support\Facades\Auth;
