@@ -18,7 +18,7 @@ class XlsformTemplateResource extends OdkLinkXlsformTemplateResource
 {
     protected static ?string $model = XlsformTemplate::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrow-down-circle';
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function getRelations(): array
     {

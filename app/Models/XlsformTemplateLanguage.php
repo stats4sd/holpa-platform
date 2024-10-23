@@ -3,12 +3,12 @@
 namespace App\Models;
 
 use App\Models\Language;
-use App\Models\SurveyRow;
+use App\Models\LanguageString;
+use App\Models\XlsformTemplate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
 class XlsformTemplateLanguage extends Model
 {
@@ -24,8 +24,8 @@ class XlsformTemplateLanguage extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function surveyRows(): HasMany
+    public function languageStrings(): HasMany
     {
-        return $this->hasMany(SurveyRow::class);
+        return $this->hasMany(LanguageString::class);
     }
 }

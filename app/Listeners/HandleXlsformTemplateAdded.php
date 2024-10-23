@@ -8,29 +8,26 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
+use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\XlsformTemplateImport;
 
 class HandleXlsformTemplateAdded
 {
-    /**
-     * Create the event listener.
-     */
-    public function __construct()
+    public function handle(MediaHasBeenAddedEvent $event)
     {
-        //
-    }
-
-    /**
-     * Handle the event.
-     */
-    public function handle(MediaHasBeenAddedEvent $event): void
-    {
+        Log::info('MediaHasBeenAdded event fired!');
         $model = $event->media->model;
+
 
         if($model instanceof XlsformTemplate) {
             $filePath = $event->media->getPath();
 
-        Excel::import(new XlsformTemplateUnpacker($model), $filePath);
-
+            if ($filePath) {
+                Excel::import(new XlsformTemplateImport($model->id), $filePath);
+            } else {
+                Log::error('No file path found for media in collection "xlsform_file" for model ID: ' . $model->id);
+            }
         }
     }
 }
