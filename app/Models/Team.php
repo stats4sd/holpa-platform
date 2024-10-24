@@ -2,25 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
-use App\Mail\TeamManagement\InviteMember;
-use App\Models\TeamManagement\TeamInvite;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
+use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
-class Team extends \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team
+class Team extends FilamentTeamManagementTeam implements WithXlsforms
 {
+    use HasXlsForms;
+
     protected $table = 'teams';
 
-    protected $guarded = ['id'];
-
+    protected $appends = ['odk_qr_code'];
 
     // TODO: I think this overrides the booted method on HasXlsForms - ideally we wouldn't need to copy the package stuff here...
     protected static function booted(): void
@@ -54,71 +48,5 @@ class Team extends \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team
            $owner->locationLevels()->create(['name' => 'Top level (rename)', 'has_farms' => 0, 'top_level' => 1, 'slug' =>'site-level']);
            */
         });
-    }
-
-    // ****** TEAM MANAGEMENT STUFF ******
-
-    /**
-     * Generate an invitation to join this team for each of the provided email addresses
-     */
-    public function sendInvites(array $emails): void
-    {
-        foreach ($emails as $email) {
-            // if email is empty, skip to next email
-            if ($email == null || $email == '') {
-                continue;
-            }
-
-            $invite = $this->invites()->create([
-                'email' => $email,
-                'inviter_id' => auth()->id(),
-                'token' => Str::random(24),
-            ]);
-
-            Mail::to($invite->email)->send(new InviteMember($invite));
-
-            // show notification after sending invitation email to user
-            Notification::make()
-                ->success()
-                ->title('Invitation Sent')
-                ->body('An email invitation has been successfully sent to ' . $email)
-                ->send();
-        }
-    }
-
-    public function invites(): HasMany
-    {
-        return $this->hasMany(TeamInvite::class);
-    }
-
-    public function users(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'team_members')
-            ->withPivot('is_admin');
-    }
-
-    public function admins(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'team_members')
-            ->withPivot('is_admin')
-            ->wherePivot('is_admin', 1);
-    }
-
-    public function members(): BelongsToMany
-    {
-        return $this->belongsToMany(User::class, 'team_members')
-            ->withPivot('is_admin')
-            ->wherePivot('is_admin', 0);
-    }
-
-    public function programs(): BelongsToMany
-    {
-        return $this->belongsToMany(Program::class);
-    }
-
-    // add relationship to refer to team model itself, so that app panel > Teams resource can show the selected team for editing
-    public function team(): HasOne
-    {
-        return $this->hasOne(Team::class, 'id');
     }
 }

@@ -4,8 +4,6 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\DatasetResource\Pages;
 use App\Filament\Admin\Resources\DatasetResource\RelationManagers;
-
-//use App\Models\Dataset;
 use App\Services\HelperService;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -57,7 +55,7 @@ class DatasetResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('entity_model')
                     ->label('Database Table')
-                    ->formatStateUsing(fn ($state) => Str::of(collect(Str::ucsplit($state, '/'))->last())->lower()->plural()),
+                    ->formatStateUsing(fn($state) => Str::of(collect(Str::ucsplit($state, '/'))->last())->lower()->plural()),
                 Tables\Columns\TextColumn::make('variables_count')
                     ->label('# of Variables defined')
                     ->counts('variables'),
@@ -76,7 +74,7 @@ class DatasetResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ])
-            ->recordUrl(fn ($record) => static::getUrl('view', ['record' => $record]));
+            ->recordUrl(fn($record) => static::getUrl('view', ['record' => $record]));
     }
 
     public static function getRelations(): array
