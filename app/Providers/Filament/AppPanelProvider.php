@@ -4,13 +4,12 @@ namespace App\Providers\Filament;
 
 use Filament\Pages;
 use Filament\Panel;
+use App\Models\Team;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Filament\Navigation\NavigationItem;
-use App\Models\Team;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -22,6 +21,9 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Dashboard;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -54,7 +56,7 @@ class AppPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('../packages/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
             ->pages([
                 // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
             ->widgets([
@@ -62,6 +64,10 @@ class AppPanelProvider extends PanelProvider
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->renderHook(
+                PanelsRenderHook::SIDEBAR_NAV_START,
+                fn() => view('filament-team-management::appPanelTitle'),
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

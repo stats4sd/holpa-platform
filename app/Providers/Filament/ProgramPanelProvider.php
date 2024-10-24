@@ -5,17 +5,15 @@ namespace App\Providers\Filament;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
-use Stats4sd\FilamentTeamManagement\Models\Program;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Auth;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use Stats4sd\FilamentTeamManagement\Models\Program;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -23,6 +21,10 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
+use Stats4sd\FilamentTeamManagement\Filament\Program\Pages\Dashboard;
 
 class ProgramPanelProvider extends PanelProvider
 {
@@ -40,19 +42,23 @@ class ProgramPanelProvider extends PanelProvider
             ])
             ->login()
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             // to include "My Program" filament resource from submodule
             ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/Program/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\Program\\Resources')
             ->discoverPages(in: app_path('Filament/Program/Pages'), for: 'App\\Filament\\Program\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Program/Widgets'), for: 'App\\Filament\\Program\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
             ])
+            ->renderHook(
+                PanelsRenderHook::SIDEBAR_NAV_START,
+                fn() => view('filament-team-management::programAdminPanelTitle'),
+            )
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
