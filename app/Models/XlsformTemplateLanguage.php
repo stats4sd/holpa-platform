@@ -28,4 +28,13 @@ class XlsformTemplateLanguage extends Model
     {
         return $this->hasMany(LanguageString::class);
     }
+
+    public function getLanguageLabelAttribute()
+    {
+        $language = $this->language->name;
+        $isoAlpha2 = $this->language->iso_alpha2;
+        $description = $this->description ? ' - ' . $this->description : '';
+
+        return $language . ' (' . $isoAlpha2 . ')' . $description;
+    }
 }

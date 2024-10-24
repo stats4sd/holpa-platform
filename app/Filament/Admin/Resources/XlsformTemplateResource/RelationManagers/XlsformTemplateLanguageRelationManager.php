@@ -71,30 +71,22 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 Tables\Actions\Action::make('download_translation')
                     ->label('Download translation file')
                     ->icon('heroicon-m-arrow-down-circle')
-                    ->action(function () {
+                    ->action(function (XlsformTemplateLanguage $record) {
                         $template = $this->ownerRecord;
                         $templateTitle = $this->ownerRecord->title;
                         $currentDate = Carbon::now()->format('Y-m-d');
-                        $filename = "HOLPA - {$templateTitle} - translations - {$currentDate}.xlsx";
+                        $filename = "HOLPA - {$templateTitle} - translation - {$record->languageLabel} - {$currentDate}.xlsx";
 
-                        return Excel::download(new XlsformTemplateLanguageExport($template), $filename);
+                        return Excel::download(new XlsformTemplateLanguageExport($template, $record), $filename);
                     }),
             
                 Tables\Actions\Action::make('upload_translation')
                     ->label('Upload translation file')
                     ->icon('heroicon-m-arrow-up-circle')
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {
-                        // Get current record details
-                        $language = $record->language->name;
-                        $isoAlpha2 = $record->language->iso_alpha2;
-                        $description = $record->description ? ' - ' . $record->description : '';
-                
-                        // Build the display text
-                        $languageDisplayText = $language . ' (' . $isoAlpha2 . ')' . $description;
-                
-                        return 'Upload Completed Translation File for ' . $languageDisplayText;
+                    ->modalHeading(function (XlsformTemplateLanguage $record) {                
+                        return 'Upload Completed Translation File for ' . $record->languageLabel;
                     })                
-                    ->form(function () {
+                    ->form(function (XlsformTemplateLanguage $record) {
                         return [
                             Forms\Components\FileUpload::make('translation_file')
                                 ->label('Translation File')
@@ -102,37 +94,55 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                 ->maxSize(10240)
                                 ->required()
                                 ->rules([
-                                    fn(Get $get): Closure => function (string $attribute, string $value, \Closure $fail) use ($get) {
+                                    // Check that the translation column exists and that there are no missing translation strings
+                                    fn(Get $get): Closure => function (string $attribute, string $value, \Closure $fail) use ($get, $record) {
+                                        // get the language label
+                                        $languageLabel = $record->languageLabel;
 
                                         // get the file from $get
-                                        // (normally, we can use $value, but for FileUploads it is easier to use $get)
                                         $file = collect($get('translation_file'))->first();
-
+                                
                                         // Load the file as an array, getting the first sheet
                                         $rows = Excel::toArray([], $file)[0];
-
-                                        // Get the headers from the first row and indices for name and new translation columns
+                                
+                                        // Get the headers from the first row
                                         $headers = $rows[0];
+                                
+                                        // Get the indices for 'name' and the languageLabel column
                                         $nameIndex = array_search('name', $headers);
-                                        $newTranslationIndex = array_search('new translation', $headers);
-
+                                        $currentTranslationIndex = array_search($languageLabel, $headers);
+                                
+                                        // If the languageLabel column is missing in the file, validation fails
+                                        if ($currentTranslationIndex === false) {
+                                            return $fail('The translations file must contain the translation column"' . $languageLabel . '"');
+                                        }
+                                
                                         // Remove the header row
                                         array_shift($rows);
-
-                                        // Check for missing 'new_translation' when 'name' is not null
-                                        $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $newTranslationIndex) {
+                                
+                                        // Check for missing translations in the 'languageLabel' column (when 'name' is not null to avoid empty rows)
+                                        $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $currentTranslationIndex) {
                                             $name = $row[$nameIndex] ?? null;
-                                            $newTranslation = $row[$newTranslationIndex] ?? null;
-                                            return !empty($name) && (is_null($newTranslation) || trim($newTranslation) === '');
+                                            $currentTranslation = $row[$currentTranslationIndex] ?? null;
+                                            return !empty($name) && (is_null($currentTranslation) || trim($currentTranslation) === '');
                                         });
-
+                                
                                         // If there are missing translations, display an error and prevent the import
                                         if ($invalidRows->isNotEmpty()) {
-                                            return $fail('The translations file cannot be uploaded as there are missing translations in the "new translation" column for the following: ' . $invalidRows->pluck($nameIndex)->implode(', '));
+                                            // Map the invalid rows to display 'name (translation type)'
+                                            $invalidNamesWithType = $invalidRows->flatMap(function ($row) use ($nameIndex, $headers, $currentTranslationIndex) {
+                                                $name = $row[$nameIndex];
+                                                $translationType = $row[array_search('translation type', $headers)];
+                                        
+                                                return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '') 
+                                                    ? [$name . ' (' . $translationType . ')'] 
+                                                    : []; // Return an empty array if the translation is present
+                                            });
+                                        
+                                            return $fail('The translations file cannot be uploaded as there are missing translations in the "' . $languageLabel . '" column for the following: ' . $invalidNamesWithType->implode(', '));
                                         }
-
                                         return true;
-                                    },
+                                    },  
                                 ]),
                         ];
                     })
@@ -147,14 +157,14 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         // Display success message
                         Notification::make()
                             ->title('Success')
-                            ->body('Translations uploaded successfully for ' . $record->language->name . ' (' . $record->language->iso_alpha2 . ')' . ($record->description ? ' - ' . $record->description : ''))
+                            ->body('Translations uploaded successfully for ' . $record->languageLabel)
                             ->success()
                             ->send();
                     }),
 
                 Tables\Actions\EditAction::make()
                     ->modalHeading(function (XlsformTemplateLanguage $record) {
-                        return 'Edit xlsform template language ' . $record->language->name;
+                        return 'Edit xlsform template language ' . $record->languageLabel;
                     }),
             ])
             ->filters([

@@ -22,28 +22,28 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
 {
     private $xlsformTemplate;
 
-    public function __construct(XlsformTemplate $template)
+    public function __construct(XlsformTemplate $template, XlsformTemplateLanguage $currentTemplateLanguage)
     {
         $this->xlsformTemplate = $template;
+        $this->currentTemplateLanguage = $currentTemplateLanguage;
     }
 
     public function headings(): array
     {
-        // Get all XlsformTemplateLanguages for this template
+        // Get all XlsformTemplateLanguages for this template, excluding current language
         $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
             ->where('has_language_strings', true)
+            ->where('id', '!=', $this->currentTemplateLanguage->id)
             ->map(function ($templateLanguage) {
-                // Create a heading for the template language
-                $languageName = $templateLanguage->language->name;
-                $isoAlpha2 = $templateLanguage->language->iso_alpha2;
-                return $templateLanguage->description 
-                    ? $languageName . ' (' . $isoAlpha2 . ') - ' . $templateLanguage->description
-                    : $languageName . ' (' . $isoAlpha2 . ')';
+                return $templateLanguage->languageLabel;
             })
             ->toArray();
-    
-        // Headings
-        return array_merge(['name', 'translation type'], $templateLanguages, ['new translation']);
+
+        // Heading for the current template language
+        $currentLanguageHeading =  $this->currentTemplateLanguage->languageLabel;
+
+        // Return the headings including the current template language as the last column
+        return array_merge(['name', 'translation type'], $templateLanguages, [$currentLanguageHeading]);
     }
 
     public function array(): array
@@ -55,7 +55,8 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
 
         // Get all XlsformTemplateLanguages for this template
         $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
-                                ->where('has_language_strings', true);
+                                ->where('has_language_strings', true)
+                                ->where('id', '!=', $this->currentTemplateLanguage->id);
 
         foreach ($surveyRows as $surveyRow) {
             // Get all language strings for this survey row grouped by type
@@ -80,8 +81,10 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
                     $row[] = $stringForLanguage ? $stringForLanguage->text : '';
                 }
 
-                // Add a blank column for 'new_translation'
-                $row[] = '';
+                // Add the current template language's translation
+                $currentStringForLanguage = $strings->firstWhere('xlsform_template_language_id', $this->currentTemplateLanguage->id);
+                $row[] = $currentStringForLanguage ? $currentStringForLanguage->text : '';
+
 
                 // Add the row to the export data
                 $exportData[] = $row;
@@ -121,7 +124,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
             ],
         ];
 
-        // Define white fill style for the new translation column
+        // Define white fill style for the last column (current template language)
         $whiteFill = [
             'fill' => [
                 'fillType' => Fill::FILL_SOLID,
@@ -147,7 +150,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
             $dataRange = "A{$rowIndex}:" . Coordinate::stringFromColumnIndex($lastColumnIndex) . "{$rowIndex}";
             $sheet->getStyle($dataRange)->applyFromArray($orangeFill);
             
-            // Apply white fill to the new translation column
+            // Apply white fill to the last column
             $sheet->getStyle(Coordinate::stringFromColumnIndex($lastColumnIndex) . "{$rowIndex}")->applyFromArray($whiteFill);
         }
     }
