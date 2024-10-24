@@ -11,8 +11,9 @@ use Illuminate\Support\Facades\Log;
 use App\Models\XlsformTemplateLanguage;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class XlsformTemplateImport implements ToCollection, WithHeadingRow
+class XlsformTemplateImport implements ToCollection, WithHeadingRow, WithMultipleSheets
 {
     private $uniqueTemplateLanguages = [];
     private $xlsformTemplateId;
@@ -20,6 +21,14 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
     public function __construct($templateId)
     {
         $this->xlsformTemplateId = $templateId;
+    }
+
+    // Specify the "survey" sheet
+    public function sheets(): array
+    {
+        return [
+            'survey' => $this,
+        ];
     }
 
     public function collection(Collection $rows)
