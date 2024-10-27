@@ -2,9 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\SurveyRow;
 use Maatwebsite\Excel\Row;
-use App\Models\LanguageString;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use Maatwebsite\Excel\Concerns\OnEachRow;
@@ -12,7 +10,6 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
 class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
 {
-    protected $templateLanguage;
     protected $headerMap = [];
 
     public function __construct(XlsformTemplateLanguage $xlsformTemplateLanguage)
@@ -94,5 +91,10 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
 
         // Update the template language to mark that it has language strings
         $this->xlsformTemplateLanguage->update(['has_language_strings' => 1]);
+
+        // Unset needs_update if it was previously set
+        if ($this->xlsformTemplateLanguage->needs_update) {
+            $this->xlsformTemplateLanguage->update(['needs_update' => 0]);
+        }
     }
 }

@@ -18,7 +18,7 @@ class HandleXlsformTemplateAdded
             $filePath = $event->media->getPath();
 
             if ($filePath) {
-                Excel::import(new XlsformTemplateImport($model->id), $filePath);
+                Excel::import(new XlsformTemplateImport($model), $filePath);
             } else {
                 Log::error('No file path found for media in collection "xlsform_file" for model ID: ' . $model->id);
             }

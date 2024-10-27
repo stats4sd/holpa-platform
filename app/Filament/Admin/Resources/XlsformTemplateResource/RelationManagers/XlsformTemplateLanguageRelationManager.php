@@ -65,7 +65,11 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('description')
                     ->label('Translation Description'),
                 Tables\Columns\IconColumn::make('has_language_strings')->boolean()
-                    ->label('Translations Uploaded'),
+                    ->label('Translations Uploaded')
+                    ->sortable(),
+                Tables\Columns\BadgeColumn::make('needs_update')
+                    ->label('')
+                    ->getStateUsing(fn ($record) => $record->needs_update ? 'Update Required' : null),
             ])
             ->actions([
                 Tables\Actions\Action::make('download_translation')
