@@ -2,8 +2,6 @@
 
 namespace App\Filament\Admin\Resources\ThemeResource\RelationManagers;
 
-use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -20,7 +18,21 @@ class GlobalIndicatorsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
+                Tables\Columns\TextColumn::make('theme.name')
+                    ->label('Theme')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('theme.domain')
+                    ->label('Domain')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('theme.module')
+                    ->label('Module')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('localindicators_count')
+                    ->label('# Local indicators')
+                    ->counts('localindicators')
                     ->sortable(),
             ])
             ->filters([

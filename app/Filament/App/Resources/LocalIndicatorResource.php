@@ -1,19 +1,22 @@
 <?php
 
-namespace App\Filament\Admin\Resources;
+namespace App\Filament\App\Resources;
 
-use App\Filament\Admin\Resources\ThemeResource\Pages;
-use App\Filament\Admin\Resources\ThemeResource\RelationManagers;
-use App\Models\Theme;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use App\Models\Theme;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\LocalIndicator;
+use Filament\Resources\Resource;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\App\Resources\LocalIndicatorResource\Pages;
+use App\Filament\App\Resources\LocalIndicatorResource\RelationManagers;
 
-class ThemeResource extends Resource
+class LocalIndicatorResource extends Resource
 {
-    protected static ?string $model = Theme::class;
+    protected static ?string $model = LocalIndicator::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -21,13 +24,15 @@ class ThemeResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('module')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('domain')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('name')
+                Forms\Components\Textarea::make('name')
                     ->required()
-                    ->maxLength(255),
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('theme_id')
+                    ->relationship('theme', 'name')
+                    ->options(Theme::all()->pluck('displayName', 'id'))
+                    ->required()
+                    ->preload()
+                    ->searchable(),
             ]);
     }
 
@@ -38,19 +43,20 @@ class ThemeResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('module')
+                Tables\Columns\TextColumn::make('theme.name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('domain')
+                Tables\Columns\TextColumn::make('theme.domain')
+                    ->label('Domain')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('theme.module')
+                    ->label('Module')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('globalindicators_count')
                     ->label('# Global indicators')
                     ->counts('globalindicators')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('localindicators_count')
-                    ->label('# Local indicators')
-                    ->counts('localindicators')
                     ->sortable(),
             ])
             ->filters([
@@ -70,16 +76,15 @@ class ThemeResource extends Resource
     {
         return [
             RelationManagers\GlobalIndicatorsRelationManager::class,
-            RelationManagers\LocalIndicatorsRelationManager::class,
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListThemes::route('/'),
-            'create' => Pages\CreateTheme::route('/create'),
-            'edit' => Pages\EditTheme::route('/{record}/edit'),
+            'index' => Pages\ListLocalIndicators::route('/'),
+            'create' => Pages\CreateLocalIndicator::route('/create'),
+            'edit' => Pages\EditLocalIndicator::route('/{record}/edit'),
         ];
     }
 }

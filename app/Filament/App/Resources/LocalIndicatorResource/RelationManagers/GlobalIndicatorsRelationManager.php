@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ThemeResource\RelationManagers;
+namespace App\Filament\App\Resources\LocalIndicatorResource\RelationManagers;
 
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class LocalIndicatorsRelationManager extends RelationManager
+class GlobalIndicatorsRelationManager extends RelationManager
 {
-    protected static string $relationship = 'localIndicators';
+    protected static string $relationship = 'globalIndicators';
 
     public function table(Table $table): Table
     {
@@ -16,9 +16,6 @@ class LocalIndicatorsRelationManager extends RelationManager
             ->recordTitleAttribute('name')
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('team.name')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('theme.name')
@@ -33,24 +30,24 @@ class LocalIndicatorsRelationManager extends RelationManager
                     ->label('Module')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('globalindicators_count')
-                    ->label('# Global indicators')
-                    ->counts('globalindicators')
+                Tables\Columns\TextColumn::make('localindicators_count')
+                    ->label('# Local indicators')
+                    ->counts('localindicators')
                     ->sortable(),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                Tables\Actions\AssociateAction::make()
-                    ->associateAnother(false),
+                Tables\Actions\AttachAction::make()
+                    ->attachAnother(false),
             ])
             ->actions([
-                Tables\Actions\DissociateAction::make(),
+                Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DissociateBulkAction::make(),
+                    Tables\Actions\DetachBulkAction::make(),
                 ]),
             ]);
     }

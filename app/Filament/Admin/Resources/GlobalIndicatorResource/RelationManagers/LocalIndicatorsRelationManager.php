@@ -33,6 +33,10 @@ class LocalIndicatorsRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('team.name')
                     ->sortable()
                     ->searchable(),
+                Tables\Columns\TextColumn::make('globalindicators_count')
+                    ->label('# Global indicators')
+                    ->counts('globalindicators')
+                    ->sortable(),
             ])
             ->filters([
                 //
