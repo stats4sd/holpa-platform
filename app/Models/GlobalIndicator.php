@@ -3,8 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class GlobalIndicator extends Model
 {
@@ -17,8 +17,8 @@ class GlobalIndicator extends Model
         return $this->belongsTo(Theme::class);
     }
 
-    public function localIndicators(): BelongsToMany
+    public function localIndicators(): HasMany
     {
-        return $this->belongsToMany(LocalIndicator::class)->withTimestamps();
+        return $this->hasMany(LocalIndicator::class);
     }
 }

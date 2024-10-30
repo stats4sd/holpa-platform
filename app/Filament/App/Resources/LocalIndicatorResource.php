@@ -32,7 +32,14 @@ class LocalIndicatorResource extends Resource
                     ->options(Theme::all()->pluck('displayName', 'id'))
                     ->required()
                     ->preload()
-                    ->searchable(),
+                    ->searchable()
+                    ->columnSpanFull(),
+                Forms\Components\Select::make('global_indicator_id')
+                    ->relationship('globalIndicator', 'name')
+                    ->required()
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -54,10 +61,9 @@ class LocalIndicatorResource extends Resource
                     ->label('Module')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('globalindicators_count')
-                    ->label('# Global indicators')
-                    ->counts('globalindicators')
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('globalIndicator.name')
+                    ->sortable()
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -75,7 +81,7 @@ class LocalIndicatorResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\GlobalIndicatorsRelationManager::class,
+            //
         ];
     }
 

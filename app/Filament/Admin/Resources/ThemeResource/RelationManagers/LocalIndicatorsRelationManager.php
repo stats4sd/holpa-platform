@@ -33,9 +33,9 @@ class LocalIndicatorsRelationManager extends RelationManager
                     ->label('Module')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('globalindicators_count')
+                Tables\Columns\TextColumn::make('globalindicator_count')
                     ->label('# Global indicators')
-                    ->counts('globalindicators')
+                    ->counts('globalindicator')
                     ->sortable(),
             ])
             ->filters([

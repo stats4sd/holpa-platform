@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class LocalIndicator extends Model
 {
@@ -22,8 +21,8 @@ class LocalIndicator extends Model
         return $this->belongsTo(Team::class);
     }
 
-    public function globalIndicators(): BelongsToMany
+    public function globalIndicator(): BelongsTo
     {
-        return $this->belongsToMany(GlobalIndicator::class)->withTimestamps();
+        return $this->belongsTo(GlobalIndicator::class);
     }
 }

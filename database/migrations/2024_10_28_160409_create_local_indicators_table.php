@@ -16,6 +16,7 @@ return new class extends Migration
             $table->text('name');
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('theme_id')->nullable()->constrained('themes')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('global_indicator_id')->nullable()->constrained('global_indicators')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
         });
     }
