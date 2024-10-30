@@ -43,15 +43,15 @@ class LocalIndicatorsRelationManager extends RelationManager
             ])
             ->headerActions([
                 // this link is created when local indicators are mapped to global indicators. We may not use it, but may as well create it to try it out
-                Tables\Actions\AttachAction::make()
-                    ->attachAnother(false),
+                // Tables\Actions\AttachAction::make()
+                //     ->attachAnother(false),
             ])
             ->actions([
-                Tables\Actions\DetachAction::make(),
+                // Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DetachBulkAction::make(),
+                    // Tables\Actions\DetachBulkAction::make(),
                 ]),
             ]);
     }
