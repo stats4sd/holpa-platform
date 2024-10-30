@@ -40,7 +40,8 @@ class GlobalIndicatorsRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\AssociateAction::make()
-                    ->associateAnother(false),
+                    ->associateAnother(false)
+                    ->preloadRecordSelect(),
             ])
             ->actions([
                 Tables\Actions\DissociateAction::make(),
