@@ -2,6 +2,7 @@
 
 namespace App\Filament\App\Resources;
 
+use App\Models\GlobalIndicator;
 use Filament\Forms;
 use Filament\Tables;
 use App\Models\Theme;
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\App\Resources\LocalIndicatorResource\Pages;
 use App\Filament\App\Resources\LocalIndicatorResource\RelationManagers;
+use Illuminate\Support\Collection;
 
 class LocalIndicatorResource extends Resource
 {
@@ -30,12 +32,6 @@ class LocalIndicatorResource extends Resource
                 Forms\Components\Select::make('theme_id')
                     ->relationship('theme', 'name')
                     ->options(Theme::all()->pluck('displayName', 'id'))
-                    ->required()
-                    ->preload()
-                    ->searchable()
-                    ->columnSpanFull(),
-                Forms\Components\Select::make('global_indicator_id')
-                    ->relationship('globalIndicator', 'name')
                     ->required()
                     ->preload()
                     ->searchable()
@@ -61,7 +57,8 @@ class LocalIndicatorResource extends Resource
                     ->label('Module')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('globalIndicator.name')
+                Tables\Columns\SelectColumn::make('global_indicator_id')
+                    ->options(fn(LocalIndicator $record): Collection => GlobalIndicator::where('theme_id', $record->theme_id)->get()->pluck('name', 'id'))
                     ->sortable()
                     ->searchable(),
             ])
