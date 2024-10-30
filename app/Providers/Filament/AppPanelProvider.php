@@ -48,6 +48,7 @@ class AppPanelProvider extends PanelProvider
             ->colors([
                 'primary' => Color::Amber,
             ])
+            ->viteTheme('resources/css/filament/app/theme.css')
             // to include XlsformResource from main repo
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             // to include "My Team" filament resource from submodule
