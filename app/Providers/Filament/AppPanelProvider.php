@@ -9,8 +9,10 @@ use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
+use App\Filament\App\Pages\TeamOdkView;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
+use App\Filament\App\Pages\SurveyDashboard;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Routing\Middleware\SubstituteBindings;
@@ -21,9 +23,9 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Dashboard;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Dashboard;
 
 class AppPanelProvider extends PanelProvider
 {
@@ -55,14 +57,8 @@ class AppPanelProvider extends PanelProvider
             // to include role register, program register, register filament pages
             ->discoverPages(in: app_path('../packages/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
             ->pages([
-                // To show dashbaord in sidebar, we need to comment custom navigation() in bottom part
-                Dashboard::class,
-            ])
-            ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
-            ->widgets([
-                // It is useful to check filament version in filament info widget in dashboard
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                SurveyDashboard::class,
+                TeamOdkView::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
@@ -84,6 +80,14 @@ class AppPanelProvider extends PanelProvider
             ])
             ->navigationItems([
                 NavigationItem::make()
+                    ->label(__('Survey Dashboard'))
+                    ->icon('heroicon-o-adjustments-horizontal')
+                    ->url(url('survey-dashboard')),
+                NavigationItem::make()
+                    ->label(__('ODK Form Management'))
+                    ->icon('heroicon-o-adjustments-horizontal')
+                    ->url(url('team-odk-view')),
+                NavigationItem::make()
                     ->label(__('Admin Panel'))
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
@@ -95,6 +99,7 @@ class AppPanelProvider extends PanelProvider
                     ->visible(fn() => auth()->user()->can('access program admin panel')),
             ])
             ->darkMode(false)
+            ->topNavigation()
             ->plugins([
                 new LocalLogins(),
             ]);
