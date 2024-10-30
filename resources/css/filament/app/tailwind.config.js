@@ -7,4 +7,14 @@ export default {
         './resources/views/filament/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
     ],
+    theme: {
+        extend: {
+          colors: {
+            'green': 'var(--green)',
+            'blue': 'var(--blue)',
+            'orange': 'var(--orange)',
+            'light-grey': 'var(--light-grey)',
+          },
+        },
+      },
 }

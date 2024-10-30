@@ -17,23 +17,23 @@ use App\Filament\App\Pages\DataAnalysis;
         <div class="bg-white shadow-md pt-8 px-4">
 
             <!-- Heading -->
-            <h1 class="text-green-600 font-bold text-left text-2xl mb-8">HOLPA Survey Dashboard</h1>
+            <h1 class="text-green font-bold text-left text-2xl mb-8">HOLPA Survey Dashboard</h1>
 
             <!-- Content -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 
                 <!-- Video -->
                 <div class="p-4 rounded-md">
-                    <iframe class="w-full h-64 rounded-md" src="https://www.youtube.com/embed/TODO_ADD_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+                    <iframe class="w-full h-80 rounded-md" src="https://www.youtube.com/embed/TODO_ADD_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
                 </div>
 
                 <!-- Instructions -->
                 <div class="p-4 rounded-md">
-                    <h2 class="text-green-600 font-bold text-lg mb-4">Instructions</h2>
+                    <h2 class="text-green font-bold text-lg mb-4">Instructions</h2>
                     <p class="text-black mb-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo. Morbi tincidunt libero ut nunc scelerisque, eget fringilla nulla volutpat. Aliquam feugiat massa sit amet arcu convallis, et iaculis ligula facilisis. Etiam accumsan magna et ipsum facilisis, at malesuada nulla ornare.</p>
 
                     <div class="text-center">
-                        <a href="{{ url(MoreInstructions::getUrl()) }}" class="bg-red-600 text-white py-2 px-6 rounded-full hover:bg-red-700 transition duration-200">
+                        <a href="{{ url(MoreInstructions::getUrl()) }}" class="bg-orange text-white py-2 px-6 rounded-full hover-effect">
                             FIND OUT MORE
                         </a>
                     </div>
@@ -42,38 +42,49 @@ use App\Filament\App\Pages\DataAnalysis;
         </div>
 
         <!-- Main Section -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-4 gap-8">
 
             <!-- Context card -->
-            <div class="flex shadow-md overflow-hidden">
-                <div class="w-1/3 bg-green-600 text-white text-lg font-bold flex items-center justify-center p-4">Context</div>
-                <div class="w-2/3 bg-white p-4">
-                    <h3 class="text-black font-bold mb-2">Add or manage additional data</h3>
-                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right mb-4">
-                        <a href="{{ url(AddData::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
-                            VIEW AND UPDATE
-                        </a>
+            <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
+                <!-- Green Section -->
+                <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
+                    <img src="/images/context_icon.png" alt="Context Icon" class="w-10 h-10 mb-2">
+                    <span class="mt-2">Context</span>
+                </div>
+                <!-- White Section -->
+                <div class="w-3/4 bg-white flex p-4">
+                    <div class="w-1/2 pr-4 border-r border-gray-300">
+                        <h3 class="text-black font-bold mb-2">Add or manage additional data</h3>
+                        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                        <div class="text-center mb-4">
+                            <a href="{{ url(AddData::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                                VIEW AND UPDATE
+                            </a>
+                        </div>
                     </div>
-                    <hr class="my-4 border-gray-300">
-                    <h3 class="text-black font-bold mb-2">Survey languages</h3>
-                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right">
-                        <a href="{{ url(SurveyLanguages::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
-                            VIEW AND UPDATE
-                        </a>
+                    <div class="w-1/2 pl-4">
+                        <h3 class="text-black font-bold mb-2">Survey languages</h3>
+                        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                        <div class="text-center">
+                            <a href="{{ url(SurveyLanguages::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                                VIEW AND UPDATE
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Sampling card -->
-            <div class="flex shadow-md overflow-hidden">
-                <div class="w-1/3 bg-green-600 text-white text-lg font-bold flex items-center justify-center p-4">Sampling</div>
-                <div class="w-2/3 bg-white p-4">
+            <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
+                <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
+                    <img src="/images/sampling_icon.png" alt="Sampling Icon" class="w-10 h-10 mb-2">
+                    <span class="mt-2">Sampling</span>
+                </div>
+                <div class="w-3/4 bg-white p-4">
                     <h3 class="text-black font-bold mb-2">Sampling frame</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right">
-                        <a href="{{ url(Sampling::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
+                    <div class="text-center">
+                        <a href="{{ url(Sampling::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>
@@ -81,43 +92,57 @@ use App\Filament\App\Pages\DataAnalysis;
             </div>
 
             <!-- Localisation card -->
-            <div class="flex shadow-md overflow-hidden col-span-2 md:col-span-1">
-                <div class="w-1/3 bg-green-600 text-white text-lg font-bold flex items-center justify-center p-4">Localisation</div>
-                <div class="w-2/3 bg-white p-4">
-                    <h3 class="text-black font-bold mb-2">Localisation: Place-based adaptations</h3>
-                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right mb-4">
-                        <a href="{{ url(PlaceAdaptations::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
-                            VIEW AND UPDATE
-                        </a>
+            <div class="flex shadow-md overflow-hidden md:col-span-4 h-80">
+                <!-- Green Section -->
+                <div class="w-2/8 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
+                    <img src="/images/localisation_icon.png" alt="Localisation Icon" class="w-10 h-10 mb-2">
+                    <span class="mt-2">Localisation</span>
+                </div>
+                <!-- White Section -->
+                <div class="w-6/8 bg-white flex p-4">
+                    <div class="w-1/3 px-6 border-r border-gray-300">
+                        <h3 class="text-black font-bold mb-2">Localisation: Place-based adaptations</h3>
+                        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                        <div class="text-center mb-4">
+                            <a href="{{ url(PlaceAdaptations::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                                VIEW AND UPDATE
+                            </a>
+                        </div>
                     </div>
-                    <hr class="my-4 border-gray-300">
-                    <h3 class="text-black font-bold mb-2">Localisation: LISP</h3>
-                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right mb-4">
-                        <a href="{{ url(LISP::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
-                            VIEW AND UPDATE
-                        </a>
+                    <div class="w-1/3 px-6 border-r border-gray-300">
+                        <h3 class="text-black font-bold mb-2">Localisation: LISP</h3>
+                        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                        <div class="text-center mb-4">
+                            <a href="{{ url(LISP::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                                VIEW AND UPDATE
+                            </a>
+                        </div>
                     </div>
-                    <hr class="my-4 border-gray-300">
-                    <h3 class="text-black font-bold mb-2">Localisation: Pilot</h3>
-                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right">
-                        <a href="{{ url(Pilot::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
-                            VIEW AND UPDATE
-                        </a>
+                    <div class="w-1/3 px-6">
+                        <h3 class="text-black font-bold mb-2">Localisation: Pilot</h3>
+                        <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                        <div class="text-center">
+                            <a href="{{ url(Pilot::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                                VIEW AND UPDATE
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Data collection card -->
-            <div class="flex shadow-md overflow-hidden">
-                <div class="w-1/3 bg-green-600 text-white text-lg font-bold flex items-center justify-center p-4">Data Collection</div>
-                <div class="w-2/3 bg-white p-4">
+            <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
+                <!-- Green Section -->
+                <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
+                    <img src="/images/data_collection_icon.png" alt="Data Collection Icon" class="w-10 h-10 mb-2">
+                    <span class="mt-2 text-center">Data Collection</span>
+                </div>
+                <!-- White Section -->
+                <div class="w-3/4 bg-white p-4">
                     <h3 class="text-black font-bold mb-2">Monitor data collection</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right">
-                        <a href="{{ url(DataCollection::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
+                    <div class="text-center">
+                        <a href="{{ url(DataCollection::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>
@@ -125,13 +150,18 @@ use App\Filament\App\Pages\DataAnalysis;
             </div>
 
             <!-- Data analysis card -->
-            <div class="flex shadow-md overflow-hidden">
-                <div class="w-1/3 bg-green-600 text-white text-lg font-bold flex items-center justify-center p-4">Data Analysis</div>
-                <div class="w-2/3 bg-white p-4">
+            <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
+                <!-- Green Section -->
+                <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
+                        <img src="/images/data_analysis_icon.png" alt="Data Collection Icon" class="w-10 h-10 mb-2">
+                    <span class="mt-2">Data Analysis</span>
+                </div>
+                <!-- White Section -->
+                <div class="w-3/4 bg-white p-4">
                     <h3 class="text-black font-bold mb-2">Download data</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                    <div class="text-right">
-                        <a href="{{ url(DataAnalysis::getUrl()) }}" class="bg-blue-600 text-white py-2 px-4 rounded-full hover:bg-blue-700 transition duration-200">
+                    <div class="text-center">
+                        <a href="{{ url(DataAnalysis::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>
