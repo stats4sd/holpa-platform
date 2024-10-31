@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
@@ -48,5 +49,10 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms
            $owner->locationLevels()->create(['name' => 'Top level (rename)', 'has_farms' => 0, 'top_level' => 1, 'slug' =>'site-level']);
            */
         });
+    }
+
+    public function localIndicators(): HasMany
+    {
+        return $this->hasMany(LocalIndicator::class);
     }
 }

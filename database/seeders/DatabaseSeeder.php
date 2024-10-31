@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
             Test\ProgramUserTableSeeder::class,
             Test\TeamMembersTableSeeder::class,
         ]);
+
+        $this->call(ThemesTableSeeder::class);
     }
 }
