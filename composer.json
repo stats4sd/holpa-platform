@@ -85,13 +85,6 @@
             "options": {
                 "symlink": true
             }
-        },
-        "stats4sd/filament-team-management": {
-            "type": "path",
-            "url": "./packages/filament-team-management",
-            "options": {
-                "symlink": true
-            }
         }
     }
 }

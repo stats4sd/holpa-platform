@@ -1,0 +1,18 @@
+@import '/vendor/filament/filament/resources/css/theme.css';
+
+@config 'tailwind.config.js';
+
+:root {
+    --green: #5FA35A;
+    --blue: #3FA9F5;
+    --orange: #EB5A45;
+    --light-grey: #F2F2F8;
+  }
+
+.hover-effect {
+    transition: all 0.2s ease-in-out;
+}
+
+.hover-effect:hover {
+    @apply shadow-lg scale-105;
+}
