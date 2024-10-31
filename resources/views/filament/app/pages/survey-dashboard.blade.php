@@ -48,7 +48,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
                 <!-- Green Section -->
                 <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                    <img src="/images/context_icon.png" alt="Context Icon" class="w-10 h-10 mb-2">
+                    <img src="/images/context_icon.png" alt="Context Icon" class="w-12 mb-2">
                     <span class="mt-2 text-center">Context</span>
                 </div>
                 <!-- White Section -->
@@ -77,7 +77,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <!-- Sampling card -->
             <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
                 <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                    <img src="/images/sampling_icon.png" alt="Sampling Icon" class="w-10 h-10 mb-2">
+                    <img src="/images/sampling_icon.png" alt="Sampling Icon" class="w-12 mb-2">
                     <span class="mt-2 text-center">Sampling</span>
                 </div>
                 <div class="w-3/4 bg-white p-4">
@@ -95,7 +95,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="flex shadow-md overflow-hidden md:col-span-4 h-80">
                 <!-- Green Section -->
                 <div class="w-2/8 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                    <img src="/images/localisation_icon.png" alt="Localisation Icon" class="w-10 h-10 mb-2">
+                    <img src="/images/localisation_icon.png" alt="Localisation Icon" class="w-8 mb-2">
                     <span class="mt-2 text-center">Localisation</span>
                 </div>
                 <!-- White Section -->
@@ -134,7 +134,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
                 <!-- Green Section -->
                 <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                    <img src="/images/data_collection_icon.png" alt="Data Collection Icon" class="w-10 h-10 mb-2">
+                    <img src="/images/data_collection_icon.png" alt="Data Collection Icon" class="w-9 mb-2">
                     <span class="mt-2 text-center">Data Collection</span>
                 </div>
                 <!-- White Section -->
@@ -153,7 +153,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
                 <!-- Green Section -->
                 <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                        <img src="/images/data_analysis_icon.png" alt="Data Collection Icon" class="w-10 h-10 mb-2">
+                        <img src="/images/data_analysis_icon.png" alt="Data Collection Icon" class="w-10 mb-2">
                     <span class="mt-2 text-center">Data Analysis</span>
                 </div>
                 <!-- White Section -->
