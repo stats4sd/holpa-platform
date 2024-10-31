@@ -58,7 +58,8 @@ class LocalIndicatorResource extends Resource
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\SelectColumn::make('global_indicator_id')
-                    ->options(fn(LocalIndicator $record): Collection => GlobalIndicator::where('theme_id', $record->theme_id)->get()->pluck('name', 'id'))
+                    ->label('Global indicator')
+                    ->options(fn(LocalIndicator $record): Collection => GlobalIndicator::get()->pluck('name', 'id'))
                     ->sortable()
                     ->searchable(),
             ])
