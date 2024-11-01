@@ -36,44 +36,71 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow, WithMultipl
         $existingSurveyRows = $this->xlsformTemplate->surveyRows()->get()->keyBy('name');
         $currentImportSurveRows = [];
         $importTemplateLanguages = [];
-        
         $headings = $rows->first()->keys();
         $this->extractUniqueTemplateLanguagesFromHeadings($headings);
-
-        $rows->each(function ($row) use (&$currentImportSurveRows, &$importTemplateLanguages, $isNewTemplate) {
+    
+        $importLanguageIds = array_values($this->uniqueTemplateLanguages);
+    
+        // Get existing language strings from the database, limited to relevant languages
+        $existingLanguageStrings = LanguageString::whereIn('survey_row_id', $existingSurveyRows->pluck('id'))
+            ->whereIn('xlsform_template_language_id', $importLanguageIds)
+            ->get();
+    
+        // Store unique identifiers of existing language strings for comparison
+        $existingStringsKeys = $existingLanguageStrings->map(function ($string) {
+            return $string->survey_row_id . '_' . $string->language_string_type_id;
+        })->toArray();
+        
+        $currentStringsKeys = [];
+    
+        $rows->each(function ($row) use (&$currentImportSurveRows, &$importTemplateLanguages, &$currentStringsKeys) {
             if (isset($row['name']) && !empty($row['name'])) {
                 $currentImportSurveRows[] = $row['name'];
-
-                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(['name' => $row['name']],[]);
-
+    
+                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(['name' => $row['name']], []);
+    
                 foreach ($row as $column => $value) {
                     if ($value !== null && $this->isTranslatableColumn($column)) {
                         [$type, $language] = $this->extractTypeAndLanguage($column);
                         $xlsformTemplateLanguageId = $this->uniqueTemplateLanguages[$language] ?? null;
-
+    
                         // Track this language as being present in the new file
                         $importTemplateLanguages[$language] = true;
-
+    
+                        // Generate a unique key for this language string to track in current import
+                        $languageStringTypeId = LanguageStringType::where('name', $type)->value('id');
+                        $currentStringsKeys[] = $surveyRow->id . '_' . $languageStringTypeId;
+    
                         // Create or update the LanguageString
                         $this->createLanguageString($surveyRow->id, $xlsformTemplateLanguageId, $type, $value);
                     }
                 }
             }
         });
-
-        // Get all template languages and find those that are missing
+        
+        // Identify removed strings
+        $removedStrings = array_diff($existingStringsKeys, $currentStringsKeys);
+        if (!empty($removedStrings)) {        
+            foreach ($removedStrings as $key) {
+                [$surveyRowId, $languageStringTypeId] = explode('_', $key);
+                $deletedRows = LanguageString::where('survey_row_id', $surveyRowId)
+                    ->where('language_string_type_id', $languageStringTypeId)
+                    ->delete();
+            }
+        }
+        
         $allTemplateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages()->get()->keyBy('language_id');
         $missingTemplateLanguages = $allTemplateLanguages->reject(function ($templateLanguage) use ($importTemplateLanguages) {
             return isset($importTemplateLanguages[$templateLanguage->language->iso_alpha2]);
         });
-
+    
         // Set needs_update for languages missing in the file
         $this->setNeedsUpdateFormissingTemplateLanguages($missingTemplateLanguages);
-
+    
         // Handle survey row deletions
         $this->removeMissingSurveyRows($existingSurveyRows, $currentImportSurveRows);
     }
-
+    
     // Check if the column is translatable
     // Note: column heading is sanitised by WithHeadingRow e.g., 'label::English (en)' becomes 'labelenglish_en'
     private function isTranslatableColumn(string $column): bool
@@ -129,18 +156,34 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow, WithMultipl
         }
     }
 
-    // Create a new LanguageString
+    // Create or update a LanguageString
     private function createLanguageString(int $surveyRowId, int $xlsformTemplateLanguageId, string $type, string $value)
     {
         $languageStringType = LanguageStringType::where('name', $type)->first();
-
+    
         if ($languageStringType) {
-            LanguageString::create([
+            // Check if the LanguageString already exists
+            $existingLanguageString = LanguageString::where([
                 'survey_row_id' => $surveyRowId,
                 'xlsform_template_language_id' => $xlsformTemplateLanguageId,
                 'language_string_type_id' => $languageStringType->id,
-                'text' => $value,
-            ]);
+            ])->first();
+    
+            // If the LanguageString exists, check for text updates
+            if ($existingLanguageString) {
+                // Update the text value if it is different
+                if ($existingLanguageString->text !== $value) {
+                    $existingLanguageString->update(['text' => $value]);
+                }
+            } else {
+                // Create a new LanguageString if it does not exist
+                LanguageString::create([
+                    'survey_row_id' => $surveyRowId,
+                    'xlsform_template_language_id' => $xlsformTemplateLanguageId,
+                    'language_string_type_id' => $languageStringType->id,
+                    'text' => $value,
+                ]);
+            }
         } else {
             // Log an error when the type is not found
             Log::error("Language string type not found for type: {$type}");
