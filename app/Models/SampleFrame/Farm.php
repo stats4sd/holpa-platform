@@ -28,25 +28,25 @@ class Farm extends LookupEntry
         return $this->morphTo('owner');
     }
 
-    public function agSystem(): BelongsTo
-    {
-        return $this->belongsTo(AgSystem::class);
-    }
+    // public function agSystem(): BelongsTo
+    // {
+    //     return $this->belongsTo(AgSystem::class);
+    // }
 
-    public function farmGroups(): BelongsToMany
-    {
-        return $this->belongsToMany(FarmGroup::class);
-    }
+    // public function farmGroups(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(FarmGroup::class);
+    // }
 
-    public function caetAssessments(): HasMany
-    {
-        return $this->hasMany(CaetAssessment::class);
-    }
+    // public function caetAssessments(): HasMany
+    // {
+    //     return $this->hasMany(CaetAssessment::class);
+    // }
 
-    public function performanceAssessments(): HasMany
-    {
-        return $this->hasMany(PerformanceAssessment::class);
-    }
+    // public function performanceAssessments(): HasMany
+    // {
+    //     return $this->hasMany(PerformanceAssessment::class);
+    // }
 
     public function getCsvContentsForOdk(?WithXlsforms $team = null): array
     {
@@ -67,5 +67,4 @@ class Farm extends LookupEntry
     {
         return $this->belongsTo(Location::class);
     }
-
 }

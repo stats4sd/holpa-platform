@@ -31,10 +31,10 @@ class Location extends LookupEntry
         return $this->morphTo('owner');
     }
 
-    public function site(): HasOne
-    {
-        return $this->hasOne(Site::class);
-    }
+    // public function site(): HasOne
+    // {
+    //     return $this->hasOne(Site::class);
+    // }
 
     public function locationLevel(): BelongsTo
     {
@@ -60,7 +60,7 @@ class Location extends LookupEntry
     public function hasFarms(): Attribute
     {
         return new Attribute(
-            get: fn (): bool => $this->locationLevel?->has_households ?? false,
+            get: fn(): bool => $this->locationLevel?->has_households ?? false,
         );
     }
 
@@ -71,7 +71,7 @@ class Location extends LookupEntry
     {
         return new Attribute(
             get: function () {
-                return Cache::remember($this->cacheKey().':farmsAllCount', now()->addMinutes(5), function () {
+                return Cache::remember($this->cacheKey() . ':farmsAllCount', now()->addMinutes(5), function () {
                     return $this->children->reduce(function ($carry, $location) {
                         return $carry + $location->farmsAllCount;
                     }, $this->farms->count());
