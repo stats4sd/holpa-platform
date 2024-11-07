@@ -2,22 +2,24 @@
 
 namespace App\Filament\Tables\Actions;
 
-use App\Models\Import;
-use App\Models\SampleFrame\Location;
 use Closure;
-use EightyNine\ExcelImport\ExcelImportAction;
-use Filament\Facades\Filament;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
+use App\Models\Team;
+use App\Models\Import;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
-use Illuminate\Support\Facades\Storage;
-use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Filament\Facades\Filament;
+use App\Models\SampleFrame\Location;
 use Maatwebsite\Excel\Facades\Excel;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Section;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\HeadingRowImport;
-use App\Models\Team;
+use EightyNine\ExcelImport\DefaultImport;
+use Filament\Forms\Components\FileUpload;
+use EightyNine\ExcelImport\ExcelImportAction;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+// use App\Imports\LocationSheetImport;
 
 class ImportLocationsAction extends ExcelImportAction
 {
@@ -27,14 +29,35 @@ class ImportLocationsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction starts here...
 
+    protected string $importClass = DefaultImport::class;
+    // protected string $importClass = LocationSheetImport::class;
+
+    protected array $importClassAttributes = [];
+
     protected ?string $disk = null;
+
+    public function use(string $class = null, ...$attributes): static
+    {
+        $this->importClass = $class ?: DefaultImport::class;
+        // $this->importClass = $class ?: LocationSheetImport::class;
+        $this->importClassAttributes = $attributes;
+
+        return $this;
+    }
 
     protected function getDisk()
     {
         return $this->disk ?: config('filesystems.default');
     }
 
+    public static function getDefaultName(): ?string
+    {
+        return 'import';
+    }
+
     // Code segment belongs to superclass ExcelImportAction ends here...
+
+
 
     protected function setUp(): void
     {
@@ -160,7 +183,11 @@ class ImportLocationsAction extends ExcelImportAction
 
             $importObject = new $this->importClass($data);
 
+            logger('before Excel::import()');
+
             Excel::import($importObject, $import->getFirstMediaPath());
+
+            logger('after Excel::import()');
 
             return true;
         };

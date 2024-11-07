@@ -21,26 +21,31 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
 
     public function __construct(public array $data)
     {
+        logger('LocationSheetImport.__construct() starts...');
+
         $data['code_column'] = $data['header_columns'][$data['code_column']];
         $data['name_column'] = $data['header_columns'][$data['name_column']];
 
         $keys = collect(array_keys($data));
 
-        $parentColumns = $keys->filter(fn ($key) => str_starts_with($key, 'parent_'));
+        $parentColumns = $keys->filter(fn($key) => str_starts_with($key, 'parent_'));
 
         foreach ($parentColumns as $parentColumn) {
             $data[$parentColumn] = $data['header_columns'][$data[$parentColumn]] ?? null;
         }
 
-        $this->parentIds = $parentColumns->filter(fn ($key) => str_contains($key, '_code'))
-            ->map(fn ($key) => str_replace(['parent_', '_code_column'], '', $key));
+        $this->parentIds = $parentColumns->filter(fn($key) => str_contains($key, '_code'))
+            ->map(fn($key) => str_replace(['parent_', '_code_column'], '', $key));
 
         $this->data = $data;
-
     }
 
     public function collection(Collection $rows)
     {
+        logger('LocationSheetImport.collection() starts...');
+
+        // Question: why this function has not been called?
+
         $locationLevel = $this->data['level'];
 
         $importedLocations = [];
@@ -66,17 +71,16 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
                 $currentParent = Location::where('code', $row[$this->data["parent_{$parentId}_code_column"]])->first();
 
                 // When the location is top level, create the site if it doesn't already exist
-                if($currentParent->locationLevel->top_level === 1) {
+                // if ($currentParent->locationLevel->top_level === 1) {
 
-                    Site::upsert(
-                        values: [
-                            'team_id' => $currentParent->owner_id,
-                            'location_id' => $currentParent->id
-                        ],
-                        uniqueBy: 'location_id'
-                    );
-
-                }
+                //     Site::upsert(
+                //         values: [
+                //             'team_id' => $currentParent->owner_id,
+                //             'location_id' => $currentParent->id
+                //         ],
+                //         uniqueBy: 'location_id'
+                //     );
+                // }
             }
 
             // Create the location if it doesn't already exist
@@ -95,17 +99,17 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
             $currentLocation = Location::where('code', $row[$this->data["code_column"]])->first();
 
             //  When the location is top level, create the site if it doesn't already exist
-            if($currentLocation->locationLevel->top_level === 1) {
+            // if($currentLocation->locationLevel->top_level === 1) {
 
-                Site::upsert(
-                    values: [
-                        'team_id' => $currentLocation->owner_id,
-                        'location_id' => $currentLocation->id
-                    ],
-                    uniqueBy: 'location_id'
-                );
+            //     Site::upsert(
+            //         values: [
+            //             'team_id' => $currentLocation->owner_id,
+            //             'location_id' => $currentLocation->id
+            //         ],
+            //         uniqueBy: 'location_id'
+            //     );
 
-            }
+            // }
 
             $importedLocations[] = $currentLocation;
         }
@@ -115,6 +119,8 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
 
     public function chunkSize(): int
     {
+        logger('LocationSheetImport.chunkSize() starts...');
+
         return 1000;
     }
 }
