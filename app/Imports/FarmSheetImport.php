@@ -22,9 +22,7 @@ use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison, WithValidation
 {
     // The $data array is the data that is passed from the ImportFarmsAction form
-    public function __construct(public array $data)
-    {
-    }
+    public function __construct(public array $data) {}
 
     public function collection(Collection $rows)
     {
@@ -35,10 +33,10 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
 
             $farmCodeColumn = $headers[$this->data['farm_code_column']];
 
-            $agSystemCodeColumn = $headers[$this->data['ag_system_code_column']] ?? null;
-            if($agSystemCodeColumn) {
-                $agSystem = AgSystem::where('code', $row[$agSystemCodeColumn])->first();
-            }
+            // $agSystemCodeColumn = $headers[$this->data['ag_system_code_column']] ?? null;
+            // if($agSystemCodeColumn) {
+            //     $agSystem = AgSystem::where('code', $row[$agSystemCodeColumn])->first();
+            // }
 
             $locationLevel = LocationLevel::find($this->data['location_level_id']);
             $locationCodeColumn = $headers[$this->data['location_code_column']];
@@ -47,14 +45,14 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
                 ->first();
 
             // Find the identifier columns;
-            $identifierColumns = collect($this->data['farm_identifiers'])->map(fn ($identifier) => $headers[$identifier]);
+            $identifierColumns = collect($this->data['farm_identifiers'])->map(fn($identifier) => $headers[$identifier]);
             // Get the data from those columns;
-            $identifierData = $identifierColumns->mapWithKeys(fn ($column) => [$column => $row[$column]]);
+            $identifierData = $identifierColumns->mapWithKeys(fn($column) => [$column => $row[$column]]);
 
             // Find the property columns;
-            $propertyColumns = collect($this->data['farm_properties'])->map(fn ($property) => $headers[$property]);
+            $propertyColumns = collect($this->data['farm_properties'])->map(fn($property) => $headers[$property]);
             // Get the data from those columns;
-            $propertyData = $propertyColumns->mapWithKeys(fn ($column) => [$column => $row[$column]]);
+            $propertyData = $propertyColumns->mapWithKeys(fn($column) => [$column => $row[$column]]);
 
             // Create the farm
             $farm = new Farm([
@@ -68,21 +66,21 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
             ]);
             $farm->save();
 
-            // Farm groups
-            foreach ($this->data as $key => $value) {
-                if (strpos($key, 'grouping_') === 0) {
-                    $farmGrouping = explode('_', $key)[1] ?? null;
-                    $farmGroupingColumn = $headers[$value];
+            // // Farm groups
+            // foreach ($this->data as $key => $value) {
+            //     if (strpos($key, 'grouping_') === 0) {
+            //         $farmGrouping = explode('_', $key)[1] ?? null;
+            //         $farmGroupingColumn = $headers[$value];
 
-                    // Find the farm group
-                    $farmGroup = FarmGroup::where('farm_grouping_id', $farmGrouping)->where('code', $row[$farmGroupingColumn])->first();
+            //         // Find the farm group
+            //         $farmGroup = FarmGroup::where('farm_grouping_id', $farmGrouping)->where('code', $row[$farmGroupingColumn])->first();
 
-                    // // Attach the farm to the farm group
-                    if ($farmGroup) {
-                        $farm->farmGroups()->attach($farmGroup);
-                    }
-                }
-            }
+            //         // // Attach the farm to the farm group
+            //         if ($farmGroup) {
+            //             $farm->farmGroups()->attach($farmGroup);
+            //         }
+            //     }
+            // }
 
             $importedFarms[] = $farm;
         }
@@ -118,5 +116,4 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
     {
         return 1000;
     }
-
 }

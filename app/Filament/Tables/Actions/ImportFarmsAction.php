@@ -10,13 +10,13 @@ use Filament\Facades\Filament;
 use App\Services\HelperService;
 use App\Models\SampleFrame\Farm;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Models\SampleFrame\FarmGroup;
+// use App\Models\SampleFrame\FarmGroup;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\HeadingRowImport;
-use App\Models\SampleFrame\FarmGrouping;
+// use App\Models\SampleFrame\FarmGrouping;
 use App\Models\SampleFrame\LocationLevel;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\CheckboxList;
@@ -44,18 +44,20 @@ class ImportFarmsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction ends here...
 
+
+
     protected function setUp(): void
     {
         parent::setUp();
 
         $this
             ->modalWidth('3xl')
-            ->modalDescription('Import Farms from an Excel file. The first worksheet of the Excel file should contain the data to import. The first row of the worksheet should contain the column headings. You must have already created or imported the locations and groups that the farms will be associated with.');
+            ->modalDescription('Import Farms from an Excel file. The first worksheet of the Excel file should contain the data to import. The first row of the worksheet should contain the column headings. You must have already created or imported the locations that the farms will be associated with.');
     }
 
     protected function getDefaultForm(): array
     {
-        $groups = FarmGrouping::all()->where('owner_id', HelperService::getSelectedTeam()->id)->pluck('name', 'id')->toArray();
+        // $groups = FarmGrouping::all()->where('owner_id', HelperService::getSelectedTeam()->id)->pluck('name', 'id')->toArray();
 
         return [
             FileUpload::make('upload')
@@ -97,13 +99,13 @@ class ImportFarmsAction extends ExcelImportAction
                         ->placeholder('Select a column'),
                 ]),
 
-            Section::make('Groups')
-                ->schema(array_map(function ($name, $id) {
-                    return Select::make("grouping_{$id}_column")
-                        ->label("Which column indicates the farm grouping $name?")
-                        ->placeholder('Select a column')
-                        ->options(fn(Get $get) => $get('header_columns'));
-                }, array_values($groups), array_keys($groups))),
+            // Section::make('Groups')
+            //     ->schema(array_map(function ($name, $id) {
+            //         return Select::make("grouping_{$id}_column")
+            //             ->label("Which column indicates the farm grouping $name?")
+            //             ->placeholder('Select a column')
+            //             ->options(fn(Get $get) => $get('header_columns'));
+            //     }, array_values($groups), array_keys($groups))),
 
             Section::make('Farm Information')
                 ->columns(1)
