@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Imports;
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Concerns\ToModel;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+
+class UsersImport implements ToCollection
+{
+    public function collection(Collection $rows)
+    {
+        logger('UsersImport.collection() starts...');
+
+        foreach ($rows as $row) {
+            User::create([
+                'name' => $row[0],
+                'email' => $row[1],
+                'password' => Hash::make($row[2]),
+            ]);
+        }
+    }
+}

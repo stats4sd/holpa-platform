@@ -6,6 +6,8 @@ use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Register;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Roleregister;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Programregister;
 
+use App\Http\Controllers\UsersController;
+
 // // user registration form for team-invites
 // Route::get('register', Register::class)
 //     ->name('filament.app.register')
@@ -35,3 +37,6 @@ Route::get('/program/login', function () {
 Route::get('/admin/login', function () {
     return redirect('app');
 })->name('filament.admin.auth.login');
+
+
+Route::get('users/import/', [UsersController::class, 'import']);
