@@ -29,21 +29,20 @@ class ImportLocationsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction starts here...
 
-    protected string $importClass = DefaultImport::class;
+    // protected string $importClass = DefaultImport::class;
     // protected string $importClass = LocationSheetImport::class;
 
     protected array $importClassAttributes = [];
 
     protected ?string $disk = null;
 
-    public function use(string $class = null, ...$attributes): static
-    {
-        $this->importClass = $class ?: DefaultImport::class;
-        // $this->importClass = $class ?: LocationSheetImport::class;
-        $this->importClassAttributes = $attributes;
+    // public function use(string $class = null, ...$attributes): static
+    // {
+    //     $this->importClass = $class ?: DefaultImport::class;
+    //     $this->importClassAttributes = $attributes;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     protected function getDisk()
     {

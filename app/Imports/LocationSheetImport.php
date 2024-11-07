@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Site;
 use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -15,7 +16,8 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
-class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
+// class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
+class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
 {
     protected Collection $parentIds;
 
@@ -38,6 +40,13 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
             ->map(fn($key) => str_replace(['parent_', '_code_column'], '', $key));
 
         $this->data = $data;
+
+        logger('LocationSheetImport.__construct() ends...');
+    }
+
+    public function model(array $row)
+    {
+        logger('LocationSheetImport.model() starts...');
     }
 
     public function collection(Collection $rows)
