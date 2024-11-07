@@ -29,6 +29,21 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
  */
 class ImportFarmsAction extends ExcelImportAction
 {
+    // Installed filament excel import package "eightynine/filament-excel-import": "3.x-dev",
+    // ExcelImportAction class is a simplifed one.
+    // Copy below code segment to make it working well
+
+    // Code segment belongs to superclass ExcelImportAction starts here...
+
+    protected ?string $disk = null;
+
+    protected function getDisk()
+    {
+        return $this->disk ?: config('filesystems.default');
+    }
+
+    // Code segment belongs to superclass ExcelImportAction ends here...
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -36,16 +51,15 @@ class ImportFarmsAction extends ExcelImportAction
         $this
             ->modalWidth('3xl')
             ->modalDescription('Import Farms from an Excel file. The first worksheet of the Excel file should contain the data to import. The first row of the worksheet should contain the column headings. You must have already created or imported the locations and groups that the farms will be associated with.');
-
     }
 
     protected function getDefaultForm(): array
     {
-        $groups= FarmGrouping::all()->where('owner_id', HelperService::getSelectedTeam()->id)->pluck('name', 'id')->toArray();
+        $groups = FarmGrouping::all()->where('owner_id', HelperService::getSelectedTeam()->id)->pluck('name', 'id')->toArray();
 
         return [
             FileUpload::make('upload')
-                ->label(fn ($livewire) => str($livewire->getTable()->getPluralModelLabel())->title() . ' Excel Data')
+                ->label(fn($livewire) => str($livewire->getTable()->getPluralModelLabel())->title() . ' Excel Data')
                 ->helperText('Please make sure your data is in the first worksheet of the Excel file, and that the first row contains the column headers.')
                 ->disk($this->getDisk())
                 ->columns()
@@ -78,18 +92,18 @@ class ImportFarmsAction extends ExcelImportAction
                         ->live(),
 
                     Select::make('location_code_column')
-                        ->options(fn (Get $get) => $get('header_columns'))
-                        ->label(fn (Get $get) => 'Which column contains the ' . (LocationLevel::find($get('location_level_id'))?->name ?? 'location') . ' unique code?')
+                        ->options(fn(Get $get) => $get('header_columns'))
+                        ->label(fn(Get $get) => 'Which column contains the ' . (LocationLevel::find($get('location_level_id'))?->name ?? 'location') . ' unique code?')
                         ->placeholder('Select a column'),
                 ]),
 
             Section::make('Groups')
                 ->schema(array_map(function ($name, $id) {
                     return Select::make("grouping_{$id}_column")
-                                ->label("Which column indicates the farm grouping $name?")
-                                ->placeholder('Select a column')
-                                ->options(fn (Get $get) => $get('header_columns'));
-                        }, array_values($groups), array_keys($groups))),
+                        ->label("Which column indicates the farm grouping $name?")
+                        ->placeholder('Select a column')
+                        ->options(fn(Get $get) => $get('header_columns'));
+                }, array_values($groups), array_keys($groups))),
 
             Section::make('Farm Information')
                 ->columns(1)
@@ -99,21 +113,21 @@ class ImportFarmsAction extends ExcelImportAction
                         ->placeholder('Select a column')
                         ->helperText('e.g. farm_id or farm_code')
                         ->live()
-                        ->options(fn (Get $get) => $get('header_columns')),
+                        ->options(fn(Get $get) => $get('header_columns')),
 
                     Select::make('ag_system_code_column')
                         ->label('Which column contains the agricultural system unique code?')
                         ->placeholder('Select a column')
                         ->helperText('Farms can be linked to a system later if it is not currently known')
                         ->live()
-                        ->options(fn (Get $get) => $get('header_columns')),
+                        ->options(fn(Get $get) => $get('header_columns')),
 
                     CheckboxList::make('farm_identifiers')
                         ->label('Are there any additional columns that contain identifiers for the farm? Tick all that apply.')
                         ->helperText('For example: family name, farm name, telephone numbers, etc. These are columns that can be useful for enumerators or project team members to identify the farm, but that should not be shared outside the project for data protection purposes.')
-                        ->options(fn (Get $get): array => $get('header_columns'))
+                        ->options(fn(Get $get): array => $get('header_columns'))
                         ->disableOptionWhen(
-                            fn (string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
+                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
                                 collect($get('farm_properties'))->contains($value) ||
                                 $value === 'na'
                         )
@@ -123,9 +137,9 @@ class ImportFarmsAction extends ExcelImportAction
                     CheckboxList::make('farm_properties')
                         ->label('Are there any additional columns that contain properties of the farm? Tick all that apply.')
                         ->helperText('These are not identifiers, but are properties of the farm that are useful for analysis. For example: size of the farm, year of first engagement, etc. These are columns that can potentially be shared outside the project for analysis purposes.')
-                        ->options(fn (Get $get) => $get('header_columns'))
+                        ->options(fn(Get $get) => $get('header_columns'))
                         ->disableOptionWhen(
-                            fn (string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
+                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
                                 collect($get('farm_identifiers'))->contains($value) ||
                                 $value === 'na'
                         )
