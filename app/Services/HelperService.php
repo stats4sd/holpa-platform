@@ -4,11 +4,14 @@ namespace App\Services;
 
 use App\Models\Team;
 
+use Illuminate\Support\Str;
 use Filament\Facades\Filament;
+use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Collection;
 use Illuminate\Container\Container;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\File;
+use Illuminate\Database\Eloquent\Model;
 
 class HelperService
 {
@@ -114,5 +117,34 @@ class HelperService
 
         // cannot find a matched model
         return null;
+    }
+
+    public static function findFarmLocationDetails(string $farmId): string
+    {
+        // find farm model
+        $farm = Farm::find($farmId);
+
+        // array for storing farm and location levels details
+        $array = [];
+
+        $array["farm_name"] = $farm->identifiers['name'];
+        $array["farm_id"] = $farm->id;
+
+        $tempLocation = $farm->location;
+
+        // find all location levels until there is no more parent location
+        do {
+            // a location Id field name should be lowercase, with underscore instead of hypen, e.g. sub_district
+            $locationIdFieldName = Str::lower(Str::replace('-', '_', $tempLocation->locationLevel->name));
+
+            $array[$locationIdFieldName . '_name'] = $tempLocation->name;
+            $array[$locationIdFieldName . '_id'] = $tempLocation->id;
+
+            $tempLocation = $tempLocation->parent;
+        } while ($tempLocation != null);
+
+        $reversedArray = array_reverse($array);
+
+        return json_encode($reversedArray);
     }
 }
