@@ -18,15 +18,10 @@ use Maatwebsite\Excel\Events\ImportFailed;
  */
 class LocationImport implements ShouldQueue, WithBatchInserts, WithChunkReading, WithEvents, WithMultipleSheets
 {
-    public function __construct(public array $data)
-    {
-        logger('LocationImport.__construct() starts...');
-    }
+    public function __construct(public array $data) {}
 
     public function sheets(): array
     {
-        logger('LocationImport.sheets() starts...');
-
         return [
             0 => new LocationSheetImport($this->data),
         ];
@@ -34,22 +29,16 @@ class LocationImport implements ShouldQueue, WithBatchInserts, WithChunkReading,
 
     public function batchSize(): int
     {
-        logger('LocationImport.batchSize() starts...');
-
         return 1000;
     }
 
     public function chunkSize(): int
     {
-        logger('LocationImport.chunkSize() starts...');
-
         return 1000;
     }
 
     public function registerEvents(): array
     {
-        logger('LocationImport.registerEvents() starts...');
-
         return [
             ImportFailed::class => function (ImportFailed $event) {
                 Import::find($this->data['import_id'])

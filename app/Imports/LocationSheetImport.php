@@ -16,15 +16,12 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
-// class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
-class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
+class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
 {
     protected Collection $parentIds;
 
     public function __construct(public array $data)
     {
-        logger('LocationSheetImport.__construct() starts...');
-
         $data['code_column'] = $data['header_columns'][$data['code_column']];
         $data['name_column'] = $data['header_columns'][$data['name_column']];
 
@@ -40,21 +37,10 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithC
             ->map(fn($key) => str_replace(['parent_', '_code_column'], '', $key));
 
         $this->data = $data;
-
-        logger('LocationSheetImport.__construct() ends...');
-    }
-
-    public function model(array $row)
-    {
-        logger('LocationSheetImport.model() starts...');
     }
 
     public function collection(Collection $rows)
     {
-        logger('LocationSheetImport.collection() starts...');
-
-        // Question: why this function has not been called?
-
         $locationLevel = $this->data['level'];
 
         $importedLocations = [];
@@ -78,18 +64,6 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithC
                 );
 
                 $currentParent = Location::where('code', $row[$this->data["parent_{$parentId}_code_column"]])->first();
-
-                // When the location is top level, create the site if it doesn't already exist
-                // if ($currentParent->locationLevel->top_level === 1) {
-
-                //     Site::upsert(
-                //         values: [
-                //             'team_id' => $currentParent->owner_id,
-                //             'location_id' => $currentParent->id
-                //         ],
-                //         uniqueBy: 'location_id'
-                //     );
-                // }
             }
 
             // Create the location if it doesn't already exist
@@ -107,19 +81,6 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithC
 
             $currentLocation = Location::where('code', $row[$this->data["code_column"]])->first();
 
-            //  When the location is top level, create the site if it doesn't already exist
-            // if($currentLocation->locationLevel->top_level === 1) {
-
-            //     Site::upsert(
-            //         values: [
-            //             'team_id' => $currentLocation->owner_id,
-            //             'location_id' => $currentLocation->id
-            //         ],
-            //         uniqueBy: 'location_id'
-            //     );
-
-            // }
-
             $importedLocations[] = $currentLocation;
         }
 
@@ -128,8 +89,6 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToModel, WithC
 
     public function chunkSize(): int
     {
-        logger('LocationSheetImport.chunkSize() starts...');
-
         return 1000;
     }
 }

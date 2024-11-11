@@ -12,8 +12,6 @@ class UsersImport implements ToCollection
 {
     public function collection(Collection $rows)
     {
-        logger('UsersImport.collection() starts...');
-
         foreach ($rows as $row) {
             User::create([
                 'name' => $row[0],

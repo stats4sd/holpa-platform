@@ -182,11 +182,7 @@ class ImportLocationsAction extends ExcelImportAction
 
             $importObject = new $this->importClass($data);
 
-            logger('before Excel::import()');
-
             Excel::import($importObject, $import->getFirstMediaPath());
-
-            logger('after Excel::import()');
 
             return true;
         };
