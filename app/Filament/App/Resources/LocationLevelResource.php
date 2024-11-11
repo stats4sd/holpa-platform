@@ -83,9 +83,6 @@ class LocationLevelResource extends Resource
                     ->default(fn() => HelperService::getSelectedTeam()->id),
                 Hidden::make('owner_type')
                     ->default('App\Models\Team'),
-                // Hidden::make('top_level')
-                // ->when(fn ($record) => !isset($record->top_level))
-                // ->default(0)
             ])->columns(1);
     }
 

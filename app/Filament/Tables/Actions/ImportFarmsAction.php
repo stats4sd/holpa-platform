@@ -99,14 +99,6 @@ class ImportFarmsAction extends ExcelImportAction
                         ->placeholder('Select a column'),
                 ]),
 
-            // Section::make('Groups')
-            //     ->schema(array_map(function ($name, $id) {
-            //         return Select::make("grouping_{$id}_column")
-            //             ->label("Which column indicates the farm grouping $name?")
-            //             ->placeholder('Select a column')
-            //             ->options(fn(Get $get) => $get('header_columns'));
-            //     }, array_values($groups), array_keys($groups))),
-
             Section::make('Farm Information')
                 ->columns(1)
                 ->schema([
@@ -116,13 +108,6 @@ class ImportFarmsAction extends ExcelImportAction
                         ->helperText('e.g. farm_id or farm_code')
                         ->live()
                         ->options(fn(Get $get) => $get('header_columns')),
-
-                    // Select::make('ag_system_code_column')
-                    //     ->label('Which column contains the agricultural system unique code?')
-                    //     ->placeholder('Select a column')
-                    //     ->helperText('Farms can be linked to a system later if it is not currently known')
-                    //     ->live()
-                    //     ->options(fn(Get $get) => $get('header_columns')),
 
                     CheckboxList::make('farm_identifiers')
                         ->label('Are there any additional columns that contain identifiers for the farm? Tick all that apply.')

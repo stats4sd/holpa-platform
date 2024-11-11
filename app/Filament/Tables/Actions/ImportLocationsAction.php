@@ -15,11 +15,9 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\HeadingRowImport;
-use EightyNine\ExcelImport\DefaultImport;
 use Filament\Forms\Components\FileUpload;
 use EightyNine\ExcelImport\ExcelImportAction;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
-// use App\Imports\LocationSheetImport;
 
 class ImportLocationsAction extends ExcelImportAction
 {
@@ -29,29 +27,11 @@ class ImportLocationsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction starts here...
 
-    // protected string $importClass = DefaultImport::class;
-    // protected string $importClass = LocationSheetImport::class;
-
-    protected array $importClassAttributes = [];
-
     protected ?string $disk = null;
-
-    // public function use(string $class = null, ...$attributes): static
-    // {
-    //     $this->importClass = $class ?: DefaultImport::class;
-    //     $this->importClassAttributes = $attributes;
-
-    //     return $this;
-    // }
 
     protected function getDisk()
     {
         return $this->disk ?: config('filesystems.default');
-    }
-
-    public static function getDefaultName(): ?string
-    {
-        return 'import';
     }
 
     // Code segment belongs to superclass ExcelImportAction ends here...

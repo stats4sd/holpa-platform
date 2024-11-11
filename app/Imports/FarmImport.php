@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use App\Filament\App\Resources\ImportResource;
 use App\Models\Import;
 use App\Models\User;
 use Filament\Notifications\Notification;
@@ -21,9 +20,7 @@ use Maatwebsite\Excel\Validators\ValidationException;
  */
 class FarmImport implements ShouldQueue, WithBatchInserts, WithChunkReading, WithEvents, WithMultipleSheets
 {
-    public function __construct(public array $data)
-    {
-    }
+    public function __construct(public array $data) {}
 
     public function sheets(): array
     {
@@ -82,15 +79,13 @@ class FarmImport implements ShouldQueue, WithBatchInserts, WithChunkReading, Wit
 
                 Notification::make()
                     ->title('Import of Farm Data Failed')
-                    ->body(fn (): HtmlString => new HtmlString(
+                    ->body(fn(): HtmlString => new HtmlString(
                         'The import of farm data failed with the following errors:<br/><br/>'
-                        . $event->getException()->getMessage()
-                        . '<br/><br/>You can review this import in the <a href="' . ImportResource::getUrl('index', ['tenant' => $this->data['owner_id']]) . '">Imports pages</a>.'
+                            . $event->getException()->getMessage()
                     ))
                     ->danger()
                     ->sendToDatabase($recipient, isEventDispatched: true)
                     ->broadcast($recipient);
-
             },
             AfterImport::class => function (AfterImport $event) {
 
@@ -102,7 +97,6 @@ class FarmImport implements ShouldQueue, WithBatchInserts, WithChunkReading, Wit
                     ->success()
                     ->sendToDatabase($recipient, isEventDispatched: true)
                     ->broadcast($recipient);
-
             },
         ];
     }
