@@ -26,13 +26,17 @@ class LocationLevelResource extends Resource
     use IsLookupListResource;
 
     protected static ?string $model = LocationLevel::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Survey Sample Frame';
+
+    // Possible improvement: show Location Levels as first menu item, then show different location levels one by one corresponding to location hierarchy
+    protected static ?int $navigationSort = 1;
 
     public static function getNavigationIcon(): string|Htmlable|null
     {
         return null;
     }
+
     public static function getNavigationItems(): array
     {
         // make sure the original nav item is only 'active' when the index page is active.
