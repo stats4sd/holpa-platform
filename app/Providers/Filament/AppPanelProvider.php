@@ -51,12 +51,12 @@ class AppPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/app/theme.css')
             // to include XlsformResource from main repo
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
-            // to include "My Team" filament resource from submodule
-            ->discoverResources(in: app_path('../packages/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
-            // to include ODk Form Management filament page
+            // to include "My Team" filament resource from package stats4sd/filament-team-management
+            ->discoverResources(in: app_path('../vendor/stats4sd/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
+            // to include ODK Form Management filament page
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
-            // to include role register, program register, register filament pages
-            ->discoverPages(in: app_path('../packages/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
+            // to include role register, program register, register filament pages from package stats4sd/filament-team-management
+            ->discoverPages(in: app_path('../vendor/stats4sd/filament-team-management/src/Filament/App/Pages'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Pages')
             ->pages([
                 SurveyDashboard::class,
                 TeamOdkView::class,
