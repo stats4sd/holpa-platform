@@ -4111,16 +4111,16 @@
         },
         {
             "name": "maatwebsite/excel",
-            "version": "3.1.58",
+            "version": "3.1.60",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SpartnerNL/Laravel-Excel.git",
-                "reference": "18495a71b112f43af8ffab35111a58b4e4ba4a4d"
+                "reference": "4906dc57fbe6a41c405a77e1f7cac9078982c9c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/18495a71b112f43af8ffab35111a58b4e4ba4a4d",
-                "reference": "18495a71b112f43af8ffab35111a58b4e4ba4a4d",
+                "url": "https://api.github.com/repos/SpartnerNL/Laravel-Excel/zipball/4906dc57fbe6a41c405a77e1f7cac9078982c9c7",
+                "reference": "4906dc57fbe6a41c405a77e1f7cac9078982c9c7",
                 "shasum": ""
             },
             "require": {
@@ -4128,7 +4128,7 @@
                 "ext-json": "*",
                 "illuminate/support": "5.8.*||^6.0||^7.0||^8.0||^9.0||^10.0||^11.0",
                 "php": "^7.0||^8.0",
-                "phpoffice/phpspreadsheet": "^1.29.1",
+                "phpoffice/phpspreadsheet": "^1.29.4",
                 "psr/simple-cache": "^1.0||^2.0||^3.0"
             },
             "require-dev": {
@@ -4176,7 +4176,7 @@
             ],
             "support": {
                 "issues": "https://github.com/SpartnerNL/Laravel-Excel/issues",
-                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.58"
+                "source": "https://github.com/SpartnerNL/Laravel-Excel/tree/3.1.60"
             },
             "funding": [
                 {
@@ -4188,7 +4188,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-09-07T13:53:36+00:00"
+            "time": "2024-11-11T12:27:45+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
@@ -4443,16 +4443,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.7.0",
+            "version": "3.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "f4393b648b78a5408747de94fca38beb5f7e9ef8"
+                "reference": "32e515fdc02cdafbe4593e30a9350d486b125b67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f4393b648b78a5408747de94fca38beb5f7e9ef8",
-                "reference": "f4393b648b78a5408747de94fca38beb5f7e9ef8",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/32e515fdc02cdafbe4593e30a9350d486b125b67",
+                "reference": "32e515fdc02cdafbe4593e30a9350d486b125b67",
                 "shasum": ""
             },
             "require": {
@@ -4472,12 +4472,14 @@
                 "guzzlehttp/psr7": "^2.2",
                 "mongodb/mongodb": "^1.8",
                 "php-amqplib/php-amqplib": "~2.4 || ^3",
-                "phpstan/phpstan": "^1.9",
-                "phpstan/phpstan-deprecation-rules": "^1.0",
-                "phpstan/phpstan-strict-rules": "^1.4",
-                "phpunit/phpunit": "^10.5.17",
+                "php-console/php-console": "^3.1.8",
+                "phpstan/phpstan": "^2",
+                "phpstan/phpstan-deprecation-rules": "^2",
+                "phpstan/phpstan-strict-rules": "^2",
+                "phpunit/phpunit": "^10.5.17 || ^11.0.7",
                 "predis/predis": "^1.1 || ^2",
-                "ruflin/elastica": "^7",
+                "rollbar/rollbar": "^4.0",
+                "ruflin/elastica": "^7 || ^8",
                 "symfony/mailer": "^5.4 || ^6",
                 "symfony/mime": "^5.4 || ^6"
             },
@@ -4528,7 +4530,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.7.0"
+                "source": "https://github.com/Seldaek/monolog/tree/3.8.0"
             },
             "funding": [
                 {
@@ -4540,20 +4542,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-28T09:40:51+00:00"
+            "time": "2024-11-12T13:57:08+00:00"
         },
         {
             "name": "nesbot/carbon",
-            "version": "3.8.1",
+            "version": "3.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9"
+                "reference": "e1268cdbc486d97ce23fef2c666dc3c6b6de9947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/10ac0aa86b8062219ce21e8189123d611ca3ecd9",
-                "reference": "10ac0aa86b8062219ce21e8189123d611ca3ecd9",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e1268cdbc486d97ce23fef2c666dc3c6b6de9947",
+                "reference": "e1268cdbc486d97ce23fef2c666dc3c6b6de9947",
                 "shasum": ""
             },
             "require": {
@@ -4646,7 +4648,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-11-03T16:02:24+00:00"
+            "time": "2024-11-07T17:46:48+00:00"
         },
         {
             "name": "nette/schema",
@@ -5190,16 +5192,16 @@
         },
         {
             "name": "phpoffice/phpspreadsheet",
-            "version": "1.29.2",
+            "version": "1.29.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
-                "reference": "3a5a818d7d3e4b5bd2e56fb9de44dbded6eae07f"
+                "reference": "7ca7e325dca3adb6a598385aab81f527b8d6c75d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/3a5a818d7d3e4b5bd2e56fb9de44dbded6eae07f",
-                "reference": "3a5a818d7d3e4b5bd2e56fb9de44dbded6eae07f",
+                "url": "https://api.github.com/repos/PHPOffice/PhpSpreadsheet/zipball/7ca7e325dca3adb6a598385aab81f527b8d6c75d",
+                "reference": "7ca7e325dca3adb6a598385aab81f527b8d6c75d",
                 "shasum": ""
             },
             "require": {
@@ -5289,9 +5291,9 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
-                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.2"
+                "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.29.4"
             },
-            "time": "2024-09-29T07:04:47+00:00"
+            "time": "2024-11-10T16:26:22+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -7175,16 +7177,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "11.9.2",
+            "version": "11.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "6a39eca52236bc1e1261f366d4022996521ae843"
+                "reference": "39b7b54a690ffd7caf5c37cd2afc8798c21e29da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/6a39eca52236bc1e1261f366d4022996521ae843",
-                "reference": "6a39eca52236bc1e1261f366d4022996521ae843",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/39b7b54a690ffd7caf5c37cd2afc8798c21e29da",
+                "reference": "39b7b54a690ffd7caf5c37cd2afc8798c21e29da",
                 "shasum": ""
             },
             "require": {
@@ -7268,7 +7270,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-medialibrary/issues",
-                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.9.2"
+                "source": "https://github.com/spatie/laravel-medialibrary/tree/11.10.0"
             },
             "funding": [
                 {
@@ -7280,7 +7282,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-10-18T14:24:58+00:00"
+            "time": "2024-11-08T15:48:58+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -7344,16 +7346,16 @@
         },
         {
             "name": "spatie/laravel-permission",
-            "version": "6.10.0",
+            "version": "6.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-permission.git",
-                "reference": "2444bb914a52c570c00ae8c94e096a58e01b2317"
+                "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/2444bb914a52c570c00ae8c94e096a58e01b2317",
-                "reference": "2444bb914a52c570c00ae8c94e096a58e01b2317",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/8bb69d6d67387f7a00d93a2f5fab98860f06e704",
+                "reference": "8bb69d6d67387f7a00d93a2f5fab98860f06e704",
                 "shasum": ""
             },
             "require": {
@@ -7415,7 +7417,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
-                "source": "https://github.com/spatie/laravel-permission/tree/6.10.0"
+                "source": "https://github.com/spatie/laravel-permission/tree/6.10.1"
             },
             "funding": [
                 {
@@ -7423,7 +7425,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-05T17:30:49+00:00"
+            "time": "2024-11-08T18:45:41+00:00"
         },
         {
             "name": "spatie/temporary-directory",
@@ -10546,16 +10548,16 @@
     "packages-dev": [
         {
             "name": "fakerphp/faker",
-            "version": "v1.23.1",
+            "version": "v1.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FakerPHP/Faker.git",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b"
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/bfb4fe148adbf78eff521199619b93a52ae3554b",
-                "reference": "bfb4fe148adbf78eff521199619b93a52ae3554b",
+                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/a136842a532bac9ecd8a1c723852b09915d7db50",
+                "reference": "a136842a532bac9ecd8a1c723852b09915d7db50",
                 "shasum": ""
             },
             "require": {
@@ -10603,9 +10605,9 @@
             ],
             "support": {
                 "issues": "https://github.com/FakerPHP/Faker/issues",
-                "source": "https://github.com/FakerPHP/Faker/tree/v1.23.1"
+                "source": "https://github.com/FakerPHP/Faker/tree/v1.24.0"
             },
-            "time": "2024-01-02T13:46:09+00:00"
+            "time": "2024-11-07T15:11:20+00:00"
         },
         {
             "name": "filp/whoops",
@@ -10943,16 +10945,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.12.0",
+            "version": "1.12.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c"
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
-                "reference": "3a6b9a42cd8f8771bd4295d13e1423fa7f3d942c",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/123267b2c49fbf30d78a7b2d333f6be754b94845",
+                "reference": "123267b2c49fbf30d78a7b2d333f6be754b94845",
                 "shasum": ""
             },
             "require": {
@@ -10991,7 +10993,7 @@
             ],
             "support": {
                 "issues": "https://github.com/myclabs/DeepCopy/issues",
-                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.0"
+                "source": "https://github.com/myclabs/DeepCopy/tree/1.12.1"
             },
             "funding": [
                 {
@@ -10999,7 +11001,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-06-12T14:39:25+00:00"
+            "time": "2024-11-08T17:47:46+00:00"
         },
         {
             "name": "nunomaduro/collision",
