@@ -12,6 +12,8 @@ class TestFarmLocationLevels extends Command
     /**
      * The name and signature of the console command.
      *
+     * This is a quick command program to ease testing
+     *
      * @var string
      */
     protected $signature = 'app:test-farm-location-levels';
