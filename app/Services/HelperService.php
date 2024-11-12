@@ -119,7 +119,8 @@ class HelperService
         return null;
     }
 
-    public static function findFarmLocationDetails(string $farmId): string
+    // find farm's full location details for data export to excel file
+    public static function findFarmLocationDetails(string $farmId): array
     {
         // find farm model
         $farm = Farm::find($farmId);
@@ -145,6 +146,6 @@ class HelperService
 
         $reversedArray = array_reverse($array);
 
-        return json_encode($reversedArray);
+        return $reversedArray;
     }
 }

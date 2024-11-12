@@ -2,15 +2,8 @@
 
 namespace App\Models\SampleFrame;
 
-use App\Models\Site;
-use App\Models\Traits\IsLookupList;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
-use App\Models\Traits\HasLinkedDataset;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Interfaces\LookupListEntry;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\LookupTables\LookupEntry;
@@ -30,11 +23,6 @@ class Location extends LookupEntry
     {
         return $this->morphTo('owner');
     }
-
-    // public function site(): HasOne
-    // {
-    //     return $this->hasOne(Site::class);
-    // }
 
     public function locationLevel(): BelongsTo
     {

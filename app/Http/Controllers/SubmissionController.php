@@ -70,6 +70,8 @@ class SubmissionController extends Controller
 
                 $farm = $team->farms()->create([
                     'location_id' => $parentLocationId,
+                    // there is no team_code in location selection test ODK form, use a timestamp as a unique id temporary
+                    // TODO: get team_code from ODK submission content
                     'team_code' => 'C' . Carbon::now()->getTimestampMs(),
                     'identifiers' => $identifiers,
                 ]);
