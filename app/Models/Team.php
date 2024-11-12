@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -67,6 +68,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms
     public function locations(): MorphMany
     {
         return $this->morphMany(Location::class, 'owner');
+    }
+
+    public function farms(): MorphMany
+    {
+        return $this->morphMany(Farm::class, 'owner');
     }
 
     public function imports(): HasMany
