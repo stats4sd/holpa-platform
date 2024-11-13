@@ -11,9 +11,15 @@ class Pilot extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $navigationLabel = 'Pilot';
+    protected static ?string $title = 'Localisation: Pilot';
 
-    protected static ?string $title = '';
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
 
     public function getMaxContentWidth(): MaxWidth
     {

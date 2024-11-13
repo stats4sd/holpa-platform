@@ -11,6 +11,8 @@ class SurveyLanguages extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
+    protected static ?string $title = 'Context: Survey Languages';
+
     public function getBreadcrumbs(): array
     {
         return [
@@ -18,8 +20,6 @@ class SurveyLanguages extends Page
             static::getUrl() => static::getTitle(),
         ];
     }
-
-    protected static ?string $title = 'Context: Survey Languages';
 
     public function getMaxContentWidth(): MaxWidth
     {

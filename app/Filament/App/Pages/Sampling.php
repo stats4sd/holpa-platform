@@ -10,10 +10,16 @@ class Sampling extends Page
     protected static string $view = 'filament.app.pages.sampling';
 
     protected static bool $shouldRegisterNavigation = false;
+    
+    protected static ?string $title = 'Sampling';
 
-    protected static ?string $navigationLabel = 'Sampling';
-
-    protected static ?string $title = '';
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
 
     public function getMaxContentWidth(): MaxWidth
     {

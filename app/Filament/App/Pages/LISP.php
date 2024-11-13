@@ -11,10 +11,15 @@ class LISP extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $navigationLabel = 'LISP';
+    protected static ?string $title = 'Localisation: LISP';
 
-    protected static ?string $title = '';
-
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;
