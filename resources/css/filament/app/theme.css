@@ -18,5 +18,5 @@
 }
 
 .fi-header-heading {
-    @apply text-green font-bold text-left text-2xl mb-8;
+    @apply text-green font-bold text-left text-3xl pt-4;
 }

@@ -2,14 +2,14 @@
 use App\Filament\App\Pages\SurveyDashboard;
 ?>
 
-<div class="pt-8 px-4">
+<div>
 
     <!-- Content -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
 
         <!-- Instructions -->
         <div class="py-4 rounded-md">
-            <h2 class="text-green font-bold text-lg mb-4">Instructions</h2>
+            <h2 class="text-green font-bold text-lg mb-4">INSTRUCTIONS</h2>
             <p class="text-black mb-16">{{ $instructions }}</p>
         </div>
 
@@ -19,4 +19,5 @@ use App\Filament\App\Pages\SurveyDashboard;
         </div>
 
     </div>
+
 </div>
