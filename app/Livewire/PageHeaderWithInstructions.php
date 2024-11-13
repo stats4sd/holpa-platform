@@ -6,7 +6,6 @@ use Livewire\Component;
 
 class PageHeaderWithInstructions extends Component
 {
-    public $heading;
     public $instructions;
     public $videoUrl;
     
