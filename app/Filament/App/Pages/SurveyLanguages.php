@@ -11,9 +11,15 @@ class SurveyLanguages extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $navigationLabel = 'Survey Languages';
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
 
-    protected static ?string $title = '';
+    protected static ?string $title = 'Context: Survey Languages';
 
     public function getMaxContentWidth(): MaxWidth
     {
