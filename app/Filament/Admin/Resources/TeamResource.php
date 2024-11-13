@@ -2,7 +2,7 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\NewTeamResource\Pages;
+use App\Filament\Admin\Resources\TeamResource\Pages;
 use App\Models\Team;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -10,7 +10,7 @@ use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\Relati
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
 use Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 
-class NewTeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource
+class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource
 {
     protected static ?string $model = Team::class;
 
@@ -51,10 +51,10 @@ class NewTeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Re
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNewTeams::route('/'),
-            'create' => Pages\CreateNewTeam::route('/create'),
-            'edit' => Pages\EditNewTeam::route('/{record}/edit'),
-            'view' => Pages\ViewNewTeam::route('/{record}'),
+            'index' => Pages\ListTeams::route('/'),
+            'create' => Pages\CreateTeam::route('/create'),
+            'edit' => Pages\EditTeam::route('/{record}/edit'),
+            'view' => Pages\ViewTeam::route('/{record}'),
         ];
     }
 
