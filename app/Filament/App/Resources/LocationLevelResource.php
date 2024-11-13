@@ -4,7 +4,6 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\LocationLevelResource\Pages;
 use App\Filament\App\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
-use App\Filament\Traits\IsLookupListResource;
 use App\Models\SampleFrame\LocationLevel;
 use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
@@ -23,11 +22,11 @@ use Illuminate\Support\Str;
 
 class LocationLevelResource extends Resource
 {
-    use IsLookupListResource;
-
     protected static ?string $model = LocationLevel::class;
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'Survey Sample Frame';
+
+    protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
     // Possible improvement: show Location Levels as first menu item, then show different location levels one by one corresponding to location hierarchy
     protected static ?int $navigationSort = 1;
