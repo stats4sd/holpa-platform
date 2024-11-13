@@ -59,22 +59,14 @@ class FarmResource extends Resource
 
         return $table
             ->columns([
-                // Tables\Columns\TextColumn::make('agSystem.site.location.name')->label('Site'),
-                // ...$locationLevelColumns,
-                // Tables\Columns\TextColumn::make('agSystem.name')->label('Agricultural System'),
+                ...$locationLevelColumns,
                 Tables\Columns\TextColumn::make('team_code')->label('Unique Code')
                     ->sortable()
                     ->searchable(),
-                // Tables\Columns\TextColumn::make('farmGroups.name')->listWithLineBreaks()->badge(),
-                // ...$idColumns,
-                // ...$propertyColumns,
+                ...$idColumns,
+                ...$propertyColumns,
             ])
-            ->filters([
-                // Tables\Filters\SelectFilter::make('farmGroup')
-                //     ->relationship('farmGroups', 'name')
-                //     ->multiple()
-                //     ->preload()
-            ])
+            ->filters([])
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
