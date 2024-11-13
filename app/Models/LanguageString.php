@@ -9,15 +9,17 @@ use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class LanguageString extends Model
 {
-    use HasFactory;
 
-    public function surveyRow(): BelongsTo
+    // A language string is linked to either a SurveyRow or a ChoiceListEntry;
+    public function linkedEntry(): MorphTo
     {
-        return $this->belongsTo(SurveyRow::class);
+        return $this->morphTo('linked_entry');
     }
+
 
     public function languageStringType(): BelongsTo
     {

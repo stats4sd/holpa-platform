@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class XlsformTemplateLanguage extends Model
 {
-    use HasFactory;
 
     public function xlsformTemplate(): BelongsTo
     {

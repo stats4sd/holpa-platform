@@ -11,8 +11,16 @@ test('an xlsform template is correctly imported and updated', function () {
 
     // check that the survey rows were imported correctly
     $this->assertDatabaseCount('survey_rows', 3);
+    $this->assertDatabaseCount('choice_lists', 3);
+    $this->assertDatabaseCount('choice_list_entries', 12);
     $this->assertDatabaseCount('xlsform_template_languages', 2);
-    $this->assertDatabaseCount('language_strings', 9);
+    $this->assertDatabaseCount('language_strings', 21);
+
+
+    // check for a specific entry
+    $choiceEntry = \App\Models\ChoiceListEntry::firstWhere('name', '=', 'juice');
+
+    $this->assertEquals('5', $choiceEntry->properties['filter2']);
 
     // ******** test that the xlsform template is updated correctly ******** //
     $import = new \App\Imports\XlsformTemplateWorksheetImport($this->xlsformTemplate);
@@ -20,7 +28,7 @@ test('an xlsform template is correctly imported and updated', function () {
 
     // check that the survey rows were updated correctly
     $this->assertDatabaseCount('xlsform_template_languages', 2);
-    $this->assertDatabaseCount('language_strings', 12);
+    $this->assertDatabaseCount('language_strings', 24);
 
     // check that the template languages are not marked as needing an update
     $this->assertDatabaseHas('xlsform_template_languages', [
@@ -54,7 +62,7 @@ test('a language not in the xlsform template import is marked as needing an upda
 
     $this->assertDatabaseCount('survey_rows', 3);
     $this->assertDatabaseCount('xlsform_template_languages', 3);
-    $this->assertDatabaseCount('language_strings', 10);
+    $this->assertDatabaseCount('language_strings', 22);
 
     // ******** test that the xlsform template languages are marked as needing an update updated correctly ******** //
     // check that the template languages are not marked as needing an update
@@ -76,6 +84,5 @@ test('a language not in the xlsform template import is marked as needing an upda
         'language_id' => \App\Models\Language::where('iso_alpha2', 'es')->first()->id,
         'needs_update' => 1,
     ]);
-
 
 });

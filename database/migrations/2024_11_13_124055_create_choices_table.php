@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('language_strings', function (Blueprint $table) {
+        Schema::create('choice_list_entries', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('xlsform_template_language_id');
-            $table->morphs('linked_entry');
-            $table->foreignId('language_string_type_id');
-            $table->text('text');
+            $table->foreignId('choice_list_id')->constrained()->onDelete('cascade');
+
+            // entries might be global; or localised (localised ones have an owner)
+            $table->nullableMorphs('owner');
+            $table->string('name');
+            $table->json('properties');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('language_strings');
+        Schema::dropIfExists('choices');
     }
 };

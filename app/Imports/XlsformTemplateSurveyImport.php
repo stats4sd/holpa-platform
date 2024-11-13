@@ -15,9 +15,10 @@ use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class XlsformTemplateImport implements ToCollection, WithHeadingRow
+class XlsformTemplateSurveyImport implements ToCollection, WithHeadingRow
 {
 
+    use HasTranslatableColumns;
 
     public function __construct(public XlsformTemplate $xlsformTemplate)
     {
@@ -38,9 +39,19 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
 
         $rows
             ->filter(fn($row) => !empty($row['name']))
-            ->each(function ($row) use (&$currentImportTemplateLanguages, &$currentImportSurveyRows, &$stringUpdated) {
+            ->each(function (Collection $row) use (&$currentImportTemplateLanguages, &$currentImportSurveyRows, &$stringUpdated) {
 
-                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(['name' => $row['name']], []);
+                $props = $row
+                    ->filter(fn($value, $key) => !$this->isTranslatableColumn($key))
+                    ->filter(fn($value, $key) => !in_array($key, $this->getSurveyRowHeaders()));
+
+                $data = $row
+                    ->filter(fn($value, $key) => in_array($key, $this->getSurveyRowHeaders()))
+                    ->filter(fn($value, $key) => $value !== null);
+
+                $data['properties'] = $props;
+
+                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(['name' => $row['name']], $data->toArray());
                 $currentImportSurveyRows[] = $surveyRow;
 
                 foreach ($row as $column => $value) {
@@ -73,39 +84,6 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
     }
 
 
-    // Check if the column is translatable
-    // Note: column heading is sanitised by WithHeadingRow e.g., 'label::English (en)' becomes 'labelenglish_en'
-    private function isTranslatableColumn(string $column): bool
-    {
-        $types = LanguageStringType::pluck('name')->toArray();
-        $pattern = '/^(' . implode('|', $types) . ')[a-z]+_[a-z]{2}$/';
-        return preg_match($pattern, $column);
-    }
-
-    // Extract language string type and language from column heading
-    private function extractTypeAndLanguage(string $column): array
-    {
-        $types = LanguageStringType::pluck('name')->toArray();
-        $languages = Language::pluck('iso_alpha2')->toArray();
-
-        $typesPattern = implode('|', array_map('preg_quote', $types));
-        $languagesPattern = implode('|', array_map('preg_quote', $languages));
-
-        if (preg_match('/^(' . $typesPattern . ')([a-z]+)_(' . $languagesPattern . ')$/', $column, $matches)) {
-            $type = $matches[1];         // The matched type
-            $language = $matches[3];      // The language code (e.g., 'en', 'es')
-
-            return [
-                LanguageStringType::firstWhere('name', $type),
-                Language::firstWhere('iso_alpha2', $language),
-            ];
-
-        } else {
-            // Log an error when the column does not match expected format and return null values
-            abort(500, "Column heading does not match expected format: {$column}");
-        }
-    }
-
     // Extract unique languages from the headings and create XlsformTemplateLanguage instances
     private function extractUniqueTemplateLanguagesFromHeadings($headings): \Illuminate\Database\Eloquent\Collection
     {
@@ -127,37 +105,6 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
         }
 
         return (new XlsformTemplateLanguage)->newCollection($templateLanguages);
-    }
-
-    // Create or update a LanguageString
-    // returns a boolean to indicate if a change was made or not.
-    private function createLanguageString(SurveyRow $surveyRow, XlsformTemplateLanguage $templateLanguage, LanguageStringType $type, string $value): bool
-    {
-
-        $existingLanguageString = LanguageString::where([
-            'survey_row_id' => $surveyRow->id,
-            'xlsform_template_language_id' => $templateLanguage->id,
-            'language_string_type_id' => $type->id,
-        ])->first();
-
-        if ($existingLanguageString) {
-            if ($existingLanguageString->text !== $value) {
-                $existingLanguageString->update(['text' => $value]);
-                return true; // Indicate a change was made
-            }
-        } else {
-            LanguageString::create([
-                'survey_row_id' => $surveyRow->id,
-                'xlsform_template_language_id' => $templateLanguage->id,
-                'language_string_type_id' => $type->id,
-                'text' => $value,
-            ]);
-            return true;
-        }
-
-        // no change was made;
-        return false;
-
     }
 
     // (Template edit) Remove survey rows and associated language strings if not in the current import
@@ -186,6 +133,25 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow
         foreach ($missingTemplateLanguages as $templateLanguage) {
             $templateLanguage->update(['needs_update' => 1]);
         }
+    }
+
+    private function getSurveyRowHeaders(): array
+    {
+        return
+            [
+                'name',
+                'type',
+                'required',
+                'relevant',
+                'appearance',
+                'calculation',
+                'constraint',
+                'choice_filter',
+                'repeat_count',
+                'default',
+                'note',
+                'trigger',
+            ];
     }
 
 }

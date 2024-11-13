@@ -2,28 +2,32 @@
 
 namespace App\Models;
 
-use App\Models\LanguageString;
-use App\Models\XlsformTemplate;
+use App\Models\Traits\IsLookupList;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class SurveyRow extends Model implements HasLanguageStrings
+class ChoiceListEntry extends Model implements HasLanguageStrings
 {
+    use IsLookupList;
+
 
     protected $casts = [
+        'is_localisable' => 'boolean',
+        'is_dataset' => 'boolean',
         'properties' => 'collection',
     ];
 
-    public function xlsformTemplate(): BelongsTo
+    public function choiceList(): BelongsTo
     {
-        return $this->belongsTo(XlsformTemplate::class);
+        return $this->belongsTo(ChoiceList::class);
     }
 
     public function languageStrings(): MorphMany
     {
         return $this->morphMany(LanguageString::class, 'linked_entry');
     }
+
 }

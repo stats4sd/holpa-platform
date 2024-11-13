@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Language extends Model
 {
-    use HasFactory;
 
     public function xlsformTemplateLanguages(): HasMany
     {

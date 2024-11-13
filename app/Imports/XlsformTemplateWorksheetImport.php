@@ -25,7 +25,7 @@ class XlsformTemplateWorksheetImport implements WithMultipleSheets
     public function sheets(): array
     {
         return [
-            'survey' => new XlsformTemplateImport($this->xlsformTemplate),
+            'survey' => new XlsformTemplateSurveyImport($this->xlsformTemplate),
             'choices' => new XlsformTemplateChoicesImport($this->xlsformTemplate),
         ];
     }

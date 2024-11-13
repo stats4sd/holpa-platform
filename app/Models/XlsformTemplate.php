@@ -10,7 +10,6 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTem
 
 class XlsformTemplate extends OdkLinkXlsformTemplate
 {
-    use HasFactory;
 
     public function xlsformTemplateLanguages(): HasMany
     {
@@ -20,6 +19,11 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
     public function surveyRows(): HasMany
     {
         return $this->hasMany(SurveyRow::class);
+    }
+
+    public function choiceLists(): HasMany
+    {
+        return $this->hasMany(ChoiceList::class);
     }
 
 }

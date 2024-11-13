@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class LanguageStringType extends Model
 {
-    use HasFactory;
 
     public function languageStrings(): HasMany
     {
