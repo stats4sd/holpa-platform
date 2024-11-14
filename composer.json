@@ -12,6 +12,7 @@
         "althinect/filament-spatie-roles-permissions": "^2.2",
         "awcodes/shout": "^2.0",
         "better-futures-studio/filament-local-logins": "^1.2",
+        "eightynine/filament-excel-import": "3.x-dev",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.9",
         "laravel/reverb": "^1.0",
