@@ -5,4 +5,18 @@
         'videoUrl' => 'https://www.youtube.com/embed/VIDEO_ID'
     ])
 
+    @livewire('rounded-section', [
+        'heading' => 'Manage Hierarchy',
+        'description' => 'Manage the location levels (or other strata) in your sampling frame.',
+        'buttonLabel' => 'Update',
+        'url' => 'location-levels'
+    ])
+
+    @livewire('rounded-section', [
+        'heading' => 'List of farms',
+        'description' => 'Add or import details of the farms you will visit to give the questionnaire.',
+        'buttonLabel' => 'Update',
+        'url' => 'farms'
+    ])
+
 </x-filament-panels::page>

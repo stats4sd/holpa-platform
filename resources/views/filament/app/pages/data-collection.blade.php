@@ -5,4 +5,18 @@
         'videoUrl' => 'https://www.youtube.com/embed/VIDEO_ID'
     ])
 
+    @livewire('rounded-section', [
+        'heading' => 'View and manage survey',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.',
+        'buttonLabel' => 'Update',
+        'url' => 'url_to_be_added_here'
+    ])
+
+    @livewire('rounded-section', [
+        'heading' => 'View and manage submissions',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.',
+        'buttonLabel' => 'Update',
+        'url' => 'url_to_be_added_here'
+    ])
+
 </x-filament-panels::page>

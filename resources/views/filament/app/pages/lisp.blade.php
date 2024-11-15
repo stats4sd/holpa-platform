@@ -1,8 +1,45 @@
+<?php
+use App\Filament\App\Pages\LispWorkshop;
+use App\Filament\App\Pages\LispIndicators;
+
+$lispWorkshopUrl = url(LispWorkshop::getUrl());
+$lispIndicatorsUrl = url(LispIndicators::getUrl());
+
+?>
+
 <x-filament-panels::page class="bg-white shadow-xl px-10 h-full">
     
     @livewire('page-header-with-instructions', [
         'instructions' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo. Morbi tincidunt libero ut nunc scelerisque, eget fringilla nulla volutpat. Aliquam feugiat massa sit amet arcu convallis, et iaculis ligula facilisis. Etiam accumsan magna et ipsum facilisis, at malesuada nulla ornare.',
         'videoUrl' => 'https://www.youtube.com/embed/VIDEO_ID'
+    ])
+
+    <div class="h-1 bg-green w-full mb-8"></div>
+
+    <div class="mb-6">
+        <p class="font-bold text-green text-lg pb-4">CUSTOM SURVEY</p>
+        <p><b>You are customising the survey for this project only.</b></p>
+        <p>Customisations you make in the following steps will <b>only affect the localised version of the survey used by your team.</b>
+            The global survey selected/uploaded in Step 1 and shared with other teams will remain unchanged. Youi will be prompted to update
+            the translation of your survey in future steps.</p>
+    </div>
+
+    <div class="h-1 bg-green w-full mb-8"></div>
+
+    @livewire('rounded-section', [
+        'heading' => 'Local indicator selection process (LISP) workshop',
+        'description' => 'Quick description',
+        'buttonLabel' => 'View details',
+        'url' => $lispWorkshopUrl
+    ])
+
+    @livewire('rounded-section', [
+        'heading' => 'View and manage submissions',
+        'description' => 'Customise the indicators included in your survey based on the outcome of the LISP workshop. This includes options to map
+                            indicators identified during the workshop to existing available indicators as well as adding custom indicators and
+                            questions.',
+        'buttonLabel' => 'Update',
+        'url' => $lispIndicatorsUrl
     ])
 
 </x-filament-panels::page>

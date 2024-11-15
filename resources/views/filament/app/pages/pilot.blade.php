@@ -5,4 +5,11 @@
         'videoUrl' => 'https://www.youtube.com/embed/VIDEO_ID'
     ])
 
+    @livewire('rounded-section', [
+        'heading' => 'Pilot and enumerator training',
+        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.',
+        'buttonLabel' => 'View details',
+        'url' => 'url_to_be_added_here'
+    ])
+
 </x-filament-panels::page>
