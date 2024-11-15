@@ -5,4 +5,8 @@
         'videoUrl' => 'https://www.youtube.com/embed/VIDEO_ID'
     ])
 
+    @livewire('team-locales-table')
+
+    @livewire('xlsform-languages-table')
+
 </x-filament-panels::page>
