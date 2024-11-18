@@ -3,7 +3,7 @@
 namespace App\Filament\App\Pages;
 
 use Filament\Pages\Page;
-use App\Filament\App\Pages\LISP;
+use App\Filament\App\Pages\Lisp;
 use Filament\Support\Enums\MaxWidth;
 use App\Filament\App\Pages\SurveyDashboard;
 
@@ -22,7 +22,7 @@ class LispWorkshop extends Page
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            LISP::getUrl() => 'Localisation: LISP',
+            Lisp::getUrl() => 'Localisation: LISP',
             static::getUrl() => 'Workshop',
         ];
     }

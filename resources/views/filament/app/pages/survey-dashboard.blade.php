@@ -4,7 +4,7 @@ use App\Filament\App\Pages\AddData;
 use App\Filament\App\Pages\SurveyLanguages;
 use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\PlaceAdaptations;
-use App\Filament\App\Pages\LISP;
+use App\Filament\App\Pages\Lisp;
 use App\Filament\App\Pages\Pilot;
 use App\Filament\App\Pages\DataCollection;
 use App\Filament\App\Pages\DataAnalysis;
@@ -113,7 +113,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Localisation: LISP</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center mb-4">
-                            <a href="{{ url(LISP::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ url(Lisp::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>

@@ -1,5 +1,5 @@
 <?php
-use App\Filament\App\Pages\LISP;
+use App\Filament\App\Pages\Lisp;
 ?>
 
 <x-filament-panels::page>
@@ -59,7 +59,7 @@ use App\Filament\App\Pages\LISP;
     </div>
 
     <div class="flex justify-center space-x-4 mt-6">
-        <a href="{{ url(LISP::getUrl()) }}" 
+        <a href="{{ url(Lisp::getUrl()) }}" 
            class="px-6 py-2 bg-green text-white font-semibold rounded-lg text-center">
             Back
         </a>

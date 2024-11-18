@@ -21,7 +21,7 @@ class LispIndicators extends Page
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            LISP::getUrl() => 'Localisation: LISP',
+            Lisp::getUrl() => 'Localisation: LISP',
             static::getUrl() => 'Customise indicators',
         ];
     }
