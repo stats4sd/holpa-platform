@@ -19,6 +19,10 @@ class ViewTeam extends ViewRecord
     protected function getHeaderActions(): array
     {
         return [
+            Actions\Action::make('View on ODK Central')
+                ->label('View on ODK Central')
+                ->visible(fn() => $this->getRecord()->odkProject !== null)
+                ->url(fn() => config('filament-odk-link.odk.url') . '/#/projects/' . $this->getRecord()->odkProject->id),
             Actions\EditAction::make(),
             Actions\DeleteAction::make(),
         ];
