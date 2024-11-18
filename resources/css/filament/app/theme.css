@@ -7,7 +7,7 @@
     --blue: #3FA9F5;
     --orange: #EB5A45;
     --light-grey: #F2F2F8;
-    --grey: #989898;
+    --shadowgrey: #989898;
   }
 
 .hover-effect {
@@ -24,4 +24,8 @@
 
 .fi-header-subheading {
     @apply text-2xl;
+}
+
+.rounded-3xl {
+    border-radius: 1.5rem;
 }
