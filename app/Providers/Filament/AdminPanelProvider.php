@@ -20,7 +20,6 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
-use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\UserResource;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Pages\Dashboard;
 
@@ -38,8 +37,6 @@ class AdminPanelProvider extends PanelProvider
             // to include "Datasets" resource
             ->discoverResources(in: app_path('Filament/Admin/Resources'), for: 'App\\Filament\\Admin\\Resources')
             ->resources([
-                // Bring in ODK Link Resources "Xlsform Templates"
-                XlsformTemplateResource::class,
                 // Bring in Users resource from package stats4sd/filament-team-management
                 UserResource::class,
             ])
