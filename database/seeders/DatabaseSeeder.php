@@ -2,13 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use Illuminate\Database\Seeder;
+use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Database\Seeders\LanguageSeeder;
-use Database\Seeders\LanguageStringTypeSeeder;
-use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,23 +14,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        // ODK Platform setup
         $this->call(PlatformSeeder::class);
 
-        $this->call([
-            Test\ProgramsTableSeeder::class,
-            Test\TeamsTableSeeder::class,
-            Test\ProgramTeamTableSeeder::class,
+        // call the prep seeders always.
+        foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
+            $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
+            $this->call($class);
+        }
 
-            Test\TestUserSeeder::class,
-            Test\ModelHasRolesTableSeeder::class,
-            Test\RoleHasPermissionsTableSeeder::class,
-
-            Test\ProgramUserTableSeeder::class,
-            Test\TeamMembersTableSeeder::class,
-            LanguageSeeder::class,
-            LanguageStringTypeSeeder::class,
-        ]);
-
-        $this->call(ThemesTableSeeder::class);
+        // Call the test seeders locally
+        if (app()->environment('local')) {
+            foreach (glob(database_path('seeders/Test/*.php')) as $file) {
+                $class = 'Database\\Seeders\\Test\\' . pathinfo($file, PATHINFO_FILENAME);
+                $this->call($class);
+            }
+        }
     }
 }
