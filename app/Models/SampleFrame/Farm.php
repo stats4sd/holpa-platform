@@ -2,17 +2,8 @@
 
 namespace App\Models\SampleFrame;
 
-use App\Models\AgSystem;
-use App\Models\Interfaces\LookupListEntry;
-use App\Models\Traits\HasLinkedDataset;
-use App\Models\Traits\IsLookupList;
-use Illuminate\Database\Eloquent\Model;
 use App\Models\LookupTables\LookupEntry;
-use App\Models\SurveyData\CaetAssessment;
-use App\Models\SurveyData\PerformanceAssessment;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
@@ -26,26 +17,6 @@ class Farm extends LookupEntry
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
-    }
-
-    public function agSystem(): BelongsTo
-    {
-        return $this->belongsTo(AgSystem::class);
-    }
-
-    public function farmGroups(): BelongsToMany
-    {
-        return $this->belongsToMany(FarmGroup::class);
-    }
-
-    public function caetAssessments(): HasMany
-    {
-        return $this->hasMany(CaetAssessment::class);
-    }
-
-    public function performanceAssessments(): HasMany
-    {
-        return $this->hasMany(PerformanceAssessment::class);
     }
 
     public function getCsvContentsForOdk(?WithXlsforms $team = null): array
@@ -67,5 +38,4 @@ class Farm extends LookupEntry
     {
         return $this->belongsTo(Location::class);
     }
-
 }

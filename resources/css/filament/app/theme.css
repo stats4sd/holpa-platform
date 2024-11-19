@@ -16,3 +16,7 @@
 .hover-effect:hover {
     @apply shadow-lg scale-105;
 }
+
+.fi-header-heading {
+    @apply text-green font-bold text-left text-3xl pt-4;
+}

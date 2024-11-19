@@ -2,13 +2,14 @@
 
 namespace App\Models\SampleFrame;
 
-use App\Models\LookupTables\LookupEntry;
 use App\Models\Team;
-use Filament\Facades\Filament;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Str;
+use Filament\Facades\Filament;
+use App\Models\LookupTables\LookupEntry;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class LocationLevel extends LookupEntry
@@ -19,7 +20,7 @@ class LocationLevel extends LookupEntry
             $locationLevel->slug = $locationLevel->slug ?? Str::slug($locationLevel->name);
         });
 
-        if(Filament::hasTenancy() && Filament::getTenant() instanceof Team) {
+        if (Filament::hasTenancy() && Filament::getTenant() instanceof Team) {
             static::addGlobalScope('team', function ($query) {
                 $query->where('owner_id', Filament::getTenant()->id);
             });
@@ -29,6 +30,11 @@ class LocationLevel extends LookupEntry
     public function getRouteKeyName(): string
     {
         return 'slug';
+    }
+
+    public function owner(): MorphTo
+    {
+        return $this->morphTo('owner');
     }
 
     public function parent(): BelongsTo
@@ -60,13 +66,12 @@ class LocationLevel extends LookupEntry
         }
 
         return $position;
-
     }
 
     public function pos(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->getPos(),
+            get: fn() => $this->getPos(),
         );
     }
 
