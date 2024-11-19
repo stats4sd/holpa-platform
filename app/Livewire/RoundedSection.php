@@ -2,15 +2,16 @@
 
 namespace App\Livewire;
 
+use Illuminate\Support\HtmlString;
 use Livewire\Component;
 
 class RoundedSection extends Component
 {
-    public $heading;
-    public $description;
-    public $buttonLabel;
-    public $url;
-    
+    public string $heading;
+    public string|HtmlString $description;
+    public string $buttonLabel;
+    public string $url;
+
     public function render()
     {
         return view('livewire.rounded-section');

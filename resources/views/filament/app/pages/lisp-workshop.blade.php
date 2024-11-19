@@ -6,7 +6,7 @@ use App\Filament\App\Pages\Lisp;
 
     <div class="text-lg">
         <p>The local indicator selection process (LISP) is an essential step to ensure that the variables captured by the HOLPA tool are relevant and approprate to the local context.</p>
-        <p class="pt-4">The LISP involves conducting a one-day workshop with local farmers and stakeholders, to brainstorm and prioritize a set of local indicators to include in the HOLPA tool. 
+        <p class="pt-4">The LISP involves conducting a one-day workshop with local farmers and stakeholders, to brainstorm and prioritize a set of local indicators to include in the HOLPA tool.
             Participants brainstorm potential indicators for each one of the same dimensions as the HOLPA Performance module (agronomic, social, environmental), that could be used
             to monitor the types of changes they want to see in their farms and landscapes. After agreeing on a set of evaluation criteria (such as importance, ease of measurement,
             liklihood of changing), participants evaluate the potential indicators to arrive at a set of approximately three local indicators per performance dimension to include in
@@ -15,35 +15,35 @@ use App\Filament\App\Pages\Lisp;
         <p class="pt-4">More guidance on how to complete the workshop.</p>
     </div>
 
-   @livewire('rounded-section', [
-        'heading' => 'INDICATOR TEMPLATE',
-        'description' => 'To create the local indicators and incorporate them into the HOLPA survey, <b>you will need to use this template file.</b> 
+   <livewire:rounded-section
+        heading='INDICATOR TEMPLATE'
+        description='To create the local indicators and incorporate them into the HOLPA survey, <b>you will need to use this template file.</b>
                           This will ensure the required information for the indicators is included, and you will need to use it to upload your indicators
-                          to include in your survey.',
-        'buttonLabel' => 'Download .xlsx',
-        'url' => 'url_to_be_added_here'
-    ])
+                          to include in your survey.'
+        buttonLabel='Download .xlsx'
+        url='url_to_be_added_here'
+    />
 
     <div class="h-1 bg-green w-full mb-8"></div>
 
     <div class="font-bold text-green text-lg mb-4">OPTIONAL WORKSHOP SUPPORTING MATERIALS</div>
 
-    @livewire('rounded-section', [
-        'heading' => 'Slideshow Template',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.',
-        'buttonLabel' => 'Download .xlsx',
-        'url' => 'url_to_be_added_here'
-    ])
+    <livewire:rounded-section
+        heading='Slideshow Template'
+        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
+        buttonLabel='Download .xlsx'
+        url='url_to_be_added_here'
+    />
 
-    @livewire('rounded-section', [
-        'heading' => 'Global Survey Indicators',
-        'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.',
-        'buttonLabel' => 'Download .xlsx',
-        'url' => 'url_to_be_added_here'
-    ])
+    <livewire:rounded-section
+        heading='Global Survey Indicators'
+        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
+        buttonLabel='Download .xlsx'
+        url='url_to_be_added_here'
+    />
 
     <div class="flex justify-center mt-8">
-        <a href="url_to_be_added_here" 
+        <a href="url_to_be_added_here"
            class="px-6 py-2 bg-green text-white font-semibold rounded-lg">
             Download all workshop materials .zip
         </a>
@@ -59,11 +59,11 @@ use App\Filament\App\Pages\Lisp;
     </div>
 
     <div class="flex justify-center space-x-4 mt-6">
-        <a href="{{ url(Lisp::getUrl()) }}" 
+        <a href="{{ url(Lisp::getUrl()) }}"
            class="px-6 py-2 bg-green text-white font-semibold rounded-lg text-center">
             Back
         </a>
-        <a href="url_to_be_added_here" 
+        <a href="url_to_be_added_here"
            class="px-6 py-2 bg-green text-white font-semibold rounded-lg text-center">
             Mark as Completed
         </a>
