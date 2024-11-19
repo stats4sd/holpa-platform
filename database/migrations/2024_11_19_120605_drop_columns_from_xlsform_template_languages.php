@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locales', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('language_id')->constrained('languages')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->text('description')->nullable();
-            $table->timestamps();
+        Schema::table('xlsform_template_languages', function (Blueprint $table) {
+            $table->dropColumn('description');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locales');
+        Schema::table('xlsform_template_languages', function (Blueprint $table) {
+            //
+        });
     }
 };

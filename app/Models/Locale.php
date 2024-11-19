@@ -29,4 +29,13 @@ class Locale extends Model
     {
         return $this->belongsToMany(Team::class, 'locale_team', 'locale_id', 'team_id');
     }
+
+    public function getLanguageLabelAttribute()
+    {
+        $language = $this->language->name;
+        $isoAlpha2 = $this->language->iso_alpha2;
+        $description = $this->description ? ' - ' . $this->description : '';
+
+        return $language . ' (' . $isoAlpha2 . ')' . $description;
+    }
 }

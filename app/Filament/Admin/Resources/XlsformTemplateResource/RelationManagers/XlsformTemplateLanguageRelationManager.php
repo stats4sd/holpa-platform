@@ -2,23 +2,25 @@
 
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 
-use Carbon\Carbon;
 use Closure;
+use Carbon\Carbon;
 use Filament\Forms;
-use Filament\Forms\Get;
 use Filament\Tables;
+use App\Models\Locale;
+use Filament\Forms\Get;
 use App\Models\Language;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\ValidationException;
+use Filament\Forms\Components\Group;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Support\Facades\Storage;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Validator;
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\RelationManagers\RelationManager;
 
@@ -36,19 +38,24 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
         return $form
             ->schema([
                 Forms\Components\Select::make('language_id')
-                ->label('Select the language for the new translation')
-                ->options(function () {
-                    return Language::all()
-                        ->mapWithKeys(function ($language) {
-                            return [$language->id => $language->name . ' (' . $language->iso_alpha2 . ')'];
-                        })
-                        ->toArray();
-                })
-                ->required()
-                ->disabledOn('edit'),
-                Forms\Components\TextInput::make('description')
-                    ->placeholder('Optional description e.g., specify if this translation is for a particular dialect or region')
-                    ->maxLength(255),
+                    ->label('Select the language for the new translation')
+                    ->required()
+                    ->disabledOn('edit')
+                    ->options(function () {
+                        return Language::all()
+                            ->mapWithKeys(function ($language) {
+                                return [$language->id => $language->name . ' (' . $language->iso_alpha2 . ')'];
+                            })
+                            ->toArray();
+                    }),
+                Group::make()
+                    ->relationship('locale')
+                    ->schema([
+                        Forms\Components\TextInput::make('description')
+
+                            ->placeholder('Optional description e.g., specify if this translation is for a particular dialect or region')
+                            ->maxLength(255)
+                    ])
             ])->columns(1);
     }
 
@@ -62,7 +69,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     ->formatStateUsing(function ($state, XlsformTemplateLanguage $xlsform_template_language) {
                         return $xlsform_template_language->language->name . ' (' . $xlsform_template_language->language->iso_alpha2 . ')';
                     }),
-                Tables\Columns\TextColumn::make('description')
+                Tables\Columns\TextColumn::make('locale.description')
                     ->label('Translation Description'),
                 Tables\Columns\IconColumn::make('has_language_strings')->boolean()
                     ->label('Translations Uploaded')
@@ -79,7 +86,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         $template = $this->ownerRecord;
                         $templateTitle = $this->ownerRecord->title;
                         $currentDate = Carbon::now()->format('Y-m-d');
-                        $filename = "HOLPA - {$templateTitle} - translation - {$record->languageLabel} - {$currentDate}.xlsx";
+                        $filename = "HOLPA - {$templateTitle} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
 
                         return Excel::download(new XlsformTemplateLanguageExport($template, $record), $filename);
                     }),
@@ -88,7 +95,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     ->label('Upload translation file')
                     ->icon('heroicon-m-arrow-up-circle')
                     ->modalHeading(function (XlsformTemplateLanguage $record) {                
-                        return 'Upload Completed Translation File for ' . $record->languageLabel;
+                        return 'Upload Completed Translation File for ' . $record->localeLanguageLabel;
                     })                
                     ->form(function (XlsformTemplateLanguage $record) {
                         return [
@@ -101,7 +108,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                     // Check that the translation column exists and that there are no missing translation strings
                                     fn(Get $get): Closure => function (string $attribute, string $value, \Closure $fail) use ($get, $record) {
                                         // get the language label
-                                        $languageLabel = $record->languageLabel;
+                                        $languageLabel = $record->localeLanguageLabel;
 
                                         // get the file from $get
                                         $file = collect($get('translation_file'))->first();
@@ -161,14 +168,14 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                         // Display success message
                         Notification::make()
                             ->title('Success')
-                            ->body('Translations uploaded successfully for ' . $record->languageLabel)
+                            ->body('Translations uploaded successfully for ' . $record->localeLanguageLabel)
                             ->success()
                             ->send();
                     }),
 
                 Tables\Actions\EditAction::make()
                     ->modalHeading(function (XlsformTemplateLanguage $record) {
-                        return 'Edit xlsform template language ' . $record->languageLabel;
+                        return 'Edit xlsform template language ' . $record->localeLanguageLabel;
                     }),
             ])
             ->filters([
@@ -178,6 +185,16 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make()
                     ->disableCreateAnother()
                     ->label('Add new language')
+                    ->mutateFormDataUsing(function (array $data): array {
+                        $locale = Locale::create([
+                            'language_id' => $data['language_id'],
+                            'description' => $data['description'] ?? null,
+                        ]);
+
+                        $data['locale_id'] = $locale->id;
+
+                        return $data;
+                    })
             ]);
     }
 }
