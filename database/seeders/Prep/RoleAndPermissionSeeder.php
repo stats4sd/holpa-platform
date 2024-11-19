@@ -2,7 +2,6 @@
 
 namespace Database\Seeders\Prep;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 
@@ -27,6 +26,6 @@ class RoleAndPermissionSeeder extends Seeder
         ];
 
         $superAdminRole->permissions()->createMany($permissions);
-
+        $programAdminRole->givePermissionTo('access program admin panel');
     }
 }
