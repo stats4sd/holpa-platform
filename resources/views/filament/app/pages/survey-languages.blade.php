@@ -7,6 +7,6 @@
 
     @livewire('team-locales-table')
 
-    @livewire('xlsform-languages-table')
+    @livewire('locales-table')
 
 </x-filament-panels::page>

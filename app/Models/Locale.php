@@ -38,4 +38,22 @@ class Locale extends Model
 
         return $language . ' (' . $isoAlpha2 . ')' . $description;
     }
+
+    public function getStatusAttribute()
+    {
+        $statuses = $this->xlsformTemplateLanguages->pluck('status');
+
+        if ($statuses->contains('Not added')) {
+            return 'Not added';
+        }
+
+        if ($statuses->contains('Out of date')) {
+            return 'Out of date';
+        }
+
+        if ($statuses->every(fn($status) => $status === 'Ready for use')) {
+            return 'Ready for use';
+        }
+    }
+
 }

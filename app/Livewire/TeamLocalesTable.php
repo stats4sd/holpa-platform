@@ -2,14 +2,18 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms\Contracts\HasForms;
+use App\Models\XlsformTemplateLanguage;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Notifications\Notification;
+use App\Exports\XlsformTemplateLanguageExport;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -33,14 +37,9 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
             ->relationship(fn (): BelongsToMany => $this->team->locales())
             ->inverseRelationship('teams')
             ->columns([
-                TextColumn::make('language.name')->label('Language')
+                TextColumn::make('languageLabel')->label('Language')
             ])
             ->actions([
-                \Filament\Tables\Actions\Action::make('download_translation')
-                    ->label('View')
-                    ->button()
-                    ->color('success')
-                    ->visible(fn($record) => $record->status !== 'Ready for use'),
                 \Filament\Tables\Actions\Action::make('remove')
                     ->label('Remove')
                     ->color('danger')
@@ -61,7 +60,7 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
                     }),
             ])
             ->paginated(false)
-            ->emptyStateHeading('No translations yet');
+            ->emptyStateHeading('No translations selected');
     }
 
     public function render(): View

@@ -18,6 +18,7 @@
         "laravel/telescope": "^5.2",
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
+        "nesbot/carbon": "^3.8",
         "stats4sd/filament-odk-link": "dev-main",
         "stats4sd/filament-team-management": "^1.0",
         "symfony/http-client": "^7.1",
