@@ -14,7 +14,7 @@ class ChoiceList extends Model
         'properties' => 'collection',
     ];
 
-    public function choices(): HasMany
+    public function choiceListEntries(): HasMany
     {
         return $this->hasMany(ChoiceListEntry::class);
     }

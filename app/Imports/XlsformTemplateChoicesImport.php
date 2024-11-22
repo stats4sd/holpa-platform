@@ -38,7 +38,7 @@ class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow
                     ->filter(fn($value, $key) => !$this->isTranslatableColumn($key))
                     ->filter(fn($value, $key) => !in_array($key, ['list_name', 'name']));
 
-                $choice = $choiceList->choices()->updateOrCreate(['name' => $row['name'],], [
+                $choice = $choiceList->choiceListEntries()->updateOrCreate(['name' => $row['name'],], [
                     'properties' => $props,
                 ]);
 

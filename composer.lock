@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4da15f32057eabb14b42925aa95b4f60",
+    "content-hash": "7a3d8bbcf6b3960a4b207f329ca06d69",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -7525,16 +7525,16 @@
         },
         {
             "name": "stats4sd/filament-team-management",
-            "version": "v1.01",
+            "version": "v1.02",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stats4sd/filament-team-management.git",
-                "reference": "5bc3df5718b904874da31770b7a982f0a22b6518"
+                "reference": "37cca392b8bf6b514597d2b1f2854d601bb5bbce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stats4sd/filament-team-management/zipball/5bc3df5718b904874da31770b7a982f0a22b6518",
-                "reference": "5bc3df5718b904874da31770b7a982f0a22b6518",
+                "url": "https://api.github.com/repos/stats4sd/filament-team-management/zipball/37cca392b8bf6b514597d2b1f2854d601bb5bbce",
+                "reference": "37cca392b8bf6b514597d2b1f2854d601bb5bbce",
                 "shasum": ""
             },
             "require": {
@@ -7603,7 +7603,72 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-15T13:30:16+00:00"
+            "time": "2024-11-19T12:31:52+00:00"
+        },
+        {
+            "name": "staudenmeir/belongs-to-through",
+            "version": "v2.16.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/staudenmeir/belongs-to-through.git",
+                "reference": "a5e352df3d26abe34d715c6e192e537927cfb88d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/staudenmeir/belongs-to-through/zipball/a5e352df3d26abe34d715c6e192e537927cfb88d",
+                "reference": "a5e352df3d26abe34d715c6e192e537927cfb88d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^11.0",
+                "php": "^8.2"
+            },
+            "require-dev": {
+                "barryvdh/laravel-ide-helper": "^3.0",
+                "larastan/larastan": "^2.9",
+                "orchestra/testbench": "^9.0",
+                "phpunit/phpunit": "^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Staudenmeir\\BelongsToThrough\\IdeHelperServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Znck\\Eloquent\\": "src/",
+                    "Staudenmeir\\BelongsToThrough\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rahul Kadyan",
+                    "email": "hi@znck.me"
+                },
+                {
+                    "name": "Jonas Staudenmeir",
+                    "email": "mail@jonas-staudenmeir.de"
+                }
+            ],
+            "description": "Laravel Eloquent BelongsToThrough relationships",
+            "support": {
+                "issues": "https://github.com/staudenmeir/belongs-to-through/issues",
+                "source": "https://github.com/staudenmeir/belongs-to-through/tree/v2.16.2"
+            },
+            "funding": [
+                {
+                    "url": "https://paypal.me/JonasStaudenmeir",
+                    "type": "custom"
+                }
+            ],
+            "time": "2024-11-06T19:48:19+00:00"
         },
         {
             "name": "symfony/clock",

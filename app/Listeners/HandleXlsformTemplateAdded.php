@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Imports\XlsformTemplateWorksheetImport;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
@@ -18,7 +19,7 @@ class HandleXlsformTemplateAdded
             $filePath = $event->media->getPath();
 
             if ($filePath) {
-                Excel::import(new XlsformTemplateSurveyImport($model), $filePath);
+                Excel::import(new XlsformTemplateWorksheetImport($model), $filePath);
             } else {
                 Log::error('No file path found for media in collection "xlsform_file" for model ID: ' . $model->id);
             }

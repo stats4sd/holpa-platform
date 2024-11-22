@@ -8,4 +8,10 @@ use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource\Pages\Ed
 class EditXlsformTemplate extends OdkLinkEditXlsformTemplate
 {
     protected static string $resource = XlsformTemplateResource::class;
+
+    // hide relation managers on edit page
+    public function getRelationManagers(): array
+    {
+        return [];
+    }
 }

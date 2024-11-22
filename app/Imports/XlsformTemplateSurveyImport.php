@@ -51,7 +51,10 @@ class XlsformTemplateSurveyImport implements ToCollection, WithHeadingRow
 
                 $data['properties'] = $props;
 
-                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(['name' => $row['name']], $data->toArray());
+                ray($data);
+
+                $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(
+                    ['name' => $row['name']], $data->toArray());
                 $currentImportSurveyRows[] = $surveyRow;
 
                 foreach ($row as $column => $value) {

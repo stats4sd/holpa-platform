@@ -3,12 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TeamResource\Pages;
+use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 use App\Models\Team;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
-use Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 
 class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource
 {
