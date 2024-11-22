@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
 use Filament\Tables\Table;
+use Filament\Tables\Actions\Action;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms\Contracts\HasForms;
@@ -40,18 +41,15 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
                 TextColumn::make('languageLabel')->label('Language')
             ])
             ->actions([
-                \Filament\Tables\Actions\Action::make('remove')
+                ...$this->getViewActions(),
+                Action::make('remove')
                     ->label('Remove')
                     ->color('danger')
                     ->button()
                     ->requiresConfirmation()
-                    ->action(function ($record, $livewire) {
-                        $locale = $record->locale_id;
-                        $team = auth()->user()->latestTeam->id;
-                        $team = \App\Models\Team::find($team);
-
-                        $team->locales()->detach($locale);
-
+                    ->action(function ($record) {    
+                        $this->team->locales()->detach($record->id);
+    
                         Notification::make()
                             ->title('Success')
                             ->body('Translation successfully removed')
@@ -61,6 +59,27 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
             ])
             ->paginated(false)
             ->emptyStateHeading('No translations selected');
+    }
+
+    private function getViewActions(): array
+    {
+        return $this->team->locales->flatMap(function ($locale) {
+            return $locale->xlsformTemplateLanguages->map(function ($templateLanguage) use ($locale) {
+                $template = $templateLanguage->xlsformTemplate;
+
+                return Action::make("view-templatelanguage-{$templateLanguage->id}")
+                    ->label("View {$template->title}")
+                    ->color('primary')
+                    ->button()
+                    ->action(function () use ($template, $templateLanguage) {
+                        $currentDate = Carbon::now()->format('Y-m-d');
+                        $filename = "HOLPA - {$template->title} - translation - {$templateLanguage->localeLanguageLabel} - {$currentDate}.xlsx";
+
+                        return Excel::download(new XlsformTemplateLanguageExport($template, $templateLanguage), $filename);
+                    })
+                    ->hidden(fn($record) => $record->id !== $locale->id);
+            });
+        })->toArray();
     }
 
     public function render(): View
