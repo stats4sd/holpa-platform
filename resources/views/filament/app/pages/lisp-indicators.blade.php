@@ -21,7 +21,7 @@
 
         <livewire:rounded-square
             heading='ADD CUSTOM INDICATORS'
-            description='If your local indicators do not already exist in the global survey, you can add them as custom indicators.' ,
+            description='If your local indicators do not already exist in the global survey, you can add them as custom indicators.'
             class='flex-1'
         />
     </div>
