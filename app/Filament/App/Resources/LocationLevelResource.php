@@ -23,49 +23,10 @@ use Illuminate\Support\Str;
 class LocationLevelResource extends Resource
 {
     protected static ?string $model = LocationLevel::class;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-    protected static ?string $navigationGroup = 'Survey Sample Frame';
+
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
-
-    // Possible improvement: show Location Levels as first menu item, then show different location levels one by one corresponding to location hierarchy
-    protected static ?int $navigationSort = 1;
-
-    public static function getNavigationIcon(): string|Htmlable|null
-    {
-        return null;
-    }
-
-    public static function getNavigationItems(): array
-    {
-        // make sure the original nav item is only 'active' when the index page is active.
-        $original = collect(parent::getNavigationItems())
-            ->map(function ($item) {
-                return $item->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.index'));
-            })->toArray();
-
-        $baseRoute = static::getUrl('index');
-
-        $navItems = LocationLevel::all()
-            ->map(function ($level) use ($baseRoute) {
-                return NavigationItem::make(Str::plural($level->name))
-                    ->url($baseRoute . '/' . $level->slug)
-                    ->group('Survey Sample Frame')
-                    ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.view') && request()->route('record') === $level->slug);
-            });
-
-        return array_merge($original, $navItems->toArray());
-    }
-
-    public static function getNavigationBadge(): ?string
-    {
-        return null;
-    }
-
-    public static function getNavigationBadgeColor(): string|array|null
-    {
-        return null;
-    }
 
     public static function form(Form $form): Form
     {

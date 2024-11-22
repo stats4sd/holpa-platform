@@ -14,11 +14,8 @@ use Filament\Tables\Table;
 class FarmResource extends Resource
 {
     protected static ?string $model = Farm::class;
-    protected static ?string $navigationIcon = null;
-    protected static ?string $navigationGroup = 'Survey Sample Frame';
 
-    // show Farms as the last menu item
-    protected static ?int $navigationSort = 99;
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
