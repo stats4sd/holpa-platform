@@ -2,59 +2,60 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Stats4sd\FilamentTeamManagement\Models\Program;
 
-class TestUserSeeder extends Seeder
+class TestSeeder extends Seeder
 {
     public function run(): void
     {
-        // create roles
-        $superAdminRole = Role::create(['name' => 'Super Admin']);
-        $programAdminRole = Role::create(['name' => 'Program Admin']);
+        // create programs
+        $program = Program::create([
+            'name' => 'Test Program',
+        ]);
 
+        $teamP1 = Team::create([
+            'name' => 'P1 Test Team',
+        ]);
+        $teamP2 = Team::create([
+            'name' => 'P1 Test Team 2',
+        ]);
 
-        // create permissions
-        $permissions = [
-            ['name' => 'access admin panel'],
-            ['name' => 'access program admin panel'],
-            ['name' => 'view all prorgrams'],
-            ['name' => 'view all teams'],
-        ];
+        $program->teams()->sync([$teamP1->id, $teamP2->id]);
 
-        $superAdminRole->permissions()->createMany($permissions);
-
+        $nonProgramTeam = Team::create([
+            'name' => 'Non Program Test Team',
+        ]);
 
         // create users
         $user = User::create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => 1,
-            'latest_program_id' => NULL,
         ]);
 
         $admin = User::create([
             'name' => 'Test Admin',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => 1,
-            'latest_program_id' => 1,
         ]);
 
         $programAdmin = User::create([
             'name' => 'Test Program Admin',
             'email' => 'program_admin@example.com',
             'password' => bcrypt('password'),
-            'latest_team_id' => 2,
-            'latest_program_id' => 1,
         ]);
-
 
         // assign role to users
         $admin->assignRole('Super Admin');
         $programAdmin->assignRole('Program Admin');
+
+        // assign user to teams
+        $user->teams()->attach($nonProgramTeam->id);
+        $programAdmin->programs()->attach($program->id);
     }
 }
