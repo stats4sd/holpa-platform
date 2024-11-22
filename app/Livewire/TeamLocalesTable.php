@@ -68,8 +68,9 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
                 $template = $templateLanguage->xlsformTemplate;
 
                 return Action::make("view-templatelanguage-{$templateLanguage->id}")
-                    ->label("View {$template->title}")
+                    ->label("View {$template->title} translations")
                     ->color('primary')
+                    ->icon('heroicon-m-arrow-down-circle')
                     ->button()
                     ->action(function () use ($template, $templateLanguage) {
                         $currentDate = Carbon::now()->format('Y-m-d');
