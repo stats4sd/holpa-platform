@@ -9,6 +9,7 @@ use Livewire\Component;
 use App\Models\Language;
 use Filament\Tables\Table;
 use App\Models\XlsformTemplate;
+use App\Livewire\TeamLocalesTable;
 use Illuminate\Support\HtmlString;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
@@ -31,6 +32,8 @@ class LocalesTable extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
     use InteractsWithForms;
+
+    protected $listeners = ['refreshTable' => '$refresh'];
 
     public function table(Table $table): Table
     {
@@ -77,6 +80,8 @@ class LocalesTable extends Component implements HasForms, HasTable
                         $team = auth()->user()->latestTeam->id;
                         $team = Team::find($team);
                         $team->locales()->attach($record->id);
+
+                        $this->dispatch('refreshTable')->to(TeamLocalesTable::class);
 
                         Notification::make()
                             ->title('Success')

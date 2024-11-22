@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
 use Filament\Tables\Table;
+use App\Livewire\LocalesTable;
 use Filament\Tables\Actions\Action;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Facades\Excel;
@@ -26,7 +27,8 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
 
     public Team $team;
 
-
+    protected $listeners = ['refreshTable' => '$refresh'];
+    
     public function mount()
     {
         $this->team = auth()->user()->latestTeam;
@@ -50,6 +52,8 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
                     ->action(function ($record) {    
                         $this->team->locales()->detach($record->id);
     
+                        $this->dispatch('refreshTable')->to(LocalesTable::class);
+
                         Notification::make()
                             ->title('Success')
                             ->body('Translation successfully removed')
