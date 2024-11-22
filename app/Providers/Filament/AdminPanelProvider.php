@@ -39,8 +39,6 @@ class AdminPanelProvider extends PanelProvider
             // to include "Programs", "Teams", "Users", "Permissions", "Roles" filament resource from submodule
             ->discoverResources(in: app_path('../vendor/stats4sd/filament-team-management/src/Filament/Admin/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\Admin\\Resources')
             ->resources([
-                // Bring in ODK Link Resources "Xlsform Templates"
-                XlsformTemplateResource::class,
             ])
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
