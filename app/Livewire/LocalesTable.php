@@ -61,11 +61,13 @@ class LocalesTable extends Component implements HasForms, HasTable
                     ->label(fn($record) => $record->status === 'Ready for use' ? 'View' : 'Update')
                     ->color(fn($record) => $record->status === 'Ready for use' ? 'primary' : 'warning')
                     ->button()
-                    ->modalHeading(fn($record) => $record->status === 'Ready for use' ? 'VIEW TRANSLATIONS FOR ' . $record->languageLabel : 'UPDATE TRANSLATIONS FOR ' . $record->languageLabel)
+                    ->modalHeading(fn($record) => $record->status === 'Ready for use' ? 'VIEW TRANSLATIONS' : 'UPDATE TRANSLATIONS')
                     ->modalSubheading(fn($record) => $record->status === 'Ready for use' 
-                        ? 'You are viewing translations for ' . $record->languageLabel 
-                        : $record->languageLabel . ' requires updates before it can be used.')
-                    ->modalButton(fn($record) => $record->status === 'Ready for use' ? 'Close' : 'Save Updates'),            
+                        ? $record->languageLabel . ' is ready for use'
+                        : $record->languageLabel . ' requires updates before it can be used')
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false)     
+                    ->modalContent(fn($record) => view('filament.app.locale-modal', ['locale_id' => $record->id])),
                 \Filament\Tables\Actions\Action::make('select')
                     ->label('Select')
                     ->color('success')
