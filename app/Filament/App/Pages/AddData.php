@@ -11,7 +11,7 @@ class AddData extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $title = 'Additional Data';
+    protected static ?string $title = 'Additional Information';
 
     public function getBreadcrumbs(): array
     {

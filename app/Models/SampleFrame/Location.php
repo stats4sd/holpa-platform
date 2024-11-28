@@ -2,15 +2,8 @@
 
 namespace App\Models\SampleFrame;
 
-use App\Models\Site;
-use App\Models\Traits\IsLookupList;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Facades\Cache;
-use App\Models\Traits\HasLinkedDataset;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Interfaces\LookupListEntry;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use App\Models\LookupTables\LookupEntry;
@@ -29,11 +22,6 @@ class Location extends LookupEntry
     public function owner(): MorphTo
     {
         return $this->morphTo('owner');
-    }
-
-    public function site(): HasOne
-    {
-        return $this->hasOne(Site::class);
     }
 
     public function locationLevel(): BelongsTo
@@ -60,7 +48,7 @@ class Location extends LookupEntry
     public function hasFarms(): Attribute
     {
         return new Attribute(
-            get: fn (): bool => $this->locationLevel?->has_households ?? false,
+            get: fn(): bool => $this->locationLevel?->has_households ?? false,
         );
     }
 
@@ -71,7 +59,7 @@ class Location extends LookupEntry
     {
         return new Attribute(
             get: function () {
-                return Cache::remember($this->cacheKey().':farmsAllCount', now()->addMinutes(5), function () {
+                return Cache::remember($this->cacheKey() . ':farmsAllCount', now()->addMinutes(5), function () {
                     return $this->children->reduce(function ($carry, $location) {
                         return $carry + $location->farmsAllCount;
                     }, $this->farms->count());
