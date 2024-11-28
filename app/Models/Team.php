@@ -65,6 +65,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms
     public function locales(): BelongsToMany
     {
         return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
+    }
   
     public function locationLevels(): MorphMany
     {
