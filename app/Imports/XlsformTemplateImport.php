@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Locale;
 use App\Models\Language;
 use App\Models\LanguageString;
 use App\Models\XlsformTemplate;
@@ -134,10 +135,16 @@ class XlsformTemplateImport implements ToCollection, WithHeadingRow, WithMultipl
                 $languageModel = Language::where('iso_alpha2', $language)->first();
 
                 if ($languageModel) {
-                    // Create a new XlsformTemplateLanguage with language_id
+                    // Create a new locale 
+                    $locale = Locale::firstOrCreate([
+                        'language_id' => $languageModel->id,
+                        'description' => null,
+                    ]);
+                    // Create a new XlsformTemplateLanguage with language_id and locale_id
                     $xlsformTemplateLanguage = XlsformTemplateLanguage::firstOrCreate([
                         'language_id' => $languageModel->id,
                         'xlsform_template_id' => $this->xlsformTemplate->id,
+                        'locale_id' => $locale->id,
                     ], [
                             'has_language_strings' => 1,
                         ]

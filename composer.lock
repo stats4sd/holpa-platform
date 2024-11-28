@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4da15f32057eabb14b42925aa95b4f60",
+    "content-hash": "5bab5fd37a96a08ec6b80df912302f07",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -7431,7 +7431,7 @@
             "dist": {
                 "type": "path",
                 "url": "./packages/filament-odk-link",
-                "reference": "941ef977fca7e62609af8de46ab361000d021be5"
+                "reference": "178ba3021bfc212974a14cfff67d5bfd7de89763"
             },
             "require": {
                 "awcodes/filament-table-repeater": "^2.0",
