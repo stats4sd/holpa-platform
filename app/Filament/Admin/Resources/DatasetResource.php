@@ -19,6 +19,7 @@ class DatasetResource extends Resource
     protected static ?string $model = Dataset::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-code-bracket-square';
+    protected static ?string $navigationGroup = 'Survey and Datasets';
 
     public static function form(Form $form): Form
     {
