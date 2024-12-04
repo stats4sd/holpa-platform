@@ -2,7 +2,8 @@
 
 namespace App\Filament\Admin\Pages;
 
-use App\Filament\Admin\Widgets\SummaryWidget;
+use App\Filament\Admin\Widgets\RegistrationsWidget;
+use App\Filament\Admin\Widgets\DataCollectedWidget;
 use Filament\Pages\Page;
 
 class Dashboard extends Page
@@ -19,7 +20,14 @@ class Dashboard extends Page
     public function getHeaderWidgets(): array
     {
         return [
-            SummaryWidget::class,
+            RegistrationsWidget::class,
+        ];
+    }
+
+    public function getFooterWidgets(): array
+    {
+        return [
+            DataCollectedWidget::class,
         ];
     }
 
