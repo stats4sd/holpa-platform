@@ -56,23 +56,26 @@ class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow
                 return $choice;
             });
 
-        // delete any choice lists that were not in the import
-        $this->xlsformTemplate->choiceLists->each(function (ChoiceList $choiceList) use ($importedChoices) {
-            $importedChoiceLists = $importedChoices->pluck('choiceList')->unique();
-
-            if(!$importedChoiceLists->contains('id', $choiceList->id)) {
-                $choiceList->delete();
-            }
-        });
+        ray($importedChoices);
+        $importedChoiceLists = $importedChoices->pluck('choiceList')->unique();
+        ray($importedChoiceLists);
 
         // delete any choices that were not in the import
-        $this->xlsformTemplate->choiceLists->each(function ($choiceList) use ($importedChoices) {
-            $choiceList->choices->each(function ($choice) use ($importedChoices) {
+        $this->xlsformTemplate->choiceLists->each(function (ChoiceList $choiceList) use ($importedChoices) {
+            $choiceList->choiceListEntries()->each(function ($choice) use ($importedChoices) {
                 if (!$importedChoices->contains('id', $choice->id)) {
                     $choice->delete();
                 }
             });
         });
+
+        // delete any choice lists that were not in the import
+        $this->xlsformTemplate->choiceLists->each(function (ChoiceList $choiceList) {
+            if($choiceList->choiceListEntries()->count() === 0) {
+                $choiceList->delete();
+            }
+        });
+
     }
 
 }

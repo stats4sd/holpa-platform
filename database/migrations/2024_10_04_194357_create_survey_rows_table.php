@@ -18,15 +18,15 @@ return new class extends Migration
 
             $table->string('type');
             $table->boolean('required')->default(false);
-            $table->string('relevant')->nullable();
-            $table->string('appearance')->nullable();
-            $table->string('calculation')->nullable();
-            $table->string('constraint')->nullable();
-            $table->string('choice_filter')->nullable();
-            $table->string('repeat_count')->nullable();
-            $table->string('default')->nullable();
-            $table->string('note')->nullable();
-            $table->string('trigger')->nullable();
+            $table->text('relevant')->nullable();
+            $table->text('appearance')->nullable();
+            $table->text('calculation')->nullable();
+            $table->text('constraint')->nullable();
+            $table->text('choice_filter')->nullable();
+            $table->text('repeat_count')->nullable();
+            $table->text('default')->nullable();
+            $table->text('note')->nullable();
+            $table->text('trigger')->nullable();
             $table->json('properties')->nullable(); // catchall for other props;
 
 

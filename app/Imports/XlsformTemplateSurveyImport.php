@@ -7,6 +7,7 @@ use App\Models\LanguageString;
 use App\Models\SurveyRow;
 use App\Models\XlsformTemplate;
 use App\Models\LanguageStringType;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
@@ -50,8 +51,6 @@ class XlsformTemplateSurveyImport implements ToCollection, WithHeadingRow
                     ->filter(fn($value, $key) => $value !== null);
 
                 $data['properties'] = $props;
-
-                ray($data);
 
                 $surveyRow = $this->xlsformTemplate->surveyRows()->updateOrCreate(
                     ['name' => $row['name']], $data->toArray());
