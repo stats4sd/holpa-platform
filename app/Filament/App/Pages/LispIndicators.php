@@ -17,6 +17,13 @@ class LispIndicators extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
+    public $activeTab = null;
+
+    public function setActiveTab($tab)
+    {
+        $this->activeTab = $tab;
+    }
+
     public function getBreadcrumbs(): array
     {
         return [
