@@ -4,10 +4,12 @@ namespace Database\Seeders\Test;
 
 use App\Models\Team;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\LocalIndicator;
+use App\Models\GlobalIndicator;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Stats4sd\FilamentTeamManagement\Models\Program;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TestSeeder extends Seeder
 {
@@ -57,5 +59,16 @@ class TestSeeder extends Seeder
         // assign user to teams
         $user->teams()->attach($nonProgramTeam->id);
         $programAdmin->programs()->attach($program->id);
+
+        // create global indicators
+        GlobalIndicator::factory()->count(50)->create();
+
+        // create local indicators
+        $teams = Team::all();
+        foreach ($teams as $team) {
+            LocalIndicator::factory()->count(9)->create([
+                'team_id' => $team->id,
+            ]);
+        }
     }
 }
