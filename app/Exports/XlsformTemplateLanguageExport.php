@@ -35,12 +35,12 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
             ->where('has_language_strings', true)
             ->where('id', '!=', $this->currentTemplateLanguage->id)
             ->map(function ($templateLanguage) {
-                return $templateLanguage->languageLabel;
+                return $templateLanguage->localeLanguageLabel;
             })
             ->toArray();
 
         // Heading for the current template language
-        $currentLanguageHeading =  $this->currentTemplateLanguage->languageLabel;
+        $currentLanguageHeading =  $this->currentTemplateLanguage->localeLanguageLabel;
 
         // Return the headings including the current template language as the last column
         return array_merge(['name', 'translation type'], $templateLanguages, [$currentLanguageHeading]);

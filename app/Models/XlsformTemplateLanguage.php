@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Locale;
 use App\Models\Language;
 use App\Models\LanguageString;
 use App\Models\XlsformTemplate;
@@ -23,17 +24,31 @@ class XlsformTemplateLanguage extends Model
         return $this->belongsTo(Language::class);
     }
 
+    public function locale(): BelongsTo
+    {
+        return $this->belongsTo(Locale::class);
+    }
+
     public function languageStrings(): HasMany
     {
         return $this->hasMany(LanguageString::class);
     }
 
-    public function getLanguageLabelAttribute()
+    public function getLocaleLanguageLabelAttribute()
     {
-        $language = $this->language->name;
-        $isoAlpha2 = $this->language->iso_alpha2;
-        $description = $this->description ? ' - ' . $this->description : '';
+        return $this->locale->languageLabel;
+    }
 
-        return $language . ' (' . $isoAlpha2 . ')' . $description;
+    public function getStatusAttribute()
+    {
+        if($this->has_language_strings && !$this->needs_update) {
+            return 'Ready for use';
+        }
+        elseif(!$this->has_language_strings) {
+            return 'Not added';
+        }
+        elseif($this->has_language_strings && $this->needs_update) {
+            return 'Out of date';
+        }
     }
 }

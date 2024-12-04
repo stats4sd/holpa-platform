@@ -5,7 +5,7 @@ namespace App\Filament\App\Pages;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
-class LISP extends Page
+class Lisp extends Page
 {
     protected static string $view = 'filament.app.pages.lisp';
 
