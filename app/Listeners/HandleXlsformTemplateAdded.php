@@ -3,7 +3,10 @@
 namespace App\Listeners;
 
 use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
-use App\Imports\XlsformTemplate\XlsformTemplateWorkbookLanguageStringImport;
+use App\Imports\XlsformTemplate\XlsformTemplateLanguageStringImport;
+use App\Jobs\FinishImport;
+use App\Models\LanguageString;
+use App\Models\SurveyRow;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
@@ -25,7 +28,9 @@ class HandleXlsformTemplateAdded
                 $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
 
                 // Set up XlsformTemplateLanguages for each language in the XLSform workbook;
-                $model->setXlsformTemplateLanguages($translatableHeadings);
+                foreach ($translatableHeadings as $sheet => $headings) {
+                    $model->setXlsformTemplateLanguages($headings);
+                }
 
                 // TODO: add validation check to make sure all names are unique in Survey + choices sheet...
 
@@ -33,8 +38,13 @@ class HandleXlsformTemplateAdded
                 (new XlsformTemplateWorkbookImport($model, $translatableHeadings))->queue($filePath);
 
                 // import the language strings for all the translatable headings in the surveys tab;
-                foreach ($translatableHeadings as $heading) {
-                    (new XlsformTemplateWorkbookLanguageStringImport($model, $heading))->queue($filePath);
+                foreach ($translatableHeadings as $sheet => $headings) {
+                    foreach ($headings as $heading) {
+                        (new XlsformTemplateLanguageStringImport($model, $heading, $sheet))->queue($filePath)
+                        ->chain([
+                            new FinishImport($model,LanguageString::class, $heading)
+                        ]);
+                    }
                 }
 
 

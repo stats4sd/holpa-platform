@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Imports\XlsformTemplate\XlsformTemplateHeadingRowImport;
 use App\Models\Language;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplate;
@@ -52,10 +53,14 @@ class XlsformTranslationHelper
 
     public function getTreanslatableColumnsFromFile(string $filePath): Collection
     {
-        return (new HeadingRowImport)
+        // return a keyed collection for survey + choices headings.
+        return (new XlsformTemplateHeadingRowImport)
             ->toCollection($filePath)
-            ->flatten()
-            ->filter(fn($columnHeader) => self::isTranslatableColumn($columnHeader));
+            ->mapWithKeys(fn($value, $key) => [
+                $key => $value[0]
+                    ->map(fn($columnHeader) => self::isTranslatableColumn($columnHeader) ? $columnHeader : null)
+                    ->filter(),
+            ]);
     }
 
     public function getRegexPattern(): string

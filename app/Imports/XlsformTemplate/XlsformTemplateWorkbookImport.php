@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Jobs\FinishImport;
 use App\Models\SurveyRow;
 use App\Models\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -27,7 +28,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     public function sheets(): array
     {
         return [
-            'survey' => new XlsformTemplateSurveyImport($this->xlsformTemplate, $this->translatableHeadings),
+            'survey' => new XlsformTemplateSurveyImport($this->xlsformTemplate, $this->translatableHeadings['survey']),
             //'choices' => new XlsformTemplateChoicesImport($this->xlsformTemplate, $this->translatableHeadings),
         ];
     }
@@ -51,11 +52,9 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
         // we need to actually get the models instead of deleting them with a query, because we need to trigger the deleting event.
         SurveyRow::destroy($itemsToDelete->pluck('id'));
 
-        // reset 'updated' variable for all Survey Rows linked to the XlsformTemplate.
-        $this->xlsformTemplate
-            ->surveyRows()
-            ->update(['updated_during_import' => false]);
+
+        // queue the FinishImport job to reset the 'updated_during_import' flag.
+        FinishImport::dispatch($this->xlsformTemplate);
+
     }
-
-
 }
