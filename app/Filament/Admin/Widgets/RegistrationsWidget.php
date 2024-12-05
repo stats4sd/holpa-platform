@@ -12,6 +12,7 @@ use Stats4sd\FilamentTeamManagement\Models\Program;
 
 class RegistrationsWidget extends StatsOverviewWidget
 {
+    protected ?string $heading = 'Registrations';
 
     protected function getStats(): array
     {

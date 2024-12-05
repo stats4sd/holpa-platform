@@ -9,6 +9,7 @@ use Filament\Widgets\StatsOverviewWidget;
 
 class DataCollectedWidget extends StatsOverviewWidget
 {
+    protected ?string $heading = 'Data collected';
 
     protected function getStats(): array
     {
