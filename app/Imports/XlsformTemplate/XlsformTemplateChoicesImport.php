@@ -1,15 +1,17 @@
 <?php
 
-namespace App\Imports;
+namespace App\Imports\XlsformTemplate;
 
+use App\Imports\HasTranslatableColumns;
 use App\Models\ChoiceList;
-use App\Models\LanguageStringType;
 use App\Models\XlsformTemplate;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow
+class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow, WithChunkReading, ShouldQueue
 {
 
     use HasTranslatableColumns;
@@ -78,4 +80,8 @@ class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow
 
     }
 
+    public function chunkSize(): int
+    {
+        return 500;
+    }
 }

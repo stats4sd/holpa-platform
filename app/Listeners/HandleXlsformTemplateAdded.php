@@ -2,11 +2,13 @@
 
 namespace App\Listeners;
 
-use App\Imports\XlsformTemplateWorksheetImport;
-use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
+use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
+use App\Imports\XlsformTemplate\XlsformTemplateWorkbookLanguageStringImport;
+use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\XlsformTemplateSurveyImport;
+use Maatwebsite\Excel\HeadingRowImport;
+use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 
 class HandleXlsformTemplateAdded
 {
@@ -19,7 +21,17 @@ class HandleXlsformTemplateAdded
             $filePath = $event->media->getPath();
 
             if ($filePath) {
-                Excel::import(new XlsformTemplateWorksheetImport($model), $filePath);
+
+                $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
+
+                // Set up XlsformTemplateLanguages for each language in the XLSform workbook;
+                $model->setXlsformTemplateLanguages($translatableHeadings);
+
+                // Import the XLSform workbook to survey rows and choice list entries;
+                (new XlsformTemplateWorkbookImport($model, $translatableHeadings))->queue($filePath);
+                (new XlsformTemplateWorkbookLanguageStringImport($model, $translatableHeadings))->queue($filePath);
+
+
             } else {
                 Log::error('No file path found for media in collection "xlsform_file" for model ID: ' . $model->id);
             }

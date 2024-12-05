@@ -6,7 +6,7 @@ test('an xlsform template is correctly imported and updated', function () {
         'title' => 'Test Template',
     ]);
 
-    $import = new \App\Imports\XlsformTemplateWorksheetImport($this->xlsformTemplate);
+    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
     \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-1.xlsx');
 
     // check that the survey rows were imported correctly
@@ -23,7 +23,7 @@ test('an xlsform template is correctly imported and updated', function () {
     $this->assertEquals('5', $choiceEntry->properties['filter2']);
 
     // ******** test that the xlsform template is updated correctly ******** //
-    $import = new \App\Imports\XlsformTemplateWorksheetImport($this->xlsformTemplate);
+    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
     \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-2.xlsx');
 
     // check that the survey rows were updated correctly
@@ -57,7 +57,7 @@ test('a language not in the xlsform template import is marked as needing an upda
     ]);
 
     // ******** test that survey rows and language strings are deleted correctly ******* //
-    $import = new \App\Imports\XlsformTemplateWorksheetImport($this->xlsformTemplate);
+    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
     \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-3.xlsx');
 
     $this->assertDatabaseCount('survey_rows', 3);
