@@ -3,9 +3,11 @@
 namespace App\Filament\Admin\Widgets;
 
 use App\Models\XlsformTemplate;
-use App\Filament\Admin\Widgets\StatsOverviewWidget\Stat;
+use App\Models\SampleFrame\Farm;
 use Illuminate\Support\HtmlString;
+use Spatie\Permission\Models\Role;
 use Filament\Widgets\StatsOverviewWidget;
+use App\Filament\Admin\Widgets\StatsOverviewWidget\Stat;
 
 class DataCollectedWidget extends StatsOverviewWidget
 {
@@ -15,14 +17,11 @@ class DataCollectedWidget extends StatsOverviewWidget
     {
         $result = [];
 
-        // TODO: find number of farms that completed both household form and fieldwork form
-        // we need an easy way to find out how many farms have completed both forms
-        // E.g. SELECT COUNT(*) FROM farms WHERE household_form_completed = 1 AND fieldwork_form_completed = 1;
+        // find number of farms that completed both household form and fieldwork form
+        $farmsSurveyed = Farm::where('household_form_completed', true)->where('fieldwork_form_completed', true)->count();
+        // $farmsSurveyed = Role::count();
 
-        // use hardcode value as a placeholder temporary
-        $farmsSurveyed = 0;
-
-        array_push($result, Stat::make(new HtmlString('Farms surveyed (TODO)'), $farmsSurveyed));
+        array_push($result, Stat::make(new HtmlString('Farms surveyed'), $farmsSurveyed));
 
 
         // find total number of submissions for each xlsform template
