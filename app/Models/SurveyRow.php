@@ -10,13 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class SurveyRow extends Model implements HasLanguageStrings
 {
 
+    use CascadesDeletes;
+
+    protected $cascadeDeletes = ['languageStrings'];
+
     protected $casts = [
         'properties' => 'collection',
         'required' => 'boolean',
+        'updated_during_import' => 'boolean',
     ];
 
     public function xlsformTemplate(): BelongsTo

@@ -4,6 +4,8 @@ namespace App\Services;
 
 use App\Models\Language;
 use App\Models\LanguageStringType;
+use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplateLanguage;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\HeadingRowImport;
 
@@ -31,6 +33,16 @@ class XlsformTranslationHelper
         preg_match($this->getRegexPattern(), $columnHeader, $matches);
 
         return $this->languages->firstWhere('iso_alpha2', $matches[3]);
+    }
+
+    public function getDefaultLanguageTemplateFromColumnHeaderAndTemplate(XlsformTemplate $xlsformTemplate, string $columnHeader): XlsformTemplateLanguage
+    {
+        $language = $this->getLanguageFromColumnHeader($columnHeader);
+
+        return $xlsformTemplate->xlsformTemplateLanguages()
+            ->where('language_id', $language->id)
+            ->whereHas('locale', fn($query) => $query->where('description', null))
+            ->first();
     }
 
     private function isTranslatableColumn(string $columnHeader): bool

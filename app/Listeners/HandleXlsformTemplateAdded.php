@@ -27,9 +27,15 @@ class HandleXlsformTemplateAdded
                 // Set up XlsformTemplateLanguages for each language in the XLSform workbook;
                 $model->setXlsformTemplateLanguages($translatableHeadings);
 
+                // TODO: add validation check to make sure all names are unique in Survey + choices sheet...
+
                 // Import the XLSform workbook to survey rows and choice list entries;
                 (new XlsformTemplateWorkbookImport($model, $translatableHeadings))->queue($filePath);
-                (new XlsformTemplateWorkbookLanguageStringImport($model, $translatableHeadings))->queue($filePath);
+
+                // import the language strings for all the translatable headings in the surveys tab;
+                foreach ($translatableHeadings as $heading) {
+                    (new XlsformTemplateWorkbookLanguageStringImport($model, $heading))->queue($filePath);
+                }
 
 
             } else {

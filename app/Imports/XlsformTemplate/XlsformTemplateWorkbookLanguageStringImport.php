@@ -15,7 +15,7 @@ class XlsformTemplateWorkbookLanguageStringImport implements WithMultipleSheets,
     use Importable;
 
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading)
     {
     }
 
@@ -23,8 +23,8 @@ class XlsformTemplateWorkbookLanguageStringImport implements WithMultipleSheets,
     public function sheets(): array
     {
         return [
-            'survey' => new SurveyLanguageStringImport($this->xlsformTemplate, $this->translatableHeadings),
-            //'choices' => new ChoicesLanguageStringImport($this->xlsformTemplate, $this->translatableHeadings),
+            'survey' => new SurveyLanguageStringImport($this->xlsformTemplate, $this->heading),
+            //'choices' => new ChoicesLanguageStringImport($this->xlsformTemplate, $this->heading),
         ];
     }
 
@@ -32,4 +32,5 @@ class XlsformTemplateWorkbookLanguageStringImport implements WithMultipleSheets,
     {
         return 500;
     }
-}
+
+    }

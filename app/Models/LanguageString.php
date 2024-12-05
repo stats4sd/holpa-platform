@@ -10,9 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Znck\Eloquent\Relations\BelongsToThrough;
 
 class LanguageString extends Model
 {
+
+    protected $casts = [
+        'updated_during_import' => 'boolean',
+    ];
 
     // A language string is linked to either a SurveyRow or a ChoiceListEntry;
     public function linkedEntry(): MorphTo
@@ -29,5 +34,10 @@ class LanguageString extends Model
     public function xlsformTemplateLanguage(): BelongsTo
     {
         return $this->belongsTo(XlsformTemplateLanguage::class);
+    }
+
+    public function xlsformTemplate(): BelongsToThrough
+    {
+        return $this->belongsToThrough(XlsformTemplate::class, XlsformTemplateLanguage::class);
     }
 }

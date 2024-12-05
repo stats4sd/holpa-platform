@@ -29,8 +29,11 @@ return new class extends Migration
             $table->text('trigger')->nullable();
             $table->json('properties')->nullable(); // catchall for other props;
 
-
+            $table->boolean('updated_during_import')->default(false); // used to track if the row was updated during import of a new version of the XlsformTemplate file;
             $table->timestamps();
+
+
+            $table->unique(['xlsform_template_id', 'name', 'type'], 'unique_survey_rows');
         });
     }
 

@@ -7,6 +7,7 @@ use App\Models\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
 
@@ -17,6 +18,12 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
     {
         return $this->hasMany(XlsformTemplateLanguage::class);
     }
+
+    public function languageStrings(): HasManyThrough
+    {
+        return $this->hasManyThrough(LanguageString::class, XlsformTemplateLanguage::class);
+    }
+
 
     public function surveyRows(): HasMany
     {
