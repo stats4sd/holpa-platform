@@ -43,7 +43,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
         $this->team = Team::find(auth()->user()->latestTeam->id);
         $this->localIndicators = $this->team->localIndicators;
         $this->form->fill();
-        $this->uploadedFile = $this->team->getMedia('indicators')->first();
+        $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
     }
 
     public function form(Form $form): Form
@@ -78,10 +78,10 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             $this->team->addMedia($file->getRealPath())
                 ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
                 ->usingFileName($originalFilename)
-                ->toMediaCollection('indicators');
+                ->toMediaCollection('local_indicators');
 
             // Update the uploaded file details
-            $this->uploadedFile = $this->team->getMedia('indicators')->first();
+            $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
 
             // Proceed with the import
             Excel::import(new LocalIndicatorImport($this->team), $this->uploadedFile->getPath());
@@ -104,14 +104,14 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
         ->query(Media::query()
             ->where('model_id', $this->team->id)
             ->where('model_type', Team::class)
-            ->where('collection_name', 'indicators')
+            ->where('collection_name', 'local_indicators')
         )
         ->columns([
             TextColumn::make('file_name')
-                ->label('File Name')
+                ->label('Uploaded file')
                 ->sortable(),
             TextColumn::make('created_at')
-                ->label('Uploaded Date')
+                ->label('Upload date')
                 ->dateTime('Y/m/d'),
         ])
         ->actions([
@@ -128,7 +128,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                     $this->team->localIndicators()->delete();
 
                     // Update the uploaded file details
-                    $this->uploadedFile = $this->team->getMedia('indicators')->first();
+                    $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
 
                     // Display success message
                     Notification::make()
