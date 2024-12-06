@@ -26,7 +26,11 @@
             </div>
         </div>
     @else
-    <div class="px-10 py-4"> 
+        <div>
+            An indicator list has been uploaded. See below for details. To edit the uploaded indicators,
+            delete the file below and upload the updated file.
+        </div>
+        <div class="px-10 py-4"> 
             <div class="bg-white shadow rounded-lg">
                 {{ $this->table }}
             </div>
