@@ -15,6 +15,20 @@ class SubmissionController extends Controller
     {
         // application specific business logic goes here
 
+        // find survey start, survey end, survey duration in minutes
+        $surveyStart = Carbon::parse($submission->content['start']);
+        $surveyEnd = Carbon::parse($submission->content['end']);
+        $surveyDuration = $surveyStart->diffInMinutes($surveyEnd);
+
+        $submission->survey_started_at = $surveyStart;
+        $submission->survey_ended_at = $surveyEnd;
+        $submission->survey_duration = $surveyDuration;
+        $submission->save();
+
+        // skip location levels handling temporary for testing
+        return;
+
+
 
         // find owner (team) of this submission
         $team = $submission->xlsformVersion->xlsform->owner;
