@@ -19,33 +19,17 @@ class DatasetSeeder extends Seeder
 
         \DB::table('datasets')->delete();
 
-        $householdMainSurvey = Dataset::create(['name' => 'Household - Main Survey', 'parent_id' => NULL, 'primary_key' => 'id']);
-        $fieldworkMainSurvey = Dataset::create(['name' => 'Fieldwork - Main Survey', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-        Dataset::create(['name' => 'Household - Repeat Location Levels Report', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Products', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-        Dataset::create(['name' => 'Household - Repeat Other Product Use Sale', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Permanent Workers', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-        Dataset::create(['name' => 'Household - Repeat Permanent Labourers', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Seasonal Workers', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-        Dataset::create(['name' => 'Household - Repeat Seasonal Labourers', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Crop Lands', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Crop Productive Details', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Primary Livestock Details', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Primary Livestock Uses', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Fish', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Fish Uses', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Growing Seasons', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
-
-        Dataset::create(['name' => 'Household - Repeat Sites', 'parent_id' => $householdMainSurvey->id, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Farm Survey Data', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Products', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Permanent Workers', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Seasonal Workser in a Season', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Ecological Practices', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Crops', 'parent_id' => NULL, 'primary_key' => 'id']);
+        $livestock = Dataset::create(['name' => 'Livestock', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Livestock Uses', 'parent_id' => $livestock->id, 'primary_key' => 'id']);
+        $fish = Dataset::create(['name' => 'Fish', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Fish Uses', 'parent_id' => $fish->id, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Growing Seasons (Irrigation)', 'parent_id' => NULL, 'primary_key' => 'id']);
+        Dataset::create(['name' => 'Sites', 'parent_id' => NULL, 'primary_key' => 'id']);
     }
 }
