@@ -15,9 +15,7 @@ class XlsformChoicesExport implements FromCollection
     {
         // for each choice list, go through the choices...
 
-        dd($this->xlsform);
-
-        dd($choices);
+       // TODO: build
 
     }
 }

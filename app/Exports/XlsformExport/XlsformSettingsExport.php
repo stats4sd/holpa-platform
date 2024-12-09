@@ -9,8 +9,9 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class XlsformSettingsExport implements FromCollection, WithHeadings
+class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle
 {
 
     public function __construct(public Xlsform $xlsform)
@@ -41,5 +42,10 @@ class XlsformSettingsExport implements FromCollection, WithHeadings
             'version',
             'instance_name',
         ];
+    }
+
+    public function title(): string
+    {
+        return 'settings';
     }
 }

@@ -20,7 +20,7 @@ class XlsformWorkbookExport implements WithMultipleSheets
     {
         return [
            //new XlsformSurveyExport($this->xlsform),
-            new XlsformChoicesExport($this->xlsform),
+           // new XlsformChoicesExport($this->xlsform),
             new XlsformSettingsExport($this->xlsform),
         ];
 
