@@ -2,7 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Imports\HasTranslatableColumns;
 use App\Models\ChoiceList;
 use App\Models\ChoiceListEntry;
 use App\Models\XlsformTemplate;
@@ -20,7 +19,6 @@ use Maatwebsite\Excel\Concerns\WithUpserts;
 class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue, SkipsEmptyRows, WithUpserts
 {
 
-    use HasTranslatableColumns;
     use RemembersRowNumber;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)

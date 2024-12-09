@@ -2,7 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Imports\HasTranslatableColumns;
 use App\Models\LanguageString;
 use App\Models\SurveyRow;
 use App\Models\XlsformTemplate;
@@ -22,7 +21,6 @@ use Maatwebsite\Excel\Events\AfterSheet;
 
 class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpserts, SkipsEmptyRows, WithChunkReading, ShouldQueue
 {
-    use HasTranslatableColumns;
     use RemembersRowNumber;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
