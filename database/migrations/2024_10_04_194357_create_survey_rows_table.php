@@ -15,7 +15,25 @@ return new class extends Migration
             $table->id();
             $table->foreignId('xlsform_template_id');
             $table->string('name');
+
+            $table->string('type');
+            $table->boolean('required')->default(false);
+            $table->text('relevant')->nullable();
+            $table->text('appearance')->nullable();
+            $table->text('calculation')->nullable();
+            $table->text('constraint')->nullable();
+            $table->text('choice_filter')->nullable();
+            $table->text('repeat_count')->nullable();
+            $table->text('default')->nullable();
+            $table->text('note')->nullable();
+            $table->text('trigger')->nullable();
+            $table->json('properties')->nullable(); // catchall for other props;
+
+            $table->boolean('updated_during_import')->default(false); // used to track if the row was updated during import of a new version of the XlsformTemplate file;
             $table->timestamps();
+
+
+            $table->unique(['xlsform_template_id', 'name', 'type'], 'unique_survey_rows');
         });
     }
 

@@ -75,8 +75,6 @@ class FarmImport implements ShouldQueue, WithBatchInserts, WithChunkReading, Wit
 
                 $recipient = User::find($this->data['user_id']);
 
-                dump($event->getException());
-
                 Notification::make()
                     ->title('Import of Farm Data Failed')
                     ->body(fn(): HtmlString => new HtmlString(
