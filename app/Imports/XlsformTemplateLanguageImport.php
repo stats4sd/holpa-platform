@@ -57,7 +57,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
         }
 
         // Get the actual column for the current language using the header map
-        $normalizedLanguageLabel = $this->normalizeHeading($this->xlsformTemplateLanguage->languageLabel);
+        $normalizedLanguageLabel = $this->normalizeHeading($this->xlsformTemplateLanguage->localeLanguageLabel);
         $actualLanguageColumn = $this->headerMap[$normalizedLanguageLabel] ?? null;
 
         // Fetch the translation from the row data

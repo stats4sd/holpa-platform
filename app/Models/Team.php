@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
@@ -11,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
@@ -63,6 +65,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->hasMany(LocalIndicator::class);
     }
 
+    public function locales(): BelongsToMany
+    {
+        return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
+    }
+  
     public function locationLevels(): MorphMany
     {
         return $this->morphMany(LocationLevel::class, 'owner');

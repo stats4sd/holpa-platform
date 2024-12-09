@@ -45,10 +45,7 @@ class AdminPanelProvider extends PanelProvider
             ->pages([
                 Dashboard::class,
             ])
-            ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
-            ])
+            ->widgets([])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
                 fn() => view('filament-team-management::adminPanelTitle'),
