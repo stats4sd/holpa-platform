@@ -41,13 +41,14 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
     }
 
     // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded
-    public function setXlsformTemplateLanguages(Collection $translatableHeadings): void
+    // returns the collection of XlsformTemplateLanaguage entries that will be updated from the file.
+    public function setXlsformTemplateLanguages(Collection $translatableHeadings): Collection
     {
         $languages = $translatableHeadings
             ->map(fn(string $heading) => (new XlsformTranslationHelper())->getLanguageFromColumnHeader($heading))
             ->unique();
 
-        $languages->each(function ($language) {
+        return $languages->map(function ($language) {
 
 
             $templateLanguage = $this->xlsformTemplateLanguages()
@@ -59,6 +60,7 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
             $templateLanguage->locale()->associate($locale);
             $templateLanguage->save();
 
+            return $templateLanguage;
         });
     }
 

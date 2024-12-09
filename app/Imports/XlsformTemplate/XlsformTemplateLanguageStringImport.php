@@ -135,10 +135,6 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->where('updated_during_import', false)
             ->get();
 
-        ray($languageStringTypeId);
-        ray($templateLanguageId);
-        ray($toDelete);
-
         $toDelete->each(fn(LanguageString $languageString) => $languageString->delete());
 
 
