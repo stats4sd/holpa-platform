@@ -30,10 +30,9 @@
     </div>
 
     <div class="flex justify-center gap-4 py-8">
-        <button wire:click="resetIndicators" 
-                class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
-            Reset
-        </button>
+        {{ $this->resetAction }}
     </div>
+
+    <x-filament-actions::modals />
 
 </div>

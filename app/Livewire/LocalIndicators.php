@@ -3,11 +3,19 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Filament\Actions\Action;
 use App\Models\LocalIndicator;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Actions\Concerns\InteractsWithActions;
 
-class LocalIndicators extends Component
+class LocalIndicators extends Component implements HasForms, HasActions
 {
+    use InteractsWithActions;
+    use InteractsWithForms;
+    
     public $indicators;
     public $selectedIndicatorId = null;
 
@@ -38,6 +46,18 @@ class LocalIndicators extends Component
             ]);
     }
 
+    public function resetAction(): Action
+    {
+        return Action::make('reset')
+            ->requiresConfirmation()
+            ->modalHeading('Confirm Reset')
+            ->modalSubheading('Are you sure you want to reset all matches? This action cannot be undone.')
+            ->modalButton('Yes, reset')
+            ->color('green')
+            ->extraAttributes(['class' => 'py-2 px-6 hover-effect'])
+            ->action(fn () => $this->resetIndicators());
+    }
+    
     public function resetIndicators()
     {
         foreach ($this->indicators as $indicator) {

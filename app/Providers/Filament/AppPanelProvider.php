@@ -47,6 +47,7 @@ class AppPanelProvider extends PanelProvider
             ->profile() // TODO: Implement more full-featured profile page
             ->colors([
                 'primary' => Color::Amber,
+                'green' => '#5FA35A',
             ])
             ->viteTheme('resources/css/filament/app/theme.css')
             // to include XlsformResource from main repo
