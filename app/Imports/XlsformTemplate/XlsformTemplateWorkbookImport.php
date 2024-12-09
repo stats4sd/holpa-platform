@@ -2,7 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Jobs\FinishImport;
+use App\Jobs\FinishLanguageStringImport;
 use App\Models\ChoiceList;
 use App\Models\ChoiceListEntry;
 use App\Models\SurveyRow;

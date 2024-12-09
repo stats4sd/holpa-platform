@@ -2,7 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Jobs\FinishImport;
+use App\Jobs\FinishLanguageStringImport;
 use App\Models\ChoiceList;
 use App\Models\ChoiceListEntry;
 use App\Models\Language;
@@ -25,6 +25,7 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Events\AfterImport;
+use function Symfony\Component\String\s;
 
 class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQueue, WithChunkReading, WithEvents, ToModel, WithHeadingRow, WithUpserts, SkipsEmptyRows
 {
@@ -87,9 +88,29 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
         $class = $this->class;
 
-        $item = $this->xlsformTemplate->$class
-            ->filter(fn($item) => (string)$item->name === (string)$row['name'])
-            ->first();
+        $items = $this->xlsformTemplate->$class
+            ->filter(fn($item) => (string)$item->name === (string)$row['name']);
+
+        if($row['name'] === 'id' && $row['list_name'] === 'enumerator') {
+            ray($items);
+        }
+
+        // filter choice list entries by choice_list as well as name
+        if($class === 'choiceListEntries') {
+            $items = $items
+                ->filter(fn($item) => (string)$item->choiceList->list_name === (string)$row['list_name']);
+        }
+
+        if($row['name'] === 'id' && $row['list_name'] === 'enumerator') {
+            ray($items);
+        }
+
+        $item = $items->first();
+
+
+        if (!$item) {
+            ray('No item found for row', $row, $class);
+        }
 
         $translatableValue = $row
             ->filter(fn($value, $key) => $this->heading === $key)

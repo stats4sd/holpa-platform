@@ -5,7 +5,10 @@ namespace App\Listeners;
 use App\Imports\XlsformTemplate\XlsformTemplateChoiceListImport;
 use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
 use App\Imports\XlsformTemplate\XlsformTemplateLanguageStringImport;
-use App\Jobs\FinishImport;
+use App\Jobs\FinishChoiceListEntryImport;
+use App\Jobs\FinishLanguageStringImport;
+use App\Jobs\FinishSurveyRowImport;
+use App\Jobs\ImportAllLanguageStrings;
 use App\Jobs\MarkTemplateLanguagesAsNeedingUpdate;
 use App\Models\ChoiceListEntry;
 use App\Models\LanguageString;
@@ -50,22 +53,15 @@ class HandleXlsformTemplateAdded
 
         // TODO: add validation check to make sure all names are unique in Survey + choices sheet...
 
+        // setup the set of LanguageString imports
+
+
         // Import the XLSform workbook to survey rows and choice list entries;
         (new XlsformTemplateWorkbookImport($model, $translatableHeadings))->queue($filePath)
             ->chain([
-                new FinishImport($model, SurveyRow::class),
-                new FinishImport($model, ChoiceListEntry::class),
+                new FinishSurveyRowImport($model),
+                new FinishChoiceListEntryImport($model),
+                new ImportAllLanguageStrings($filePath, $model, $translatableHeadings, $importedTemplateLanguages),
             ]);
-
-        // import the language strings for all the translatable headings in the surveys tab;
-        foreach ($translatableHeadings as $sheet => $headings) {
-            foreach ($headings as $heading) {
-                (new XlsformTemplateLanguageStringImport($model, $heading, $sheet))->queue($filePath)
-                    ->chain([
-                        new MarkTemplateLanguagesAsNeedingUpdate($model, $importedTemplateLanguages),
-                        new FinishImport($model, LanguageString::class, $heading),
-                    ]);
-            }
-        }
     }
 }
