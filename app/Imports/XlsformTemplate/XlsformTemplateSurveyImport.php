@@ -20,11 +20,10 @@ use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Events\AfterImport;
 use Maatwebsite\Excel\Events\AfterSheet;
 
-class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpserts, SkipsEmptyRows, WithChunkReading, ShouldQueue, WithEvents
+class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpserts, SkipsEmptyRows, WithChunkReading, ShouldQueue
 {
     use HasTranslatableColumns;
     use RemembersRowNumber;
-    use RegistersEventListeners;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
     {

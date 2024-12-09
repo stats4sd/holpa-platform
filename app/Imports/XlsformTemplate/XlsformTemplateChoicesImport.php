@@ -4,84 +4,66 @@ namespace App\Imports\XlsformTemplate;
 
 use App\Imports\HasTranslatableColumns;
 use App\Models\ChoiceList;
+use App\Models\ChoiceListEntry;
 use App\Models\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\RegistersEventListeners;
+use Maatwebsite\Excel\Concerns\RemembersRowNumber;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithUpserts;
 
-class XlsformTemplateChoicesImport implements ToCollection, WithHeadingRow, WithChunkReading, ShouldQueue
+class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue, SkipsEmptyRows, WithUpserts
 {
 
     use HasTranslatableColumns;
+    use RemembersRowNumber;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate)
+    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
     {
     }
 
-    /**
-     * @param Collection $collection
-     */
-    public function collection(Collection $rows)
+    public function model(array $row): ChoiceListEntry
     {
-        $headings = $rows->first()->keys();
+        $row = collect($row);
+        $data = [
+            'name' => $row['name'],
+        ];
 
-        $languageHeadings = $headings->filter(fn(string $heading): bool => $this->isTranslatableColumn($heading));
+        $data['choice_list_id'] = $this->xlsformTemplate
+            ->choiceLists
+            ->where('list_name', $row['list_name'])
+            ->first()
+            ->id;
 
-        $importedChoices = $rows
-            ->filter(fn(Collection $row): bool => !empty($row['list_name']))
-            ->map(function (Collection $row) use ($languageHeadings, &$currentImportChoiceLists, &$currentImportChoices) {
+        $data['properties'] = $row
+            ->filter(fn($value, $key) => !$this->translatableHeadings->contains($key))
+            ->filter(fn($value, $key) => $key !== 'name')
+            ->filter(fn($value, $key) => $value !== null);
 
-                $choiceList = $this->xlsformTemplate->choiceLists()->updateOrCreate(['list_name' => $row['list_name']], []);
+        $data['updated_during_import'] = true;
 
-                // props are all columns that are not translatable + not list_name or name;
-                $props = $row
-                    ->filter(fn($value, $key) => !$this->isTranslatableColumn($key))
-                    ->filter(fn($value, $key) => !in_array($key, ['list_name', 'name']));
-
-                $choice = $choiceList->choiceListEntries()->updateOrCreate(['name' => $row['name'],], [
-                    'properties' => $props,
-                ]);
-
-                $translatableColumns = $row->only($languageHeadings->toArray());
-
-                $translatableColumns->each(function ($value, $column) use ($choice) {
-
-                    [$type, $language] = $this->extractTypeAndLanguage($column);
-
-                    $xlsformTemplateLanguage = $this->xlsformTemplate->xlsformTemplateLanguages()->whereHas('language', fn($query) => $query->where('id', $language->id))->first();
-
-                    $this->createLanguageString($choice, $xlsformTemplateLanguage, $type, $value);
-                });
-
-                return $choice;
-            });
-
-        ray($importedChoices);
-        $importedChoiceLists = $importedChoices->pluck('choiceList')->unique();
-        ray($importedChoiceLists);
-
-        // delete any choices that were not in the import
-        $this->xlsformTemplate->choiceLists->each(function (ChoiceList $choiceList) use ($importedChoices) {
-            $choiceList->choiceListEntries()->each(function ($choice) use ($importedChoices) {
-                if (!$importedChoices->contains('id', $choice->id)) {
-                    $choice->delete();
-                }
-            });
-        });
-
-        // delete any choice lists that were not in the import
-        $this->xlsformTemplate->choiceLists->each(function (ChoiceList $choiceList) {
-            if($choiceList->choiceListEntries()->count() === 0) {
-                $choiceList->delete();
-            }
-        });
-
+        return new ChoiceListEntry($data);
     }
 
     public function chunkSize(): int
     {
         return 500;
     }
+
+    public function uniqueBy(): array
+    {
+        return ['name', 'choice_list_id'];
+    }
+
+    public function isEmptyWhen(array $row): bool
+    {
+        return (!isset($row['name']) || $row['name'] === '')
+            || (!isset($row['list_name']) || $row['list_name'] === '');
+    }
+
 }

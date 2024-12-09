@@ -35,6 +35,10 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
         return $this->hasMany(ChoiceList::class);
     }
 
+    public function choiceListEntries(): HasManyThrough
+    {
+        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class);
+    }
 
     // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded
     public function setXlsformTemplateLanguages(Collection $translatableHeadings): void

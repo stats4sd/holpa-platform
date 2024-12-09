@@ -3,7 +3,9 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Jobs\FinishImport;
+use App\Models\ChoiceList;
 use App\Models\ChoiceListEntry;
+use App\Models\Language;
 use App\Models\LanguageString;
 use App\Models\LanguageStringType;
 use App\Models\SurveyRow;
@@ -32,7 +34,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public XlsformTranslationHelper $xlsformTranslationHelper;
     public XlsformTemplateLanguage $xlsformTemplateLanguage;
     public LanguageStringType $languageStringType;
-    public ?string $class;
+    public ?string $relationship;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading, public string $sheet)
     {
@@ -48,8 +50,8 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->first();
 
         $this->class = match ($sheet) {
-            'survey' => SurveyRow::class,
-            'choices' => null, // temp
+            'survey' => 'surveyRows',
+            'choices' => 'choiceListEntries',
             default => null
         };
 
@@ -83,8 +85,10 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     {
         $row = collect($row);
 
-        $surveyRow = $this->xlsformTemplate->surveyRows
-            ->filter(fn(SurveyRow $surveyRow) => $surveyRow->name === $row['name'])
+        $class = $this->class;
+
+        $item = $this->xlsformTemplate->$class
+            ->filter(fn($item) => (string)$item->name === (string)$row['name'])
             ->first();
 
         $translatableValue = $row
@@ -97,8 +101,8 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         }
 
         return new LanguageString([
-            'linked_entry_id' => $surveyRow->id,
-            'linked_entry_type' => SurveyRow::class,
+            'linked_entry_id' => $item->id,
+            'linked_entry_type' => $this->class,
             'xlsform_template_language_id' => $this->xlsformTemplateLanguage->id,
             'language_string_type_id' => $this->languageStringType->id,
             'text' => $row[$this->heading],
@@ -114,28 +118,28 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
     public function afterImport(AfterImport $event): void
     {
-        // TODO: This is not working properly. We Should have 1571. Actually have 253 rows, so too many are being deleted. Probably due to chunk size.
-
-        ray('after importing languageStrings for xlsform template : ' . $this->xlsformTemplate?->id);
-
         $languageStringTypeId = $this->xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading)->id;
         $templateLanguageId = $this->xlsformTranslationHelper->getDefaultLanguageTemplateFromColumnHeaderAndTemplate($this->xlsformTemplate, $this->heading)->id;
-
-        ray('languageStringTypeId: ' . $languageStringTypeId);
-        ray('templateLanguageId: ' . $templateLanguageId);
+        $type = match ($this->sheet) {
+            'survey' => SurveyRow::class,
+            'choices' => ChoiceListEntry::class,
+            default => null
+        };
 
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
         $toDelete = $this->xlsformTemplate
             ->languageStrings()
             ->where('language_string_type_id', $languageStringTypeId)
             ->where('xlsform_template_language_id', $templateLanguageId)
+            ->where('linked_entry_type', $type)
             ->where('updated_during_import', false)
             ->get();
 
-        ray('toDelete count: ' . $toDelete->count());
-        ray('all language strings count: ' . $this->xlsformTemplate->languageStrings()->count());
+        ray($languageStringTypeId);
+        ray($templateLanguageId);
+        ray($toDelete);
 
-        $toDelete->each(fn($languageString) => $languageString->delete());
+        $toDelete->each(fn(LanguageString $languageString) => $languageString->delete());
 
 
     }

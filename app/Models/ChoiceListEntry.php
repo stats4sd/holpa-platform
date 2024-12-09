@@ -18,6 +18,7 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
         'is_localisable' => 'boolean',
         'is_dataset' => 'boolean',
         'properties' => 'collection',
+        'updated_during_import' => 'boolean',
     ];
 
     public function choiceList(): BelongsTo

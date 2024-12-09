@@ -14,11 +14,8 @@ class FinishImport implements ShouldQueue
 {
     use Queueable;
 
-
-    // TODO - start here tomorrow (FRIDAY 06th) - FIGURE OUT WHETHER THIS IS ACTUALLY SENSIBLE!!!!!
     public function __construct(public XlsformTemplate $xlsformTemplate, public string $class, public ?string $heading = null)
     {
-        //
     }
 
     /**
@@ -26,6 +23,7 @@ class FinishImport implements ShouldQueue
      */
     public function handle(): void
     {
+        // When deleting entries based on specific columns (language strings), we need to filter by the templateLanguage + string type
         if ($this->heading) {
 
             // need to filter the class by the templateLanguage + string  type
@@ -43,6 +41,8 @@ class FinishImport implements ShouldQueue
                 ->where('language_string_type_id', $languageStringType->id)
                 ->update(['updated_during_import' => false]);
         } else {
+
+            // otherwise just filter by the template + update all entries
             $this->class::where('xlsform_template_id', $this->xlsformTemplate->id)
                 ->update(['updated_during_import' => false]);
         }

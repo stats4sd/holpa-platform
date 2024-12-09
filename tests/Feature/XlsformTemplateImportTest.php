@@ -1,13 +1,23 @@
 <?php
 
+use App\Listeners\HandleXlsformTemplateAdded;
+use App\Models\LanguageString;
+
 test('an xlsform template is correctly imported and updated', function () {
 
     $this->xlsformTemplate = \App\Models\XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 
-    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
-    \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-1.xlsx');
+    (new HandleXlsformTemplateAdded())->processXlsformTemplate('tests/assets/odk-example-form-1.xlsx', $this->xlsformTemplate);
+
+    ray(LanguageString::all()
+        ->map(fn($languageString) => [
+            'text' => $languageString->text,
+            'language' => $languageString->xlsformTemplateLanguage->language->iso_alpha2,
+            'type' => $languageString->languageStringType->name,
+        ])
+        ->groupBy('language'));
 
     // check that the survey rows were imported correctly
     $this->assertDatabaseCount('survey_rows', 3);
@@ -23,8 +33,7 @@ test('an xlsform template is correctly imported and updated', function () {
     $this->assertEquals('5', $choiceEntry->properties['filter2']);
 
     // ******** test that the xlsform template is updated correctly ******** //
-    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
-    \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-2.xlsx');
+    (new HandleXlsformTemplateAdded())->processXlsformTemplate('tests/assets/odk-example-form-2.xlsx', $this->xlsformTemplate);
 
     // check that the survey rows were updated correctly
     $this->assertDatabaseCount('xlsform_template_languages', 2);
@@ -57,8 +66,8 @@ test('a language not in the xlsform template import is marked as needing an upda
     ]);
 
     // ******** test that survey rows and language strings are deleted correctly ******* //
-    $import = new \App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport($this->xlsformTemplate);
-    \Maatwebsite\Excel\Facades\Excel::import($import, 'tests/assets/odk-example-form-3.xlsx');
+    (new HandleXlsformTemplateAdded())->processXlsformTemplate('tests/assets/odk-example-form-3.xlsx', $this->xlsformTemplate);
+
 
     $this->assertDatabaseCount('survey_rows', 3);
     $this->assertDatabaseCount('xlsform_template_languages', 3);

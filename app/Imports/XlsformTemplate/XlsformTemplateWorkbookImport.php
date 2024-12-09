@@ -3,6 +3,8 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Jobs\FinishImport;
+use App\Models\ChoiceList;
+use App\Models\ChoiceListEntry;
 use App\Models\SurveyRow;
 use App\Models\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,7 +31,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     {
         return [
             'survey' => new XlsformTemplateSurveyImport($this->xlsformTemplate, $this->translatableHeadings['survey']),
-            //'choices' => new XlsformTemplateChoicesImport($this->xlsformTemplate, $this->translatableHeadings),
+            'choices' => new XlsformTemplateChoicesImport($this->xlsformTemplate, $this->translatableHeadings),
         ];
     }
 
@@ -40,21 +42,25 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
 
     public function afterImport(AfterImport $event): void
     {
-        ray('after importing surveyRows for xlsform template : ' . $this->xlsformTemplate?->id);
-
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
-        $itemsToDelete = $this->xlsformTemplate
+        $surveyRowsToDelete = $this->xlsformTemplate
             ->surveyRows()
             ->select(['id', 'updated_during_import'])
             ->get()
             ->filter(fn(SurveyRow $surveyRow) => $surveyRow->updated_during_import === false);
 
         // we need to actually get the models instead of deleting them with a query, because we need to trigger the deleting event.
-        SurveyRow::destroy($itemsToDelete->pluck('id'));
+        SurveyRow::destroy($surveyRowsToDelete->pluck('id'));
 
+        // we also need to delete the choiceLists that were not updated during the import.
+        $choicesToDelete = $this->xlsformTemplate
+            ->choiceListEntries()
+            ->select(['choice_list_entries.id', 'updated_during_import'])
+            ->get()
+            ->filter(fn(ChoiceListEntry $choiceListEntry) => $choiceListEntry->updated_during_import === false);
 
-        // queue the FinishImport job to reset the 'updated_during_import' flag.
-        FinishImport::dispatch($this->xlsformTemplate);
+        ChoiceListEntry::destroy($choicesToDelete->pluck('id'));
 
+        ChoiceList::has('choiceListEntries', '=', 0)->delete();
     }
 }
