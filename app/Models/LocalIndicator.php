@@ -28,4 +28,9 @@ class LocalIndicator extends Model
     {
         return $this->belongsTo(GlobalIndicator::class);
     }
+
+    public function getDomainAttribute()
+    {
+        return $this->theme->domain;
+    }
 }
