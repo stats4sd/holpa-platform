@@ -14,9 +14,9 @@ class LocalIndicator extends Model
 
     protected $guarded = ['id'];
 
-    public function theme(): BelongsTo
+    public function domain(): BelongsTo
     {
-        return $this->belongsTo(Theme::class);
+        return $this->belongsTo(Domain::class);
     }
 
     public function team(): BelongsTo
@@ -29,8 +29,4 @@ class LocalIndicator extends Model
         return $this->belongsTo(GlobalIndicator::class);
     }
 
-    public function getDomainAttribute()
-    {
-        return $this->theme->domain;
-    }
 }

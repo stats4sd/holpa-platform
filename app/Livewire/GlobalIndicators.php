@@ -52,7 +52,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
         if ($this->selectedDomain) {
             $query->whereHas('theme', function ($query) {
-                $query->where('domain', $this->selectedDomain);
+                $query->where('domain_id', $this->selectedDomain);
             });
         }
 

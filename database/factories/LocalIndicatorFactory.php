@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Theme;
+use App\Models\Domain;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +20,7 @@ class LocalIndicatorFactory extends Factory
         return [
             'name' => $this->faker->sentence,
             'team_id' => null,
-            'theme_id' => $this->faker->randomElement(Theme::all()->pluck('id')->toArray()),
+            'domain_id' => $this->faker->randomElement(Domain::all()->pluck('id')->toArray()),
             'global_indicator_id' => null,
         ];
     }

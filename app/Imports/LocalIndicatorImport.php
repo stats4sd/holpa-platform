@@ -29,7 +29,7 @@ class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHead
         {
             LocalIndicator::create([
                 'name' => $row['name'],
-                'theme_id' => $row['theme_id'],
+                'domain_id' => $row['domain_id'],
                 'team_id' => $this->team->id,
             ]);
         }

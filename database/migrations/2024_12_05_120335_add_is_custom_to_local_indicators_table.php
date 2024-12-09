@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('local_indicators', function (Blueprint $table) {
-            $table->boolean('is_custom')->default(false)->after('theme_id');
+            $table->boolean('is_custom')->default(false)->after('domain_id');
         });
     }
 
