@@ -91,18 +91,10 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         $items = $this->xlsformTemplate->$class
             ->filter(fn($item) => (string)$item->name === (string)$row['name']);
 
-        if($row['name'] === 'id' && $row['list_name'] === 'enumerator') {
-            ray($items);
-        }
-
         // filter choice list entries by choice_list as well as name
         if($class === 'choiceListEntries') {
             $items = $items
                 ->filter(fn($item) => (string)$item->choiceList->list_name === (string)$row['list_name']);
-        }
-
-        if($row['name'] === 'id' && $row['list_name'] === 'enumerator') {
-            ray($items);
         }
 
         $item = $items->first();
