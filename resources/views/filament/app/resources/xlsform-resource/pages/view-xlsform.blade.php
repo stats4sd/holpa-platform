@@ -66,11 +66,6 @@
                 <b>Farms Fully Surveyed</b>
                 <span>{{ $summary['farmsFullySurvey'] }}</span>
 
-                <b>Beneficiary Farms Fully Surveyed:</b>
-                <span>{{ $summary['beneficiaryFarmsSurveyed'] }} / 60 </span>
-
-                <b>Non-Beneficiary Farms Fully Surveyed:</b>
-                <span>{{ $summary['nonBeneficiaryFarmsSurveyed'] }} / 60</span>
             </div>
         </x-filament::section>
     </div>

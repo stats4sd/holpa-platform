@@ -29,12 +29,6 @@ return $submission;
 $submissionsByLocations = $submissions;
 $submissionsByEnumerators = $submissions;
 
-$submissionDurationLevel1 = $submissions->whereBetween('survey_duration', [0, 4.999999])->count();
-$submissionDurationLevel2 = $submissions->whereBetween('survey_duration', [5, 29.999999])->count();
-$submissionDurationLevel3 = $submissions->whereBetween('survey_duration', [30, 59.999999])->count();
-$submissionDurationLevel4 = $submissions->whereBetween('survey_duration', [60, 120])->count();
-$submissionDurationLevel5 = $submissions->where('survey_duration', '>', 120)->count();
-
 @endphp
 
 <div class="grid grid-cols-2 gap-8">
@@ -64,34 +58,6 @@ $submissionDurationLevel5 = $submissions->where('survey_duration', '>', 120)->co
             <span>{{ $enumeratorSubmissions->count() }}</span>
         </div>
         @endforeach
-
-    </x-filament::section>
-
-    <x-filament::section>
-        <x-slot name="heading">
-            <b>Submissions By Survey Duration</b>
-        </x-slot>
-
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">0 - 5 Minutes</b>
-            <span class="col-span-2">{{ $submissionDurationLevel1 }}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">5 - 30 Minutes</b>
-            <span class="col-span-2">{{ $submissionDurationLevel2 }}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">30 - 60 Minutes</b>
-            <span class="col-span-2">{{ $submissionDurationLevel3 }}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">60 - 120 Minutes</b>
-            <span class="col-span-2">{{ $submissionDurationLevel4 }}</span>
-        </div>
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">&gt; 120 Minutes</b>
-            <span class="col-span-2">{{ $submissionDurationLevel5 }}</span>
-        </div>
 
     </x-filament::section>
 

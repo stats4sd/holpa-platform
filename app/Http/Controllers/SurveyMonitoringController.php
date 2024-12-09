@@ -62,25 +62,18 @@ class SurveyMonitoringController extends Controller
         // find number of farms that completed household form and fieldwork form
         $farmsFullySurveyed = Farm::whereIn('id', $farmsSurveyed)->where('household_form_completed', 1)->where('fieldwork_form_completed', 1)->count();
 
-        // $beneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] !== "-99")->count();
-        // $nonBeneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] === "-99")->count();
-
 
         // hardcode all figures to 0 for testing temporary
         $successfulSurveys = $submissions;
         $surveysWithoutRespondentPresent = 0;
         $surveysWithNonConsentingRespondent = 0;
         $farmsFullySurvey = $farmsFullySurveyed;
-        $beneficiaryFarmsSurveyed = 0;
-        $nonBeneficiaryFarmsSurveyed = 0;
 
 
         return [
             'count' => $count,
             'latestSubmissionDate' => (new Carbon($latestSubmission['createdAt']))->format('Y-m-d H:i:s'),
             'successfulSurveys' => $successfulSurveys->count(),
-            'beneficiaryFarmsSurveyed' => $beneficiaryFarmsSurveyed,
-            'nonBeneficiaryFarmsSurveyed' => $nonBeneficiaryFarmsSurveyed,
             'surveysWithoutRespondentPresent' => $surveysWithoutRespondentPresent,
             'surveysWithNonConsentingRespondent' => $surveysWithNonConsentingRespondent,
             'farmsFullySurvey' => $farmsFullySurvey,
