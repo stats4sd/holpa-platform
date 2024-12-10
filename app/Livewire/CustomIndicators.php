@@ -5,16 +5,13 @@ namespace App\Livewire;
 use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
-use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\LocalIndicator;
-use Filament\Tables\Actions\Action;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\CustomIndicatorExport;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
-use Filament\Forms\Components\FileUpload;
 use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -34,7 +31,7 @@ class CustomIndicators extends Component implements HasForms, HasTable
     public function downloadTemplate()
     {
         $currentDate = Carbon::now()->format('Y-m-d');
-        $filename = "HOLPA - " . $this->team->name . " Custom Indicator Template - {$currentDate}.xlsx";
+        $filename = "HOLPA - " . $this->team->name . " - Custom Indicator Template - {$currentDate}.xlsx";
         return Excel::download(new CustomIndicatorExport($this->team), $filename);
     }
 
