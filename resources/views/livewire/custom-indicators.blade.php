@@ -41,10 +41,10 @@
                 class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
             Reset
         </button>
-        <a href="url_to_be_added_here" 
+        <button wire:click="downloadTemplate"
                 class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
             Download template
-        </a>
+        </button>
     </div>
 
     <livewire:upload-custom-indicators />

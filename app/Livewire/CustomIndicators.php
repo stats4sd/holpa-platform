@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use App\Models\LocalIndicator;
 use Filament\Tables\Actions\Action;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\CustomIndicatorExport;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
@@ -21,11 +24,25 @@ class CustomIndicators extends Component implements HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
+    public Team $team;
+
+    public function mount()
+    {
+        $this->team = Team::find(auth()->user()->latestTeam->id);
+    }
+
+    public function downloadTemplate()
+    {
+        $currentDate = Carbon::now()->format('Y-m-d');
+        $filename = "HOLPA - " . $this->team->name . " Custom Indicator Template - {$currentDate}.xlsx";
+        return Excel::download(new CustomIndicatorExport($this->team), $filename);
+    }
+
     public function table(Table $table): Table
     {
         return $table
             ->query(LocalIndicator::query()
-                ->where('team_id', auth()->user()->latestTeam->id))
+                ->where('team_id', $this->team->id))
             ->columns([
                 TextColumn::make('name')->label(''),
                 CheckboxColumn::make('is_custom')->label('Confirm and add'),
@@ -36,9 +53,8 @@ class CustomIndicators extends Component implements HasForms, HasTable
 
     public function resetIndicators()
     {
-        $team = Team::find(auth()->user()->latestTeam->id);
         // Reset the 'is_custom' flag to 0 for all local indicators belonging to this team
-        $team->localIndicators()->update(['is_custom' => 0]);
+        $this->team->localIndicators()->update(['is_custom' => 0]);
     }
 
     public function render()
