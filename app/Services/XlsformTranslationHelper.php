@@ -5,10 +5,9 @@ namespace App\Services;
 use App\Imports\XlsformTemplate\XlsformTemplateHeadingRowImport;
 use App\Models\Language;
 use App\Models\LanguageStringType;
-use App\Models\XlsformTemplate;
 use App\Models\XlsformTemplateLanguage;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\HeadingRowImport;
 
 class XlsformTranslationHelper
 {

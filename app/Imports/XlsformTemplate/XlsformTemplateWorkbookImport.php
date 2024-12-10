@@ -2,11 +2,10 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Jobs\FinishLanguageStringImport;
-use App\Models\ChoiceList;
-use App\Models\ChoiceListEntry;
-use App\Models\SurveyRow;
-use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplates\ChoiceList;
+use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;

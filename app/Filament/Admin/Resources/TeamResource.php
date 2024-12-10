@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TeamResource\Pages;
+use App\Filament\Admin\Resources\TeamResource\RelationManagers\LocalesRelationManager;
 use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 use App\Models\Team;
 use Filament\Tables;
@@ -64,6 +65,7 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
             UsersRelationManager::class,
             InvitesRelationManager::class,
             XlsformsRelationManager::class,
+            LocalesRelationManager::class,
         ];
     }
 }

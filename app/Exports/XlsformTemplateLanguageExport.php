@@ -2,21 +2,18 @@
 
 namespace App\Exports;
 
-use App\Models\SurveyRow;
-use App\Models\LanguageString;
-use App\Models\XlsformTemplate;
-use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Maatwebsite\Excel\Concerns\FromArray;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithBackgroundColor;
+use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
-use Maatwebsite\Excel\Concerns\WithColumnWidths;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use Maatwebsite\Excel\Concerns\WithBackgroundColor;
 
 class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitle, WithColumnWidths, WithStyles, WithBackgroundColor
 {
@@ -76,7 +73,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
                 foreach ($templateLanguages as $templateLanguage) {
                     // Find the language string for this language
                     $stringForLanguage = $strings->firstWhere('xlsform_template_language_id', $templateLanguage->id);
-                    
+
                     // Add the 'text' if found, or leave the cell empty
                     $row[] = $stringForLanguage ? $stringForLanguage->text : '';
                 }
@@ -98,7 +95,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
     {
         // Adds fill to all rows/cols with no data
         return 'E7E7E7';
-    
+
     }
 
     public function styles(Worksheet $sheet)
@@ -149,7 +146,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
             // Apply orange fill to the entire row
             $dataRange = "A{$rowIndex}:" . Coordinate::stringFromColumnIndex($lastColumnIndex) . "{$rowIndex}";
             $sheet->getStyle($dataRange)->applyFromArray($orangeFill);
-            
+
             // Apply white fill to the last column
             $sheet->getStyle(Coordinate::stringFromColumnIndex($lastColumnIndex) . "{$rowIndex}")->applyFromArray($whiteFill);
         }
@@ -162,14 +159,14 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
             'A' => 29,
             'B' => 20,
         ];
-    
+
         // Set width for all other columns
         $lastColumnIndex = count($this->headings());
-        for ($i = 3; $i <= $lastColumnIndex; $i++) { 
+        for ($i = 3; $i <= $lastColumnIndex; $i++) {
             $columnLetter = Coordinate::stringFromColumnIndex($i);
             $columnWidths[$columnLetter] = 45;
         }
-    
+
         return $columnWidths;
     }
 

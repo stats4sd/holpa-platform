@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformTemplates;
 
-use App\Models\SurveyRow;
+use App\Models\Locale;
 use App\Models\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;

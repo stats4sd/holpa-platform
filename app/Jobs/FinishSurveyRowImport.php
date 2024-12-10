@@ -2,13 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Models\XlsformTemplate;
-use App\Services\XlsformTranslationHelper;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\ClassString;
 
 class FinishSurveyRowImport implements ShouldQueue
 {

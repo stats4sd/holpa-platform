@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformTemplates;
 
-use App\Models\Language;
-use App\Models\SurveyRow;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
@@ -24,7 +21,6 @@ class LanguageString extends Model
     {
         return $this->morphTo('linked_entry');
     }
-
 
     public function languageStringType(): BelongsTo
     {

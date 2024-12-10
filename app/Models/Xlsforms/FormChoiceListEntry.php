@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Xlsforms;
 
+use App\Models\HasLanguageStrings;
 use App\Models\Traits\IsLookupList;
+use App\Models\XlsformTemplates\LanguageString;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class ChoiceListEntry extends Model implements HasLanguageStrings
+class FormChoiceListEntry extends Model implements HasLanguageStrings
 {
     use IsLookupList;
-
 
     protected $casts = [
         'is_localisable' => 'boolean',
@@ -23,12 +22,11 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
 
     public function choiceList(): BelongsTo
     {
-        return $this->belongsTo(ChoiceList::class);
+        return $this->belongsTo(FormChoiceList::class);
     }
 
     public function languageStrings(): MorphMany
     {
         return $this->morphMany(LanguageString::class, 'linked_entry');
     }
-
 }
