@@ -6,10 +6,13 @@ use App\Models\Xlsforms\Xlsform;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle
+class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize
 {
 
     public function __construct(public Xlsform $xlsform)
@@ -47,5 +50,12 @@ class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle
     public function title(): string
     {
         return 'settings';
+    }
+
+    public function styles(Worksheet $sheet): array
+    {
+        return [
+            1 => ['font' => ['bold' => true]],
+        ];
     }
 }

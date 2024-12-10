@@ -38,6 +38,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
         $data['properties'] = $row
             ->filter(fn($value, $key) => !$this->translatableHeadings->contains($key))
             ->filter(fn($value, $key) => $key !== 'name')
+            ->filter(fn($value, $key) => $key !== 'list_name')
             ->filter(fn($value, $key) => $value !== null);
 
         $data['updated_during_import'] = true;
