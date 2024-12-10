@@ -36,11 +36,51 @@ class CustomIndicatorExport implements FromCollection, WithHeadings, WithTitle, 
 
     public function headings(): array
     {
-        return [
-            'Indicator ID',
-            'Indicator',
-            'Survey component'
+        $locales = $this->team->locales()->with('language')->get();
+
+        $headings = [
+            'indicator ID',
+            'indicator',
+            'survey component',
+            'type',
+            'name',
         ];
+
+        foreach ($locales as $locale) {
+            $headings[] = "label::$locale->odk_label";
+            $headings[] = "hint::$locale->odk_label";
+        }
+
+        $headings = array_merge($headings, [
+            'required', 
+        ]);
+
+        foreach ($locales as $locale) {
+            $headings[] = "required_message::$locale->odk_label";
+        }
+
+        $headings = array_merge($headings, [
+            'calculation',
+            'relevant',
+            'appearance',
+            'constraint',
+        ]);
+
+        foreach ($locales as $locale) {
+            $headings[] = "constraint_message::$locale->odk_label";
+        }
+
+        $headings = array_merge($headings, [
+            'choice_filter',
+            'repeat_count',
+            'default',
+        ]);
+
+        foreach ($locales as $locale) {
+            $headings[] = "media::image::$locale->odk_label";
+        }
+
+        return $headings;
     }
 
     public function styles(Worksheet $sheet)

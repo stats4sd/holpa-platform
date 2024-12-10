@@ -56,4 +56,9 @@ class Locale extends Model
         }
     }
 
+    public function getOdkLabelAttribute()
+    {
+        return $this->language->name . ' (' . $this->language->iso_alpha2 . ')';
+    }
+
 }
