@@ -35,6 +35,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public XlsformTranslationHelper $xlsformTranslationHelper;
     public XlsformTemplateLanguage $xlsformTemplateLanguage;
     public LanguageStringType $languageStringType;
+    public ?string $class;
     public ?string $relationship;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading, public string $sheet)
@@ -50,9 +51,15 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->whereHas('locale', fn(Builder $query) => $query->where('description', null))
             ->first();
 
-        $this->class = match ($sheet) {
+        $this->relationship = match ($sheet) {
             'survey' => 'surveyRows',
             'choices' => 'choiceListEntries',
+            default => null
+        };
+
+        $this->class = match ($sheet) {
+            'survey' => SurveyRow::class,
+            'choices' => ChoiceListEntry::class,
             default => null
         };
 
@@ -87,8 +94,9 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         $row = collect($row);
 
         $class = $this->class;
+        $relationship = $this->relationship;
 
-        $items = $this->xlsformTemplate->$class
+        $items = $this->xlsformTemplate->$relationship
             ->filter(fn($item) => (string)$item->name === (string)$row['name']);
 
         // filter choice list entries by choice_list as well as name
