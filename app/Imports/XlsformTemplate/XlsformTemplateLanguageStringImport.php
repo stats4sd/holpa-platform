@@ -31,6 +31,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public XlsformTranslationHelper $xlsformTranslationHelper;
     public XlsformTemplateLanguage $xlsformTemplateLanguage;
     public LanguageStringType $languageStringType;
+    public ?string $class;
     public ?string $relationship;
     public ?string $class;
 

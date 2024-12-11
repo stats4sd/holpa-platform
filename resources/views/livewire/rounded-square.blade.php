@@ -1,4 +1,4 @@
-<div class="rounded-3xl hover-effect shadow-xl p-6 bg-grey">
+<div class="rounded-3xl shadow-xl p-6 bg-grey">
     <!-- Heading -->
     <h2 class="text-lg font-bold text-green">
         {{ $heading }}

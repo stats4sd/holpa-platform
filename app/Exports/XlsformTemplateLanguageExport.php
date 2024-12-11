@@ -56,6 +56,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
                                 ->where('id', '!=', $this->currentTemplateLanguage->id);
 
         foreach ($surveyRows as $surveyRow) {
+
             // Get all language strings for this survey row grouped by type
             $languageStrings = $surveyRow->languageStrings->groupBy('language_string_type_id');
 

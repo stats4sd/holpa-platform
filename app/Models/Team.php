@@ -4,9 +4,11 @@ namespace App\Models;
 
 use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
+use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use App\Models\Xlsforms\Xlsform;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
@@ -16,9 +18,10 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
-class Team extends FilamentTeamManagementTeam implements WithXlsforms
+class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 {
     use HasXlsForms;
+    use InteractsWithMedia;
 
     protected $table = 'teams';
 
