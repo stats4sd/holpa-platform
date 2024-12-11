@@ -2,10 +2,10 @@
 
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\Pages;
 
-use Filament\Forms\Get;
-use App\Models\XlsformTemplate;
-use Filament\Forms\Components\Wizard\Step;
 use App\Filament\Admin\Resources\XlsformTemplateResource;
+use App\Models\XlsformTemplates\XlsformTemplate;
+use Filament\Forms\Components\Wizard\Step;
+use Filament\Forms\Get;
 use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource\Pages\CreateXlsformTemplate as OdkLinkCreateXlsformTemplate;
 
 class CreateXlsformTemplate extends OdkLinkCreateXlsformTemplate

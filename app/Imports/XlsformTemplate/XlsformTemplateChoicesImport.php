@@ -2,15 +2,12 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\ChoiceList;
-use App\Models\ChoiceListEntry;
-use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\RegistersEventListeners;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
-use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -41,6 +38,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
         $data['properties'] = $row
             ->filter(fn($value, $key) => !$this->translatableHeadings->contains($key))
             ->filter(fn($value, $key) => $key !== 'name')
+            ->filter(fn($value, $key) => $key !== 'list_name')
             ->filter(fn($value, $key) => $value !== null);
 
         $data['updated_during_import'] = true;

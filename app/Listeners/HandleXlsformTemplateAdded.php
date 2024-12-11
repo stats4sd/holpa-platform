@@ -4,19 +4,11 @@ namespace App\Listeners;
 
 use App\Imports\XlsformTemplate\XlsformTemplateChoiceListImport;
 use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
-use App\Imports\XlsformTemplate\XlsformTemplateLanguageStringImport;
 use App\Jobs\FinishChoiceListEntryImport;
-use App\Jobs\FinishLanguageStringImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
-use App\Jobs\MarkTemplateLanguagesAsNeedingUpdate;
-use App\Models\ChoiceListEntry;
-use App\Models\LanguageString;
-use App\Models\SurveyRow;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Facades\Log;
-use Maatwebsite\Excel\Facades\Excel;
-use Maatwebsite\Excel\HeadingRowImport;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 
 class HandleXlsformTemplateAdded
@@ -26,7 +18,7 @@ class HandleXlsformTemplateAdded
         Log::info('MediaHasBeenAdded event fired!');
         $model = $event->media->model;
 
-        if ($model instanceof \App\Models\XlsformTemplate) {
+        if ($model instanceof \App\Models\XlsformTemplates\XlsformTemplate) {
             $filePath = $event->media->getPath();
 
             if (!$filePath) {
@@ -38,7 +30,7 @@ class HandleXlsformTemplateAdded
         }
     }
 
-    public function processXlsformTemplate(string $filePath, \App\Models\XlsformTemplate $model): void
+    public function processXlsformTemplate(string $filePath, \App\Models\XlsformTemplates\XlsformTemplate $model): void
     {
         // Get the translatable headings from the XLSform workbook;
         $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);

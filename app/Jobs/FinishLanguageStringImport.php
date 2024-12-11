@@ -2,13 +2,11 @@
 
 namespace App\Jobs;
 
-use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\ClassString;
 
 class FinishLanguageStringImport implements ShouldQueue
 {

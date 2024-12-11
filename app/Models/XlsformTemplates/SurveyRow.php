@@ -1,14 +1,11 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformTemplates;
 
-use App\Models\LanguageString;
-use App\Models\XlsformTemplate;
+use App\Models\HasLanguageStrings;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
@@ -17,7 +14,7 @@ class SurveyRow extends Model implements HasLanguageStrings
 
     use CascadesDeletes;
 
-    protected $cascadeDeletes = ['languageStrings'];
+    protected array $cascadeDeletes = ['languageStrings'];
 
     protected $casts = [
         'properties' => 'collection',

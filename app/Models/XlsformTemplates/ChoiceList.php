@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformTemplates;
 
 use App\Models\Traits\IsLookupList;
 use Illuminate\Database\Eloquent\Model;
