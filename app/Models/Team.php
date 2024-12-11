@@ -7,6 +7,7 @@ use App\Models\SampleFrame\Farm;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use App\Models\Xlsforms\Xlsform;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -69,7 +70,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     {
         return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
     }
-  
+
     public function locationLevels(): MorphMany
     {
         return $this->morphMany(LocationLevel::class, 'owner');
@@ -88,5 +89,10 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function imports(): HasMany
     {
         return $this->hasMany(Import::class);
+    }
+
+    public function xlsforms(): MorphMany
+    {
+        return $this->morphMany(Xlsform::class, 'owner');
     }
 }

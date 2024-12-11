@@ -2,18 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Locale;
-use App\Models\Language;
-use App\Models\LanguageString;
-use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplates\LanguageString;
+use App\Models\XlsformTemplates\XlsformTemplate;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class XlsformTemplateLanguage extends Model
 {
-    use HasFactory;
 
     public function xlsformTemplate(): BelongsTo
     {
@@ -38,6 +35,15 @@ class XlsformTemplateLanguage extends Model
     public function getLocaleLanguageLabelAttribute()
     {
         return $this->locale->languageLabel;
+    }
+
+    // was this created from importing an Xlsform template file?
+    // if false, then this it was created through the platform as an extra translation
+    public function isAddedFromXlsformTemplate(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->locale->description === null,
+        );
     }
 
     public function getStatusAttribute()

@@ -136,7 +136,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                                             $invalidNamesWithType = $invalidRows->flatMap(function ($row) use ($nameIndex, $headers, $currentTranslationIndex) {
                                                 $name = $row[$nameIndex];
                                                 $translationType = $row[array_search('translation type', $headers)];
-                                        
+
                                                 return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '') 
                                                     ? [$name . ' (' . $translationType . ')'] 
                                                     : []; // Return an empty array if the translation is present

@@ -2,31 +2,27 @@
 
 namespace App\Livewire;
 
-use Carbon\Carbon;
-use App\Models\Team;
-use App\Models\Locale;
-use Livewire\Component;
 use App\Models\Language;
-use Filament\Tables\Table;
-use App\Models\XlsformTemplate;
-use App\Livewire\TeamLocalesTable;
-use Illuminate\Support\HtmlString;
+use App\Models\Locale;
+use App\Models\Team;
+use App\Models\XlsformTemplateLanguage;
+use App\Models\XlsformTemplates\XlsformTemplate;
+use Filament\Forms\Components\Button;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
-use Filament\Support\Enums\MaxWidth;
-use Maatwebsite\Excel\Facades\Excel;
-use Filament\Forms\Components\Button;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Contracts\HasForms;
-use App\Models\XlsformTemplateLanguage;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use Filament\Forms\Components\Placeholder;
-use App\Exports\XlsformTemplateLanguageExport;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
+use Filament\Support\Enums\MaxWidth;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Illuminate\Support\HtmlString;
+use Livewire\Component;
 
 class LocalesTable extends Component implements HasForms, HasTable
 {
@@ -65,11 +61,11 @@ class LocalesTable extends Component implements HasForms, HasTable
                     ->color(fn($record) => $record->status === 'Ready for use' ? 'primary' : 'warning')
                     ->button()
                     ->modalHeading(fn($record) => $record->status === 'Ready for use' ? 'VIEW TRANSLATIONS' : 'UPDATE TRANSLATIONS')
-                    ->modalSubheading(fn($record) => $record->status === 'Ready for use' 
+                    ->modalSubheading(fn($record) => $record->status === 'Ready for use'
                         ? $record->languageLabel . ' is ready for use'
                         : $record->languageLabel . ' requires updates before it can be used')
                     ->modalSubmitAction(false)
-                    ->modalCancelAction(false)     
+                    ->modalCancelAction(false)
                     ->modalContent(fn($record) => view('filament.app.locale-modal', ['locale_id' => $record->id])),
                 \Filament\Tables\Actions\Action::make('select')
                     ->label('Select')
@@ -158,7 +154,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                         ]);
 
                         $xlsformTemplates = XlsformTemplate::all();
-                        
+
                         foreach ($xlsformTemplates as $template) {
                             XlsformTemplateLanguage::create([
                                 'xlsform_template_id' => $template->id,

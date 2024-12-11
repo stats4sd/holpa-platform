@@ -20,8 +20,10 @@
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^3.8",
+        "shiftonelabs/laravel-cascade-deletes": "^2.0",
         "stats4sd/filament-odk-link": "dev-main",
         "stats4sd/filament-team-management": "^1.0",
+        "staudenmeir/belongs-to-through": "^2.16",
         "symfony/http-client": "^7.1",
         "symfony/mailgun-mailer": "^7.1",
         "valentin-morice/filament-json-column": "^1.4"
