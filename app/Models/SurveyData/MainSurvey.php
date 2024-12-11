@@ -18,4 +18,16 @@ class MainSurvey extends Model
     {
         return $this->belongsTo(Submission::class, 'submission_id', 'id');
     }
+
+    // Link to repeat groups
+
+    public function performanceFishes(): HasMany
+    {
+        return $this->hasMany(Performance\PerformanceFish::class, 'main_survey_id', 'id');
+    }
+
+    public function performanceAnimalFishUses(): HasMany
+    {
+        return $this->hasMany(Performance\PerformanceFishUse::class, 'main_survey_id', 'id');
+    }
 }
