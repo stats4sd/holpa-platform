@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('form_choice_lists', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('xlsform_id');
+            $table->string('list_name');
+            $table->text('description')->nullable();
+            $table->boolean('is_dataset')->default(false); // may not be used;
+            $table->json('properties')->nullable();
             $table->timestamps();
         });
     }

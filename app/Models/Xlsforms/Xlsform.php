@@ -2,18 +2,20 @@
 
 namespace App\Models\Xlsforms;
 
-use App\Exports\XlsformExport\XlsformWorkbookExport;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\Xlsforms\FormChoiceList;
+use App\Models\Xlsforms\FormChoiceListEntry;
+use Illuminate\Http\Client\RequestException;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Http\Client\RequestException;
-use Maatwebsite\Excel\Facades\Excel;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
-use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
-use Stats4sd\FilamentOdkLink\Jobs\UpdateXlsformTitleInFile;
+use App\Exports\XlsformExport\XlsformWorkbookExport;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Stats4sd\FilamentOdkLink\Jobs\UpdateXlsformTitleInFile;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileIsTooBig;
+use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 
 class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
 {
@@ -26,6 +28,16 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     public function formSurveyRows(): HasMany
     {
         return $this->hasMany(FormSurveyRow::class);
+    }
+
+    public function formChoiceLists(): HasMany
+    {
+        return $this->hasMany(FormChoiceList::class);
+    }
+
+    public function formChoiceListEntries(): HasManyThrough
+    {
+        return $this->hasManyThrough(FormChoiceListEntry::class, FormChoiceList::class);
     }
 
     public function syncWithTemplate(): void
