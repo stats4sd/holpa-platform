@@ -12,7 +12,6 @@ interface PerformanceRepeatModel
 
 
 
-    public function mainSurvey(): BelongsTo;
+    public function farmSurveyData(): BelongsTo;
     public function submission(): BelongsTo;
-
 }

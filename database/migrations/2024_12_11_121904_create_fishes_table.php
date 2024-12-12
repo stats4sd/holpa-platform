@@ -10,12 +10,16 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('performance_fish', function (Blueprint $table) {
+        Schema::create('fishes', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('main_survey_id')->nullable();
+            $table->foreignId('farm_survey_data_id')->nullable();
+
+            $table->json('properties')->nullable();
 
             // TODO: add more columns for ODK variables
+
+            $table->foreignId('submission_id')->nullable();
 
             $table->timestamps();
         });
@@ -26,6 +30,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('performance_fish');
+        Schema::dropIfExists('fishes');
     }
 };

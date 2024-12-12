@@ -6,13 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use App\Models\Traits\HasLinkedDataset;
 
-class MainSurvey extends Model
+class FarmSurveyData extends Model
 {
-    protected $table = 'main_surveys';
+    use HasLinkedDataset;
+
+    protected $table = 'farm_survey_data';
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];
 
+    protected $casts = [
+        'properties' => 'collection',
+    ];
 
     public function submission(): BelongsTo
     {
@@ -21,13 +27,13 @@ class MainSurvey extends Model
 
     // Link to repeat groups
 
-    public function performanceFishes(): HasMany
+    public function fishes(): HasMany
     {
-        return $this->hasMany(Performance\PerformanceFish::class, 'main_survey_id', 'id');
+        return $this->hasMany(Fish::class, 'farm_survey_data_id', 'id');
     }
 
-    public function performanceAnimalFishUses(): HasMany
+    public function fishUses(): HasMany
     {
-        return $this->hasMany(Performance\PerformanceFishUse::class, 'main_survey_id', 'id');
+        return $this->hasMany(FishUse::class, 'farm_survey_data_id', 'id');
     }
 }
