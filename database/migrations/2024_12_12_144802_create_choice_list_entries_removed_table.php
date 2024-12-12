@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('choice_list_entries', function (Blueprint $table) {
+        Schema::create('choice_list_entries_removed', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('choice_list_id')->constrained()->onDelete('cascade');
-
-            // entries might be global; or localised (localised ones have an owner)
-            $table->nullableMorphs('owner');
-            $table->string('name');
-            $table->json('properties')->nullable();
+            $table->foreignId('choice_list_entry_id')->constrained();
+            $table->foreignId('team_id')->constrained();
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('choices');
+        Schema::dropIfExists('choice_list_entries_removed');
     }
 };

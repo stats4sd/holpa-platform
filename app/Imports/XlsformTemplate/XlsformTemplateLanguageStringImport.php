@@ -106,7 +106,6 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
 
         if (!$item) {
-            ray('No item found for row', $row, $class);
         }
 
         $translatableValue = $row
