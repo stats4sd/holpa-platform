@@ -15,10 +15,47 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('farm_survey_data_id')->nullable();
-
             $table->json('properties')->nullable();
 
-            // TODO: add more columns for ODK variables
+            $table->unsignedBigInteger('site_no')->nullable();
+
+            // location
+            $table->decimal('latitude', 11, 8)->nullable();
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->integer('altitude')->nullable();
+            $table->decimal('accuracy', 9, 4)->nullable();
+
+            $table->integer('trees_count')->nullable();
+            $table->integer('trees_richness')->nullable();
+            $table->integer('trees_native')->nullable();
+            $table->integer('trees_diameter')->nullable();
+            $table->integer('trees_mature')->nullable();
+
+            $table->text('trees_arrangement')->nullable();
+            $table->text('vegatation_features')->nullable();
+            $table->text('vegatation_features_other')->nullable();
+            $table->text('vegetation_area')->nullable();
+            $table->text('Soc_survey_id')->nullable();
+            $table->text('production_systems')->nullable();
+            $table->text('production_systems_other')->nullable();
+            $table->text('structure')->nullable();
+            $table->text('compaction')->nullable();
+            $table->text('depth')->nullable();
+            $table->text('residues')->nullable();
+            $table->text('colour')->nullable();
+            $table->text('moisture')->nullable();
+            $table->text('cover')->nullable();
+            $table->text('erosion')->nullable();
+            $table->text('invertebrate')->nullable();
+            $table->text('microbe')->nullable();
+            $table->text('appearance_description')->nullable();
+            $table->text('growth')->nullable();
+            $table->text('disease_incidence')->nullable();
+            $table->text('insect_incidence')->nullable();
+            $table->text('enemy_abundance')->nullable();
+            $table->text('weeds')->nullable();
+            $table->text('natural_vegetation')->nullable();
+            $table->text('magagement')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 

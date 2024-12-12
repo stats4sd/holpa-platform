@@ -14,10 +14,13 @@ return new class extends Migration {
             $table->id();
 
             $table->foreignId('farm_survey_data_id')->nullable();
-
             $table->json('properties')->nullable();
 
-            // TODO: add more columns for ODK variables
+            $table->unsignedBigInteger('fish_id')->nullable();
+            $table->text('fish_label')->nullable();
+            $table->integer('fish_number')->nullable();
+            $table->text('fish_production_use')->nullable();
+            $table->text('fish_production_other')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 

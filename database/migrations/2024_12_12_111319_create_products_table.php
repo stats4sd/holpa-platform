@@ -15,10 +15,25 @@ return new class extends Migration
             $table->id();
 
             $table->foreignId('farm_survey_data_id')->nullable();
-
             $table->json('properties')->nullable();
 
-            // TODO: add more columns for ODK variables
+            $table->unsignedBigInteger('product_id')->nullable();
+            $table->text('product name')->nullable();
+            $table->text('hh_consumption')->nullable();
+            $table->text('hh_cooking')->nullable();
+            $table->text('hh_building')->nullable();
+            $table->text('hh_heating')->nullable();
+            $table->text('hh_other_use')->nullable();
+            $table->text('livestock_consumption')->nullable();
+            $table->text('on_farm_use')->nullable();
+            $table->text('sales')->nullable();
+            $table->text('gifts')->nullable();
+            $table->text('waster')->nullable();
+            $table->text('other_use')->nullable();
+            $table->text('other_use_specify')->nullable();
+            $table->text('buyer')->nullable();
+            $table->text('buyer_other')->nullable();
+            $table->text('fair_price')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 
