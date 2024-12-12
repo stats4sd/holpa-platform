@@ -3,8 +3,10 @@
 namespace App\Models\SampleFrame;
 
 use App\Models\LookupTables\LookupEntry;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use App\Models\SurveyData\FarmSurveyData;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class Farm extends LookupEntry
@@ -37,5 +39,10 @@ class Farm extends LookupEntry
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function farmSurveyData(): HasMany
+    {
+        return $this->hasMany(FarmSurveyData::class);
     }
 }

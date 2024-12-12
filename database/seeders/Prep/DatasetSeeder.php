@@ -3,6 +3,8 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\Dataset;
+use App\Models\SampleFrame\Farm;
+use App\Models\SampleFrame\Location;
 use App\Models\SurveyData\Crop;
 use App\Models\SurveyData\EcologicalPractice;
 use App\Models\SurveyData\FarmSurveyData;
@@ -34,19 +36,13 @@ class DatasetSeeder extends Seeder
         $farmSurveyDataset = Dataset::create(['name' => 'Farm Survey Data', 'parent_id' => NULL, 'primary_key' => 'id', 'entity_model' => FarmSurveyData::class]);
         Dataset::create(['name' => 'Crops', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Crop::class]);
         Dataset::create(['name' => 'Ecological Practices', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => EcologicalPractice::class]);
-
-        // TODO: add entity_model
-        Dataset::create(['name' => 'Farms', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id']);
-
+        Dataset::create(['name' => 'Farms', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Farm::class]);
         Dataset::create(['name' => 'Fieldwork Sites', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => FieldworkSite::class]);
         $fish = Dataset::create(['name' => 'Fish', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Fish::class]);
         Dataset::create(['name' => 'Fish Uses', 'parent_id' => $fish->id, 'primary_key' => 'id', 'entity_model' => FishUse::class]);
         $livestock = Dataset::create(['name' => 'Livestock', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Livestock::class]);
         Dataset::create(['name' => 'Livestock Uses', 'parent_id' => $livestock->id, 'primary_key' => 'id', 'entity_model' => LivestockUse::class]);
-
-        // TODO: add entity_model
-        Dataset::create(['name' => 'Locations', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id']);
-
+        Dataset::create(['name' => 'Locations', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Location::class]);
         Dataset::create(['name' => 'Permanent Workers', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => PermanentWorker::class]);
         Dataset::create(['name' => 'Products', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Product::class]);
         Dataset::create(['name' => 'Seasonal Workers in a Season', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => SeasonalWorkerSeason::class]);

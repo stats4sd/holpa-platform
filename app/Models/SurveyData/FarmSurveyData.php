@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use App\Models\Traits\HasLinkedDataset;
+use App\Models\SampleFrame\Farm;
 
 class FarmSurveyData extends Model
 {
@@ -23,6 +24,11 @@ class FarmSurveyData extends Model
     public function submission(): BelongsTo
     {
         return $this->belongsTo(Submission::class, 'submission_id', 'id');
+    }
+
+    public function farm(): BelongsTo
+    {
+        return $this->belongsTo(Farm::class);
     }
 
     // Link to repeat groups
