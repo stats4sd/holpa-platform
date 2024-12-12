@@ -19,6 +19,11 @@ class FishUse extends Model implements PerformanceRepeatModel
         'properties' => 'collection',
     ];
 
+    public function fish(): BelongsTo
+    {
+        return $this->belongsTo(Fish::class);
+    }
+
     public function farmSurveyData(): BelongsTo
     {
         return $this->belongsTo(FarmSurveyData::class, 'submission_id', 'submission_id');

@@ -2,28 +2,22 @@
 
 namespace App\Models\SurveyData;
 
-use App\Models\Traits\HasLinkedDataset;
-use Illuminate\Database\Eloquent\Model;
-use App\Models\SurveyData\FarmSurveyData;
 use App\Models\Interfaces\PerformanceRepeatModel;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Models\SurveyData\FarmSurveyData;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use App\Models\Traits\HasLinkedDataset;
 
-class Fish extends Model implements PerformanceRepeatModel
+class FieldworkSite extends Model implements PerformanceRepeatModel
 {
     use HasLinkedDataset;
 
-    protected $table = 'fishes';
+    protected $table = 'fieldwork_sites';
 
     protected $casts = [
         'properties' => 'collection',
     ];
-
-    public function fishUses(): HasMany
-    {
-        return $this->hasMany(FishUse::class);
-    }
 
     public function farmSurveyData(): BelongsTo
     {

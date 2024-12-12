@@ -10,19 +10,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
-class Fish extends Model implements PerformanceRepeatModel
+class Livestock extends Model implements PerformanceRepeatModel
 {
     use HasLinkedDataset;
 
-    protected $table = 'fishes';
+    protected $table = 'livestocks';
 
     protected $casts = [
         'properties' => 'collection',
     ];
 
-    public function fishUses(): HasMany
+    public function livestockUses(): HasMany
     {
-        return $this->hasMany(FishUse::class);
+        return $this->hasMany(LivestockUse::class);
     }
 
     public function farmSurveyData(): BelongsTo
