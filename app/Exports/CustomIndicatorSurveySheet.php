@@ -13,19 +13,26 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize
 {
     protected $team;
+    protected $surveyType;
 
-    public function __construct($team)
+    public function __construct($team, $surveyType)
     {
         $this->team = $team;
+        $this->surveyType = $surveyType;
     }
 
     public function collection()
     {
-        return collect($this->team->localIndicators()->where('is_custom', 1)->get())->map(function ($indicator) {
-            return [
-                'indicator_id' => $indicator->id,
-                'indicator' => $indicator->name,
-            ];
+        return collect(
+            $this->team->localIndicators()
+                ->where('is_custom', 1)
+                ->where('survey', $this->surveyType)
+                ->get()
+            )->map(function ($indicator) {
+                return [
+                    'indicator_id' => $indicator->id,
+                    'indicator' => $indicator->name,
+                ];
         });
     }
 
@@ -73,6 +80,8 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
             'choice_filter',
             'repeat_count',
             'default',
+            'note',
+            'trigger',
         ]);
 
         foreach ($locales as $locale) {

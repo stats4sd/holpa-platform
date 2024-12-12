@@ -36,17 +36,29 @@
 
    {{ $this->table }}
 
-   <div class="flex justify-center gap-4 py-8">
+   <div class="flex justify-center gap-4 pt-8">
         <button wire:click="resetIndicators" 
                 class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
             Reset
         </button>
-        <button wire:click="downloadTemplate"
+        <button wire:click="downloadHouseholdTemplate"
                 class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
-            Download template
+            Download Household Template
+        </button>
+
+        <button wire:click="downloadFieldworkTemplate"
+                class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
+            Download Fieldwork Template
         </button>
     </div>
 
-    <livewire:upload-custom-indicators />
+    <!-- Error message -->
+    @error('validation')
+        <div class="text-green text-center mt-2">{{ $message }}</div>
+    @enderror
+
+    <div class="pt-8">
+        <livewire:upload-custom-indicators />
+    </div>
 
 </div>
