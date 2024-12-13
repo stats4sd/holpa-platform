@@ -33,7 +33,6 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public LanguageStringType $languageStringType;
     public ?string $class;
     public ?string $relationship;
-    public ?string $class;
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading, public string $sheet)
     {
@@ -106,6 +105,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
 
         if (!$item) {
+            return null;
         }
 
         $translatableValue = $row
@@ -114,6 +114,12 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->first();
 
         if (!$translatableValue) {
+
+            if($this->heading === 'labelenglish_en') {
+                ray('oh');
+                ray($row);
+            }
+
             return null;
         }
 
