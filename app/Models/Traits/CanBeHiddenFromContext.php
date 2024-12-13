@@ -10,14 +10,14 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 // Trait to use on LookupEntry models when the user can remove 'global' entries from their own context. E.g. For Crops - a user can remove a crop from their own context, and so it will not show in the shortened list of crops in the ODK form. (but will appear in the full list if the enumerator selects "other"...
 trait CanBeHiddenFromContext
 {
-    public static function canBeHiddenFromContext(): bool
+    public function canBeHiddenFromContext(): bool
     {
-        return true;
+        return $this->choiceList->can_be_hidden_from_context;
     }
 
     public function teamRemoved(): BelongsToMany
     {
-        return $this->BelongsToMany(Team::class, Str::snake(class_basename($this)) . '_team_removed');
+        return $this->BelongsToMany(Team::class, 'choice_list_entries_removed');
     }
 
     public function isRemoved(WithXlsforms $team): bool

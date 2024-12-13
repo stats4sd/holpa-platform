@@ -11,14 +11,6 @@ test('an xlsform template is correctly imported and updated', function () {
 
     (new HandleXlsformTemplateAdded())->processXlsformTemplate('tests/assets/odk-example-form-1.xlsx', $this->xlsformTemplate);
 
-    ray(LanguageString::all()
-        ->map(fn($languageString) => [
-            'text' => $languageString->text,
-            'language' => $languageString->xlsformTemplateLanguage->language->iso_alpha2,
-            'type' => $languageString->languageStringType->name,
-        ])
-        ->groupBy('language'));
-
     // check that the survey rows were imported correctly
     $this->assertDatabaseCount('survey_rows', 3);
     $this->assertDatabaseCount('choice_lists', 3);

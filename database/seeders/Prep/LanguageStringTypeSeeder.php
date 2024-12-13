@@ -15,6 +15,7 @@ class LanguageStringTypeSeeder extends Seeder
         $languageStringTypes = [
             ['name' => 'label'],
             ['name' => 'hint'],
+            ['name' => 'relevant_message'],
             ['name' => 'required_message'],
             ['name' => 'constraint_message'],
             ['name' => 'guidance_hint'],

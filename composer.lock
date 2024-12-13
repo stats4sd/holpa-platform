@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "58c3940cc4bdcfa0ec52943081b7a739",
+    "content-hash": "a8564be43c17ea2b8f22c9365313d783",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -7667,6 +7667,65 @@
             "time": "2024-11-21T16:05:20+00:00"
         },
         {
+            "name": "stats4sd/laravel-sql-views",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stats4sd/laravel-sql-views.git",
+                "reference": "d3771a6df8c7cbd2cca7803503d056d8014e09ae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stats4sd/laravel-sql-views/zipball/d3771a6df8c7cbd2cca7803503d056d8014e09ae",
+                "reference": "d3771a6df8c7cbd2cca7803503d056d8014e09ae",
+                "shasum": ""
+            },
+            "require-dev": {
+                "mockery/mockery": "^1.1",
+                "orchestra/testbench": "~3|~4",
+                "phpunit/phpunit": "^8.0",
+                "sempro/phpunit-pretty-print": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "SqlViews": "Stats4SD\\SqlViews\\Facades\\SqlViews"
+                    },
+                    "providers": [
+                        "Stats4SD\\SqlViews\\SqlViewsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stats4SD\\SqlViews\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stats4SD",
+                    "email": "support@stats4sd.org",
+                    "homepage": "https://stats4sd.org"
+                }
+            ],
+            "description": "A small package to help automate the creation and updating of MySQL views within a Laravel project.",
+            "homepage": "https://github.com/stats4sd/laravel-sql-views",
+            "keywords": [
+                "laravel",
+                "sql"
+            ],
+            "support": {
+                "issues": "https://github.com/stats4sd/laravel-sql-views/issues",
+                "source": "https://github.com/stats4sd/laravel-sql-views/tree/v1.2.0"
+            },
+            "time": "2023-10-12T11:06:09+00:00"
+        },
+        {
             "name": "staudenmeir/belongs-to-through",
             "version": "v2.16.2",
             "source": {
@@ -14589,6 +14648,6 @@
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

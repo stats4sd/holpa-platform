@@ -9,6 +9,8 @@ class Crop extends LookupEntry
 {
     use CanBeHiddenFromContext;
 
+    protected $table = 'crop_list_entries';
+
     public function getCsvContentsForOdk(?WithXlsforms $team = null): array
     {
         if ($team) {
@@ -22,12 +24,6 @@ class Crop extends LookupEntry
             'name' => $this->name,
             'label' => $this->label,
             'is_in_context' => $isRelevant,
-            'total_max' => $this->total_max,
-            'sold_max' => $this->sold_max,
-            'farmgate_max' => $this->farmgate_max,
-            'gift_max' => $this->gift_max,
-            'land_use_max' => $this->land_use_max,
-            'varieties_max' => $this->varieties_max,
         ];
     }
 }
