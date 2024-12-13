@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Stats4sd\FilamentOdkLink\Jobs\UpdateXlsformTitleInFile;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
@@ -34,6 +35,22 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms
             $odkLinkService = app()->make(OdkLinkService::class);
             if (config('filament-odk-link.odk.url') !== null && config('filament-odk-link.odk.url') !== '') {
                 $owner->createLinkedOdkProject($odkLinkService, $owner);
+            }
+
+            // TODO: create xlsform for all active xlsform template for this new team
+            $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
+
+            foreach ($xlsformTemplates as $xlsformTemplate) {
+                logger($xlsformTemplate->title);
+
+                if (!$xlsformTemplate->xlsfile) {
+                    $xlsformTemplate->syncWithTemplate();
+                }
+
+                UpdateXlsformTitleInFile::dispatchSync($xlsformTemplate);
+
+                $xlsformTemplate->refresh();
+                $xlsformTemplate->deployDraft($odkLinkService);
             }
 
             // create empty interpretation entries for the team:
@@ -66,7 +83,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms
     {
         return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
     }
-  
+
     public function locationLevels(): MorphMany
     {
         return $this->morphMany(LocationLevel::class, 'owner');
