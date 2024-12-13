@@ -5,12 +5,12 @@ namespace App\Models\SurveyData;
 use App\Models\Traits\HasLinkedDataset;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SurveyData\FarmSurveyData;
-use App\Models\Interfaces\PerformanceRepeatModel;
+use App\Models\Interfaces\RepeatModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
-class Livestock extends Model implements PerformanceRepeatModel
+class Livestock extends Model implements RepeatModel
 {
     use HasLinkedDataset;
 
