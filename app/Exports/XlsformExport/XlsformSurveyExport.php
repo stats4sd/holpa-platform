@@ -51,6 +51,7 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
                     ...$this->getLanguageStrings($row, 'constraint_message'),
                     'choice_filter' => $row->choice_filter,
                     'repeat_count' => $row->repeat_count,
+                    ...$this->getLanguageStrings($row, 'mediaimage'),
                     'default' => $row->default,
                 ]);
             });
@@ -81,7 +82,23 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
     {
         return $this->xlsformTemplateLanguages
             ->mapWithKeys(function (XlsformTemplateLanguage $xlsformTemplateLanguage) use ($row, $string) {
-                $key = "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
+
+                // fix for mediaimage needing to be media::image, etc.
+                $outputString = $string;
+
+                if($string === 'mediaimage') {
+                    $outputString = 'media::image';
+                }
+
+                if($string === 'mediaaudio') {
+                    $outputString = 'media::audio';
+                }
+
+                if($string === 'mediavideo') {
+                    $outputString = 'media::video';
+                }
+
+                $key = "$outputString::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
                 $value = $row->languageStrings
                     ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
                     ->where('xlsform_template_language_id', $xlsformTemplateLanguage->id)

@@ -15,17 +15,32 @@ class XlsformsRelationManager extends \Stats4sd\FilamentOdkLink\Filament\Resourc
 {
 
 
-
     public function table(Table $table): Table
     {
         return parent::table($table)
             ->actions([
                 Action::make('download xls file')
-                ->action(function(Xlsform $record) {
+                    ->action(function (Xlsform $record) {
 
-                    return Excel::download((new XlsformWorkbookExport($record)), 'xlsform.xlsx');
+                        return Excel::download((new XlsformWorkbookExport($record)), 'xlsform.xlsx');
 
-                })
+                    }),
+                // add Publish button
+                Action::make('publish')
+                    ->label('Publish')
+                    ->icon('heroicon-m-arrow-up-tray')
+                    ->requiresConfirmation()
+                    ->action(function (Xlsform $record) {
+                        $odkLinkService = app()->make(OdkLinkService::class);
+
+                        // create draft if there is no draft yet
+                        if (!$record->has_draft) {
+                            $odkLinkService->createDraftForm($record);
+                        }
+
+                        // call API to publish form in ODK central
+                        $odkLinkService->publishForm($record);
+                    }),
             ])
             ->headerActions([
                 CreateAction::make()
