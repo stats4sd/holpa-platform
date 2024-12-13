@@ -1,25 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Register;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Roleregister;
-use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Programregister;
-
-// // user registration form for team-invites
-// Route::get('register', Register::class)
-//     ->name('filament.app.register')
-//     ->middleware('signed');
-
-// // user registration form for role-invites
-// Route::get('roleregister', Roleregister::class)
-//     ->name('filament.app.roleregister')
-//     ->middleware('signed');
-
-// // user registration form for program-invites
-// Route::get('programregister', Programregister::class)
-//     ->name('filament.app.programregister')
-//     ->middleware('signed');
+use App\Filament\Actions\ExportDataAction;
 
 // redirect user from root path to app panel login page
 Route::get('/', function () {
@@ -35,3 +17,6 @@ Route::get('/program/login', function () {
 Route::get('/admin/login', function () {
     return redirect('app');
 })->name('filament.admin.auth.login');
+
+// add a route for data export
+Route::get('export', [ExportDataAction::class, 'export']);

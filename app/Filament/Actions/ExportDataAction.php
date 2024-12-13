@@ -2,8 +2,7 @@
 
 namespace App\Filament\Actions;
 
-use App\Exports\MainSurveyExport;
-use App\Http\Controllers\DataExportController;
+use App\Exports\FarmSurveyDataExport;
 use Filament\Actions\Action;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,16 +14,22 @@ class ExportDataAction extends Action
         parent::setUp();
 
         $this->action(function () {
-            $filePath = $this->exportAllTape();
+            $filePath = $this->exportAll();
             return $this->download($filePath);
         });
     }
 
-    public function exportAllTape(): string
+    public function export()
+    {
+        $filePath = $this->exportAll();
+        return $this->download($filePath);
+    }
+
+    public function exportAll(): string
     {
         // $filePath = 'HOLPA-data-export' . '-' . now()->toDateTimeString() . '.xlsx';
         $filePath = 'HOLPA-data-export.xlsx';
-        Excel::store(new MainSurveyExport(), $filePath);
+        Excel::store(new FarmSurveyDataExport(), $filePath);
 
         return $filePath;
     }

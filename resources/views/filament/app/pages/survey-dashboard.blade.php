@@ -1,4 +1,5 @@
 <?php
+
 use App\Filament\App\Pages\MoreInstructions;
 use App\Filament\App\Pages\AddData;
 use App\Filament\App\Pages\SurveyLanguages;
@@ -153,7 +154,7 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="flex shadow-md overflow-hidden md:col-span-2 h-80">
                 <!-- Green Section -->
                 <div class="w-1/4 bg-green text-white text-lg font-bold flex flex-col items-center justify-center p-4">
-                        <img src="/images/data_analysis_icon.png" alt="Data Collection Icon" class="w-10 mb-2">
+                    <img src="/images/data_analysis_icon.png" alt="Data Collection Icon" class="w-10 mb-2">
                     <span class="mt-2 text-center">Data Analysis</span>
                 </div>
                 <!-- White Section -->
@@ -161,8 +162,10 @@ use App\Filament\App\Pages\DataAnalysis;
                     <h3 class="text-black font-bold mb-2">Download data</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                     <div class="text-center">
-                        <a href="{{ url(DataAnalysis::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
-                            VIEW AND UPDATE
+                        <!-- change to data export route -->
+                        <a href="{{ url('export') }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+
+                            EXPORT DATA
                         </a>
                     </div>
                 </div>
