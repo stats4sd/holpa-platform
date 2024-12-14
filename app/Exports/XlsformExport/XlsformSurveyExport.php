@@ -16,13 +16,15 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Row;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
 class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithColumnWidths
 {
     public Collection $surveyRows;
-    public array $dynamicStyles;
+    public Collection $dynamicStylesRowLists;
+
 
 
     public function __construct(public Xlsform $xlsform, public Collection $xlsformTemplateLanguages, public Collection $languageStringTypes)
@@ -33,7 +35,7 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
             ->sortBy('id')
             ->load('languageStrings')
             ->map(function (SurveyRow $row) {
-                return [
+                return collect([
                     'id' => $row->id,
                     'type' => $row->type,
                     'name' => $row->name,
@@ -49,21 +51,12 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
                     ...$this->getLanguageStrings($row, 'constraint_message'),
                     'choice_filter' => $row->choice_filter,
                     'repeat_count' => $row->repeat_count,
+                    ...$this->getLanguageStrings($row, 'mediaimage'),
                     'default' => $row->default,
-                ];
+                ]);
             });
 
-        $beginGroupRows = $this->surveyRows->filter(fn(SurveyRow $surveyRow) => $surveyRow['type'] === 'begin_group');
-        $endGroupRows = $this->surveyRows->filter(fn(SurveyRow $surveyRow) => $surveyRow['type'] === 'end_group');
-        $beginRepeatRows = $this->surveyRows->filter(fn(SurveyRow $surveyRow) => $surveyRow['type'] === 'begin_repeat');
-        $endRepeatRows = $this->surveyRows->filter(fn(SurveyRow $surveyRow) => $surveyRow['type'] === 'end_repeat');
-
-        $this->dynamicStyles = [
-            ...$beginGroupRows->mapWithKeys(fn(SurveyRow $surveyRow) => [$surveyRow['id'] + 1 => [])->toArray(),
-            'end_group' => $endGroupRows->map(fn(SurveyRow $surveyRow) => $surveyRow['id'])->toArray(),
-            'begin_repeat' => $beginRepeatRows->map(fn(SurveyRow $surveyRow) => $surveyRow['id'])->toArray(),
-            'end_repeat' => $endRepeatRows->map(fn(SurveyRow $surveyRow) => $surveyRow['id'])->toArray(),
-        ];
+        $this->dynamicStyleRowLists = $this->getDynamicStylesRowLists($this->surveyRows);
 
     }
 
@@ -88,14 +81,30 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
     private function getLanguageStrings(mixed $row, string $string): Collection
     {
         return $this->xlsformTemplateLanguages
-            ->mapWithKeys(function(XlsformTemplateLanguage $xlsformTemplateLanguage) use ($row, $string) {
-                    $key = "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
-                    $value = $row->languageStrings
-                        ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
-                        ->where('xlsform_template_language_id', $xlsformTemplateLanguage->id)
-                        ->first()?->text ?? '';
+            ->mapWithKeys(function (XlsformTemplateLanguage $xlsformTemplateLanguage) use ($row, $string) {
 
-                    return [$key => $value];
+                // fix for mediaimage needing to be media::image, etc.
+                $outputString = $string;
+
+                if($string === 'mediaimage') {
+                    $outputString = 'media::image';
+                }
+
+                if($string === 'mediaaudio') {
+                    $outputString = 'media::audio';
+                }
+
+                if($string === 'mediavideo') {
+                    $outputString = 'media::video';
+                }
+
+                $key = "$outputString::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
+                $value = $row->languageStrings
+                    ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
+                    ->where('xlsform_template_language_id', $xlsformTemplateLanguage->id)
+                    ->first()?->text ?? '';
+
+                return [$key => $value];
             });
     }
 
@@ -136,21 +145,92 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
         ];
     }
 
-    public function styles(Worksheet $sheet): array
+    public function styles(Worksheet $sheet): void
     {
-        // starting at C, make label + hint columns auto-wrap per Xlsformtemplatelangauge
-        $wrapLabelArray = $this->xlsformTemplateLanguages->mapWithKeys(fn(XlsformTemplateLanguage $language, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]
-        )->toArray();
-
         $languageCount = $this->xlsformTemplateLanguages->count();
 
-        $wrapHintArray = $this->xlsformTemplateLanguages->mapWithKeys(fn(XlsformTemplateLanguage $language, $index) => [chr(67 + $languageCount + $index) => ['alignment' => ['wrapText' => true]]]
-        )->toArray();
+        $wrapStyle = ['alignment' => ['wrapText' => true]];
 
-        return [
-            1 => ['font' => ['bold' => true]],
-            ...$wrapLabelArray,
-            ...$wrapHintArray,
+        $beginGroupStyle = [
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '8ED873',],
+                'endColor' => ['rgb' => '8ED873',],
+            ],
         ];
+
+        $endGroupStyle = [
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => 'FA8E78',],
+                'endColor' => ['rgb' => 'FA8E78',],
+            ],
+        ];
+
+        $beginRepeatStyle = [
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => '83CAEB',],
+                'endColor' => ['rgb' => '83CAEB',],
+            ],
+        ];
+
+        $endRepeatStyle = [
+            'fill' => [
+                'fillType' => Fill::FILL_SOLID,
+                'startColor' => ['rgb' => 'E49EDD',],
+                'endColor' => ['rgb' => 'E49EDD',],
+            ],
+        ];
+
+
+        // starting at C, make label + hint columns auto-wrap per Xlsformtemplatelangauge
+        $wrapLabelList = $this->xlsformTemplateLanguages->map(fn(XlsformTemplateLanguage $language, $index) => chr(67 + $index));
+        $wrapHintList = $this->xlsformTemplateLanguages->map(fn(XlsformTemplateLanguage $language, $index) => chr(67 + $languageCount + $index));
+
+
+        // **** APPLY STYLES ****
+
+        $sheet->getStyle('1:1')->getFont()->setBold(true);
+
+        foreach($wrapLabelList as $column) {
+            $sheet->getStyle($column . ':' . $column)->applyFromArray($wrapStyle);
+        }
+
+        foreach($wrapHintList as $column) {
+            $sheet->getStyle($column . ':' . $column)->applyFromArray($wrapStyle);
+        }
+
+        foreach($this->dynamicStyleRowLists['beginGroupRows'] as $row) {
+            $sheet->getStyle($row . ':' . $row)->applyFromArray($beginGroupStyle);
+        }
+
+        foreach($this->dynamicStyleRowLists['endGroupRows'] as $row) {
+            $sheet->getStyle($row . ':' . $row)->applyFromArray($endGroupStyle);
+        }
+
+        foreach($this->dynamicStyleRowLists['beginRepeatRows'] as $row) {
+            $sheet->getStyle($row . ':' . $row)->applyFromArray($beginRepeatStyle);
+        }
+
+        foreach($this->dynamicStyleRowLists['endRepeatRows'] as $row) {
+            $sheet->getStyle($row . ':' . $row)->applyFromArray($endRepeatStyle);
+        }
+
+    }
+
+    private function getDynamicStylesRowLists(Collection $surveyRows): Collection
+    {
+        $beginGroupRows = $surveyRows->filter(fn(Collection $surveyRow) => $surveyRow['type'] === 'begin_group')->pluck('id');
+        $endGroupRows = $surveyRows->filter(fn(Collection $surveyRow) => $surveyRow['type'] === 'end_group')->pluck('id');
+        $beginRepeatRows = $surveyRows->filter(fn(Collection $surveyRow) => $surveyRow['type'] === 'begin_repeat')->pluck('id');
+        $endRepeatRows = $surveyRows->filter(fn(Collection $surveyRow) => $surveyRow['type'] === 'end_repeat')->pluck('id');
+
+        return collect([
+            'beginGroupRows' => $beginGroupRows->map(fn($id) => $id + 1),
+            'endGroupRows' => $endGroupRows->map(fn($id) => $id + 1),
+            'beginRepeatRows' => $beginRepeatRows->map(fn($id) => $id + 1),
+            'endRepeatRows' => $endRepeatRows->map(fn($id) => $id + 1),
+        ]);
     }
 }

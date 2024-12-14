@@ -38,9 +38,6 @@ class XlsformWorkbookExport implements WithMultipleSheets
         // get the language string types once to avoid multiple queries
         $this->languageStringTypes = LanguageStringType::all();
 
-        ray($this->xlsformTemplateLanguages);
-        ray($this->languageStringTypes);
-
     }
 
     public function sheets(): array

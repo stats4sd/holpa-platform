@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
+use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
@@ -40,24 +41,12 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                 $owner->createLinkedOdkProject($odkLinkService, $owner);
             }
 
-            // create empty interpretation entries for the team:
-            // TODO: this probably is not great, and we should not require a bunch of empty entries!
+            // all teams get a default locale of english
+            $en = Locale::whereHas('language', fn(Builder $query) => $query->where('iso_alpha2', 'en'))->first();
 
-            // Below are tape-data-system specific business logic, HOPLA may have something similar.
-            // Temporary keep it for reference first. We can remove them after confirming we do not need them.
+            $owner->locales()->attach($en);
 
-            /*
-            $interpretations = CaetIndex::all()->map(fn ($index) => [
-               'owner_id' => $owner->id,
-               'owner_type' => static::class,
-               'caet_index_id' => $index->id,
-               'interpretation' => '',
-           ])->toArray();
 
-           $owner->caetInterpretations()->createMany($interpretations);
-
-           $owner->locationLevels()->create(['name' => 'Top level (rename)', 'has_farms' => 0, 'top_level' => 1, 'slug' =>'site-level']);
-           */
         });
     }
 
@@ -94,5 +83,31 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function xlsforms(): MorphMany
     {
         return $this->morphMany(Xlsform::class, 'owner');
+    }
+
+    public function lookupTables(): BelongsToMany
+    {
+        return $this->belongsToMany(Dataset::class, 'team_lookup_tables', 'team_id', 'lookup_table_id')
+            ->withPivot('is_complete')
+            ->where('lookup_table', true);
+    }
+
+    public function markLookupListAsComplete($lookupTable): ?bool
+    {
+        $this->lookupTables()->sync([$lookupTable->id => ['is_complete' => 1]], detaching: false);
+
+        return $this->hasCompletedLookupList($lookupTable);
+    }
+
+    public function markLookupListAsInComplete($lookupTable): ?bool
+    {
+        $this->lookupTables()->detach($lookupTable->id);
+
+        return $this->hasCompletedLookupList($lookupTable);
+    }
+
+    public function hasCompletedLookupList($lookupTable): ?bool
+    {
+        return $this->lookupTables->where('id', $lookupTable->id)->first()?->pivot->is_complete;
     }
 }

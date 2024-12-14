@@ -23,6 +23,7 @@
         "shiftonelabs/laravel-cascade-deletes": "^2.0",
         "stats4sd/filament-odk-link": "dev-main",
         "stats4sd/filament-team-management": "^1.0",
+        "stats4sd/laravel-sql-views": "^1.2",
         "staudenmeir/belongs-to-through": "^2.16",
         "symfony/http-client": "^7.1",
         "symfony/mailgun-mailer": "^7.1",

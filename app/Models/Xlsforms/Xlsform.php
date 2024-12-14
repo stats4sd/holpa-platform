@@ -31,8 +31,6 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     public function syncWithTemplate(): void
     {
 
-        // no need to copy over file...
-
         // if the odk_project is not set, set it based on the given owner:
         $this->odk_project_id = $this->owner->odkProject->id;
         $this->has_latest_template = true;
@@ -52,7 +50,10 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
         $filePath = 'temp/' . $this->id . '/' . $this->title . '.xlsx';
         Excel::store(new XlsformWorkbookExport($this), $filePath, 'local');
 
-        $this->addMedia($filePath)->toMediaCollection('xlsform_file');
+        $this->addMediaFromDisk($filePath, disk: 'local')->toMediaCollection('xlsform_file');
+
+        $this->syncWithTemplate();
+        UpdateXlsformTitleInFile::dispatchSync($this);
 
         return parent::deployDraft($service);
     }

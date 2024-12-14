@@ -18,7 +18,7 @@ return new class extends Migration
             // entries might be global; or localised (localised ones have an owner)
             $table->nullableMorphs('owner');
             $table->string('name');
-            $table->json('properties');
+            $table->json('properties')->nullable();
             $table->timestamps();
         });
     }
