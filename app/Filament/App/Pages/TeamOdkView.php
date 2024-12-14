@@ -7,7 +7,6 @@ use App\Filament\App\Resources\XlsformResource;
 use App\Models\Team;
 use App\Services\HelperService;
 use Awcodes\Shout\Components\Shout;
-use Filament\Actions\Action;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
@@ -22,7 +21,10 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\HtmlString;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use App\Models\Xlsforms\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class TeamOdkView extends Page implements HasTable, HasInfolists
@@ -94,24 +96,62 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
 
                 TextColumn::make('live_submissions_count')
                     ->label('No. of Submissions'),
+                TextColumn::make('submissions_count')
+                    ->label('Submissions in database')
+                    ->counts('submissions'),
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                \Filament\Tables\Actions\Action::make('create-temp')
+                TableAction::make('create-temp')
                     ->color('gray')
                     ->label('Add a new ODK form')
                     ->modalFooterActions([
-                        Action::make('ok')
+                        TableAction::make('ok')
                             ->label('Return')
-                            ->close()
+                            ->close(),
                     ])
                     ->form([
                         Shout::make('note')
                             ->type('danger')
-                            ->content('TBC: Note - at present this feature is not available. All team forms are centrally managed by the system administrators in collaboration with the team leaders. In the future, this will allow teams to have multiple HOLPA survey forms active at the same time, for example a standard HOLPA and a "HOLPA National" survey, or 2 surveys to allow conducting Steps 1 and 2 at different times.')
-                    ])
+                            ->content('TBC: Note - at present this feature is not available. All team forms are centrally managed by the system administrators in collaboration with the team leaders. In the future, this will allow teams to have multiple HOLPA survey forms active at the same time, for example a standard HOLPA and a "HOLPA National" survey, or 2 surveys to allow conducting Steps 1 and 2 at different times.'),
+                    ]),
+                TableAction::make('delete_submissions')
+                    ->label('TESTING ONLY: DELETE ALL SUBMISSIONS FROM DATABASE')
+                    ->action(function () {
+                        HelperService::getSelectedTeam()->xlsforms->each(function (Xlsform $xlsform) {
+
+
+                            // All temporary code...
+                            $xlsform->submissions->each(function (Submission $submission) {
+                                // delete all entities linked to submission;
+                                $submission->entities
+                                    ->filter(fn(Entity $entity) => $entity->parent_id !==  null )
+                                    ->each(function (Entity $entity) {
+
+                                    $entity->values()->delete();
+                                    $entity->delete();
+                                });
+
+                                $submission->entities
+                                    ->filter(fn(Entity $entity) => $entity->parent_id ===  null )
+                                    ->each(function (Entity $entity) {
+                                        $entity->values()->delete();
+                                        $entity->delete();
+                                    });
+                                $submission->forceDelete();
+                            });
+                        });
+
+                        $this->resetTable();
+
+                        Notification::make('update_success')
+                            ->title('Success!')
+                            ->body("All submissions have been deleted from the database.")
+                            ->color('success')
+                            ->send();
+                    }),
             ])
             ->actions([
 
@@ -171,7 +211,21 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                             ->body("The form {$record->title} now has the latest lookup data entered into the platform by your team.")
                             ->color('success')
                             ->send();
-                    })
+                    }),
+
+                TableAction::make('pull-submissions')
+                    ->label('Manually Get Submissions')
+                    ->action(function (Xlsform $record) {
+                        $submissionCount = $record->getSubmissions();
+
+
+                        $record->refresh();
+                        Notification::make('update_success')
+                            ->title('Success!')
+                            ->body("{$submissionCount} submissions have been pulled from the ODK server for the form {$record->title} (they may take a moment to process).")
+                            ->color('success')
+                            ->send();
+                    }),
                 //
                 //                // add Pull Submissions button
                 //                TableAction::make('export')
