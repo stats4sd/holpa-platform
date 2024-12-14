@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
 class ChoiceListEntry extends Model implements HasLanguageStrings
@@ -58,6 +59,12 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
     public function languageStrings(): MorphMany
     {
         return $this->morphMany(LanguageString::class, 'linked_entry');
+    }
+
+    // Some choice lists are linked to specific data models to let us add custom information.
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
     }
 
 }

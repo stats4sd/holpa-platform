@@ -3,24 +3,18 @@
 namespace App\Filament\App\Clusters\LookupTables\Resources;
 
 use App\Filament\App\Clusters\LookupTables;
-use App\Filament\App\Clusters\LookupTables\Resources\AnimalProductResource\Pages;
-use App\Filament\App\Clusters\LookupTables\Resources\AnimalProductResource\Pages\ListChoiceListEntries;
-use App\Filament\Traits\IsLookupListResource;
+use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\LanguageStringType;
 use App\Models\Locale;
-use App\Models\LookupTables\AnimalProduct;
 use App\Models\Team;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Models\XlsformTemplates\LanguageString;
 use App\Services\HelperService;
-use Awcodes\Shout\Components\Shout;
 use Faker\Extension\Helper;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\Livewire;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
@@ -34,7 +28,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
-use Livewire\Attributes\Url;
 
 class ChoiceListEntryResource extends Resource
 {
@@ -102,6 +95,22 @@ class ChoiceListEntryResource extends Resource
                 ->label('label::' . $locale->language_label);
         });
 
+        // set up all property fields. We'll hide them dynamically based on the current choice list
+        $propFields = HelperService::getCustomChoiceLists()
+            ->map(function (Collection $fieldProps, $key) {
+
+                $fields = [];
+                foreach ($fieldProps as $fieldProp) {
+                    $fields[] = TextInput::make('properties.'.$fieldProp['name'])
+                        ->label($fieldProp['label'])
+                        ->helperText($fieldProp['hint'])
+                        ->visible(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record?->choiceList->list_name === $key || $livewire->choiceListName === $key);
+                }
+
+                return $fields;
+            })->flatten()
+            ->toArray();
+
 
         return $form
             ->columns(1)
@@ -147,6 +156,7 @@ class ChoiceListEntryResource extends Resource
                     ])
                     ->addable(false)
                     ->deletable(false),
+                ...$propFields,
             ]);
     }
 
@@ -202,7 +212,7 @@ class ChoiceListEntryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListChoiceListEntries::route('/'),
+            'index' => ChoiceListEntryResource\Pages\ListChoiceListEntries::route('/'),
         ];
     }
 }

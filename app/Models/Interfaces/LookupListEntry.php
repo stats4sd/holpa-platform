@@ -3,11 +3,12 @@
 namespace App\Models\Interfaces;
 
 // The required methods for a model to be used as a source for a csv file that will be published to ODK as a media attachment.
+use App\Models\XlsformTemplates\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 interface LookupListEntry
 {
-    public static function getLinkedDataset(): ?\App\Models\Dataset;
+    public static function getLinkedChoiceList(): ?ChoiceList;
 
     public function isGlobalEntry(): \Illuminate\Database\Eloquent\Casts\Attribute;
 

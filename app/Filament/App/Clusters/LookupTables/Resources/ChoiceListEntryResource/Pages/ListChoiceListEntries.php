@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources\AnimalProductResource\Pages;
+namespace App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages;
 
-use App\Filament\App\Clusters\Actions\CreateLookupListEntryAction;
 use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource;
 use App\Models\LookupTables\AnimalProduct;
 use App\Models\XlsformTemplates\ChoiceList;
@@ -11,11 +10,9 @@ use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
-use Hoa\Compiler\Llk\Rule\Choice;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
-use function Livewire\after;
 
 class ListChoiceListEntries extends ListRecords
 {

@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Models\LookupTables\Crop;
+use App\Models\LookupTables\HasExtraProperties;
 use App\Models\Team;
 
 use Illuminate\Support\Str;
@@ -12,6 +14,7 @@ use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Casts\Json;
 use Illuminate\Support\Facades\File;
 use Illuminate\Database\Eloquent\Model;
+use phpDocumentor\Reflection\Types\ClassString;
 
 class HelperService
 {
@@ -147,5 +150,19 @@ class HelperService
         $reversedArray = array_reverse($array);
 
         return $reversedArray;
+    }
+
+
+    public static function getCustomChoiceLists(): Collection
+    {
+        // find all models with HasExtraProperties interface
+        return HelperService::getModels()->filter(function ($model) {
+            return in_array(HasExtraProperties::class, class_implements($model));
+        })
+            ->mapWithKeys(
+                function (string $model) {
+                    return [$model::getChoiceListName() =>  $model::extraProperties()];
+                });
+
     }
 }

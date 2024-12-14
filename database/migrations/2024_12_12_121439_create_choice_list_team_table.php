@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_lookup_tables', function (Blueprint $table) {
+        Schema::create('choice_list_team', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('lookup_table_id')->constrained('datasets', 'id')->cascadeOnDelete();
+            $table->foreignId('choice_list_id')->constrained('choice_lists', 'id')->cascadeOnDelete();
             $table->boolean('is_complete')->default(false);
             $table->timestamps();
         });
