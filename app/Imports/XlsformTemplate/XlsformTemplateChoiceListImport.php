@@ -5,6 +5,7 @@ namespace App\Imports\XlsformTemplate;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -33,9 +34,16 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
     {
         $row = collect($row);
 
+
+        $localisable = match (Str::lower($row['localisable'])) {
+            'true', 'yes', 1 => true,
+            default => false,
+        };
+
         return new ChoiceList([
             'xlsform_template_id' => $this->xlsformTemplate->id,
             'list_name' => $row['list_name'],
+            'is_localisable' => $localisable,
         ]);
     }
 
