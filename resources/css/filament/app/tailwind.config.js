@@ -16,6 +16,9 @@ export default {
             'light-grey': 'var(--light-grey)',
             'grey': 'var(--grey)',
           },
+          fontFamily: {
+            montserrat: ['"Montserrat"', "sans-serif"],
+          },
         },
       },
 }

@@ -1,5 +1,5 @@
 @import '/vendor/filament/filament/resources/css/theme.css';
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @config 'tailwind.config.js';
 
 :root {
@@ -9,7 +9,15 @@
     --light-grey: #F2F2F8;
     --shadowgrey: #989898;
   }
-
+body {
+    @apply font-montserrat text-sm;
+}
+h1 {
+    @apply font-extrabold text-5xl;
+}
+h2 {
+    @apply font-light text-2xl;
+}
 .hover-effect {
     transition: all 0.2s ease-in-out;
 }
@@ -28,4 +36,11 @@
 
 .rounded-3xl {
     border-radius: 1.5rem;
+}
+.container {
+    display: block;
+    justify-content: revert;
+    align-items: revert;
+    background-color: revert;
+    border-bottom: none;
 }
