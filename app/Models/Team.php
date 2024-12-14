@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
+use App\Models\XlsformTemplates\ChoiceList;
+use Hoa\Compiler\Llk\Rule\Choice;
 use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
@@ -85,29 +87,28 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->morphMany(Xlsform::class, 'owner');
     }
 
-    public function lookupTables(): BelongsToMany
+    public function choiceLists(): BelongsToMany
     {
-        return $this->belongsToMany(Dataset::class, 'team_lookup_tables', 'team_id', 'lookup_table_id')
-            ->withPivot('is_complete')
-            ->where('lookup_table', true);
+        return $this->belongsToMany(ChoiceList::class, 'choice_list_team', 'team_id', 'choice_list_id')
+            ->withPivot('is_complete');
     }
 
-    public function markLookupListAsComplete($lookupTable): ?bool
+    public function markLookupListAsComplete(ChoiceList $choiceList): ?bool
     {
-        $this->lookupTables()->sync([$lookupTable->id => ['is_complete' => 1]], detaching: false);
+        $this->choiceLists()->sync([$choiceList->id => ['is_complete' => 1]], detaching: false);
 
-        return $this->hasCompletedLookupList($lookupTable);
+        return $this->hasCompletedLookupList($choiceList);
     }
 
-    public function markLookupListAsInComplete($lookupTable): ?bool
+    public function markLookupListAsInComplete(ChoiceList $choiceList): ?bool
     {
-        $this->lookupTables()->detach($lookupTable->id);
+        $this->choiceLists()->detach($choiceList->id);
 
-        return $this->hasCompletedLookupList($lookupTable);
+        return $this->hasCompletedLookupList($choiceList);
     }
 
-    public function hasCompletedLookupList($lookupTable): ?bool
+    public function hasCompletedLookupList(ChoiceList $choiceList): ?bool
     {
-        return $this->lookupTables->where('id', $lookupTable->id)->first()?->pivot->is_complete;
+        return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
     }
 }

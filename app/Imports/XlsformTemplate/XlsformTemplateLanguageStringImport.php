@@ -114,12 +114,6 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->first();
 
         if (!$translatableValue) {
-
-            if($this->heading === 'labelenglish_en') {
-                ray('oh');
-                ray($row);
-            }
-
             return null;
         }
 

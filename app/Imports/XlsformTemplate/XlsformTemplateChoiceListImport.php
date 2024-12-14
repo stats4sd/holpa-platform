@@ -34,9 +34,8 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
     {
         $row = collect($row);
 
-
-        $localisable = match (Str::lower($row['localisable'])) {
-            'true', 'yes', 1 => true,
+        $localisable = match ($row['localisable']) {
+            'true', 'yes', 'TRUE', 'YES', 'Yes', 'True', '1', 1, true => true,
             default => false,
         };
 

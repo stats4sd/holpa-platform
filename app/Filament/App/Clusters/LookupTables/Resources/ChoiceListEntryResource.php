@@ -81,10 +81,10 @@ class ChoiceListEntryResource extends Resource
         return $lists
             ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
                 ->group('Choice Lists')
-                ->icon(static::getNavigationIcon())
-                ->activeIcon(static::getActiveNavigationIcon())
+                ->icon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+                ->activeIcon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
                 ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.*')
-                    && request()->get('list') === $choiceList->list_name
+                    && request()->get('choiceListName') === $choiceList->list_name
                 )
                 ->badge(static::getNavigationBadge(), color: static::getNavigationBadgeColor())
                 ->badgeTooltip(static::getNavigationBadgeTooltip())

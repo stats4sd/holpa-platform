@@ -21,6 +21,7 @@
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^3.8",
         "shiftonelabs/laravel-cascade-deletes": "^2.0",
+        "spatie/laravel-ignition": "^2.9",
         "stats4sd/filament-odk-link": "dev-main",
         "stats4sd/filament-team-management": "^1.0",
         "stats4sd/laravel-sql-views": "^1.2",
