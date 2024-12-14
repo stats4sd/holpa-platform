@@ -106,8 +106,12 @@ class ChoiceListEntryResource extends Resource
         return $form
             ->columns(1)
             ->schema([
+                Hidden::make('owner_id')
+                    ->default(fn() => HelperService::getSelectedTeam()->id),
+                Hidden::make('owner_type')
+                    ->default('App\Models\Team'),
                 Hidden::make('choice_list_id')
-            ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
+                    ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
                 TextInput::make('name')->required(),
                 Repeater::make('languageStrings')
                     ->label('Add Labels for the following languages:')
@@ -137,7 +141,7 @@ class ChoiceListEntryResource extends Resource
                             ->label(function (Get $get) {
                                 $xlsformTemplateLanguage = XlsformTemplateLanguage::find($get('xlsform_template_language_id'));
 
-                                return 'Label::'.$xlsformTemplateLanguage?->locale_language_label;
+                                return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
                             })
                             ->required(),
                     ])
@@ -154,8 +158,7 @@ class ChoiceListEntryResource extends Resource
         $labelColumns = $locales->map(function (Locale $locale) {
             return TextColumn::make('label_' . $locale->language->id)
                 ->label('label::' . $locale->language_label)
-                ->state(function(ChoiceListEntry $record) use ($locale)  {
-
+                ->state(function (ChoiceListEntry $record) use ($locale) {
 
 
                     return $record->languageStrings
@@ -173,15 +176,17 @@ class ChoiceListEntryResource extends Resource
                 TextColumn::make('choiceList.list_name')->label('list_name'),
                 TextColumn::make('name')->label('name'),
                 ...$labelColumns->toArray(),
-                IconColumn::make('is_global_entry')
-                    ->label('Global Entry')
+                IconColumn::make('is_customised_entry')
+                    ->label('Localised Entry')
                     ->boolean(),
             ])
+            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'opacity-50' : '')
             ->actions([
-                EditAction::make()->visible(fn(ChoiceListEntry $record) => $record->is_global_entry),
-                DeleteAction::make()->visible(fn(ChoiceListEntry $record) => $record->is_global_entry),
+                EditAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
+                DeleteAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
                 Action::make('Toggle Removed')
-                    ->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry && $record->choiceList->can_be_hidden_from_context)
+                    ->label(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'Restore to Context' : 'Remove from Context')
+                    ->visible(fn(ChoiceListEntry $record) => $record->is_global_entry)
                     ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getSelectedTeam())),
             ]);
     }

@@ -54,6 +54,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
         // we also need to delete the choiceLists that were not updated during the import.
         $choicesToDelete = $this->xlsformTemplate
             ->choiceListEntries()
+            ->where('owner_id', null) // do not delete entries owned by a team.
             ->select(['choice_list_entries.id', 'updated_during_import'])
             ->get()
             ->filter(fn(ChoiceListEntry $choiceListEntry) => $choiceListEntry->updated_during_import === false);

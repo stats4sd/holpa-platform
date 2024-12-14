@@ -3,9 +3,13 @@
 namespace App\Models\XlsformTemplates;
 
 use App\Models\HasLanguageStrings;
+use App\Models\Team;
 use App\Models\Traits\CanBeHiddenFromContext;
 use App\Models\Traits\IsLookupList;
+use App\Services\HelperService;
 use Dom\Attr;
+use Filament\Facades\Filament;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -24,6 +28,22 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
         'properties' => 'collection',
         'updated_during_import' => 'boolean',
     ];
+
+    protected static function booted()
+    {
+        // top-level scoping to ensure teams only receive their entries
+        static::addGlobalScope('team', function (Builder $query) {
+
+            if (Filament::hasTenancy() && $team = HelperService::getSelectedTeam()) {
+                $query->whereHasMorph('owner', Team::class, function (Builder $query) use ($team) {
+                    $query->where('id', $team->id);
+                })
+                ->orWhereNull('owner_id');
+
+            }
+
+        });
+    }
 
     public function choiceList(): BelongsTo
     {

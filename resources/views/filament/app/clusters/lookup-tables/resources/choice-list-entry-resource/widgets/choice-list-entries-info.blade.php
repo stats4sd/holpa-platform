@@ -5,13 +5,13 @@
     <x-filament::section collapsed heading="Questions that use this list within HOLPA" icon="heroicon-o-information-circle" collapsible>
 
         <ul>
-            <li class="flex w-full border-b">
+            <li class="flex w-full border-b mb-2">
                 <span class="w-1/4 text-right font-bold pr-4">Variable Name:</span>
                 <span class="w-3/4 font-bold">Question text</span>
         @foreach($surveyRows as $surveyRow)
-            <li class="flex w-full">
+            <li class="flex w-full mb-2">
                 <span class="w-1/4 text-right pr-4">{{ $surveyRow['name'] }}:</span>
-                <span class="w-3/4">{{ $surveyRow['label'] }}</span>
+                <span class="w-3/4">{!! \Illuminate\Support\Str::markdown($surveyRow['label']) !!}</span>
             </li>
         @endforeach
 

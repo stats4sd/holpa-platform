@@ -42,8 +42,5 @@ class ChoiceListEntriesInfo extends Widget
                         ->whereHas('xlsformTemplateLanguage', fn(Builder $query) => $query->where('language_id', 41))
                         ->where('language_string_type_id', 1)
                         ->first()?->text ?? 'tbc',
-            ]);
-
-        ray($this->choiceListName, $this->surveyRows->toArray());
-    }
+            ]);}
 }
