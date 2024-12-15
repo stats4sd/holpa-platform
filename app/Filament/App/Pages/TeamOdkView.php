@@ -181,8 +181,8 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                 TableAction::make('update_published_version')
                     //->visible(fn(Xlsform $record) => !$record->has_latest_template)
                     ->label('Deploy Updates')
-                    ->requiresConfirmation()
-                    ->modalDescription('This will update the form to the latest version of the xlsform template uploaded to the platform. Are you sure you want to proceed? (NOTE: if this form is live, you may need to tell your enumerators to re-download the form to get the latest version)')
+                   // ->requiresConfirmation()
+                    //->modalDescription('This will update the form to the latest version of the xlsform template uploaded to the platform. Are you sure you want to proceed? (NOTE: if this form is live, you may need to tell your enumerators to re-download the form to get the latest version)')
                     ->action(function (Xlsform $record) {
 
                         $record->syncWithTemplate();

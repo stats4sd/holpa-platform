@@ -173,15 +173,7 @@ class ChoiceListEntryResource extends Resource
                     ->label('Localised Entry')
                     ->boolean(),
             ])
-            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'opacity-50' : '')
-            ->actions([
-                EditAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
-                DeleteAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
-                Action::make('Toggle Removed')
-                    ->label(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'Restore to Context' : 'Remove from Context')
-                    ->visible(fn(ChoiceListEntry $record) => $record->is_global_entry)
-                    ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getSelectedTeam())),
-            ]);
+            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'opacity-50' : '');
     }
 
 

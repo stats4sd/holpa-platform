@@ -93,17 +93,23 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         $relationship = $this->relationship;
 
         $items = $this->xlsformTemplate->$relationship
-            ->filter(fn($item) => (string)$item->name === (string)$row['name'] && $item->type === (string)$row['type']);
+            ->filter(fn($item) => (string)$item->name === (string)$row['name']);
+
+        // filter survey row entries by type as well as name
+        if ($class === SurveyRow::class) {
+            $items = $items
+                ->filter(fn($item) => (string)$item->type === (string)$row['type']);
+        }
 
         // filter choice list entries by choice_list as well as name
-        if($class === ChoiceListEntry::class) {
+        if ($class === ChoiceListEntry::class) {
             $items = $items
                 ->filter(fn($item) => (string)$item->choiceList->list_name === (string)$row['list_name']);
         }
 
         $item = $items->first();
 
-        if($row['name'] === 'income_sources') {
+        if ($row['name'] === 'income_sources') {
             ray($row);
             ray($item);
         }

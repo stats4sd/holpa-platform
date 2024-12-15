@@ -44,15 +44,17 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function deployDraft(OdkLinkService $service): bool
+    public function deployDraft(OdkLinkService $service, bool $withMedia = true): bool
     {
-        // simplest case - no localisations; generate form *only* from the template entries.
 
+        ray('generating custom xlsform file...');
 
-
-        // Store the generated file temporarily
+        // Generate the Xlsfile.
         $filePath = 'temp/' . $this->id . '/' . $this->title . '.xlsx';
         Excel::store(new XlsformWorkbookExport($this), $filePath, 'local');
+
+        // Check for needed media files.
+        //$this->requiredMedia();
 
         $this->addMediaFromDisk($filePath, disk: 'local')->toMediaCollection('xlsform_file');
 
