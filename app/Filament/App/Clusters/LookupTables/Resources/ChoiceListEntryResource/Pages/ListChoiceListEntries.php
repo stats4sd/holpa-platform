@@ -8,6 +8,7 @@ use App\Models\XlsformTemplates\ChoiceList;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
+use Filament\Forms\Form;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
@@ -51,7 +52,9 @@ class ListChoiceListEntries extends ListRecords
     {
         return [
             CreateAction::make()
-            ->label('Add new ' . Str::singular($this->choiceListName)),
+            ->label('Add new ' . Str::singular($this->choiceListName))
+            ->form(fn(Form $form) => $form
+            ->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
 
             Action::make('Mark as Complete')
             ->action(fn () => HelperService::getSelectedTeam()?->markLookupListAsComplete($this->choiceList))

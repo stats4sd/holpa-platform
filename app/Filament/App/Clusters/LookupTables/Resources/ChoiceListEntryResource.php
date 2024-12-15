@@ -86,78 +86,61 @@ class ChoiceListEntryResource extends Resource
             )->toArray();
     }
 
-    public static function form(Form $form): Form
+    public static function getFormSchema(ChoiceList $choiceList): array
     {
-        $locales = HelperService::getSelectedTeam()?->locales;
 
-        $labelFields = $locales->map(function (Locale $locale) {
-            return TextInput::make('label_' . $locale->language_id)
-                ->label('label::' . $locale->language_label);
-        });
+        $propFields = collect($choiceList->properties['extra_properties'])
+            ->map(fn($property) => TextInput::make('properties.' . $property['name'])
+                ->label($property['label'])
+                ->helperText($property['helper_text'])
+            );
 
-        // set up all property fields. We'll hide them dynamically based on the current choice list
-        $propFields = HelperService::getCustomChoiceLists()
-            ->map(function (Collection $fieldProps, $key) {
+        return [
+            Hidden::make('owner_id')
+                ->default(fn() => HelperService::getSelectedTeam()->id),
+            Hidden::make('owner_type')
+                ->default('App\Models\Team'),
+            Hidden::make('choice_list_id')
+                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
+            TextInput::make('name')->required(),
+            Repeater::make('languageStrings')
+                ->label('Add Labels for the following languages:')
+                ->relationship('languageStrings')
+                ->minItems(fn() => HelperService::getSelectedTeam()?->locales->count())
+                ->maxItems(fn() => HelperService::getSelectedTeam()?->locales->count())
+                ->formatStateUsing(function (?ChoiceListEntry $record, $state, ListChoiceListEntries $livewire) {
+                    if ($record) {
+                        return $state;
+                    }
 
-                $fields = [];
-                foreach ($fieldProps as $fieldProp) {
-                    $fields[] = TextInput::make('properties.'.$fieldProp['name'])
-                        ->label($fieldProp['label'])
-                        ->helperText($fieldProp['hint'])
-                        ->visible(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record?->choiceList->list_name === $key || $livewire->choiceListName === $key);
-                }
+                    $locales = HelperService::getSelectedTeam()?->locales;
 
-                return $fields;
-            })->flatten()
-            ->toArray();
+                    $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
+                    $xlsformTemplateLanguages = $choiceList->xlsformTemplate->xlsformTemplateLanguages;
+
+                    return $locales->map(fn(Locale $locale) => [
+                        'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
+                        'xlsform_template_language_id' => $xlsformTemplateLanguages->where('language_id', $locale->language_id)->firstOrFail()->id,
+                        'text' => '',
+                    ])->toArray();
+                })
+                ->schema([
+                    Hidden::make('xlsform_template_language_id'),
+                    Hidden::make('language_string_type_id'),
+                    TextInput::make('text')
+                        ->label(function (Get $get) {
+                            $xlsformTemplateLanguage = XlsformTemplateLanguage::find($get('xlsform_template_language_id'));
+
+                            return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
+                        })
+                        ->required(),
+                ])
+                ->addable(false)
+                ->deletable(false),
+            ...$propFields->toArray(),
+        ];
 
 
-        return $form
-            ->columns(1)
-            ->schema([
-                Hidden::make('owner_id')
-                    ->default(fn() => HelperService::getSelectedTeam()->id),
-                Hidden::make('owner_type')
-                    ->default('App\Models\Team'),
-                Hidden::make('choice_list_id')
-                    ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
-                TextInput::make('name')->required(),
-                Repeater::make('languageStrings')
-                    ->label('Add Labels for the following languages:')
-                    ->relationship('languageStrings')
-                    ->minItems(fn() => HelperService::getSelectedTeam()?->locales->count())
-                    ->maxItems(fn() => HelperService::getSelectedTeam()?->locales->count())
-                    ->formatStateUsing(function (?ChoiceListEntry $record, $state, ListChoiceListEntries $livewire) {
-                        if ($record) {
-                            return $state;
-                        }
-
-                        $locales = HelperService::getSelectedTeam()?->locales;
-
-                        $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
-                        $xlsformTemplateLanguages = $choiceList->xlsformTemplate->xlsformTemplateLanguages;
-
-                        return $locales->map(fn(Locale $locale) => [
-                            'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
-                            'xlsform_template_language_id' => $xlsformTemplateLanguages->where('language_id', $locale->language_id)->firstOrFail()->id,
-                            'text' => '',
-                        ])->toArray();
-                    })
-                    ->schema([
-                        Hidden::make('xlsform_template_language_id'),
-                        Hidden::make('language_string_type_id'),
-                        TextInput::make('text')
-                            ->label(function (Get $get) {
-                                $xlsformTemplateLanguage = XlsformTemplateLanguage::find($get('xlsform_template_language_id'));
-
-                                return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
-                            })
-                            ->required(),
-                    ])
-                    ->addable(false)
-                    ->deletable(false),
-                ...$propFields,
-            ]);
     }
 
     public static function table(Table $table): Table

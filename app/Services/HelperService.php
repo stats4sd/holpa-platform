@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\LookupTables\Crop;
 use App\Models\LookupTables\HasExtraProperties;
 use App\Models\Team;
 

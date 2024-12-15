@@ -29,22 +29,4 @@ class ChoiceList extends Model
         return $this->belongsTo(XlsformTemplate::class);
     }
 
-    public function hasCustomHandling(): Attribute
-    {
-        return new Attribute(
-            get: fn() => $this->getCustomListNames()->contains($this->list_name),
-        );
-    }
-
-    // a set of list_names to ignore on regular localisable processing
-    public function getCustomListNames(): Collection
-    {
-        return collect([
-            'district',
-            'sub_district',
-            'village',
-            'farm',
-            'language',
-        ]);
-    }
 }
