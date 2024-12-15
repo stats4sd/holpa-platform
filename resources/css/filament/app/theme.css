@@ -5,12 +5,18 @@
 :root {
     --green: #5FA35A;
     --blue: #3FA9F5;
+    --dark-blue: #296fa1;
     --orange: #EB5A45;
+    --dark-orange: #c3432f;
     --light-grey: #F2F2F8;
     --shadowgrey: #989898;
   }
 body {
-    @apply font-montserrat text-sm;
+    @apply font-montserrat text-sm ;
+}
+
+body:has(#surveydash) {
+    @apply !bg-gray-100;
 }
 h1 {
     @apply font-extrabold text-5xl;
@@ -18,6 +24,29 @@ h1 {
 h2 {
     @apply font-light text-2xl;
 }
+h3 {
+    @apply text-black font-bold text-base }
+
+.whitecard {
+@apply relative min-w-40 max-w-60 2xl:w-64 mx-auto text-xs h-full;
+}
+.dashbuttondiv {
+    @apply text-center absolute inset-x-0 bottom-2;
+}
+.buttona{
+    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect ;
+}
+.buttona:hover {
+    @apply shadow-none bg-dark-blue;
+}
+
+.buttonb{
+    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect;
+}
+.buttonb:hover {
+    @apply shadow-none bg-dark-orange;
+}
+
 .hover-effect {
     transition: all 0.2s ease-in-out;
 }
