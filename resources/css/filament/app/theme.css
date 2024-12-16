@@ -15,9 +15,28 @@ body {
     @apply font-montserrat text-sm ;
 }
 
-body:has(#surveydash) {
+body:has(#surveydash), {
     @apply !bg-gray-100;
 }
+
+body:has(#languages) {
+    h1 {
+        @apply font-extrabold text-5xl;
+    }
+    h3 {
+        @apply font-light text-2xl;
+    }
+    h2{
+        @apply text-black font-bold text-lg }
+
+}
+.surveystepshead {
+    @apply mx-auto px-32;
+}
+.instructionsvid {
+    @apply float-right;
+}
+
 h1 {
     @apply font-extrabold text-5xl;
 }
@@ -27,11 +46,23 @@ h2 {
 h3 {
     @apply text-black font-bold text-base }
 
+.greensection {
+    @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-44 2xl:w-52  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
+}    
+.whitesection {
+    @apply bg-white px-4 lg:px-0 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
+}
+.whiteborderbox {
+    @apply border-b lg:border-b-0 lg:border-r border-gray-300 w-full;
+}    
 .whitecard {
-@apply relative min-w-40 max-w-60 2xl:w-64 mx-auto text-xs h-full;
+@apply relative min-w-40  lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
+}
+.dashdescdiv {
+    @apply w-2/4 lg:w-full ml-4 lg:ml-0 ;
 }
 .dashbuttondiv {
-    @apply text-center absolute inset-x-0 bottom-2;
+    @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }
 .buttona{
     @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect ;
