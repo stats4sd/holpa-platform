@@ -4,7 +4,9 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ChoiceListResource\Pages;
 use App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplates\ChoiceList;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -23,21 +25,23 @@ class ChoiceListResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('xlsform_template_id')
-                    ->relationship('xlsformTemplate', 'title')
-                    ->required(),
+                Forms\Components\MorphToSelect::make('template')
+                    ->types([
+                        Forms\Components\MorphToSelect\Type::make(XlsformTemplate::class)
+                            ->titleAttribute('title'),
+                        Forms\Components\MorphToSelect\Type::make(XlsformModuleVersion::class)
+                            ->titleAttribute('name'),
+                    ]),
                 Forms\Components\TextInput::make('list_name')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_localisable')
-                    ->required(),
-                Forms\Components\Toggle::make('is_dataset')
-                    ->required(),
-                Forms\Components\Toggle::make('can_be_hidden_from_context')
+                    ->helperText('Should this list appear on the front-end for teams to edit?')
                     ->required(),
                 Forms\Components\Toggle::make('has_custom_handling')
+                    ->helperText('Does this choice list require custom handling? E.g. Locations, farm and enumerator lists do not appear in the default choice list editing, but are editable elsewhere.')
                     ->required(),
                 Forms\Components\Repeater::make('properties.extra_properties')
                     ->columnSpanFull()
@@ -59,7 +63,7 @@ class ChoiceListResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('xlsformTemplate.title')
+                Tables\Columns\TextColumn::make('template.title')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('list_name')
@@ -95,8 +99,8 @@ class ChoiceListResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
+        return[
+            RelationManagers\ChoiceListEntriesRelationManager::class,
         ];
     }
 
@@ -104,6 +108,7 @@ class ChoiceListResource extends Resource
     {
         return [
             'index' => Pages\ListChoiceLists::route('/'),
+            'edit' => Pages\EditChoiceLists::route('/{record}'),
         ];
     }
 }

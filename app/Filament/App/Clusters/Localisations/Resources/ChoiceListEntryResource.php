@@ -3,7 +3,7 @@
 namespace App\Filament\App\Clusters\Localisations\Resources;
 
 use App\Filament\App\Clusters\Localisations;
-use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
+use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\LanguageStringType;
 use App\Models\Locale;
 use App\Models\Team;
@@ -103,7 +103,7 @@ class ChoiceListEntryResource extends Resource
 
         return [
             Hidden::make('owner_id')
-                ->default(fn() => HelperService::getSelectedTeam()->id),
+                ->default(fn() => HelperService::getSelectedTeam()?->id),
             Hidden::make('owner_type')
                 ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
