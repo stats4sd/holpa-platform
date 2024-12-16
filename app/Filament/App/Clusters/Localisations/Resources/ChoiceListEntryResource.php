@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources;
+namespace App\Filament\App\Clusters\Localisations\Resources;
 
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
@@ -70,6 +70,12 @@ class ChoiceListEntryResource extends Resource
         $lists = ChoiceList::where('is_localisable', true)
             ->where('is_dataset', false)
             ->get();
+
+        if(!$lists) {
+            return [
+
+            ];
+        }
 
         return $lists
             ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)

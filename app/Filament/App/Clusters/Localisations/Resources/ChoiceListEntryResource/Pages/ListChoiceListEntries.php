@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages;
+namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages;
 
-use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource;
-use App\Models\LookupTables\AnimalProduct;
+use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Services\HelperService;
