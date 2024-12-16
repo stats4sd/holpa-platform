@@ -4,6 +4,7 @@ namespace App\Models\XlsformTemplates;
 
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Locale;
+use App\Models\XlsformModule;
 use App\Models\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,6 +16,11 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTem
 
 class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
 {
+
+    public function xlsformModules(): MorphMany
+    {
+        return $this->morphMany(XlsformModule::class, 'form');
+    }
 
     public function xlsformTemplateLanguages(): MorphMany
     {

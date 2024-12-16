@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('team_xlsform_template_module', function (Blueprint $table) {
+        Schema::create('chosen_modules', function (Blueprint $table) {
             $table->id();
             $table->foreignId('team_id')->constrained();
-            $table->foreignId('xlsform_template_id')->constrained();
+            $table->foreignId('xlsform_module_version_id')->constrained();
 
-            $table->unique(['team_id', 'xlsform_template_id'], 'team_xlsform_template_module_unique');
+            $table->unique(['team_id', 'xlsform_module_version_id'], 'unique_chosen_modules');
             $table->timestamps();
         });
     }

@@ -29,17 +29,6 @@ class SurveyRow extends Model implements HasLanguageStrings
         return $this->morphTo('template');
     }
 
-    // if the survey row is linked to a module, which is the 'parent' or 'default' surveyrow?
-    public function parent(): BelongsTo
-    {
-        return $this->belongsTo(static::class, 'parent_id');
-    }
-
-    public function children(): HasMany
-    {
-        return $this->hasMany(static::class, 'parent_id');
-    }
-
     public function languageStrings(): MorphMany
     {
         return $this->morphMany(LanguageString::class, 'linked_entry');

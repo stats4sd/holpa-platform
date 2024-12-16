@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplateModule;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplates\SurveyRow;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -26,7 +26,7 @@ class FinishSurveyRowImport implements ShouldQueue
             ->update(['updated_during_import' => false]);
 
         // for modules, set the parent
-        if ($this->xlsformTemplate instanceof XlsformTemplateModule) {
+        if ($this->xlsformTemplate instanceof XlsformModuleVersion) {
             $this->xlsformTemplate->surveyRows()
                 ->get()
                 ->each(function (SurveyRow $surveyRow) {

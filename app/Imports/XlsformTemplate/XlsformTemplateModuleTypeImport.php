@@ -2,7 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\XlsformTemplateModuleType;
+use App\Models\XlsformModule;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
@@ -13,9 +13,9 @@ use Maatwebsite\Excel\Concerns\WithUpserts;
 
 class XlsformTemplateModuleTypeImport implements ToModel, WithUpserts, ShouldQueue, WithChunkReading, SkipsEmptyRows
 {
-    public function model(array $row): XlsformTemplateModuleType
+    public function model(array $row): XlsformModule
     {
-        return new XlsformTemplateModuleType([
+        return new XlsformModule([
             'name' => $row['module'],
             'label' => $row['module'],
             'updated_during_import' => true,

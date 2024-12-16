@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformTemplateModuleResource\Pages;
 use App\Filament\Admin\Resources\XlsformTemplateModuleResource\RelationManagers;
-use App\Models\XlsformTemplateModule;
+use App\Models\XlsformModuleVersion;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -15,9 +15,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsFormDrafts;
 
-class XlsformTemplateModuleResource extends Resource
+class XlsformModuleVersionResource extends Resource
 {
-    protected static ?string $model = XlsformTemplateModule::class;
+    protected static ?string $model = XlsformModuleVersion::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -76,7 +76,7 @@ class XlsformTemplateModuleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageXlsformTemplateModules::route('/'),
+            'index' => Pages\ManageXlsformModuleVersion::route('/'),
         ];
     }
 }

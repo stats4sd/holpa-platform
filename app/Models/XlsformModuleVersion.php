@@ -20,9 +20,9 @@ use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class XlsformTemplateModule extends Model implements HasMedia, WithXlsformFile
+class XlsformModuleVersion extends Model implements HasMedia, WithXlsformFile
 {
-    protected $table = 'xlsform_template_modules';
+    protected $table = 'xlsform_module_versions';
 
     use InteractsWithMedia;
 
@@ -35,32 +35,31 @@ class XlsformTemplateModule extends Model implements HasMedia, WithXlsformFile
             ->useDisk(config('filament-odk-link.storage.xlsforms'));
     }
 
-    public function xlsformTemplate(): BelongsTo
+    public function xlsformModule(): BelongsTo
     {
-        return $this->belongsTo(XlsformTemplate::class);
-    }
-
-    public function surveyRows(): MorphMany
-    {
-        return $this->morphMany(SurveyRow::class, 'template');
-    }
-
-    public function xlsformTemplateModuleType(): BelongsTo
-    {
-        return $this->belongsTo(XlsformTemplateModuleType::class);
+        return $this->belongsTo(XlsformModule::class);
     }
 
     // Which teams have selected to use this module instead of the default?
+    // Linked Via chosen_modules
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class, 'chosen_modules', 'xlsform_moddule_version_id', 'team_id');
     }
 
+
+
+    // ** **** XLsform Components ********
     public function xlsfile(): Attribute
     {
         return new Attribute(
             get: fn(): string => $this->getFirstMediaPath('xlsform_file'),
         );
+    }
+
+    public function surveyRows(): MorphMany
+    {
+        return $this->morphMany(SurveyRow::class, 'template');
     }
 
     public function choiceLists(): MorphMany

@@ -8,7 +8,7 @@ use App\Jobs\FinishChoiceListEntryImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplateModule;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Facades\Log;
@@ -23,7 +23,7 @@ class HandleXlsformTemplateAdded
 
         if (
             $model instanceof XlsformTemplate ||
-            $model instanceof XlsformTemplateModule
+            $model instanceof XlsformModuleVersion
         ) {
             $filePath = $event->media->getPath();
 

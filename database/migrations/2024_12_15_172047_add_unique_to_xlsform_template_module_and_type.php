@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('xlsform_template_module_types', function (Blueprint $table) {
-            $table->unique(['name']);
+        Schema::table('xlsform_modules', function (Blueprint $table) {
+            $table->unique(['form_id','form_type', 'name']);
         });
-        Schema::table('xlsform_template_modules', function (Blueprint $table) {
-            $table->unique(['xlsform_template_id', 'xlsform_template_module_type_id']);
+        Schema::table('xlsform_module_versions', function (Blueprint $table) {
+            $table->unique(['xlsform_module_id', 'name']);
         });
     }
 

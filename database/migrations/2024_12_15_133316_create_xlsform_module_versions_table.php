@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('xlsform_template_module_types', function (Blueprint $table) {
+        Schema::create('xlsform_module_versions', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
+            $table->foreignId('xlsform_module_id');
             $table->string('name');
             $table->timestamps();
         });
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('xlsform_template_module_types');
+        Schema::dropIfExists('xlsform_temlpate_modules');
     }
 };

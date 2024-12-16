@@ -3,12 +3,14 @@
 namespace App\Models\Xlsforms;
 
 use App\Exports\XlsformExport\XlsformWorkbookExport;
+use App\Models\XlsformModule;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Http\Client\RequestException;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
@@ -23,6 +25,11 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     public function xlsformTemplate(): BelongsTo
     {
         return $this->belongsTo(XlsformTemplate::class);
+    }
+
+    public function xlsformModules(): MorphMany
+    {
+        return $this->morphMany(XlsformModule::class, 'form');
     }
 
     public function formSurveyRows(): HasMany
