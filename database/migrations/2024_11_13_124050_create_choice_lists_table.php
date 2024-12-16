@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('xlsform_template_id');
             $table->string('list_name');
             $table->text('description')->nullable();
-            $table->boolean('localisable')->default(false);
+            $table->boolean('is_localisable')->default(false);
             $table->boolean('is_dataset')->default(false); // may not be used;
             $table->json('properties')->nullable();
             $table->timestamps();
