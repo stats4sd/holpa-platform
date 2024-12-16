@@ -31,7 +31,7 @@ class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle, 
                 'form_id' => $this->xlsform->odk_id ?? Str::slug($this->xlsform->title),
                 'form_title' => $this->xlsform->title,
                 'version' => Carbon::now()->toDateTimeString(),
-                'instance_name' => 'TO BE UPDATED!!', // TODO: fix
+                'instance_name' => '"instance"', // TODO: fix
             ],
         ]);
 

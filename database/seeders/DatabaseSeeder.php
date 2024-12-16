@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         // ODK Platform setup
         $this->call(PlatformSeeder::class);
+        $this->call(Un49LocationSeeder::class);
 
         // call the prep seeders always.
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
@@ -30,5 +31,6 @@ class DatabaseSeeder extends Seeder
                 $this->call($class);
             }
         }
+
     }
 }

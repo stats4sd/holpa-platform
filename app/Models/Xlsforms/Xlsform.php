@@ -2,13 +2,16 @@
 
 namespace App\Models\Xlsforms;
 
+use App\Models\XlsformModule;
+use App\Models\XlsformTemplates\ChoiceListEntry;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Models\Xlsforms\FormChoiceList;
 use App\Models\Xlsforms\FormChoiceListEntry;
-use Illuminate\Http\Client\RequestException;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Http\Client\RequestException;
 use App\Exports\XlsformExport\XlsformWorkbookExport;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
@@ -19,10 +22,16 @@ use Spatie\MediaLibrary\MediaCollections\Exceptions\FileDoesNotExist;
 
 class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
 {
+
     // overwrite to use the app model;
     public function xlsformTemplate(): BelongsTo
     {
         return $this->belongsTo(XlsformTemplate::class);
+    }
+
+    public function xlsformModules(): MorphMany
+    {
+        return $this->morphMany(XlsformModule::class, 'form');
     }
 
     public function formSurveyRows(): HasMany
@@ -43,8 +52,6 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     public function syncWithTemplate(): void
     {
 
-        // no need to copy over file...
-
         // if the odk_project is not set, set it based on the given owner:
         $this->odk_project_id = $this->owner->odkProject->id;
         $this->has_latest_template = true;
@@ -56,15 +63,22 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */
-    public function deployDraft(OdkLinkService $service): bool
+    public function deployDraft(OdkLinkService $service, bool $withMedia = true): bool
     {
-        // simplest case - no localisations; generate form *only* from the template entries.
 
-        // Store the generated file temporarily
+        ray('generating custom xlsform file...');
+
+        // Generate the Xlsfile.
         $filePath = 'temp/' . $this->id . '/' . $this->title . '.xlsx';
         Excel::store(new XlsformWorkbookExport($this), $filePath, 'local');
 
-        $this->addMedia($filePath)->toMediaCollection('xlsform_file');
+        // Check for needed media files.
+        //$this->requiredMedia();
+
+        $this->addMediaFromDisk($filePath, disk: 'local')->toMediaCollection('xlsform_file');
+
+        $this->syncWithTemplate();
+        UpdateXlsformTitleInFile::dispatchSync($this);
 
         return parent::deployDraft($service);
     }

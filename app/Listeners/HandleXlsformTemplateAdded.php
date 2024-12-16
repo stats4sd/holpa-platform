@@ -7,6 +7,9 @@ use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
 use App\Jobs\FinishChoiceListEntryImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
+use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformModuleVersion;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Facades\Log;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
@@ -18,7 +21,10 @@ class HandleXlsformTemplateAdded
         Log::info('MediaHasBeenAdded event fired!');
         $model = $event->media->model;
 
-        if ($model instanceof \App\Models\XlsformTemplates\XlsformTemplate) {
+        if (
+            $model instanceof XlsformTemplate ||
+            $model instanceof XlsformModuleVersion
+        ) {
             $filePath = $event->media->getPath();
 
             if (!$filePath) {
@@ -30,7 +36,7 @@ class HandleXlsformTemplateAdded
         }
     }
 
-    public function processXlsformTemplate(string $filePath, \App\Models\XlsformTemplates\XlsformTemplate $model): void
+    public function processXlsformTemplate(string $filePath, WithXlsformFile $model): void
     {
         // Get the translatable headings from the XLSform workbook;
         $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
