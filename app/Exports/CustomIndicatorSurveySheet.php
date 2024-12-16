@@ -48,6 +48,7 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         $headings = [
             'indicator ID',
             'indicator',
+            'module',
             'type',
             'name',
         ];
