@@ -46,7 +46,11 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
         // if we are importing an entire template, the "template" id and type should be based on the $row['module'] import
         // TODO: fix these confusing relation names!
 
-        $xlsformModuleVersion = $this->getXlsformModuleVersion($row['module']);
+        if ($this->xlsformTemplate instanceof XlsformTemplate) {
+            $xlsformModuleVersion = $this->getXlsformModuleVersion($row['module'] ?? null);
+        } else {
+            $xlsformModuleVersion = $this->xlsformTemplate;
+        }
 
         $data['template_id'] = $xlsformModuleVersion->id;
         $data['template_type'] = get_class($xlsformModuleVersion);
@@ -100,21 +104,18 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 
     public function getXlsformModuleVersion(string $name): XlsformModuleVersion
     {
-        if ($this->xlsformTemplate instanceof XlsformTemplate) {
-            $xlsformModuleVersion = $this->xlsformTemplate->xlsformModuleVersions()
 
-                // get the default module version...
-                ->where('is_default', true)
-                // ... of the module that matches the $row['module'] name
-                ->whereHas('xlsformModule', fn(Builder $query) => $query->where('name', $name))
-                ->first();
+        $xlsformModuleVersion = $this->xlsformTemplate->xlsformModuleVersions()
+            // get the default module version...
+            ->where('is_default', true)
+            // ... of the module that matches the $row['module'] name
+            ->whereHas('xlsformModule', fn(Builder $query) => $query->where('name', $name))
+            ->first();
 
-            if (!$xlsformModuleVersion) {
-                dd("module version not found for {$name}");
-            }
-        } else {
-            $xlsformModuleVersion = $this->xlsformTemplate;
+        if (!$xlsformModuleVersion) {
+            dd("module version not found for {$name}");
         }
+
         return $xlsformModuleVersion;
     }
 

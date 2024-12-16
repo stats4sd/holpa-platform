@@ -25,21 +25,5 @@ class FinishSurveyRowImport implements ShouldQueue
         $this->xlsformTemplate->surveyRows()
             ->update(['updated_during_import' => false]);
 
-        // for modules, set the parent
-        if ($this->xlsformTemplate instanceof XlsformModuleVersion) {
-            $this->xlsformTemplate->surveyRows()
-                ->get()
-                ->each(function (SurveyRow $surveyRow) {
-                    $parent = SurveyRow::where('name', $surveyRow->name)
-                        ->where('type', $surveyRow->type)
-                        ->where('template_id', $this->xlsformTemplate->xlsformTemplate->id)
-                        ->where('template_type', XlsformTemplate::class)
-                        ->first();
-
-                    if ($parent) {
-                        $surveyRow->parent()->associate($parent->id);
-                    }
-                });
-        }
     }
 }

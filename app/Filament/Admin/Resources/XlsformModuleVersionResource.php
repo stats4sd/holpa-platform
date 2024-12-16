@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformTemplateModuleResource\Pages;
 use App\Filament\Admin\Resources\XlsformTemplateModuleResource\RelationManagers;
+use App\Models\XlsformModule;
 use App\Models\XlsformModuleVersion;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
@@ -26,23 +27,22 @@ class XlsformModuleVersionResource extends Resource
         return $form
             ->columns(1)
             ->schema([
-                Forms\Components\Select::make('xlsform_template_id')
-                    ->relationship('xlsformTemplate', 'title')
-                    ->required(),
-                Forms\Components\Select::make('xlsform_template_module_type_id')
-                    ->relationship('xlsformTemplateModuleType', 'label')
+                Forms\Components\Select::make('xlsform_module_id')
+                    ->relationship('xlsformModule', 'label')
+                    ->getOptionLabelFromRecordUsing(fn(XlsformModule $xlsformModule): string => "{$xlsformModule->form->title} - $xlsformModule->name")
                     ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
                 Shout::make('info')
-                    ->content('Please upload the Xlsfile with the module questions. Note that in this version of the platform, every question in this module must match in "name" and "type" to an existing question in the Xlsform template. Any questions not already in the template will be ignored.'),
+                    ->visible(fn(Forms\Get $get): bool => !$get('is_default'))
+                    ->content('For modules uploaded individually, please upload the Xlsfile with the module questions. Note that in this version of the platform, every question in this module must match in "name" and "type" to an existing question in the Xlsform template. Any questions not already in the template will be ignored.'),
                 Forms\Components\SpatieMediaLibraryFileUpload::make('xlsfile')
                     ->label('Upload Xlsfile with the module questions.')
                     ->collection('xlsform_file')
                     ->preserveFilenames()
                     ->downloadable()
-                    ->required()
+                    ->visible(fn(Forms\Get $get): bool => !$get('is_default'))
                     ->placeholder(__('File')),
             ]);
     }
@@ -51,16 +51,19 @@ class XlsformModuleVersionResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('xlsformTemplate.title')
+                Tables\Columns\TextColumn::make('xlsformModule.form.title')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('xlsformTemplateModuleType.id')
+                Tables\Columns\TextColumn::make('xlsformModule.name')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\IconColumn::make('is_default')
+                    ->boolean()
+                    ->label('Default version of this module?'),
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('surveyRows_count')
+                Tables\Columns\TextColumn::make('survey_rows_count')
                     ->label('# Survey rows')
                     ->counts('surveyRows'),
             ])

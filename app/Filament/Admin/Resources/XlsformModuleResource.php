@@ -29,9 +29,9 @@ class XlsformModuleResource extends Resource
                     ->hint('e.g. "Dietary Diversity"')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('group_name')
-                    ->label('Enter the name of the group as it appears in the ODK form')
-                    ->hint('e.g. if you have "begin_group" with a name of "diet_diversity", enter "diet_diversity"')
+                Forms\Components\TextInput::make('name')
+                    ->label('Enter the name of the group')
+                    ->hint('e.g. "dietary_diversity"')
                     ->required()
                     ->maxLength(255),
             ]);
@@ -43,16 +43,8 @@ class XlsformModuleResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('label')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('group_name')
+                Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //
