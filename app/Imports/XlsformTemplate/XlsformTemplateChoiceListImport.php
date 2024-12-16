@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -19,7 +20,7 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
 
     use Importable;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate)
+    public function __construct(public WithXlsformFile $xlsformTemplate)
     {
     }
 
@@ -40,7 +41,8 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
         };
 
         return new ChoiceList([
-            'xlsform_template_id' => $this->xlsformTemplate->id,
+            'template_id' => $this->xlsformTemplate->id,
+            'template_type' => get_class($this->xlsformTemplate),
             'list_name' => $row['list_name'],
             'is_localisable' => $localisable,
         ]);
@@ -53,6 +55,6 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
 
     public function uniqueBy(): array
     {
-        return ['xlsform_template_id', 'list_name'];
+        return ['template_id', 'template_type', 'list_name'];
     }
 }

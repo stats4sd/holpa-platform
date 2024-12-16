@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Services;
-
-use App\Models\LookupTables\HasExtraProperties;
 use App\Models\Team;
 
 use Illuminate\Support\Str;
@@ -152,16 +150,4 @@ class HelperService
     }
 
 
-    public static function getCustomChoiceLists(): Collection
-    {
-        // find all models with HasExtraProperties interface
-        return HelperService::getModels()->filter(function ($model) {
-            return in_array(HasExtraProperties::class, class_implements($model));
-        })
-            ->mapWithKeys(
-                function (string $model) {
-                    return [$model::getChoiceListName() =>  $model::extraProperties()];
-                });
-
-    }
 }

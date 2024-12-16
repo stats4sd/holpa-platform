@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Imports\XlsformTemplate\XlsformTemplateLanguageStringImport;
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -17,7 +18,7 @@ class ImportAllLanguageStrings implements ShouldQueue
      */
     public function __construct(
         public string          $filePath,
-        public XlsformTemplate $xlsformTemplate,
+        public WithXlsformFile $xlsformTemplate,
         public Collection      $translatableHeadings,
         public Collection      $importedTemplateLanguages,
     )

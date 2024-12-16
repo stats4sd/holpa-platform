@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Models\XlsformTemplates\SurveyRow;
@@ -21,7 +22,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     use RegistersEventListeners;
     use Importable;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
     {
     }
 

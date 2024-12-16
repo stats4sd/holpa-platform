@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\SurveyRow;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -17,7 +18,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 {
     use RemembersRowNumber;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
     {
     }
 
@@ -37,8 +38,10 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
             ->filter(fn($value, $key) => !in_array($key, $this->getSurveyRowHeaders()))
             ->filter(fn($value, $Key) => $value !== null);
 
+        $data['row_number'] = $this->getRowNumber(); // make sure ordering from file is preserved even when it's changed since the first upload
         $data['properties'] = $props;
-        $data['xlsform_template_id'] = $this->xlsformTemplate->id;
+        $data['template_id'] = $this->xlsformTemplate->id;
+        $data['template_type'] = get_class($this->xlsformTemplate);
         $data['updated_during_import'] = true; // to make sure we don't delete this row after import.
 
         // for end_group or end_repeats, the name might be empty.
@@ -72,7 +75,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 
     public function uniqueBy(): array
     {
-        return ['xlsform_template_id', 'name', 'type'];
+        return ['template_id', 'template_type', 'name', 'type'];
     }
 
     public function isEmptyWhen(array $row): bool

@@ -2,7 +2,7 @@
 
 namespace App\Filament\App\Clusters\LookupTables\Resources;
 
-use App\Filament\App\Clusters\LookupTables;
+use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\LanguageStringType;
 use App\Models\Locale;
@@ -38,7 +38,7 @@ class ChoiceListEntryResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $cluster = LookupTables::class;
+    protected static ?string $cluster = Localisations::class;
 
     protected static bool $isScopedToTenant = false; // use custom query instead to get both global entries and team-entries.
 

@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class XlsformTemplateLanguage extends Model
 {
 
-    public function xlsformTemplate(): BelongsTo
+    public function template(): MorphTo
     {
-        return $this->belongsTo(XlsformTemplate::class);
+        return $this->morphTo();
     }
 
     public function language(): BelongsTo

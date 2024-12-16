@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceListEntry;
@@ -34,7 +35,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public ?string $class;
     public ?string $relationship;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading, public string $sheet)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public string $heading, public string $sheet)
     {
 
         // init translation helper and get needed props from the provided heading;
