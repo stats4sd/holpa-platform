@@ -10,13 +10,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
 interface WithXlsformFile
 {
     public function xlsfile(): Attribute;
 
-    public function surveyRows(): MorphMany;
+    public function surveyRows(): MorphMany|HasManyDeep;
 
     public function choiceLists(): MorphMany;
 

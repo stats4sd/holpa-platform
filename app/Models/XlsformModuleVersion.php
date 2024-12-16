@@ -24,6 +24,10 @@ class XlsformModuleVersion extends Model implements HasMedia, WithXlsformFile
 {
     protected $table = 'xlsform_module_versions';
 
+    protected $casts = [
+        'is_default' => 'boolean',
+    ];
+
     use InteractsWithMedia;
 
     // TODO: impliment WithXlsformDrafts to enable pyxform validation checks + module testing/drafts.

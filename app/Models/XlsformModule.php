@@ -13,7 +13,7 @@ class XlsformModule extends Model
 {
     protected $table = 'xlsform_modules';
 
-    public function xlsformTemplateModules(): HasMany
+    public function xlsformModuleVersions(): HasMany
     {
         return $this->hasMany(XlsformModuleVersion::class);
     }

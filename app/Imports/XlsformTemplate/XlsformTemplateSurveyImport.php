@@ -3,9 +3,11 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplates\SurveyRow;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
@@ -40,8 +42,14 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 
         $data['row_number'] = $this->getRowNumber(); // make sure ordering from file is preserved even when it's changed since the first upload
         $data['properties'] = $props;
-        $data['template_id'] = $this->xlsformTemplate->id;
-        $data['template_type'] = get_class($this->xlsformTemplate);
+
+        // if we are importing an entire template, the "template" id and type should be based on the $row['module'] import
+        // TODO: fix these confusing relation names!
+
+        $xlsformModuleVersion = $this->getXlsformModuleVersion($row['module']);
+
+        $data['template_id'] = $xlsformModuleVersion->id;
+        $data['template_type'] = get_class($xlsformModuleVersion);
         $data['updated_during_import'] = true; // to make sure we don't delete this row after import.
 
         // for end_group or end_repeats, the name might be empty.
@@ -82,12 +90,32 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
     {
         return (!isset($row['name']) || $row['name'] === '')
             && (!isset($row['type']) || $row['type'] === '');
-
     }
 
     public function chunkSize(): int
     {
         return 500;
+    }
+
+
+    public function getXlsformModuleVersion(string $name): XlsformModuleVersion
+    {
+        if ($this->xlsformTemplate instanceof XlsformTemplate) {
+            $xlsformModuleVersion = $this->xlsformTemplate->xlsformModuleVersions()
+
+                // get the default module version...
+                ->where('is_default', true)
+                // ... of the module that matches the $row['module'] name
+                ->whereHas('xlsformModule', fn(Builder $query) => $query->where('name', $name))
+                ->first();
+
+            if (!$xlsformModuleVersion) {
+                dd("module version not found for {$name}");
+            }
+        } else {
+            $xlsformModuleVersion = $this->xlsformTemplate;
+        }
+        return $xlsformModuleVersion;
     }
 
 

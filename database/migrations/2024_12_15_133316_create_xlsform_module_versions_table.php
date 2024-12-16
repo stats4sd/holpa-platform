@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('xlsform_module_id');
             $table->string('name');
+            $table->boolean('is_default')->default(false);
             $table->timestamps();
         });
     }
