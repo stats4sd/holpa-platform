@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Locale extends Model
 {
-    use HasFactory;
 
     public function language(): BelongsTo
     {

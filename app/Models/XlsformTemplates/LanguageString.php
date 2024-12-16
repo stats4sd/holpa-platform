@@ -2,6 +2,7 @@
 
 namespace App\Models\XlsformTemplates;
 
+use App\Models\Language;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
@@ -11,6 +12,8 @@ use Znck\Eloquent\Relations\BelongsToThrough;
 
 class LanguageString extends Model
 {
+
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
     protected $casts = [
         'updated_during_import' => 'boolean',
@@ -35,5 +38,10 @@ class LanguageString extends Model
     public function xlsformTemplate(): BelongsToThrough
     {
         return $this->belongsToThrough(XlsformTemplate::class, XlsformTemplateLanguage::class);
+    }
+
+    public function language(): BelongsToThrough
+    {
+        return $this->belongsToThrough(Language::class, XlsformTemplateLanguage::class);
     }
 }

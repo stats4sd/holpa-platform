@@ -38,6 +38,11 @@ class SurveyMonitoringController extends Controller
             return [
                 'count' => 0,
                 'latestSubmissionDate' => null,
+                'successfulSurveys' => 0,
+                'beneficiaryFarmsSurveyed' => 0,
+                'nonBeneficiaryFarmsSurveyed' => 0,
+                'surveysWithoutRespondentPresent' => 0,
+                'surveysWithNonConsentingRespondent' => 0,
             ];
         }
 
@@ -112,7 +117,7 @@ class SurveyMonitoringController extends Controller
     {
         $xlsform = $team->xlsforms->where('is_test', $isTest)->first();
         $odkLinkService = app()->make(OdkLinkService::class);
-        return array($xlsform, $odkLinkService);
+        return [$xlsform, $odkLinkService];
     }
 
     /**
