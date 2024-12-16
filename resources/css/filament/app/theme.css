@@ -19,7 +19,7 @@ body:has(#surveydash), {
     @apply !bg-gray-100;
 }
 
-body:has(#languages) {
+body:has(#languages),.actionblock, {
     h1 {
         @apply font-extrabold text-5xl;
     }
@@ -37,6 +37,7 @@ body:has(#languages) {
     @apply float-right;
 }
 
+
 h1 {
     @apply font-extrabold text-5xl;
 }
@@ -45,6 +46,15 @@ h2 {
 }
 h3 {
     @apply text-black font-bold text-base }
+
+.surveyblocks {
+    @apply bg-white drop-shadow-xl;
+}
+
+button {
+    @apply font-semibold !text-xs text-white py-2 !px-4 !rounded-full;
+    text-transform: uppercase;
+}
 
 .greensection {
     @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-44 2xl:w-52  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
@@ -61,6 +71,7 @@ h3 {
 .dashdescdiv {
     @apply w-2/4 lg:w-full ml-4 lg:ml-0 ;
 }
+
 .dashbuttondiv {
     @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }

@@ -1,8 +1,8 @@
-<div class="rounded-3xl shadow-xl p-6 bg-grey">
+<div class="rounded shadow-lg p-6  actionblock">
     <!-- Heading -->
-    <h2 class="text-lg font-bold text-green">
+    <h3 class="">
         {{ $heading }}
-    </h2>
+    </h3>
     
     <div class="flex justify-between items-center mt-2">
         <!-- Description -->
@@ -12,7 +12,7 @@
         
         <!-- Button (Right) -->
         <a href="{{ $url }}" 
-           class="px-4 py-2 text-white bg-green font-semibold rounded-lg text-center">
+           class="buttona">
             {{ $buttonLabel }}
         </a>
     </div>

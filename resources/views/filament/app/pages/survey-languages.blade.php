@@ -8,7 +8,7 @@
 <div id="languages">
 <!-- Main Section -->
 <div class="container mx-auto xl:px-12 ">
-    <div class="bg-white drop-shadow-xl rounded px-10 h-full py-12">
+    <div class="surveyblocks px-10 h-full py-12">
 
     @livewire('team-locales-table')
 

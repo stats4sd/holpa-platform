@@ -154,7 +154,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="whiteborderbox">
                             <div class=" whitecard ">
                                 <div class="dashdescdiv">
-                                    <h3 class="mb-2">Monitor data collection</h3>
+                                    <h3 class="mb-2">Place-based adaptations</h3>
                                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                                 </div>
                                 <div class="dashbuttondiv">
