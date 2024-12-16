@@ -2,7 +2,7 @@
 
 namespace App\Filament\Admin\Widgets;
 
-use App\Models\XlsformTemplate;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Models\SampleFrame\Farm;
 use Illuminate\Support\HtmlString;
 use Spatie\Permission\Models\Role;

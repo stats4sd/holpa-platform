@@ -6,6 +6,7 @@ use App\Models\Xlsforms\Xlsform;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
@@ -31,7 +32,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
             ->xlsformTemplate
             ->choiceListEntries
             ->load(['languageStrings', 'choiceList'])
-            ->sortBy('id');
+            ->sortBy(['choice_list_id', 'id']);
 
         $propertyHeadings = $this->getHeadingsFromProperties($choiceListEntries);
 
@@ -41,7 +42,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
             return collect([
                 'list_name' => $choiceListEntry->choiceList->list_name,
-                'name' => $choiceListEntry->name,
+                'name' => Str::snake($choiceListEntry->name), // make sure the name has no spaces
                 ...$this->getLanguageStrings($choiceListEntry, 'label'),
                 ...$properties,
             ]);
@@ -74,7 +75,8 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     private function getHeadingsFromProperties(Collection $choiceListEntries): Collection
     {
         return $choiceListEntries
-            ->map(fn($choiceListEntry) => $choiceListEntry->properties->keys())
+            ->map(fn($choiceListEntry) => $choiceListEntry->properties?->keys())
+            ->filter() // only non-nulls
             ->flatten()
             ->unique();
     }
