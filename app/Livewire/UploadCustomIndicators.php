@@ -9,16 +9,15 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\CustomIndicatorImport;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Notifications\Notification;
 use Filament\Forms\Components\FileUpload;
-use App\Imports\CustomIndicatorWorkbookImport;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UploadCustomIndicators extends Component implements HasForms, HasTable
@@ -148,13 +147,13 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
                 $this->uploadedFileHH = $this->team->getMedia($collection)->first();
                 $xlsform = $this->team->xlsforms()->first(); // TODO get the correct xlsform, for now assuming 1st
-                Excel::import(new CustomIndicatorWorkbookImport($xlsform, 'household'), $this->uploadedFileHH->getPath());
+                Excel::import(new XlsformTemplateWorkbookImport($xlsform), $this->uploadedFileHH->getPath());
 
             } elseif ($collection === 'custom_indicators_fw') {
 
                 $this->uploadedFileFW = $this->team->getMedia($collection)->first();
                 $xlsform = $this->team->xlsforms()->skip(1)->first(); // TODO get the correct xlsform, for now assuming 2nd
-                Excel::import(new CustomIndicatorWorkbookImport($xlsform, 'fieldwork'), $this->uploadedFileFW->getPath());
+                Excel::import(new XlsformTemplateWorkbookImport($xlsform), $this->uploadedFileFW->getPath());
                 
             }
     
