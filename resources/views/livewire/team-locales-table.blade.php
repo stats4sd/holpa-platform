@@ -1,6 +1,6 @@
 <div class="mb-8">
     <div class="py-4">
-        <h2 class="text-green font-bold text-lg mb-4">Current translations</h2>
+        <h3 class=" mb-4">Current translations</h3>
     </div>
     {{ $this->table }}
 </div>

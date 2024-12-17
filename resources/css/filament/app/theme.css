@@ -31,7 +31,7 @@ body:has(#languages),.actionblock, {
 
 }
 .surveystepshead {
-    @apply mx-auto px-32;
+    @apply mx-auto xl:px-32;
 }
 .instructionsvid {
     @apply float-right;
@@ -45,15 +45,15 @@ h2 {
     @apply font-light text-2xl;
 }
 h3 {
-    @apply text-black font-bold text-base }
+    @apply text-black font-bold text-lg }
 
 .surveyblocks {
-    @apply bg-white drop-shadow-xl;
+    @apply container !bg-white drop-shadow-xl;
 }
 
 button {
     @apply font-semibold !text-xs text-white py-2 !px-4 !rounded-full;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }
 
 .greensection {
@@ -62,12 +62,19 @@ button {
 .whitesection {
     @apply bg-white px-4 lg:px-0 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
 }
+.whitesection h2 {
+    @apply !text-base;
+}
 .whiteborderbox {
     @apply border-b lg:border-b-0 lg:border-r border-gray-300 w-full;
 }    
 .whitecard {
 @apply relative min-w-40  lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
+h3 {
+    @apply text-base;
 }
+}
+
 .dashdescdiv {
     @apply w-2/4 lg:w-full ml-4 lg:ml-0 ;
 }
@@ -77,6 +84,8 @@ button {
 }
 .buttona{
     @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect ;
+    text-transform: uppercase;
+
 }
 .buttona:hover {
     @apply shadow-none bg-dark-blue;
@@ -84,11 +93,14 @@ button {
 
 .buttonb{
     @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect;
+    text-transform: uppercase;
 }
 .buttonb:hover {
     @apply shadow-none bg-dark-orange;
 }
-
+.actionblock .buttona,.actionblock .buttonb {
+    @apply text-sm;
+}
 .hover-effect {
     transition: all 0.2s ease-in-out;
 }
@@ -98,11 +110,15 @@ button {
 }
 
 .fi-header-heading {
-    @apply text-green font-bold text-left text-3xl pt-4;
+    @apply text-green font-extrabold text-left text-5xl pt-4;
 }
 
 .fi-header-subheading {
-    @apply text-2xl;
+    @apply font-light text-2xl;
+}
+
+.fi-breadcrumbs {
+    @apply text-sm;
 }
 
 .rounded-3xl {
@@ -114,4 +130,20 @@ button {
     align-items: revert;
     background-color: revert;
     border-bottom: none;
+}
+.actionblockborder
+{
+    margin-left: 11rem; 
+    margin-right: 5rem; 
+    border-color: #bbbbbb; 
+    margin-top: 2rem; 
+    margin-bottom: 2rem;
+}
+.actionblock:last-child .actionblockborder
+{ 
+    border-color: white !important;
+
+}
+.completebar {
+    @apply h-16 bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 place-content-center;
 }

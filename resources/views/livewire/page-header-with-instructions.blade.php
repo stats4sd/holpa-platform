@@ -9,7 +9,7 @@ use App\Filament\App\Pages\SurveyDashboard;
 
         <!-- Instructions -->
         <div class="py-4 rounded-md">
-            <h2 class="text-green font-extrabold bold text-lg mb-4">Instructions</h2>
+            <h2 class="text-green mb-4">Instructions</h2>
             <p class="text-black mb-8">{{ $instructions }}</p>
         </div>
 
