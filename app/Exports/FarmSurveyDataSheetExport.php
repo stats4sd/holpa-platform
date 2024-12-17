@@ -42,9 +42,14 @@ class FarmSurveyDataSheetExport implements FromCollection, WithHeadings, WithTit
     {
         $data = [
             $row->farm_id,
-            $row->farm->team_code,
-            $row->farm->location->locationLevel->name,
-            $row->farm->location->name,
+
+            // $row->farm->team_code,
+            // $row->farm->location->locationLevel->name,
+            // $row->farm->location->name,
+
+            'farm_team_code',
+            'farm_location_location_level_name',
+            'farm_location_name',
         ];
 
         $mainSurveyData = $row->only($this->mainSurveyFields);

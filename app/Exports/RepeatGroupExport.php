@@ -56,9 +56,13 @@ class RepeatGroupExport implements FromQuery, WithTitle, WithHeadings, WithMappi
         $map = collect($this->fields)
             ->map(fn($field) => $row[$field]);
 
-        $map = $map->prepend($row->mainSurvey->farm->team_code);
-        $map = $map->prepend($row->mainSurvey->farm_id);
-        $map = $map->prepend($row->farm_survey_data_id);
+        // $map = $map->prepend($row->mainSurvey->farm->team_code);
+        // $map = $map->prepend($row->mainSurvey->farm_id);
+        // $map = $map->prepend($row->farm_survey_data_id);
+
+        $map = $map->prepend('farm_team_code');
+        $map = $map->prepend('farm_location_location_level_name');
+        $map = $map->prepend('farm_location_name');
 
         return $map->toArray();
     }
