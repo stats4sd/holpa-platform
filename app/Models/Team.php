@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use App\Models\Locale;
+use App\Models\XlsformModule;
 use App\Models\SampleFrame\Farm;
-use App\Models\XlsformTemplates\ChoiceList;
+use App\Models\Xlsforms\Xlsform;
 use Hoa\Compiler\Llk\Rule\Choice;
-use Illuminate\Database\Eloquent\Builder;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\Xlsforms\Xlsform;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -48,6 +49,22 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
             $owner->locales()->attach($en);
 
+            // all teams get a custom module for each ODK form
+            $forms = Xlsform::where('owner_id', $owner->id)->get();
+
+            foreach ($forms as $form) {
+                $xlsformModule = XlsformModule::create([
+                    'form_type' => 'App\Models\Xlsforms\Xlsform',
+                    'form_id' => $form->id,
+                    'label' => $owner->name . 'custom module',
+                    'name' => $owner->name . 'custom module',
+                ]);
+
+                XlsformModuleVersion::create([
+                    'xlsform_module_id' => $xlsformModule->id,
+                    'name' => 'custom'
+                ]);
+            }
 
         });
     }
