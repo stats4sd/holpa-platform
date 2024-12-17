@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\SampleFrame\Farm;
 use App\Http\Controllers\Controller;
 use App\Models\SampleFrame\Location;
+use App\Models\SurveyData\FarmSurveyData;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SubmissionController extends Controller
@@ -17,16 +18,50 @@ class SubmissionController extends Controller
 
         // application specific business logic goes here
 
-        // TODO: irrgations table, fill in percentage values to 12 columns for 12 months
+        // TODO: fill in irrigation percentage for 12 months in farm_survey_data record
 
-        // $irrigations = $submission->content['survey']['income']['water']['irrigation_season_repeat'];
+        // initialise irrigation result, assume zero percentage irrigation for all months at the beginning
+        $irrigationResult = [];
 
-        // foreach ($irrigations as $irrigation) {
-        //     logger($irrigation['irrigation_months']);
-        // }
+        for ($i = 1; $i <= 12; $i++) {
+            $irrigationResult['irrigation_percentage_month_' . $i] = 0;
+        }
 
+        // ray('*** initialisation ***');
+        // ray($irrigationResult);
+
+        if (isset($submission->content['survey']['income']['water']['irrigation_season_repeat'])) {
+            // get irrigation data from submission JSON content
+            $irrigations = $submission->content['survey']['income']['water']['irrigation_season_repeat'];
+
+            // ray('*** irrigation data ***');
+            // ray($irrigations);
+
+            // handle irrigation repeat groups one by one, overwrite percentage for a month if it has higher percentage
+            foreach ($irrigations as $irrigation) {
+                $irrigationResult = SubmissionController::prepareIrrigationData($irrigationResult, $irrigation);
+
+                // ray('*** handling repeat group ***');
+                // ray($irrigationResult);
+            }
+
+            ray('*** finalised irrigation result ***');
+            ray($irrigationResult);
+        }
+
+        $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
+
+        for ($i = 1; $i <= 12; $i++) {
+            $farmSurveyData['irrigation_percentage_month_' . $i] = $irrigationResult['irrigation_percentage_month_' . $i];
+        }
+
+        $farmSurveyData->save();
 
         return;
+
+
+        // TODO: create records from nested repeat groups for seasonal_worker_seasons, livestock_uses and fish_uses
+
 
         // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
 
@@ -97,5 +132,27 @@ class SubmissionController extends Controller
                 ]);
             }
         }
+    }
+
+
+    public static function prepareIrrigationData($irrigationResult, $irrigation): array
+    {
+        $irrigationPercentage = $irrigation['irrigation_percentage'];
+
+        // do nothing if irrigation_percentage is null or "null"
+        if ($irrigationPercentage == null || $irrigationPercentage == "null") {
+            ray('irrigation_percentage is null, do nothing');
+            return $irrigationResult;
+        }
+
+        $irrigationMonths = str_getcsv($irrigation['irrigation_months'], ' ');
+
+        foreach ($irrigationMonths as $irrigationMonth) {
+            if ($irrigationPercentage > $irrigationResult['irrigation_percentage_month_' . $irrigationMonth]) {
+                $irrigationResult['irrigation_percentage_month_' . $irrigationMonth] = $irrigationPercentage;
+            }
+        }
+
+        return $irrigationResult;
     }
 }

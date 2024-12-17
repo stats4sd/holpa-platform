@@ -17,8 +17,7 @@ return new class extends Migration
             $table->foreignId('farm_survey_data_id')->nullable();
             $table->json('properties')->nullable();
 
-            // TODO: add more columns for ODK variables
-            $table->unsignedBigInteger('primary_crop_id')->nullable();
+            $table->text('primary_crop_id')->nullable();
             $table->text('primary_crop_name')->nullable();
             $table->integer('crop_varities')->nullable();
             $table->decimal('primary_crop_area', 24, 6)->nullable();
