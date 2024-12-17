@@ -13,8 +13,28 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
+        logger('SubmissionController.process() starts...');
+
         // application specific business logic goes here
 
+        // TODO: irrgations table, fill in percentage values to 12 columns for 12 months
+
+        // $irrigations = $submission->content['survey']['income']['water']['irrigation_season_repeat'];
+
+        // foreach ($irrigations as $irrigation) {
+        //     logger($irrigation['irrigation_months']);
+        // }
+
+
+        return;
+
+        // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
+
+
+        // TODO: farms table, update column household_form_completed, fieldwork_form_completed
+
+
+        // TODO: update array location of "location" section
 
         // find owner (team) of this submission
         $team = $submission->xlsformVersion->xlsform->owner;
