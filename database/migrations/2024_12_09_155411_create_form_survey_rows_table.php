@@ -32,6 +32,7 @@ return new class extends Migration
             $table->text('note')->nullable();
             $table->text('trigger')->nullable();
             $table->json('properties')->nullable(); // catchall for other props;
+            $table->boolean('updated_during_import')->default(0);
 
             $table->timestamps();
 

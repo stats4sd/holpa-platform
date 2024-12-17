@@ -2,14 +2,28 @@
 
 namespace App\Providers;
 
+use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Filament\App\Pages\AddData;
+use App\Filament\App\Pages\DataAnalysis;
+use App\Filament\App\Pages\DataCollection;
+use App\Filament\App\Pages\DietDiversity;
+use App\Filament\App\Pages\Lisp;
+use App\Filament\App\Pages\LispIndicators;
+use App\Filament\App\Pages\LispWorkshop;
+use App\Filament\App\Pages\MoreInstructions;
+use App\Filament\App\Pages\Pilot;
+use App\Filament\App\Pages\PlaceAdaptations;
+use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Pages\SurveyLanguages;
+use App\Filament\App\Pages\TeamOdkView;
+use App\Filament\App\Pages\TimeFrame;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\View\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,92 +49,93 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('Super Admin') ? true : null;
         });
 
-        $this->renderAppPanelHooks();
+        $this->registerPageSpecificHooks();
     }
 
-    public function renderAppPanelHooks()
+    public function registerPageSpecificHooks(): void
     {
-        // get all pages in specific namespace
-        foreach (glob(app_path('Filament/App/Filament/Pages/*.php')) as $file) {
-            $page = str_replace(app_path('Filament/App/Pages/'), '', $file);
-            $page = str_replace('.php', '', $page);
-            $page = str_replace('/', '\\', $page);
-
-            dump($page);
-        }
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.survey-dashboard', ['scopes' => $scopes]),
+            fn(): View => view('filament.app.components.place-locations-top-menu'),
+            scopes: [
+                ListChoiceListEntries::class,
+                TimeFrame::class,
+                DietDiversity::class,
+            ]
+        );
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::TOPBAR_AFTER,
+            fn(array $scopes):
+            View => view('filament.app.pages.info-panels.survey-dashboard', ['scopes' => $scopes]),
             scopes: SurveyDashboard::class,
         );
 
-
-//DataAnalysis.php
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.data-analysis', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: DataAnalysis::class,
         );
-//DataCollection.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.data-collection', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: DataCollection::class,
         );
-//LISP.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.lisp', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: Lisp::class,
         );
-//LispIndicators.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.lisp-indicators', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: LispIndicators::class,
         );
-//LispWorkshop.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.lisp-workshop', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: LispWorkshop::class,
         );
-//MoreInstructions.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.more-instructions', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: MoreInstructions::class,
         );
-//Pilot.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.pilot', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: Pilot::class,
         );
-//PlaceAdaptations.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.place-adaptations', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: PlaceAdaptations::class,
         );
-//Sampling.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.sampling', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: Sampling::class,
         );
-//SurveyLanguages.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.survey-languages', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: SurveyLanguages::class,
         );
-//TeamOdkView.php
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.team-odk-view', ['scopes' => $scopes]),
-            scopes: AddData::class,
+            scopes: TeamOdkView::class,
         );
 
     }

@@ -3,16 +3,16 @@
 namespace App\Models\SampleFrame;
 
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;
-use App\Models\LookupTables\LookupEntry;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
-class LocationLevel extends LookupEntry
+class LocationLevel extends Model
 {
     protected static function booted(): void
     {

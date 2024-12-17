@@ -2,12 +2,12 @@
 
 namespace App\Models\SampleFrame;
 
-use App\Models\LookupTables\LookupEntry;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
-class Farm extends LookupEntry
+class Farm extends Model
 {
     protected $casts = [
         'identifiers' => 'collection',

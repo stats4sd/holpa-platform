@@ -2,6 +2,9 @@
 
 namespace App\Jobs;
 
+use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformModuleVersion;
+use App\Models\XlsformTemplates\SurveyRow;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -10,7 +13,7 @@ class FinishSurveyRowImport implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate)
+    public function __construct(public WithXlsformFile $xlsformTemplate)
     {
     }
 
@@ -21,5 +24,6 @@ class FinishSurveyRowImport implements ShouldQueue
     {
         $this->xlsformTemplate->surveyRows()
             ->update(['updated_during_import' => false]);
+
     }
 }
