@@ -68,7 +68,7 @@ class ChoiceListEntryResource extends Resource
     {
         /** @var Collection<ChoiceList> $lists */
         $lists = ChoiceList::where('is_localisable', true)
-            ->where('is_dataset', false)
+            ->where('has_custom_handling', false)
             ->get();
 
         if(!$lists) {

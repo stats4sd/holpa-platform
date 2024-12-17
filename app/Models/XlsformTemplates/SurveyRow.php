@@ -34,15 +34,36 @@ class SurveyRow extends Model implements HasLanguageStrings
         return $this->morphMany(LanguageString::class, 'linked_entry');
     }
 
+    // default language strings
+    public function defaultLabel(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->languageStrings()
+                ->whereHas('language', fn($query) => $query->where('languages.iso_alpha2', 'en'))
+                ->whereHas('languageStringType', fn($query) => $query->where('language_string_types.name', 'label'))
+                ->first()?->text ?? ''// hardcode English for now. Later we can make it match the team's default language.
+        );
+    }
+
+    public function defaultHint(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->languageStrings()
+                ->whereHas('language', fn($query) => $query->where('languages.iso_alpha2', 'en'))
+                ->whereHas('languageStringType', fn($query) => $query->where('language_string_types.name', 'hint'))
+                ->first()?->text ?? ''// hardcode English for now. Later we can make it match the team's default language.
+        );
+    }
+
 
     public function required(): Attribute
     {
         return new Attribute(
             get: fn($value) => $value,
-            set: function($value) {
-                return match(strtolower($value)) {
-                    'true','yes' => true,
-                    'false','no' => false,
+            set: function ($value) {
+                return match (strtolower($value)) {
+                    'true', 'yes' => true,
+                    'false', 'no' => false,
                     default => false,
                 };
             }

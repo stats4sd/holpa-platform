@@ -7,6 +7,7 @@ use App\Models\SampleFrame\Farm;
 use App\Models\XlsformTemplates\ChoiceList;
 use Hoa\Compiler\Llk\Rule\Choice;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
@@ -110,5 +111,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function hasCompletedLookupList(ChoiceList $choiceList): ?bool
     {
         return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
+    }
+
+
+    // Customisations
+
+    public function dietDiversityModuleVersion(): BelongsTo
+    {
+        return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
     }
 }

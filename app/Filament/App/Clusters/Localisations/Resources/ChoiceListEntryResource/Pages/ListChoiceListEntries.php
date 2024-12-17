@@ -30,7 +30,16 @@ class ListChoiceListEntries extends ListRecords
     public function mount(): void
     {
         parent::mount();
-        $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+
+        if(!$this->choiceListName) {
+            $this->choiceList = ChoiceList::where('is_localisable', true)
+            ->where('has_custom_handling', false)
+            ->first();
+
+            $this->choiceListName = $this->choiceList->list_name;
+        } else {
+            $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+        }
     }
 
     public function table(Table $table): Table

@@ -9,14 +9,7 @@
         heading='Customise place-based questionnaire'
         description='Adapt units, crops, and other details mentioned in the form to be locally relevant.'
         buttonLabel='Update'
-        url='url_to_be_added_here'
-        />
-
-    <livewire:rounded-section
-        heading='Add hints and clarification text'
-        description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
-        buttonLabel='Update'
-        url='url_to_be_added_here'
+        :url='\App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource::getUrl("index")'
         />
 
     <livewire:rounded-section
