@@ -137,40 +137,37 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
             // Get the original filename
             $originalFilename = $file->getClientOriginalName();
     
-            // Add the uploaded file to the specified media collection
-            $this->team->addMedia($file->getRealPath())
-                ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
-                ->usingFileName($originalFilename)
-                ->toMediaCollection($collection);
-    
             if ($collection === 'custom_indicators_hh') {
-                $this->uploadedFileHH = $this->team->getMedia($collection)->first();
 
-                // TODO get the correct xlsform, for now assuming 1st
+                // TODO fix - assuming 1st xlsform for now
                 $xlsform_HH = $this->team->xlsforms()->first();
- 
-                if ($xlsform_HH && $xlsform_HH->xlsformModules->isNotEmpty()) {
-                    $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first();
-                }
-
+                $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first();
                 $xlsform_HH_custom_module_version = $xlsform_HH_custom_module->xlsformModuleVersions()->first();
 
-                ray($xlsform_HH_custom_module_version);
+                // Add the uploaded file to the specified media collection
+                $xlsform_HH_custom_module_version->addMedia($file->getRealPath())
+                    ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
+                    ->usingFileName($originalFilename)
+                    ->toMediaCollection($collection);
+
+                $this->uploadedFileHH = $xlsform_HH_custom_module_version->getMedia($collection)->first();
 
                 Excel::import(new XlsformTemplateWorkbookImport($xlsform_HH_custom_module_version), $this->uploadedFileHH->getPath());
 
             } elseif ($collection === 'custom_indicators_fw') {
 
-                $this->uploadedFileFW = $this->team->getMedia($collection)->first();
-
-                // TODO get the correct xlsform, for now assuming 2nd
+                // TODO fix - assuming 2nd xlsform for now
                 $xlsform_FW = $this->team->xlsforms()->skip(1)->first();
- 
-                if ($xlsform_FW && $xlsform_FW->xlsformModules->isNotEmpty()) {
-                    $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first();
-                }
-
+                $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first();
                 $xlsform_FW_custom_module_version = $xlsform_FW_custom_module->xlsformModuleVersions()->first();
+
+                // Add the uploaded file to the specified media collection
+                $xlsform_FW_custom_module_version->addMedia($file->getRealPath())
+                    ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
+                    ->usingFileName($originalFilename)
+                    ->toMediaCollection($collection);
+
+                $this->uploadedFileFW = $xlsform_FW_custom_module_version->getMedia($collection)->first();
 
                 Excel::import(new XlsformTemplateWorkbookImport($xlsform_FW_custom_module_version), $this->uploadedFileFW->getPath());
             }
