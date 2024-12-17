@@ -1,13 +1,14 @@
 <x-filament-panels::page>
-
-    <div class="text-lg">
+<div class="container mx-auto xl:px-12 ">
+    <div class="surveyblocks pt-16 pb-24 mb-32">
+    <div class="text-base px-12">
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.
             Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo.
         </p>
     </div>
 
     <!-- Tabs -->
-    <div class="grid grid-cols-3 gap-6">
+    <div class="grid grid-cols-3 gap-6 px-12 mt-12 h-max mb-12">
         <div wire:click="setActiveTab('local')" class="{{ $activeTab === 'local' ? 'bg-gray-200' : '' }} rounded-3xl cursor-pointer">
             <livewire:rounded-square
                 heading="UPLOAD LOCAL INDICATORS"
@@ -38,5 +39,13 @@
             <livewire:custom-indicators />
         @endif
     </div>
+</div>
+</div>
+    <!-- Footer with option to mark as complete - funcitonality still to come! -->
+    <div class="completebar">
+        <a href="" class="buttonb mx-4 inline-block">Go back</a>
+        <a href="" class="buttona mx-4 inline-block ">Mark as completed</a>
+    </div>
+
 
 </x-filament-panels::page>

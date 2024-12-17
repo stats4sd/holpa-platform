@@ -58,7 +58,7 @@ class LocalesTable extends Component implements HasForms, HasTable
             ->actions([
                 \Filament\Tables\Actions\Action::make('viewOrUpdate')
                     ->label(fn($record) => $record->status === 'Ready for use' ? 'View' : 'Update')
-                    ->color(fn($record) => $record->status === 'Ready for use' ? 'primary' : 'warning')
+                    ->color(fn($record) => $record->status === 'Ready for use' ? 'blue' : 'warning')
                     ->button()
                     ->modalHeading(fn($record) => $record->status === 'Ready for use' ? 'VIEW TRANSLATIONS' : 'UPDATE TRANSLATIONS')
                     ->modalSubheading(fn($record) => $record->status === 'Ready for use'
@@ -92,6 +92,7 @@ class LocalesTable extends Component implements HasForms, HasTable
             ->headerActions([
                 \Filament\Tables\Actions\Action::make('create')
                     ->label('ADD NEW TRANSLATION')
+                    ->color('orange')
                     ->modalButton('Add language')
                     ->modalCancelAction(false)
                     ->modalWidth(MaxWidth::SixExtraLarge)

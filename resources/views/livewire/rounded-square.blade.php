@@ -1,8 +1,8 @@
-<div class="rounded-3xl shadow-xl p-6 bg-grey">
+<div class="rounded-3xl h-full p-6 bg-grey">
     <!-- Heading -->
-    <h2 class="text-lg font-bold text-green">
+    <h3 class="">
         {{ $heading }}
-    </h2>
+    </h3>
     
     <div class="flex justify-between items-center pt-6">
         <!-- Description -->
