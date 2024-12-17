@@ -8,6 +8,7 @@ use Livewire\Component;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Tables\Actions\Action;
+use App\Models\XlsformModuleVersion;
 use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Columns\TextColumn;
@@ -41,10 +42,19 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
     public function table(Table $table): Table
     {
+        $moduleVersionIds = $this->team->xlsforms()
+        ->take(2) // Get the first two XLSForms (HH and FW)
+        ->get()
+        ->map(function ($xlsform) {
+            $module = $xlsform->xlsformModules->first(); // Get the first module
+            return $module?->xlsformModuleVersions()->first()?->id; // Get the first module version ID
+        })
+        ->toArray();
+
         return $table
         ->query(Media::query()
-            ->where('model_id', $this->team->id)
-            ->where('model_type', Team::class)
+            ->where('model_id', $moduleVersionIds)
+            ->where('model_type', XlsformModuleVersion::class)
             ->whereIn('collection_name', ['custom_indicators_hh', 'custom_indicators_fw'])
         )
         ->columns([
@@ -152,8 +162,6 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
                 $this->uploadedFileHH = $xlsform_HH_custom_module_version->getMedia($collection)->first();
 
-                Excel::import(new XlsformTemplateWorkbookImport($xlsform_HH_custom_module_version), $this->uploadedFileHH->getPath());
-
             } elseif ($collection === 'custom_indicators_fw') {
 
                 // TODO fix - assuming 2nd xlsform for now
@@ -169,7 +177,6 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
                 $this->uploadedFileFW = $xlsform_FW_custom_module_version->getMedia($collection)->first();
 
-                Excel::import(new XlsformTemplateWorkbookImport($xlsform_FW_custom_module_version), $this->uploadedFileFW->getPath());
             }
     
         } catch (Exception $e) {
