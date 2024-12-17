@@ -110,11 +110,11 @@ h3 {
 }
 
 .fi-header-heading {
-    @apply text-green font-extrabold text-left text-5xl pt-4;
+    @apply text-green font-extrabold text-left text-4xl pt-4;
 }
 
 .fi-header-subheading {
-    @apply font-light text-2xl;
+    @apply  text-2xl;
 }
 
 .fi-breadcrumbs {
