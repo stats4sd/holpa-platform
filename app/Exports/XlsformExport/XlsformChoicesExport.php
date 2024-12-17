@@ -2,6 +2,7 @@
 
 namespace App\Exports\XlsformExport;
 
+use App\Models\Language;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceListEntry;
@@ -23,11 +24,12 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
      */
     public Collection $choiceListEntries;
 
-    public function __construct(public Xlsform $xlsform, public Collection $xlsformTemplateLanguages, public Collection $languageStringTypes)
+    public function __construct(public Xlsform $xlsform, public Collection $languages, public Collection $languageStringTypes)
     {
 
         // get collection in construct so we can use props to get headings
         // simplest case - return all survey rows from the template
+        // TODO: get choice list entries from custom indicators
         $choiceListEntries = $this->xlsform
             ->xlsformTemplate
             ->choiceListEntries
@@ -85,13 +87,13 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     {
 
 
-        return $this->xlsformTemplateLanguages
-            ->mapWithKeys(function (XlsformTemplateLanguage $xlsformTemplateLanguage) use ($string, $row) {
+        return $this->languages
+            ->mapWithKeys(function (Language $language) use ($string, $row) {
 
-                $key = "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
+                $key = "$string::{$language->name} ({$language->iso_alpha2})";
                 $value = $row->languageStrings
                     ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
-                    ->where('xlsform_template_language_id', $xlsformTemplateLanguage->id)
+                    ->where('xlsform_template_language_id', $language->id)
                     ->first()?->text ?? null;
                 return [$key => $value];
             });
@@ -101,7 +103,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     public function styles(Worksheet $sheet)
     {
         // starting at C, make 1 column auto-wrap per Xlsformtemplatelangauge
-        $wrapArray = $this->xlsformTemplateLanguages->mapWithKeys(fn(XlsformTemplateLanguage $language, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]
+        $wrapArray = $this->languages->mapWithKeys(fn(Language $language, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]
         )->toArray();
 
         return [
