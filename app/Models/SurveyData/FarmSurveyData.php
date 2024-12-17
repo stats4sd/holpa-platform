@@ -82,4 +82,9 @@ class FarmSurveyData extends Model
     {
         return $this->hasMany(SeasonalWorkerSeason::class, 'farm_survey_data_id', 'id');
     }
+
+    public function growingSeasons(): HasMany
+    {
+        return $this->hasMany(GrowingSeason::class, 'farm_survey_data_id', 'id');
+    }
 }
