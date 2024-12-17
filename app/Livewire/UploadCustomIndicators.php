@@ -36,20 +36,17 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
     {
         $this->team = Team::find(auth()->user()->latestTeam->id);
         $this->form->fill();
-        $this->uploadedFileHH = $this->team->getMedia('custom_indicators_hh')->first();
-        $this->uploadedFileFW = $this->team->getMedia('custom_indicators_fw')->first();
+
+        $this->uploadedFileHH = $this->team->xlsform_hh_module_version->getMedia('custom_indicators_hh')->first();
+        $this->uploadedFileFW = $this->team->xlsform_fw_module_version->getMedia('custom_indicators_fw')->first();
     }
 
     public function table(Table $table): Table
     {
-        $moduleVersionIds = $this->team->xlsforms()
-        ->take(2) // Get the first two XLSForms (HH and FW)
-        ->get()
-        ->map(function ($xlsform) {
-            $module = $xlsform->xlsformModules->first(); // Get the first module
-            return $module?->xlsformModuleVersions()->first()?->id; // Get the first module version ID
-        })
-        ->toArray();
+        $moduleVersionIds = [
+            $this->team->xlsformHhModuleVersion->id,
+            $this->team->xlsformFwModuleVersion->id,
+        ];
 
         return $table
         ->query(Media::query()
@@ -112,7 +109,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         // Ensure at least one file is uploaded
         if ((empty($this->custom_indicators_hh) || !is_array($this->custom_indicators_hh)) &&
             (empty($this->custom_indicators_fw) || !is_array($this->custom_indicators_fw))) {
-            $this->addError('custom_indicators', 'Please upload at least one file before proceeding.');
+            $this->addError('custom_indicators', 'Please upload a file before proceeding.');
             return;
         }
     
@@ -149,33 +146,23 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
     
             if ($collection === 'custom_indicators_hh') {
 
-                // TODO fix - assuming 1st xlsform for now
-                $xlsform_HH = $this->team->xlsforms()->first();
-                $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first();
-                $xlsform_HH_custom_module_version = $xlsform_HH_custom_module->xlsformModuleVersions()->first();
-
                 // Add the uploaded file to the specified media collection
-                $xlsform_HH_custom_module_version->addMedia($file->getRealPath())
+                $this->team->xlsform_hh_module_version->addMedia($file->getRealPath())
                     ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
                     ->usingFileName($originalFilename)
                     ->toMediaCollection($collection);
 
-                $this->uploadedFileHH = $xlsform_HH_custom_module_version->getMedia($collection)->first();
+                $this->uploadedFileHH = $this->team->xlsform_hh_module_version->getMedia($collection)->first();
 
             } elseif ($collection === 'custom_indicators_fw') {
 
-                // TODO fix - assuming 2nd xlsform for now
-                $xlsform_FW = $this->team->xlsforms()->skip(1)->first();
-                $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first();
-                $xlsform_FW_custom_module_version = $xlsform_FW_custom_module->xlsformModuleVersions()->first();
-
                 // Add the uploaded file to the specified media collection
-                $xlsform_FW_custom_module_version->addMedia($file->getRealPath())
+                $this->team->xlsform_fw_module_version->addMedia($file->getRealPath())
                     ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
                     ->usingFileName($originalFilename)
                     ->toMediaCollection($collection);
 
-                $this->uploadedFileFW = $xlsform_FW_custom_module_version->getMedia($collection)->first();
+                $this->uploadedFileFW = $this->team->xlsform_fw_module_version->getMedia($collection)->first();
 
             }
     

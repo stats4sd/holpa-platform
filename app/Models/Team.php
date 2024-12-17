@@ -128,4 +128,30 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     {
         return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
     }
+
+    public function getXlsformHhModuleVersionAttribute()
+    {
+        $xlsform_HH = $this->xlsforms()->first(); // Get the first XLSForm belong to this team (hh)
+        
+        if ($xlsform_HH) {
+            $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first(); // Get the first module
+            if ($xlsform_HH_custom_module) {
+                return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
+    }
+
+    public function getXlsformFwModuleVersionAttribute()
+    {
+        $xlsform_FW = $this->xlsforms()->skip(1)->first(); // Get the second XLSForm belong to this team (fw)
+        
+        if ($xlsform_FW) {
+            $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first(); // Get the first module
+            if ($xlsform_FW_custom_module) {
+                return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
+    }
 }
