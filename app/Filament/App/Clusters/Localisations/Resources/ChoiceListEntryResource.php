@@ -28,6 +28,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Illuminate\Validation\Rules\Unique;
 
 class ChoiceListEntryResource extends Resource
 {
@@ -94,12 +95,16 @@ class ChoiceListEntryResource extends Resource
 
     public static function getFormSchema(ChoiceList $choiceList): array
     {
+        if(isset($choiceList->properties['extra_properties'])) {
 
         $propFields = collect($choiceList->properties['extra_properties'])
             ->map(fn($property) => TextInput::make('properties.' . $property['name'])
                 ->label($property['label'])
                 ->helperText($property['helper_text'])
             );
+        } else {
+            $propFields = collect([]);
+        }
 
         return [
             Hidden::make('owner_id')
@@ -108,7 +113,13 @@ class ChoiceListEntryResource extends Resource
                 ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
                 ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
-            TextInput::make('name')->required(),
+            TextInput::make('name')->required()
+            ->unique(ignoreRecord: true, modifyRuleUsing: function(Unique $rule, Get $get) {
+                return $rule
+                    ->where('choice_list_id', $get('choice_list_id'))
+                    ->where('owner_id', $get('owner_id'))
+                    ->where('owner_type', $get('owner_type'));
+            }),
             Repeater::make('languageStrings')
                 ->label('Add Labels for the following languages:')
                 ->relationship('languageStrings')
@@ -122,7 +133,7 @@ class ChoiceListEntryResource extends Resource
                     $locales = HelperService::getSelectedTeam()?->locales;
 
                     $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
-                    $xlsformTemplateLanguages = $choiceList->xlsformTemplate->xlsformTemplateLanguages;
+                    $xlsformTemplateLanguages = $choiceList->template->xlsformTemplateLanguages;
 
                     return $locales->map(fn(Locale $locale) => [
                         'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
