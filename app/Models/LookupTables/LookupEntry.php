@@ -27,7 +27,7 @@ class LookupEntry extends Model implements LookupListEntry
     }
 
     // Set default. This is overwritten by the CanBeHiddenFromContext trait in some cases.
-    public function canBeHiddenFromContext(): bool
+    public static function canBeHiddenFromContext(): bool
     {
         return false;
     }
