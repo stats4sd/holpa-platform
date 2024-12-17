@@ -32,7 +32,7 @@ class FinishSurveyRowImport implements ShouldQueue
                 ->each(function (SurveyRow $surveyRow) {
                     $parent = SurveyRow::where('name', $surveyRow->name)
                         ->where('type', $surveyRow->type)
-                        ->where('template_id', $this->xlsformTemplate->xlsformTemplate->id)
+                        ->where('template_id', $this->xlsformTemplate->id)
                         ->where('template_type', XlsformTemplate::class)
                         ->first();
 
