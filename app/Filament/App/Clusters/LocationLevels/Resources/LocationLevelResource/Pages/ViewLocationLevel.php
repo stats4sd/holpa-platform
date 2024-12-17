@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Filament\App\Resources\LocationLevelResource\Pages;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
-use App\Filament\App\Resources\LocationLevelResource;
-use App\Filament\Tables\Actions\ImportLocationsAction;
+use Illuminate\Support\Str;
 use App\Imports\LocationImport;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\Str;
+use App\Filament\Tables\Actions\ImportLocationsAction;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 
 class ViewLocationLevel extends ViewRecord
 {
