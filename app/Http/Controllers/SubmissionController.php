@@ -14,7 +14,7 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
-        logger('SubmissionController.process() starts...');
+        ray('SubmissionController.process() starts...');
 
         // application specific business logic goes here
 
@@ -22,7 +22,19 @@ class SubmissionController extends Controller
         SubmissionController::handleIrrigationData($submission);
 
 
-        // TODO: create records from nested repeat groups for seasonal_worker_seasons, livestock_uses and fish_uses
+        // TODO: create records from nested repeat groups for seasonal_worker_seasons
+        // /survey/income/labour/household_mm_labour/seasonal_workers/seasonal_workers_s
+        // /survey/income/labour/labourers/sesaonal_labourers/seasonal_labourers_s/
+
+
+        // TODO: create records from nested repeat groups for livestock_uses
+        // /survey/income/livestock_production/primary_livestock_details/primary_livestock_uses
+
+
+        // TODO: create records from nested repeat groups for fish_uses
+        // /survey/income/fish_production/fish_repeat/fish_production_repeat/
+        SubmissionController::handleFishUsesData($submission);
+
 
 
         // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
@@ -37,6 +49,7 @@ class SubmissionController extends Controller
         // custom handling to create new locations
         SubmissionController::handleLocationData($submission);
     }
+
 
 
 
@@ -96,6 +109,21 @@ class SubmissionController extends Controller
 
         return $irrigationResult;
     }
+
+
+
+
+    // custom handling for fish_uses data
+    public static function handleFishUsesData(Submission $submission): void
+    {
+        ray('SubmissionController.handleFishUsesData() starts...');
+
+        // TODO: create records from nested repeat groups for fish_uses
+        // /survey/income/fish_production/fish_repeat/fish_production_repeat/
+
+    }
+
+
 
 
     // custom handling for location
