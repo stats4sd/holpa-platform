@@ -2,33 +2,29 @@
 
 namespace App\Filament\Admin\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Theme;
+use App\Filament\Admin\Resources\DomainResource\Pages;
+use App\Filament\Admin\Resources\DomainResource\RelationManagers;
 use App\Models\Domain;
+use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
 use Filament\Resources\Resource;
-use App\Filament\Admin\Resources\ThemeResource\Pages;
-use App\Filament\Admin\Resources\ThemeResource\RelationManagers;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class ThemeResource extends Resource
+class DomainResource extends Resource
 {
-    protected static ?string $model = Theme::class;
+    protected static ?string $model = Domain::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     protected static ?string $navigationGroup = 'HOLPA Indicators';
-    // protected static ?int $navigationSort = 2;
+    // protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('module')
-                    ->maxLength(255),
-                Forms\Components\Select::make('domain_id')
-                    ->label('Domain')
-                    ->options(Domain::all()->pluck('name', 'id')),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -42,15 +38,13 @@ class ThemeResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('module')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('domain.name')
-                    ->sortable()
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('globalindicators_count')
-                    ->label('# Global indicators')
-                    ->counts('globalindicators')
+                Tables\Columns\TextColumn::make('themes_count')
+                    ->label('# Themes')
+                    ->counts('themes')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('localindicators_count')
+                    ->label('# Local indicators')
+                    ->counts('localindicators')
                     ->sortable(),
             ])
             ->filters([
@@ -69,16 +63,16 @@ class ThemeResource extends Resource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\GlobalIndicatorsRelationManager::class,
+            //
         ];
     }
 
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListThemes::route('/'),
-            'create' => Pages\CreateTheme::route('/create'),
-            'edit' => Pages\EditTheme::route('/{record}/edit'),
+            'index' => Pages\ListDomains::route('/'),
+            'create' => Pages\CreateDomain::route('/create'),
+            'edit' => Pages\EditDomain::route('/{record}/edit'),
         ];
     }
 }

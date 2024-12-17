@@ -12,9 +12,14 @@ export default {
           colors: {
             'green': 'var(--green)',
             'blue': 'var(--blue)',
+            'dark-blue': 'var(--dark-blue)',
             'orange': 'var(--orange)',
+            'dark-orange': 'var(--dark-orange)',
             'light-grey': 'var(--light-grey)',
             'grey': 'var(--grey)',
+          },
+          fontFamily: {
+            montserrat: ['"Montserrat"', "sans-serif"],
           },
         },
       },
