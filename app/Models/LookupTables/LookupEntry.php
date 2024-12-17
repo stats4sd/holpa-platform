@@ -23,12 +23,11 @@ class LookupEntry extends Model implements LookupListEntry
             if ($linkedDataset) {
                 $linkedDataset->markLiveXlsformsWithMediaUpdate();
             }
-
         });
     }
 
     // Set default. This is overwritten by the CanBeHiddenFromContext trait in some cases.
-    public static function canBeHiddenFromContext(): bool
+    public function canBeHiddenFromContext(): bool
     {
         return false;
     }
