@@ -144,17 +144,35 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
                 ->toMediaCollection($collection);
     
             if ($collection === 'custom_indicators_hh') {
-
                 $this->uploadedFileHH = $this->team->getMedia($collection)->first();
-                $xlsform = $this->team->xlsforms()->first(); // TODO get the correct xlsform, for now assuming 1st
-                Excel::import(new XlsformTemplateWorkbookImport($xlsform), $this->uploadedFileHH->getPath());
+
+                // TODO get the correct xlsform, for now assuming 1st
+                $xlsform_HH = $this->team->xlsforms()->first();
+ 
+                if ($xlsform_HH && $xlsform_HH->xlsformModules->isNotEmpty()) {
+                    $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first();
+                }
+
+                $xlsform_HH_custom_module_version = $xlsform_HH_custom_module->xlsformModuleVersions()->first();
+
+                ray($xlsform_HH_custom_module_version);
+
+                Excel::import(new XlsformTemplateWorkbookImport($xlsform_HH_custom_module_version), $this->uploadedFileHH->getPath());
 
             } elseif ($collection === 'custom_indicators_fw') {
 
                 $this->uploadedFileFW = $this->team->getMedia($collection)->first();
-                $xlsform = $this->team->xlsforms()->skip(1)->first(); // TODO get the correct xlsform, for now assuming 2nd
-                Excel::import(new XlsformTemplateWorkbookImport($xlsform), $this->uploadedFileFW->getPath());
-                
+
+                // TODO get the correct xlsform, for now assuming 2nd
+                $xlsform_FW = $this->team->xlsforms()->skip(1)->first();
+ 
+                if ($xlsform_FW && $xlsform_FW->xlsformModules->isNotEmpty()) {
+                    $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first();
+                }
+
+                $xlsform_FW_custom_module_version = $xlsform_FW_custom_module->xlsformModuleVersions()->first();
+
+                Excel::import(new XlsformTemplateWorkbookImport($xlsform_FW_custom_module_version), $this->uploadedFileFW->getPath());
             }
     
         } catch (Exception $e) {
