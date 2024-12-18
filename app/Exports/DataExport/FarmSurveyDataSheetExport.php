@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\DataExport;
 
 use App\Models\SurveyData\FarmSurveyData;
 use Illuminate\Support\Collection;

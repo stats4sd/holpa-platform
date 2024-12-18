@@ -2,7 +2,7 @@
 
 namespace App\Filament\Actions;
 
-use App\Exports\FarmSurveyDataExport;
+use App\Exports\DataExport\FarmSurveyDataExport;
 use Filament\Actions\Action;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;

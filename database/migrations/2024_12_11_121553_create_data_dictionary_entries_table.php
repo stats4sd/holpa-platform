@@ -13,13 +13,16 @@ return new class() extends Migration {
         Schema::create('data_dictionary_entries', function (Blueprint $table) {
             $table->id();
             $table->string('worksheet')->nullable();
-            $table->string('survey_section')->nullable();
             $table->string('variable')->nullable();
-            $table->text('label_question')->nullable();
+            $table->string('theme')->nullable();
+            $table->string('survey_section')->nullable();
+            $table->string('indicator_number')->nullable();
+            $table->string('indicator_name')->nullable();
+            $table->text('question_or_definition')->nullable();
             $table->string('type')->nullable();
             $table->string('code_list')->nullable();
-            $table->boolean('sub_heading')->default(false);
-            $table->boolean('end_of_section')->default(false);
+            $table->string('calculation')->nullable();
+            $table->string('multiple_choice_option_label')->nullable();
             $table->timestamps();
         });
     }

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\DataExport;
 
-use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use App\Models\SurveyData\Crop;
 use App\Models\SurveyData\EcologicalPractice;
 use App\Models\SurveyData\FieldworkSite;
@@ -13,6 +12,7 @@ use App\Models\SurveyData\LivestockUse;
 use App\Models\SurveyData\PermanentWorker;
 use App\Models\SurveyData\Product;
 use App\Models\SurveyData\SeasonalWorkerSeason;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class FarmSurveyDataExport implements WithMultipleSheets
 {
@@ -20,8 +20,8 @@ class FarmSurveyDataExport implements WithMultipleSheets
     {
         $sheets = [];
 
-        // $sheets[] = new DataDictionaryExport();
-        // $sheets[] = new ChoiceListExport();
+        $sheets[] = new DataDictionaryExport();
+        $sheets[] = new ChoiceListExport();
 
         // $sheets[] = new CalculatedIndicatorExport();
 
