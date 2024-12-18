@@ -7,26 +7,27 @@ $submissions = $getRecord()->submissions;
 
 // comment below code and hardcode temporary for testing
 // TODO: revise to corresponding ODK variable in household form and fieldwork form
-/*
+
 
 $submissionsByLocations = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
 
-$submission->location_id = $submission->content['reg']['final_location_id'];
+$submission->location_id = $submission->content['context']['location']['village_name'];
 
 return $submission;
 })
 ->groupBy('location_id');
 
+
+/*
 $submissionsByEnumerators = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
 
 $submission->enumerator_id = $submission->content['survey_start']['inquirer'];
 
 return $submission;
 })->groupBy('enumerator_id');
-
 */
 
-$submissionsByLocations = $submissions;
+
 $submissionsByEnumerators = $submissions;
 
 @endphp
@@ -42,20 +43,6 @@ $submissionsByEnumerators = $submissions;
         <div class="grid grid-cols-3 gap-3">
             <b class="text-right">{{ $locations->firstWhere('id', $key)?->name ?? $key }}</b>
             <span class="col-span-2">{{ $locationFromSubmission->count() }}</span>
-        </div>
-        @endforeach
-
-    </x-filament::section>
-
-    <x-filament::section>
-        <x-slot name="heading">
-            <b>Submissions By Enumerator (TODO)</b>
-        </x-slot>
-
-        @foreach($submissionsByEnumerators as $key => $enumeratorSubmissions)
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right col-span-2">{{ \Illuminate\Support\Str::replace("_", " ", $key) }}</b>
-            <span>{{ $enumeratorSubmissions->count() }}</span>
         </div>
         @endforeach
 
