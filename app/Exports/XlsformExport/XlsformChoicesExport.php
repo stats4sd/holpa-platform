@@ -91,9 +91,8 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
             ->mapWithKeys(function (Language $language) use ($string, $row) {
 
                 $key = "$string::{$language->name} ({$language->iso_alpha2})";
-                $value = $row->languageStrings
-                    ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
-                    ->where('xlsform_template_language_id', $language->id)
+                $value = $row->languageStrings()
+                    ->whereHas('languageStringType', fn($query) => $query->where('name', $string))
                     ->first()?->text ?? null;
                 return [$key => $value];
             });

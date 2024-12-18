@@ -15,8 +15,13 @@ return new class extends Migration
             $table->unique(['xlsform_template_id', 'list_name'], 'unique_xlsform_template_id_list_name');
         });
 
+        // add a 'cascade_filter' entry to hack our way to a 'unique' index that includes properties
         Schema::table('choice_list_entries', function (Blueprint $table) {
-            $table->unique(['name', 'choice_list_id'], 'unique_name_choice_list_id');
+            $table->string('cascade_filter')->nullable()->after('properties');
+        });
+
+        Schema::table('choice_list_entries', function (Blueprint $table) {
+            $table->unique(['name', 'choice_list_id', 'cascade_filter'], 'unique_name_choice_list_id');
         });
     }
 

@@ -66,7 +66,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
             ->actions([
                 Action::make('select_match')
                     ->button()
-                    ->color('primary')
+                    ->color('green')
                     ->disabled(function ($record) {
                         return $this->selectedIndicator && $this->selectedIndicator->globalIndicator
                             && $this->selectedIndicator->globalIndicator->id !== $record->id;
@@ -103,7 +103,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                 Action::make('remove_match')
                     ->button()
-                    ->color('danger')
+                    ->color('blue')
                     ->hidden(function ($record) {
                         return !$this->selectedIndicator || !$this->selectedIndicator->globalIndicator
                             || $this->selectedIndicator->globalIndicator->id !== $record->id;
