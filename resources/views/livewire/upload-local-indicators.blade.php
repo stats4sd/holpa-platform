@@ -8,7 +8,7 @@
             Use the box below to upload the completed indicator template containing the local indicators identified
             during the LISP workshop.
             <br>
-            If needed, you can download the template here.
+            If needed, you can <a href="/files/HOLPA_indicator_template.xlsx" class="text-green">download the template here</a>.
         </div>
 
         <div class="px-8 py-4"> 

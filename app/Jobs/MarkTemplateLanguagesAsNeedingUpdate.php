@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -15,7 +16,7 @@ class MarkTemplateLanguagesAsNeedingUpdate implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $importedTemplateLanguages)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $importedTemplateLanguages)
     {
         //
     }
@@ -34,7 +35,8 @@ class MarkTemplateLanguagesAsNeedingUpdate implements ShouldQueue
 
 
         $this->xlsformTemplate
-            ->xlsformTemplateLanguages
+            ->xlsformTemplateLanguages()
+            ->get()
             ->filter(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => $this->importedTemplateLanguages->doesntContain('id', $xlsformTemplateLanguage->id))
             ->each(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => $xlsformTemplateLanguage->update(['needs_update' => true]));
 

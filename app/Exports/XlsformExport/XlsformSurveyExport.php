@@ -56,7 +56,7 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
                 ]);
             });
 
-        $this->dynamicStyleRowLists = $this->getDynamicStylesRowLists($this->surveyRows);
+        $this->dynamicStylesRowLists = $this->getDynamicStylesRowLists($this->surveyRows);
 
     }
 
@@ -201,19 +201,19 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
             $sheet->getStyle($column . ':' . $column)->applyFromArray($wrapStyle);
         }
 
-        foreach($this->dynamicStyleRowLists['beginGroupRows'] as $row) {
+        foreach($this->dynamicStylesRowLists['beginGroupRows'] as $row) {
             $sheet->getStyle($row . ':' . $row)->applyFromArray($beginGroupStyle);
         }
 
-        foreach($this->dynamicStyleRowLists['endGroupRows'] as $row) {
+        foreach($this->dynamicStylesRowLists['endGroupRows'] as $row) {
             $sheet->getStyle($row . ':' . $row)->applyFromArray($endGroupStyle);
         }
 
-        foreach($this->dynamicStyleRowLists['beginRepeatRows'] as $row) {
+        foreach($this->dynamicStylesRowLists['beginRepeatRows'] as $row) {
             $sheet->getStyle($row . ':' . $row)->applyFromArray($beginRepeatStyle);
         }
 
-        foreach($this->dynamicStyleRowLists['endRepeatRows'] as $row) {
+        foreach($this->dynamicStylesRowLists['endRepeatRows'] as $row) {
             $sheet->getStyle($row . ':' . $row)->applyFromArray($endRepeatStyle);
         }
 

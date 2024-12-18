@@ -3,7 +3,7 @@
     <div class="text-lg font-bold text-green pb-8">
         ADD CUSTOM INDICATORS
     </div>
-        
+
     <div class="text-black pb-8 mb-12">
         Below are the remaining indicators that have not been mapped to an existing indicator in the survey. For each of the below
         indicators, confirm if you would like to collect data for these indicators <b>in addition to the global required indicators and
@@ -18,12 +18,12 @@
                 </svg>
             </div>
             <div class="flex-1 text-white">
-                Please make sure that the below indicators are not covered by any existing indicators in the global survey before proceeding. 
+                Please make sure that the below indicators are not covered by any existing indicators in the global survey before proceeding.
                 You can review the 'Match with existing global indicators' page if you are not sure.
             </div>
         </div>
         <div class="text-right pr-4">
-            <a href="url_to_be_added_here" 
+            <a href="url_to_be_added_here"
                 class="bg-white text-orange px-4 py-2 rounded-full ">
                 Review global indicators
             </a>
@@ -37,16 +37,28 @@
    {{ $this->table }}
 
    <div class="flex justify-center gap-4 py-8">
-        <button wire:click="resetIndicators" 
+        <button wire:click="resetIndicators"
                 class="buttonb">
             Reset
         </button>
-        <a href="url_to_be_added_here" 
+        <button wire:click="downloadHouseholdTemplate"
                 class="buttona">
-            Download template
-        </a>
+            Download Household template
+        </button>
+
+       <button wire:click="downloadFieldworkTemplate"
+                class="buttona">
+            Download Fieldwork Template
+        </button>
     </div>
 
-    <livewire:upload-custom-indicators />
+    <!-- Error message -->
+    @error('validation')
+        <div class="text-green text-center mt-2">{{ $message }}</div>
+    @enderror
+
+    <div class="pt-8">
+        <livewire:upload-custom-indicators />
+    </div>
 
 </div>

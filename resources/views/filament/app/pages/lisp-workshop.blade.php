@@ -23,7 +23,7 @@ use App\Filament\App\Pages\Lisp;
                           This will ensure the required information for the indicators is included, and you will need to use it to upload your indicators
                           to include in your survey.'
         buttonLabel='Download .xlsx'
-        url='url_to_be_added_here'
+        url='/files/HOLPA_indicator_template.xlsx'
     />
     </div>
     

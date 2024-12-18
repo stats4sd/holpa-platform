@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -12,7 +13,7 @@ class FinishLanguageStringImport implements ShouldQueue
 {
     use Queueable;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public string $heading)
     {
     }
 
