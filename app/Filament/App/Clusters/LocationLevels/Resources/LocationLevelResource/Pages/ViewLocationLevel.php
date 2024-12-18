@@ -4,6 +4,7 @@ namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResour
 
 use Illuminate\Support\Str;
 use App\Imports\LocationImport;
+use App\Services\HelperService;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use App\Filament\Tables\Actions\ImportLocationsAction;
@@ -13,9 +14,23 @@ class ViewLocationLevel extends ViewRecord
 {
     protected static string $resource = LocationLevelResource::class;
 
-    public function getTitle(): string|Htmlable
+    protected ?string $heading = 'Sampling Frame';
+
+    public function getSubheading(): string|Htmlable
     {
-        return Str::of($this->record->name)->plural()->title();
+        return 'List of ' . Str::of($this->record->name)->plural()->title();
+    }
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            \App\Filament\App\Pages\Sampling::getUrl() => 'Sampling',
+            route('filament.app.location-levels.resources.location-levels.view', [
+                'tenant' => HelperService::getSelectedTeam()->id,
+                'record' => $this->record->slug
+            ]) => Str::of($this->record->name)->plural(), 
+        ];
     }
 
     protected function getHeaderActions(): array
