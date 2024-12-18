@@ -18,7 +18,7 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
-        ray('SubmissionController.process() starts...');
+        // ray('SubmissionController.process() starts...');
 
         // application specific business logic goes here
 
