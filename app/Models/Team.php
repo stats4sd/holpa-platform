@@ -4,17 +4,18 @@ namespace App\Models;
 
 use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
-use App\Models\XlsformTemplates\ChoiceList;
+use App\Models\Xlsforms\Xlsform;
 use Hoa\Compiler\Llk\Rule\Choice;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\Xlsforms\Xlsform;
+use Illuminate\Database\Eloquent\Builder;
+use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -50,6 +51,18 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             $owner->locales()->attach($en);
 
 
+            // create xlsform models for all active xlsform template for this new team
+            $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
+
+            // no need to check if team has any xlsform already, suppose a newly created team should have no xlsform
+            foreach ($xlsformTemplates as $xlsformTemplate) {
+                $xlsform = Xlsform::create([
+                    'owner_id' => $owner->id,
+                    'owner_type' => static::class,
+                    'xlsform_template_id' => $xlsformTemplate->id,
+                    'title' => $xlsformTemplate->title,
+                ]);
+            }
         });
     }
 
