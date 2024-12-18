@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Widgets;
+namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Widgets;
 
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\SurveyRow;

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Console\Command;
 
 class Temp extends Command
@@ -25,9 +26,9 @@ class Temp extends Command
      */
     public function handle()
     {
-        (new \Stats4sd\FilamentOdkLink\Services\OdkLinkService('https://odk-test.stats4sdtest.online/v1'))
-            ->createCsvLookupFile(
-                xlsform: \App\Models\Xlsforms\Xlsform::find(3),
-                requiredMedia: \Stats4sd\FilamentOdkLink\Models\OdkLink\RequiredMedia::find(9));
+       $xlsformTemplate = XlsformTemplate::first();
+
+       dd($xlsformTemplate->surveyRows->count());
+
     }
 }

@@ -7,10 +7,11 @@ use App\Models\XlsformModule;
 use App\Models\SampleFrame\Farm;
 use App\Models\Xlsforms\Xlsform;
 use Hoa\Compiler\Llk\Rule\Choice;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -129,10 +130,18 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
     }
 
+
+    // Customisations
+
+    public function dietDiversityModuleVersion(): BelongsTo
+    {
+        return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
+    }
+
     public function getXlsformHhModuleVersionAttribute()
     {
         $xlsform_HH = $this->xlsforms()->first(); // Get the first XLSForm belong to this team (hh)
-        
+
         if ($xlsform_HH) {
             $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first(); // Get the first module
             if ($xlsform_HH_custom_module) {
@@ -145,7 +154,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function getXlsformFwModuleVersionAttribute()
     {
         $xlsform_FW = $this->xlsforms()->skip(1)->first(); // Get the second XLSForm belong to this team (fw)
-        
+
         if ($xlsform_FW) {
             $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first(); // Get the first module
             if ($xlsform_FW_custom_module) {

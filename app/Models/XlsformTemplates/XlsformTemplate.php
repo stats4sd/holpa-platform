@@ -5,6 +5,7 @@ namespace App\Models\XlsformTemplates;
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Locale;
 use App\Models\XlsformModule;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,13 +14,22 @@ use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
 {
+    use HasRelationships;
 
     public function xlsformModules(): MorphMany
     {
         return $this->morphMany(XlsformModule::class, 'form');
+    }
+
+    public function xlsformModuleVersions(): HasManyThrough
+    {
+        return $this->hasManyThrough(XlsformModuleVersion::class, XlsformModule::class, 'form_id', 'xlsform_module_id')
+            ->where('xlsform_modules.form_type', static::class);
     }
 
     public function xlsformTemplateLanguages(): MorphMany
@@ -34,9 +44,13 @@ class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
     }
 
 
-    public function surveyRows(): MorphMany
+    public function surveyRows(): HasManyDeep
     {
-        return $this->morphMany(SurveyRow::class, 'template');
+        return $this->hasManyDeep(
+            SurveyRow::class,
+            [XlsformModule::class, XlsformModuleVersion::class],
+            [['form_type', 'form_id'], null, ['template_type', 'template_id']]
+        );
     }
 
     public function choiceLists(): MorphMany

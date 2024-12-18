@@ -45,7 +45,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
         $surveyRowsToDelete = $this->xlsformTemplate
             ->surveyRows()
-            ->select(['id', 'updated_during_import'])
+            ->select(['survey_rows.id', 'survey_rows.updated_during_import'])
             ->get()
             ->filter(fn(SurveyRow $surveyRow) => $surveyRow->updated_during_import === false);
 
@@ -56,7 +56,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
         $choicesToDelete = $this->xlsformTemplate
             ->choiceListEntries()
             ->where('owner_id', null) // do not delete entries owned by a team.
-            ->select(['choice_list_entries.id', 'updated_during_import'])
+            ->select(['choice_list_entries.id', 'choice_list_entries.updated_during_import'])
             ->get()
             ->filter(fn(ChoiceListEntry $choiceListEntry) => $choiceListEntry->updated_during_import === false);
 

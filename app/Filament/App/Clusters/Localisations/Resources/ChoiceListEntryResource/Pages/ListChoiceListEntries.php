@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource\Pages;
+namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages;
 
-use App\Filament\App\Clusters\LookupTables\Resources\ChoiceListEntryResource;
-use App\Models\LookupTables\AnimalProduct;
+use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Models\XlsformTemplates\ChoiceList;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Services\HelperService;
@@ -31,7 +30,16 @@ class ListChoiceListEntries extends ListRecords
     public function mount(): void
     {
         parent::mount();
-        $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+
+        if(!$this->choiceListName) {
+            $this->choiceList = ChoiceList::where('is_localisable', true)
+            ->where('has_custom_handling', false)
+            ->first();
+
+            $this->choiceListName = $this->choiceList->list_name;
+        } else {
+            $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+        }
     }
 
     public function table(Table $table): Table
