@@ -1,5 +1,5 @@
 <div>
-    <div class="text-lg font-bold text-green pb-8">
+    <div class="text-lg font-bold text-green pb-4">
         UPLOAD LOCAL INDICATORS
     </div>
 
@@ -8,18 +8,18 @@
             Use the box below to upload the completed indicator template containing the local indicators identified
             during the LISP workshop.
             <br>
-            If needed, you can download the template here.
+            If needed, you can <a href="/files/HOLPA_indicator_template.xlsx" class="text-green">download the template here</a>.
         </div>
 
         <div class="px-8 py-4"> 
-            <div class="max-w-lg mx-auto">
-                <div class="p-6 bg-white shadow rounded-lg">
+            <div class="w-4/6 mx-auto  ">
+                <div class="p-6 bg-white  ">
                     {{ $this->form }}
                 </div>
 
                 <div class="flex justify-center mt-6">
                     <button wire:click="uploadFile" 
-                            class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
+                            class="buttona">
                         Upload list
                     </button>
                 </div>
@@ -31,7 +31,7 @@
             delete the file below and upload the updated file.
         </div>
         <div class="px-10 py-4"> 
-            <div class="bg-white shadow rounded-lg">
+            <div class="bg-white  rounded-lg">
                 {{ $this->table }}
             </div>
         </div>

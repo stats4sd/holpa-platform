@@ -19,6 +19,7 @@ class FormSurveyRow extends Model implements HasLanguageStrings
     protected $casts = [
         'properties' => 'collection',
         'required' => 'boolean',
+        'updated_during_import' => 'boolean',
     ];
 
     public function xlsform(): BelongsTo

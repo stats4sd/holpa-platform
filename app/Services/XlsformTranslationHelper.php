@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Imports\XlsformTemplate\XlsformTemplateHeadingRowImport;
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Language;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
@@ -35,7 +36,7 @@ class XlsformTranslationHelper
         return $this->languages->firstWhere('iso_alpha2', $matches[3]);
     }
 
-    public function getDefaultLanguageTemplateFromColumnHeaderAndTemplate(XlsformTemplate $xlsformTemplate, string $columnHeader): XlsformTemplateLanguage
+    public function getDefaultLanguageTemplateFromColumnHeaderAndTemplate(WithXlsformFile $xlsformTemplate, string $columnHeader): XlsformTemplateLanguage
     {
         $language = $this->getLanguageFromColumnHeader($columnHeader);
 

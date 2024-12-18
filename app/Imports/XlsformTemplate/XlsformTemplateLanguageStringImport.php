@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\LanguageStringType;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceListEntry;
@@ -34,7 +35,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     public ?string $class;
     public ?string $relationship;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public string $heading, public string $sheet)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public string $heading, public string $sheet)
     {
 
         // init translation helper and get needed props from the provided heading;
@@ -95,14 +96,24 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         $items = $this->xlsformTemplate->$relationship
             ->filter(fn($item) => (string)$item->name === (string)$row['name']);
 
+        // filter survey row entries by type as well as name
+        if ($class === SurveyRow::class) {
+            $items = $items
+                ->filter(fn($item) => (string)$item->type === (string)$row['type']);
+        }
+
         // filter choice list entries by choice_list as well as name
-        if($class === ChoiceListEntry::class) {
+        if ($class === ChoiceListEntry::class) {
             $items = $items
                 ->filter(fn($item) => (string)$item->choiceList->list_name === (string)$row['list_name']);
         }
 
         $item = $items->first();
 
+        if ($row['name'] === 'income_sources') {
+            ray($row);
+            ray($item);
+        }
 
         if (!$item) {
             return null;
@@ -114,12 +125,6 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->first();
 
         if (!$translatableValue) {
-
-            if($this->heading === 'labelenglish_en') {
-                ray('oh');
-                ray($row);
-            }
-
             return null;
         }
 
@@ -156,6 +161,10 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->where('xlsform_template_language_id', $templateLanguageId)
             ->where('linked_entry_type', $type)
             ->where('updated_during_import', false)
+            // don't delete items linked to customised entries, as the xlsformtemplate should never touch customised team entries.
+            ->whereHasMorph('linkedEntry', ChoiceListEntry::class, function (Builder $query) {
+                $query->where('owner_id', null);
+            })
             ->get();
 
         $toDelete->each(fn(LanguageString $languageString) => $languageString->delete());

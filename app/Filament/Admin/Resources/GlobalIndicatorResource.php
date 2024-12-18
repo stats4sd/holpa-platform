@@ -18,6 +18,7 @@ class GlobalIndicatorResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-bar';
     protected static ?string $navigationGroup = 'HOLPA Indicators';
+    // protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {
@@ -45,7 +46,7 @@ class GlobalIndicatorResource extends Resource
                 Tables\Columns\TextColumn::make('theme.name')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('theme.domain')
+                Tables\Columns\TextColumn::make('theme.domain.name')
                     ->label('Domain')
                     ->sortable()
                     ->searchable(),

@@ -2,41 +2,67 @@
 
 namespace App\Models\XlsformTemplates;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Locale;
+use App\Models\XlsformModule;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class XlsformTemplate extends OdkLinkXlsformTemplate
+class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
 {
+    use HasRelationships;
 
-    public function xlsformTemplateLanguages(): HasMany
+    public function xlsformModules(): MorphMany
     {
-        return $this->hasMany(XlsformTemplateLanguage::class);
+        return $this->morphMany(XlsformModule::class, 'form');
+    }
+
+    public function xlsformModuleVersions(): HasManyThrough
+    {
+        return $this->hasManyThrough(XlsformModuleVersion::class, XlsformModule::class, 'form_id', 'xlsform_module_id')
+            ->where('xlsform_modules.form_type', static::class);
+    }
+
+    public function xlsformTemplateLanguages(): MorphMany
+    {
+        return $this->morphMany(XlsformTemplateLanguage::class, 'template');
     }
 
     public function languageStrings(): HasManyThrough
     {
-        return $this->hasManyThrough(LanguageString::class, XlsformTemplateLanguage::class);
+        return $this->hasManyThrough(LanguageString::class, XlsformTemplateLanguage::class, 'template_id', 'xlsform_template_language_id', 'id', 'id')
+            ->where('xlsform_template_languages.template_type', static::class);
     }
 
 
-    public function surveyRows(): HasMany
+    public function surveyRows(): HasManyDeep
     {
-        return $this->hasMany(SurveyRow::class);
+        return $this->hasManyDeep(
+            SurveyRow::class,
+            [XlsformModule::class, XlsformModuleVersion::class],
+            [['form_type', 'form_id'], null, ['template_type', 'template_id']]
+        );
     }
 
-    public function choiceLists(): HasMany
+    public function choiceLists(): MorphMany
     {
-        return $this->hasMany(ChoiceList::class);
+        return $this->morphMany(ChoiceList::class, 'template');
     }
 
     public function choiceListEntries(): HasManyThrough
     {
-        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class);
+        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class, 'template_id', 'choice_list_id', 'id', 'id')
+            // reference: https://stackoverflow.com/questions/43285779/laravel-polymorphic-relations-has-many-through
+            ->where('choice_lists.template_type', static::class);
     }
 
     // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded

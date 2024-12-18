@@ -3,13 +3,18 @@
 namespace App\Models\XlsformTemplates;
 
 use App\Models\HasLanguageStrings;
+use App\Models\Team;
 use App\Models\Traits\CanBeHiddenFromContext;
 use App\Models\Traits\IsLookupList;
+use App\Services\HelperService;
 use Dom\Attr;
+use Filament\Facades\Filament;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
 class ChoiceListEntry extends Model implements HasLanguageStrings
@@ -25,6 +30,22 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
         'updated_during_import' => 'boolean',
     ];
 
+    protected static function booted()
+    {
+        // top-level scoping to ensure teams only receive their entries
+        static::addGlobalScope('team', function (Builder $query) {
+
+            if (Filament::hasTenancy() && $team = HelperService::getSelectedTeam()) {
+                $query->whereHasMorph('owner', Team::class, function (Builder $query) use ($team) {
+                    $query->where('id', $team->id);
+                })
+                ->orWhereNull('owner_id');
+
+            }
+
+        });
+    }
+
     public function choiceList(): BelongsTo
     {
         return $this->belongsTo(ChoiceList::class);
@@ -38,6 +59,12 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
     public function languageStrings(): MorphMany
     {
         return $this->morphMany(LanguageString::class, 'linked_entry');
+    }
+
+    // Some choice lists are linked to specific data models to let us add custom information.
+    public function model(): MorphTo
+    {
+        return $this->morphTo();
     }
 
 }

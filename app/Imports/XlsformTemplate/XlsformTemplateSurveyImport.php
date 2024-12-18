@@ -2,9 +2,12 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplates\SurveyRow;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
@@ -17,7 +20,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 {
     use RemembersRowNumber;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
     {
     }
 
@@ -37,8 +40,20 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
             ->filter(fn($value, $key) => !in_array($key, $this->getSurveyRowHeaders()))
             ->filter(fn($value, $Key) => $value !== null);
 
+        $data['row_number'] = $this->getRowNumber(); // make sure ordering from file is preserved even when it's changed since the first upload
         $data['properties'] = $props;
-        $data['xlsform_template_id'] = $this->xlsformTemplate->id;
+
+        // if we are importing an entire template, the "template" id and type should be based on the $row['module'] import
+        // TODO: fix these confusing relation names!
+
+        if ($this->xlsformTemplate instanceof XlsformTemplate) {
+            $xlsformModuleVersion = $this->getXlsformModuleVersion($row['module'] ?? null);
+        } else {
+            $xlsformModuleVersion = $this->xlsformTemplate;
+        }
+
+        $data['template_id'] = $xlsformModuleVersion->id;
+        $data['template_type'] = get_class($xlsformModuleVersion);
         $data['updated_during_import'] = true; // to make sure we don't delete this row after import.
 
         // for end_group or end_repeats, the name might be empty.
@@ -72,19 +87,36 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 
     public function uniqueBy(): array
     {
-        return ['xlsform_template_id', 'name', 'type'];
+        return ['template_id', 'template_type', 'name', 'type'];
     }
 
     public function isEmptyWhen(array $row): bool
     {
         return (!isset($row['name']) || $row['name'] === '')
             && (!isset($row['type']) || $row['type'] === '');
-
     }
 
     public function chunkSize(): int
     {
         return 500;
+    }
+
+
+    public function getXlsformModuleVersion(string $name): XlsformModuleVersion
+    {
+
+        $xlsformModuleVersion = $this->xlsformTemplate->xlsformModuleVersions()
+            // get the default module version...
+            ->where('is_default', true)
+            // ... of the module that matches the $row['module'] name
+            ->whereHas('xlsformModule', fn(Builder $query) => $query->where('name', $name))
+            ->first();
+
+        if (!$xlsformModuleVersion) {
+            dd("module version not found for {$name}");
+        }
+
+        return $xlsformModuleVersion;
     }
 
 
