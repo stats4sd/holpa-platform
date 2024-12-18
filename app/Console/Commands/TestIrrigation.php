@@ -40,7 +40,7 @@ class TestIrrigation extends Command
 
 
         // get irrigation data from submission JSON content
-        $submission = Submission::find(112);
+        $submission = Submission::first();
 
         $irrigations = $submission->content['survey']['income']['water']['irrigation_season_repeat'];
 

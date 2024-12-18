@@ -32,7 +32,7 @@ class TestFishUses extends Command
         $this->info('start');
 
         // get irrigation data from submission JSON content
-        $submission = Submission::find(174);
+        $submission = Submission::first();
 
         ray('submission ' . $submission->id);
 

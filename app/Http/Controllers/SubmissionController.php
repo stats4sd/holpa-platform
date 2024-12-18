@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\SampleFrame\Farm;
+use App\Models\SurveyData\FishUse;
 use App\Http\Controllers\Controller;
 use App\Models\SampleFrame\Location;
+use Illuminate\Support\Facades\Schema;
+use App\Models\SurveyData\LivestockUse;
 use App\Models\SurveyData\FarmSurveyData;
+use App\Models\SurveyData\SeasonalWorkerSeason;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SubmissionController extends Controller
@@ -18,22 +22,29 @@ class SubmissionController extends Controller
 
         // application specific business logic goes here
 
+        // suppose there should be only one farm_survey_data for a submission id
+        $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
+
+
         // custom handling to fill in 12 months irrigation percentage in farm_survey_data record
-        SubmissionController::handleIrrigationData($submission);
+        SubmissionController::handleIrrigationData($submission, $farmSurveyData);
 
 
-        // TODO: create records from nested repeat groups for seasonal_worker_seasons
-        // /survey/income/labour/household_mm_labour/seasonal_workers/seasonal_workers_s
-        // /survey/income/labour/labourers/sesaonal_labourers/seasonal_labourers_s/
+        // nested repeat groups data handling can be generalised.
+        // I would expect to include this feature in core ODK handling package in the future
 
 
-        // TODO: create records from nested repeat groups for livestock_uses
-        // /survey/income/livestock_production/primary_livestock_details/primary_livestock_uses
+        // create records from nested repeat groups for seasonal_worker_seasons
+        SubmissionController::handleSeasonalWorkersData($submission, $farmSurveyData);
+        SubmissionController::handleSeasonalLaboursData($submission, $farmSurveyData);
 
 
-        // TODO: create records from nested repeat groups for fish_uses
-        // /survey/income/fish_production/fish_repeat/fish_production_repeat/
-        SubmissionController::handleFishUsesData($submission);
+        // create records from nested repeat groups for livestock_uses
+        SubmissionController::handleLivestockUsesData($submission, $farmSurveyData);
+
+
+        // create records from nested repeat groups for fish_uses
+        SubmissionController::handleFishUsesData($submission, $farmSurveyData);
 
 
 
@@ -43,19 +54,19 @@ class SubmissionController extends Controller
         // TODO: farms table, update column household_form_completed, fieldwork_form_completed
 
 
-        return;
-
-
         // custom handling to create new locations
-        SubmissionController::handleLocationData($submission);
+        // SubmissionController::handleLocationData($submission);
+
+
     }
 
 
+    // ******************** //
 
 
     // custom handling for irrigation data
     // to fill in irrigation percentage for 12 months in farm_survey_data record
-    public static function handleIrrigationData(Submission $submission): void
+    public static function handleIrrigationData(Submission $submission, FarmSurveyData $farmSurveyData): void
     {
         // initialise irrigation result, assume zero percentage irrigation for all months at the beginning
         $irrigationResult = [];
@@ -76,9 +87,6 @@ class SubmissionController extends Controller
             }
         }
 
-        // suppose there should be only one farm_survey_data for a submission id
-        $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
-
         // update irrigation data for 12 months
         for ($i = 1; $i <= 12; $i++) {
             $farmSurveyData['irrigation_percentage_month_' . $i] = $irrigationResult['irrigation_percentage_month_' . $i];
@@ -95,7 +103,7 @@ class SubmissionController extends Controller
 
         // do nothing if irrigation_percentage is null or "null"
         if ($irrigationPercentage == null || $irrigationPercentage == "null") {
-            ray('irrigation_percentage is null, do nothing');
+            // ray('irrigation_percentage is null, do nothing');
             return $irrigationResult;
         }
 
@@ -111,19 +119,235 @@ class SubmissionController extends Controller
     }
 
 
+    // ******************** //
 
 
-    // custom handling for fish_uses data
-    public static function handleFishUsesData(Submission $submission): void
+    // custom handling for seasonal_worker_seasons data
+    // create records from nested repeat groups for seasonal_worker_seasons
+    // /survey/income/labour/household_mm_labour/seasonal_workers/seasonal_workers_s
+    public static function handleSeasonalWorkersData(Submission $submission, FarmSurveyData $farmSurveyData): void
     {
-        ray('SubmissionController.handleFishUsesData() starts...');
+        // ray('SubmissionController.handleSeasonalWorkersData() starts...');
 
-        // TODO: create records from nested repeat groups for fish_uses
-        // /survey/income/fish_production/fish_repeat/fish_production_repeat/
+        // existence check for nested repeat group data in submission content
+        if (isset($submission->content['survey']['income']['labour']['household_mm_labour']['seasonal_workers'])) {
+            // ray('seasonal_workers data found');
 
+            $class = \App\Models\SurveyData\SeasonalWorkerSeason::class;
+            $model = new $class;
+            $columnNames = Schema::getColumnListing($model->getTable());
+            // ray($columnNames);
+
+            $seasonalWorkers = $submission->content['survey']['income']['labour']['household_mm_labour']['seasonal_workers'];
+
+            foreach ($seasonalWorkers as $seasonalWorker) {
+
+                if (isset($seasonalWorker['seasonal_workers_s'])) {
+                    // ray('seasonal_workers_s data found');
+
+                    // get data from submission JSON content
+                    $seasonalWorkersItems = $seasonalWorker['seasonal_workers_s'];
+
+                    // handle nested repeat groups one by one
+                    foreach ($seasonalWorkersItems as $seasonalWorkersItem) {
+                        // ray($seasonalWorkersItem);
+
+                        $result = SubmissionController::prepareNewRecordData($seasonalWorkersItem, $columnNames);
+
+                        // assumes data under "/survey/income/labour/household_mm_labour" are household members
+                        $result['household_members'] = 1;
+
+                        $result['submission_id'] = $submission->id;
+                        $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+                        // ray($result);
+
+                        $seasonalWorkerSeason = SeasonalWorkerSeason::create($result);
+                    }
+                } else {
+                    // ray('seasonal_workers_s data not found');
+                }
+            }
+        } else {
+            // ray('seasonal_workers data not found');
+        }
     }
 
 
+    public static function prepareNewRecordData($items, $columnNames): array
+    {
+        $result = [];
+
+        foreach ($items as $key => $value) {
+            if (in_array($key, $columnNames)) {
+                $result[$key] = $value;
+            }
+        }
+
+        return $result;
+    }
+
+
+    // ******************** //
+
+
+    // custom handling for seasonal_worker_seasons data
+    // create records from nested repeat groups for seasonal_worker_seasons
+    // /survey/income/labour/labourers/sesaonal_labourers/seasonal_labourers_s/
+    public static function handleSeasonalLaboursData(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        // ray('SubmissionController.handleSeasonalLaboursData() starts...');
+
+        // existence check for nested repeat group data in submission content
+        if (isset($submission->content['survey']['income']['labour']['labourers']['sesaonal_labourers'])) {
+            // ray('sesaonal_labourers data found');
+
+            $class = \App\Models\SurveyData\SeasonalWorkerSeason::class;
+            $model = new $class;
+            $columnNames = Schema::getColumnListing($model->getTable());
+            // ray($columnNames);
+
+            $seasonalLabours = $submission->content['survey']['income']['labour']['labourers']['sesaonal_labourers'];
+
+            foreach ($seasonalLabours as $seasonalLabour) {
+
+                if (isset($seasonalLabour['seasonal_labourers_s'])) {
+                    // ray('seasonal_labourers_s data found');
+
+                    // get data from submission JSON content
+                    $seasonalLaboursItems = $seasonalLabour['seasonal_labourers_s'];
+
+                    // handle nested repeat groups one by one
+                    foreach ($seasonalLaboursItems as $seasonalLaboursItem) {
+                        // ray($seasonalLaboursItem);
+
+                        $result = SubmissionController::prepareNewRecordData($seasonalLaboursItem, $columnNames);
+
+                        // assumes data under "/survey/income/labour/labourers" are not household members
+                        $result['household_members'] = 0;
+
+                        $result['submission_id'] = $submission->id;
+                        $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+                        // ray($result);
+
+                        $seasonalWorkerSeason = SeasonalWorkerSeason::create($result);
+                    }
+                } else {
+                    // ray('seasonal_labourers_s data not found');
+                }
+            }
+        } else {
+            // ray('sesaonal_labourers data not found');
+        }
+    }
+
+
+    // ******************** //
+
+
+    // custom handling for livestock_uses data
+    // create records from nested repeat groups for livestock_uses
+    // /survey/income/livestock_production/primary_livestock_details/primary_livestock_uses
+    public static function handleLivestockUsesData(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        // ray('SubmissionController.handleLivestockUsesData() starts...');
+
+        // existence check for nested repeat group data in submission content
+        if (isset($submission->content['survey']['income']['livestock_production']['primary_livestock_details'])) {
+            // ray('primary_livestock_details data found');
+
+            $class = \App\Models\SurveyData\LivestockUse::class;
+            $model = new $class;
+            $columnNames = Schema::getColumnListing($model->getTable());
+            // ray($columnNames);
+
+            $livestockProductions = $submission->content['survey']['income']['livestock_production']['primary_livestock_details'];
+
+            foreach ($livestockProductions as $livestockProduction) {
+
+                if (isset($livestockProduction['primary_livestock_uses'])) {
+                    // ray('primary_livestock_uses data found');
+
+                    // get data from submission JSON content
+                    $primaryLivestockUses = $livestockProduction['primary_livestock_uses'];
+
+                    // handle nested repeat groups one by one
+                    foreach ($primaryLivestockUses as $primaryLivestockUse) {
+                        // ray($primaryLivestockUse);
+
+                        $result = SubmissionController::prepareNewRecordData($primaryLivestockUse, $columnNames);
+
+                        $result['submission_id'] = $submission->id;
+                        $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+                        // ray($result);
+
+                        $livestockhUse = LivestockUse::create($result);
+                    }
+                } else {
+                    // ray('primary_livestock_uses data not found');
+                }
+            }
+        } else {
+            // ray('primary_livestock_details data not found');
+        }
+    }
+
+
+    // ******************** //
+
+
+    // custom handling for fish_uses data
+    // create records from nested repeat groups for fish_uses
+    // /survey/income/fish_production/fish_repeat/fish_production_repeat/
+    public static function handleFishUsesData(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        // ray('SubmissionController.handleFishUsesData() starts...');
+
+        // existence check for nested repeat group data in submission content
+        if (isset($submission->content['survey']['income']['fish_production']['fish_repeat'])) {
+            // ray('fish_repeat data found');
+
+            $class = \App\Models\SurveyData\FishUse::class;
+            $model = new $class;
+            $columnNames = Schema::getColumnListing($model->getTable());
+            // ray($columnNames);
+
+            $fishRepeats = $submission->content['survey']['income']['fish_production']['fish_repeat'];
+
+            foreach ($fishRepeats as $fishRepeat) {
+
+                if (isset($fishRepeat['fish_production_repeat'])) {
+                    // ray('fish_production_repeat data found');
+
+                    // get data from submission JSON content
+                    $fishProductionRepeats = $fishRepeat['fish_production_repeat'];
+
+                    // handle nested repeat groups one by one
+                    foreach ($fishProductionRepeats as $fishProductionRepeat) {
+                        // ray($fishProductionRepeat);
+
+                        $result = SubmissionController::prepareNewRecordData($fishProductionRepeat, $columnNames);
+
+                        $result['submission_id'] = $submission->id;
+                        $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+                        // ray($result);
+
+                        $fishUse = FishUse::create($result);
+                    }
+                } else {
+                    // ray('fish_production_repeat data not found');
+                }
+            }
+        } else {
+            // ray('fish_repeat data not found');
+        }
+    }
+
+
+    // ******************** //
 
 
     // custom handling for location
