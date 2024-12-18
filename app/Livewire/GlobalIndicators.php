@@ -66,7 +66,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
             ->actions([
                 Action::make('select_match')
                     ->button()
-                    ->color('primary')
+                    ->color('blue')
                     ->disabled(function ($record) {
                         return $this->selectedIndicator && $this->selectedIndicator->globalIndicator
                             && $this->selectedIndicator->globalIndicator->id !== $record->id;
@@ -95,7 +95,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                         Notification::make()
                             ->title('Success')
-                            ->body($this->selectedIndicator->name . ' has been mathced with ' . $this->selectedIndicator->globalIndicator->name .  '!')
+                            ->body($this->selectedIndicator->name . ' has been matched with ' . $this->selectedIndicator->globalIndicator->name .  '!')
                             ->success()
                             ->send();
                         }
@@ -103,7 +103,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                 Action::make('remove_match')
                     ->button()
-                    ->color('danger')
+                    ->color('orange')
                     ->hidden(function ($record) {
                         return !$this->selectedIndicator || !$this->selectedIndicator->globalIndicator
                             || $this->selectedIndicator->globalIndicator->id !== $record->id;
@@ -125,7 +125,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                     Action::make('already_matched')
                         ->label('Already Matched')
-                        ->color('secondary')
+                        ->color('gray')
                         ->hidden(function ($record) {
                             if (!$this->selectedIndicator) {
                                 return true;
