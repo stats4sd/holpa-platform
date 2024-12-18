@@ -392,8 +392,10 @@ return new class() extends Migration {
             $table->text('chem_fert_unit')->nullable();
 
             $table->decimal('chem_fert_unit_kg_conversion', 20, 2)->nullable();
-            $table->decimal('chem_fert_unit_label', 20, 2)->nullable();
-            $table->decimal('chem_fert_unit_label_english', 20, 2)->nullable();
+            // $table->decimal('chem_fert_unit_label', 20, 2)->nullable();
+            // $table->decimal('chem_fert_unit_label_english', 20, 2)->nullable();
+            $table->text('chem_fert_unit_label')->nullable();
+            $table->text('chem_fert_unit_label_english')->nullable();
             $table->decimal('chem_fert_applied', 20, 2)->nullable();
             $table->decimal('chem_fert_applied_kg', 20, 2)->nullable();
             $table->decimal('chem_fert_area', 20, 2)->nullable();
@@ -405,8 +407,10 @@ return new class() extends Migration {
             $table->text('own_organic_fert_unit')->nullable();
 
             $table->decimal('own_organic_fert_unit_kg_conversion', 20, 2)->nullable();
-            $table->decimal('own_organic_fert_unit_label', 20, 2)->nullable();
-            $table->decimal('own_organic_fert_unit_label_english', 20, 2)->nullable();
+            // $table->decimal('own_organic_fert_unit_label', 20, 2)->nullable();
+            // $table->decimal('own_organic_fert_unit_label_english', 20, 2)->nullable();
+            $table->text('own_organic_fert_unit_label')->nullable();
+            $table->text('own_organic_fert_unit_label_english')->nullable();
             $table->decimal('own_organic_fert_applied', 20, 2)->nullable();
             $table->decimal('own_organic_fert_applied_kg', 20, 2)->nullable();
             $table->decimal('own_organic_fert_area', 20, 2)->nullable();
@@ -416,8 +420,10 @@ return new class() extends Migration {
             $table->text('bought_organic_fert_unit')->nullable();
 
             $table->decimal('bought_organic_fert_unit_kg_conversion', 20, 2)->nullable();
-            $table->decimal('bought_organic_fert_unit_label', 20, 2)->nullable();
-            $table->decimal('bought_organic_fert_unit_label_english', 20, 2)->nullable();
+            // $table->decimal('bought_organic_fert_unit_label', 20, 2)->nullable();
+            // $table->decimal('bought_organic_fert_unit_label_english', 20, 2)->nullable();
+            $table->text('bought_organic_fert_unit_label')->nullable();
+            $table->text('bought_organic_fert_unit_label_english')->nullable();
             $table->decimal('bought_organic_fert_applied', 20, 2)->nullable();
             $table->decimal('bought_organic_fert_applied_kg', 20, 2)->nullable();
             $table->decimal('bought_organic_fert_area', 24, 6)->nullable();
@@ -433,8 +439,10 @@ return new class() extends Migration {
             $table->text('chemical_unit')->nullable();
 
             $table->decimal('chemical_unit_kg_conversion', 20, 2)->nullable();
-            $table->decimal('chemical_unit_label', 20, 2)->nullable();
-            $table->decimal('chemical_unit_label_english', 20, 2)->nullable();
+            // $table->decimal('chemical_unit_label', 20, 2)->nullable();
+            // $table->decimal('chemical_unit_label_english', 20, 2)->nullable();
+            $table->text('chemical_unit_label')->nullable();
+            $table->text('chemical_unit_label_english')->nullable();
             $table->decimal('chemical_applied', 20, 2)->nullable();
             $table->decimal('chemical_applied_kg', 20, 2)->nullable();
             $table->decimal('chemical_area', 20, 2)->nullable();
@@ -446,8 +454,10 @@ return new class() extends Migration {
             $table->text('non_chemical_unit')->nullable();
 
             $table->decimal('non_chemical_unit_kg_conversion', 20, 2)->nullable();
-            $table->decimal('non_chemical_unit_label', 20, 2)->nullable();
-            $table->decimal('non_chemical_unit_label_english', 20, 2)->nullable();
+            // $table->decimal('non_chemical_unit_label', 20, 2)->nullable();
+            // $table->decimal('non_chemical_unit_label_english', 20, 2)->nullable();
+            $table->text('non_chemical_unit_label')->nullable();
+            $table->text('non_chemical_unit_label_english')->nullable();
             $table->decimal('non_chemical_applied', 20, 2)->nullable();
             $table->decimal('non_chemical_applied_kg', 20, 2)->nullable();
             $table->decimal('non_chemical_area', 24, 6)->nullable();
@@ -464,9 +474,11 @@ return new class() extends Migration {
 
             $table->decimal('livestock_land_own', 24, 6)->nullable();
             $table->decimal('livestock_land_own_ha', 24, 6)->nullable();
-            $table->decimal('livestock_land_own_ha_note', 24, 6)->nullable();
+            // $table->decimal('livestock_land_own_ha_note', 24, 6)->nullable();
+            $table->text('livestock_land_own_ha_note')->nullable();
             $table->decimal('livestock_land_share', 24, 6)->nullable();
             $table->decimal('livestock_land_share_ha', 24, 6)->nullable();
+            // $table->text('livestock_land_share_ha_note')->nullable();
             $table->text('livestock_land_share_ha_note')->nullable();
 
             $table->text('livestock_species')->nullable();
@@ -569,6 +581,9 @@ return new class() extends Migration {
 
             $table->text('gender_fieldwork')->nullable();
             $table->text('data_types')->nullable();
+
+            $table->integer('livestock_count')->nullable();
+            $table->integer('fish_count')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 
