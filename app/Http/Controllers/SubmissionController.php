@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\SurveyData\Crop;
 use App\Models\SampleFrame\Farm;
 use App\Models\SurveyData\FishUse;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\SampleFrame\Location;
 use Illuminate\Support\Facades\Schema;
@@ -46,6 +48,10 @@ class SubmissionController extends Controller
         // create records from nested repeat groups for fish_uses
         SubmissionController::handleFishUsesData($submission, $farmSurveyData);
 
+
+
+        // update farm_survey_data_id in repeat groups tables
+        SubmissionController::updateFarmSurveyDataId($submission, $farmSurveyData);
 
 
         // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
@@ -344,6 +350,23 @@ class SubmissionController extends Controller
         } else {
             // ray('fish_repeat data not found');
         }
+    }
+
+
+    // ******************** //
+
+    // update farm_survey_data_id in repeat groups tables
+    public static function updateFarmSurveyDataId(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        DB::table('crops')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('ecological_practices')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('fishes')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('fish_uses')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('livestocks')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('livestock_uses')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('products')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('permanent_workers')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('seasonal_worker_seasons')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
     }
 
 
