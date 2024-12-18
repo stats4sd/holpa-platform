@@ -50,11 +50,16 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
         return $table
         ->query(Media::query()
-            ->where('model_id', $moduleVersionIds)
+            ->whereIn('model_id', $moduleVersionIds)
             ->where('model_type', XlsformModuleVersion::class)
             ->whereIn('collection_name', ['custom_indicators_hh', 'custom_indicators_fw'])
         )
         ->columns([
+            TextColumn::make('collection_name')
+                ->label('Survey')
+                ->formatStateUsing(function (string $state) {
+                    return $state === 'custom_indicators_hh' ? 'Household' : ($state === 'custom_indicators_fw' ? 'Fieldwork' : $state);
+                }),
             TextColumn::make('file_name')
                 ->label('Uploaded file')
                 ->sortable(),
@@ -63,21 +68,43 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
                 ->dateTime('Y/m/d'),
         ])
         ->actions([
-            Action::make('delete')
-                ->label('Delete')
-                ->color('danger')
+            Action::make('replace')
+                ->label('Replace File')
+                ->modalHeading('Replace custom indicators file')
+                ->color('warning')
                 ->button()
-                ->requiresConfirmation()
-                ->action(function (Media $record) {
-                    // Delete the media file
-                    $record->delete();
+                ->form(function (Media $record) {
+                    $collection = $record->collection_name;
 
-                    // TODO: Delete imported custom indicator data & update the uploaded file details
-
+                    if ($collection === 'custom_indicators_hh') {
+                        return [
+                            FileUpload::make('custom_indicators_hh')
+                                ->label('Household Indicators')
+                                ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
+                                ->maxSize(10240)
+                                ->maxFiles(1)
+                                ->preserveFilenames(),
+                        ];
+                    } elseif ($collection === 'custom_indicators_fw') {
+                        return [
+                            FileUpload::make('custom_indicators_fw')
+                                ->label('Fieldwork Indicators')
+                                ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'])
+                                ->maxSize(10240)
+                                ->maxFiles(1)
+                                ->preserveFilenames(),
+                        ];
+                    }
+                })
+                ->action(function (array $data, Media $record) {
+                    // Replace file
+                    $record->update([
+                        'file_name' => $data['custom_indicators_hh'] ?? $data['custom_indicators_fw'],
+                    ]);
                     // Display success message
                     Notification::make()
                     ->title('Success')
-                    ->body('File deleted successfully!')
+                    ->body('File replaed successfully!')
                     ->success()
                     ->send();
                 }),
@@ -94,14 +121,18 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
                     ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                     ->maxSize(10240)
                     ->maxFiles(1)
-                    ->preserveFilenames(),
+                    ->preserveFilenames()
+                    ->reactive()
+                    ->visible(fn() => !$this->uploadedFileHH),
                 FileUpload::make('custom_indicators_fw')
                     ->label('Fieldwork Indicators')
                     ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                     ->maxSize(10240)
                     ->maxFiles(1)
                     ->preserveFilenames()
-            ])->columns(2);
+                    ->reactive()
+                    ->visible(fn() => !$this->uploadedFileFW)
+            ])->columns(1);
     }
 
     public function uploadFiles()
@@ -109,7 +140,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         // Ensure at least one file is uploaded
         if ((empty($this->custom_indicators_hh) || !is_array($this->custom_indicators_hh)) &&
             (empty($this->custom_indicators_fw) || !is_array($this->custom_indicators_fw))) {
-            $this->addError('custom_indicators', 'Please upload a file before proceeding.');
+            $this->addError('missing_file', 'No file has been added.');
             return;
         }
     
