@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\App\Resources\FarmResource\Pages;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Resources\FarmResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
 
 class EditFarm extends EditRecord
 {

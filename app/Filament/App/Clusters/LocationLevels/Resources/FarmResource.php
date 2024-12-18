@@ -1,22 +1,24 @@
 <?php
 
-namespace App\Filament\App\Resources;
+namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use App\Filament\App\Resources\FarmResource\Pages;
-use App\Models\SampleFrame\Farm;
-use App\Models\SampleFrame\LocationLevel;
-use App\Services\HelperService;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Services\HelperService;
+use App\Models\SampleFrame\Farm;
+use Filament\Resources\Resource;
+use Filament\Navigation\NavigationItem;
+use App\Models\SampleFrame\LocationLevel;
+use App\Filament\App\Clusters\LocationLevels;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
 class FarmResource extends Resource
 {
     protected static ?string $model = Farm::class;
 
     protected static bool $shouldRegisterNavigation = false;
-
+    protected static ?string $cluster = LocationLevels::class;
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
     public static function form(Form $form): Form

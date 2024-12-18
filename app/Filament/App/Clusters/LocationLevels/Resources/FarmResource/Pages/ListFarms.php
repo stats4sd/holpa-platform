@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Filament\App\Resources\FarmResource\Pages;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Resources\FarmResource;
-use App\Filament\Tables\Actions\ImportFarmsAction;
-use App\Imports\FarmImport;
 use Filament\Actions;
+use App\Imports\FarmImport;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Tables\Actions\ImportFarmsAction;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
 
 class ListFarms extends ListRecords
 {
