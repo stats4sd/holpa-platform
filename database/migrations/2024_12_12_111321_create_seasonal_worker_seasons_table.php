@@ -20,6 +20,7 @@ return new class extends Migration
             $table->boolean('household_members')->nullable();
             $table->text('seasonal_labour_group_name')->nullable();
             $table->text('seasonal_labour_months')->nullable();
+            $table->integer('seasonal_labour_months_count')->nullable();
             $table->integer('seasonal_labour_n_working')->nullable();
             $table->integer('seasonal_labour_hours')->nullable();
             $table->text('seasonal_labour_activities')->nullable();

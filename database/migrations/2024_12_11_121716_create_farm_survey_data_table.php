@@ -43,6 +43,19 @@ return new class() extends Migration {
             $table->decimal('accuracy', 9, 4)->nullable();
             $table->text('gps_location_alt')->nullable();
 
+            $table->decimal('irrigation_percentage_month_1', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_2', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_3', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_4', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_5', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_6', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_7', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_8', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_9', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_10', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_11', 5, 2)->nullable();
+            $table->decimal('irrigation_percentage_month_12', 5, 2)->nullable();
+
             $table->text('consent_interview')->nullable();
             $table->text('consent_recording')->nullable();
             $table->text('consent_photos')->nullable();
@@ -584,6 +597,7 @@ return new class() extends Migration {
 
             $table->integer('livestock_count')->nullable();
             $table->integer('fish_count')->nullable();
+            $table->integer('ecological_practices_count')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 
