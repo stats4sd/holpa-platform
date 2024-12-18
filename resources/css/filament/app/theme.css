@@ -29,3 +29,10 @@
 .rounded-3xl {
     border-radius: 1.5rem;
 }
+
+button:disabled {
+    background-color: #d3d3d3;
+    color: black;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+}
