@@ -65,7 +65,7 @@ button {
 
 .greensection {
     @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-44 2xl:w-52  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
-}    
+}
 .whitesection {
     @apply bg-white px-4 lg:px-0 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
 }
@@ -74,7 +74,7 @@ button {
 }
 .whiteborderbox {
     @apply border-b lg:border-b-0 lg:border-r border-gray-300 w-full;
-}    
+}
 .whitecard {
 @apply relative min-w-40  lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
 h3 {
@@ -141,14 +141,14 @@ h3 {
 }
 .actionblockborder
 {
-    margin-left: 11rem; 
-    margin-right: 5rem; 
-    border-color: #bbbbbb; 
-    margin-top: 2rem; 
+    margin-left: 11rem;
+    margin-right: 5rem;
+    border-color: #bbbbbb;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 .actionblock:last-child .actionblockborder
-{ 
+{
     border-color: white !important;
 
 }
@@ -195,6 +195,13 @@ h3 {
         box-shadow: none !important;
     }
 
+button:disabled {
+    background-color: #d3d3d3;
+    color: black;
+    cursor: not-allowed;
+    border: 1px solid #ccc;
+}
+
 
     thead {
         display: none;
@@ -215,7 +222,7 @@ h3 {
     }
     .fi-ta-group-header>.fi-ta-cell{
         @apply bg-green border-none;
-        
+
     }} */
 }
 /* .fi-ta,div,th,td,table,tbody, tr fi-ta-group-header {
@@ -231,7 +238,7 @@ h3 {
         padding: 0px;
     }
 } */
-.warningbox { 
+.warningbox {
     @apply bg-orange w-3/4 mx-auto rounded-3xl p-6 text-white;
     a {
         text-transform: uppercase;

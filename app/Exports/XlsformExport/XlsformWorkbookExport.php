@@ -15,6 +15,7 @@ class XlsformWorkbookExport implements WithMultipleSheets
 
     public Collection $xlsformTemplateLanguages;
     public Collection $languageStringTypes;
+    public Collection $languages;
 
     public function __construct(public Xlsform $xlsform)
     {
@@ -25,15 +26,15 @@ class XlsformWorkbookExport implements WithMultipleSheets
         $team = $xlsform->owner;
 
         /** @var Collection<Locale> $locales */
-        $locales = $team->locales;
+        $this->languages = $team->locales->map(fn(Locale $locale) => $locale->language);
 
-        $xlsformTemplate = $xlsform->xlsformTemplate;
+        //$xlsformTemplate = $xlsform->xlsformTemplate;
 
-        $this->xlsformTemplateLanguages = $locales->map(fn(Locale $locale) => $locale
-            ->xlsformTemplateLanguages
-            ->filter(fn($xlsformTemplateLanguage) => $xlsformTemplate->xlsformTemplateLanguages->contains('id', $xlsformTemplateLanguage->id))
-        )
-        ->flatten();
+//        $this->xlsformTemplateLanguages = $locales->map(fn(Locale $locale) => $locale
+//            ->xlsformTemplateLanguages
+//            //->filter(fn($xlsformTemplateLanguage) => $xlsformTemplate->xlsformTemplateLanguages->contains('id', $xlsformTemplateLanguage->id))
+//        )
+//        ->flatten();
 
         // get the language string types once to avoid multiple queries
         $this->languageStringTypes = LanguageStringType::all();
@@ -43,8 +44,8 @@ class XlsformWorkbookExport implements WithMultipleSheets
     public function sheets(): array
     {
         return [
-            new XlsformSurveyExport($this->xlsform, $this->xlsformTemplateLanguages, $this->languageStringTypes),
-            new XlsformChoicesExport($this->xlsform, $this->xlsformTemplateLanguages, $this->languageStringTypes),
+            new XlsformSurveyExport($this->xlsform, $this->languages, $this->languageStringTypes),
+            new XlsformChoicesExport($this->xlsform, $this->languages, $this->languageStringTypes),
             new XlsformSettingsExport($this->xlsform),
         ];
 

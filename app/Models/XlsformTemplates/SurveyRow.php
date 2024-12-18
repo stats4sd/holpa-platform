@@ -56,17 +56,16 @@ class SurveyRow extends Model implements HasLanguageStrings
     }
 
 
-    public function required(): Attribute
-    {
-        return new Attribute(
-            get: fn($value) => $value,
-            set: function ($value) {
-                return match (strtolower($value)) {
-                    'true', 'yes' => true,
-                    'false', 'no' => false,
-                    default => false,
-                };
-            }
-        );
-    }
+//    public function required(): Attribute
+//    {
+//        return new Attribute(
+//            get: fn($value) => $value===1 ? 'TRUE' : '',
+//            set: function ($value) {
+//                return match (strtolower($value)) {
+//                    'true', 'yes' => 1,
+//                    default => 0,
+//                };
+//            }
+//        );
+//    }
 }
