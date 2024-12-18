@@ -49,8 +49,6 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     public function deployDraft(OdkLinkService $service, bool $withMedia = true): bool
     {
 
-        ray('generating custom xlsform file...');
-
         // Generate the Xlsfile.
         $filePath = 'temp/' . $this->id . '/' . $this->title . '.xlsx';
         Excel::store(new XlsformWorkbookExport($this), $filePath, 'local');

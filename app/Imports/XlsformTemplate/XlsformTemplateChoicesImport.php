@@ -42,6 +42,9 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
             ->filter(fn($value, $key) => $key !== 'list_name')
             ->filter(fn($value, $key) => $value !== null);
 
+        // TODO: generalise after HOLPA ('filter' may not always be called 'filter')
+        $data['cascade_filter'] = isset($row['filter']) ? $row['filter'] : null;
+
         $data['updated_during_import'] = true;
 
         return new ChoiceListEntry($data);

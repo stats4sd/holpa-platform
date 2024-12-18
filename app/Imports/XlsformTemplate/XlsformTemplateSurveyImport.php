@@ -62,6 +62,15 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
             $data['name'] = $data['type'] . '_' . $this->getRowNumber();
         }
 
+        // check 'required' is a bool
+        if (isset($data['required'])) {
+            $data['required'] = match (strtolower($data['required'])) {
+                'true', 'yes', '1' => 1,
+                default => 0,
+            };
+
+        }
+
         return new SurveyRow($data->toArray());
 
     }

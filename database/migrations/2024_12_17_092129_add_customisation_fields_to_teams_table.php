@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::table('teams', function (Blueprint $table) {
             $table->foreignId('diet_diversity_module_version_id')->nullable()->after('description')->constrained('xlsform_module_versions');
-            $table->text('time_frame')->nullable()->after('description')
-            ->default('In the last 12 months');
+            $table->text('time_frame')->nullable()->after('description');
         });
     }
 

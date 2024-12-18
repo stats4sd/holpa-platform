@@ -52,7 +52,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
             // all teams get a custom module for each ODK form
             $forms = Xlsform::where('owner_id', $owner->id)->get();
-
             foreach ($forms as $form) {
                 $xlsformModule = XlsformModule::create([
                     'form_type' => 'App\Models\Xlsforms\Xlsform',
@@ -60,12 +59,16 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                     'label' => $owner->name . 'custom module',
                     'name' => $owner->name . 'custom module',
                 ]);
-
+              
                 XlsformModuleVersion::create([
                     'xlsform_module_id' => $xlsformModule->id,
                     'name' => 'custom'
                 ]);
             }
+          
+            // manually set the default time_frame
+            $owner->time_frame = 'in the last 12 months';
+            $owner->save();
 
         });
     }
