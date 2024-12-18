@@ -51,10 +51,10 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             $owner->locales()->attach($en);
 
 
-            // create xlsform models for all active xlsform template for this new team
+            // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
 
-            // no need to check if team has any xlsform already, suppose a newly created team should have no xlsform
+            // suppose a newly created team does not have any xlsform, it is not necessary to do checking
             foreach ($xlsformTemplates as $xlsformTemplate) {
                 $xlsform = Xlsform::create([
                     'owner_id' => $owner->id,
