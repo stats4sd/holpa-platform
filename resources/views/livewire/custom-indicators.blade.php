@@ -38,24 +38,27 @@
 
    <div class="flex justify-center gap-4 py-8">
         <button wire:click="resetIndicators"
-                class="buttonb">
+            @if ($this->team->localIndicators()->where('is_custom', 1)->doesntExist()) disabled @endif
+            class="buttonb">
             Reset
         </button>
+
+        @php
+            $hasUnassignedCustomIndicators = $this->hasUnassignedCustomIndicators();
+        @endphp
+
         <button wire:click="downloadHouseholdTemplate"
-                class="buttona">
+            @if (!$this->hasCustomIndicatorsWithSurvey('household') || $hasUnassignedCustomIndicators) disabled @endif
+            class="buttona">
             Download Household template
         </button>
 
        <button wire:click="downloadFieldworkTemplate"
-                class="buttona">
+            @if (!$this->hasCustomIndicatorsWithSurvey('fieldwork') || $hasUnassignedCustomIndicators) disabled @endif
+            class="buttona">
             Download Fieldwork Template
         </button>
     </div>
-
-    <!-- Error message -->
-    @error('validation')
-        <div class="text-green text-center mt-2">{{ $message }}</div>
-    @enderror
 
     <div class="pt-8">
         <livewire:upload-custom-indicators />

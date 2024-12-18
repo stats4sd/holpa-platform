@@ -35,10 +35,15 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
     {
         $row = collect($row);
 
-        $localisable = match ($row['localisable']) {
-            'true', 'yes', 'TRUE', 'YES', 'Yes', 'True', '1', 1, true => true,
-            default => false,
-        };
+        if (isset($row['localisable'])) {
+            $localisable = match ($row['localisable']) {
+                'true', 'yes', 'TRUE', 'YES', 'Yes', 'True', '1', 1, true => true,
+                default => false,
+            };
+        }
+        else {
+            $localisable = false;
+        }
 
         return new ChoiceList([
             'template_id' => $this->xlsformTemplate->id,
