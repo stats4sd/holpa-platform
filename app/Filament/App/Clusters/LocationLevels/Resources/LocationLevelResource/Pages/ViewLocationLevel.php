@@ -20,13 +20,20 @@ class ViewLocationLevel extends ViewRecord
 
     protected function getHeaderActions(): array
     {
-
-
         return [
             ImportLocationsAction::make()
                 ->use(LocationImport::class)
             ->color('primary')
             ->label('Import ' . Str::of($this->record->name)->plural()),
         ];
+    }
+
+    public function getSubNavigation(): array
+    {
+        if (filled($cluster = static::getCluster())) {
+            return $this->generateNavigationItems($cluster::getClusteredComponents());
+        }
+ 
+        return [];
     }
 }
