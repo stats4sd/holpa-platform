@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('form_choice_list_entries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('choice_list_id')->constrained()->onDelete('cascade');
+            $table->nullableMorphs('owner');
+            $table->string('name');
+            $table->json('properties');
+            $table->boolean('updated_during_import')->default(0);
             $table->timestamps();
         });
     }
