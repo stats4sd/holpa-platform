@@ -36,7 +36,10 @@ $submissionsByEnumerators = $submissions;
 
     <x-filament::section>
         <x-slot name="heading">
-            <b>Submissions By Location (TODO)</b>
+            <!-- TODO -->
+            <!-- refer to below comment in PR 64 -->
+            <!-- https://github.com/stats4sd/holpa-platform/pull/64#pullrequestreview-2513729072 -->
+            <b>Submissions By Location</b>
         </x-slot>
 
         @foreach($submissionsByLocations as $key => $locationFromSubmission)
