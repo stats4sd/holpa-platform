@@ -19,6 +19,8 @@ class LispIndicators extends Page
 
     public $activeTab = null;
 
+    protected $listeners = ['switch-to-match-tab' => 'setActiveTab'];
+
     public function setActiveTab($tab)
     {
         $this->activeTab = $tab;
@@ -32,6 +34,7 @@ class LispIndicators extends Page
             static::getUrl() => 'Customise indicators',
         ];
     }
+    
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;

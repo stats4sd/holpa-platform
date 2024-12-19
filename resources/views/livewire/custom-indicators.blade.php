@@ -23,10 +23,12 @@
             </div>
         </div>
         <div class="text-right mt-6 mb-2 pr-4">
-            <a href="url_to_be_added_here"
-                class="bg-white text-orange px-4 py-2 rounded-full ">
+        <button
+                wire:click="$dispatch('switch-to-match-tab', { tab: 'match' })"
+                class="bg-white text-orange px-4 py-2 rounded-full"
+            >
                 Review global indicators
-            </a>
+            </button>
         </div>
     </div>
 
