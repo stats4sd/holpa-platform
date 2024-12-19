@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('farm_survey_data_id')->nullable();
             $table->json('properties')->nullable();
 
-            $table->unsignedBigInteger('product_id')->nullable();
-            $table->text('product name')->nullable();
+            $table->string('product_id')->nullable();
+            $table->text('product_name')->nullable();
             $table->text('hh_consumption')->nullable();
 
             // In Data Structure excel file, variable names are hh_cooking, hh_building and hh_heating
