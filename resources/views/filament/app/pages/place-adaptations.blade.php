@@ -6,7 +6,7 @@
         />
         <div class="container mx-auto xl:px-12 ">
         <div class="surveyblocks pr-10 h-full py-12">
-    <livewire:rounded-section
+    <x-rounded-section
         heading='Customise place-based questionnaire'
         description='Adapt units, crops, and other details mentioned in the form to be locally relevant.'
         buttonLabel='Update'

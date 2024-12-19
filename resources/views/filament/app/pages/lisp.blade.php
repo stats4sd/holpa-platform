@@ -33,7 +33,7 @@ $lispIndicatorsUrl = LispIndicators::getUrl();
         :url='$lispWorkshopUrl'
     />
 
-    <livewire:rounded-section
+    <x-rounded-section
         heading='Customise indicators'
         description='Customise the indicators included in your survey based on the outcome of the LISP workshop. This includes options to map
                             indicators identified during the workshop to existing available indicators as well as adding custom indicators and
