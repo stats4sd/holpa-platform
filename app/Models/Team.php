@@ -6,6 +6,7 @@ use App\Models\Locale;
 use App\Models\XlsformModule;
 use App\Models\SampleFrame\Farm;
 use App\Models\Xlsforms\Xlsform;
+use App\Models\XlsformTemplates\ChoiceListEntry;
 use Hoa\Compiler\Llk\Rule\Choice;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -59,13 +60,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                     'label' => $owner->name . 'custom module',
                     'name' => $owner->name . 'custom module',
                 ]);
-              
+
                 XlsformModuleVersion::create([
                     'xlsform_module_id' => $xlsformModule->id,
                     'name' => 'custom'
                 ]);
             }
-          
+
             // manually set the default time_frame
             $owner->time_frame = 'in the last 12 months';
             $owner->save();
@@ -133,6 +134,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
     }
 
+
+    public function choiceListEntries(): MorphMany
+    {
+        return $this->morphMany(ChoiceListEntry::class, 'owner');
+    }
 
     // Customisations
 

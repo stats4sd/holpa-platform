@@ -69,7 +69,6 @@ class DietDiversity extends Page implements HasForms, HasTable
     public function table(Table $table): Table
     {
         if ($this->team->diet_diversity_module_version_id) {
-            ray('ok');
             $moduleVersion = $this->team->dietDiversityModuleVersion;
         } else {
             //  default to the 'default' diet diversity module version;

@@ -10,7 +10,7 @@
         heading='Customise place-based questionnaire'
         description='Adapt units, crops, and other details mentioned in the form to be locally relevant.'
         buttonLabel='Update'
-        :url='\App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource::getUrl("index")'
+        :url='\App\Filament\App\Pages\DietDiversity::getUrl()'
         />
 
     <livewire:offline-action
