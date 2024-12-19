@@ -1,3 +1,10 @@
+<?php
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
+
+$farmUrl = FarmResource::getUrl();
+
+?>
+
 <x-filament-panels::page class=" h-full">
 
     <livewire:page-header-with-instructions
@@ -18,7 +25,7 @@
         heading='List of farms'
         description='Add or import details of the farms you will visit to give the questionnaire.'
         buttonLabel='Update'
-        url='farms'
+        :url='$farmUrl'
     />
 </div>
 </div>

@@ -164,7 +164,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                         </svg>
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
-                                    <a href="{{ url(PlaceAdaptations::getUrl()) }}" class="buttona">
+                                    <a href="{{ PlaceAdaptations::getUrl() }}" class="buttona">
                                         VIEW AND UPDATE
                                     </a>
                                 </div>
@@ -212,7 +212,6 @@ use App\Filament\App\Pages\DataAnalysis;
                         </div>
                     </div>   
                     <div class=" bg-white hidden xl:w-16 2xl:w-1/12 xl:flex">
-
                     </div>
                 </div>
 
@@ -243,14 +242,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                     </svg>
                                     <span class="ml-1 inline text-xs font-semibold">NOT STARTED</span>
                                 </div>       
-                                <a href="{{ url(DataCollection::getUrl()) }}" class="buttona">
+                                <a href="{{ DataCollection::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
                     </div>                    
                 </div>
-
 
                 <!-- Data analysis card -->
                 <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-5 lg:h-72">
@@ -279,18 +277,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                     </svg>
                                     <span class="ml-1 inline text-xs font-semibold">NOT STARTED</span>
                                 </div>       
-                                <a href="{{ url(DataAnalysis::getUrl()) }}" class="buttona">
+                                <a href="{{ DataAnalysis::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
                     </div>                    
                 </div>
-
-
-                
-
-
             </div>
         </div>
     </div>

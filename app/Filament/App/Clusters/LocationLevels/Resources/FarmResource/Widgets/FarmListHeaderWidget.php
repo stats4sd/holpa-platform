@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\App\Resources\FarmResource\Widgets;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Widgets;
 
 use App\Services\HelperService;
 use Filament\Widgets\Widget;

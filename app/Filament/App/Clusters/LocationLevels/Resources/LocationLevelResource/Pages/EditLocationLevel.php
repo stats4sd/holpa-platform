@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Filament\App\Resources\LocationLevelResource\Pages;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
-use App\Filament\App\Resources\LocationLevelResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 
 class EditLocationLevel extends EditRecord
 {

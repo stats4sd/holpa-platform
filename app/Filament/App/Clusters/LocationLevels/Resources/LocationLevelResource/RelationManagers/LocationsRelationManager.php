@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\App\Resources\LocationLevelResource\RelationManagers;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers;
 
 use Filament\Forms;
 use Filament\Forms\Form;
