@@ -35,6 +35,7 @@
     --lightgrey:#F6F7F7;
 }
 
+
 .bg-darkgreen {
     background-color: var(--darkgreen);
 }
@@ -75,7 +76,7 @@
     @apply text-white p-6 rounded-lg shadow-lg w-80 flex flex-col relative;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     .explore-card {
       @apply w-3/4;
     }
