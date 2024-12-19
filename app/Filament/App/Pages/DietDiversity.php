@@ -26,7 +26,7 @@ class DietDiversity extends Page implements HasForms, HasTable
     public ?array $data = [];
     public Team $team;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.diet-diversity';
 

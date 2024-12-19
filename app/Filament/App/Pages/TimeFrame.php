@@ -22,7 +22,7 @@ class TimeFrame extends Page implements HasTable, HasForms
     use InteractsWithTable;
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static bool $shouldRegisterNavigation = false;
     protected static string $view = 'filament.app.pages.time-frame';
 
     public ?array $data = [];
