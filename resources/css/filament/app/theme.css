@@ -18,11 +18,11 @@ body {
     @apply font-montserrat text-sm ;
 }
 
-body:has(#surveydash), {
+body:has(#surveydash) {
     @apply !bg-gray-100;
 }
 
-body:has(#languages),.actionblock, {
+body:has(#languages),.actionblock {
     h1 {
         @apply font-extrabold text-5xl;
     }
@@ -154,7 +154,7 @@ h3 {
 
 }
 .completebar {
-    @apply h-16 bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 place-content-center;
+    @apply md:h-16 h-max bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 pt-4;
 }
 
 .tabbuttons {

@@ -6,7 +6,7 @@
     />
     <div class="container mx-auto xl:px-12 ">
     <div class="surveyblocks pr-10 h-full py-12">
-    <livewire:rounded-section
+    <livewire:offline-action
         heading='Pilot and enumerator training'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
         buttonLabel='View details'

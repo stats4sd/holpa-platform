@@ -145,7 +145,7 @@ use App\Filament\App\Pages\DataAnalysis;
                             <span class="mt-2 text-center">Localisation</span>
                             <!-- Progress bar -->
                             <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
                             </div>
                         </div>
                     </div>
