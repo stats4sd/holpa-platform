@@ -11,7 +11,9 @@
                 buttonLabel='Update'
                 :url='\App\Filament\App\Pages\TimeFrame::getUrl()'
             >
-                <x-slot:description>Some questions in the Household Survey ask about a specific time frame in the recent past, for example "In the last 12 months, has any household member received training in *** topic?". By default, this time frame is <b>"In the last 12 months"</b>. You may customise this to your specific requirements. </x-slot:description>
+                <x-slot:description>Some questions in the Household Survey ask about a specific time frame in the recent past, for example "In the last 12 months, has any household member received training in *** topic?". By default, this time frame is
+                    <b>"In the last 12 months"</b>. You may customise this to your specific requirements.
+                </x-slot:description>
             </x-rounded-section>
 
             <x-rounded-section
@@ -33,5 +35,11 @@
                 url='url_to_be_added_here'
             />
         </div>
+    </div>
+
+    <!-- Footer with option to mark as complete - funcitonality still to come! -->
+    <div class="completebar">
+        <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
+        <a href="" class="buttona mx-4 inline-block ">Mark as completed</a>
     </div>
 </x-filament-panels::page>
