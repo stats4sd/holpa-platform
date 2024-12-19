@@ -5,7 +5,7 @@
         video-url='https://www.youtube.com/embed/VIDEO_ID'
     />
 <div class="surveyblocks pr-10 h-full pt-8">
-    <livewire:rounded-section
+    <x-rounded-section
         heading='Pilot and enumerator training'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
         buttonLabel='View details'

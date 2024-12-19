@@ -17,7 +17,7 @@ use App\Filament\App\Pages\Lisp;
         <p class="my-8">More guidance on how to complete the workshop.</p>
     </div>
 <div>
-   <livewire:rounded-section
+   <x-rounded-section
         heading='Indicator template'
         description='To create the local indicators and incorporate them into the HOLPA survey, <b>you will need to use this template file.</b>
                           This will ensure the required information for the indicators is included, and you will need to use it to upload your indicators
@@ -26,18 +26,18 @@ use App\Filament\App\Pages\Lisp;
         url='/files/HOLPA_indicator_template.xlsx'
     />
     </div>
-    
+
 
     <div class="font-bold text-green text-lg mb-4 px-12">OPTIONAL WORKSHOP SUPPORTING MATERIALS</div>
 <div>
-    <livewire:rounded-section
+    <x-rounded-section
         heading='Slideshow template'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
         buttonLabel='Download .xlsx'
         url='url_to_be_added_here'
     />
 
-    <livewire:rounded-section
+    <x-rounded-section
         heading='Global survey indicators'
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
         buttonLabel='Download .xlsx'
@@ -51,7 +51,7 @@ use App\Filament\App\Pages\Lisp;
         </a>
     </div>
 
-    
+
 
     <div class="font-bold text-green text-lg mb-4 px-12">NEXT STEPS</div>
     <div class="text-gray-800 text-base leading-relaxed  px-12">
@@ -72,7 +72,7 @@ use App\Filament\App\Pages\Lisp;
     </div> -->
     </div>
     </div>
-    
+
         <!-- Footer with option to mark as complete - funcitonality still to come! -->
         <div class="completebar">
         <a href="" class="buttonb mx-4 inline-block">Go back</a>
@@ -80,5 +80,5 @@ use App\Filament\App\Pages\Lisp;
     </div>
 
 
-    
+
 </x-filament-panels::page>
