@@ -71,7 +71,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
             Action::make('replace')
                 ->label('Replace File')
                 ->modalHeading('Replace custom indicators file')
-                ->color('warning')
+                ->color('orange')
                 ->button()
                 ->form(function (Media $record) {
                     $collection = $record->collection_name;

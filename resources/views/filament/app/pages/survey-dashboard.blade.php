@@ -35,7 +35,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-full" ></div>
                                 </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <!-- White Section -->
@@ -50,7 +50,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
@@ -79,13 +79,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                             </svg>
                                             <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                         </div>
-                                    @endif  
+                                    @endif
                                 <a href="{{ url(SurveyLanguages::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                 </div>
 
                 <!-- Sampling card -->
@@ -108,7 +108,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
                                 </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <!-- White Section -->
@@ -140,13 +140,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                         </svg>
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
-                                @endif 
+                                @endif
                                 <a href="{{ url(Sampling::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
 
                 <!-- Localisation card -->
@@ -169,7 +169,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
                                 </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <!-- White Section -->
@@ -209,7 +209,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                     <div class="whitesection">
                         <div class="whiteborderbox">
                             <div class=" whitecard ">
@@ -239,14 +239,14 @@ use App\Filament\App\Pages\DataAnalysis;
                                             </svg>
                                             <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                         </div>
-                                    @endif 
+                                    @endif
                                     <a href="{{ url(Lisp::getUrl()) }}" class="buttona">
                                         VIEW AND UPDATE
                                     </a>
                                 </div>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
@@ -268,14 +268,15 @@ use App\Filament\App\Pages\DataAnalysis;
                                         </svg>
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
-                                @endif   
+                                @endif
                                 <a href="{{ url(Pilot::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
-                    </div>   
+                    </div>
                     <div class=" bg-white hidden xl:w-16 2xl:w-1/12 xl:flex">
+
                     </div>
                 </div>
 
@@ -295,7 +296,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
                                 </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <!-- White Section -->
@@ -327,14 +328,15 @@ use App\Filament\App\Pages\DataAnalysis;
                                         </svg>
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
-                                @endif        
+                                @endif
                                 <a href="{{ DataCollection::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
+
 
                 <!-- Data analysis card -->
                 <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-5 lg:h-72">
@@ -352,7 +354,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
                                 </div>
-                            @endif 
+                            @endif
                         </div>
                     </div>
                     <!-- White Section -->
@@ -384,13 +386,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                         </svg>
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
-                                @endif         
+                                @endif
                                 <a href="{{ DataAnalysis::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

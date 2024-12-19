@@ -18,11 +18,11 @@ body {
     @apply font-montserrat text-sm ;
 }
 
-body:has(#surveydash), {
+body:has(#surveydash) {
     @apply !bg-gray-100;
 }
 
-body:has(#languages),.actionblock, {
+body:has(#languages),.actionblock {
     h1 {
         @apply font-extrabold text-5xl;
     }
@@ -55,8 +55,9 @@ h3 {
 }
 
 button {
-    @apply font-semibold !text-xs text-white py-2 !px-4 !rounded-full duration-200;
+    @apply font-semibold !text-xs text-white  !rounded-full duration-200;
     text-transform: uppercase ;
+
 }
 .fi-btn {
     @apply rounded-full uppercase ;
@@ -90,7 +91,7 @@ h3 {
     @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }
 .buttona{
-    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 
 }
@@ -99,7 +100,7 @@ h3 {
 }
 
 .buttonb{
-    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 }
 .buttonb:hover {
@@ -153,7 +154,7 @@ h3 {
 
 }
 .completebar {
-    @apply h-16 bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 place-content-center;
+    @apply md:h-16 h-max bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 pt-4;
 }
 
 .tabbuttons {
@@ -180,7 +181,18 @@ h3 {
 .lispboxselected {
     @apply bg-green border-l-4 border-green  text-white;
 }
-
+button:disabled {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
+button:disabled:hover {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
 
 #globalindicators {
     button {
@@ -189,18 +201,15 @@ h3 {
             font-size: 0.75rem !important;
                 }
             }
+
+
     /* div,table,tr,td {
         border-radius: 0%;
         border: none;
         box-shadow: none !important;
     }
 
-button:disabled {
-    background-color: #d3d3d3;
-    color: black;
-    cursor: not-allowed;
-    border: 1px solid #ccc;
-}
+
 
 
     thead {
@@ -247,4 +256,7 @@ button:disabled {
     a:hover {
         @apply bg-white text-orange;
     }
+}
+.uploadedindicatorstable th button {
+padding-left: 0px ;
 }

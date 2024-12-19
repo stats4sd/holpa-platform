@@ -5,7 +5,7 @@
    </div>
 
    @if(!$uploadedFileHH || !$uploadedFileFW)
-      <div class="px-8 py-4">
+      <div class="px-12 py-4">
          <div class="w-4/6 mx-auto">
             <div class="p-6 bg-white rounded-lg">
                {{ $this->form }}
@@ -33,7 +33,7 @@
          The custom indicators have been uploaded, see below for details.
       </div>
       <div class="px-10 py-4">
-         <div class="bg-white shadow rounded-lg">
+         <div class="bg-white uploadedindicatorstable rounded-lg">
             {{ $this->table }}
          </div>
       </div>
