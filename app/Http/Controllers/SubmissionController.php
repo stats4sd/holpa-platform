@@ -49,6 +49,10 @@ class SubmissionController extends Controller
         SubmissionController::handleFishUsesData($submission, $farmSurveyData);
 
 
+        // custom handling for products data
+        SubmissionController::handleProductsData($submission, $farmSurveyData);
+
+
 
         // update farm_survey_data_id in repeat groups tables
         SubmissionController::updateFarmSurveyDataId($submission, $farmSurveyData);
@@ -352,6 +356,151 @@ class SubmissionController extends Controller
         }
     }
 
+
+    // ******************** //
+
+
+    // custom handling for products data
+    public static function handleProductsData(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        ray('SubmissionController.handleProductsData() starts...');
+
+        // get farm_products
+        if (isset($submission->content['survey']['income']['farm_characteristics']['farm_products'])) {
+            ray('farm_products data found');
+
+            $farmProductsList = $submission->content['survey']['income']['farm_characteristics']['farm_products'];
+
+            ray($farmProductsList);
+
+            // split farm products, handle them one by one
+            $farmProducts = str_getcsv($farmProductsList, ' ');
+
+            ray($farmProducts);
+
+            foreach ($farmProducts as $farmProduct) {
+                $prefix = $farmProduct;
+
+                // special handling for "crops", change it to "crop" as prefix
+                if ($farmProduct == 'crops') {
+                    $prefix = 'crop';
+                } else if ($farmProduct == 'other') {
+                    $prefix = 'other_product';
+                }
+
+                if ($farmProduct != 'other') {
+                    SubmissionController::prepareProductData($submission, $prefix);
+                } else {
+                    SubmissionController::prepareOtherProductData($submission, $prefix);
+                }
+            }
+        } else {
+            ray('farm_products data not found');
+        }
+    }
+
+
+    // prepare data for crops,livestock, fish, trees, honey
+    public static function prepareProductData($submission, $prefix): void
+    {
+        // use hardcoded product names temporary
+        $productNames = [
+            'crop' => 'Crops (including perennial crops)',
+            'livestock' => 'Livestock',
+            'fish' => 'Fish',
+            'trees' => 'Trees (e.g., for wood, bark, rubber)',
+            'honey' => 'Honey',
+        ];
+
+        $useItemNames = [
+            'hh_consumption',
+            'cooking',
+            'building',
+            'heating',
+            'hh_other_use',
+            'livestock_consumption',
+            'on_farm_use',
+            'sales',
+            'gifts',
+            'waster',
+            'other_use',
+            'other_use_specify',
+        ];
+
+        $salesBuyerItemNames = [
+            'buyer',
+            'buyer_other',
+            'fair_price',
+        ];
+
+        $result = [];
+
+        $productUseData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_use'];
+        ray($productUseData);
+
+        foreach ($useItemNames as $useItemName) {
+            if (isset($productUseData[$prefix . '_' . $useItemName])) {
+                $result[$useItemName] = $productUseData[$prefix . '_' . $useItemName];
+            }
+        }
+
+        $productSalesBuyerData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_sales_buyers'];
+        ray($productSalesBuyerData);
+
+        foreach ($salesBuyerItemNames as $salesBuyerItemName) {
+            if (isset($productSalesBuyerData[$prefix . '_' . $salesBuyerItemName])) {
+                $result[$salesBuyerItemName] = $productSalesBuyerData[$prefix . '_' . $salesBuyerItemName];
+            }
+        }
+
+        $result['product_id'] = $prefix;
+        $result['product_name'] = $productNames[$prefix];
+
+        ray($result);
+
+        // TODO: create products record
+    }
+
+
+    // prepare data for other
+    public static function prepareOtherProductData($submission, $prefix): void
+    {
+        $useSalesItemNames = [
+            'hh_consumption',
+            'cooking',
+            'building',
+            'heating',
+            'hh_other_use',
+            'livestock_consumption',
+            'on_farm_use',
+            'sales',
+            'gifts',
+            'waster',
+            'other_use',
+            'other_use_specify',
+            'buyer',
+            'buyer_other',
+            'fair_price',
+        ];
+
+        $result = [];
+
+        $otherProductRepeats = $submission->content['survey']['income']['farm_characteristics']['other_product_use_sales'];
+        ray($otherProductRepeats);
+
+        foreach ($otherProductRepeats as $otherProductRepeat) {
+
+            foreach ($useSalesItemNames as $useSalesItemName) {
+                if (isset($otherProductRepeat[$prefix . '_' . $useSalesItemName])) {
+                    $result[$useSalesItemName] = $otherProductRepeat[$prefix . '_' . $useSalesItemName];
+                }
+            }
+
+            ray($result);
+
+            // TODO: create products record
+        }
+    }
 
     // ******************** //
 

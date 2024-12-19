@@ -20,9 +20,14 @@ return new class extends Migration
             $table->unsignedBigInteger('product_id')->nullable();
             $table->text('product name')->nullable();
             $table->text('hh_consumption')->nullable();
-            $table->text('hh_cooking')->nullable();
-            $table->text('hh_building')->nullable();
-            $table->text('hh_heating')->nullable();
+
+            // In Data Structure excel file, variable names are hh_cooking, hh_building and hh_heating
+            // In submission content, variable names are cooking, building and heating
+            // Workaround: use variable names in submission content to populate data first
+            $table->text('cooking')->nullable();
+            $table->text('building')->nullable();
+            $table->text('heating')->nullable();
+
             $table->text('hh_other_use')->nullable();
             $table->text('livestock_consumption')->nullable();
             $table->text('on_farm_use')->nullable();
