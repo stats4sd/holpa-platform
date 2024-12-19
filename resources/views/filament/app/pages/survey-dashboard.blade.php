@@ -23,10 +23,19 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Context</span>
                             <!-- Progress bar -->
-                            <!-- Examples of different progress amounts shown on different sections - needs someone who knows more than me to implement!  -->
-                            <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-full" ></div>
-                            </div>
+                            @if ($team->languages_progress === 'not_started')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @elseif ($team->languages_progress === 'in_progress')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
+                                </div>
+                            @elseif ($team->languages_progress === 'complete')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-full" ></div>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                     <!-- White Section -->
@@ -87,9 +96,19 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Sampling</span>
                             <!-- Progress bar -->
-                            <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
-                            </div>
+                            @if ($team->sampling_progress === 'complete')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-full" ></div>
+                                </div>
+                            @elseif ($team->sampling_progress === 'in_progress')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
+                                </div>
+                            @else
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                     <!-- White Section -->
@@ -138,9 +157,19 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Localisation</span>
                             <!-- Progress bar -->
-                            <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
-                            </div>
+                            @if ($team->pba_progress === 'complete' && $team->lisp_progress === 'complete' && $team->pilot_progress === 'complete')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-full" ></div>
+                                </div>
+                            @elseif ($team->pba_progress === 'in_progress' || $team->lisp_progress === 'in_progress' || $team->pilot_progress === 'in_progress')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
+                                </div>
+                            @else
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                     <!-- White Section -->
@@ -265,9 +294,19 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Data Collection</span>
                             <!-- Progress bar -->
-                            <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
-                            </div>
+                            @if ($team->data_collection_progress === 'complete')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-full" ></div>
+                                </div>
+                            @elseif ($team->data_collection_progress === 'in_progress')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
+                                </div>
+                            @else
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                     <!-- White Section -->
@@ -316,9 +355,19 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Data Analysis</span>
                             <!-- Progress bar -->
-                            <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
-                            </div>
+                            @if ($team->data_analysis_progress === 'complete')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-full" ></div>
+                                </div>
+                            @elseif ($team->data_analysis_progress === 'in_progress')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
+                                </div>
+                            @else
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @endif 
                         </div>
                     </div>
                     <!-- White Section -->
