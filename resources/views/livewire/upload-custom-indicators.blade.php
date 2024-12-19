@@ -1,31 +1,38 @@
 <div>
 
-   <div class="text-lg font-bold text-green">
+   <div class="text-lg font-bold ">
       Upload custom indicators
    </div>
-   
-   @if(!$uploadedFile)
-      <div class="px-8 py-4"> 
-         <div class="max-w-lg mx-auto">
-            <div class="p-6 bg-white shadow rounded-lg">
+
+   @if(!$uploadedFileHH || !$uploadedFileFW)
+      <div class="px-8 py-4">
+         <div class="w-4/6 mx-auto">
+            <div class="p-6 bg-white rounded-lg">
                {{ $this->form }}
             </div>
          </div>
       </div>
 
       <div class="flex justify-center mt-6">
-        <button wire:click="uploadFile" 
-            class="bg-green text-white py-2 px-6 rounded-lg hover-effect">
+         <button wire:click="uploadFiles"
+            class="buttona">
             Upload list
-        </button>
+         </button>
+
+         @if ($errors->has('missing_file'))
+            <div class="text-green pl-4">
+               {{ $errors->first('missing_file') }}
+            </div>
+         @endif
       </div>
 
-   @else
+   @endif
+
+   @if($uploadedFileHH || $uploadedFileFW)
       <div class="pt-4">
-         The custom indicators have been uploaded. See below for details. To edit the uploaded custom indicators,
-         delete the file below and upload the updated file.
+         The custom indicators have been uploaded, see below for details.
       </div>
-      <div class="px-10 py-4"> 
+      <div class="px-10 py-4">
          <div class="bg-white shadow rounded-lg">
             {{ $this->table }}
          </div>

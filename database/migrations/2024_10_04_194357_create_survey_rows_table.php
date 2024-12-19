@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('survey_rows', function (Blueprint $table) {
             $table->id();
             $table->foreignId('xlsform_template_id');
+            $table->bigInteger('row_number')->nullable();
             $table->string('name');
 
             $table->string('type');

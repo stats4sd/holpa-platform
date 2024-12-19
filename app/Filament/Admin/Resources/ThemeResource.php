@@ -2,14 +2,15 @@
 
 namespace App\Filament\Admin\Resources;
 
+use Filament\Forms;
+use Filament\Tables;
+use App\Models\Theme;
+use App\Models\Domain;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use App\Filament\Admin\Resources\ThemeResource\Pages;
 use App\Filament\Admin\Resources\ThemeResource\RelationManagers;
-use App\Models\Theme;
-use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
 
 class ThemeResource extends Resource
 {
@@ -17,6 +18,7 @@ class ThemeResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-squares-2x2';
     protected static ?string $navigationGroup = 'HOLPA Indicators';
+    // protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {
@@ -24,8 +26,9 @@ class ThemeResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('module')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('domain')
-                    ->maxLength(255),
+                Forms\Components\Select::make('domain_id')
+                    ->label('Domain')
+                    ->options(Domain::all()->pluck('name', 'id')),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -42,16 +45,12 @@ class ThemeResource extends Resource
                 Tables\Columns\TextColumn::make('module')
                     ->sortable()
                     ->searchable(),
-                Tables\Columns\TextColumn::make('domain')
+                Tables\Columns\TextColumn::make('domain.name')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('globalindicators_count')
                     ->label('# Global indicators')
                     ->counts('globalindicators')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('localindicators_count')
-                    ->label('# Local indicators')
-                    ->counts('localindicators')
                     ->sortable(),
             ])
             ->filters([
@@ -71,7 +70,6 @@ class ThemeResource extends Resource
     {
         return [
             RelationManagers\GlobalIndicatorsRelationManager::class,
-            RelationManagers\LocalIndicatorsRelationManager::class,
         ];
     }
 

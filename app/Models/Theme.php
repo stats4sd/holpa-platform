@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Theme extends Model
 {
@@ -22,8 +23,8 @@ class Theme extends Model
         return $this->hasMany(GlobalIndicator::class);
     }
 
-    public function localIndicators(): HasMany
+    public function domain(): BelongsTo
     {
-        return $this->hasMany(LocalIndicator::class);
+        return $this->belongsTo(Domain::class);
     }
 }

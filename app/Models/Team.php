@@ -3,12 +3,16 @@
 namespace App\Models;
 
 use App\Models\Locale;
+use App\Models\XlsformModule;
 use App\Models\SampleFrame\Farm;
+use App\Models\Xlsforms\Xlsform;
+use Hoa\Compiler\Llk\Rule\Choice;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\Xlsforms\Xlsform;
+use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -46,6 +50,25 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
             $owner->locales()->attach($en);
 
+            // all teams get a custom module for each ODK form
+            $forms = Xlsform::where('owner_id', $owner->id)->get();
+            foreach ($forms as $form) {
+                $xlsformModule = XlsformModule::create([
+                    'form_type' => 'App\Models\Xlsforms\Xlsform',
+                    'form_id' => $form->id,
+                    'label' => $owner->name . 'custom module',
+                    'name' => $owner->name . 'custom module',
+                ]);
+              
+                XlsformModuleVersion::create([
+                    'xlsform_module_id' => $xlsformModule->id,
+                    'name' => 'custom'
+                ]);
+            }
+          
+            // manually set the default time_frame
+            $owner->time_frame = 'in the last 12 months';
+            $owner->save();
 
         });
     }
@@ -85,29 +108,62 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->morphMany(Xlsform::class, 'owner');
     }
 
-    public function lookupTables(): BelongsToMany
+    public function choiceLists(): BelongsToMany
     {
-        return $this->belongsToMany(Dataset::class, 'team_lookup_tables', 'team_id', 'lookup_table_id')
-            ->withPivot('is_complete')
-            ->where('lookup_table', true);
+        return $this->belongsToMany(ChoiceList::class, 'choice_list_team', 'team_id', 'choice_list_id')
+            ->withPivot('is_complete');
     }
 
-    public function markLookupListAsComplete($lookupTable): ?bool
+    public function markLookupListAsComplete(ChoiceList $choiceList): ?bool
     {
-        $this->lookupTables()->sync([$lookupTable->id => ['is_complete' => 1]], detaching: false);
+        $this->choiceLists()->sync([$choiceList->id => ['is_complete' => 1]], detaching: false);
 
-        return $this->hasCompletedLookupList($lookupTable);
+        return $this->hasCompletedLookupList($choiceList);
     }
 
-    public function markLookupListAsInComplete($lookupTable): ?bool
+    public function markLookupListAsInComplete(ChoiceList $choiceList): ?bool
     {
-        $this->lookupTables()->detach($lookupTable->id);
+        $this->choiceLists()->detach($choiceList->id);
 
-        return $this->hasCompletedLookupList($lookupTable);
+        return $this->hasCompletedLookupList($choiceList);
     }
 
-    public function hasCompletedLookupList($lookupTable): ?bool
+    public function hasCompletedLookupList(ChoiceList $choiceList): ?bool
     {
-        return $this->lookupTables->where('id', $lookupTable->id)->first()?->pivot->is_complete;
+        return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
+    }
+
+
+    // Customisations
+
+    public function dietDiversityModuleVersion(): BelongsTo
+    {
+        return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
+    }
+
+    public function getXlsformHhModuleVersionAttribute()
+    {
+        $xlsform_HH = $this->xlsforms()->first(); // Get the first XLSForm belong to this team (hh)
+
+        if ($xlsform_HH) {
+            $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first(); // Get the first module
+            if ($xlsform_HH_custom_module) {
+                return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
+    }
+
+    public function getXlsformFwModuleVersionAttribute()
+    {
+        $xlsform_FW = $this->xlsforms()->skip(1)->first(); // Get the second XLSForm belong to this team (fw)
+
+        if ($xlsform_FW) {
+            $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first(); // Get the first module
+            if ($xlsform_FW_custom_module) {
+                return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
     }
 }

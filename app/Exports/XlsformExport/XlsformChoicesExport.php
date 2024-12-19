@@ -2,10 +2,12 @@
 
 namespace App\Exports\XlsformExport;
 
+use App\Models\Language;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\XlsformTemplateLanguage;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
@@ -22,16 +24,17 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
      */
     public Collection $choiceListEntries;
 
-    public function __construct(public Xlsform $xlsform, public Collection $xlsformTemplateLanguages, public Collection $languageStringTypes)
+    public function __construct(public Xlsform $xlsform, public Collection $languages, public Collection $languageStringTypes)
     {
 
         // get collection in construct so we can use props to get headings
         // simplest case - return all survey rows from the template
+        // TODO: get choice list entries from custom indicators
         $choiceListEntries = $this->xlsform
             ->xlsformTemplate
             ->choiceListEntries
             ->load(['languageStrings', 'choiceList'])
-            ->sortBy('id');
+            ->sortBy(['choice_list_id', 'id']);
 
         $propertyHeadings = $this->getHeadingsFromProperties($choiceListEntries);
 
@@ -41,7 +44,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
             return collect([
                 'list_name' => $choiceListEntry->choiceList->list_name,
-                'name' => $choiceListEntry->name,
+                'name' => Str::snake($choiceListEntry->name), // make sure the name has no spaces
                 ...$this->getLanguageStrings($choiceListEntry, 'label'),
                 ...$properties,
             ]);
@@ -74,7 +77,8 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     private function getHeadingsFromProperties(Collection $choiceListEntries): Collection
     {
         return $choiceListEntries
-            ->map(fn($choiceListEntry) => $choiceListEntry->properties->keys())
+            ->map(fn($choiceListEntry) => $choiceListEntry->properties?->keys())
+            ->filter() // only non-nulls
             ->flatten()
             ->unique();
     }
@@ -83,13 +87,12 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     {
 
 
-        return $this->xlsformTemplateLanguages
-            ->mapWithKeys(function (XlsformTemplateLanguage $xlsformTemplateLanguage) use ($string, $row) {
+        return $this->languages
+            ->mapWithKeys(function (Language $language) use ($string, $row) {
 
-                $key = "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})";
-                $value = $row->languageStrings
-                    ->where('language_string_type_id', $this->languageStringTypes->where('name', $string)->first()->id)
-                    ->where('xlsform_template_language_id', $xlsformTemplateLanguage->id)
+                $key = "$string::{$language->name} ({$language->iso_alpha2})";
+                $value = $row->languageStrings()
+                    ->whereHas('languageStringType', fn($query) => $query->where('name', $string))
                     ->first()?->text ?? null;
                 return [$key => $value];
             });
@@ -99,7 +102,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     public function styles(Worksheet $sheet)
     {
         // starting at C, make 1 column auto-wrap per Xlsformtemplatelangauge
-        $wrapArray = $this->xlsformTemplateLanguages->mapWithKeys(fn(XlsformTemplateLanguage $language, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]
+        $wrapArray = $this->languages->mapWithKeys(fn(Language $language, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]
         )->toArray();
 
         return [

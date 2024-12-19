@@ -6,7 +6,9 @@ use App\Models\HasLanguageStrings;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class SurveyRow extends Model implements HasLanguageStrings
@@ -22,9 +24,9 @@ class SurveyRow extends Model implements HasLanguageStrings
         'updated_during_import' => 'boolean',
     ];
 
-    public function xlsformTemplate(): BelongsTo
+    public function template(): MorphTo
     {
-        return $this->belongsTo(XlsformTemplate::class);
+        return $this->morphTo('template');
     }
 
     public function languageStrings(): MorphMany
@@ -32,18 +34,38 @@ class SurveyRow extends Model implements HasLanguageStrings
         return $this->morphMany(LanguageString::class, 'linked_entry');
     }
 
-
-    public function required(): Attribute
+    // default language strings
+    public function defaultLabel(): Attribute
     {
         return new Attribute(
-            get: fn($value) => $value,
-            set: function($value) {
-                return match(strtolower($value)) {
-                    'true','yes' => true,
-                    'false','no' => false,
-                    default => false,
-                };
-            }
+            get: fn() => $this->languageStrings()
+                ->whereHas('language', fn($query) => $query->where('languages.iso_alpha2', 'en'))
+                ->whereHas('languageStringType', fn($query) => $query->where('language_string_types.name', 'label'))
+                ->first()?->text ?? ''// hardcode English for now. Later we can make it match the team's default language.
         );
     }
+
+    public function defaultHint(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->languageStrings()
+                ->whereHas('language', fn($query) => $query->where('languages.iso_alpha2', 'en'))
+                ->whereHas('languageStringType', fn($query) => $query->where('language_string_types.name', 'hint'))
+                ->first()?->text ?? ''// hardcode English for now. Later we can make it match the team's default language.
+        );
+    }
+
+
+//    public function required(): Attribute
+//    {
+//        return new Attribute(
+//            get: fn($value) => $value===1 ? 'TRUE' : '',
+//            set: function ($value) {
+//                return match (strtolower($value)) {
+//                    'true', 'yes' => 1,
+//                    default => 0,
+//                };
+//            }
+//        );
+//    }
 }

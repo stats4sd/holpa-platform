@@ -2,6 +2,7 @@
 
 namespace App\Imports\XlsformTemplate;
 
+use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -18,7 +19,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
 
     use RemembersRowNumber;
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
     {
     }
 
@@ -30,7 +31,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
         ];
 
         $data['choice_list_id'] = $this->xlsformTemplate
-            ->choiceLists
+            ->choiceLists()
             ->where('list_name', $row['list_name'])
             ->first()
             ->id;
@@ -40,6 +41,9 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
             ->filter(fn($value, $key) => $key !== 'name')
             ->filter(fn($value, $key) => $key !== 'list_name')
             ->filter(fn($value, $key) => $value !== null);
+
+        // TODO: generalise after HOLPA ('filter' may not always be called 'filter')
+        $data['cascade_filter'] = isset($row['filter']) ? $row['filter'] : null;
 
         $data['updated_during_import'] = true;
 

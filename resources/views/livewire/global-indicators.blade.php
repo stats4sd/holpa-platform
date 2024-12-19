@@ -1,10 +1,10 @@
-<div>
+<div  id="globalindicators">
 
-    <div class="text-lg font-bold text-green">
-        GLOBAL INDICATORS
+    <div class="font-extrabold text-base ">
+        Global indicators
     </div>
 
-    <div class="py-4">
+    <div class="pt-2 pb-4 text-sm font-normal">
         Browse the available indicators in the global survey to search for a match for the selected local indicator.
     </div>
 
