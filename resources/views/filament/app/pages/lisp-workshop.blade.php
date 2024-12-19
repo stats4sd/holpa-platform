@@ -59,7 +59,7 @@ use App\Filament\App\Pages\Lisp;
     </div>
 
     <div class="flex justify-center space-x-4 mt-6">
-        <a href="{{ url(Lisp::getUrl()) }}"
+        <a href="{{ Lisp::getUrl() }}"
            class="px-6 py-2 bg-green text-white font-semibold rounded-lg text-center">
             Back
         </a>

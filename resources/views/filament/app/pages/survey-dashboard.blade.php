@@ -33,7 +33,7 @@ use App\Filament\App\Pages\DataAnalysis;
                     <p class="text-black mb-16">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo. Morbi tincidunt libero ut nunc scelerisque, eget fringilla nulla volutpat. Aliquam feugiat massa sit amet arcu convallis, et iaculis ligula facilisis. Etiam accumsan magna et ipsum facilisis, at malesuada nulla ornare.</p>
 
                     <div class="text-center">
-                        <a href="{{ url(MoreInstructions::getUrl()) }}" class="bg-orange text-white py-2 px-6 rounded-full hover-effect">
+                        <a href="{{ MoreInstructions::getUrl() }}" class="bg-orange text-white py-2 px-6 rounded-full hover-effect">
                             FIND OUT MORE
                         </a>
                     </div>
@@ -57,7 +57,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Add or manage additional data</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center mb-4">
-                            <a href="{{ url(AddData::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ AddData::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>
@@ -66,7 +66,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Survey languages</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center">
-                            <a href="{{ url(SurveyLanguages::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ SurveyLanguages::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>
@@ -84,7 +84,7 @@ use App\Filament\App\Pages\DataAnalysis;
                     <h3 class="text-black font-bold mb-2">Sampling frame</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                     <div class="text-center">
-                        <a href="{{ url(Sampling::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                        <a href="{{ Sampling::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>
@@ -104,7 +104,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Localisation: Place-based adaptations</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center mb-4">
-                            <a href="{{ url(PlaceAdaptations::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ PlaceAdaptations::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>
@@ -113,7 +113,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Localisation: LISP</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center mb-4">
-                            <a href="{{ url(Lisp::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ Lisp::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>
@@ -122,7 +122,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <h3 class="text-black font-bold mb-2">Localisation: Pilot</h3>
                         <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                         <div class="text-center">
-                            <a href="{{ url(Pilot::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                            <a href="{{ Pilot::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                                 VIEW AND UPDATE
                             </a>
                         </div>
@@ -142,7 +142,7 @@ use App\Filament\App\Pages\DataAnalysis;
                     <h3 class="text-black font-bold mb-2">Monitor data collection</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                     <div class="text-center">
-                        <a href="{{ url(DataCollection::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                        <a href="{{ DataCollection::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>
@@ -161,7 +161,7 @@ use App\Filament\App\Pages\DataAnalysis;
                     <h3 class="text-black font-bold mb-2">Download data</h3>
                     <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
                     <div class="text-center">
-                        <a href="{{ url(DataAnalysis::getUrl()) }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
+                        <a href="{{ DataAnalysis::getUrl() }}" class="bg-blue text-white py-2 px-4 rounded-full hover-effect">
                             VIEW AND UPDATE
                         </a>
                     </div>

@@ -2,8 +2,8 @@
 use App\Filament\App\Pages\LispWorkshop;
 use App\Filament\App\Pages\LispIndicators;
 
-$lispWorkshopUrl = url(LispWorkshop::getUrl());
-$lispIndicatorsUrl = url(LispIndicators::getUrl());
+$lispWorkshopUrl = LispWorkshop::getUrl();
+$lispIndicatorsUrl = LispIndicators::getUrl();
 
 ?>
 

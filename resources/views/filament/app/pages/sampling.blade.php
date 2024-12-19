@@ -1,7 +1,7 @@
 <?php
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
 
-$farmUrl = url(FarmResource::getUrl());
+$farmUrl = FarmResource::getUrl();
 
 ?>
 
