@@ -1,3 +1,8 @@
+<?php
+    use App\Filament\App\Pages\SurveyDashboard;
+    $surveyDashboardUrl = SurveyDashboard::getUrl();
+?>
+
 <x-filament-panels::page class=" px-10 h-full">
 
     <livewire:page-header-with-instructions
