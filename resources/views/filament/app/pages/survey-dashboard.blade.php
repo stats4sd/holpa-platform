@@ -157,17 +157,17 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Localisation</span>
                             <!-- Progress bar -->
-                            @if ($team->pba_progress === 'complete' && $team->lisp_progress === 'complete' && $team->pilot_progress === 'complete')
+                            @if ($team->pba_progress === 'not_started' && $team->lisp_progress === 'not_started' && $team->pilot_progress === 'not_started')
+                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
+                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                </div>
+                            @elseif ($team->pba_progress === 'complete' && $team->lisp_progress === 'complete' && $team->pilot_progress === 'complete')
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
                                     <div class="bg-white h-2.5 rounded-full w-full" ></div>
                                 </div>
-                            @elseif ($team->pba_progress === 'in_progress' || $team->lisp_progress === 'in_progress' || $team->pilot_progress === 'in_progress')
-                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
-                                </div>
                             @else
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                    <div class="bg-white h-2.5 rounded-full w-1/12" ></div>
+                                    <div class="bg-white h-2.5 rounded-full w-6/12" ></div>
                                 </div>
                             @endif 
                         </div>
