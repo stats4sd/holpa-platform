@@ -2,13 +2,15 @@
 
 namespace App\Exports\DataExport;
 
+use App\Models\CodeBookEntry;
 use App\Models\XlsformTemplates\ChoiceListEntry;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
-class ChoiceListExport implements FromQuery, WithHeadings, WithMapping
+class CodebookEntryExport implements FromQuery, WithHeadings, WithMapping, WithTitle
 {
 
     public function __construct()
@@ -17,29 +19,35 @@ class ChoiceListExport implements FromQuery, WithHeadings, WithMapping
 
     public function query()
     {
-        ChoiceListEntry::query();
+        return CodeBookEntry::query();
     }
 
     public function map($row): array
     {
-        $data = [];
+        return [
+            $row['list_name'],
+            $row['name'],
+            $row['label_en'],
+            $row['indicator_value'],
+            $row['climate_pillar'],
+        ];
 
-        foreach($this->headings() as $heading) {
-            $data[$heading] = $row->$heading;
-        }
-
-        return $data;
     }
 
     public function headings(): array
     {
-        return [
-            'list_name',
-            'name',
-            'label_en',
-            'indicator_value',
-            'climate_pillar',
-        ];
+        return
+            [
+                'list_name',
+                'name',
+                'label_en',
+                'indicator_value',
+                'climate_pillar',
+            ];
+    }
 
+    public function title(): string
+    {
+        return 'Codebook';
     }
 }
