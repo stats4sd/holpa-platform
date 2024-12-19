@@ -39,4 +39,16 @@ class PlaceAdaptations extends Page
                 $team->save();
             });
     }
+
+    public function markIncompleteAction(): Action
+    {
+        return Action::make('markIncomplete')
+            ->label('MARK AS INCOMPLETE')
+            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
+            ->action(function () {
+                $team = Team::find(auth()->user()->latestTeam->id);
+                $team->pba_progress = 'not_started';
+                $team->save();
+            });
+    }
 }

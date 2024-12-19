@@ -55,4 +55,16 @@ class DataAnalysis extends Page implements HasForms, HasActions
                 $team->save();
             });
     }
+
+    public function markIncompleteAction(): Action
+    {
+        return Action::make('markIncomplete')
+            ->label('MARK AS INCOMPLETE')
+            ->extraAttributes(['class' => 'buttona block md:inline-block mb-6 md:mb-0 max-w-sm mx-auto'])
+            ->action(function () {
+                $team = Team::find(auth()->user()->latestTeam->id);
+                $team->data_analysis_progress = 'not_started';
+                $team->save();
+            });
+    }
 }
