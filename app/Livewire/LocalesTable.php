@@ -53,7 +53,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                         'Ready for use' => 'success',
                         'Not added' => 'danger',
                         'Out of date' => 'danger',
-                    })
+                    }),
             ])
             ->actions([
                 \Filament\Tables\Actions\Action::make('viewOrUpdate')
@@ -84,7 +84,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                             ->body('Translation \'' . $record->languageLabel . '\' successfully selected')
                             ->success()
                             ->send();
-                    })
+                    }),
             ])
             ->emptyStateHeading('No translations available for selection')
             ->emptyStateDescription('')
@@ -143,7 +143,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                                             }),
                                         TextInput::make('description')
                                             ->placeholder('Optional description')
-                                            ->maxLength(255)
+                                            ->maxLength(255),
                                     ])
                                     ->columnSpan(1),
                             ]),
@@ -157,16 +157,15 @@ class LocalesTable extends Component implements HasForms, HasTable
                         $xlsformTemplates = XlsformTemplate::all();
 
                         foreach ($xlsformTemplates as $template) {
-                            XlsformTemplateLanguage::create([
-                                'xlsform_template_id' => $template->id,
+                            $template->xlsformTemplateLanguages()->create([
                                 'language_id' => $data['language_id'],
                                 'locale_id' => $locale->id,
                             ]);
                         }
 
                         return $data;
-                    })
-                ]);
+                    }),
+            ]);
     }
 
     public function render()
