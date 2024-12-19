@@ -14,8 +14,8 @@ $lispIndicatorsUrl = url(LispIndicators::getUrl());
         videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 
-
-<div class="surveyblocks">
+    <div class="container mx-auto xl:px-12 ">
+    <div class="surveyblocks pr-10 h-full py-12">
     <div class="mb-6 p-16">
         <p class="font-bold text-green text-lg pb-4">CUSTOM SURVEY</p>
         <p><b>You are customising the survey for this project only.</b></p>
@@ -41,6 +41,6 @@ $lispIndicatorsUrl = url(LispIndicators::getUrl());
         buttonLabel='Update'
         :url='$lispIndicatorsUrl'
     />
-    </div>
+    </div></div>
 
 </x-filament-panels::page>
