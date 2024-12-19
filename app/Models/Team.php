@@ -57,8 +57,8 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                 $xlsformModule = XlsformModule::create([
                     'form_type' => 'App\Models\Xlsforms\Xlsform',
                     'form_id' => $form->id,
-                    'label' => $owner->name . 'custom module',
-                    'name' => $owner->name . 'custom module',
+                    'label' => $owner->name . ' custom module',
+                    'name' => $owner->name . ' custom module',
                 ]);
 
                 XlsformModuleVersion::create([
