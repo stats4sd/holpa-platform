@@ -22,9 +22,7 @@ use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Programregister;
 //     ->middleware('signed');
 
 // redirect user from root path to app panel login page
-Route::get('/', function () {
-    return redirect('app');
-});
+Route::get('/', \App\Livewire\CoverPage::class)->name('cover-page');
 
 // when user logout from program admin panel, redirect user to app panel login pager
 Route::get('/program/login', function () {

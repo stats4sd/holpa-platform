@@ -12,12 +12,13 @@
 
     <div class="container mx-auto xl:px-12 ">
         <div class="surveyblocks pr-10 h-full py-12">
-            <x-rounded-section
-                heading='Customise place-based questionnaire'
-                description='Adapt units, crops, and other details mentioned in the form to be locally relevant.'
-                buttonLabel='Update'
-                :url='\App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource::getUrl("index")'
-                />
+
+          <x-rounded-section
+              heading='Customise place-based questionnaire'
+              description='Adapt units, crops, and other details mentioned in the form to be locally relevant.'
+              buttonLabel='Update'
+              :url='\App\Filament\App\Pages\DietDiversity::getUrl()'
+              />
 
             <livewire:offline-action
                 heading='Initial Pilot'

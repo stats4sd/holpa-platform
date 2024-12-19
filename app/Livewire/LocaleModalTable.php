@@ -43,7 +43,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
             ->query($this->locale->xlsformTemplateLanguages()->getQuery())
             ->paginated(false)
             ->columns([
-                TextColumn::make('xlsformTemplate.title')->label('Survey'),
+                TextColumn::make('template.title')->label('Survey'),
                 TextColumn::make('status')
                     ->icon(fn(string $state): string => match ($state) {
                         'Ready for use' => 'heroicon-o-check-circle',
@@ -75,7 +75,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->icon('heroicon-m-arrow-down-circle')
                     ->button()
                     ->action(function (XlsformTemplateLanguage $record) {
-                        $template = $record->xlsformTemplate;
+                        $template = $record->template;
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
 
@@ -86,9 +86,9 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->hidden(fn($record) => $record->status === 'Ready for use')
                     ->icon('heroicon-m-arrow-up-circle')
                     ->button()
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {                
+                    ->modalHeading(function (XlsformTemplateLanguage $record) {
                         return 'Upload Completed Translation File for ' . $record->localeLanguageLabel;
-                    })                
+                    })
                     ->form(function (XlsformTemplateLanguage $record) {
                         return [
                             FileUpload::make('translation_file')
@@ -104,32 +104,32 @@ class LocaleModalTable extends Component implements HasForms, HasTable
 
                                         // get the file from $get
                                         $file = collect($get('translation_file'))->first();
-                                
+
                                         // Load the file as an array, getting the first sheet
                                         $rows = Excel::toArray([], $file)[0];
-                                
+
                                         // Get the headers from the first row
                                         $headers = $rows[0];
-                                
+
                                         // Get the indices for 'name' and the languageLabel column
                                         $nameIndex = array_search('name', $headers);
                                         $currentTranslationIndex = array_search($languageLabel, $headers);
-                                
+
                                         // If the languageLabel column is missing in the file, validation fails
                                         if ($currentTranslationIndex === false) {
                                             return $fail('The translations file must contain the translation column"' . $languageLabel . '"');
                                         }
-                                
+
                                         // Remove the header row
                                         array_shift($rows);
-                                
+
                                         // Check for missing translations in the 'languageLabel' column (when 'name' is not null to avoid empty rows)
                                         $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $currentTranslationIndex) {
                                             $name = $row[$nameIndex] ?? null;
                                             $currentTranslation = $row[$currentTranslationIndex] ?? null;
                                             return !empty($name) && (is_null($currentTranslation) || trim($currentTranslation) === '');
                                         });
-                                
+
                                         // If there are missing translations, display an error and prevent the import
                                         if ($invalidRows->isNotEmpty()) {
                                             // Map the invalid rows to display 'name (translation type)'
@@ -137,15 +137,15 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                                                 $name = $row[$nameIndex];
                                                 $translationType = $row[array_search('translation type', $headers)];
 
-                                                return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '') 
-                                                    ? [$name . ' (' . $translationType . ')'] 
+                                                return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '')
+                                                    ? [$name . ' (' . $translationType . ')']
                                                     : []; // Return an empty array if the translation is present
                                             });
-                                        
+
                                             return $fail('The translations file cannot be uploaded as there are missing translations in the "' . $languageLabel . '" column for the following: ' . $invalidNamesWithType->implode(', '));
                                         }
                                         return true;
-                                    },  
+                                    },
                                 ]),
                         ];
                     })
