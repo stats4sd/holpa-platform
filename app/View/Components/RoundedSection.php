@@ -10,10 +10,10 @@ class RoundedSection extends Component
 
 
     public function __construct(
-        public ?string            $heading,
+        public ?string                $heading,
         public string|HtmlString|null $description,
-        public ?string            $buttonLabel,
-        public ?string            $url
+        public ?string                $buttonLabel,
+        public ?string                $url
     )
     {
     }
