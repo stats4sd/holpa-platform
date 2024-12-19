@@ -280,8 +280,8 @@ use App\Filament\App\Pages\DataAnalysis;
                                     </svg>
                                     <span class="ml-1 inline text-xs font-semibold">NOT STARTED</span>
                                 </div>
-                                <a href="{{ url('export') }}" class="buttona">
-                                    EXPORT DATA
+                                <a href="{{ DataAnalysis::getUrl() }}" class="buttona">
+                                    VIEW AND DOWNLOAD DATA
                                 </a>
                             </div>
                         </div>

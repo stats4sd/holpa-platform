@@ -17,6 +17,3 @@ Route::get('/program/login', function () {
 Route::get('/admin/login', function () {
     return redirect('app');
 })->name('filament.admin.auth.login');
-
-// add a route for data export
-Route::get('export', [ExportDataAction::class, 'export']);

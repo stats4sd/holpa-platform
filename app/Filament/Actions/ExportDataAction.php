@@ -14,19 +14,15 @@ class ExportDataAction extends Action
         parent::setUp();
 
         $this->action(function () {
+
             $filePath = $this->exportAll();
             return $this->download($filePath);
         });
     }
 
-    public function export()
-    {
-        $filePath = $this->exportAll();
-        return $this->download($filePath);
-    }
-
     public function exportAll(): string
     {
+
         // $filePath = 'HOLPA-data-export' . '-' . now()->toDateTimeString() . '.xlsx';
         $filePath = 'HOLPA-data-export.xlsx';
         Excel::store(new FarmSurveyDataExport(), $filePath);
