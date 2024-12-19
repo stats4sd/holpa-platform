@@ -1,32 +1,61 @@
 <?php
 
-namespace App\Filament\App\Resources;
+namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use App\Filament\App\Resources\LocationLevelResource\Pages;
-use App\Filament\App\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
-use App\Models\SampleFrame\LocationLevel;
+use Filament\Tables;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 use App\Services\HelperService;
+use Filament\Infolists\Infolist;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
-use Filament\Infolists\Components\TextEntry;
-use Filament\Infolists\Infolist;
 use Filament\Navigation\NavigationItem;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
+use App\Models\SampleFrame\LocationLevel;
 use Illuminate\Contracts\Support\Htmlable;
-use Illuminate\Support\Str;
+use Filament\Infolists\Components\TextEntry;
+use App\Filament\App\Clusters\LocationLevels;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
 
 class LocationLevelResource extends Resource
 {
     protected static ?string $model = LocationLevel::class;
-
-    protected static bool $shouldRegisterNavigation = false;
-
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
+    protected static ?string $cluster = LocationLevels::class;
+
+    public static function getNavigationItems(): array
+    {
+        // make sure the original nav item is only 'active' when the index page is active.
+        $original = collect(parent::getNavigationItems())
+            ->map(function ($item) {
+                return $item->isActiveWhen(fn () => request()->routeIs(static::getRouteBaseName() . '.index'));
+            })->toArray();
+
+        $baseRoute = static::getUrl('index');
+
+        $navItems = LocationLevel::all()
+            ->map(function ($level) use ($baseRoute) {
+                return NavigationItem::make(Str::plural($level->name))
+                    ->url($baseRoute . '/' . $level->slug)
+                    ->isActiveWhen(function () use ($level) {
+                        $isViewRoute = request()->routeIs(static::getRouteBaseName() . '.view');
+                        $isMatchingRecord = request()->route('record') === $level->slug;
+
+                        return $isViewRoute && $isMatchingRecord;
+                    });
+            });
+
+        $farmNavItem = NavigationItem::make('Farms')
+            ->url(FarmResource::getUrl())
+            ->isActiveWhen(fn () => request()->routeIs(FarmResource::getRouteBaseName() . '.index'));
+
+        return array_merge($original, $navItems->toArray(), [$farmNavItem]);
+    }
 
     public static function form(Form $form): Form
     {

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Team;
 use Carbon\Carbon;
+use App\Models\Team;
+use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Facades\Http;
 use Spatie\MediaLibrary\Support\MediaStream;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SurveyMonitoringController extends Controller
 {
@@ -59,26 +60,28 @@ class SurveyMonitoringController extends Controller
 
         // $surveysWithNonConsentingRespondent = $submissions->filter(fn (Submission $submission) => $submission->content['consent_grp']['consent'] === "0")->count();
 
-        // $beneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] !== "-99")->count();
-        // $nonBeneficiaryFarmsSurveyed = $successfulSurveys->filter(fn (Submission $submission) => $submission->content['reg']['farm_id'] === "-99")->count();
+        // TODO: find all farms ID
+        // hardcode temporary for testing
+        $farmsSurveyed = [1, 2];
+
+        // find number of farms that completed household form and fieldwork form
+        $farmsFullySurveyed = Farm::whereIn('id', $farmsSurveyed)->where('household_form_completed', 1)->where('fieldwork_form_completed', 1)->count();
 
 
         // hardcode all figures to 0 for testing temporary
         $successfulSurveys = $submissions;
         $surveysWithoutRespondentPresent = 0;
         $surveysWithNonConsentingRespondent = 0;
-        $beneficiaryFarmsSurveyed = 0;
-        $nonBeneficiaryFarmsSurveyed = 0;
+        $farmsFullySurvey = $farmsFullySurveyed;
 
 
         return [
             'count' => $count,
             'latestSubmissionDate' => (new Carbon($latestSubmission['createdAt']))->format('Y-m-d H:i:s'),
             'successfulSurveys' => $successfulSurveys->count(),
-            'beneficiaryFarmsSurveyed' => $beneficiaryFarmsSurveyed,
-            'nonBeneficiaryFarmsSurveyed' => $nonBeneficiaryFarmsSurveyed,
             'surveysWithoutRespondentPresent' => $surveysWithoutRespondentPresent,
             'surveysWithNonConsentingRespondent' => $surveysWithNonConsentingRespondent,
+            'farmsFullySurvey' => $farmsFullySurvey,
 
         ];
     }

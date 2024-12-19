@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Carbon\Carbon;
 use App\Models\Team;
 use Livewire\Component;
@@ -28,7 +29,7 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
     public Team $team;
 
     protected $listeners = ['refreshTable' => '$refresh'];
-    
+
     public function mount()
     {
         $this->team = auth()->user()->latestTeam;
@@ -49,9 +50,9 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
                     ->color('danger')
                     ->button()
                     ->requiresConfirmation()
-                    ->action(function ($record) {    
+                    ->action(function ($record) {
                         $this->team->locales()->detach($record->id);
-    
+
                         $this->dispatch('refreshTable')->to(LocalesTable::class);
 
                         Notification::make()
@@ -68,8 +69,10 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
     private function getViewActions(): array
     {
         return $this->team->locales->flatMap(function ($locale) {
-            return $locale->xlsformTemplateLanguages->map(function ($templateLanguage) use ($locale) {
-                $template = $templateLanguage->xlsformTemplate;
+            return $locale->xlsformTemplateLanguages
+                ->filter(fn(XlsformTemplateLanguage $templateLanguage) => $templateLanguage->template instanceof XlsformTemplate)
+                ->map(function ($templateLanguage) use ($locale) {
+                $template = $templateLanguage->template;
 
                 return Action::make("view-templatelanguage-{$templateLanguage->id}")
                     ->label("View {$template->title} translations")

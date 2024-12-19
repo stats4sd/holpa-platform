@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Filament\App\Resources\FarmResource\Pages;
+namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Resources\FarmResource;
 use Filament\Resources\Pages\CreateRecord;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
 
 class CreateFarm extends CreateRecord
 {

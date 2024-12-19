@@ -57,16 +57,6 @@ class AppServiceProvider extends ServiceProvider
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
-            fn(): View => view('filament.app.components.place-locations-top-menu'),
-            scopes: [
-                ListChoiceListEntries::class,
-                TimeFrame::class,
-                DietDiversity::class,
-            ]
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes):
             View => view('filament.app.pages.info-panels.survey-dashboard', ['scopes' => $scopes]),
             scopes: SurveyDashboard::class,
