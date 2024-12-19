@@ -20,7 +20,8 @@ class FarmSurveyDataExport implements WithMultipleSheets
     {
         $sheets = [];
 
-        $sheets[] = new DataDictionaryExport();
+        $sheets[] = new DataDictionaryIndicatorExport();
+        $sheets[] = new DataDictionaryDataExport();
         $sheets[] = new CodebookEntryExport();
 
         // $sheets[] = new CalculatedIndicatorExport();

@@ -12,6 +12,7 @@ return new class() extends Migration {
     {
         Schema::create('data_dictionary_entries', function (Blueprint $table) {
             $table->id();
+            $table->boolean('for_indicators')->default(0);
             $table->string('worksheet')->nullable();
             $table->string('variable')->nullable();
             $table->string('theme')->nullable();
