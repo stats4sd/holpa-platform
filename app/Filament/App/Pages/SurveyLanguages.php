@@ -15,6 +15,8 @@ class SurveyLanguages extends Page
 
     protected static ?string $title = 'Context: Survey Languages';
 
+    protected $listeners = ['refreshPage' => '$refresh'];
+    
     public function getBreadcrumbs(): array
     {
         return [
@@ -37,6 +39,8 @@ class SurveyLanguages extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->languages_progress = 'complete';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 
@@ -49,6 +53,8 @@ class SurveyLanguages extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->languages_progress = 'not_started';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 }

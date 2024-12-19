@@ -15,6 +15,8 @@ class PlaceAdaptations extends Page
 
     protected static ?string $title = 'Localisation: Place-based adaptations';
 
+    protected $listeners = ['refreshPage' => '$refresh'];
+    
     public function getBreadcrumbs(): array
     {
         return [
@@ -37,6 +39,8 @@ class PlaceAdaptations extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->pba_progress = 'complete';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 
@@ -49,6 +53,8 @@ class PlaceAdaptations extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->pba_progress = 'not_started';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 }

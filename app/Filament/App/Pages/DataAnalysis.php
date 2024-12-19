@@ -24,6 +24,8 @@ class DataAnalysis extends Page implements HasForms, HasActions
 
     protected static ?string $title = 'Data Analysis';
 
+    protected $listeners = ['refreshPage' => '$refresh'];
+
     public function getBreadcrumbs(): array
     {
         return [
@@ -53,6 +55,8 @@ class DataAnalysis extends Page implements HasForms, HasActions
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->data_analysis_progress = 'complete';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 
@@ -65,6 +69,8 @@ class DataAnalysis extends Page implements HasForms, HasActions
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->data_analysis_progress = 'not_started';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 }

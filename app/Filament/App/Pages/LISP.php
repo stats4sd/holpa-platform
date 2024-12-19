@@ -15,6 +15,8 @@ class Lisp extends Page
 
     protected static ?string $title = 'Localisation: LISP';
 
+    protected $listeners = ['refreshPage' => '$refresh'];
+    
     public function getBreadcrumbs(): array
     {
         return [
@@ -36,6 +38,8 @@ class Lisp extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->lisp_progress = 'complete';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 
@@ -48,6 +52,8 @@ class Lisp extends Page
                 $team = Team::find(auth()->user()->latestTeam->id);
                 $team->lisp_progress = 'not_started';
                 $team->save();
+
+                $this->dispatch('refreshPage');
             });
     }
 }
