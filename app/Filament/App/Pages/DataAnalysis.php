@@ -2,15 +2,16 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Filament\Actions\ExportDataAction;
-use Filament\Actions\Action;
-use Filament\Actions\Concerns\InteractsWithActions;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
+use App\Models\Team;
 use Filament\Pages\Page;
+use Filament\Actions\Action;
 use Filament\Support\Enums\MaxWidth;
+use Filament\Forms\Contracts\HasForms;
+use App\Filament\Actions\ExportDataAction;
+use Filament\Actions\Contracts\HasActions;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Actions\Concerns\InteractsWithActions;
 
 class DataAnalysis extends Page implements HasForms, HasActions
 {
@@ -41,5 +42,17 @@ class DataAnalysis extends Page implements HasForms, HasActions
         return ExportDataAction::make('exportData')
             ->label('Export Data')
             ->extraAttributes(['class' => 'buttona']);
+    }
+
+    public function markCompleteAction(): Action
+    {
+        return Action::make('markComplete')
+            ->label('MARK AS COMPLETE')
+            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
+            ->action(function () {
+                $team = Team::find(auth()->user()->latestTeam->id);
+                $team->data_analysis_progress = 'complete';
+                $team->save();
+            });
     }
 }

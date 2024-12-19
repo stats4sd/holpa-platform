@@ -25,10 +25,10 @@
         </div>
     </div>
 
-    <!-- Footer with option to mark as complete - funcitonality still to come! -->
+    <!-- Footer -->
     <div class="completebar">
         <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
-        <a href="" class="buttona mx-4 inline-block ">Mark as completed</a>
+        {{ $this->markCompleteAction }}
     </div>
 
 </x-filament-panels::page>
