@@ -23,10 +23,10 @@
             @if(isset($actionButton))
                 {{ $actionButton }}
             @else
-            <a href="{{ $url }}"
-               class="buttona ml-4">
-                {{ $buttonLabel }}
-            </a>
+                <a href="{{ $url }}"
+                   class="buttona ml-4">
+                    {{ $buttonLabel }}
+                </a>
             @endif
         </div>
     </div>
