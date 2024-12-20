@@ -10,14 +10,14 @@ class ListLocationLevels extends ListRecords
 {
     protected static string $resource = LocationLevelResource::class;
 
-    protected ?string $heading = 'Sampling Frame';
+    protected ?string $heading = 'Survey Locations';
     protected ?string $subheading = 'Manage hierarchy';
 
     public function getBreadcrumbs(): array
     {
         return [
             \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Sampling',
+            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey Locations',
             static::getUrl() => static::getTitle(),
         ];
     }

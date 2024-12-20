@@ -12,14 +12,14 @@ class ListFarms extends ListRecords
 {
     protected static string $resource = FarmResource::class;
 
-    protected ?string $heading = 'Sampling Frame';
+    protected ?string $heading = 'Survey locations';
     protected ?string $subheading = 'List of farms';
 
     public function getBreadcrumbs(): array
     {
         return [
             \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Sampling',
+            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey locations',
             static::getUrl() => static::getTitle(),
         ];
     }

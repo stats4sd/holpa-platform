@@ -13,7 +13,7 @@ class Sampling extends Page
 
     protected static bool $shouldRegisterNavigation = false;
     
-    protected static ?string $title = 'Sampling';
+    protected static ?string $title = 'Survey Locations';
 
     protected $listeners = ['refreshPage' => '$refresh'];
     
