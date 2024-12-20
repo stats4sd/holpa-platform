@@ -18,7 +18,7 @@ class ViewXlsform extends ViewRecord
 
     public function getHeading(): string|Htmlable
     {
-        return 'Survey Monitoring: ' . $this->record->title;
+        return 'Survey Monitoring';
     }
 
     public function hasCombinedRelationManagerTabsWithContent(): bool

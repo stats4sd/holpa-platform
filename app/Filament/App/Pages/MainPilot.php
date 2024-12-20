@@ -32,7 +32,7 @@ use App\Models\Xlsforms\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
+class MainPilot extends Page implements HasTable, HasInfolists, HasActions
 {
     use InteractsWithTable;
     use InteractsWithForms;
@@ -41,15 +41,15 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string $view = 'filament.app.pages.initial-pilot';
-    protected ?string $heading = "Survey Testing - Initial Pilot";
-    protected ?string $subheading = "Test with local researchers and practioners to review the initial localisations";
+    protected static string $view = 'filament.app.pages.main-pilot';
+    protected ?string $heading = "Survey Testing - Pilot and Enumerator Training";
+    protected ?string $subheading = "Test with enumerators; pilot with real farmers";
 
-        public function getBreadcrumbs(): array
+    public function getBreadcrumbs(): array
     {
         return [
             \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            Pilot::getUrl() => 'Pilot',
             static::getUrl() => static::getTitle(),
         ];
     }

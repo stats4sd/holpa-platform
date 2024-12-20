@@ -3,7 +3,6 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\SubmissionResource\Pages;
-use App\Filament\App\Resources\SubmissionResource\RelationManagers;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -11,7 +10,9 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Http;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class SubmissionResource extends Resource
 {
@@ -42,33 +43,42 @@ class SubmissionResource extends Resource
 
                 // comment below code temporary, customisation is required for HOLPA
 
-                //  Tables\Columns\TextColumn::make('enumerator')
-                //  ->getStateUsing(function ($record) {
-                //      $enumeratorId = $record->content['survey_start']['inquirer_choice'];
-                //      if($enumeratorId === "77") {
-                //          return $record->content['survey_start']['inquirer_text'];
-                //      }
-                //      return Enumerator::firstWhere('name', $record->content['survey_start']['inquirer_choice'])->label ?? '~not found~';
-                //  }),
-                //  Tables\Columns\TextColumn::make('farm_name')
-                //      ->getStateUsing(function ($record) {
-                //          return $record->content['reg']['farm_name'];
-                //      }),
-                //  Tables\Columns\TextColumn::make('respondent_available')
-                //      ->getStateUsing(function ($record) {
-                //          return $record->content['reg']['respondent_check']['respondent_available'];
-                //      }),
-                //  Tables\Columns\TextColumn::make('consent')
-                //      ->getStateUsing(function ($record) {
-                //          return $record->content['consent_grp']['consent'] === "1" ? "Yes" : "No";
-                //      }),
+                Tables\Columns\TextColumn::make('farm_name')
+                    ->getStateUsing(function ($record) {
+                        return $record->content['context']['farm_location']['farm_name'];
+                    }),
+                Tables\Columns\TextColumn::make('consent')
+                    ->getStateUsing(function ($record) {
+                        if (isset($record->content['consent'])) {
+                            return $record->content['consent']['consent_interview'] === "1" ? "Yes" : "No";
+                        } else {
+                            // for fieldwork;
+                            return $record->content['consent_begin_group']['consent_1'] === "1" ? "Yes" : "No";
+                        }
+
+                    }),
             ])
             ->filters([
                 //
             ])
             ->headerActions([])
             ->actions([
-                Tables\Actions\EditAction::make()->label('Edit'),
+                Tables\Actions\Action::make('edit')->label('View/Edit in Enketo')
+                    ->action(function (Submission $record) {
+                        $odkProjectId = $record->xlsformVersion->xlsform->owner->odkProject->id;
+                        $odkXlsformId = $record->xlsformVersion->xlsform->odk_id;
+
+                        $url = config('filament-odk-link.odk.base_endpoint') . "/projects/$odkProjectId/forms/$odkXlsformId/submissions/$record->odk_id/edit";
+
+                        $token = app()->make(OdkLinkService::class)->authenticate();
+
+                        $redirect = Http::withToken($token)
+                            ->get($url)
+                        ->transferStats->getHandlerStat('url');
+
+                        return redirect($redirect);
+
+                    }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

@@ -41,11 +41,11 @@ class SurveyMonitoringController extends Controller
         $householdCount = count($householdResults);
         $fieldworkCount = count($fieldworkResults);
 
-        $latestHouseholdSubmission = collect($householdCount)
+        $latestHouseholdSubmission = collect($householdResults)
             ->sort(fn($submission) => $submission['createdAt'])
             ->last();
 
-        $latestFieldworkSubmission = collect($fieldworkCount)
+        $latestFieldworkSubmission = collect($fieldworkResults)
             ->sort(fn($submission) => $submission['createdAt'])
             ->last();
 
@@ -92,8 +92,10 @@ class SurveyMonitoringController extends Controller
 
 
         return [
-            'count' => $count,
-            'latestSubmissionDate' => (new Carbon($latestSubmission['createdAt']))->format('Y-m-d H:i:s'),
+            'householdCount' => $householdCount,
+            'fieldworkCount' => $fieldworkCount,
+            'latestHouseholdSubmissionDate' => (new Carbon($latestHouseholdSubmission['createdAt']))->format('Y-m-d H:i:s'),
+            'latestFieldworkSubmissionDate' => (new Carbon($latestFieldworkSubmission['createdAt']))->format('Y-m-d H:i:s'),
             'successfulSurveys' => $successfulSurveys->count(),
             'surveysWithoutRespondentPresent' => $surveysWithoutRespondentPresent,
             'surveysWithNonConsentingRespondent' => $surveysWithNonConsentingRespondent,
