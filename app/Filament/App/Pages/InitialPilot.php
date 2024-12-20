@@ -2,11 +2,15 @@
 
 namespace App\Filament\App\Pages;
 
+use App\Filament\App\Resources\SubmissionResource;
 use App\Filament\App\Resources\XlsformResource;
 
 use App\Models\Team;
 use App\Services\HelperService;
 use Awcodes\Shout\Components\Shout;
+use Filament\Actions\Action;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
@@ -28,11 +32,12 @@ use App\Models\Xlsforms\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-class InitialPilot extends Page implements HasTable, HasInfolists
+class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 {
     use InteractsWithTable;
     use InteractsWithForms;
     use InteractsWithInfolists;
+    use InteractsWithActions;
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -63,17 +68,12 @@ class InitialPilot extends Page implements HasTable, HasInfolists
         return HelperService::getSelectedTeam();
     }
 
-    public function infolist(Infolist $infolist): Infolist
+    public function viewSubmissionsAction(): Action
     {
-        $team = HelperService::getSelectedTeam()->load('odkProject.appUsers');
-
-        return $infolist
-            ->state($team->toArray())
-            ->schema([
-                ViewEntry::make('odk_qr_code')
-                    ->view('filament-odk-link::filament.infolists.components.team-qr-code'),
-
-            ]);
+        return Action::make('viewSubmissions')
+            ->color('blue')
+            ->extraAttributes(['class' => 'buttona'])
+            ->url(SubmissionResource::getUrl('index'));
     }
 
 
@@ -117,11 +117,6 @@ class InitialPilot extends Page implements HasTable, HasInfolists
                 //
             ])
             ->actions([
-
-                TableAction::make('show submissions')
-                    ->url(fn(Xlsform $record) => XlsformResource::getUrl('view', ['record' => $record]))
-                    ->label('Show Test Submissions'),
-
                 TableAction::make('update_published_version')
                     //->visible(fn(Xlsform $record) => !$record->has_latest_template)
                     ->label('Deploy Updates')
