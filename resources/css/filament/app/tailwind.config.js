@@ -20,6 +20,7 @@ export default {
             'grey': 'var(--grey)',
             'lightgreen': 'var(--lightgreen)',
             'hyellow': 'var(--hyellow)',
+            'light-orange': 'var(--light-orange)'
           },
           fontFamily: {
             montserrat: ['"Montserrat"', "sans-serif"],

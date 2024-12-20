@@ -14,7 +14,7 @@ class ViewLocationLevel extends ViewRecord
 {
     protected static string $resource = LocationLevelResource::class;
 
-    protected ?string $heading = 'Sampling Frame';
+    protected ?string $heading = 'Survey locations';
 
     public function getSubheading(): string|Htmlable
     {
@@ -25,7 +25,7 @@ class ViewLocationLevel extends ViewRecord
     {
         return [
             \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Sampling',
+            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey locations',
             route('filament.app.location-levels.resources.location-levels.view', [
                 'tenant' => HelperService::getSelectedTeam()->id,
                 'record' => $this->record->slug

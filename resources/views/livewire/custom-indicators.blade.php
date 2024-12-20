@@ -25,7 +25,7 @@
         <div class="text-right mt-6 mb-2 pr-4">
         <button
                 wire:click="$dispatch('switch-to-match-tab', { tab: 'match' })"
-                class="bg-white text-orange px-4 py-2 rounded-full"
+                class="bg-white text-orange px-4 py-2 rounded-full hover:bg-light-orange hover:text-white  duration-200"
             >
                 Review global indicators
             </button>
