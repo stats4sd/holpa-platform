@@ -14,6 +14,7 @@ use Filament\Infolists\Contracts\HasInfolists;
 use Filament\Infolists\Infolist;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables\Actions\Action as TableAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -27,17 +28,30 @@ use App\Models\Xlsforms\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-class TeamOdkView extends Page implements HasTable, HasInfolists
+class InitialPilot extends Page implements HasTable, HasInfolists
 {
     use InteractsWithTable;
     use InteractsWithForms;
     use InteractsWithInfolists;
 
-
-    protected static string $view = 'filament.app.pages.team-odk-view';
-    protected ?string $heading = "ODK Form Management";
-
     protected static bool $shouldRegisterNavigation = false;
+
+    protected static string $view = 'filament.app.pages.initial-pilot';
+    protected ?string $heading = "Survey Testing - Pilot Phase";
+
+        public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
+
+    public function getMaxContentWidth(): MaxWidth
+    {
+        return MaxWidth::Full;
+    }
 
     protected function getHeaderActions(): array
     {
@@ -102,64 +116,24 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
             ->filters([
                 //
             ])
-            ->headerActions([
-               ])
             ->actions([
 
                 TableAction::make('show submissions')
                     ->url(fn(Xlsform $record) => XlsformResource::getUrl('view', ['record' => $record]))
-                    ->label('Show Submissions'),
-
-                // add Publish button
-                TableAction::make('publish')
-                    ->label('Publish')
-                    ->icon('heroicon-m-arrow-up-tray')
-                    ->visible(fn(Xlsform $record) => !$record->is_active)
-                    ->requiresConfirmation()
-                    ->action(function (Xlsform $record) {
-
-                        $odkLinkService = app()->make(OdkLinkService::class);
-
-                        // create draft if there is no draft yet
-                        if (!$record->has_draft) {
-                            $odkLinkService->createDraftForm($record);
-                        }
-
-                        // call API to publish form in ODK central
-                        $odkLinkService->publishForm($record);
-                    }),
+                    ->label('Show Test Submissions'),
 
                 TableAction::make('update_published_version')
                     //->visible(fn(Xlsform $record) => !$record->has_latest_template)
                     ->label('Deploy Updates')
-                   // ->requiresConfirmation()
-                    //->modalDescription('This will update the form to the latest version of the xlsform template uploaded to the platform. Are you sure you want to proceed? (NOTE: if this form is live, you may need to tell your enumerators to re-download the form to get the latest version)')
                     ->action(function (Xlsform $record) {
 
                         $record->syncWithTemplate();
-                        $record->publishForm(app()->make(OdkLinkService::class));
+                        $record->deployDraft(app()->make(OdkLinkService::class));
                         $record->refresh();
 
                         Notification::make('update_success')
                             ->title('Success!')
-                            ->body("The form {$record->title} is now using the latest xlsform uploaded to this platform")
-                            ->color('success')
-                            ->send();
-                    }),
-
-                TableAction::make('update_team_data')
-                    ->label('Publish Latest Lookup Data')
-                    ->requiresConfirmation()
-                    ->modalDescription(new HtmlString('This will publish the latest team data from the platform to be used in the form. Are you sure you want to proceed? <br/><br/><b>NOTE</b>: if this form is live, you may need to tell your enumerators to re-download the form to get the latest version'))
-                    ->visible(fn(Xlsform $record) => !$record->has_latest_media)
-                    ->action(function (Xlsform $record) {
-                        $record->publishForm(app()->make(OdkLinkService::class));
-
-                        $record->refresh();
-
-                        Notification::make('update_success')
-                            ->title('Success!')
-                            ->body("The form {$record->title} now has the latest lookup data entered into the platform by your team.")
+                            ->body("The form {$record->title} has the latest updates and is ready for testing")
                             ->color('success')
                             ->send();
                     }),
@@ -177,22 +151,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                             ->color('success')
                             ->send();
                     }),
-                //
-                //                // add Pull Submissions button
-                //                TableAction::make('export')
-                //                    ->label('Export')
-                //                    ->icon('heroicon-m-document-arrow-down')
-                //                    ->action(function (Xlsform $record) {
-                //                        $odkLinkService = app()->make(OdkLinkService::class);
-                //
-                //                        // call API to export data as excel file
-                //                        // P.S. use return to trigger file download in browser
-                //                        return $odkLinkService->exportAsExcelFile($record);
-                //                    }),
-                //
-                //                ViewAction::make(),
-                //                EditAction::make(),
-                //                DeleteAction::make(),
+
             ])
             ->bulkActions([]);
     }
