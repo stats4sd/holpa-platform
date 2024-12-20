@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\SurveyData\MainSurvey;
+use App\Models\SurveyData\FarmSurveyData;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -11,28 +11,28 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class MainSurveySheetExport implements FromCollection, WithHeadings, WithTitle, WithMapping, WithStrictNullComparison
+class FarmSurveyDataSheetExport implements FromCollection, WithHeadings, WithTitle, WithMapping, WithStrictNullComparison
 {
     public array $mainSurveyFields;
 
     public function __construct()
     {
-        $mainSurveyTable = (new MainSurvey())->getTable();
+        $mainSurveyTable = (new FarmSurveyData())->getTable();
 
         $this->mainSurveyFields = array_diff(DB::getSchemaBuilder()
             ->getColumnListing($mainSurveyTable), [
-                'id',
-                'created_at',
-                'updated_at',
-                'yeswomenhh', // not needed in output
-                'farm_id', // manually added into the start of the output
-                'final_location_id', // manually added into the start of the output
-            ]);
+            'id',
+            'created_at',
+            'updated_at',
+            'yeswomenhh', // not needed in output
+            'farm_id', // manually added into the start of the output
+            'final_location_id', // manually added into the start of the output
+        ]);
     }
 
     public function collection(): Collection
     {
-        return MainSurvey::with([
+        return FarmSurveyData::with([
             'farm',
             'farm.location.locationLevel',
         ])->get();
@@ -42,9 +42,14 @@ class MainSurveySheetExport implements FromCollection, WithHeadings, WithTitle, 
     {
         $data = [
             $row->farm_id,
-            $row->farm->team_code,
-            $row->farm->location->locationLevel->name,
-            $row->farm->location->name,
+
+            // $row->farm->team_code,
+            // $row->farm->location->locationLevel->name,
+            // $row->farm->location->name,
+
+            'farm_team_code',
+            'farm_location_location_level_name',
+            'farm_location_name',
         ];
 
         $mainSurveyData = $row->only($this->mainSurveyFields);
@@ -65,6 +70,6 @@ class MainSurveySheetExport implements FromCollection, WithHeadings, WithTitle, 
 
     public function title(): string
     {
-        return 'Main_Survey';
+        return 'Farm_Survey_Data';
     }
 }

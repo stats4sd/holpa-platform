@@ -2,6 +2,8 @@
 
 namespace App\Models\SampleFrame;
 
+use App\Models\SurveyData\FarmSurveyData;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
@@ -37,5 +39,10 @@ class Farm extends Model
     public function location(): BelongsTo
     {
         return $this->belongsTo(Location::class);
+    }
+
+    public function farmSurveyData(): HasMany
+    {
+        return $this->hasMany(FarmSurveyData::class);
     }
 }

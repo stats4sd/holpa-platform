@@ -2,24 +2,57 @@
 
 namespace App\Models\XlsformTemplates;
 
-use App\Models\Interfaces\WithXlsformFile;
+use App\Models\Team;
 use App\Models\Locale;
 use App\Models\XlsformModule;
+use App\Models\Xlsforms\Xlsform;
+use Illuminate\Support\Collection;
 use App\Models\XlsformModuleVersion;
 use App\Models\XlsformTemplateLanguage;
+use App\Models\Interfaces\WithXlsformFile;
 use App\Services\XlsformTranslationHelper;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Collection;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTemplate;
 
 class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
 {
     use HasRelationships;
+
+    // TODO: I think this overrides the booted method on HasXlsForms - ideally we wouldn't need to copy the package stuff here...
+    protected static function booted(): void
+    {
+
+        // when the model is updated
+        static::updated(function ($item) {
+
+            // when xlsform_template.available change from false to true
+            if ($item->available) {
+                // get all teams
+                $teams = Team::all();
+
+                foreach ($teams as $team) {
+                    // check if team has xlsform for this xlsform_template already
+                    $xlsform = $team->xlsforms->where('xlsform_template_id', $item->id);
+
+                    // if team does not have any xlsform for this xlsform_template, create a xlsform for this team
+                    if (count($xlsform) == 0) {
+
+                        $xlsform = Xlsform::create([
+                            'owner_id' => $team->id,
+                            'owner_type' => Team::class,
+                            'xlsform_template_id' => $item->id,
+                            'title' => $item->title,
+                        ]);
+                    }
+                }
+            }
+        });
+    }
 
     public function xlsformModules(): MorphMany
     {
@@ -88,5 +121,4 @@ class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
             return $templateLanguage;
         });
     }
-
 }
