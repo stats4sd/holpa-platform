@@ -278,3 +278,11 @@ button:disabled:hover {
 .uploadedindicatorstable th button {
 padding-left: 0px ;
 }
+
+.fi-main:has(.fi-resource-list-records-page) {
+    @apply 2xl:max-w-[80%] xl:px-12;
+}
+
+.fi-main .fi-page-sub-navigation-sidebar-ctn {
+    @apply w-60;
+}
