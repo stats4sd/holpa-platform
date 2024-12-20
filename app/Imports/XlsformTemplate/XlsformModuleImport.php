@@ -37,10 +37,9 @@ class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRow
      */
     public function collection(Collection $collection)
     {
-        $collection->each(function ($row) {
+        $collection->filter(fn($row) => isset($row['module']))
+            ->each(function ($row) {
             // make sure xlsformModule exists
-
-
 
             /** @var XlsformModule $module */
             $module = $this->xlsformTemplate->xlsformModules()->firstOrCreate([

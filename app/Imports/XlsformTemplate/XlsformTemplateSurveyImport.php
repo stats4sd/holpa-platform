@@ -62,6 +62,22 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
             $data['name'] = $data['type'] . '_' . $this->getRowNumber();
         }
 
+        // check if this is a custom module import, adjust survey row name
+        if ($xlsformModuleVersion->name === 'custom') { 
+            $form = $xlsformModuleVersion->xlsformModule->form;
+            $team_name = strtolower(str_replace(' ', '_', $form->owner->name));
+            $data['name'] = $team_name . '_' . $xlsformModuleVersion->xlsformModule->id . '_' . $data['name'];
+        }
+
+        // check 'required' is a bool
+        if (isset($data['required'])) {
+            $data['required'] = match (strtolower($data['required'])) {
+                'true', 'yes', '1' => 1,
+                default => 0,
+            };
+
+        }
+
         return new SurveyRow($data->toArray());
 
     }

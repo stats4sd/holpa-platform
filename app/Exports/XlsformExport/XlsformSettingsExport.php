@@ -32,6 +32,7 @@ class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle, 
                 'form_title' => $this->xlsform->title,
                 'version' => Carbon::now()->toDateTimeString(),
                 'instance_name' => '"instance"', // TODO: fix
+                'allow_choice_duplicates' => 'yes'
             ],
         ]);
 
@@ -44,6 +45,7 @@ class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle, 
             'form_title',
             'version',
             'instance_name',
+            'allow_choice_duplicates',
         ];
     }
 

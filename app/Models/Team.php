@@ -2,20 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Locale;
 use App\Models\SampleFrame\Farm;
 use App\Models\Xlsforms\Xlsform;
-use Hoa\Compiler\Llk\Rule\Choice;
+use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\XlsformTemplates\XlsformTemplate;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use Illuminate\Database\Eloquent\Builder;
 use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use App\Models\XlsformTemplates\XlsformTemplate;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -50,7 +48,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
             $owner->locales()->attach($en);
 
-
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
 
@@ -63,6 +60,27 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                     'title' => $xlsformTemplate->title,
                 ]);
             }
+
+            // all teams get a custom module for each ODK form
+            $forms = Xlsform::where('owner_id', $owner->id)->get();
+            foreach ($forms as $form) {
+                $xlsformModule = XlsformModule::create([
+                    'form_type' => 'App\Models\Xlsforms\Xlsform',
+                    'form_id' => $form->id,
+                    'label' => $owner->name . ' custom module',
+                    'name' => $owner->name . ' custom module',
+                ]);
+
+                XlsformModuleVersion::create([
+                    'xlsform_module_id' => $xlsformModule->id,
+                    'name' => 'custom'
+                ]);
+            }
+
+            // manually set the default time_frame
+            $owner->time_frame = 'in the last 12 months';
+            $owner->save();
+
         });
     }
 
@@ -127,10 +145,41 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     }
 
 
+    public function choiceListEntries(): MorphMany
+    {
+        return $this->morphMany(ChoiceListEntry::class, 'owner');
+    }
+
     // Customisations
 
     public function dietDiversityModuleVersion(): BelongsTo
     {
         return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
+    }
+
+    public function getXlsformHhModuleVersionAttribute()
+    {
+        $xlsform_HH = $this->xlsforms()->first(); // Get the first XLSForm belong to this team (hh)
+
+        if ($xlsform_HH) {
+            $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first(); // Get the first module
+            if ($xlsform_HH_custom_module) {
+                return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
+    }
+
+    public function getXlsformFwModuleVersionAttribute()
+    {
+        $xlsform_FW = $this->xlsforms()->skip(1)->first(); // Get the second XLSForm belong to this team (fw)
+
+        if ($xlsform_FW) {
+            $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first(); // Get the first module
+            if ($xlsform_FW_custom_module) {
+                return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
+            }
+        }
+        return null;
     }
 }

@@ -21,9 +21,17 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
-        // ray('SubmissionController.process() starts...');
-
         // application specific business logic goes here
+
+        // find survey start, survey end, survey duration in minutes
+        $surveyStart = Carbon::parse($submission->content['start']);
+        $surveyEnd = Carbon::parse($submission->content['end']);
+        $surveyDuration = $surveyStart->diffInMinutes($surveyEnd);
+
+        $submission->survey_started_at = $surveyStart;
+        $submission->survey_ended_at = $surveyEnd;
+        $submission->survey_duration = $surveyDuration;
+        $submission->save();
 
         // suppose there should be only one farm_survey_data for a submission id
         $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();

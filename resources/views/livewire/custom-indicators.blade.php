@@ -17,16 +17,18 @@
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
                 </svg>
             </div>
-            <div class="flex-1 text-white">
+            <div class="flex-1 text-white pt-4">
                 Please make sure that the below indicators are not covered by any existing indicators in the global survey before proceeding.
                 You can review the 'Match with existing global indicators' page if you are not sure.
             </div>
         </div>
-        <div class="text-right pr-4">
-            <a href="url_to_be_added_here"
-                class="bg-white text-orange px-4 py-2 rounded-full ">
+        <div class="text-right mt-6 mb-2 pr-4">
+        <button
+                wire:click="$dispatch('switch-to-match-tab', { tab: 'match' })"
+                class="bg-white text-orange px-4 py-2 rounded-full"
+            >
                 Review global indicators
-            </a>
+            </button>
         </div>
     </div>
 
@@ -38,24 +40,27 @@
 
    <div class="flex justify-center gap-4 py-8">
         <button wire:click="resetIndicators"
-                class="buttonb">
+            @if ($this->team->localIndicators()->where('is_custom', 1)->doesntExist()) disabled @endif
+            class="buttonb">
             Reset
         </button>
+
+        @php
+            $hasUnassignedCustomIndicators = $this->hasUnassignedCustomIndicators();
+        @endphp
+
         <button wire:click="downloadHouseholdTemplate"
-                class="buttona">
+            @if (!$this->hasCustomIndicatorsWithSurvey('household') || $hasUnassignedCustomIndicators) disabled @endif
+            class="buttona">
             Download Household template
         </button>
 
        <button wire:click="downloadFieldworkTemplate"
-                class="buttona">
+            @if (!$this->hasCustomIndicatorsWithSurvey('fieldwork') || $hasUnassignedCustomIndicators) disabled @endif
+            class="buttona">
             Download Fieldwork Template
         </button>
     </div>
-
-    <!-- Error message -->
-    @error('validation')
-        <div class="text-green text-center mt-2">{{ $message }}</div>
-    @enderror
 
     <div class="pt-8">
         <livewire:upload-custom-indicators />

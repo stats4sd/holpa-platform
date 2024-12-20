@@ -18,11 +18,11 @@ body {
     @apply font-montserrat text-sm ;
 }
 
-body:has(#surveydash), {
+body:has(#surveydash) {
     @apply !bg-gray-100;
 }
 
-body:has(#languages),.actionblock, {
+body:has(#languages),.actionblock {
     h1 {
         @apply font-extrabold text-5xl;
     }
@@ -55,8 +55,9 @@ h3 {
 }
 
 button {
-    @apply font-semibold !text-xs text-white py-2 !px-4 !rounded-full duration-200;
+    @apply font-semibold !text-xs text-white  !rounded-full duration-200;
     text-transform: uppercase ;
+
 }
 .fi-btn {
     @apply rounded-full uppercase ;
@@ -65,7 +66,7 @@ button {
 
 .greensection {
     @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-44 2xl:w-52  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
-}    
+}
 .whitesection {
     @apply bg-white px-4 lg:px-0 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
 }
@@ -74,7 +75,7 @@ button {
 }
 .whiteborderbox {
     @apply border-b lg:border-b-0 lg:border-r border-gray-300 w-full;
-}    
+}
 .whitecard {
 @apply relative min-w-40  lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
 h3 {
@@ -90,7 +91,7 @@ h3 {
     @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }
 .buttona{
-    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 
 }
@@ -99,7 +100,7 @@ h3 {
 }
 
 .buttonb{
-    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 }
 .buttonb:hover {
@@ -141,19 +142,19 @@ h3 {
 }
 .actionblockborder
 {
-    margin-left: 11rem; 
-    margin-right: 5rem; 
-    border-color: #bbbbbb; 
-    margin-top: 2rem; 
+    margin-left: 11rem;
+    margin-right: 5rem;
+    border-color: #bbbbbb;
+    margin-top: 2rem;
     margin-bottom: 2rem;
 }
 .actionblock:last-child .actionblockborder
-{ 
+{
     border-color: white !important;
 
 }
 .completebar {
-    @apply h-16 bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 place-content-center;
+    @apply md:h-16 h-max bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 pt-4;
 }
 
 .tabbuttons {
@@ -180,7 +181,18 @@ h3 {
 .lispboxselected {
     @apply bg-green border-l-4 border-green  text-white;
 }
-
+button:disabled {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
+button:disabled:hover {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
 
 #globalindicators {
     button {
@@ -189,11 +201,15 @@ h3 {
             font-size: 0.75rem !important;
                 }
             }
+
+
     /* div,table,tr,td {
         border-radius: 0%;
         border: none;
         box-shadow: none !important;
     }
+
+
 
 
     thead {
@@ -215,7 +231,7 @@ h3 {
     }
     .fi-ta-group-header>.fi-ta-cell{
         @apply bg-green border-none;
-        
+
     }} */
 }
 /* .fi-ta,div,th,td,table,tbody, tr fi-ta-group-header {
@@ -231,7 +247,7 @@ h3 {
         padding: 0px;
     }
 } */
-.warningbox { 
+.warningbox {
     @apply bg-orange w-3/4 mx-auto rounded-3xl p-6 text-white;
     a {
         text-transform: uppercase;
@@ -240,4 +256,7 @@ h3 {
     a:hover {
         @apply bg-white text-orange;
     }
+}
+.uploadedindicatorstable th button {
+padding-left: 0px ;
 }
