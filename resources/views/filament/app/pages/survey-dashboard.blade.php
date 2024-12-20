@@ -17,11 +17,11 @@ use App\Filament\App\Pages\DataAnalysis;
             <div class="grid xl:grid-cols-12 gap-6 xl:mx-3">
 
                 <!-- Context card -->
-                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden lg:h-72 col-span-12 lg:col-span-7">
+                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden lg:h-72 col-span-12 lg:col-span-6">
                     <div class=" greensection">
                         <img src="/images/context_icon.png" alt="Context Icon" class="w-8 mb-2 ml-8 lg:ml-0">
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
-                            <span class="mt-2 text-center">Context</span>
+                            <span class="mt-2 text-center">Prepare survey</span>
                             <!-- Progress bar -->
                             @if ($team->languages_progress === 'not_started')
                                 <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
@@ -39,7 +39,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         </div>
                     </div>
                     <!-- White Section -->
-                    <div class="whitesection">
+                    <!-- <div class="whitesection">
                         <div class="whiteborderbox">
                             <div class=" whitecard ">
                                 <div class="dashdescdiv">
@@ -50,12 +50,13 @@ use App\Filament\App\Pages\DataAnalysis;
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Survey languages</h3>
-                                <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                <p class="text-gray-600 mb-4">Select the language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template. 
+                                </p>
                             </div>
                             <div class="dashbuttondiv">
                                 @if ($team->languages_progress === 'not_started')
@@ -89,7 +90,7 @@ use App\Filament\App\Pages\DataAnalysis;
                 </div>
 
                 <!-- Sampling card -->
-                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-4 xl:col-span-5 lg:h-72">
+                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-6 lg:h-72">
                     <!-- Green Section -->
                     <div class=" greensection">
                         <img src="/images/sampling_icon.png" alt="Sampling Icon" class="w-8 mb-2 ml-8 lg:ml-0">
@@ -115,8 +116,8 @@ use App\Filament\App\Pages\DataAnalysis;
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
-                                <h3 class="mb-2">Sampling frame</h3>
-                                <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                <h3 class="mb-2">Survey Locations</h3>
+                                <p class="text-gray-600 mb-4">Add the details of the farms you will visit, to allow the enumerators to carry out data collection.</p>
                             </div>
                             <div class="dashbuttondiv">
                                 @if ($team->sampling_progress === 'not_started')
@@ -150,7 +151,7 @@ use App\Filament\App\Pages\DataAnalysis;
                 </div>
 
                 <!-- Localisation card -->
-                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-11 xl:col-span-12 ">
+                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12  ">
                     <!-- Green Section -->
                     <div class=" greensection ">
                         <img src="/images/localisation_icon.png" alt="Localisation Icon" class="w-8 mb-2 ml-8 lg:ml-0">
@@ -178,7 +179,7 @@ use App\Filament\App\Pages\DataAnalysis;
                             <div class=" whitecard ">
                                 <div class="dashdescdiv">
                                     <h3 class="mb-2">Place-based adaptations</h3>
-                                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                    <p class="text-gray-600 mb-4">Customise details for questions and answer options to ensure the survey is relevant and suitable for use in the intended location.</p>
                                 </div>
                                 <div class="dashbuttondiv">
                                     @if ($team->pba_progress === 'not_started')
@@ -215,7 +216,7 @@ use App\Filament\App\Pages\DataAnalysis;
                             <div class=" whitecard ">
                                 <div class="dashdescdiv">
                                     <h3 class="mb-2">Localisation: LISP</h3>
-                                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                    <p class="text-gray-600 mb-4">The local indicator selection process (LISP) involves conducting a workshop with local farmers and stakeholders to brainstorm and prioritise a set of local indicators to include in the HOLPA tool.</p>
                                 </div>
                                 <div class="dashbuttondiv">
                                     @if ($team->lisp_progress === 'not_started')
@@ -251,7 +252,8 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Localisation: Pilot</h3>
-                                <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                <p class="text-gray-600 mb-4">Conduct a pilot run of the survey, both for quality control of the customised HOLPA survey and training of enumerators. 
+                                </p>
                             </div>
                             <div class="dashbuttondiv">
                                 @if ($team->pilot_progress === 'not_started')
@@ -275,13 +277,11 @@ use App\Filament\App\Pages\DataAnalysis;
                             </div>
                         </div>
                     </div>
-                    <div class=" bg-white hidden xl:w-16 2xl:w-1/12 xl:flex">
 
-                    </div>
                 </div>
 
                 <!-- Data collection card -->
-                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-5 lg:h-72">
+                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-6 lg:h-72">
                     <!-- Green Section -->
                     <div class=" greensection">
                         <img src="/images/data_collection_icon.png" alt="Data Collection Icon" class="w-8 mb-2 ml-8 lg:ml-0">
@@ -304,7 +304,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Monitor data collection</h3>
-                                <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                <p class="text-gray-600 mb-4">View and manage the survey and incoming data.</p>
                             </div>
                             <div class="dashbuttondiv">
                                 @if ($team->data_collection_progress === 'not_started')
@@ -339,7 +339,7 @@ use App\Filament\App\Pages\DataAnalysis;
 
 
                 <!-- Data analysis card -->
-                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-5 lg:h-72">
+                <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden col-span-12 lg:col-span-6 lg:h-72">
                     <!-- Green Section -->
                     <div class=" greensection">
                         <img src="/images/data_analysis_icon.png" alt="Data Aanalysis Icon" class="w-8 mb-2 ml-8 lg:ml-0">
@@ -362,7 +362,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Download data</h3>
-                                <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
+                                <p class="text-gray-600 mb-4">Download data to conduct data analysis.</p>
                             </div>
                             <div class="dashbuttondiv">
                                 @if ($team->data_analysis_progress === 'not_started')

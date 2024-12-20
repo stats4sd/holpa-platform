@@ -9,15 +9,19 @@
 <x-filament-panels::page class="h-full">
 
     <livewire:page-header-with-instructions
-        instructions='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo. Morbi tincidunt libero ut nunc scelerisque, eget fringilla nulla volutpat. Aliquam feugiat massa sit amet arcu convallis, et iaculis ligula facilisis. Etiam accumsan magna et ipsum facilisis, at malesuada nulla ornare.'
+        instructions1='To enable enumerators to conduct the survey, and possibly for data analysis later on, you will need to add the details of the farms you will visit, including the details of the different location levels. For example, a farm might be located in a village, which is in a district, which is in a province, so you would need to add the location levels province > district > village. Then you can add or import the full list of locations at each level and of the farms. '
+        instructions2='On the location levels page, you first need to add the names of the different levels. As you add each one, you can indicate if it is a sub-level in the hierarchy (eg a district is within a province), and whether there are farms at that level.
+Once you have added levels, you can select them to view a list of the locations that have been added at that level and add locations by importing them from an excel file. '
+        instructions3='On the Farms page, you can add farms, either manually or by importing a spreadsheet.'
+        instructionsmarkcomplete='you have dded all the location levels, locations, and a full list of the farms where you will conduct the survey.'
         videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 
     <div class="container mx-auto xl:px-12 ">
-        <div class="surveyblocks pr-10 h-full pt-8">
+        <div class="surveyblocks pr-10 pt-8">
 
             <x-rounded-section
-                heading='Manage Hierarchy'
+                heading='Manage location levels'
                 description='Manage the location levels (or other strata) in your sampling frame.'
                 buttonLabel='Update'
                 url='location-levels'

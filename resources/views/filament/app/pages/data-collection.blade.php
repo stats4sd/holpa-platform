@@ -4,25 +4,25 @@
 ?>
 
 <x-filament-panels::page class="h-full">
-
+<div class="hidden">
     <livewire:page-header-with-instructions
         instructions='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis, libero nisi efficitur sapien, non eleifend enim lectus vel leo. Morbi tincidunt libero ut nunc scelerisque, eget fringilla nulla volutpat. Aliquam feugiat massa sit amet arcu convallis, et iaculis ligula facilisis. Etiam accumsan magna et ipsum facilisis, at malesuada nulla ornare.'
         video-url='https://www.youtube.com/embed/VIDEO_ID'
     />
-
+    </div>
     <div class="container mx-auto xl:px-12 ">
-        <div class="surveyblocks pr-10 h-full pt-8">
+        <div class="surveyblocks pr-10  pt-8">
 
             <x-rounded-section
                 heading='View and manage survey'
-                description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
+                description='Manage the ODK survey to be used for data collection'
                 buttonLabel='Update'
                 url='url_to_be_added_here'
             />
 
             <x-rounded-section
                 heading='View and manage submissions'
-                description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.'
+                description='Review and quality-check incoming data'
                 buttonLabel='Update'
                 url='url_to_be_added_here'
             />
