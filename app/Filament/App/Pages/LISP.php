@@ -3,8 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use Filament\Pages\Page;
 use Filament\Actions\Action;
+use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
 class Lisp extends Page
@@ -16,7 +16,7 @@ class Lisp extends Page
     protected static ?string $title = 'Localisation: LISP';
 
     protected $listeners = ['refreshPage' => '$refresh'];
-    
+
     public function getBreadcrumbs(): array
     {
         return [

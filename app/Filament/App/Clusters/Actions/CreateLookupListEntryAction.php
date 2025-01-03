@@ -2,7 +2,7 @@
 
 namespace App\Filament\App\Clusters\Actions;
 
-use App\Models\Locale;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
 use Filament\Actions\CreateAction;

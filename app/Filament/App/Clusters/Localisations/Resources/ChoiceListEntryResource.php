@@ -4,13 +4,13 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
-use App\Models\LanguageStringType;
-use App\Models\Locale;
 use App\Models\Team;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
 use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;

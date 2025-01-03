@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;

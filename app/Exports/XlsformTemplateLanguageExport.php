@@ -2,8 +2,8 @@
 
 namespace App\Exports;
 
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use App\Models\Xlsforms\XlsformTemplate;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithBackgroundColor;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;

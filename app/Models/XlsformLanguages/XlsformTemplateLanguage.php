@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Models\Xlsforms;
+namespace App\Models\XlsformLanguages;
 
-use App\Models\Language;
-use App\Models\Locale;
+use App\Models\Xlsforms\LanguageString;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

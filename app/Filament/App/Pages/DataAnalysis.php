@@ -2,16 +2,15 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Models\Team;
-use Filament\Pages\Page;
-use Filament\Actions\Action;
-use Filament\Support\Enums\MaxWidth;
-use Filament\Forms\Contracts\HasForms;
 use App\Filament\Actions\ExportDataAction;
-use Filament\Actions\Contracts\HasActions;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Filament\Forms\Concerns\InteractsWithForms;
+use App\Models\Team;
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Pages\Page;
+use Filament\Support\Enums\MaxWidth;
 
 class DataAnalysis extends Page implements HasForms, HasActions
 {

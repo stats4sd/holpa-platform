@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformLanguages;
 
 use App\Models\Xlsforms\LanguageString;
 use Illuminate\Database\Eloquent\Model;

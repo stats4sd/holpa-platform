@@ -8,8 +8,8 @@ use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationM
 use App\Models\Team;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\UsersRelationManager;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
+use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\UsersRelationManager;
 
 class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource
 {

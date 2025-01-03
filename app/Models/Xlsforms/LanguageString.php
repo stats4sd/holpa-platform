@@ -2,8 +2,9 @@
 
 namespace App\Models\Xlsforms;
 
-use App\Models\Language;
-use App\Models\LanguageStringType;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\XlsformLanguages;
 
-use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

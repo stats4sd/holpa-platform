@@ -4,8 +4,8 @@ namespace App\Livewire;
 
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
-use App\Models\Locale;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Carbon\Carbon;
 use Closure;
 use Filament\Forms\Components\FileUpload;

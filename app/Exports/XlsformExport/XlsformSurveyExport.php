@@ -2,8 +2,8 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\Language;
 use App\Models\Team;
+use App\Models\XlsformLanguages\Language;
 use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;

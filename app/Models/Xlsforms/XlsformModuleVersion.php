@@ -3,8 +3,9 @@
 namespace App\Models\Xlsforms;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\Locale;
 use App\Models\Team;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;

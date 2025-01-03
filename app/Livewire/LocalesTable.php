@@ -2,9 +2,9 @@
 
 namespace App\Livewire;
 
-use App\Models\Language;
-use App\Models\Locale;
 use App\Models\Team;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Forms\Components\Button;
 use Filament\Forms\Components\Grid;

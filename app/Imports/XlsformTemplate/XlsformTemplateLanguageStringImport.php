@@ -3,11 +3,11 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\LanguageStringType;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\SurveyRow;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;

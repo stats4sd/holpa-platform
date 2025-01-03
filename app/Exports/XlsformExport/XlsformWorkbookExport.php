@@ -2,9 +2,9 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\LanguageStringType;
-use App\Models\Locale;
 use App\Models\Team;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\Xlsform;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;

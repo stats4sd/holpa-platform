@@ -2,10 +2,10 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\Language;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;

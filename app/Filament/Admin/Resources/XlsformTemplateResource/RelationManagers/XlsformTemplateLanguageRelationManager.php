@@ -4,9 +4,9 @@ namespace App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
-use App\Models\Language;
-use App\Models\Locale;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Carbon\Carbon;
 use Closure;
 use Filament\Forms;

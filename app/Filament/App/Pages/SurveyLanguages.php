@@ -3,8 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use Filament\Pages\Page;
 use Filament\Actions\Action;
+use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
 class SurveyLanguages extends Page
@@ -16,7 +16,7 @@ class SurveyLanguages extends Page
     protected static ?string $title = 'Context: Survey Languages';
 
     protected $listeners = ['refreshPage' => '$refresh'];
-    
+
     public function getBreadcrumbs(): array
     {
         return [

@@ -2,8 +2,8 @@
 
 namespace App\Imports;
 
-use App\Models\LanguageStringType;
-use App\Models\Xlsforms\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Row;
