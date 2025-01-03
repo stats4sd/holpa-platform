@@ -6,8 +6,7 @@ use App\Imports\XlsformTemplate\XlsformTemplateHeadingRowImport;
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Language;
 use App\Models\LanguageStringType;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Illuminate\Support\Collection;
 
 class XlsformTranslationHelper

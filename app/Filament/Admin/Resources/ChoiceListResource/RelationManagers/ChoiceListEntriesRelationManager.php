@@ -2,11 +2,10 @@
 
 namespace App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 
-use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Models\LanguageStringType;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
@@ -16,8 +15,6 @@ use Filament\Forms\Get;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ChoiceListEntriesRelationManager extends RelationManager
 {

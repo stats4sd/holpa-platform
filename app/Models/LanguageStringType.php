@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\XlsformTemplates\LanguageString;
+use App\Models\Xlsforms\LanguageString;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 

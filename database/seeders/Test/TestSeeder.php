@@ -2,14 +2,12 @@
 
 namespace Database\Seeders\Test;
 
+use App\Models\Holpa\GlobalIndicator;
+use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
 use App\Models\User;
-use App\Models\LocalIndicator;
-use App\Models\GlobalIndicator;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Role;
 use Stats4sd\FilamentTeamManagement\Models\Program;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class TestSeeder extends Seeder
 {

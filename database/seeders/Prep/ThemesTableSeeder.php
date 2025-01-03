@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Prep;
 
-use App\Models\Theme;
+use App\Models\Holpa\Theme;
 use Illuminate\Database\Seeder;
 
 class ThemesTableSeeder extends Seeder

@@ -3,8 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\HelperService;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;

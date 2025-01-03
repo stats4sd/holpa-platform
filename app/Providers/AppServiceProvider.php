@@ -50,6 +50,14 @@ class AppServiceProvider extends ServiceProvider
         });
 
         $this->registerPageSpecificHooks();
+
+        // Enable migrations in subfolders
+        $migrationsPath = database_path('migrations');
+        $directories = glob($migrationsPath.'/*', GLOB_ONLYDIR);
+        $paths = array_merge([$migrationsPath], $directories);
+
+        $this->loadMigrationsFrom($paths);
+
     }
 
     public function registerPageSpecificHooks(): void

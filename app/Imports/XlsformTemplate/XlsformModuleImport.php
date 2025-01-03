@@ -2,18 +2,14 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\XlsformModule;
-use App\Models\XlsformTemplates\XlsformTemplate;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Xlsforms\XlsformModule;
+use App\Models\Xlsforms\XlsformTemplate;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use Maatwebsite\Excel\Concerns\WithUpserts;
 
 class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRows, WithMultipleSheets
 {

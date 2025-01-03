@@ -1,11 +1,10 @@
 <?php
 
 use App\Listeners\HandleXlsformTemplateAdded;
-use App\Models\XlsformTemplates\LanguageString;
 
 test('an xlsform template is correctly imported and updated', function () {
 
-    $this->xlsformTemplate = \App\Models\XlsformTemplates\XlsformTemplate::forceCreateQuietly([
+    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 
@@ -20,7 +19,7 @@ test('an xlsform template is correctly imported and updated', function () {
 
 
     // check for a specific entry
-    $choiceEntry = \App\Models\XlsformTemplates\ChoiceListEntry::firstWhere('name', '=', 'juice');
+    $choiceEntry = \App\Models\Xlsforms\ChoiceListEntry::firstWhere('name', '=', 'juice');
 
     $this->assertEquals('5', $choiceEntry->properties['filter2']);
 
@@ -48,7 +47,7 @@ test('an xlsform template is correctly imported and updated', function () {
 test('a language not in the xlsform template import is marked as needing an update', function () {
 
 
-    $this->xlsformTemplate = \App\Models\XlsformTemplates\XlsformTemplate::forceCreateQuietly([
+    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 

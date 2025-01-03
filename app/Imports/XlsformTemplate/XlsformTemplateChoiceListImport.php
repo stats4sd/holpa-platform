@@ -3,10 +3,8 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\ChoiceList;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;

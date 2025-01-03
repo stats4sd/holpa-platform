@@ -3,9 +3,9 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Models\Xlsforms\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -63,7 +63,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
         }
 
         // check if this is a custom module import, adjust survey row name
-        if ($xlsformModuleVersion->name === 'custom') { 
+        if ($xlsformModuleVersion->name === 'custom') {
             $form = $xlsformModuleVersion->xlsformModule->form;
             $team_name = strtolower(str_replace(' ', '_', $form->owner->name));
             $data['name'] = $team_name . '_' . $xlsformModuleVersion->xlsformModule->id . '_' . $data['name'];

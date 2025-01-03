@@ -2,11 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Locale;
-use App\Models\XlsformTemplateLanguage;
+use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Language extends Model
 {

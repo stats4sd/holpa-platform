@@ -3,8 +3,7 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\HelperService;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -15,7 +14,6 @@ use Filament\Pages\Page;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 
 class DietDiversity extends Page implements HasForms, HasTable

@@ -2,14 +2,11 @@
 
 namespace App\Models;
 
-use App\Models\Team;
-use App\Models\Language;
-use App\Models\XlsformTemplateLanguage;
+use App\Models\Xlsforms\XlsformTemplateLanguage;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Locale extends Model
 {

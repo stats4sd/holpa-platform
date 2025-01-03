@@ -3,12 +3,11 @@
 namespace App\Filament\App\Clusters\Actions;
 
 use App\Models\Locale;
-use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
 use Filament\Actions\CreateAction;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class CreateLookupListEntryAction extends CreateAction
