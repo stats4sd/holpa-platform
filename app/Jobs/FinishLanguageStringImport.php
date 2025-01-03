@@ -35,7 +35,7 @@ class FinishLanguageStringImport implements ShouldQueue
                 ->update(['updated_during_import' => false]);
 
             $this->xlsformModuleVersion
-                ->choiceListEntryStrings()
+                ->choiceListEntryLanguageStrings()
                 ->where('language_string_type_id', $languageStringType->id)
                 ->where('locale_id', $language->defaultLocale->id)
                 ->update(['updated_during_import' => false]);

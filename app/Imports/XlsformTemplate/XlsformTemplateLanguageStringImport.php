@@ -156,7 +156,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
         $toDelete = $this->xlsformModuleVersion
-            ->choiceListEntryStrings()
+            ->choiceListEntryLanguageStrings()
             ->where('language_string_type_id', $this->languageStringType->id)
             ->where('locale_id', $this->language->defaultLocale->id)
             ->where('linked_entry_type', $type)

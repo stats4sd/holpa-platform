@@ -98,7 +98,7 @@ class XlsformModuleVersion extends Model implements HasMedia
             ->where('language_strings.linked_entry_type', SurveyRow::class);
     }
 
-    public function choiceListEntryStrings(): HasManyDeep
+    public function choiceListEntryLanguageStrings(): HasManyDeep
     {
         return $this->hasManyDeep(
             LanguageString::class,
