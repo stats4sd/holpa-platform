@@ -4,21 +4,27 @@ namespace App\Models\Xlsforms;
 
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Team;
+use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Services\XlsformTranslationHelper;
+use Illuminate\Console\View\Components\Choice;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class XlsformModuleVersion extends Model implements HasMedia, WithXlsformFile
+class XlsformModuleVersion extends Model implements HasMedia
 {
+    use HasRelationships;
+
     protected $table = 'xlsform_module_versions';
 
     protected $casts = [
@@ -58,31 +64,47 @@ class XlsformModuleVersion extends Model implements HasMedia, WithXlsformFile
         );
     }
 
-    public function surveyRows(): MorphMany
+    public function surveyRows(): HasMany
     {
-        return $this->morphMany(SurveyRow::class, 'template');
+        return $this->hasMany(SurveyRow::class);
     }
 
-    public function choiceLists(): MorphMany
+    public function choiceLists(): HasMany
     {
-        return $this->morphMany(ChoiceList::class, 'template');
+        return $this->hasMany(ChoiceList::class);
     }
 
     public function choiceListEntries(): HasManyThrough
     {
-        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class, 'template_id', 'choice_list_id', 'id', 'id')
-            ->where('choice_lists.template_type',static::class);
+        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class, 'xlsform_module_version_id', 'choice_list_id', 'id', 'id');
     }
 
-    public function xlsformTemplateLanguages(): MorphMany
+    public function locales(): BelongsToMany
     {
-        return $this->morphMany(XlsformTemplateLanguage::class, 'template');
+        return $this->belongsToMany(Locale::class, 'xlsform_module_locale', 'xlsform_module_version_id', 'locale_id')
+            ->using(XlsformModuleVersionLocale::class)
+            ->withPivot(['needs_update','has_language_strings']);
     }
 
-    public function languageStrings(): HasManyThrough
+    public function xlsformTemplateLanguages(): HasMany
     {
-        return $this->hasManyThrough(LanguageString::class, XlsformTemplateLanguage::class, 'template_id', 'xlsform_template_language_id', 'id', 'id')
-            ->where('xlsform_template_languages.template_type', static::class);
+        return $this->hasMany(XlsformModuleVersionLocale::class);
+    }
+
+    // Split up language strings into 2 relationships
+    public function surveyLanguageStrings(): HasManyThrough
+    {
+        return $this->hasManyThrough(LanguageString::class, SurveyRow::class, 'xlsform_module_version_id', 'linked_entry_id', 'id', 'id')
+            ->where('language_strings.linked_entry_type', SurveyRow::class);
+    }
+
+    public function choiceListEntryStrings(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            LanguageString::class,
+            [ChoiceList::class, ChoiceListEntry::class],
+            ['xlsform_module_version_id', 'choice_list_id', ['linked_entry_type', 'linked_entry_id']],
+        );
     }
 
     // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded

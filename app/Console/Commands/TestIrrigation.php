@@ -35,28 +35,16 @@ class TestIrrigation extends Command
             $irrigationResult['irrigation_percentage_month_' . $i] = 0;
         }
 
-        ray('*** initialisation ***');
-        ray($irrigationResult);
-
 
         // get irrigation data from submission JSON content
         $submission = Submission::first();
 
         $irrigations = $submission->content['survey']['income']['water']['irrigation_season_repeat'];
 
-        ray('*** irrigation data ***');
-        ray($irrigations);
-
         // handle irrigation repeat groups one by one, overwrite percentage for a month if it has higher percentage
         foreach ($irrigations as $irrigation) {
             $irrigationResult = $this->prepareIrrigationData($irrigationResult, $irrigation);
-
-            ray('*** handling repeat group ***');
-            ray($irrigationResult);
         }
-
-        ray('*** finalised irrigation result ***');
-        ray($irrigationResult);
 
         $this->info('end');
     }
@@ -68,7 +56,6 @@ class TestIrrigation extends Command
 
         // do nothing if irrigation_percentage is null or "null"
         if ($irrigationPercentage == null || $irrigationPercentage == "null") {
-            ray('irrigation_percentage is null, do nothing');
             return $irrigationResult;
         }
 

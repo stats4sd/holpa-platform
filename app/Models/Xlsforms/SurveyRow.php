@@ -5,6 +5,7 @@ namespace App\Models\Xlsforms;
 use App\Models\Interfaces\HasLanguageStrings;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
@@ -22,9 +23,9 @@ class SurveyRow extends Model implements HasLanguageStrings
         'updated_during_import' => 'boolean',
     ];
 
-    public function template(): MorphTo
+    public function xlsformModuleVersion(): BelongsTo
     {
-        return $this->morphTo('template');
+        return $this->belongsTo(XlsformModuleVersion::class);
     }
 
     public function languageStrings(): MorphMany

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('survey_rows', function (Blueprint $table) {
             $table->id();
-            $table->morphs('template');
+            $table->foreignId('xlsform_module_version_id')->constrained('xlsform_module_versions')->cascadeOnDelete()->cascadeOnUpdate();
             $table->bigInteger('row_number')->nullable();
             $table->string('name');
 
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->unique(['template_id', 'template_type', 'name', 'type'], 'unique_survey_rows');
+            $table->unique(['xlsform_module_version_id', 'name', 'type'], 'unique_survey_rows');
         });
     }
 

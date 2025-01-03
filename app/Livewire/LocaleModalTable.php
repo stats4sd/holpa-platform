@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use Carbon\Carbon;
 use Closure;
 use Filament\Forms\Components\FileUpload;
@@ -61,7 +61,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->visible(fn($record) => $record->status === 'Ready for use')
                     ->icon('heroicon-m-arrow-down-circle')
                     ->button()
-                    ->action(function (XlsformTemplateLanguage $record) {
+                    ->action(function (XlsformModuleVersionLocale $record) {
                         $template = $record->template;
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
@@ -73,7 +73,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->hidden(fn($record) => $record->status === 'Ready for use')
                     ->icon('heroicon-m-arrow-down-circle')
                     ->button()
-                    ->action(function (XlsformTemplateLanguage $record) {
+                    ->action(function (XlsformModuleVersionLocale $record) {
                         $template = $record->template;
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
@@ -85,10 +85,10 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->hidden(fn($record) => $record->status === 'Ready for use')
                     ->icon('heroicon-m-arrow-up-circle')
                     ->button()
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {
+                    ->modalHeading(function (XlsformModuleVersionLocale $record) {
                         return 'Upload Completed Translation File for ' . $record->localeLanguageLabel;
                     })
-                    ->form(function (XlsformTemplateLanguage $record) {
+                    ->form(function (XlsformModuleVersionLocale $record) {
                         return [
                             FileUpload::make('translation_file')
                                 ->label('Translation File')
@@ -148,7 +148,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                                 ]),
                         ];
                     })
-                    ->action(function (array $data, $livewire, XlsformTemplateLanguage $record) {
+                    ->action(function (array $data, $livewire, XlsformModuleVersionLocale $record) {
                         // Get the translation file
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);

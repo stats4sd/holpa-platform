@@ -4,6 +4,7 @@ namespace App\Models\Xlsforms;
 
 use App\Models\Traits\IsLookupList;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
@@ -22,9 +23,9 @@ class ChoiceList extends Model
         return $this->hasMany(ChoiceListEntry::class);
     }
 
-    public function template(): MorphTo
+    public function xlsformModuleVersion(): BelongsTo
     {
-        return $this->morphTo();
+        return $this->belongsTo(XlsformModuleVersion::class);
     }
 
 }

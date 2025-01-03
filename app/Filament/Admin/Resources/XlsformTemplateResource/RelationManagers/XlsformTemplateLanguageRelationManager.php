@@ -6,7 +6,7 @@ use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use Carbon\Carbon;
 use Closure;
 use Filament\Forms;
@@ -62,7 +62,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
             ->heading('Languages')
             ->columns([
                 Tables\Columns\TextColumn::make('language.name')
-                    ->formatStateUsing(function ($state, XlsformTemplateLanguage $xlsform_template_language) {
+                    ->formatStateUsing(function ($state, XlsformModuleVersionLocale $xlsform_template_language) {
                         return $xlsform_template_language->language->name . ' (' . $xlsform_template_language->language->iso_alpha2 . ')';
                     }),
                 Tables\Columns\TextColumn::make('locale.description')
@@ -78,7 +78,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 Tables\Actions\Action::make('download_translation')
                     ->label('Download translation file')
                     ->icon('heroicon-m-arrow-down-circle')
-                    ->action(function (XlsformTemplateLanguage $record) {
+                    ->action(function (XlsformModuleVersionLocale $record) {
                         $template = $this->ownerRecord;
                         $templateTitle = $this->ownerRecord->title;
                         $currentDate = Carbon::now()->format('Y-m-d');
@@ -90,10 +90,10 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                 Tables\Actions\Action::make('upload_translation')
                     ->label('Upload translation file')
                     ->icon('heroicon-m-arrow-up-circle')
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {
+                    ->modalHeading(function (XlsformModuleVersionLocale $record) {
                         return 'Upload Completed Translation File for ' . $record->localeLanguageLabel;
                     })
-                    ->form(function (XlsformTemplateLanguage $record) {
+                    ->form(function (XlsformModuleVersionLocale $record) {
                         return [
                             Forms\Components\FileUpload::make('translation_file')
                                 ->label('Translation File')
@@ -153,7 +153,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                 ]),
                         ];
                     })
-                    ->action(function (array $data, $livewire, XlsformTemplateLanguage $record) {
+                    ->action(function (array $data, $livewire, XlsformModuleVersionLocale $record) {
                         // Get the translation file
                         $uploadedFile = $data['translation_file'];
                         $file = Storage::path($uploadedFile);
@@ -170,7 +170,7 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                     }),
 
                 Tables\Actions\EditAction::make()
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {
+                    ->modalHeading(function (XlsformModuleVersionLocale $record) {
                         return 'Edit xlsform template language ' . $record->localeLanguageLabel;
                     }),
             ])

@@ -5,6 +5,7 @@ namespace App\Imports\XlsformTemplate;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformTemplate;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
@@ -24,7 +25,6 @@ class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRow
     {
         return [
             'survey' => $this,
-            'choices' => $this, // for now, choice lists from the global surveys are all linked to 'introduction'.
         ];
     }
 
@@ -33,8 +33,21 @@ class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRow
      */
     public function collection(Collection $collection)
     {
-        $collection->filter(fn($row) => isset($row['module']))
+        // for any rows that do not have a module set... add them to a 'default' module
+        // (this also handles the case where the xlsform file does not have a module column)
+        $collection = $collection
+            ->map(function ($row) {
+                if(!isset($row['module'])) {
+                    $row['module'] = Str::slug($this->xlsformTemplate->title) . '_main';
+                }
+
+                return $row;
+            });
+
+        // now all entries have a module, process them:
+        $collection
             ->each(function ($row) {
+
             // make sure xlsformModule exists
 
             /** @var XlsformModule $module */

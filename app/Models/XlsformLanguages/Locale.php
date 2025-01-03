@@ -3,6 +3,7 @@
 namespace App\Models\XlsformLanguages;
 
 use App\Models\Team;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -11,6 +12,11 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Locale extends Model
 {
 
+    protected $casts = [
+        'is_default' => 'boolean'
+    ];
+
+
     public function language(): BelongsTo
     {
         return $this->belongsTo(Language::class);
@@ -18,7 +24,14 @@ class Locale extends Model
 
     public function xlsformTemplateLanguages(): HasMany
     {
-        return $this->hasMany(XlsformTemplateLanguage::class);
+        return $this->hasMany(XlsformModuleVersionLocale::class);
+    }
+
+    public function xlsformModuleVersions(): BelongsToMany
+    {
+        return $this->belongsToMany(XlsformModuleVersion::class, 'xlsform_module_version_locale', 'locale_id', 'xlsform_module_version_id')
+            ->using(XlsformModuleVersionLocale::class)
+            ->withPivot(['has_language_strings', 'needs_update']);
     }
 
     public function teams(): BelongsToMany
@@ -26,7 +39,7 @@ class Locale extends Model
         return $this->belongsToMany(Team::class, 'locale_team', 'locale_id', 'team_id');
     }
 
-    public function getLanguageLabelAttribute()
+    public function getLanguageLabelAttribute(): string
     {
         $language = $this->language->name;
         $isoAlpha2 = $this->language->iso_alpha2;
@@ -35,7 +48,7 @@ class Locale extends Model
         return $language . ' (' . $isoAlpha2 . ')' . $description;
     }
 
-    public function getStatusAttribute()
+    public function getStatusAttribute(): string
     {
         $statuses = $this->xlsformTemplateLanguages->pluck('status');
 
@@ -52,7 +65,7 @@ class Locale extends Model
         }
     }
 
-    public function getOdkLabelAttribute()
+    public function getOdkLabelAttribute(): string
     {
         return $this->language->name . ' (' . $this->language->iso_alpha2 . ')';
     }

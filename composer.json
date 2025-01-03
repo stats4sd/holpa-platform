@@ -40,6 +40,7 @@
         "orangehill/iseed": "^3.0",
         "pestphp/pest-plugin-laravel": "^3.0",
         "pestphp/pest-plugin-livewire": "^3.0",
+        "rector/rector": "^2.0",
         "spatie/laravel-ray": "^1.37"
     },
     "autoload": {

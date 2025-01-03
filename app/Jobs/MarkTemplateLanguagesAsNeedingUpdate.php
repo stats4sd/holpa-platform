@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Collection;
@@ -36,8 +36,8 @@ class MarkTemplateLanguagesAsNeedingUpdate implements ShouldQueue
         $this->xlsformTemplate
             ->xlsformTemplateLanguages()
             ->get()
-            ->filter(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => $this->importedTemplateLanguages->doesntContain('id', $xlsformTemplateLanguage->id))
-            ->each(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => $xlsformTemplateLanguage->update(['needs_update' => true]));
+            ->filter(fn(XlsformModuleVersionLocale $xlsformTemplateLanguage) => $this->importedTemplateLanguages->doesntContain('id', $xlsformTemplateLanguage->id))
+            ->each(fn(XlsformModuleVersionLocale $xlsformTemplateLanguage) => $xlsformTemplateLanguage->update(['needs_update' => true]));
 
     }
 }

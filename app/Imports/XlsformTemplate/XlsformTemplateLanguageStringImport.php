@@ -3,11 +3,13 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
@@ -28,23 +30,19 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
     use Importable;
 
     public XlsformTranslationHelper $xlsformTranslationHelper;
-    public XlsformTemplateLanguage $xlsformTemplateLanguage;
+    public Language $language;
     public LanguageStringType $languageStringType;
     public ?string $class;
     public ?string $relationship;
 
-    public function __construct(public WithXlsformFile $xlsformTemplate, public string $heading, public string $sheet)
+    public function __construct(public XlsformModuleVersion $xlsformModuleVersion, public string $heading, public string $sheet)
     {
 
         // init translation helper and get needed props from the provided heading;
         $this->xlsformTranslationHelper = new XlsformTranslationHelper();
-        $language = $this->xlsformTranslationHelper->getLanguageFromColumnHeader($this->heading);
-        $this->languageStringType = $this->xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading);
+        $this->language = $this->xlsformTranslationHelper->getLanguageFromColumnHeader($this->heading);
 
-        $this->xlsformTemplateLanguage = $this->xlsformTemplate->xlsformTemplateLanguages()
-            ->where('language_id', $language->id)
-            ->whereHas('locale', fn(Builder $query) => $query->where('description', null))
-            ->first();
+        $this->languageStringType = $this->xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading);
 
         $this->relationship = match ($sheet) {
             'survey' => 'surveyRows',
@@ -80,7 +78,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
     public function uniqueBy(): array
     {
-        return ['xlsform_template_language_id', 'linked_entry_id', 'linked_entry_type', 'language_string_type_id'];
+        return ['locale_id', 'linked_entry_id', 'linked_entry_type', 'language_string_type_id'];
     }
 
 
@@ -91,7 +89,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         $class = $this->class;
         $relationship = $this->relationship;
 
-        $items = $this->xlsformTemplate->$relationship
+        $items = $this->xlsformModuleVersion->$relationship
             ->filter(fn($item) => (string)$item->name === (string)$row['name']);
 
         // filter survey row entries by type as well as name
@@ -134,7 +132,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         return new LanguageString([
             'linked_entry_id' => $item->id,
             'linked_entry_type' => $this->class,
-            'xlsform_template_language_id' => $this->xlsformTemplateLanguage->id,
+            'locale_id' => $this->language->defaultLocale->id,
             'language_string_type_id' => $this->languageStringType->id,
             'text' => $row[$this->heading],
             'updated_during_import' => true,
@@ -149,8 +147,7 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
 
     public function afterImport(AfterImport $event): void
     {
-        $languageStringTypeId = $this->xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading)->id;
-        $templateLanguageId = $this->xlsformTranslationHelper->getDefaultLanguageTemplateFromColumnHeaderAndTemplate($this->xlsformTemplate, $this->heading)->id;
+
         $type = match ($this->sheet) {
             'survey' => SurveyRow::class,
             'choices' => ChoiceListEntry::class,
@@ -158,19 +155,30 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
         };
 
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
-        $toDelete = $this->xlsformTemplate
-            ->languageStrings()
-            ->where('language_string_type_id', $languageStringTypeId)
-            ->where('xlsform_template_language_id', $templateLanguageId)
+        $toDelete = $this->xlsformModuleVersion
+            ->choiceListEntryStrings()
+            ->where('language_string_type_id', $this->languageStringType->id)
+            ->where('locale_id', $this->language->defaultLocale->id)
             ->where('linked_entry_type', $type)
-            ->where('updated_during_import', false)
+            ->where('language_strings.updated_during_import', false)
             // don't delete items linked to customised entries, as the xlsformtemplate should never touch customised team entries.
             ->whereHasMorph('linkedEntry', ChoiceListEntry::class, function (Builder $query) {
                 $query->where('owner_id', null);
             })
             ->get();
 
+        $toDeleteToo = $this->xlsformModuleVersion
+            ->surveyLanguageStrings()
+            ->where('language_string_type_id', $this->languageStringType->id)
+            ->where('locale_id', $this->language->defaultLocale->id)
+            ->where('linked_entry_type', $type)
+            ->where('language_strings.updated_during_import', false)
+            ->whereHasMorph('linkedEntry', SurveyRow::class, function (Builder $query) {
+                $query->where('owner_id', null);
+            });
+
         $toDelete->each(fn(LanguageString $languageString) => $languageString->delete());
+        $toDeleteToo->each(fn(LanguageString $languageString) => $languageString->delete());
 
 
     }

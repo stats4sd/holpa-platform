@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('language_strings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('xlsform_template_language_id')->constrained('xlsform_template_languages')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('locale_id')->constrained('locales')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('language_string_type_id')->constrained('language_string_types')->cascadeOnDelete()->cascadeOnUpdate();
             $table->morphs('linked_entry');
             $table->text('text');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean('updated_during_import')->default(false); // used to track if the row was updated during import of a new version of the XlsformTemplate file;
             $table->timestamps();
 
-            $table->unique(['xlsform_template_language_id', 'linked_entry_id', 'linked_entry_type', 'language_string_type_id'], 'unique_language_string');
+            $table->unique(['locale_id', 'linked_entry_id', 'linked_entry_type', 'language_string_type_id'], 'unique_language_string');
         });
     }
 

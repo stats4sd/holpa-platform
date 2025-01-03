@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 
 use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use Filament\Forms;
@@ -49,7 +49,7 @@ class ChoiceListEntriesRelationManager extends RelationManager
                                 return $state;
                             }
 
-                            return $xlsformTemplateLanguages->map(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => [
+                            return $xlsformTemplateLanguages->map(fn(XlsformModuleVersionLocale $xlsformTemplateLanguage) => [
                                 'language_string_type_id' => LanguageStringType::where('name', 'label')->first()->id,
                                 'xlsform_template_language_id' => $xlsformTemplateLanguage->id,
                                 'text' => '',
@@ -60,7 +60,7 @@ class ChoiceListEntriesRelationManager extends RelationManager
                             Hidden::make('language_string_type_id'),
                             TextInput::make('text')
                                 ->label(function (Get $get) {
-                                    $xlsformTemplateLanguage = XlsformTemplateLanguage::find($get('xlsform_template_language_id'));
+                                    $xlsformTemplateLanguage = XlsformModuleVersionLocale::find($get('xlsform_template_language_id'));
 
                                     return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
                                 })

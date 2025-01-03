@@ -21,7 +21,6 @@ class SurveyDashboard extends Page
     public function mount(): void
     {
         $this->team = Team::find(auth()->user()->latestTeam->id);
-        ray($this->team->sampling_progress);
     }
 
     public function getMaxContentWidth(): MaxWidth

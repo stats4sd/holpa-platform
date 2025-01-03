@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\XlsformTemplate;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithBackgroundColor;
@@ -19,7 +19,7 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
 {
     private $xlsformTemplate;
 
-    public function __construct(XlsformTemplate $template, XlsformTemplateLanguage $currentTemplateLanguage)
+    public function __construct(XlsformTemplate $template, XlsformModuleVersionLocale $currentTemplateLanguage)
     {
         $this->xlsformTemplate = $template;
         $this->currentTemplateLanguage = $currentTemplateLanguage;

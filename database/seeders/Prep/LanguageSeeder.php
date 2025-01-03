@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\Prep;
 
+use App\Models\XlsformLanguages\Language;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,7 @@ class LanguageSeeder extends Seeder
      */
     public function run(): void
     {
-        $languages = [
+        $languages = collect([
             ['id' => 1, 'iso_alpha2' => 'ab', 'name' => 'Abkhazian'],
             ['id' => 2, 'iso_alpha2' => 'aa', 'name' => 'Afar'],
             ['id' => 3, 'iso_alpha2' => 'af', 'name' => 'Afrikaans'],
@@ -191,9 +192,11 @@ class LanguageSeeder extends Seeder
             ['id' => 176, 'iso_alpha2' => 'yo', 'name' => 'Yoruba'],
             ['id' => 177, 'iso_alpha2' => 'za', 'name' => 'Zhuang'],
             ['id' => 178, 'iso_alpha2' => 'zu', 'name' => 'Zulu'],
-        ];
+        ])
+            ->each(function (array $languageInfo) {
+                Language::create($languageInfo);
+            });
 
-        DB::table('languages')->insert($languages);
 
     }
 }
