@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\XlsformTemplateModuleResource\Pages;
-use App\Filament\Admin\Resources\XlsformTemplateModuleResource\RelationManagers;
+use App\Filament\Admin\Resources\XlsformModuleVersionResource\Pages\ManageXlsformModuleVersion;
+
 use App\Models\XlsformModule;
 use App\Models\XlsformModuleVersion;
 use Awcodes\Shout\Components\Shout;
@@ -79,7 +79,7 @@ class XlsformModuleVersionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageXlsformModuleVersion::route('/'),
+            'index' =>  ManageXlsformModuleVersion::route('/'),
         ];
     }
 }

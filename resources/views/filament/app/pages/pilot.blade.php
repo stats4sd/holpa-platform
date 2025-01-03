@@ -6,8 +6,8 @@
 <x-filament-panels::page class="h-full">
 
     <livewire:page-header-with-instructions
-        instructions1='This section aims to both allow for quality control of the customised HOLPA survey and training of enumerators.' 
-        instructions2='The pilot and enumerator training section contains details of this process and lets you preview the survey to test it. You will need to conduct this process offline, and will likely then need to return to previous sections to make additional edits to the survey. There are links in this section, or you can revisit any section from the dashboard as needed.' 
+        instructions1='This section aims to both allow for quality control of the customised HOLPA survey and training of enumerators.'
+        instructions2='The pilot and enumerator training section contains details of this process and lets you preview the survey to test it. You will need to conduct this process offline, and will likely then need to return to previous sections to make additional edits to the survey. There are links in this section, or you can revisit any section from the dashboard as needed.'
         instructionsmarkcomplete='once you have conducted the pilot and training, and are satisfied that the required adjustments have been made. '
         video-url='https://www.youtube.com/embed/VIDEO_ID'
     />
@@ -24,7 +24,7 @@
         heading='Pilot and enumerator training'
         description='Once the local indicators have been included, the HOLPA tool is ready to be piloted by the enumerators with local farmers.'
         buttonLabel='View details'
-        url='url_to_be_added_here'
+        :url="\App\Filament\App\Pages\MainPilot::getUrl()"
     />
     </div>
     </div>

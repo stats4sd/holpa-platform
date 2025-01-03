@@ -111,7 +111,7 @@ class AppPanelProvider extends PanelProvider
                     900 => '235, 90, 69',
                     950 => '235, 90, 69',
                 ],
-                
+
 
                 'lightgreen' => ['216, 234, 208',
             ],
@@ -128,7 +128,6 @@ class AppPanelProvider extends PanelProvider
             ->discoverClusters(in: app_path('Filament/App/Clusters'), for: 'App\\Filament\\App\\Clusters')
             ->pages([
                 SurveyDashboard::class,
-                TeamOdkView::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
@@ -154,19 +153,10 @@ class AppPanelProvider extends PanelProvider
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('survey-dashboard')),
                 NavigationItem::make()
-                    ->label(__('ODK Form Management'))
-                    ->icon('heroicon-o-adjustments-horizontal')
-                    ->url(url('team-odk-view')),
-                NavigationItem::make()
                     ->label(__('Admin Panel'))
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
                     ->visible(fn() => auth()->user()->can('access admin panel')),
-                NavigationItem::make()
-                    ->label(__('Program Admin Panel'))
-                    ->icon('heroicon-o-adjustments-horizontal')
-                    ->url(url('program'))
-                    ->visible(fn() => auth()->user()->can('access program admin panel')),
             ])
             ->darkMode(false)
             ->topNavigation()

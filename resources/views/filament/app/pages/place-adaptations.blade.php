@@ -49,7 +49,7 @@
                 heading='Initial Pilot'
                 description='Initial piloting should be conducted to check the sense and functionality of the survey.'
                 buttonLabel='View details'
-                url='url_to_be_added_here'
+                :url='\App\Filament\App\Pages\InitialPilot::getUrl()'
             />
         </div>
     </div>

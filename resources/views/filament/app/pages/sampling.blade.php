@@ -13,7 +13,7 @@
         instructions2='On the location levels page, you first need to add the names of the different levels. As you add each one, you can indicate if it is a sub-level in the hierarchy (eg a district is within a province), and whether there are farms at that level.
 Once you have added levels, you can select them to view a list of the locations that have been added at that level and add locations by importing them from an excel file. '
         instructions3='On the Farms page, you can add farms, either manually or by importing a spreadsheet.'
-        instructionsmarkcomplete='you have dded all the location levels, locations, and a full list of the farms where you will conduct the survey.'
+        instructionsmarkcomplete='you have added all the location levels, locations, and a full list of the farms where you will conduct the survey.'
         videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 

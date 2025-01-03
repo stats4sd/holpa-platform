@@ -63,7 +63,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                     ->icon('heroicon-m-arrow-down-circle')
                     ->button()
                     ->action(function (XlsformTemplateLanguage $record) {
-                        $template = $record->xlsformTemplate;
+                        $template = $record->template;
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
 

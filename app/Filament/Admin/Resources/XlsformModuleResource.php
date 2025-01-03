@@ -2,8 +2,7 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\XlsformTemplateModuleTypeResource\Pages;
-use App\Filament\Admin\Resources\XlsformTemplateModuleTypeResource\RelationManagers;
+use App\Filament\Admin\Resources\XlsformModuleResource\Pages\ManageXlsformModule;
 use App\Models\XlsformModule;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -69,7 +68,7 @@ class XlsformModuleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageXlsformModule::route('/'),
+            'index' => ManageXlsformModule::route('/'),
         ];
     }
 }
