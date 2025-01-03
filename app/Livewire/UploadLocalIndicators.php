@@ -2,29 +2,23 @@
 
 namespace App\Livewire;
 
-use Exception;
-use App\Models\Team;
-use Filament\Tables;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Livewire\WithFileUploads;
-use App\Models\LocalIndicator;
-use Filament\Tables\Actions\Action;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\LocalIndicatorImport;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Filters\Indicator;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
-use Illuminate\Database\Eloquent\Model;
-use Filament\Notifications\Notification;
+use App\Models\Team;
+use Exception;
 use Filament\Forms\Components\FileUpload;
-use Filament\Tables\Actions\DeleteAction;
-use Illuminate\Database\Eloquent\Collection;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Maatwebsite\Excel\Facades\Excel;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UploadLocalIndicators extends Component implements HasForms, HasTable

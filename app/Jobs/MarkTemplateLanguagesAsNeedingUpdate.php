@@ -3,8 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Collection;

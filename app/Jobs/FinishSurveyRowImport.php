@@ -3,9 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
-use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 

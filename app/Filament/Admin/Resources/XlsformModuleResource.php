@@ -3,14 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformModuleResource\Pages\ManageXlsformModule;
-use App\Models\XlsformModule;
+use App\Models\Xlsforms\XlsformModule;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class XlsformModuleResource extends Resource
 {

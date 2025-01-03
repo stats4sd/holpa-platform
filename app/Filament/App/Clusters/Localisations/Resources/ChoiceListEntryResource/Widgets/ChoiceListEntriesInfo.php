@@ -2,8 +2,8 @@
 
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Widgets;
 
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\SurveyRow;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;

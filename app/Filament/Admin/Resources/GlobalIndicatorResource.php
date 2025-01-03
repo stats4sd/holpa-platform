@@ -2,15 +2,15 @@
 
 namespace App\Filament\Admin\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Theme;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Models\GlobalIndicator;
-use Filament\Resources\Resource;
 use App\Filament\Admin\Resources\GlobalIndicatorResource\Pages;
 use App\Filament\Admin\Resources\GlobalIndicatorResource\RelationManagers;
+use App\Models\Holpa\GlobalIndicator;
+use App\Models\Holpa\Theme;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
 class GlobalIndicatorResource extends Resource
 {

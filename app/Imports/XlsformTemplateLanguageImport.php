@@ -2,11 +2,11 @@
 
 namespace App\Imports;
 
-use Maatwebsite\Excel\Row;
-use App\Models\LanguageStringType;
-use App\Models\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Row;
 
 class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow
 {

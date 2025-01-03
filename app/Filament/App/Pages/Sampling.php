@@ -3,8 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use Filament\Pages\Page;
 use Filament\Actions\Action;
+use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
 class Sampling extends Page
@@ -12,11 +12,11 @@ class Sampling extends Page
     protected static string $view = 'filament.app.pages.sampling';
 
     protected static bool $shouldRegisterNavigation = false;
-    
+
     protected static ?string $title = 'Survey Locations';
 
     protected $listeners = ['refreshPage' => '$refresh'];
-    
+
     public function getBreadcrumbs(): array
     {
         return [

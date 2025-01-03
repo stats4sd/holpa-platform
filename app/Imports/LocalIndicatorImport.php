@@ -2,8 +2,8 @@
 
 namespace App\Imports;
 
+use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
-use App\Models\LocalIndicator;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -25,7 +25,7 @@ class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHead
 
     public function collection(Collection $rows)
     {
-        foreach ($rows as $row) 
+        foreach ($rows as $row)
         {
             LocalIndicator::create([
                 'name' => $row['name'],

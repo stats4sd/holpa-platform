@@ -1,7 +1,5 @@
 <?php
 
-use Stats4sd\FilamentOdkLink\Models\TeamManagement\Team;
-
 // config for Stats4sd/OdkLink
 return [
 

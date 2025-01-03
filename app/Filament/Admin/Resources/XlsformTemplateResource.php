@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformTemplateResource\Pages;
 use App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\XlsformTemplate;
 use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource as OdkLinkXlsformTemplateResource;
 
 class XlsformTemplateResource extends OdkLinkXlsformTemplateResource

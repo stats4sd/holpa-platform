@@ -2,9 +2,7 @@
 
 namespace Database\Seeders\Prep;
 
-use App\Models\Language;
-use App\Models\Locale;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\XlsformLanguages\Language;
 use Illuminate\Database\Seeder;
 
 class LocaleSeeder extends Seeder

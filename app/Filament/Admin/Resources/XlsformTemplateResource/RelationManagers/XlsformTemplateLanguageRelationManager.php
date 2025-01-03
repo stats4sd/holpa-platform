@@ -2,27 +2,23 @@
 
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 
-use Closure;
-use Carbon\Carbon;
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Locale;
-use Filament\Forms\Get;
-use App\Models\Language;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Forms\Components\Group;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Models\XlsformTemplateLanguage;
-use Illuminate\Support\Facades\Storage;
-use Filament\Notifications\Notification;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Validator;
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Imports\XlsformTemplateLanguageImport;
-use Illuminate\Validation\ValidationException;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use Carbon\Carbon;
+use Closure;
+use Filament\Forms;
+use Filament\Forms\Components\Group;
+use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class XlsformTemplateLanguageRelationManager extends RelationManager
 {
@@ -90,13 +86,13 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
 
                         return Excel::download(new XlsformTemplateLanguageExport($template, $record), $filename);
                     }),
-            
+
                 Tables\Actions\Action::make('upload_translation')
                     ->label('Upload translation file')
                     ->icon('heroicon-m-arrow-up-circle')
-                    ->modalHeading(function (XlsformTemplateLanguage $record) {                
+                    ->modalHeading(function (XlsformTemplateLanguage $record) {
                         return 'Upload Completed Translation File for ' . $record->localeLanguageLabel;
-                    })                
+                    })
                     ->form(function (XlsformTemplateLanguage $record) {
                         return [
                             Forms\Components\FileUpload::make('translation_file')
@@ -112,32 +108,32 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
 
                                         // get the file from $get
                                         $file = collect($get('translation_file'))->first();
-                                
+
                                         // Load the file as an array, getting the first sheet
                                         $rows = Excel::toArray([], $file)[0];
-                                
+
                                         // Get the headers from the first row
                                         $headers = $rows[0];
-                                
+
                                         // Get the indices for 'name' and the languageLabel column
                                         $nameIndex = array_search('name', $headers);
                                         $currentTranslationIndex = array_search($languageLabel, $headers);
-                                
+
                                         // If the languageLabel column is missing in the file, validation fails
                                         if ($currentTranslationIndex === false) {
                                             return $fail('The translations file must contain the translation column"' . $languageLabel . '"');
                                         }
-                                
+
                                         // Remove the header row
                                         array_shift($rows);
-                                
+
                                         // Check for missing translations in the 'languageLabel' column (when 'name' is not null to avoid empty rows)
                                         $invalidRows = collect($rows)->filter(function ($row) use ($nameIndex, $currentTranslationIndex) {
                                             $name = $row[$nameIndex] ?? null;
                                             $currentTranslation = $row[$currentTranslationIndex] ?? null;
                                             return !empty($name) && (is_null($currentTranslation) || trim($currentTranslation) === '');
                                         });
-                                
+
                                         // If there are missing translations, display an error and prevent the import
                                         if ($invalidRows->isNotEmpty()) {
                                             // Map the invalid rows to display 'name (translation type)'
@@ -145,15 +141,15 @@ class XlsformTemplateLanguageRelationManager extends RelationManager
                                                 $name = $row[$nameIndex];
                                                 $translationType = $row[array_search('translation type', $headers)];
 
-                                                return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '') 
-                                                    ? [$name . ' (' . $translationType . ')'] 
+                                                return (is_null($row[$currentTranslationIndex]) || trim($row[$currentTranslationIndex]) === '')
+                                                    ? [$name . ' (' . $translationType . ')']
                                                     : []; // Return an empty array if the translation is present
                                             });
-                                        
+
                                             return $fail('The translations file cannot be uploaded as there are missing translations in the "' . $languageLabel . '" column for the following: ' . $invalidNamesWithType->implode(', '));
                                         }
                                         return true;
-                                    },  
+                                    },
                                 ]),
                         ];
                     })

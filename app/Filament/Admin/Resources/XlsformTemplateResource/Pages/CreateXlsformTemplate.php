@@ -3,7 +3,7 @@
 namespace App\Filament\Admin\Resources\XlsformTemplateResource\Pages;
 
 use App\Filament\Admin\Resources\XlsformTemplateResource;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Get;
 use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource\Pages\CreateXlsformTemplate as OdkLinkCreateXlsformTemplate;

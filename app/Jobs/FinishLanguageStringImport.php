@@ -3,7 +3,6 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
