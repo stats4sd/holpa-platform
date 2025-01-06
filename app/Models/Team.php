@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use App\Models\Language;
 use App\Models\SampleFrame\Farm;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\XlsformTemplates\ChoiceListEntry;
-use App\Models\XlsformTemplates\XlsformTemplate;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use Illuminate\Database\Eloquent\Builder;
 use App\Models\XlsformTemplates\ChoiceList;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -182,4 +183,56 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         }
         return null;
     }
+
+    public function getLispProgressAttribute()
+    {
+        if ($this->lisp_complete === 1) {
+            return 'complete';
+        }
+
+        return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
+    }
+
+    public function getSamplingProgressAttribute()
+    {
+        if ($this->sampling_complete === 1) {
+            return 'complete';
+        }
+
+        return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
+    }
+
+    public function getLanguagesProgressAttribute()
+    {
+        if ($this->languages_complete === 1) {
+            return 'complete';
+        }
+
+        // teams have English as a locale as default, check for others
+        $english_language_id = Language::where('name', 'English')->value('id');
+
+        $hasAddedLocales = $this->locales()
+            ->where('language_id', '!=', $english_language_id)
+            ->exists();
+
+        return $hasAddedLocales ? 'in_progress' : 'not_started';
+    }
+
+    public function getPbaAttribute()
+    {
+        if ($this->pba_complete === 1) {
+            return 'complete';
+        }
+
+        if (
+            $this->time_frame !== null || 
+            $this->diet_diversity_module_version_id !== null || 
+            $this->choiceListEntries()->exists()
+        ) {
+            return 'in_progress';
+        }
+    
+        return 'not_started';
+    }
+
 }
