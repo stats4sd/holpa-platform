@@ -218,7 +218,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $hasAddedLocales ? 'in_progress' : 'not_started';
     }
 
-    public function getPbaAttribute()
+    public function getPbaProgressAttribute()
     {
         if ($this->pba_complete === 1) {
             return 'complete';
