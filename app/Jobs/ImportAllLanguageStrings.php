@@ -20,7 +20,6 @@ class ImportAllLanguageStrings implements ShouldQueue
         public string               $filePath,
         public XlsformModuleVersion $xlsformModuleVersion,
         public Collection           $translatableHeadings,
-        //public Collection           $importedTemplateLanguages,
     )
     {
     }
@@ -35,7 +34,6 @@ class ImportAllLanguageStrings implements ShouldQueue
             foreach ($headings as $heading) {
                 (new XlsformTemplateLanguageStringImport($this->xlsformModuleVersion, $heading, $sheet))->queue($this->filePath)
                     ->chain([
-                      //  new MarkTemplateLanguagesAsNeedingUpdate($this->xlsformModuleVersion, $this->importedTemplateLanguages),
                         new FinishLanguageStringImport($this->xlsformModuleVersion, $heading),
                     ]);
             }

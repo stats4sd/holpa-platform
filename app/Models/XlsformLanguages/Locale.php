@@ -16,6 +16,9 @@ class Locale extends Model
         'is_default' => 'boolean'
     ];
 
+    protected $appends = [
+        'language_label',
+    ];
 
     public function language(): BelongsTo
     {

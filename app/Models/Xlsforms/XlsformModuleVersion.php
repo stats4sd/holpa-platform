@@ -81,7 +81,7 @@ class XlsformModuleVersion extends Model implements HasMedia
 
     public function locales(): BelongsToMany
     {
-        return $this->belongsToMany(Locale::class, 'xlsform_module_locale', 'xlsform_module_version_id', 'locale_id')
+        return $this->belongsToMany(Locale::class, 'xlsform_module_version_locale', 'xlsform_module_version_id', 'locale_id')
             ->using(XlsformModuleVersionLocale::class)
             ->withPivot(['needs_update','has_language_strings']);
     }
@@ -105,29 +105,5 @@ class XlsformModuleVersion extends Model implements HasMedia
             [ChoiceList::class, ChoiceListEntry::class],
             ['xlsform_module_version_id', 'choice_list_id', ['linked_entry_type', 'linked_entry_id']],
         );
-    }
-
-    // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded
-    // returns the collection of XlsformTemplateLanaguage entries that will be updated from the file.
-    public function setXlsformTemplateLanguages(Collection $translatableHeadings): Collection
-    {
-        $languages = $translatableHeadings
-            ->map(fn(string $heading) => (new XlsformTranslationHelper())->getLanguageFromColumnHeader($heading))
-            ->unique();
-
-        return $languages->map(function ($language) {
-
-
-            $templateLanguage = $this->xlsformTemplateLanguages()
-                ->whereHas('locale', fn($query) => $query->whereNull('description')) // only languages that were imported from the xlsform - any created through the platform have a description.
-                ->firstOrCreate(['language_id' => $language->id]);
-
-            $locale = Locale::firstOrCreate(['description' => null, 'language_id' => $language->id]);
-
-            $templateLanguage->locale()->associate($locale);
-            $templateLanguage->save();
-
-            return $templateLanguage;
-        });
     }
 }

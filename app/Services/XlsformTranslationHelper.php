@@ -35,16 +35,6 @@ class XlsformTranslationHelper
         return $this->languages->firstWhere('iso_alpha2', $matches[3]);
     }
 
-    public function getDefaultLocale(WithXlsformFile $xlsformTemplate, string $columnHeader): XlsformModuleVersionLocale
-    {
-        $language = $this->getLanguageFromColumnHeader($columnHeader);
-
-        return $xlsformTemplate->xlsformTemplateLanguages()
-            ->where('language_id', $language->id)
-            ->whereHas('locale', fn($query) => $query->where('description', null))
-            ->first();
-    }
-
     private function isTranslatableColumn(string $columnHeader): bool
     {
         return preg_match($this->getRegexPattern(), $columnHeader);

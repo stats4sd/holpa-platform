@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Interfaces\WithXlsformFile;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -22,23 +23,22 @@ class FinishLanguageStringImport implements ShouldQueue
      */
     public function handle(): void
     {
-            // need to filter the class by the templateLanguage + string  type
-            $xlsformTranslationHelper = new XlsformTranslationHelper();
+        // need to filter the class by the templateLanguage + string  type
+        $xlsformTranslationHelper = new XlsformTranslationHelper();
 
-            $language = $xlsformTranslationHelper->getLanguageFromColumnHeader($this->heading);
-            $languageStringType = $xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading);
+        $language = $xlsformTranslationHelper->getLanguageFromColumnHeader($this->heading);
+        $languageStringType = $xlsformTranslationHelper->getLanguageStringTypeFromColumnHeader($this->heading);
 
-            $this->xlsformModuleVersion
-                ->surveyLanguageStrings()
-                ->where('language_string_type_id', $languageStringType->id)
-                ->where('locale_id', $language->defaultLocale->id)
-                ->update(['updated_during_import' => false]);
+        $this->xlsformModuleVersion
+            ->surveyLanguageStrings()
+            ->where('language_string_type_id', $languageStringType->id)
+            ->where('locale_id', $language->defaultLocale->id)
+            ->update(['language_strings.updated_during_import' => false]);
 
-            $this->xlsformModuleVersion
-                ->choiceListEntryLanguageStrings()
-                ->where('language_string_type_id', $languageStringType->id)
-                ->where('locale_id', $language->defaultLocale->id)
-                ->update(['updated_during_import' => false]);
-
+        $this->xlsformModuleVersion
+            ->choiceListEntryLanguageStrings()
+            ->where('language_string_type_id', $languageStringType->id)
+            ->where('locale_id', $language->defaultLocale->id)
+            ->update(['language_strings.updated_during_import' => false]);
     }
 }

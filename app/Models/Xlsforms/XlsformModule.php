@@ -2,18 +2,32 @@
 
 namespace App\Models\Xlsforms;
 
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Rector\Transform\ValueObject\AttributeKeyToClassConstFetch;
+use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
 class XlsformModule extends Model
 {
+
+    use HasRelationships;
+
     protected $table = 'xlsform_modules';
 
     public function xlsformModuleVersions(): HasMany
     {
         return $this->hasMany(XlsformModuleVersion::class);
+    }
+
+    public function defaultXlsformVersion(): HasOne
+    {
+        return $this->hasOne(XlsformModuleVersion::class)->where('is_default', true);
     }
 
     // In a generalised version, this might be a BelongsToMany/MorphToMany, so we can use the same module (e.g. "diet diversity") in different templates.
@@ -23,6 +37,25 @@ class XlsformModule extends Model
     public function form(): MorphTo
     {
         return $this->morphTo();
+    }
+
+    public function defaultSurveyRows(): HasManyThrough
+    {
+        return $this->hasManyThrough(SurveyRow::class, XlsformModuleVersion::class)->where('xlsform_module_versions.is_default', true);
+    }
+
+    public function defaultChoiceLists(): HasManyThrough
+    {
+        return $this->hasManyThrough(ChoiceList::class, XlsformModuleVersion::class)->where('xlsform_module_versions.is_default', true);
+    }
+
+    public function defaultLocales(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            Locale::class,
+            [XlsformModuleVersion::class, XlsformModuleVersionLocale::class]
+        )
+            ->where('xlsform_module_versions.is_default', true);
     }
 
 }

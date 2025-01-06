@@ -8,6 +8,7 @@ use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
 use App\Jobs\FinishChoiceListEntryImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
+use App\Jobs\LinkModuleVersionToLocales;
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
@@ -66,12 +67,7 @@ class HandleXlsformTemplateAdded
         // Get the translatable headings from the XLSform workbook;
         $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
 
-        $moduleVersions->each(function(XlsformModuleVersion $moduleVersion) use ($translatableHeadings, $filePath) {
-
-            // Make sure the XLSform template has the correct languages set (map over ['sheet' => ['headings'], 'choices' => ['headings']])
-//            $importedTemplateLanguages = $translatableHeadings->map(fn($headings) => $moduleVersion->setXlsformTemplateLanguages($headings))
-//                ->flatten()
-//                ->unique();
+        $moduleVersions->each(function (XlsformModuleVersion $moduleVersion) use ($translatableHeadings, $filePath) {
 
             // make sure all the choice_lists are imported;
             (new XlsformTemplateChoiceListImport($moduleVersion))->queue($filePath);
@@ -83,6 +79,8 @@ class HandleXlsformTemplateAdded
                 ->chain([
                     new FinishSurveyRowImport($moduleVersion),
                     new FinishChoiceListEntryImport($moduleVersion),
+                    new LinkModuleVersionToLocales($moduleVersion, $translatableHeadings),
+
                     new ImportAllLanguageStrings($filePath, $moduleVersion, $translatableHeadings),
                 ]);
 

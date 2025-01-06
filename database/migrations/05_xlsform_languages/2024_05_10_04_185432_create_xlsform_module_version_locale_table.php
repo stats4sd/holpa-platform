@@ -16,6 +16,7 @@ return new class extends Migration {
             $table->foreignId('locale_id')->default(0)->constrained('locales')->cascadeOnDelete()->cascadeOnUpdate();
             $table->boolean('has_language_strings')->default(0);
             $table->boolean('needs_update')->default(0);
+            $table->boolean('updated_during_import')->default(0)->comment('Used to track which languages were updated during an import, so we can mark other languages as "needs update" for the user to update manually');
             $table->timestamps();
         });
     }

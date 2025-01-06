@@ -17,7 +17,7 @@ class XlsformTemplateResource extends OdkLinkXlsformTemplateResource
     public static function getRelations(): array
     {
         return [
-            RelationManagers\XlsformTemplateLanguageRelationManager::class,
+            RelationManagers\XlsformModuleRelationManager::class,
         ];
     }
 

@@ -7,6 +7,7 @@ use App\Models\Team;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Services\XlsformTranslationHelper;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -60,18 +61,6 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
             ->where('xlsform_modules.form_type', static::class);
     }
 
-    public function xlsformTemplateLanguages(): MorphMany
-    {
-        return $this->morphMany(XlsformModuleVersionLocale::class, 'template');
-    }
-
-    public function languageStrings(): HasManyThrough
-    {
-        return $this->hasManyThrough(LanguageString::class, XlsformModuleVersionLocale::class, 'template_id', 'xlsform_template_language_id', 'id', 'id')
-            ->where('xlsform_template_languages.template_type', static::class);
-    }
-
-
     public function surveyRows(): HasManyDeep
     {
         return $this->hasManyDeep(
@@ -98,4 +87,46 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
             [['form_type', 'form_id'], null, 'xlsform_module_version_id', 'choice_list_id']
         );
     }
+
+    // Split up language strings into 2 relationships as there are 2 paths between xlsformtemplates and language strings.
+    public function surveyLanguageStrings(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            LanguageString::class,
+            [XlsformModule::class, XlsformModuleVersion::class, SurveyRow::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+        );
+    }
+
+    public function choiceListEntryLanguageStrings(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            LanguageString::class,
+            [XlsformModule::class, XlsformModuleVersion::class, ChoiceListEntry::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+        );
+    }
+
+
+    // for a template to be available in a locale, *every* module should be linked to that locale
+    public function locales(): Attribute
+    {
+        return new Attribute(
+            get: function (): Collection {
+
+                // get set of locales for each default module version
+                $locales = $this->xlsformModules->map(fn(XlsformModule $xlsformModule) => $xlsformModule
+                    ->defaultXlsformVersion
+                    ->locales
+                );
+
+                // get list of locales present for *every* module
+                return $locales->reduce(function ($carry, $item) {
+                    return $carry->intersect($item);
+                }, $locales->first())
+                    ->values();
+            }
+        );
+    }
+
 }

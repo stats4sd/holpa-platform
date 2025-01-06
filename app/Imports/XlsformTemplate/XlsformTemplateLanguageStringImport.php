@@ -173,9 +173,8 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             ->where('locale_id', $this->language->defaultLocale->id)
             ->where('linked_entry_type', $type)
             ->where('language_strings.updated_during_import', false)
-            ->whereHasMorph('linkedEntry', SurveyRow::class, function (Builder $query) {
-                $query->where('owner_id', null);
-            });
+            ->whereHasMorph('linkedEntry', SurveyRow::class)
+            ->get();
 
         $toDelete->each(fn(LanguageString $languageString) => $languageString->delete());
         $toDeleteToo->each(fn(LanguageString $languageString) => $languageString->delete());
