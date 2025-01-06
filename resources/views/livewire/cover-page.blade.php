@@ -16,7 +16,7 @@
             <div class="flex flex-col lg:flex-row  space-y-6 lg:space-y-0 lg:space-x-8 w-full items-center lg:items-stretch  mt-10 lg:mt-16 pb-8">
                 <div class="flex-grow max-w-3xl">
                     <h2 class="text-white text-5xl mb-2 lg:mb-4 font-extralight" style="letter-spacing: 0.3em;">HOLPA</h3>
-                        <h1 class="text-hyellow text-2xl sm:text-3xl lg:text-5xl mb-2 lg:mb-4">Holistic Localised Performance Assessment</h1>
+                        <h1 class="text-hyellow text-2xl sm:text-3xl lg:text-5xl mb-2 lg:mb-4">Holistic Localised Performance Assessment for Agroecology</h1>
                     </div>
 
 
