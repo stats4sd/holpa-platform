@@ -2,24 +2,23 @@
 
 namespace App\Livewire;
 
-use App\Models\XlsformTemplates\XlsformTemplate;
-use Carbon\Carbon;
-use App\Models\Team;
-use Livewire\Component;
-use Filament\Tables\Table;
-use App\Livewire\LocalesTable;
-use Filament\Tables\Actions\Action;
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Facades\Excel;
-use Filament\Forms\Contracts\HasForms;
-use App\Models\XlsformTemplateLanguage;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Notifications\Notification;
 use App\Exports\XlsformTemplateLanguageExport;
+use App\Models\Team;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\Xlsforms\XlsformTemplate;
+use Carbon\Carbon;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TeamLocalesTable extends Component implements HasForms, HasTable
 {

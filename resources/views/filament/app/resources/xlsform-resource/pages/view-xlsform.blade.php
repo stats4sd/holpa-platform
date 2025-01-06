@@ -30,7 +30,10 @@
                 <b>Live Submissions</b>
             </x-slot>
             <p>
-                <b>Number of Live Submissions:</b> {{ $summary['count'] }}
+                <b>Number of Household Survey Submissions:</b> {{ $summary['householdCount'] }}
+            </p>
+            <p>
+                <b>Number of Fieldwork Survey Submissions:</b> {{ $summary['fieldworkCount'] }}
             </p>
             <br />
             <p>
@@ -40,7 +43,10 @@
             </p>
             <br />
             <p>
-                <b>Latest Submission:</b> {{ $summary['latestSubmissionDate'] }}
+                <b>Latest Household Submission:</b> {{ $summary['latestHouseholdSubmissionDate'] }}
+            </p>
+            <p>
+                <b>Latest Fieldwork Submission:</b> {{ $summary['latestFieldworkSubmissionDate'] }}
             </p>
             <br />
             <p>

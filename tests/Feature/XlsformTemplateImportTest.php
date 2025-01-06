@@ -1,11 +1,10 @@
 <?php
 
 use App\Listeners\HandleXlsformTemplateAdded;
-use App\Models\XlsformTemplates\LanguageString;
 
 test('an xlsform template is correctly imported and updated', function () {
 
-    $this->xlsformTemplate = \App\Models\XlsformTemplates\XlsformTemplate::forceCreateQuietly([
+    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 
@@ -20,7 +19,7 @@ test('an xlsform template is correctly imported and updated', function () {
 
 
     // check for a specific entry
-    $choiceEntry = \App\Models\XlsformTemplates\ChoiceListEntry::firstWhere('name', '=', 'juice');
+    $choiceEntry = \App\Models\Xlsforms\ChoiceListEntry::firstWhere('name', '=', 'juice');
 
     $this->assertEquals('5', $choiceEntry->properties['filter2']);
 
@@ -34,13 +33,13 @@ test('an xlsform template is correctly imported and updated', function () {
     // check that the template languages are not marked as needing an update
     $this->assertDatabaseHas('xlsform_template_languages', [
         'xlsform_template_id' => $this->xlsformTemplate->id,
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'en')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'en')->first()->id,
         'needs_update' => 0,
     ]);
 
     $this->assertDatabaseHas('xlsform_template_languages', [
         'xlsform_template_id' => $this->xlsformTemplate->id,
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'fr')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'fr')->first()->id,
         'needs_update' => 0,
     ]);
 });
@@ -48,13 +47,13 @@ test('an xlsform template is correctly imported and updated', function () {
 test('a language not in the xlsform template import is marked as needing an update', function () {
 
 
-    $this->xlsformTemplate = \App\Models\XlsformTemplates\XlsformTemplate::forceCreateQuietly([
+    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 
     // add a new template language to the xlsform template
     $this->xlsformTemplate->xlsformTemplateLanguages()->create([
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'es')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'es')->first()->id,
     ]);
 
     // ******** test that survey rows and language strings are deleted correctly ******* //
@@ -69,20 +68,20 @@ test('a language not in the xlsform template import is marked as needing an upda
     // check that the template languages are not marked as needing an update
     $this->assertDatabaseHas('xlsform_template_languages', [
         'xlsform_template_id' => $this->xlsformTemplate->id,
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'en')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'en')->first()->id,
         'needs_update' => 0,
     ]);
 
     $this->assertDatabaseHas('xlsform_template_languages', [
         'xlsform_template_id' => $this->xlsformTemplate->id,
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'fr')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'fr')->first()->id,
         'needs_update' => 0,
     ]);
 
 
     $this->assertDatabaseHas('xlsform_template_languages', [
         'xlsform_template_id' => $this->xlsformTemplate->id,
-        'language_id' => \App\Models\Language::where('iso_alpha2', 'es')->first()->id,
+        'language_id' => \App\Models\XlsformLanguages\Language::where('iso_alpha2', 'es')->first()->id,
         'needs_update' => 1,
     ]);
 

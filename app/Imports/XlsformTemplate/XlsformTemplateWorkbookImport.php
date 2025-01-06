@@ -3,10 +3,9 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
-use App\Models\XlsformTemplates\SurveyRow;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\SurveyRow;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;

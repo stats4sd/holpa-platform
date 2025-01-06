@@ -2,17 +2,16 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\Language;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\ChoiceListEntry;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;

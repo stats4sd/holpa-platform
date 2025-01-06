@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Admin\Resources\XlsformTemplateModuleTypeResource\Pages;
+namespace App\Filament\Admin\Resources\XlsformModuleResource\Pages;
 
 use App\Filament\Admin\Resources\XlsformModuleResource;
 use Filament\Actions;

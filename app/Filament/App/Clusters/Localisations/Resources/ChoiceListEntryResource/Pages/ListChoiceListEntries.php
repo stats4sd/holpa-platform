@@ -3,8 +3,8 @@
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages;
 
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;

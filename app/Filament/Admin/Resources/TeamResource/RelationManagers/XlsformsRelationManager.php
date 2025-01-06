@@ -8,7 +8,6 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;
 use Maatwebsite\Excel\Facades\Excel;
-use Stats4sd\FilamentOdkLink\Jobs\UpdateXlsformTitleInFile;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class XlsformsRelationManager extends \Stats4sd\FilamentOdkLink\Filament\Resources\TeamResource\RelationManagers\XlsformsRelationManager

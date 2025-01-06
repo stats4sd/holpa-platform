@@ -10,14 +10,16 @@ use App\Filament\App\Pages\SurveyDashboard;
         <!-- Instructions -->
         <div class="py-4 lg:col-span-3 gap-8 flex-grow rounded-md pr-8">
             <h2 class="text-green mb-4">Instructions</h2>
-            <p class="text-black mb-2">{{ $instructions1 }}</p>
-            <p class="text-black mb-2">{{ $instructions2 }}</p>
-            <p class="text-black mb-2">{{ $instructions3 }}</p>
-            <p class="text-black mb-2">{{ $instructions4 }}</p>
-            <p class="text-black mb-2">{{ $instructions5 }}</p>
-            <p class="text-black mb-8">{{ $instructions6 }}</p>
+            <p class="text-black mb-2">{!! $instructions1 !!}</p>
+            <p class="text-black mb-2">{!! $instructions2 !!}</p>
+            <p class="text-black mb-2">{!! $instructions3 !!}</p>
+            <p class="text-black mb-2">{!! $instructions4 !!}</p>
+            <p class="text-black mb-2">{!! $instructions5 !!}</p>
+            <p class="text-black mb-8">{!! $instructions6 !!}</p>
+            @if($instructionsmarkcomplete)
             <p class="text-black mb-8"> <span class="font-semibold ">Mark this section as complete when: </span>
                 {{ $instructionsmarkcomplete }}</p>
+            @endif
         </div>
 
         <!-- Video -->

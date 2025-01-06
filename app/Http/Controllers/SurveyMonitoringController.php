@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use App\Models\Team;
 use App\Models\SampleFrame\Farm;
+use App\Models\Team;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Spatie\MediaLibrary\Support\MediaStream;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class SurveyMonitoringController extends Controller
 {
@@ -21,29 +21,45 @@ class SurveyMonitoringController extends Controller
     {
         [$xlsform, $odkLinkService] = $this->getFormAndLinkService($team, $isTest === 'test');
 
+        $householdXlsform = $team->xlsforms->where('title', 'HOLPA Household Survey')->first();
+        $fieldworkXlsform = $team->xlsforms->where('title', 'HOLPA Fieldwork Survey')->first();
+
         $token = $odkLinkService->authenticate();
         $endpoint = config('filament-odk-link.odk.base_endpoint');
 
-        $results = Http::withToken($token)
-            ->get("{$endpoint}/projects/{$xlsform->owner->odkProject->id}/forms/{$xlsform->odk_id}/submissions")
+        $householdResults = Http::withToken($token)
+            ->get("{$endpoint}/projects/{$householdXlsform->owner->odkProject->id}/forms/{$householdXlsform->odk_id}/submissions")
+            ->throw()
+            ->json();
+
+        $fieldworkResults = Http::withToken($token)
+            ->get("{$endpoint}/projects/{$fieldworkXlsform->owner->odkProject->id}/forms/{$fieldworkXlsform->odk_id}/submissions")
             ->throw()
             ->json();
 
 
-        $count = count($results);
-        $latestSubmission = collect($results)
+        $householdCount = count($householdResults);
+        $fieldworkCount = count($fieldworkResults);
+
+        $latestHouseholdSubmission = collect($householdResults)
             ->sort(fn($submission) => $submission['createdAt'])
             ->last();
 
-        if ($count === 0) {
+        $latestFieldworkSubmission = collect($fieldworkResults)
+            ->sort(fn($submission) => $submission['createdAt'])
+            ->last();
+
+        if ($householdCount === 0 || $fieldworkCount === 0) {
             return [
-                'count' => 0,
-                'latestSubmissionDate' => null,
+                'householdCount' => 0,
+                'fieldworkCount' => 0,
+                'latestHouseholdSubmissionDate' => 'no submissions yet',
+                'latestFieldworkSubmissionDate' => 'no submissions yet',
+
                 'successfulSurveys' => 0,
-                'beneficiaryFarmsSurveyed' => 0,
-                'nonBeneficiaryFarmsSurveyed' => 0,
                 'surveysWithoutRespondentPresent' => 0,
                 'surveysWithNonConsentingRespondent' => 0,
+                'farmsFullySurvey' => 0,
             ];
         }
 
@@ -76,8 +92,10 @@ class SurveyMonitoringController extends Controller
 
 
         return [
-            'count' => $count,
-            'latestSubmissionDate' => (new Carbon($latestSubmission['createdAt']))->format('Y-m-d H:i:s'),
+            'householdCount' => $householdCount,
+            'fieldworkCount' => $fieldworkCount,
+            'latestHouseholdSubmissionDate' => (new Carbon($latestHouseholdSubmission['createdAt']))->format('Y-m-d H:i:s'),
+            'latestFieldworkSubmissionDate' => (new Carbon($latestFieldworkSubmission['createdAt']))->format('Y-m-d H:i:s'),
             'successfulSurveys' => $successfulSurveys->count(),
             'surveysWithoutRespondentPresent' => $surveysWithoutRespondentPresent,
             'surveysWithNonConsentingRespondent' => $surveysWithNonConsentingRespondent,

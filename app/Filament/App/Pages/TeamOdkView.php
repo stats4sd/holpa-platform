@@ -3,10 +3,9 @@
 namespace App\Filament\App\Pages;
 
 use App\Filament\App\Resources\XlsformResource;
-
 use App\Models\Team;
+use App\Models\Xlsforms\Xlsform;
 use App\Services\HelperService;
-use Awcodes\Shout\Components\Shout;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
@@ -21,10 +20,6 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\HtmlString;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
-use App\Models\Xlsforms\Xlsform;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class TeamOdkView extends Page implements HasTable, HasInfolists
@@ -33,12 +28,11 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
     use InteractsWithForms;
     use InteractsWithInfolists;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.app.pages.team-odk-view';
-
     protected ?string $heading = "ODK Form Management";
-    protected static ?string $navigationLabel = 'ODK Form Management';
+
+    protected static bool $shouldRegisterNavigation = false;
 
     protected function getHeaderActions(): array
     {
@@ -104,55 +98,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                 //
             ])
             ->headerActions([
-                TableAction::make('create-temp')
-                    ->color('gray')
-                    ->label('Add a new ODK form')
-                    ->modalFooterActions([
-                        TableAction::make('ok')
-                            ->label('Return')
-                            ->close(),
-                    ])
-                    ->form([
-                        Shout::make('note')
-                            ->type('danger')
-                            ->content('TBC: Note - at present this feature is not available. All team forms are centrally managed by the system administrators in collaboration with the team leaders. In the future, this will allow teams to have multiple HOLPA survey forms active at the same time, for example a standard HOLPA and a "HOLPA National" survey, or 2 surveys to allow conducting Steps 1 and 2 at different times.'),
-                    ]),
-                TableAction::make('delete_submissions')
-                    ->label('TESTING ONLY: DELETE ALL SUBMISSIONS FROM DATABASE')
-                    ->action(function () {
-                        HelperService::getSelectedTeam()->xlsforms->each(function (Xlsform $xlsform) {
-
-
-                            // All temporary code...
-                            $xlsform->submissions->each(function (Submission $submission) {
-                                // delete all entities linked to submission;
-                                $submission->entities
-                                    ->filter(fn(Entity $entity) => $entity->parent_id !==  null )
-                                    ->each(function (Entity $entity) {
-
-                                    $entity->values()->delete();
-                                    $entity->delete();
-                                });
-
-                                $submission->entities
-                                    ->filter(fn(Entity $entity) => $entity->parent_id ===  null )
-                                    ->each(function (Entity $entity) {
-                                        $entity->values()->delete();
-                                        $entity->delete();
-                                    });
-                                $submission->forceDelete();
-                            });
-                        });
-
-                        $this->resetTable();
-
-                        Notification::make('update_success')
-                            ->title('Success!')
-                            ->body("All submissions have been deleted from the database.")
-                            ->color('success')
-                            ->send();
-                    }),
-            ])
+               ])
             ->actions([
 
                 TableAction::make('show submissions')

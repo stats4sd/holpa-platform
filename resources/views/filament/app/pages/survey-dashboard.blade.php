@@ -56,7 +56,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Survey languages</h3>
-                                <p class="text-gray-600 mb-4">Select the language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template. 
+                                <p class="text-gray-600 mb-4">Select the language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template.
                                 </p>
                             </div>
                             <div class="dashbuttondiv">
@@ -253,7 +253,7 @@ use App\Filament\App\Pages\DataAnalysis;
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Localisation: Pilot</h3>
-                                <p class="text-gray-600 mb-4">Conduct a pilot run of the survey, both for quality control of the customised HOLPA survey and training of enumerators. 
+                                <p class="text-gray-600 mb-4">Conduct a pilot run of the survey, both for quality control of the customised HOLPA survey and training of enumerators.
                                 </p>
                             </div>
                             <div class="dashbuttondiv">
@@ -330,7 +330,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ DataCollection::getUrl() }}" class="buttona">
+                                <a href="{{ \App\Filament\App\Resources\XlsformResource\Pages\ViewXlsform::getUrl(['record' => \App\Services\HelperService::getSelectedTeam()->xlsforms->first()]) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>

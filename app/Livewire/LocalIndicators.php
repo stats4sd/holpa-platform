@@ -2,20 +2,20 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
+use App\Models\Holpa\LocalIndicator;
 use Filament\Actions\Action;
-use App\Models\LocalIndicator;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Notifications\Notification;
+use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
+use Livewire\Component;
 
 class LocalIndicators extends Component implements HasForms, HasActions
 {
     use InteractsWithActions;
     use InteractsWithForms;
-    
+
     public $indicators;
     public $selectedIndicatorId = null;
 
@@ -57,7 +57,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
             ->extraAttributes(['class' => 'py-2 px-6 hover-effect'])
             ->action(fn () => $this->resetIndicators());
     }
-    
+
     public function resetIndicators()
     {
         foreach ($this->indicators as $indicator) {

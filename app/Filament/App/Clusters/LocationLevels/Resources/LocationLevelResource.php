@@ -2,25 +2,23 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use App\Services\HelperService;
-use Filament\Infolists\Infolist;
-use Filament\Resources\Resource;
-use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\Toggle;
-use Filament\Navigation\NavigationItem;
-use Filament\Forms\Components\TextInput;
-use App\Models\SampleFrame\LocationLevel;
-use Illuminate\Contracts\Support\Htmlable;
-use Filament\Infolists\Components\TextEntry;
 use App\Filament\App\Clusters\LocationLevels;
-use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
+use App\Models\SampleFrame\LocationLevel;
+use App\Services\HelperService;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
+use Filament\Navigation\NavigationItem;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class LocationLevelResource extends Resource
 {

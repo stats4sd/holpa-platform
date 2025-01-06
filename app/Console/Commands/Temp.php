@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\XlsformTemplates\XlsformTemplate;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Auth;
 
 class Temp extends Command
 {
@@ -24,11 +24,8 @@ class Temp extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
-       $xlsformTemplate = XlsformTemplate::first();
-
-       dd($xlsformTemplate->surveyRows->count());
-
+       Auth::user()->canDoSomething();
     }
 }

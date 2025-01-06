@@ -5,6 +5,7 @@ namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResour
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
+use Filament\Support\Enums\MaxWidth;
 
 class ListLocationLevels extends ListRecords
 {
@@ -12,6 +13,13 @@ class ListLocationLevels extends ListRecords
 
     protected ?string $heading = 'Survey Locations';
     protected ?string $subheading = 'Manage hierarchy';
+
+    protected static string $view = 'filament.app.pages.list-location-levels';
+
+//    public function getMaxContentWidth(): MaxWidth|string|null
+//    {
+//        return MaxWidth::Full;
+//    }
 
     public function getBreadcrumbs(): array
     {
