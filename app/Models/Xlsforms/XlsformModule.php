@@ -20,6 +20,21 @@ class XlsformModule extends Model
 
     protected $table = 'xlsform_modules';
 
+    protected static function booted()
+    {
+
+        // when a module is created, create a default Global version for it:
+        static::created(function (self $module) {
+
+            // make sure xlsformModuleVersion exists, so we can import the survey rows etc
+            $module->xlsformModuleVersions()->firstOrCreate([
+                'name' => 'Global ' . $module->name, // hard-code name for now
+                'is_default' => true,
+            ]);
+        });
+
+    }
+
     public function xlsformModuleVersions(): HasMany
     {
         return $this->hasMany(XlsformModuleVersion::class);

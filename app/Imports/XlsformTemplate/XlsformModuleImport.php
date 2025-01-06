@@ -55,12 +55,6 @@ class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRow
                 'name' => $row['module'],
                 'label' => $row['module'], // can be edited later in the platform
             ]);
-
-            // make sure xlsformModuleVersion exists, so we can import the survey rows etc
-            $module->xlsformModuleVersions()->firstOrCreate([
-                'name' => 'Global ' . $row['module'], // hard-code name for now
-                'is_default' => true,
-            ]);
         });
     }
 }
