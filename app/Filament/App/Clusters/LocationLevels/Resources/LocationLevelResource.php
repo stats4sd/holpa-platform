@@ -38,7 +38,9 @@ class LocationLevelResource extends Resource
 
         $baseRoute = static::getUrl('index');
 
-        $navItems = LocationLevel::all()
+        $navItems = LocationLevel::query()
+            ->orderBy('parent_id')
+            ->get()
             ->map(function ($level) use ($baseRoute) {
                 return NavigationItem::make(Str::plural($level->name))
                     ->url($baseRoute . '/' . $level->slug)
@@ -98,6 +100,7 @@ class LocationLevelResource extends Resource
                     ->boolean()
                     ->sortable(),
             ])
+            ->defaultSort('parent_id', 'asc')
             ->filters([
                 //
             ])
