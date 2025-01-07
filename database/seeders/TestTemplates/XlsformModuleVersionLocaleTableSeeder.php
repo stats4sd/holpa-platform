@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('xlsform_module_version_locale')->delete();
-        
+
         \DB::table('xlsform_module_version_locale')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'xlsform_module_version_id' => 3,
@@ -30,7 +30,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'xlsform_module_version_id' => 2,
@@ -41,7 +41,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'xlsform_module_version_id' => 4,
@@ -52,7 +52,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'xlsform_module_version_id' => 5,
@@ -63,7 +63,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'xlsform_module_version_id' => 1,
@@ -74,7 +74,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'xlsform_module_version_id' => 7,
@@ -85,7 +85,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'xlsform_module_version_id' => 7,
@@ -96,7 +96,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'xlsform_module_version_id' => 9,
@@ -107,7 +107,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'xlsform_module_version_id' => 9,
@@ -118,7 +118,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'xlsform_module_version_id' => 8,
@@ -129,7 +129,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'xlsform_module_version_id' => 8,
@@ -140,7 +140,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'xlsform_module_version_id' => 6,
@@ -151,7 +151,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'xlsform_module_version_id' => 6,
@@ -163,7 +163,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
                 'updated_at' => NULL,
             ),
         ));
-        
-        
+
+
     }
 }

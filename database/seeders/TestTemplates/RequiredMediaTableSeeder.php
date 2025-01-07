@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class RequiredMediaTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('required_media')->delete();
-        
+
         \DB::table('required_media')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'dataset_id' => NULL,
@@ -34,7 +34,7 @@ class RequiredMediaTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:20:06',
             ),
         ));
-        
-        
+
+
     }
 }

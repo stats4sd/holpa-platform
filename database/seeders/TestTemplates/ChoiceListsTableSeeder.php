@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class ChoiceListsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('choice_lists')->delete();
-        
+
         \DB::table('choice_lists')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'xlsform_module_version_id' => 3,
@@ -33,7 +33,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:05',
                 'updated_at' => '2025-01-07 16:20:05',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'xlsform_module_version_id' => 4,
@@ -47,7 +47,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:06',
                 'updated_at' => '2025-01-07 16:20:06',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'xlsform_module_version_id' => 4,
@@ -61,7 +61,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:06',
                 'updated_at' => '2025-01-07 16:20:06',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'xlsform_module_version_id' => 5,
@@ -75,7 +75,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:07',
                 'updated_at' => '2025-01-07 16:20:07',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'xlsform_module_version_id' => 9,
@@ -89,7 +89,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:55',
                 'updated_at' => '2025-01-07 16:20:55',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'xlsform_module_version_id' => 8,
@@ -104,7 +104,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:20:56',
             ),
         ));
-        
-        
+
+
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class XlsformModuleVersionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('xlsform_module_versions')->delete();
-        
+
         \DB::table('xlsform_module_versions')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'xlsform_module_id' => 1,
@@ -28,7 +28,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:02',
                 'updated_at' => '2025-01-07 16:20:02',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'xlsform_module_id' => 2,
@@ -37,7 +37,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:02',
                 'updated_at' => '2025-01-07 16:20:02',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'xlsform_module_id' => 3,
@@ -46,7 +46,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:02',
                 'updated_at' => '2025-01-07 16:20:02',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'xlsform_module_id' => 4,
@@ -55,7 +55,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:02',
                 'updated_at' => '2025-01-07 16:20:02',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'xlsform_module_id' => 5,
@@ -64,7 +64,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:02',
                 'updated_at' => '2025-01-07 16:20:02',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'xlsform_module_id' => 6,
@@ -73,7 +73,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:52',
                 'updated_at' => '2025-01-07 16:20:52',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'xlsform_module_id' => 7,
@@ -82,7 +82,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:52',
                 'updated_at' => '2025-01-07 16:20:52',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'xlsform_module_id' => 8,
@@ -91,7 +91,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'created_at' => '2025-01-07 16:20:52',
                 'updated_at' => '2025-01-07 16:20:52',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'xlsform_module_id' => 9,
@@ -101,7 +101,7 @@ class XlsformModuleVersionsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:20:52',
             ),
         ));
-        
-        
+
+
     }
 }
