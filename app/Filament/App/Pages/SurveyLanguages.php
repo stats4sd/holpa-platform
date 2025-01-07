@@ -36,9 +36,9 @@ class SurveyLanguages extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
-                $team->languages_progress = 'complete';
-                $team->save();
+                Team::find(auth()->user()->latestTeam->id)->update([
+                    'languages_complete' => 1,
+                ]);
 
                 $this->dispatch('refreshPage');
             });
@@ -50,9 +50,9 @@ class SurveyLanguages extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
-                $team->languages_progress = 'not_started';
-                $team->save();
+                Team::find(auth()->user()->latestTeam->id)->update([
+                    'languages_complete' => 0,
+                ]);
 
                 $this->dispatch('refreshPage');
             });
