@@ -2,18 +2,16 @@
 
 namespace App\Models;
 
-use App\Models\Language;
 use App\Models\Holpa\LocalIndicator;
+use App\Models\Reference\Country;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
-use App\Models\XlsformTemplates\XlsformTemplate;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
@@ -97,9 +95,19 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->hasMany(LocalIndicator::class);
     }
 
+    public function languages(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class, 'language_team', 'team_id', 'language_id');
+    }
+
     public function locales(): BelongsToMany
     {
         return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
 
     public function locationLevels(): MorphMany
@@ -232,13 +240,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         }
 
         if (
-            $this->time_frame !== null || 
-            $this->diet_diversity_module_version_id !== null || 
+            $this->time_frame !== null ||
+            $this->diet_diversity_module_version_id !== null ||
             $this->choiceListEntries()->exists()
         ) {
             return 'in_progress';
         }
-    
+
         return 'not_started';
     }
 

@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('xlsform_temlpate_modules');
+        Schema::dropIfExists('xlsform_module_versions');
     }
 };

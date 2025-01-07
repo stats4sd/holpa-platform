@@ -22,7 +22,7 @@ return new class extends Migration {
             $table->boolean('updated_during_import')->default(0);
             $table->timestamps();
 
-            $table->unique(['name', 'choice_list_id', 'cascade_filter', 'properties'], 'unique_name_choice_list_id');
+            $table->unique(['name', 'choice_list_id', 'cascade_filter'], 'unique_name_choice_list_id');
 
         });
     }

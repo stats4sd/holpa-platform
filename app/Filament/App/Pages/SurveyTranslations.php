@@ -7,13 +7,13 @@ use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
-class SurveyLanguages extends Page
+class SurveyTranslations extends Page
 {
-    protected static string $view = 'filament.app.pages.survey-languages';
+    protected static string $view = 'filament.app.pages.survey-translations';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $title = 'Context: Survey Languages';
+    protected static ?string $title = 'Context: Survey Translations';
 
     protected $listeners = ['refreshPage' => '$refresh'];
 

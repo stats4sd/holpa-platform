@@ -15,7 +15,7 @@ use App\Filament\App\Pages\Pilot;
 use App\Filament\App\Pages\PlaceAdaptations;
 use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyLanguages;
+use App\Filament\App\Pages\SurveyTranslations;
 use App\Filament\App\Pages\TeamOdkView;
 use App\Filament\App\Pages\TimeFrame;
 use Filament\Support\Facades\FilamentView;
@@ -127,7 +127,7 @@ class AppServiceProvider extends ServiceProvider
         FilamentView::registerRenderHook(
             PanelsRenderHook::TOPBAR_AFTER,
             fn(array $scopes): View => view('filament.app.pages.info-panels.survey-languages', ['scopes' => $scopes]),
-            scopes: SurveyLanguages::class,
+            scopes: SurveyTranslations::class,
         );
 
         FilamentView::registerRenderHook(
