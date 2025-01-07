@@ -63,7 +63,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
 
     public function uniqueBy(): array
     {
-        return ['name', 'choice_list_id', 'cascade_filter', 'properties'];
+        return ['name', 'choice_list_id', 'cascade_filter'];
     }
 
     public function isEmptyWhen(array $row): bool

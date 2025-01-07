@@ -2,7 +2,7 @@
 
 use App\Filament\App\Pages\MoreInstructions;
 use App\Filament\App\Pages\AddData;
-use App\Filament\App\Pages\SurveyLanguages;
+use App\Filament\App\Pages\SurveyTranslations;
 use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\PlaceAdaptations;
 use App\Filament\App\Pages\Lisp;
@@ -83,7 +83,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ url(SurveyLanguages::getUrl()) }}" class="buttona">
+                                <a href="{{ url(SurveyTranslations::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
