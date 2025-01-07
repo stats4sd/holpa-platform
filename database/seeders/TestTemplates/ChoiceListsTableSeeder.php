@@ -30,8 +30,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:05',
-                'updated_at' => '2025-01-07 16:20:05',
+                'created_at' => '2025-01-07 16:56:17',
+                'updated_at' => '2025-01-07 16:56:17',
             ),
             1 =>
             array (
@@ -44,8 +44,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:06',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:18',
             ),
             2 =>
             array (
@@ -58,8 +58,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:06',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:18',
             ),
             3 =>
             array (
@@ -72,8 +72,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:07',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:19',
             ),
             4 =>
             array (
@@ -86,8 +86,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:55',
-                'updated_at' => '2025-01-07 16:20:55',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:45',
             ),
             5 =>
             array (
@@ -100,8 +100,22 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:20:56',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:46',
+            ),
+            6 =>
+            array (
+                'id' => 7,
+                'xlsform_module_version_id' => 8,
+                'list_name' => 'crops',
+                'description' => NULL,
+                'is_localisable' => 1,
+                'is_dataset' => 0,
+                'can_be_hidden_from_context' => 0,
+                'has_custom_handling' => 0,
+                'properties' => NULL,
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:46',
             ),
         ));
 

@@ -63,7 +63,7 @@ class TimeFrame extends Page implements HasTable, HasForms
 
         return $table
             ->query(fn() => SurveyRow::query()
-                ->whereHasMorph('template', [XlsformModuleVersion::class], fn($query) => $query->where('is_default', 1))
+                ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
                 ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
             )
             ->columns([

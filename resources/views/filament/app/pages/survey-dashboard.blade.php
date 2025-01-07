@@ -56,8 +56,8 @@ use App\Filament\App\Pages\DataAnalysis;
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
-                                <h3 class="mb-2">Survey languages</h3>
-                                <p class="text-gray-600 mb-4">Select the language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template.
+                                <h3 class="mb-2">Survey Country and Languages</h3>
+                                <p class="text-gray-600 mb-4">Select the country, language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template.
                                 </p>
                             </div>
                             <div class="dashbuttondiv">
@@ -83,7 +83,7 @@ use App\Filament\App\Pages\DataAnalysis;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ url(SurveyTranslations::getUrl()) }}" class="buttona">
+                                <a href="{{ \App\Filament\App\Pages\SurveyLanguages::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>

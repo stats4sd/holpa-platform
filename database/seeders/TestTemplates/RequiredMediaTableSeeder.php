@@ -30,8 +30,8 @@ class RequiredMediaTableSeeder extends Seeder
                 'exists_on_odk' => 0,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:06',
+                'created_at' => '2025-01-07 16:56:16',
+                'updated_at' => '2025-01-07 16:56:16',
             ),
         ));
 

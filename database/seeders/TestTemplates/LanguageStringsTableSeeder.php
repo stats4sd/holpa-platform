@@ -28,8 +28,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 1,
                 'text' => 'Do you drink coffee?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:28',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:40',
+                'updated_at' => '2025-01-07 16:56:54',
             ),
             1 =>
             array (
@@ -38,10 +38,10 @@ class LanguageStringsTableSeeder extends Seeder
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
                 'linked_entry_id' => 2,
-                'text' => 'How many cups of coffee do you drink in a normal day?',
+                'text' => '${time_frame}, roughly how many cups of coffee did you drink per day?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:28',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:40',
+                'updated_at' => '2025-01-07 16:56:54',
             ),
             2 =>
             array (
@@ -52,8 +52,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 2,
                 'text' => 'Please enter a positive number',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:29',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:41',
+                'updated_at' => '2025-01-07 16:56:54',
             ),
             3 =>
             array (
@@ -64,8 +64,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 1,
                 'text' => 'Yes',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:29',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:54',
             ),
             4 =>
             array (
@@ -76,8 +76,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 2,
                 'text' => 'No',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:29',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:54',
             ),
             5 =>
             array (
@@ -85,11 +85,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 3,
+                'linked_entry_id' => 4,
                 'text' => 'This is the first example fom for the workshop on 14th November 2017. WITH AN EDIT',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             6 =>
             array (
@@ -97,11 +97,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 4,
+                'linked_entry_id' => 5,
                 'text' => 'What is your name?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             7 =>
             array (
@@ -109,11 +109,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 5,
+                'linked_entry_id' => 6,
                 'text' => 'How old are you?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             8 =>
             array (
@@ -121,11 +121,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 3,
+                'linked_entry_id' => 4,
                 'text' => 'Swipe right to get to the first question',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             9 =>
             array (
@@ -133,11 +133,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 5,
+                'linked_entry_id' => 6,
                 'text' => 'This question is optional',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:42',
+                'created_at' => '2025-01-07 16:56:42',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             10 =>
             array (
@@ -145,11 +145,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 5,
+                'linked_entry_id' => 6,
                 'text' => 'You entered an invalid number. The respondent must be over 15 yrs old, and is almost certainly less than 150.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:30',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:43',
+                'updated_at' => '2025-01-07 16:56:55',
             ),
             11 =>
             array (
@@ -157,11 +157,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 6,
+                'linked_entry_id' => 7,
                 'text' => 'Which of the following beverages do you drink at least once per month? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             12 =>
             array (
@@ -169,11 +169,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 7,
+                'linked_entry_id' => 8,
                 'text' => 'Drinks Information',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             13 =>
             array (
@@ -181,11 +181,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 11,
+                'linked_entry_id' => 12,
                 'text' => 'Overall, how do you find the taste of ${drink_name}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             14 =>
             array (
@@ -193,11 +193,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 12,
+                'linked_entry_id' => 13,
                 'text' => 'You said the tast of ${drink_name} was bad. Could you briefly say why you still drink it?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             15 =>
             array (
@@ -205,11 +205,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 13,
+                'linked_entry_id' => 14,
                 'text' => 'Drink Comments',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             16 =>
             array (
@@ -217,11 +217,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 14,
+                'linked_entry_id' => 15,
                 'text' => 'Add a comment about this drink. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             17 =>
             array (
@@ -229,11 +229,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 6,
+                'linked_entry_id' => 7,
                 'text' => 'Select all that apply',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             18 =>
             array (
@@ -241,11 +241,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 12,
+                'linked_entry_id' => 13,
                 'text' => 'i.e. Do you like other aspects of the drink, or do you find it useful in some way?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             19 =>
             array (
@@ -253,11 +253,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 14,
+                'linked_entry_id' => 15,
                 'text' => 'This is just so we can test nested repeat groups and doesn\'t really make sense as a question. Please add multiple comments if you can.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:31',
-                'updated_at' => '2025-01-07 16:20:43',
+                'created_at' => '2025-01-07 16:56:44',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             20 =>
             array (
@@ -268,8 +268,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 3,
                 'text' => 'Black tea',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             21 =>
             array (
@@ -280,8 +280,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 4,
                 'text' => 'Green tea',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             22 =>
             array (
@@ -292,8 +292,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 5,
                 'text' => 'Coca-cola',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             23 =>
             array (
@@ -304,8 +304,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 6,
                 'text' => 'Diet coke',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             24 =>
             array (
@@ -316,8 +316,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 7,
             'text' => 'Fruit juice (any kind)',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             25 =>
             array (
@@ -328,8 +328,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 8,
                 'text' => 'Very good',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             26 =>
             array (
@@ -340,8 +340,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 9,
                 'text' => 'Good',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             27 =>
             array (
@@ -352,8 +352,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 10,
                 'text' => 'Neutral',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             28 =>
             array (
@@ -364,8 +364,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 11,
                 'text' => 'Bad',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             29 =>
             array (
@@ -376,8 +376,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 12,
                 'text' => 'Very bad',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:32',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:56',
             ),
             30 =>
             array (
@@ -385,11 +385,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 18,
+                'linked_entry_id' => 19,
                 'text' => 'Can I take a photo?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             31 =>
             array (
@@ -397,11 +397,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 19,
+                'linked_entry_id' => 20,
                 'text' => 'Take a photo of the respondent',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             32 =>
             array (
@@ -409,11 +409,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 20,
+                'linked_entry_id' => 21,
                 'text' => 'Please record your current location',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             33 =>
             array (
@@ -421,11 +421,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 21,
+                'linked_entry_id' => 22,
                 'text' => 'Thank you for your time. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             34 =>
             array (
@@ -433,11 +433,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 18,
+                'linked_entry_id' => 19,
                 'text' => 'Ask the respondent for permission.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             35 =>
             array (
@@ -445,11 +445,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 19,
+                'linked_entry_id' => 20,
             'text' => '(Or yourself if you are completing it on your own)',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             36 =>
             array (
@@ -457,11 +457,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 20,
+                'linked_entry_id' => 21,
                 'text' => 'If you are outdoors, you should aim for an accuracy of 5-8 metres. If indoors, aim for about 20-30 metres. NOTE - this may take a couple of minutes. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             37 =>
             array (
@@ -469,11 +469,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 21,
+                'linked_entry_id' => 22,
                 'text' => 'Swipe right to end the form and see the options for saving and finalising this instance. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:33',
-                'updated_at' => '2025-01-07 16:20:44',
+                'created_at' => '2025-01-07 16:56:45',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             38 =>
             array (
@@ -484,8 +484,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 13,
                 'text' => 'Yes',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:46',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             39 =>
             array (
@@ -496,8 +496,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 14,
                 'text' => 'No',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:46',
+                'updated_at' => '2025-01-07 16:56:57',
             ),
             40 =>
             array (
@@ -505,11 +505,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 23,
+                'linked_entry_id' => 24,
                 'text' => 'These fields…',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:46',
+                'created_at' => '2025-01-07 16:56:47',
+                'updated_at' => '2025-01-07 16:56:58',
             ),
             41 =>
             array (
@@ -517,11 +517,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 24,
+                'linked_entry_id' => 25,
                 'text' => '...are not shown…',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:46',
+                'created_at' => '2025-01-07 16:56:47',
+                'updated_at' => '2025-01-07 16:56:58',
             ),
             42 =>
             array (
@@ -529,11 +529,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 25,
+                'linked_entry_id' => 26,
                 'text' => 'unique identifier for the device used for data collection',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:46',
+                'created_at' => '2025-01-07 16:56:47',
+                'updated_at' => '2025-01-07 16:56:58',
             ),
             43 =>
             array (
@@ -541,11 +541,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 23,
+                'linked_entry_id' => 24,
                 'text' => 'they are collected...',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:47',
+                'updated_at' => '2025-01-07 16:56:58',
             ),
             44 =>
             array (
@@ -553,11 +553,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 24,
+                'linked_entry_id' => 25,
                 'text' => '...automatically...',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:34',
-                'updated_at' => '2025-01-07 16:20:45',
+                'created_at' => '2025-01-07 16:56:47',
+                'updated_at' => '2025-01-07 16:56:58',
             ),
             45 =>
             array (
@@ -565,11 +565,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 26,
+                'linked_entry_id' => 27,
                 'text' => 'This is the first example fom for the workshop on 14th November 2017. WITH AN EDIT',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:23',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             46 =>
             array (
@@ -577,11 +577,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 27,
+                'linked_entry_id' => 28,
                 'text' => 'What is your name?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:23',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             47 =>
             array (
@@ -589,11 +589,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 28,
+                'linked_entry_id' => 29,
                 'text' => 'How old are you?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:23',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             48 =>
             array (
@@ -601,11 +601,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 26,
+                'linked_entry_id' => 27,
                 'text' => 'Swipe right to get to the first question',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:24',
-                'updated_at' => '2025-01-07 16:21:45',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:31',
             ),
             49 =>
             array (
@@ -613,11 +613,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 28,
+                'linked_entry_id' => 29,
                 'text' => 'This question is optional',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:24',
-                'updated_at' => '2025-01-07 16:21:45',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:31',
             ),
             50 =>
             array (
@@ -625,11 +625,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 26,
+                'linked_entry_id' => 27,
                 'text' => 'Este es el primer formulario de ejemplo para el taller del 14 de noviembre de 2017. CON UNA EDICIÓN ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:24',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             51 =>
             array (
@@ -637,11 +637,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 27,
+                'linked_entry_id' => 28,
                 'text' => '¿Cómo te llamas? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:24',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             52 =>
             array (
@@ -649,11 +649,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 28,
+                'linked_entry_id' => 29,
                 'text' => '¿Qué edad tienes? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:24',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:10',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             53 =>
             array (
@@ -661,11 +661,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 26,
+                'linked_entry_id' => 27,
                 'text' => 'Deslice el dedo hacia la derecha para llegar a la primera pregunta ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:25',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:11',
+                'updated_at' => '2025-01-07 17:01:31',
             ),
             54 =>
             array (
@@ -673,11 +673,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 28,
+                'linked_entry_id' => 29,
                 'text' => 'You entered an invalid number. The respondent must be over 15 yrs old, and is almost certainly less than 150.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:25',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:11',
+                'updated_at' => '2025-01-07 17:01:31',
             ),
             55 =>
             array (
@@ -685,11 +685,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 28,
+                'linked_entry_id' => 29,
                 'text' => 'Ingresó un número no válido. El encuestado debe tener más de 15 años y es casi seguro que tiene menos de 150.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:26',
-                'updated_at' => '2025-01-07 16:21:46',
+                'created_at' => '2025-01-07 17:01:12',
+                'updated_at' => '2025-01-07 17:01:32',
             ),
             56 =>
             array (
@@ -697,11 +697,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 29,
+                'linked_entry_id' => 30,
                 'text' => 'Can I take a photo?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             57 =>
             array (
@@ -709,11 +709,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 30,
+                'linked_entry_id' => 31,
                 'text' => 'Take a photo of the respondent',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             58 =>
             array (
@@ -721,11 +721,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 31,
+                'linked_entry_id' => 32,
                 'text' => 'Please record your current location',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             59 =>
             array (
@@ -733,11 +733,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 32,
+                'linked_entry_id' => 33,
                 'text' => 'Thank you for your time. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             60 =>
             array (
@@ -745,11 +745,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 29,
+                'linked_entry_id' => 30,
                 'text' => 'Ask the respondent for permission.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             61 =>
             array (
@@ -757,11 +757,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 30,
+                'linked_entry_id' => 31,
             'text' => '(Or yourself if you are completing it on your own)',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             62 =>
             array (
@@ -769,11 +769,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 31,
+                'linked_entry_id' => 32,
                 'text' => 'If you are outdoors, you should aim for an accuracy of 5-8 metres. If indoors, aim for about 20-30 metres. NOTE - this may take a couple of minutes. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             63 =>
             array (
@@ -781,11 +781,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 32,
+                'linked_entry_id' => 33,
                 'text' => 'Swipe right to end the form and see the options for saving and finalising this instance. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:27',
-                'updated_at' => '2025-01-07 16:21:47',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             64 =>
             array (
@@ -793,11 +793,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 29,
+                'linked_entry_id' => 30,
                 'text' => '¿Puedo tomar una foto? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             65 =>
             array (
@@ -805,11 +805,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 30,
+                'linked_entry_id' => 31,
                 'text' => 'Toma una foto del encuestado ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             66 =>
             array (
@@ -817,11 +817,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 31,
+                'linked_entry_id' => 32,
                 'text' => 'Registre su ubicación actual ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             67 =>
             array (
@@ -829,11 +829,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 32,
+                'linked_entry_id' => 33,
                 'text' => 'Gracias por su tiempo.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:13',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             68 =>
             array (
@@ -841,11 +841,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 29,
+                'linked_entry_id' => 30,
                 'text' => 'Pida permiso al encuestado. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:14',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             69 =>
             array (
@@ -853,11 +853,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 30,
+                'linked_entry_id' => 31,
             'text' => '(O a usted mismo si lo está completando por su cuenta) ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:14',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             70 =>
             array (
@@ -865,11 +865,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 31,
+                'linked_entry_id' => 32,
                 'text' => 'Si está al aire libre, debe apuntar a una precisión de 5 a 8 metros. Si está en el interior, apunte a unos 20 a 30 metros. NOTA: esto puede llevar un par de minutos. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:14',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             71 =>
             array (
@@ -877,11 +877,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 32,
+                'linked_entry_id' => 33,
                 'text' => 'Deslice el dedo hacia la derecha para finalizar el formulario y ver las opciones para guardar y finalizar esta instancia.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:28',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:14',
+                'updated_at' => '2025-01-07 17:01:33',
             ),
             72 =>
             array (
@@ -892,8 +892,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 15,
                 'text' => 'Yes',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:29',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:15',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             73 =>
             array (
@@ -904,8 +904,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 16,
                 'text' => 'No',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:29',
-                'updated_at' => '2025-01-07 16:21:48',
+                'created_at' => '2025-01-07 17:01:15',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             74 =>
             array (
@@ -916,8 +916,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 15,
                 'text' => 'Sí ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:29',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:15',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             75 =>
             array (
@@ -928,8 +928,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 16,
                 'text' => 'No ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:29',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:15',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             76 =>
             array (
@@ -937,11 +937,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 34,
+                'linked_entry_id' => 35,
                 'text' => 'How many fields are you surveying?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:30',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             77 =>
             array (
@@ -949,11 +949,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 36,
+                'linked_entry_id' => 37,
                 'text' => 'What is the main soil type of the field?',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:30',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             78 =>
             array (
@@ -961,11 +961,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 37,
+                'linked_entry_id' => 38,
                 'text' => 'What is the main crop grown on the field? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:30',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             79 =>
             array (
@@ -973,11 +973,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 38,
+                'linked_entry_id' => 39,
                 'text' => 'Add any interesting features of the field.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:30',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             80 =>
             array (
@@ -985,11 +985,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 34,
+                'linked_entry_id' => 35,
                 'text' => 'The next section will repeat once per field. If you later need to add more fields, come back and edit this response. ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:30',
-                'updated_at' => '2025-01-07 16:21:49',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:34',
             ),
             81 =>
             array (
@@ -997,11 +997,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 34,
+                'linked_entry_id' => 35,
                 'text' => '¿Cuántos campos estás encuestando? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:31',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             82 =>
             array (
@@ -1009,11 +1009,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 36,
+                'linked_entry_id' => 37,
                 'text' => '¿Cuál es el principal tipo de suelo del campo? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:31',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             83 =>
             array (
@@ -1021,11 +1021,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 37,
+                'linked_entry_id' => 38,
                 'text' => '¿Cuál es el cultivo principal que se cultiva en el campo? ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:31',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             84 =>
             array (
@@ -1033,11 +1033,11 @@ class LanguageStringsTableSeeder extends Seeder
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 38,
+                'linked_entry_id' => 39,
                 'text' => 'Agregue alguna característica interesante del campo.',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:31',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:16',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             85 =>
             array (
@@ -1048,8 +1048,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 17,
                 'text' => 'clay',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:32',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             86 =>
             array (
@@ -1060,8 +1060,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 18,
                 'text' => 'loam',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:32',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             87 =>
             array (
@@ -1072,8 +1072,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 19,
                 'text' => 'sand',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:32',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             88 =>
             array (
@@ -1084,8 +1084,8 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 20,
                 'text' => 'silt',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:32',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             89 =>
             array (
@@ -1096,188 +1096,308 @@ class LanguageStringsTableSeeder extends Seeder
                 'linked_entry_id' => 21,
                 'text' => 'other',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:32',
-                'updated_at' => '2025-01-07 16:21:50',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             90 =>
             array (
                 'id' => 91,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 22,
+                'text' => 'Wheat',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            91 =>
+            array (
+                'id' => 92,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 23,
+                'text' => 'Maize',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            92 =>
+            array (
+                'id' => 93,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 24,
+                'text' => 'Sorghum',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            93 =>
+            array (
+                'id' => 94,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 25,
+                'text' => 'Quinoa',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            94 =>
+            array (
+                'id' => 95,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 26,
+                'text' => 'Cowpea',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            95 =>
+            array (
+                'id' => 96,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
                 'linked_entry_id' => 17,
                 'text' => 'arcilla ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
-            91 =>
+            96 =>
             array (
-                'id' => 92,
+                'id' => 97,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
                 'linked_entry_id' => 18,
                 'text' => 'marga ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
-            92 =>
+            97 =>
             array (
-                'id' => 93,
+                'id' => 98,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
                 'linked_entry_id' => 19,
                 'text' => 'arena ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
-            93 =>
+            98 =>
             array (
-                'id' => 94,
+                'id' => 99,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
                 'linked_entry_id' => 20,
                 'text' => 'limo ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
-            94 =>
+            99 =>
             array (
-                'id' => 95,
+                'id' => 100,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
                 'linked_entry_id' => 21,
                 'text' => 'otro',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
-            ),
-            95 =>
-            array (
-                'id' => 96,
-                'locale_id' => 41,
-                'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 42,
-                'text' => 'These fields…',
-                'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:52',
-            ),
-            96 =>
-            array (
-                'id' => 97,
-                'locale_id' => 41,
-                'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 43,
-                'text' => '...are not shown…',
-                'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:52',
-            ),
-            97 =>
-            array (
-                'id' => 98,
-                'locale_id' => 41,
-                'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 44,
-                'text' => 'unique identifier for the device used for data collection',
-                'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:52',
-            ),
-            98 =>
-            array (
-                'id' => 99,
-                'locale_id' => 41,
-                'language_string_type_id' => 2,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 42,
-                'text' => 'they are collected...',
-                'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
-            ),
-            99 =>
-            array (
-                'id' => 100,
-                'locale_id' => 41,
-                'language_string_type_id' => 2,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 43,
-                'text' => '...automatically...',
-                'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:33',
-                'updated_at' => '2025-01-07 16:21:51',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             100 =>
             array (
                 'id' => 101,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 42,
-                'text' => 'Estos campos… ',
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 22,
+                'text' => 'Trigo ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:34',
-                'updated_at' => '2025-01-07 16:21:53',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             101 =>
             array (
                 'id' => 102,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 43,
-                'text' => '...no se muestran… ',
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 23,
+                'text' => 'Maíz ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:34',
-                'updated_at' => '2025-01-07 16:21:53',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             102 =>
             array (
                 'id' => 103,
                 'locale_id' => 144,
                 'language_string_type_id' => 1,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 44,
-                'text' => 'Identificador único del dispositivo utilizado para la recopilación de datos ',
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 24,
+                'text' => 'Sorgo ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:34',
-                'updated_at' => '2025-01-07 16:21:53',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             103 =>
             array (
                 'id' => 104,
                 'locale_id' => 144,
-                'language_string_type_id' => 2,
-                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
-                'linked_entry_id' => 42,
-                'text' => 'se recopilan... ',
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 25,
+                'text' => 'Quinua ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:34',
-                'updated_at' => '2025-01-07 16:21:52',
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
             ),
             104 =>
             array (
                 'id' => 105,
                 'locale_id' => 144,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\ChoiceListEntry',
+                'linked_entry_id' => 26,
+                'text' => 'Caupí',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:18',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            105 =>
+            array (
+                'id' => 106,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 43,
+                'text' => 'These fields…',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            106 =>
+            array (
+                'id' => 107,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 44,
+                'text' => '...are not shown…',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            107 =>
+            array (
+                'id' => 108,
+                'locale_id' => 41,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 45,
+                'text' => 'unique identifier for the device used for data collection',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            108 =>
+            array (
+                'id' => 109,
+                'locale_id' => 41,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
                 'linked_entry_id' => 43,
+                'text' => 'they are collected...',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            109 =>
+            array (
+                'id' => 110,
+                'locale_id' => 41,
+                'language_string_type_id' => 2,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 44,
+                'text' => '...automatically...',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:36',
+            ),
+            110 =>
+            array (
+                'id' => 111,
+                'locale_id' => 144,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 43,
+                'text' => 'Estos campos… ',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            111 =>
+            array (
+                'id' => 112,
+                'locale_id' => 144,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 44,
+                'text' => '...no se muestran… ',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            112 =>
+            array (
+                'id' => 113,
+                'locale_id' => 144,
+                'language_string_type_id' => 1,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 45,
+                'text' => 'Identificador único del dispositivo utilizado para la recopilación de datos ',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:19',
+                'updated_at' => '2025-01-07 17:01:38',
+            ),
+            113 =>
+            array (
+                'id' => 114,
+                'locale_id' => 144,
+                'language_string_type_id' => 2,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 43,
+                'text' => 'se recopilan... ',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:01:20',
+                'updated_at' => '2025-01-07 17:01:37',
+            ),
+            114 =>
+            array (
+                'id' => 115,
+                'locale_id' => 144,
+                'language_string_type_id' => 2,
+                'linked_entry_type' => 'App\\Models\\Xlsforms\\SurveyRow',
+                'linked_entry_id' => 44,
                 'text' => '... automáticamente... ',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:21:34',
-                'updated_at' => '2025-01-07 16:21:52',
+                'created_at' => '2025-01-07 17:01:20',
+                'updated_at' => '2025-01-07 17:01:37',
             ),
         ));
 

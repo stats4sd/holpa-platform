@@ -44,6 +44,18 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
                             'xlsform_template_id' => $item->id,
                             'title' => $item->title,
                         ]);
+
+                        $xlsformModule = XlsformModule::create([
+                            'form_type' => 'App\Models\Xlsforms\Xlsform',
+                            'form_id' => $xlsform->id,
+                            'label' => $team->name . ' custom module',
+                            'name' => $team->name . ' custom module',
+                        ]);
+
+                        XlsformModuleVersion::create([
+                            'xlsform_module_id' => $xlsformModule->id,
+                            'name' => 'custom',
+                        ]);
                     }
                 }
             }

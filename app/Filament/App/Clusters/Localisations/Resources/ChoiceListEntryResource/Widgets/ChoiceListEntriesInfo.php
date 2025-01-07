@@ -39,7 +39,7 @@ class ChoiceListEntriesInfo extends Widget
             ->map(fn(SurveyRow $surveyRow): array => [
                 'name' => $surveyRow->name,
                 'label' => $surveyRow->languageStrings()
-                        ->whereHas('xlsformTemplateLanguage', fn(Builder $query) => $query->where('language_id', 41))
+                        ->whereHas('locale', fn(Builder $query) => $query->where('language_id', 41))
                         ->where('language_string_type_id', 1)
                         ->first()?->text ?? 'tbc',
             ]);}
