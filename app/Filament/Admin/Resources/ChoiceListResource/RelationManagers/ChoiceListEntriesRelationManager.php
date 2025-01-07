@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 
 use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
@@ -15,6 +16,7 @@ use Filament\Forms\Get;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Collection;
 
 class ChoiceListEntriesRelationManager extends RelationManager
 {
@@ -29,40 +31,45 @@ class ChoiceListEntriesRelationManager extends RelationManager
                 /** @var ChoiceList $choiceList */
                 $choiceList = $this->getOwnerRecord();
 
-                $propFields = collect($choiceList->properties['extra_properties'])
-                    ->map(fn($property) => Forms\Components\TextInput::make('properties.' . $property['name'])
-                        ->label($property['label'])
-                        ->helperText($property['helper_text'])
-                    );
+                if(isset($choiceList->properties['extra_properties'])) {
+                    $propFields = collect($choiceList->properties['extra_properties'])
+                        ->map(fn($property) => Forms\Components\TextInput::make('properties.' . $property['name'])
+                            ->label($property['label'])
+                            ->helperText($property['helper_text'])
+                        );
+                } else {
+                    $propFields = collect([]);
+                }
 
-                $xlsformTemplateLanguages = $choiceList->template->xlsformTemplateLanguages;
+
+                /** @var Collection<Locale> $locales */
+                $locales = $choiceList->xlsformModuleVersion->locales;
 
                 return [
                     TextInput::make('name')->required(),
                     Repeater::make('languageStrings')
                         ->label('Add Labels for the following languages:')
                         ->relationship('languageStrings')
-                        ->minItems(fn() => $xlsformTemplateLanguages->count())
-                        ->maxItems(fn() => $xlsformTemplateLanguages->count())
-                        ->formatStateUsing(function (?ChoiceListEntry $record, $state) use ($choiceList, $xlsformTemplateLanguages) {
+                        ->minItems(fn() => $locales->count())
+                        ->maxItems(fn() => $locales->count())
+                        ->formatStateUsing(function (?ChoiceListEntry $record, $state) use ($choiceList, $locales) {
                             if ($record) {
                                 return $state;
                             }
 
-                            return $xlsformTemplateLanguages->map(fn(XlsformModuleVersionLocale $xlsformTemplateLanguage) => [
+                            return $locales->map(fn(Locale $locale) => [
                                 'language_string_type_id' => LanguageStringType::where('name', 'label')->first()->id,
-                                'xlsform_template_language_id' => $xlsformTemplateLanguage->id,
+                                'locale_id' => $locale->id,
                                 'text' => '',
                             ])->toArray();
                         })
                         ->schema([
-                            Hidden::make('xlsform_template_language_id'),
+                            Hidden::make('locale_id'),
                             Hidden::make('language_string_type_id'),
                             TextInput::make('text')
-                                ->label(function (Get $get) {
-                                    $xlsformTemplateLanguage = XlsformModuleVersionLocale::find($get('xlsform_template_language_id'));
-
-                                    return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
+                                ->label(function (Get $get) use ($locales) {
+                                    $locale = $locales->firstWhere('id', $get('locale_id'));
+                                    return 'Label::' . $locale->language_label;
                                 })
                                 ->required(),
                         ])

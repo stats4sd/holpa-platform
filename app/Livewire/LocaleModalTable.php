@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
+// TODO - update after data structure change
 class LocaleModalTable extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;

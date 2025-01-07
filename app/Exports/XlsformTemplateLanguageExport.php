@@ -15,20 +15,18 @@ use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
+// TODO: Update with new structure
 class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitle, WithColumnWidths, WithStyles, WithBackgroundColor
 {
-    private $xlsformTemplate;
 
-    public function __construct(XlsformTemplate $template, XlsformModuleVersionLocale $currentTemplateLanguage)
+    public function __construct(public XlsformTemplate $template, public XlsformModuleVersionLocale $currentTemplateLanguage)
     {
-        $this->xlsformTemplate = $template;
-        $this->currentTemplateLanguage = $currentTemplateLanguage;
     }
 
     public function headings(): array
     {
         // Get all XlsformTemplateLanguages for this template, excluding current language
-        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
+        $templateLanguages = $this->template->xlsformTemplateLanguages
             ->where('has_language_strings', true)
             ->where('id', '!=', $this->currentTemplateLanguage->id)
             ->map(function ($templateLanguage) {
@@ -48,10 +46,10 @@ class XlsformTemplateLanguageExport implements FromArray, WithHeadings, WithTitl
         $exportData = [];
 
         // Get all survey rows linked to the template
-        $surveyRows = $this->xlsformTemplate->surveyRows;
+        $surveyRows = $this->template->surveyRows;
 
         // Get all XlsformTemplateLanguages for this template
-        $templateLanguages = $this->xlsformTemplate->xlsformTemplateLanguages
+        $templateLanguages = $this->template->xlsformTemplateLanguages
                                 ->where('has_language_strings', true)
                                 ->where('id', '!=', $this->currentTemplateLanguage->id);
 

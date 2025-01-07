@@ -24,13 +24,8 @@ class ChoiceListResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\MorphToSelect::make('template')
-                    ->types([
-                        Forms\Components\MorphToSelect\Type::make(XlsformTemplate::class)
-                            ->titleAttribute('title'),
-                        Forms\Components\MorphToSelect\Type::make(XlsformModuleVersion::class)
-                            ->titleAttribute('name'),
-                    ]),
+                Forms\Components\Select::make('xlsformModuleVersion')
+                ->relationship('xlsformModuleVersion', 'name', modifyQueryUsing: fn(Builder $query) => $query->where('is_default', true)),
                 Forms\Components\TextInput::make('list_name')
                     ->required()
                     ->maxLength(255),

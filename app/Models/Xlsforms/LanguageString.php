@@ -4,6 +4,7 @@ namespace App\Models\Xlsforms;
 
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -12,6 +13,8 @@ use Znck\Eloquent\Relations\BelongsToThrough;
 
 class LanguageString extends Model
 {
+
+
 
     use \Znck\Eloquent\Traits\BelongsToThrough;
 
@@ -30,18 +33,13 @@ class LanguageString extends Model
         return $this->belongsTo(LanguageStringType::class);
     }
 
-    public function xlsformTemplateLanguage(): BelongsTo
+    public function locale(): BelongsTo
     {
-        return $this->belongsTo(XlsformModuleVersionLocale::class);
-    }
-
-    public function xlsformModuleVersion(): BelongsToThrough
-    {
-        return $this->belongsToThrough(XlsformModuleVersion::class, XlsformModuleVersionLocale::class);
+        return $this->belongsTo(Locale::class);
     }
 
     public function language(): BelongsToThrough
     {
-        return $this->belongsToThrough(Language::class, XlsformModuleVersionLocale::class);
+        return $this->belongsToThrough(Language::class, Locale::class);
     }
 }

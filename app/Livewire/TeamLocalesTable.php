@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
+// TODO - update after data structure
 class TeamLocalesTable extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
