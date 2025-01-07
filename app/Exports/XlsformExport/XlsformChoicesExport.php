@@ -67,12 +67,6 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
         return 'choices';
     }
 
-    private function getHeadingsForStringType(string $string): Collection
-    {
-        return $this->xlsformTemplateLanguages->map(fn(XlsformModuleVersionLocale $xlsformTemplateLanguage) => "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})"
-        );
-    }
-
     private function getHeadingsFromProperties(Collection $choiceListEntries): Collection
     {
         return $choiceListEntries
