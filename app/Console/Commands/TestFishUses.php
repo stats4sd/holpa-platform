@@ -34,50 +34,37 @@ class TestFishUses extends Command
         // get irrigation data from submission JSON content
         $submission = Submission::first();
 
-        ray('submission ' . $submission->id);
-
         // suppose there should be only one farm_survey_data for a submission id
         $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
 
 
         // existence check for nested repeat group data in submission content
         if (isset($submission->content['survey']['income']['fish_production']['fish_repeat'])) {
-            ray('fish_repeat data found');
-
             $class = \App\Models\SurveyData\FishUse::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
-            ray($columnNames);
 
             $fishRepeats = $submission->content['survey']['income']['fish_production']['fish_repeat'];
 
             foreach ($fishRepeats as $fishRepeat) {
 
                 if (isset($fishRepeat['fish_production_repeat'])) {
-                    ray('fish_production_repeat data found');
-
                     // get data from submission JSON content
                     $fishProductionRepeats = $fishRepeat['fish_production_repeat'];
 
                     // handle nested repeat groups one by one
                     foreach ($fishProductionRepeats as $fishProductionRepeat) {
-                        ray($fishProductionRepeat);
-
                         $result = $this->prepareFishUseData($fishProductionRepeat, $columnNames);
 
                         $result['submission_id'] = $submission->id;
                         $result['farm_survey_data_id'] = $farmSurveyData->id;
 
-                        ray($result);
-
                         $fishUse = FishUse::create($result);
                     }
                 } else {
-                    ray('fish_production_repeat data not found');
                 }
             }
         } else {
-            ray('fish_repeat data not found');
         }
 
         $this->info('end');

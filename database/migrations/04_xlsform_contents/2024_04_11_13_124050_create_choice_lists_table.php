@@ -13,17 +13,17 @@ return new class extends Migration
     {
         Schema::create('choice_lists', function (Blueprint $table) {
             $table->id();
-            $table->morphs('template');
+            $table->foreignId('xlsform_module_version_id')->constrained('xlsform_module_versions')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('list_name');
             $table->text('description')->nullable();
             $table->boolean('is_localisable')->default(false);
             $table->boolean('is_dataset')->default(false); // may not be used;
-            $table->boolean('can_be_hidden_from_context');
+            $table->boolean('can_be_hidden_from_context')->default(false);
             $table->boolean('has_custom_handling')->default(0);
             $table->json('properties')->nullable();
             $table->timestamps();
 
-            $table->unique(['template_id', 'template_type', 'list_name'], 'unique_xlsform_template_id_list_name');
+            $table->unique(['xlsform_module_version_id', 'list_name'], 'unique_xlsform_template_id_list_name');
         });
     }
 

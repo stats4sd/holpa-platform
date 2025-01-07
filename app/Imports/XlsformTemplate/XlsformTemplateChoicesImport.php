@@ -4,6 +4,7 @@ namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
@@ -18,22 +19,29 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
 
     use RemembersRowNumber;
 
-    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public XlsformModuleVersion $xlsformModuleVersion, public Collection $translatableHeadings)
     {
     }
 
-    public function model(array $row): ChoiceListEntry
+    public function model(array $row): ?ChoiceListEntry
     {
         $row = collect($row);
-        $data = [
-            'name' => $row['name'],
-        ];
 
-        $data['choice_list_id'] = $this->xlsformTemplate
+        // check the choice list entry is part of a list in the current module version:
+
+        $choiceList = $this->xlsformModuleVersion
             ->choiceLists()
             ->where('list_name', $row['list_name'])
-            ->first()
-            ->id;
+            ->first();
+
+        if(!$choiceList) {
+            return null;
+        }
+
+        $data = [];
+
+        $data['name'] = $row['name'];
+        $data['choice_list_id'] = $choiceList->id;
 
         $data['properties'] = $row
             ->filter(fn($value, $key) => !$this->translatableHeadings->contains($key))
@@ -43,7 +51,6 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
 
         // TODO: generalise after HOLPA ('filter' may not always be called 'filter')
         $data['cascade_filter'] = isset($row['filter']) ? $row['filter'] : null;
-
         $data['updated_during_import'] = true;
 
         return new ChoiceListEntry($data);
@@ -56,7 +63,7 @@ class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunk
 
     public function uniqueBy(): array
     {
-        return ['name', 'choice_list_id'];
+        return ['name', 'choice_list_id', 'cascade_filter', 'properties'];
     }
 
     public function isEmptyWhen(array $row): bool

@@ -3,7 +3,7 @@
 namespace App\Exports\XlsformExport;
 
 use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
 use Illuminate\Support\Collection;
@@ -65,12 +65,6 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     public function title(): string
     {
         return 'choices';
-    }
-
-    private function getHeadingsForStringType(string $string): Collection
-    {
-        return $this->xlsformTemplateLanguages->map(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})"
-        );
     }
 
     private function getHeadingsFromProperties(Collection $choiceListEntries): Collection

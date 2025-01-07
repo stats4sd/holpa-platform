@@ -6,6 +6,7 @@ use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -14,6 +15,7 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Events\AfterImport;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
 class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, WithChunkReading, WithEvents
 {
@@ -21,7 +23,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     use RegistersEventListeners;
     use Importable;
 
-    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public XlsformModuleVersion $xlsformModuleVersion, public Collection $translatableHeadings)
     {
     }
 
@@ -29,8 +31,8 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     public function sheets(): array
     {
         return [
-            'survey' => new XlsformTemplateSurveyImport($this->xlsformTemplate, $this->translatableHeadings['survey']),
-            'choices' => new XlsformTemplateChoicesImport($this->xlsformTemplate, $this->translatableHeadings['choices']),
+            'survey' => new XlsformTemplateSurveyImport($this->xlsformModuleVersion, $this->translatableHeadings['survey']),
+            'choices' => new XlsformTemplateChoicesImport($this->xlsformModuleVersion, $this->translatableHeadings['choices']),
         ];
     }
 
@@ -42,7 +44,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
     public function afterImport(AfterImport $event): void
     {
         // find all Survey Rows linked to the XlsformTemplate that were not updated during the import... and delete them.
-        $surveyRowsToDelete = $this->xlsformTemplate
+        $surveyRowsToDelete = $this->xlsformModuleVersion
             ->surveyRows()
             ->select(['survey_rows.id', 'survey_rows.updated_during_import'])
             ->get()
@@ -52,7 +54,7 @@ class XlsformTemplateWorkbookImport implements WithMultipleSheets, ShouldQueue, 
         SurveyRow::destroy($surveyRowsToDelete->pluck('id'));
 
         // we also need to delete the choiceLists that were not updated during the import.
-        $choicesToDelete = $this->xlsformTemplate
+        $choicesToDelete = $this->xlsformModuleVersion
             ->choiceListEntries()
             ->where('owner_id', null) // do not delete entries owned by a team.
             ->select(['choice_list_entries.id', 'choice_list_entries.updated_during_import'])

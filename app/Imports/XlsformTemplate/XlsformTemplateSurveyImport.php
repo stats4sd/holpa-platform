@@ -20,14 +20,20 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 {
     use RemembersRowNumber;
 
-    public function __construct(public WithXlsformFile $xlsformTemplate, public Collection $translatableHeadings)
+    public function __construct(public XlsformModuleVersion $xlsformModuleVersion, public Collection $translatableHeadings)
     {
     }
 
-    public function model(array $row): SurveyRow
+    public function model(array $row): ?SurveyRow
     {
 
         $row = collect($row);
+
+        // skip entries not part of the current module
+        if($row['module'] !== $this->xlsformModuleVersion->xlsformModule->name) {
+            return null;
+        }
+
 
         // get the columns that are part of the XLSform spec (but are not translatable columns like 'label')
         $data = $row
@@ -46,14 +52,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
         // if we are importing an entire template, the "template" id and type should be based on the $row['module'] import
         // TODO: fix these confusing relation names!
 
-        if ($this->xlsformTemplate instanceof XlsformTemplate) {
-            $xlsformModuleVersion = $this->getXlsformModuleVersion($row['module'] ?? null);
-        } else {
-            $xlsformModuleVersion = $this->xlsformTemplate;
-        }
-
-        $data['template_id'] = $xlsformModuleVersion->id;
-        $data['template_type'] = get_class($xlsformModuleVersion);
+        $data['xlsform_module_version_id'] = $this->xlsformModuleVersion->id;
         $data['updated_during_import'] = true; // to make sure we don't delete this row after import.
 
         // for end_group or end_repeats, the name might be empty.
@@ -63,10 +62,11 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
         }
 
         // check if this is a custom module import, adjust survey row name
-        if ($xlsformModuleVersion->name === 'custom') {
-            $form = $xlsformModuleVersion->xlsformModule->form;
+        // ( CUSTOM TO HOLPA )
+        if ($this->xlsformModuleVersion->name === 'custom') {
+            $form = $this->xlsformModuleVersion->xlsformModule->form;
             $team_name = strtolower(str_replace(' ', '_', $form->owner->name));
-            $data['name'] = $team_name . '_' . $xlsformModuleVersion->xlsformModule->id . '_' . $data['name'];
+            $data['name'] = $team_name . '_' . $this->xlsformModuleVersion->xlsformModule->id . '_' . $data['name'];
         }
 
         // check 'required' is a bool
@@ -103,7 +103,7 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
 
     public function uniqueBy(): array
     {
-        return ['template_id', 'template_type', 'name', 'type'];
+        return ['xlsform_module_version_id', 'name', 'type'];
     }
 
     public function isEmptyWhen(array $row): bool
@@ -116,24 +116,4 @@ class XlsformTemplateSurveyImport implements ToModel, WithHeadingRow, WithUpsert
     {
         return 500;
     }
-
-
-    public function getXlsformModuleVersion(string $name): XlsformModuleVersion
-    {
-
-        $xlsformModuleVersion = $this->xlsformTemplate->xlsformModuleVersions()
-            // get the default module version...
-            ->where('is_default', true)
-            // ... of the module that matches the $row['module'] name
-            ->whereHas('xlsformModule', fn(Builder $query) => $query->where('name', $name))
-            ->first();
-
-        if (!$xlsformModuleVersion) {
-            dd("module version not found for {$name}");
-        }
-
-        return $xlsformModuleVersion;
-    }
-
-
 }

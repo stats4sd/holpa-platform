@@ -4,7 +4,7 @@ namespace App\Livewire;
 
 use App\Exports\XlsformTemplateLanguageExport;
 use App\Models\Team;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\XlsformTemplate;
 use Carbon\Carbon;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
+// TODO - update after data structure
 class TeamLocalesTable extends Component implements HasForms, HasTable
 {
     use InteractsWithTable;
@@ -69,7 +70,7 @@ class TeamLocalesTable extends Component implements HasForms, HasTable
     {
         return $this->team->locales->flatMap(function ($locale) {
             return $locale->xlsformTemplateLanguages
-                ->filter(fn(XlsformTemplateLanguage $templateLanguage) => $templateLanguage->template instanceof XlsformTemplate)
+                ->filter(fn(XlsformModuleVersionLocale $templateLanguage) => $templateLanguage->template instanceof XlsformTemplate)
                 ->map(function ($templateLanguage) use ($locale) {
                 $template = $templateLanguage->template;
 

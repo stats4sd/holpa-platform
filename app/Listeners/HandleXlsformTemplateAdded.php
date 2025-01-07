@@ -8,6 +8,7 @@ use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
 use App\Jobs\FinishChoiceListEntryImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
+use App\Jobs\LinkModuleVersionToLocales;
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
@@ -21,56 +22,29 @@ class HandleXlsformTemplateAdded
 {
     public function handle(MediaHasBeenAddedEvent $event): void
     {
-        Log::info('MediaHasBeenAdded event fired!');
         $model = $event->media->model;
 
-        if (
-            $model instanceof XlsformTemplate ||
-            $model instanceof XlsformModuleVersion
-        ) {
-            $filePath = $event->media->getPath();
-
-            if (!$filePath) {
-                Log::error('No file path found for media in collection "xlsform_file" for model ID: ' . $model->id);
-                return;
-            }
-
-            // a template file will have multiple modules. Create these first so we can link Survey Rows to them during the main import
-            if ($model instanceof XlsformTemplate) {
-                $modules = $this->createModules($filePath, $model);
-            } else {
-                $modules = null;
-            }
-
-            // for a single moduleversion upload, just run the process once
-            $this->processXlsformTemplate($filePath, $model, $modules);
-
+        // only process xlsform module vesrsions or templates
+        if (!$model instanceof XlsformModuleVersion && !$model instanceof XlsformTemplate) {
+            return;
         }
-    }
 
-    public
-    function processXlsformTemplate(string $filePath, WithXlsformFile $model, ?Collection $modules = null): void
-    {
-        // Get the translatable headings from the XLSform workbook;
-        $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
 
-        // Make sure the XLSform template has the correct languages set (map over ['sheet' => 'headings'])
-        $importedTemplateLanguages = $translatableHeadings->map(fn($headings) => $model->setXlsformTemplateLanguages($headings))
-            ->flatten()
-            ->unique();
+        $filePath = $event->media->getPath();
+        $moduleVersions = collect();
 
-        // make sure all the choice_lists are imported;
-        (new XlsformTemplateChoiceListImport($model))->queue($filePath);
+        // for xlsformtemplates, create all the included xlsformmodules.
+        if ($model instanceof XlsformTemplate) {
+            $moduleVersions = $this->createModules($filePath, $model);
+        }
 
-        // TODO: add validation check to make sure all names are unique in Survey + choices sheet...
+        if ($model instanceof XlsformModuleVersion) {
+            $moduleVersions = collect([$model]);
+        }
 
-        // Import the XLSform workbook to survey rows and choice list entries;
-        (new XlsformTemplateWorkbookImport($model, $translatableHeadings))->queue($filePath)
-            ->chain([
-                new FinishSurveyRowImport($model),
-                new FinishChoiceListEntryImport($model),
-                new ImportAllLanguageStrings($filePath, $model, $translatableHeadings, $importedTemplateLanguages),
-            ]);
+        // for a single module version upload, just run the process once
+        $this->processXlsformTemplate($filePath, $moduleVersions);
+
     }
 
     public function createModules(string $filePath, XlsformTemplate $model): Collection
@@ -79,11 +53,39 @@ class HandleXlsformTemplateAdded
         (new XLsformModuleImport($model))->import($filePath);
 
         // get the 'default' version of all xlsform module versions for each module linked to the xlsform template.
-        return $model->xlsformModules
+        return $model
+            ->xlsformModules
             ->map(fn(XlsformModule $module) => $module
                 ->xlsformModuleVersions
                 ->filter(fn(XlsformModuleVersion $xlsformModuleVersion) => $xlsformModuleVersion->is_default)
             )
             ->flatten();
     }
+
+    public function processXlsformTemplate(string $filePath, Collection $moduleVersions): void
+    {
+        // Get the translatable headings from the XLSform workbook;
+        $translatableHeadings = (new XlsformTranslationHelper())->getTreanslatableColumnsFromFile($filePath);
+
+        $moduleVersions->each(function (XlsformModuleVersion $moduleVersion) use ($translatableHeadings, $filePath) {
+
+            // make sure all the choice_lists are imported;
+            (new XlsformTemplateChoiceListImport($moduleVersion))->queue($filePath);
+
+            // TODO: add validation check to make sure all names are unique in Survey + choices sheet...
+
+            // Import the XLSform workbook to survey rows and choice list entries;
+            (new XlsformTemplateWorkbookImport($moduleVersion, $translatableHeadings))->queue($filePath)
+                ->chain([
+                    new FinishSurveyRowImport($moduleVersion),
+                    new FinishChoiceListEntryImport($moduleVersion),
+                    new LinkModuleVersionToLocales($moduleVersion, $translatableHeadings),
+
+                    new ImportAllLanguageStrings($filePath, $moduleVersion, $translatableHeadings),
+                ]);
+
+        });
+    }
+
+
 }

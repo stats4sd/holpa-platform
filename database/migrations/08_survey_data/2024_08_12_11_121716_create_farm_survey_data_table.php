@@ -22,9 +22,6 @@ return new class() extends Migration {
      */
     public function up(): void
     {
-
-        \Illuminate\Support\Facades\DB::statement('SET GLOBAL innodb_strict_mode = 0;');
-
         Schema::create('farm_survey_data', function (Blueprint $table) {
             $table->id();
 

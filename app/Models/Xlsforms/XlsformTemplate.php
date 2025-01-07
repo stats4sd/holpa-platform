@@ -5,8 +5,9 @@ namespace App\Models\Xlsforms;
 use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Team;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformTemplateLanguage;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Services\XlsformTranslationHelper;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\Collection;
@@ -14,7 +15,7 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate as OdkLinkXlsformTem
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
-class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
+class XlsformTemplate extends OdkLinkXlsformTemplate
 {
     use HasRelationships;
 
@@ -60,60 +61,72 @@ class XlsformTemplate extends OdkLinkXlsformTemplate implements WithXlsformFile
             ->where('xlsform_modules.form_type', static::class);
     }
 
-    public function xlsformTemplateLanguages(): MorphMany
-    {
-        return $this->morphMany(XlsformTemplateLanguage::class, 'template');
-    }
-
-    public function languageStrings(): HasManyThrough
-    {
-        return $this->hasManyThrough(LanguageString::class, XlsformTemplateLanguage::class, 'template_id', 'xlsform_template_language_id', 'id', 'id')
-            ->where('xlsform_template_languages.template_type', static::class);
-    }
-
-
     public function surveyRows(): HasManyDeep
     {
         return $this->hasManyDeep(
             SurveyRow::class,
             [XlsformModule::class, XlsformModuleVersion::class],
-            [['form_type', 'form_id'], null, ['template_type', 'template_id']]
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id']
         );
     }
 
-    public function choiceLists(): MorphMany
+    public function choiceLists(): HasManyDeep
     {
-        return $this->morphMany(ChoiceList::class, 'template');
+        return $this->hasManyDeep(
+            ChoiceList::class,
+            [XlsformModule::class, XlsformModuleVersion::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id']
+        );
     }
 
-    public function choiceListEntries(): HasManyThrough
+    public function choiceListEntries(): HasManyDeep
     {
-        return $this->hasManyThrough(ChoiceListEntry::class, ChoiceList::class, 'template_id', 'choice_list_id', 'id', 'id')
-            // reference: https://stackoverflow.com/questions/43285779/laravel-polymorphic-relations-has-many-through
-            ->where('choice_lists.template_type', static::class);
+        return $this->hasManyDeep(
+            ChoiceListEntry::class,
+            [XlsformModule::class, XlsformModuleVersion::class, ChoiceList::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id', 'choice_list_id']
+        );
     }
 
-    // ensure that the XlsformTemplate has a language for each language in the xlsform uploaded
-    // returns the collection of XlsformTemplateLanaguage entries that will be updated from the file.
-    public function setXlsformTemplateLanguages(Collection $translatableHeadings): Collection
+    // Split up language strings into 2 relationships as there are 2 paths between xlsformtemplates and language strings.
+    public function surveyLanguageStrings(): HasManyDeep
     {
-        $languages = $translatableHeadings
-            ->map(fn(string $heading) => (new XlsformTranslationHelper())->getLanguageFromColumnHeader($heading))
-            ->unique();
-
-        return $languages->map(function ($language) {
-
-
-            $templateLanguage = $this->xlsformTemplateLanguages()
-                ->whereHas('locale', fn($query) => $query->whereNull('description')) // only languages that were imported from the xlsform - any created through the platform have a description.
-                ->firstOrCreate(['language_id' => $language->id]);
-
-            $locale = Locale::firstOrCreate(['description' => null, 'language_id' => $language->id]);
-
-            $templateLanguage->locale()->associate($locale);
-            $templateLanguage->save();
-
-            return $templateLanguage;
-        });
+        return $this->hasManyDeep(
+            LanguageString::class,
+            [XlsformModule::class, XlsformModuleVersion::class, SurveyRow::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+        );
     }
+
+    public function choiceListEntryLanguageStrings(): HasManyDeep
+    {
+        return $this->hasManyDeep(
+            LanguageString::class,
+            [XlsformModule::class, XlsformModuleVersion::class, ChoiceListEntry::class],
+            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+        );
+    }
+
+
+    // for a template to be available in a locale, *every* module should be linked to that locale
+    public function locales(): Attribute
+    {
+        return new Attribute(
+            get: function (): Collection {
+
+                // get set of locales for each default module version
+                $locales = $this->xlsformModules->map(fn(XlsformModule $xlsformModule) => $xlsformModule
+                    ->defaultXlsformVersion
+                    ->locales
+                );
+
+                // get list of locales present for *every* module
+                return $locales->reduce(function ($carry, $item) {
+                    return $carry->intersect($item);
+                }, $locales->first())
+                    ->values();
+            }
+        );
+    }
+
 }

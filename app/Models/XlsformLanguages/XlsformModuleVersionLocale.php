@@ -3,28 +3,33 @@
 namespace App\Models\XlsformLanguages;
 
 use App\Models\Xlsforms\LanguageString;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\Pivot;
+use Znck\Eloquent\Relations\BelongsToThrough;
 
-class XlsformTemplateLanguage extends Model
+class XlsformModuleVersionLocale extends Pivot
 {
 
-    public function template(): MorphTo
-    {
-        return $this->morphTo();
-    }
+    use \Znck\Eloquent\Traits\BelongsToThrough;
 
-    public function language(): BelongsTo
+    public function xlsformModule(): BelongsTo
     {
-        return $this->belongsTo(Language::class);
+        return $this->belongsTo(XlsformModuleVersion::class);
     }
 
     public function locale(): BelongsTo
     {
         return $this->belongsTo(Locale::class);
+    }
+
+    public function language(): BelongsToThrough
+    {
+        return $this->belongsToThrough(Language::class, Locale::class);
     }
 
     public function languageStrings(): HasMany
@@ -42,7 +47,7 @@ class XlsformTemplateLanguage extends Model
     public function isAddedFromXlsformTemplate(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->locale->description === null,
+            get: fn() => $this->locale->is_default,
         );
     }
 
