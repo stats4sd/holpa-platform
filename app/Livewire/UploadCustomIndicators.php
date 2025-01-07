@@ -35,16 +35,25 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         $this->team = Team::find(auth()->user()->latestTeam->id);
         $this->form->fill();
 
-        $this->uploadedFileHH = $this->team->xlsform_hh_module_version->getMedia('custom_indicators_hh')->first();
-        $this->uploadedFileFW = $this->team->xlsform_fw_module_version->getMedia('custom_indicators_fw')->first();
+        $this->uploadedFileHH = $this->team->xlsform_hh_module_version
+                                    ? $this->team->xlsform_hh_module_version->getMedia('custom_indicators_hh')->first()
+                                    : null;
+        $this->uploadedFileFW = $this->team->xlsform_fw_module_version
+                                    ? $this->team->xlsform_fw_module_version->getMedia('custom_indicators_fw')->first()
+                                    : null;
     }
 
     public function table(Table $table): Table
     {
-        $moduleVersionIds = [
-            $this->team->xlsformHhModuleVersion->id,
-            $this->team->xlsformFwModuleVersion->id,
-        ];
+        $moduleVersionIds = [];
+
+        if ($this->team->xlsformHhModuleVersion) {
+            $moduleVersionIds[] = $this->team->xlsformHhModuleVersion->id;
+        }
+        
+        if ($this->team->xlsformFwModuleVersion) {
+            $moduleVersionIds[] = $this->team->xlsformFwModuleVersion->id;
+        }
 
         return $table
         ->query(Media::query()
