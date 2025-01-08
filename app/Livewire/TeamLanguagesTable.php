@@ -10,6 +10,7 @@ use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\XlsformTemplate;
 use Carbon\Carbon;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
@@ -54,8 +55,12 @@ class TeamLanguagesTable extends Component implements HasForms, HasTable
                             ->options(Locale::where('language_id', $record->id)->get()->pluck('language_label', 'id'))
                         ->label('Select the translation to use')
                         ->helperText('You will be able to review the text before finalising your decision')
+                        ->createOptionForm(fn() => [
+                            TextInput::make('description'),
+                        ])
 
-                    ]),
+                    ])
+                ,
                 Action::make('Remove Translation')->visible(fn(Language $record) => $record->pivot->locale !== null),
             ])
             ->paginated(false)
