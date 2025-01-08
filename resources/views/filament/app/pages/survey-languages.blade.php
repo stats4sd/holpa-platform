@@ -8,8 +8,10 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
 <x-filament-panels::page class="h-full">
 
     <livewire:page-header-with-instructions
-        instructions1='The first step is to select the country and languages for your HOLPA implementation. This is important information that will help you contextualise the survey and results.'
-        instructionsmarkcomplete='When you have selected the languages for your survey, you should review the available translations. HOLPA is available in multiple languages. The Survey Translation page will show you if there are translations available in your chosen languages. There, you can review the available translations, and upload new translations if required.'
+        instructions1='Your team will be running HOLPA within one country. The first step to set up the survey is to select the country of the survey and languages your team will conduct the survey in.'
+        instructions2='When you have selected the languages for your survey, you should review the available translations. HOLPA is available in multiple languages. The Survey Translation page will show you if there are translations available in your chosen languages. There, you can review the available translations, and upload new translations if required.'
+        instructions3="NOTE: if you are conducting HOLPA across multiple countries, you will need to create separate teams within this platform for each country. Please contact the HOLPA support team if you require assistance with this."
+        instructionsmarkcomplete="you have selected the country, languages and added a global HOLPA survey translation for each language."
         videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 

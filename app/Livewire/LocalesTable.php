@@ -76,7 +76,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                         $team = Team::find($team);
                         $team->locales()->attach($record->id);
 
-                        $this->dispatch('refreshTable')->to(TeamLocalesTable::class);
+                        $this->dispatch('refreshTable')->to(TeamLanguagesTable::class);
 
                         Notification::make()
                             ->title('Success')

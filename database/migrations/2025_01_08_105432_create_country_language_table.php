@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('language_team', function (Blueprint $table) {
+        Schema::create('country_language', function (Blueprint $table) {
             $table->id();
+            $table->string('country_id')->constrained('countries')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('language_id')->constrained('languages')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('locale_id')->nullable()
-                ->comment('Each team has a maximum of 1 locale per language')
-                ->constrained('locales')
-                ->nullOnDelete()
-                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }
@@ -29,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('language_team');
+        Schema::dropIfExists('country_language');
     }
 };

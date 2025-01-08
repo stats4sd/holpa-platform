@@ -1,15 +1,11 @@
 <x-filament-panels::page>
+    <div class="container mx-auto  ">
+        <div class="surveyblocks pt-16 pb-24 mb-32 px-12 lg:px-16">
+            <h3>Instructions</h3>
+            <p class="mb-8">Please select the country and languages for your survey below.</p>
 
-    <livewire:page-header-with-instructions
-        instructions1='In this section, you will select the language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template.'
-        instructions2=''
-        instructions3='In the select translation table, choose the target language or languages for your survey. You can download and preview the translation if desired. You can add or remove translations at any point. '
-        instructions4='If a suitable translation is not available for your target language, you will need to create one. Add the desired language, and it will appear in the table. Click update to download the translation template, which you will need to complete with translations for all the required fields. Once the translation is ready, return to this page to upload it, and the translation will be available for use. '
+            {{ $this->form }}
 
-        instructionsmarkcomplete=' you have selected and (where needed) uploaded the completed translation for each language you intend to use for the survey. '
-    />
-
-    <div class="container   mx-auto xl:px-12 ">
-        {{ $this->form }}
-    </div>
+            <a href="{{ \App\Filament\App\Pages\SurveyLanguages::getUrl() }}" class="buttona block max-w-sm mx-auto md:inline-block mb-6 md:mb-0 mt-12">Save and Return</a>
+        </div>
 </x-filament-panels::page>

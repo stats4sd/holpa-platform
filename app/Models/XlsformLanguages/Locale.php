@@ -39,7 +39,7 @@ class Locale extends Model
 
     public function teams(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class, 'locale_team', 'locale_id', 'team_id');
+        return $this->belongsToMany(Team::class, 'language_team', 'locale_id', 'team_id');
     }
 
     public function getLanguageLabelAttribute(): string

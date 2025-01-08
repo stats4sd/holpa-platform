@@ -50,9 +50,9 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             }
 
             // all teams get a default locale of english
-            $en = Locale::whereHas('language', fn(Builder $query) => $query->where('iso_alpha2', 'en'))->first();
+            $en = Language::where('iso_alpha2', 'en')->first();
 
-            $owner->locales()->attach($en);
+            $owner->languages()->attach($en);
 
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
@@ -102,7 +102,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
     public function locales(): BelongsToMany
     {
-        return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
+        return $this->belongsToMany(Locale::class, 'language_team', 'team_id', 'locale_id');
     }
 
     public function country(): BelongsTo
@@ -223,14 +223,16 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             return 'complete';
         }
 
-        // teams have English as a locale as default, check for others
-        $english_language_id = Language::where('name', 'English')->value('id');
+        // teams have English as a language as default, check for others
+        $englishLanguageId = Language::where('name', 'English')->first()->id;
 
-        $hasAddedLocales = $this->locales()
-            ->where('language_id', '!=', $english_language_id)
+        $hasAddedLanguages = $this->languages()
+            ->where('language_id', '!=', $englishLanguageId)
             ->exists();
 
-        return $hasAddedLocales ? 'in_progress' : 'not_started';
+        $hasCountry = $this->country()->exists();
+
+        return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
     }
 
     public function getPbaProgressAttribute()
