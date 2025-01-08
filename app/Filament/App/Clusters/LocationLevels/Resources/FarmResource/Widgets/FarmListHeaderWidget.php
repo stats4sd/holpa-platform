@@ -15,6 +15,10 @@ class FarmListHeaderWidget extends Widget
     // check if there are locations at the correct admin level for farms to be linked.
     public function hasLocations(): bool
     {
-        return HelperService::getSelectedTeam()?->locationLevels()->where('has_farms', true)->exists();
+        return HelperService::getSelectedTeam()
+            ->$team?->locationLevels()
+            ->where('has_farms', true)
+            ->whereHas('locations')
+            ->exists();
     }
 }
