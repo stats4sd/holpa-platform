@@ -2,13 +2,19 @@
 
 namespace App\Filament\App\Pages;
 
+use App\Models\Reference\Country;
+use App\Models\Team;
 use App\Services\HelperService;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Illuminate\Database\Eloquent\Builder;
 
 class SurveyCountry extends Page implements HasForms
 {
@@ -19,6 +25,15 @@ class SurveyCountry extends Page implements HasForms
     protected static bool $shouldRegisterNavigation = false;
 
     protected static ?string $title = 'Survey Country & Languages';
+
+    public Team $team;
+    public array $formData = [];
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getSelectedTeam();
+        $this->form->fill($this->team->toArray());
+    }
 
     public function getBreadcrumbs(): array
     {
@@ -38,17 +53,49 @@ class SurveyCountry extends Page implements HasForms
     {
         return $form
             ->statePath('formData')
-            ->model(HelperService::getSelectedTeam())
+            ->model($this->team)
             ->schema([
-            Select::make('country_id')
-                ->searchable()
-                ->relationship('country', 'name')
-                ->afterStateUpdated(fn(self $livewire) => $livewire->saveCountry())
-        ]);
+                Select::make('country_id')
+                    ->relationship('country', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm(fn() => [
+                        Select::make('region_id')
+                            ->relationship('region', 'name')
+                            ->label('Select the region for this country'),
+                        TextInput::make('name')
+                            ->label('Enter the name of this country'),
+                        TextInput::make('iso_alpha2')
+                            ->label('Enter the ISO Alpha-2 code for this country'),
+                        TextInput::make('iso_alpha3')
+                            ->label('Enter the ISO Alpha-3 code for this country'),
+                    ])
+                    ->createOptionUsing(function (array $data): string {
+                        $data['id'] = $data['iso_alpha3'];
+
+                        return Country::create($data)->getKey();
+                    })
+                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData())
+                    ->live(),
+                Select::make('languages')
+                    ->relationship(
+                        'languages',
+                        'name',
+                        // TODO: setup dataset for link between language and country
+                        //modifyQueryUsing: fn(Builder $query, Get $get) => $get('country_id') ? $query->whereHas('countries', fn(Builder $query) => $query->where('countries.id', $get('country_id'))) : $query
+                    )
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData())
+                    ->live(),
+
+            ]);
     }
 
-    public function saveCountry()
+    public function saveData()
     {
-        $this->form->saveRelationships();
+        $this->team->update($this->form->getState());
     }
+
 }
