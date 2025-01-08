@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class ChoiceListEntriesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('choice_list_entries')->delete();
-        
+
         \DB::table('choice_list_entries')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'choice_list_id' => 1,
@@ -29,10 +29,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'choice_list_id' => 1,
@@ -42,10 +42,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'choice_list_id' => 2,
@@ -55,10 +55,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '{"localisable": "yes"}',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'choice_list_id' => 2,
@@ -68,10 +68,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '{"localisable": "yes"}',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'choice_list_id' => 2,
@@ -81,10 +81,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '{"localisable": "yes"}',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'choice_list_id' => 2,
@@ -94,10 +94,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '{"localisable": "yes"}',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            6 => 
+            6 =>
             array (
                 'id' => 7,
                 'choice_list_id' => 2,
@@ -107,10 +107,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '{"localisable": "yes"}',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            7 => 
+            7 =>
             array (
                 'id' => 8,
                 'choice_list_id' => 3,
@@ -120,10 +120,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            8 => 
+            8 =>
             array (
                 'id' => 9,
                 'choice_list_id' => 3,
@@ -133,10 +133,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            9 => 
+            9 =>
             array (
                 'id' => 10,
                 'choice_list_id' => 3,
@@ -146,10 +146,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            10 => 
+            10 =>
             array (
                 'id' => 11,
                 'choice_list_id' => 3,
@@ -159,10 +159,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            11 => 
+            11 =>
             array (
                 'id' => 12,
                 'choice_list_id' => 3,
@@ -172,10 +172,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:09',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:21',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            12 => 
+            12 =>
             array (
                 'id' => 13,
                 'choice_list_id' => 4,
@@ -185,10 +185,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:10',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:22',
+                'updated_at' => '2025-01-07 16:56:28',
             ),
-            13 => 
+            13 =>
             array (
                 'id' => 14,
                 'choice_list_id' => 4,
@@ -198,10 +198,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:10',
-                'updated_at' => '2025-01-07 16:20:16',
+                'created_at' => '2025-01-07 16:56:22',
+                'updated_at' => '2025-01-07 16:56:28',
             ),
-            14 => 
+            14 =>
             array (
                 'id' => 15,
                 'choice_list_id' => 5,
@@ -211,10 +211,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:58',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            15 => 
+            15 =>
             array (
                 'id' => 16,
                 'choice_list_id' => 5,
@@ -224,10 +224,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:58',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            16 => 
+            16 =>
             array (
                 'id' => 17,
                 'choice_list_id' => 6,
@@ -237,10 +237,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:59',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            17 => 
+            17 =>
             array (
                 'id' => 18,
                 'choice_list_id' => 6,
@@ -250,10 +250,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:59',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            18 => 
+            18 =>
             array (
                 'id' => 19,
                 'choice_list_id' => 6,
@@ -263,10 +263,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:59',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            19 => 
+            19 =>
             array (
                 'id' => 20,
                 'choice_list_id' => 6,
@@ -276,10 +276,10 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:59',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            20 => 
+            20 =>
             array (
                 'id' => 21,
                 'choice_list_id' => 6,
@@ -289,11 +289,76 @@ class ChoiceListEntriesTableSeeder extends Seeder
                 'properties' => '[]',
                 'cascade_filter' => NULL,
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:59',
-                'updated_at' => '2025-01-07 16:21:05',
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
+            ),
+            21 =>
+            array (
+                'id' => 22,
+                'choice_list_id' => 7,
+                'owner_type' => NULL,
+                'owner_id' => NULL,
+                'name' => 'wheat',
+                'properties' => '{"localisable": "yes"}',
+                'cascade_filter' => NULL,
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
+            ),
+            22 =>
+            array (
+                'id' => 23,
+                'choice_list_id' => 7,
+                'owner_type' => NULL,
+                'owner_id' => NULL,
+                'name' => 'maize',
+                'properties' => '{"localisable": "yes"}',
+                'cascade_filter' => NULL,
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
+            ),
+            23 =>
+            array (
+                'id' => 24,
+                'choice_list_id' => 7,
+                'owner_type' => NULL,
+                'owner_id' => NULL,
+                'name' => 'sorghum',
+                'properties' => '{"localisable": "yes"}',
+                'cascade_filter' => NULL,
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
+            ),
+            24 =>
+            array (
+                'id' => 25,
+                'choice_list_id' => 7,
+                'owner_type' => NULL,
+                'owner_id' => NULL,
+                'name' => 'quinoa',
+                'properties' => '{"localisable": "yes"}',
+                'cascade_filter' => NULL,
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
+            ),
+            25 =>
+            array (
+                'id' => 26,
+                'choice_list_id' => 7,
+                'owner_type' => NULL,
+                'owner_id' => NULL,
+                'name' => 'cowpea',
+                'properties' => '{"localisable": "yes"}',
+                'cascade_filter' => NULL,
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 17:00:48',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
         ));
-        
-        
+
+
     }
 }

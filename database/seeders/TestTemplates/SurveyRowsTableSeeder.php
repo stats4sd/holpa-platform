@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,16 +14,16 @@ class SurveyRowsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('survey_rows')->delete();
-        
+
         \DB::table('survey_rows')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'xlsform_module_version_id' => 3,
-                'row_number' => 9,
+                'row_number' => 10,
                 'name' => 'coffee',
                 'type' => 'select_one yn',
                 'required' => 1,
@@ -38,14 +38,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "coffee", "mediaimage": "coffee.png"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:12',
+                'created_at' => '2025-01-07 16:56:17',
+                'updated_at' => '2025-01-07 16:56:24',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'xlsform_module_version_id' => 3,
-                'row_number' => 10,
+                'row_number' => 11,
                 'name' => 'coffee_number',
                 'type' => 'integer',
                 'required' => 1,
@@ -60,14 +60,36 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "coffee"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:12',
+                'created_at' => '2025-01-07 16:56:17',
+                'updated_at' => '2025-01-07 16:56:24',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'xlsform_module_version_id' => 2,
                 'row_number' => 6,
+                'name' => 'time_frame',
+                'type' => 'calculate',
+                'required' => 0,
+                'relevant' => NULL,
+                'appearance' => NULL,
+                'calculation' => '"in the last 12 months"',
+                'constraint' => NULL,
+                'choice_filter' => NULL,
+                'repeat_count' => NULL,
+                'default' => NULL,
+                'note' => NULL,
+                'trigger' => NULL,
+                'properties' => '{"module": "context"}',
+                'updated_during_import' => 0,
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
+            ),
+            3 =>
+            array (
+                'id' => 4,
+                'xlsform_module_version_id' => 2,
+                'row_number' => 7,
                 'name' => 'na_note1',
                 'type' => 'note',
                 'required' => 0,
@@ -82,14 +104,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "context"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:12',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            3 => 
+            4 =>
             array (
-                'id' => 4,
+                'id' => 5,
                 'xlsform_module_version_id' => 2,
-                'row_number' => 7,
+                'row_number' => 8,
                 'name' => 'name_of_person',
                 'type' => 'text',
                 'required' => 1,
@@ -104,14 +126,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "context"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:12',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            4 => 
+            5 =>
             array (
-                'id' => 5,
+                'id' => 6,
                 'xlsform_module_version_id' => 2,
-                'row_number' => 8,
+                'row_number' => 9,
                 'name' => 'age',
                 'type' => 'integer',
                 'required' => 0,
@@ -126,14 +148,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "context"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:12',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            5 => 
+            6 =>
             array (
-                'id' => 6,
+                'id' => 7,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 11,
+                'row_number' => 12,
                 'name' => 'drinks',
                 'type' => 'select_multiple drinks',
                 'required' => 0,
@@ -146,16 +168,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            6 => 
+            7 =>
             array (
-                'id' => 7,
+                'id' => 8,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 12,
+                'row_number' => 13,
                 'name' => 'drinks_rpt',
                 'type' => 'begin repeat',
                 'required' => 0,
@@ -168,16 +190,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            7 => 
+            8 =>
             array (
-                'id' => 8,
+                'id' => 9,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 13,
+                'row_number' => 14,
                 'name' => 'drink_id',
                 'type' => 'calculate',
                 'required' => 0,
@@ -190,16 +212,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            8 => 
+            9 =>
             array (
-                'id' => 9,
+                'id' => 10,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 14,
+                'row_number' => 15,
                 'name' => 'drinks_rpt_grp',
                 'type' => 'begin group',
                 'required' => 0,
@@ -212,16 +234,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            9 => 
+            10 =>
             array (
-                'id' => 10,
+                'id' => 11,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 15,
+                'row_number' => 16,
                 'name' => 'drink_name',
                 'type' => 'calculate',
                 'required' => 0,
@@ -234,16 +256,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            10 => 
+            11 =>
             array (
-                'id' => 11,
+                'id' => 12,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 16,
+                'row_number' => 17,
                 'name' => 'drink_lk',
                 'type' => 'select_one lk',
                 'required' => 1,
@@ -256,16 +278,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            11 => 
+            12 =>
             array (
-                'id' => 12,
+                'id' => 13,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 17,
+                'row_number' => 18,
                 'name' => 'why_drink',
                 'type' => 'text',
                 'required' => 1,
@@ -278,16 +300,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            12 => 
+            13 =>
             array (
-                'id' => 13,
+                'id' => 14,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 18,
+                'row_number' => 19,
                 'name' => 'drink_comment_rpt',
                 'type' => 'begin repeat',
                 'required' => 0,
@@ -300,16 +322,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            13 => 
+            14 =>
             array (
-                'id' => 14,
+                'id' => 15,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 19,
+                'row_number' => 20,
                 'name' => 'drink_comment',
                 'type' => 'text',
                 'required' => 1,
@@ -322,16 +344,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            14 => 
+            15 =>
             array (
-                'id' => 15,
+                'id' => 16,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 20,
+                'row_number' => 21,
                 'name' => 'drink_comment_rpt',
                 'type' => 'end repeat',
                 'required' => 0,
@@ -344,16 +366,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            15 => 
+            16 =>
             array (
-                'id' => 16,
+                'id' => 17,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 21,
+                'row_number' => 22,
                 'name' => 'drinks_rpt_grp',
                 'type' => 'end group',
                 'required' => 0,
@@ -366,16 +388,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            16 => 
+            17 =>
             array (
-                'id' => 17,
+                'id' => 18,
                 'xlsform_module_version_id' => 4,
-                'row_number' => 22,
+                'row_number' => 23,
                 'name' => 'driinks_rpt',
                 'type' => 'end repeat',
                 'required' => 0,
@@ -388,16 +410,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "drinks"}',
+                'properties' => '{"module": "diet_quality"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:13',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            17 => 
+            18 =>
             array (
-                'id' => 18,
+                'id' => 19,
                 'xlsform_module_version_id' => 5,
-                'row_number' => 23,
+                'row_number' => 24,
                 'name' => 'photo_yn',
                 'type' => 'select_one yn',
                 'required' => 1,
@@ -412,14 +434,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "end"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:14',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            18 => 
+            19 =>
             array (
-                'id' => 19,
+                'id' => 20,
                 'xlsform_module_version_id' => 5,
-                'row_number' => 24,
+                'row_number' => 25,
                 'name' => 'photo',
                 'type' => 'photo',
                 'required' => 1,
@@ -434,14 +456,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "end"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:14',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            19 => 
+            20 =>
             array (
-                'id' => 20,
+                'id' => 21,
                 'xlsform_module_version_id' => 5,
-                'row_number' => 25,
+                'row_number' => 26,
                 'name' => 'gps',
                 'type' => 'geopoint',
                 'required' => 0,
@@ -456,14 +478,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "end"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:14',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            20 => 
+            21 =>
             array (
-                'id' => 21,
+                'id' => 22,
                 'xlsform_module_version_id' => 5,
-                'row_number' => 26,
+                'row_number' => 27,
                 'name' => 'na_note2',
                 'type' => 'note',
                 'required' => 0,
@@ -478,12 +500,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "end"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:14',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:26',
             ),
-            21 => 
+            22 =>
             array (
-                'id' => 22,
+                'id' => 23,
                 'xlsform_module_version_id' => 1,
                 'row_number' => 2,
                 'name' => 'starttime',
@@ -500,12 +522,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "metadata"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:15',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            22 => 
+            23 =>
             array (
-                'id' => 23,
+                'id' => 24,
                 'xlsform_module_version_id' => 1,
                 'row_number' => 3,
                 'name' => 'endtime',
@@ -522,12 +544,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "metadata"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:15',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            23 => 
+            24 =>
             array (
-                'id' => 24,
+                'id' => 25,
                 'xlsform_module_version_id' => 1,
                 'row_number' => 4,
                 'name' => 'todaydate',
@@ -544,12 +566,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "metadata"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:15',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            24 => 
+            25 =>
             array (
-                'id' => 25,
+                'id' => 26,
                 'xlsform_module_version_id' => 1,
                 'row_number' => 5,
                 'name' => 'deviceid',
@@ -566,12 +588,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "metadata"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:08',
-                'updated_at' => '2025-01-07 16:20:15',
+                'created_at' => '2025-01-07 16:56:20',
+                'updated_at' => '2025-01-07 16:56:27',
             ),
-            25 => 
+            26 =>
             array (
-                'id' => 26,
+                'id' => 27,
                 'xlsform_module_version_id' => 7,
                 'row_number' => 6,
                 'name' => 'na_note1',
@@ -586,14 +608,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "context"}',
+                'properties' => '{"module": "context_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:55',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            26 => 
+            27 =>
             array (
-                'id' => 27,
+                'id' => 28,
                 'xlsform_module_version_id' => 7,
                 'row_number' => 7,
                 'name' => 'name_of_person',
@@ -608,14 +630,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "context"}',
+                'properties' => '{"module": "context_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:55',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            27 => 
+            28 =>
             array (
-                'id' => 28,
+                'id' => 29,
                 'xlsform_module_version_id' => 7,
                 'row_number' => 8,
                 'name' => 'age',
@@ -630,14 +652,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "context"}',
+                'properties' => '{"module": "context_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:55',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            28 => 
+            29 =>
             array (
-                'id' => 29,
+                'id' => 30,
                 'xlsform_module_version_id' => 9,
                 'row_number' => 17,
                 'name' => 'photo_yn',
@@ -652,14 +674,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "end"}',
+                'properties' => '{"module": "end_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            29 => 
+            30 =>
             array (
-                'id' => 30,
+                'id' => 31,
                 'xlsform_module_version_id' => 9,
                 'row_number' => 18,
                 'name' => 'photo',
@@ -674,14 +696,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "end"}',
+                'properties' => '{"module": "end_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            30 => 
+            31 =>
             array (
-                'id' => 31,
+                'id' => 32,
                 'xlsform_module_version_id' => 9,
                 'row_number' => 19,
                 'name' => 'gps',
@@ -696,14 +718,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "end"}',
+                'properties' => '{"module": "end_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            31 => 
+            32 =>
             array (
-                'id' => 32,
+                'id' => 33,
                 'xlsform_module_version_id' => 9,
                 'row_number' => 20,
                 'name' => 'na_note2',
@@ -718,14 +740,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "end"}',
+                'properties' => '{"module": "end_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:01',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            32 => 
+            33 =>
             array (
-                'id' => 33,
+                'id' => 34,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 9,
                 'name' => 'fieldwork',
@@ -742,12 +764,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            33 => 
+            34 =>
             array (
-                'id' => 34,
+                'id' => 35,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 10,
                 'name' => 'field_count',
@@ -764,12 +786,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            34 => 
+            35 =>
             array (
-                'id' => 35,
+                'id' => 36,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 11,
                 'name' => 'fieldwork_repeat',
@@ -786,12 +808,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            35 => 
+            36 =>
             array (
-                'id' => 36,
+                'id' => 37,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 12,
                 'name' => 'soil_type',
@@ -808,16 +830,16 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            36 => 
+            37 =>
             array (
-                'id' => 37,
+                'id' => 38,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 13,
                 'name' => 'crop_types',
-                'type' => 'text',
+                'type' => 'select_one crops',
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
@@ -830,12 +852,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            37 => 
+            38 =>
             array (
-                'id' => 38,
+                'id' => 39,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 14,
                 'name' => 'interesting_features',
@@ -852,12 +874,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            38 => 
+            39 =>
             array (
-                'id' => 39,
+                'id' => 40,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 15,
                 'name' => 'fieldwork_repeat',
@@ -874,12 +896,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            39 => 
+            40 =>
             array (
-                'id' => 40,
+                'id' => 41,
                 'xlsform_module_version_id' => 8,
                 'row_number' => 16,
                 'name' => 'fieldwork',
@@ -896,12 +918,12 @@ class SurveyRowsTableSeeder extends Seeder
                 'trigger' => NULL,
                 'properties' => '{"module": "fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:50',
             ),
-            40 => 
+            41 =>
             array (
-                'id' => 41,
+                'id' => 42,
                 'xlsform_module_version_id' => 6,
                 'row_number' => 2,
                 'name' => 'starttime',
@@ -916,14 +938,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "metadata"}',
+                'properties' => '{"module": "metadata_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:57',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:47',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            41 => 
+            42 =>
             array (
-                'id' => 42,
+                'id' => 43,
                 'xlsform_module_version_id' => 6,
                 'row_number' => 3,
                 'name' => 'endtime',
@@ -938,14 +960,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "metadata"}',
+                'properties' => '{"module": "metadata_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:57',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:47',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            42 => 
+            43 =>
             array (
-                'id' => 43,
+                'id' => 44,
                 'xlsform_module_version_id' => 6,
                 'row_number' => 4,
                 'name' => 'todaydate',
@@ -960,14 +982,14 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "metadata"}',
+                'properties' => '{"module": "metadata_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:57',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:47',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
-            43 => 
+            44 =>
             array (
-                'id' => 44,
+                'id' => 45,
                 'xlsform_module_version_id' => 6,
                 'row_number' => 5,
                 'name' => 'deviceid',
@@ -982,13 +1004,13 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "metadata"}',
+                'properties' => '{"module": "metadata_fieldwork"}',
                 'updated_during_import' => 0,
-                'created_at' => '2025-01-07 16:20:57',
-                'updated_at' => '2025-01-07 16:21:02',
+                'created_at' => '2025-01-07 17:00:47',
+                'updated_at' => '2025-01-07 17:00:51',
             ),
         ));
-        
-        
+
+
     }
 }

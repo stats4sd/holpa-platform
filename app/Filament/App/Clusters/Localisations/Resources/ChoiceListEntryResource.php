@@ -131,7 +131,7 @@ class ChoiceListEntryResource extends Resource
 
                     return $locales->map(fn(Locale $locale) => [
                         'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
-                        'locale_id' => $locales->id,
+                        'locale_id' => $locale->id,
                         'text' => '',
                     ])->toArray();
                 })

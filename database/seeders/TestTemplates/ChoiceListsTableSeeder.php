@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestTemplates;
 
 use Illuminate\Database\Seeder;
 
@@ -14,12 +14,12 @@ class ChoiceListsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('choice_lists')->delete();
-        
+
         \DB::table('choice_lists')->insert(array (
-            0 => 
+            0 =>
             array (
                 'id' => 1,
                 'xlsform_module_version_id' => 3,
@@ -30,10 +30,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:05',
-                'updated_at' => '2025-01-07 16:20:05',
+                'created_at' => '2025-01-07 16:56:17',
+                'updated_at' => '2025-01-07 16:56:17',
             ),
-            1 => 
+            1 =>
             array (
                 'id' => 2,
                 'xlsform_module_version_id' => 4,
@@ -44,10 +44,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:06',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:18',
             ),
-            2 => 
+            2 =>
             array (
                 'id' => 3,
                 'xlsform_module_version_id' => 4,
@@ -58,10 +58,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:06',
-                'updated_at' => '2025-01-07 16:20:06',
+                'created_at' => '2025-01-07 16:56:18',
+                'updated_at' => '2025-01-07 16:56:18',
             ),
-            3 => 
+            3 =>
             array (
                 'id' => 4,
                 'xlsform_module_version_id' => 5,
@@ -72,10 +72,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:07',
-                'updated_at' => '2025-01-07 16:20:07',
+                'created_at' => '2025-01-07 16:56:19',
+                'updated_at' => '2025-01-07 16:56:19',
             ),
-            4 => 
+            4 =>
             array (
                 'id' => 5,
                 'xlsform_module_version_id' => 9,
@@ -86,10 +86,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:55',
-                'updated_at' => '2025-01-07 16:20:55',
+                'created_at' => '2025-01-07 17:00:45',
+                'updated_at' => '2025-01-07 17:00:45',
             ),
-            5 => 
+            5 =>
             array (
                 'id' => 6,
                 'xlsform_module_version_id' => 8,
@@ -100,11 +100,25 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-01-07 16:20:56',
-                'updated_at' => '2025-01-07 16:20:56',
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:46',
+            ),
+            6 =>
+            array (
+                'id' => 7,
+                'xlsform_module_version_id' => 8,
+                'list_name' => 'crops',
+                'description' => NULL,
+                'is_localisable' => 1,
+                'is_dataset' => 0,
+                'can_be_hidden_from_context' => 0,
+                'has_custom_handling' => 0,
+                'properties' => NULL,
+                'created_at' => '2025-01-07 17:00:46',
+                'updated_at' => '2025-01-07 17:00:46',
             ),
         ));
-        
-        
+
+
     }
 }
