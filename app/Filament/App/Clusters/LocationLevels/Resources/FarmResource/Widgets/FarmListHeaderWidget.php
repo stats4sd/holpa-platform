@@ -16,7 +16,7 @@ class FarmListHeaderWidget extends Widget
     public function hasLocations(): bool
     {
         return HelperService::getSelectedTeam()
-            ->$team?->locationLevels()
+            ->locationLevels()
             ->where('has_farms', true)
             ->whereHas('locations')
             ->exists();
