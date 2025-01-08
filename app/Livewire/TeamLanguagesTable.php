@@ -15,12 +15,16 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\Layout\Panel;
+use Filament\Tables\Columns\Layout\Split;
+use Filament\Tables\Columns\Layout\Stack;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -32,12 +36,17 @@ class TeamLanguagesTable extends Component implements HasForms, HasTable
 
     public Team $team;
 
+    /** @var Collection<Language> $languages */
+    public Collection $languages;
+
     protected $listeners = ['refreshTable' => '$refresh'];
 
     public function mount()
     {
         $this->team = auth()->user()->latestTeam;
+        $this->languages = $this->team->languages;
     }
+
 
     public function table(Table $table): Table
     {
@@ -45,22 +54,21 @@ class TeamLanguagesTable extends Component implements HasForms, HasTable
             ->relationship(fn(): BelongsToMany => $this->team->languages())
             ->inverseRelationship('teams')
             ->columns([
-                TextColumn::make('language_label')->label('Language'),
-                TextColumn::make('locale')->label('Selected Translation'),
+                Split::make([
+                    TextColumn::make('language_label')->label('Language'),
+                    TextColumn::make('locale')->label('Selected Translation'),
+                ]),
+                Panel::make([
+                    Stack::make([
+                        TextColumn::make('test')
+                        ->formatStateUsing(fn() => 'Something goes here; probably a list of the available locales or the form. I wonder if I can put a form inside a table column. Probably...'),
+                    ]),
+                ])->collapsible(),
+
             ])
             ->actions([
                 Action::make('Select Translation')->visible(fn(Language $record) => $record->pivot->locale === null)
-                    ->form(fn(Language $record) => [
-                        Select::make('locale_id')
-                            ->options(Locale::where('language_id', $record->id)->get()->pluck('language_label', 'id'))
-                        ->label('Select the translation to use')
-                        ->helperText('You will be able to review the text before finalising your decision')
-                        ->createOptionForm(fn() => [
-                            TextInput::make('description'),
-                        ])
-
-                    ])
-                ,
+                ->action(fn(Table $table) => ray($table->getActions())),
                 Action::make('Remove Translation')->visible(fn(Language $record) => $record->pivot->locale !== null),
             ])
             ->paginated(false)
