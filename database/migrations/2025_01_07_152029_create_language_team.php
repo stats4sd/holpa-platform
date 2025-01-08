@@ -15,6 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('language_id')->constrained('languages')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('team_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('locale_id')->nullable()
+                ->comment('Each team has a maximum of 1 locale per language')
+                ->constrained('locales')
+                ->nullOnDelete()
+                ->cascadeOnUpdate();
             $table->timestamps();
         });
     }
