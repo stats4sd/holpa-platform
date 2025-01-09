@@ -3,9 +3,12 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
+use App\Models\XlsformLanguages\Language;
+use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Illuminate\Support\Collection;
 
 class SurveyTranslations extends Page
 {
@@ -16,6 +19,11 @@ class SurveyTranslations extends Page
     protected static ?string $title = 'Context: Survey Translations';
 
     protected $listeners = ['refreshPage' => '$refresh'];
+
+    public Team $team;
+
+    /** @var Collection<Language> */
+    public Collection $languages;
 
     public function getBreadcrumbs(): array
     {
@@ -28,6 +36,12 @@ class SurveyTranslations extends Page
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;
+    }
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getSelectedTeam();
+        $this->languages = $this->team->languages;
     }
 
     public function markCompleteAction(): Action

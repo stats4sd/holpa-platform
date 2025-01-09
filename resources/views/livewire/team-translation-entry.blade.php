@@ -1,8 +1,10 @@
 <div>
-    <x-filament::section collapsible collapsed="true">
-        <x-slot:heading>
+    <div>
+        <div wire:click="$toggle('expanded')">
             <h5>{{ $language->language_label }}</h5>
-        </x-slot:heading>
+        </div>
+
+        <div class="transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
 
         <p>
             (selected Locale goes here)
@@ -11,5 +13,6 @@
         <p>
             (form for selecting a locale for this language goes here)
         </p>
-    </x-filament::section>
+        </div>
+    </div>
 </div>
