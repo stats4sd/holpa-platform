@@ -106,7 +106,7 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
         return $this->hasManyDeep(
             LanguageString::class,
             [XlsformModule::class, XlsformModuleVersion::class, SurveyRow::class],
-            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+            [['form_type', 'form_id'], 'xlsform_module_id', 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
         );
     }
 
@@ -114,8 +114,8 @@ class XlsformTemplate extends OdkLinkXlsformTemplate
     {
         return $this->hasManyDeep(
             LanguageString::class,
-            [XlsformModule::class, XlsformModuleVersion::class, ChoiceListEntry::class],
-            [['form_type', 'form_id'], null, 'xlsform_module_version_id', ['linked_entry_type', 'linked_entry_id']],
+            [XlsformModule::class, XlsformModuleVersion::class, ChoiceList::class, ChoiceListEntry::class],
+            [['form_type', 'form_id'], 'xlsform_module_id', 'xlsform_module_version_id', 'choice_list_id', ['linked_entry_type', 'linked_entry_id']],
         );
     }
 

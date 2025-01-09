@@ -12,7 +12,6 @@ use ShiftOneLabs\LaravelCascadeDeletes\CascadesDeletes;
 
 class SurveyRow extends Model implements HasLanguageStrings
 {
-
     use CascadesDeletes;
 
     protected array $cascadeDeletes = ['languageStrings'];

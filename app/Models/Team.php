@@ -97,12 +97,14 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
     public function languages(): BelongsToMany
     {
-        return $this->belongsToMany(Language::class, 'language_team', 'team_id', 'language_id');
+        return $this->belongsToMany(Language::class, 'language_team', 'team_id', 'language_id')
+            ->withPivot('locale_id');
     }
 
     public function locales(): BelongsToMany
     {
-        return $this->belongsToMany(Locale::class, 'language_team', 'team_id', 'locale_id');
+        return $this->belongsToMany(Locale::class, 'language_team', 'team_id', 'locale_id')
+            ->withPivot('language_id');
     }
 
     public function country(): BelongsTo

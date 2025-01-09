@@ -3,7 +3,10 @@
 namespace App\Models\XlsformLanguages;
 
 use App\Models\Team;
+use App\Models\Xlsforms\Xlsform;
+use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Services\HelperService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,7 +16,7 @@ class Locale extends Model
 {
 
     protected $casts = [
-        'is_default' => 'boolean'
+        'is_default' => 'boolean',
     ];
 
     protected $appends = [
@@ -25,7 +28,7 @@ class Locale extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function xlsformTemplateLanguages(): HasMany
+    public function xlsformModuleVersionLocales(): HasMany
     {
         return $this->hasMany(XlsformModuleVersionLocale::class);
     }
@@ -44,28 +47,33 @@ class Locale extends Model
 
     public function getLanguageLabelAttribute(): string
     {
-        $language = $this->language->name;
-        $isoAlpha2 = $this->language->iso_alpha2;
-        $description = $this->description ? ' - ' . $this->description : '';
-
-        return $language . ' (' . $isoAlpha2 . ')' . $description;
+       // if the description is populated, return that. Otherwise, return the language details
+        return $this->description ?? $this->language->name . ' (default)';
     }
 
     public function getStatusAttribute(): string
     {
-        $statuses = $this->xlsformTemplateLanguages->pluck('status');
+        $moduleVersions = $this->xlsformModuleVersions;
+        $allModuleVersions = HelperService::getSelectedTeam()
+            ->xlsforms
+            ->map(fn(Xlsform $xlsform) => $xlsform
+                ->xlsformModules
+                ->map(fn(XlsformModule $xlsformModule) => $xlsformModule->defaultVersion)
+            );
 
-        if ($statuses->contains('Not added')) {
-            return 'Not added';
+        if ($moduleVersions->count() === 0) {
+            return 'Not uploaded';
         }
 
-        if ($statuses->contains('Out of date')) {
-            return 'Out of date';
+        if ($moduleVersions->count() < $allModuleVersions->count()) {
+            return 'Translations incomplete';
         }
 
-        if ($statuses->every(fn($status) => $status === 'Ready for use')) {
+        if ($moduleVersions->every(fn($moduleVersion) => !$moduleVersion->pivot->needs_update && $moduleVersion->pivot->has_language_strings)) {
             return 'Ready for use';
         }
+
+        return 'Needs update';
     }
 
     public function getOdkLabelAttribute(): string

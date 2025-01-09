@@ -14,16 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Language extends Model
 {
 
-    protected static function booted()
-    {
-        //when a language is created, create a default locale for it
-        static::created(function ($language) {
-            $language->locales()->create([
-                'is_default' => true
-            ]);
-        });
-    }
-
     public function xlsformTemplateLanguages(): HasMany
     {
         return $this->hasMany(XlsformModuleVersionLocale::class);
