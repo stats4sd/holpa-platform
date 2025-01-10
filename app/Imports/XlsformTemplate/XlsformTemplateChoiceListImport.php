@@ -59,6 +59,14 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
         // extract the list name from the type (e.g. "select_multiple crops" or "select_one farms")
         $listName = Str::afterLast($row['type'], ' ');
 
+        // check if this is a custom module import, adjust list name
+        // ( CUSTOM TO HOLPA )
+        if ($this->xlsformModuleVersion->name === 'custom') {
+            $form = $this->xlsformModuleVersion->xlsformModule->form;
+            $team_name = strtolower(str_replace(' ', '_', $form->owner->name));
+            $listName = $team_name . '_' . $this->xlsformModuleVersion->xlsformModule->id . '_' . $listName;
+        }
+
         return new ChoiceList([
             'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
             'list_name' => $listName,
