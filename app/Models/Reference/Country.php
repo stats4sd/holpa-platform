@@ -29,7 +29,7 @@ class Country extends Model
         return $this->hasMany(Team::class);
     }
 
-    public function xlsformModuleVersion(): HasMany
+    public function xlsformModuleVersions(): HasMany
     {
         return $this->hasMany(XlsformModuleVersion::class);
     }
