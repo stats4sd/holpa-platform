@@ -37,6 +37,16 @@ class DietDiversity extends Page implements HasForms, HasTable
 
     public function form(Form $form): Form
     {
+        // If the team's `diet_diversity_module_version_id` is null, set the default using the team's country
+        if (is_null($this->team->diet_diversity_module_version_id)) {
+            $this->team->diet_diversity_module_version_id = XlsformModuleVersion::query()
+                ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                ->where('country_id', $this->team->country_id)
+                ->value('id');
+
+            $this->team->save();
+        }
+
         return $form
             ->statePath('data')
             ->model($this->team)

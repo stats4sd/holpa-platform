@@ -4,9 +4,9 @@ namespace App\Models\Reference;
 
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Country extends Model
 {
@@ -27,5 +27,10 @@ class Country extends Model
     public function teams(): HasMany
     {
         return $this->hasMany(Team::class);
+    }
+
+    public function xlsformModuleVersions(): HasMany
+    {
+        return $this->hasMany(XlsformModuleVersion::class);
     }
 }

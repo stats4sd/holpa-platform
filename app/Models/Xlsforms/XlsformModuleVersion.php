@@ -2,24 +2,25 @@
 
 namespace App\Models\Xlsforms;
 
-use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Team;
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
-use App\Services\XlsformTranslationHelper;
-use Illuminate\Console\View\Components\Choice;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasManyThrough;
-use Illuminate\Support\Collection;
+use App\Models\Reference\Country;
 use Spatie\MediaLibrary\HasMedia;
+use Illuminate\Support\Collection;
+use App\Models\XlsformLanguages\Locale;
+use Illuminate\Database\Eloquent\Model;
+use App\Models\XlsformLanguages\Language;
+use App\Models\Interfaces\WithXlsformFile;
+use App\Services\XlsformTranslationHelper;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Console\View\Components\Choice;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 
 class XlsformModuleVersion extends Model implements HasMedia
 {
@@ -45,6 +46,11 @@ class XlsformModuleVersion extends Model implements HasMedia
     public function xlsformModule(): BelongsTo
     {
         return $this->belongsTo(XlsformModule::class);
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
 
     // Which teams have selected to use this module instead of the default?
