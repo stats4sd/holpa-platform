@@ -9,6 +9,7 @@ use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\OnEachRow;
@@ -93,7 +94,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
 
         // survey rows within a specific template will be unique by name, except for begin and end group / repeats. Choice List Entries will not be, so we also check the choice_list_id
         if ($rowData['type'] === 'choices') {
-            $entries = $entries->filter(fn(ChoiceListEntry $entry) => $entry->choiceList->id === (int) $rowData['choice_list_id']);
+            $entries = $entries->filter(fn(ChoiceListEntry $entry) => $entry->choiceList->id === (int)$rowData['choice_list_id']);
         }
 
         // Normally, there will only be one entry here. However:
@@ -114,10 +115,12 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
         }
 
         // Update the template language to mark that it has language strings
-        $moduleVersion = $entries->first()->xlsformModuleVersion;
 
-        $moduleVersion->locales()->updateExistingPivot($this->locale->id, ['has_language_strings' => 1]);
-        $moduleVersion->locales()->updateExistingPivot($this->locale->id, ['needs_update' => 0]);
+        /** @var XlsformModuleVersion $moduleVersion */
+        $entries->first()
+            ->xlsformModuleVersion
+            ->locales()
+            ->sync([$this->locale->id => ['has_language_strings' => 1, 'needs_update' => 0]], detaching: false);
     }
 
 

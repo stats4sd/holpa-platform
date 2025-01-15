@@ -47,7 +47,7 @@ class Locale extends Model
 
     public function getLanguageLabelAttribute(): string
     {
-       // if the description is populated, return that. Otherwise, return the language details
+        // if the description is populated, return that. Otherwise, return the language details
         return $this->description ?? $this->language->name . ' (default)';
     }
 
@@ -57,9 +57,15 @@ class Locale extends Model
         $allModuleVersions = HelperService::getSelectedTeam()
             ->xlsforms
             ->map(fn(Xlsform $xlsform) => $xlsform
+                ->xlsformTemplate
                 ->xlsformModules
-                ->map(fn(XlsformModule $xlsformModule) => $xlsformModule->defaultVersion)
-            );
+                ->map(fn(XlsformModule $xlsformModule) => $xlsformModule->defaultXlsformVersion)
+            )->flatten();
+
+
+        if ($this->id === 179) {
+            ray($allModuleVersions);
+        }
 
         if ($moduleVersions->count() === 0) {
             return 'Not uploaded';
