@@ -57,6 +57,7 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
         $headings = collect();
 
         $headings[] = 'row type';
+        $headings[] = 'choice_list_id';
         $headings[] = 'name';
         $headings[] = 'translation type';
 
@@ -153,8 +154,9 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
         // Set specific widths for columns A and B
         $columnWidths = [
             'A' => 12,
-            'B' => 29,
-            'C' => 20,
+            'B' => 0,
+            'C' => 29,
+            'D' => 20,
         ];
 
         // Set width for all other columns
@@ -187,7 +189,12 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
 
                 // Create the initial row with the row type, 'name' and 'language string type'
                 $type = $entry instanceof SurveyRow ? 'survey' : 'choices';
-                $row = collect([$type, $entry->name, $languageStringType->name]);
+                $row = collect([
+                    $type,
+                    $entry->choiceList?->id ?? '',
+                    $entry->name,
+                    $languageStringType->name
+                ]);
 
                 $defaultLocaleStrings = $this->template->locales
                     ->filter(fn(Locale $locale) => $locale->is_default)
