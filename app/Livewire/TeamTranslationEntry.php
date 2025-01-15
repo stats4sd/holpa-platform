@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use App\Exports\XlsformTemplateTranslationsExport;
 use App\Models\Team;
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
+use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Actions\StaticAction;
@@ -17,13 +20,17 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Get;
 use Filament\Support\Enums\Alignment;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
 {
@@ -96,12 +103,32 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         [
                             Section::make('Upload Completed Translation Files')
                                 ->schema([
-                                    FileUpload::make('household_survey_translation'),
-                                    FileUpload::make('fieldwork_survey_translation'),
+                                    FileUpload::make('household_survey_translation')
+                                        ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
+                                        ->maxSize(10240)
+                                        ->rules([
+                                            fn(Get $get, Locale $record) => $this->validateFileUpload($get('household_survey_translation'), $record, $this->team->xlsforms->first()->xlsformTemplate),
+                                        ]),
+                                    FileUpload::make('fieldwork_survey_translation')
+                                        ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
+                                        ->maxSize(10240)
+                                        ->rules([
+                                            fn(Get $get, Locale $record) => $this->validateFileUpload($get('fieldwork_survey_translation'), $record, $this->team->xlsforms->last()->xlsformTemplate),
+                                        ]),
                                 ])
                                 ->columns(2),
                         ])
-                    ->action(fn(array $data) => dd($data)),
+                    ->action(function (array $data) {
+                        // upload the files
+                        if ($data['household_survey_translation']) {
+
+                            Excel::import(
+                                new XlsformTemplateTranslationsExport($this->team->xlsforms->first()->xlsformTemplate, $this->selectedLocale),
+                                Storage::path($data['household_survey_translation'])
+                            );
+
+                        }
+                    }),
                 Action::make('Select')
                     ->visible(fn(Locale $record) => $this->selectedLocale?->id !== $record->id)
                     ->tooltip('Select this translation for your survey')
@@ -109,6 +136,52 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         $record->language->teams()->updateExistingPivot($this->team->id, ['locale_id' => $record->id]);
                     }),
             ]);
+    }
+
+    public function validateFileUpload(array $upload, Locale $record, XlsformTemplate $xlsformTemplate): \Closure
+    {
+        return function (string $attribute, string $value, \Closure $fail) use ($upload, $record, $xlsformTemplate) {
+
+            $file = collect($upload)->first();
+
+            /** @var Collection $rows */
+            $rows = Excel::toCollection([], $file)[0];
+
+            $headers = $rows->shift();
+
+            // check the required columns exist
+            $nameIndex = array_search('name', $headers);
+            $stringTypeIndex = array_search('translation_type', $headers);
+            $currentTranslationIndex = array_search($record->language_label, $headers);
+
+            if ($currentTranslationIndex === false || $nameIndex === false || $stringTypeIndex === false) {
+
+                $missingColumns = collect([
+                    $nameIndex ? '' : 'name',
+                    $stringTypeIndex ? '' : 'translation_type',
+                    $currentTranslationIndex ? '' : $record->language_label,
+                ]);
+
+                return $fail("The uploaded file is missing the following required columns: {$missingColumns->join(', ')}. Please check that you are using the template downloaded from this platform, and please do not edit the column headers.");
+            }
+
+            // check that all the required names are present
+            $processor = new XlsformTemplateTranslationsExport($xlsformTemplate, $record);
+
+            $templateSurveyRows = $xlsformTemplate->surveyRows
+                ->map(fn(SurveyRow $entry) => $processor->processEntry($entry));
+            $templateChoiceListEntries = $xlsformTemplate->choiceListEntries
+                ->map(fn(SurveyRow $entry) => $processor->processEntry($entry));
+
+            // make sure all template survey rows are present in the $rows collection
+            $missingSurveyRows = $templateSurveyRows
+                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'name'))
+                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
+
+
+            return true;
+
+        };
     }
 
 }
