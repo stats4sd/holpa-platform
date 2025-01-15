@@ -5,14 +5,20 @@ namespace App\Imports;
 use App\Models\XlsformLanguages\LanguageStringType;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\LanguageString;
+use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\XlsformTemplate;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Row;
 
-class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsEmptyRows, WithValidation
+class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsEmptyRows, WithValidation, WithStrictNullComparison
 {
     protected array $headerMap = [];
 
@@ -23,8 +29,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
     // Normalize header names for comparison
     protected function normalizeHeading($heading): string
     {
-        $normalized = strtolower(trim($heading));
-        return preg_replace('/[ -]+/', '_', $normalized);
+        return Str::slug($heading);
 
     }
 
@@ -56,55 +61,69 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
             $this->headerMap = $this->prepareForImport(array_keys($rowData));
         }
 
-        $surveyRowName = $rowData['name'];
-        $translationType = $rowData['translation_type'];
-
-
         // Get the actual column for the current language using the header map
-        $normalizedLanguageLabel = $this->normalizeHeading($this->locale->odk_label);
+        $normalizedLanguageLabel = $this->normalizeHeading($this->locale->language_label);
         $actualLanguageColumn = $this->headerMap[$normalizedLanguageLabel] ?? null;
 
         // Fetch the translation from the row data
         $translation = $actualLanguageColumn ? $rowData[$actualLanguageColumn] ?? null : null;
 
-        // Check if the survey row exists in the template
-        $template = $this->xlsformTemplateLanguage->xlsformTemplate;
-        $surveyRow = $template->surveyRows()->where('name', $surveyRowName)->first();
+        // Find the corresponding language string type
+        $languageStringType = LanguageStringType::where('language_string_types.name', $rowData['translation_type'])->first();
 
-        if ($surveyRow) {
-            // Find the corresponding language string type
-            $languageStringType = LanguageStringType::where('name', $translationType)->first();
+        $relationship = match ($rowData['type']) {
+            'survey' => 'surveyRows',
+            'choices' => 'choiceListEntries',
+            default => null,
+        };
 
-            if ($languageStringType) {
-                if ($translation === null) {
-                    return;
-                }
+        $tableName = match ($rowData['type']) {
+            'survey' => 'survey_rows',
+            'choices' => 'choice_list_entries',
+            default => null,
+        };
 
-                // Create or update the language string for this survey row and template language
-                $surveyRow->languageStrings()->updateOrCreate(
-                    [
-                        'xlsform_template_language_id' => $this->xlsformTemplateLanguage->id,
-                        'language_string_type_id' => $languageStringType->id,
-                    ],
-                    [
-                        'text' => $translation,
-                    ]
-                );
-            }
+        // these should already be checked during the validation step.
+        if (!$relationship || !$tableName || !$languageStringType) {
+            throw new \Exception("Invalid row type: {$rowData['type']}");
+        }
+
+        /** @var SurveyRow|ChoiceListEntry $entry */
+        $entries = $this->xlsformTemplate->$relationship()->where("$tableName.name", $rowData['name'])->get();
+
+        // survey rows within a specific template will be unique by name, except for begin and end group / repeats. Choice List Entries will not be, so we also check the choice_list_id
+        if ($rowData['type'] === 'choices') {
+            $entries = $entries->filter(fn(ChoiceListEntry $entry) => $entry->choiceList->id === (int) $rowData['choice_list_id']);
+        }
+
+        // Normally, there will only be one entry here. However:
+        // - choice lists may have multiple entries with the same name, e.g. when using choice filters.
+        // - survey rows may have multiple entries with the same name in the specific case of group + repeats.
+        // In both cases, the items with the same name *should* have the same label/hint etc, so we can update *all* entries at once.
+        foreach ($entries as $entry) {
+            $entry->languageStrings()->updateOrCreate(
+                [
+                    'locale_id' => $this->locale->id,
+                    'language_string_type_id' => $languageStringType->id,
+                ],
+                [
+                    'text' => $translation,
+                    'updated_during_import' => 1,
+                ]
+            );
         }
 
         // Update the template language to mark that it has language strings
-        $this->xlsformTemplateLanguage->update(['has_language_strings' => 1]);
+        $moduleVersion = $entries->first()->xlsformModuleVersion;
 
-        // Unset needs_update if it was previously set
-        if ($this->xlsformTemplateLanguage->needs_update) {
-            $this->xlsformTemplateLanguage->update(['needs_update' => 0]);
-        }
+        $moduleVersion->locales()->updateExistingPivot($this->locale->id, ['has_language_strings' => 1]);
+        $moduleVersion->locales()->updateExistingPivot($this->locale->id, ['needs_update' => 0]);
     }
+
 
     public function isEmptyWhen(array $row): bool
     {
-        return (isset($row['name']) && !$row['name']) || (isset($row['translation_type']) && !$row['translation_type']);
+        return $row['name'] === '' || $row['translation_type'] === '';
     }
 
     public function rules(): array

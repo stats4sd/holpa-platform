@@ -3,9 +3,11 @@
 namespace App\Livewire;
 
 use App\Exports\XlsformTemplateTranslationsExport;
+use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;
@@ -121,9 +123,9 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->action(function (array $data) {
                         // upload the files
                         if ($data['household_survey_translation']) {
-
+                                ray('hi');
                             Excel::import(
-                                new XlsformTemplateTranslationsExport($this->team->xlsforms->first()->xlsformTemplate, $this->selectedLocale),
+                                new XlsformTemplateLanguageImport($this->team->xlsforms->first()->xlsformTemplate, $this->selectedLocale),
                                 Storage::path($data['household_survey_translation'])
                             );
 
@@ -150,15 +152,16 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             $headers = $rows->shift();
 
             // check the required columns exist
-            $nameIndex = array_search('name', $headers);
-            $stringTypeIndex = array_search('translation_type', $headers);
-            $currentTranslationIndex = array_search($record->language_label, $headers);
+            $rowTypeIndex = $headers->contains('type');
+            $nameIndex = $headers->contains('name');
+            $stringTypeIndex = $headers->contains('translation type');
+            $currentTranslationIndex = $headers->contains($record->language_label);
 
             if ($currentTranslationIndex === false || $nameIndex === false || $stringTypeIndex === false) {
 
                 $missingColumns = collect([
                     $nameIndex ? '' : 'name',
-                    $stringTypeIndex ? '' : 'translation_type',
+                    $stringTypeIndex ? '' : 'translation type',
                     $currentTranslationIndex ? '' : $record->language_label,
                 ]);
 
@@ -171,13 +174,20 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             $templateSurveyRows = $xlsformTemplate->surveyRows
                 ->map(fn(SurveyRow $entry) => $processor->processEntry($entry));
             $templateChoiceListEntries = $xlsformTemplate->choiceListEntries
-                ->map(fn(SurveyRow $entry) => $processor->processEntry($entry));
+                ->map(fn(ChoiceListEntry $entry) => $processor->processEntry($entry));
 
             // make sure all template survey rows are present in the $rows collection
             $missingSurveyRows = $templateSurveyRows
                 ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'name'))
                 ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
 
+            // make sure all template choice list rows are present in the $rows collection
+            $missingChoiceListEntries = $templateChoiceListEntries
+                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'name'))
+                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
+
+            // TODO: finish validating that all required rows are present;
+            // TODO: validate that all translation_types are valid language string types.
 
             return true;
 

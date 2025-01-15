@@ -48,6 +48,7 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
 
     public function headings(): array
     {
+        // row  type
         // name
         // translation type
         // Locales
@@ -55,6 +56,7 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
 
         $headings = collect();
 
+        $headings[] = 'row type';
         $headings[] = 'name';
         $headings[] = 'translation type';
 
@@ -150,13 +152,14 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
     {
         // Set specific widths for columns A and B
         $columnWidths = [
-            'A' => 29,
-            'B' => 20,
+            'A' => 12,
+            'B' => 29,
+            'C' => 20,
         ];
 
         // Set width for all other columns
         $lastColumnIndex = count($this->headings());
-        for ($i = 3; $i <= $lastColumnIndex; $i++) {
+        for ($i = 4; $i <= $lastColumnIndex; $i++) {
             $columnLetter = Coordinate::stringFromColumnIndex($i);
             $columnWidths[$columnLetter] = 45;
         }
@@ -172,8 +175,6 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
 
     public function processEntry(SurveyRow|ChoiceListEntry $entry): Collection
     {
-        ray('processing entry: ' . class_basename($entry) . ' - ' . $entry->name);
-        ray()->count();
 
         // Get all language strings for this survey row grouped by type
         return $entry
@@ -184,8 +185,9 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
                     ->filter(fn(LanguageStringType $languageStringType) => $languageStringType->id == $typeId)
                     ->first();
 
-                // Create the initial row with the SurveyRow 'name' and 'type'
-                $row = collect([$entry->name, $languageStringType->name]);
+                // Create the initial row with the row type, 'name' and 'language string type'
+                $type = $entry instanceof SurveyRow ? 'survey' : 'choices';
+                $row = collect([$type, $entry->name, $languageStringType->name]);
 
                 $defaultLocaleStrings = $this->template->locales
                     ->filter(fn(Locale $locale) => $locale->is_default)
