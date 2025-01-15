@@ -40,6 +40,11 @@ class Locale extends Model
             ->withPivot(['has_language_strings', 'needs_update']);
     }
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(Team::class, 'created_by_team_id');
+    }
+
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'language_team', 'locale_id', 'team_id');
@@ -62,11 +67,6 @@ class Locale extends Model
                 ->map(fn(XlsformModule $xlsformModule) => $xlsformModule->defaultXlsformVersion)
             )->flatten();
 
-
-        if ($this->id === 179) {
-            ray($allModuleVersions);
-        }
-
         if ($moduleVersions->count() === 0) {
             return 'Not uploaded';
         }
@@ -87,4 +87,16 @@ class Locale extends Model
         return $this->language->name . ' (' . $this->language->iso_alpha2 . ')';
     }
 
+
+    // Are translations for this locale editable by the current team?
+    public function getIsEditableAttribute(): bool
+    {
+        return $this->createdBy?->id === HelperService::getSelectedTeam()->id;
+    }
+
+    // Are translations for this locale being edited by the current team?
+    public function getIsEditingAttribute(): bool
+    {
+        return $this->is_editable && $this->status !== 'Ready for use';
+    }
 }
