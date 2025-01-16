@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Exports\XlsformTemplateLanguageExport;
+use App\Exports\XlsformTemplateTranslationsExport;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
@@ -67,7 +67,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
 
-                        return Excel::download(new XlsformTemplateLanguageExport($template, $record), $filename);
+                        return Excel::download(new XlsformTemplateTranslationsExport($template, $record), $filename);
                     }),
                 Action::make('download_translation')
                     ->label('Download translation file')
@@ -79,7 +79,7 @@ class LocaleModalTable extends Component implements HasForms, HasTable
                         $currentDate = Carbon::now()->format('Y-m-d');
                         $filename = "HOLPA - {$template->title} - translation - {$record->localeLanguageLabel} - {$currentDate}.xlsx";
 
-                        return Excel::download(new XlsformTemplateLanguageExport($template, $record), $filename);
+                        return Excel::download(new XlsformTemplateTranslationsExport($template, $record), $filename);
                     }),
                 Action::make('upload_translation')
                     ->label('Upload translation file')

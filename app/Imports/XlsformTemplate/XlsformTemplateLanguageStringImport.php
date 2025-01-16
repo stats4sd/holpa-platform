@@ -129,10 +129,15 @@ class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQ
             return null;
         }
 
+        // make sure the default locale for this language exists
+        $locale = $this->language->locales()->firstOrCreate([
+            'is_default' => true,
+        ]);
+
         return new LanguageString([
             'linked_entry_id' => $item->id,
             'linked_entry_type' => $this->class,
-            'locale_id' => $this->language->defaultLocale->id,
+            'locale_id' => $locale->id,
             'language_string_type_id' => $this->languageStringType->id,
             'text' => $row[$this->heading],
             'updated_during_import' => true,

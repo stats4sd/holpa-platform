@@ -286,3 +286,17 @@ padding-left: 0px ;
 .fi-main .fi-page-sub-navigation-sidebar-ctn {
     @apply w-60;
 }
+
+
+.success-row td  {
+    @apply !bg-lightgreen;
+}
+
+button:disabled.outline-none {
+    background-color: transparent !important;
+    color: var(--green) !important;
+}
+
+.fi-ta-ctn {
+    @apply !rounded-none;
+}

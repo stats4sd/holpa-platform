@@ -3,7 +3,10 @@
 namespace App\Models\XlsformLanguages;
 
 use App\Models\Team;
+use App\Models\Xlsforms\Xlsform;
+use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Services\HelperService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,7 +16,7 @@ class Locale extends Model
 {
 
     protected $casts = [
-        'is_default' => 'boolean'
+        'is_default' => 'boolean',
     ];
 
     protected $appends = [
@@ -25,7 +28,7 @@ class Locale extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function xlsformTemplateLanguages(): HasMany
+    public function xlsformModuleVersionLocales(): HasMany
     {
         return $this->hasMany(XlsformModuleVersionLocale::class);
     }
@@ -37,6 +40,11 @@ class Locale extends Model
             ->withPivot(['has_language_strings', 'needs_update']);
     }
 
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(Team::class, 'created_by_team_id');
+    }
+
     public function teams(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'language_team', 'locale_id', 'team_id');
@@ -44,28 +52,34 @@ class Locale extends Model
 
     public function getLanguageLabelAttribute(): string
     {
-        $language = $this->language->name;
-        $isoAlpha2 = $this->language->iso_alpha2;
-        $description = $this->description ? ' - ' . $this->description : '';
-
-        return $language . ' (' . $isoAlpha2 . ')' . $description;
+        // if the description is populated, return that. Otherwise, return the language details
+        return $this->description ?? $this->language->name . ' (default)';
     }
 
     public function getStatusAttribute(): string
     {
-        $statuses = $this->xlsformTemplateLanguages->pluck('status');
+        $moduleVersions = $this->xlsformModuleVersions;
+        $allModuleVersions = HelperService::getSelectedTeam()
+            ->xlsforms
+            ->map(fn(Xlsform $xlsform) => $xlsform
+                ->xlsformTemplate
+                ->xlsformModules
+                ->map(fn(XlsformModule $xlsformModule) => $xlsformModule->defaultXlsformVersion)
+            )->flatten();
 
-        if ($statuses->contains('Not added')) {
-            return 'Not added';
+        if ($moduleVersions->count() === 0) {
+            return 'Not uploaded';
         }
 
-        if ($statuses->contains('Out of date')) {
-            return 'Out of date';
+        if ($moduleVersions->count() < $allModuleVersions->count()) {
+            return 'Translations incomplete';
         }
 
-        if ($statuses->every(fn($status) => $status === 'Ready for use')) {
+        if ($moduleVersions->every(fn($moduleVersion) => !$moduleVersion->pivot->needs_update && $moduleVersion->pivot->has_language_strings)) {
             return 'Ready for use';
         }
+
+        return 'Needs update';
     }
 
     public function getOdkLabelAttribute(): string
@@ -73,4 +87,16 @@ class Locale extends Model
         return $this->language->name . ' (' . $this->language->iso_alpha2 . ')';
     }
 
+
+    // Are translations for this locale editable by the current team?
+    public function getIsEditableAttribute(): bool
+    {
+        return $this->createdBy?->id === HelperService::getSelectedTeam()->id;
+    }
+
+    // Are translations for this locale being edited by the current team?
+    public function getIsEditingAttribute(): bool
+    {
+        return $this->is_editable && $this->status !== 'Ready for use';
+    }
 }
