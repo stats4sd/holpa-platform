@@ -36,7 +36,7 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
     /** @var Collection<LanguageStringType> */
     public Collection $allLanguageStringTypes;
 
-    public function __construct(public XlsformTemplate $template, public Locale $currentLocale)
+    public function __construct(public XlsformTemplate $template, public Locale $currentLocale, public bool $empty = false)
     {
 
         $this->locales = $template->locales
@@ -193,7 +193,7 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
                     $type,
                     $entry->choiceList?->id ?? '',
                     $entry->name,
-                    $languageStringType->name
+                    $languageStringType->name,
                 ]);
 
                 $defaultLocaleStrings = $this->template->locales
@@ -206,8 +206,12 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
                         return $stringForLanguage ? $stringForLanguage->text : '';
                     });
 
-                // Add the current template language's translation
-                $currentStringForLanguage = $strings->firstWhere('locale_id', $this->currentLocale->id);
+                ray($this->empty);
+
+                // Add the current template language's translation (unless $empty is false, which means we should return an empty template
+                if ($this->empty) {
+                    $currentStringForLanguage = $strings->firstWhere('locale_id', $this->currentLocale->id);
+                }
 
                 return $row
                     ->merge($defaultLocaleStrings)

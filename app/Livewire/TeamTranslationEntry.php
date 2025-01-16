@@ -133,7 +133,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                                             ->link()
                                             ->visible(fn(Locale $record) => $record->is_editable && $record->status !== 'Ready for use')
                                             ->label("Download empty translation template")
-                                            ->action(fn(Locale $record) => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->selectedLocale), "{$xlsformTemplate->title} translation - {$record->language_label}.xlsx")),
+                                            ->action(fn(Locale $record) => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->selectedLocale, empty: true), "{$xlsformTemplate->title} translation - {$record->language_label}.xlsx")),
                                     ]),
                                     FileUpload::make('upload_' . $xlsformTemplate->id)
                                         ->visible(fn(Locale $record) => $record->is_editing)
