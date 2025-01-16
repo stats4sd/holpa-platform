@@ -106,9 +106,18 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
                     ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
                     ->modalCancelAction(fn(StaticAction $action) => $action->extraAttributes(['class' => 'buttonb']))
-                    ->extraModalFooterActions(fn(Locale $record) => [
+                    ->extraModalFooterActions(fn(Locale $record, Action $action) => [
                         Action::make('edit')->visible($record->is_editable && $record->status === 'Ready for use'),
-                        Action::make('duplicate'),
+                        Action::make('duplicate')
+                            ->action(function (Locale $record) use ($action) {
+                                $newRecord = $record->replicate();
+                                $newRecord->is_default = false;
+                                $newRecord->createdBy()->associate($this->team);
+                                $newRecord->save();
+                            })
+                            ->modalHeading(fn(Locale $record) => 'Duplicate Translation for ' . $record->language_label)
+                            ->requiresConfirmation()
+                            ->cancelParentActions(),
                         Action::make('submit')
                             ->extraAttributes(['class' => 'buttona'])
                             ->visible(fn(Locale $record) => $record->is_editing),
