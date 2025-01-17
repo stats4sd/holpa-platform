@@ -4,11 +4,13 @@ namespace App\Exports\XlsformExport;
 
 use App\Models\Team;
 use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
@@ -17,15 +19,23 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithColumnWidths
 {
-    public Collection $surveyRows;
+    /** @var Collection<Locale> */
+    public Collection $locales;
+
+    /** @var Collection<Collection> */
+    public Collection $rows;
+
+    /** @var Collection<Collection> */
     public Collection $dynamicStylesRowLists;
 
-
-    public function __construct(public Xlsform $xlsform, public Collection $languages, public Collection $languageStringTypes)
+    public function __construct(public Xlsform $xlsform)
     {
+        $this->locales = $xlsform->owner->locales;
+
         // Get list of XlsformModuleVersions to use
         /** @var Collection<XlsformModuleVersion> $xlsformTemplate */
         $xlsformModuleVersions = $this->xlsform->xlsformTemplate->xlsformModules()
@@ -35,46 +45,58 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
             ->map(function (XlsformModule $module) {
 
                 if ($module->name === 'diet_quality') {
+
                     // find out which diet diversity module the team has chosen.
                     /** @var Team $team */
                     $team = $this->xlsform->owner;
 
-                    return $team->dietDiversityModuleVersion ?? $module->xlsformModuleVersions->filter(fn(XlsformModuleVersion $version) => $version->is_default)->first(); // fallback to default if the team has not picked one.
+                    if ($team->dietDiversityModuleVersion) {
+                        return $team->dietDiversityModuleVersion;
+                    }
                 }
 
-                return $module->xlsformModuleVersions->filter(fn(XlsformModuleVersion $version) => $version->is_default)->first();
+                // by default, return the (one and only) 'default' version of the module
+                return $module->defaultXlsformVersion;
 
             });
 
-        $this->surveyRows = $xlsformModuleVersions->map(function (XlsformModuleVersion $xlsformModuleVersion) {
+        $surveyRows = $xlsformModuleVersions->map(function (XlsformModuleVersion $xlsformModuleVersion) {
             return $xlsformModuleVersion
                 ->surveyRows
                 ->sortBy('id')
-                ->load('languageStrings')
-                ->map(function (SurveyRow $row) {
-                    return collect([
-                        'id' => $row->id,
-                        'type' => $row->type,
-                        'name' => $row->name,
-                        ...$this->getLanguageStrings($row, 'label'),
-                        ...$this->getLanguageStrings($row, 'hint'),
-                        'required' => $row->required,
-                        ...$this->getLanguageStrings($row, 'required_message'),
-                        'calculation' => $row->calculation,
-                        'relevant' => $row->relevant,
-                        ...$this->getLanguageStrings($row, 'relevant_message'),
-                        'appearance' => $row->appearance,
-                        'constraint' => $row->constraint,
-                        ...$this->getLanguageStrings($row, 'constraint_message'),
-                        'choice_filter' => $row->choice_filter,
-                        'repeat_count' => $row->repeat_count,
-                        ...$this->getLanguageStrings($row, 'mediaimage'),
-                        'default' => $row->default,
-                    ]);
-                });
+                ->load('languageStrings');
         })->flatten(1);
 
-        $this->dynamicStylesRowLists = $this->getDynamicStylesRowLists($this->surveyRows);
+        $propertyHeadings = $this->getHeadingsFromProperties($surveyRows);
+
+        $this->rows = $surveyRows
+            ->map(function (SurveyRow $row) use ($propertyHeadings) {
+
+                $properties = $propertyHeadings->mapWithKeys(fn(string $heading) => [$heading => $row->properties[Str::replace(':', '', $heading)] ?? null]);
+
+                return collect([
+                    'id' => $row->id,
+                    'type' => $row->type,
+                    'name' => $row->name,
+                    ...$this->getLanguageStrings($row, 'label'),
+                    ...$this->getLanguageStrings($row, 'hint'),
+                    'required' => $row->required,
+                    ...$this->getLanguageStrings($row, 'required_message'),
+                    'calculation' => $row->calculation,
+                    'relevant' => $row->relevant,
+                    ...$this->getLanguageStrings($row, 'relevant_message'),
+                    'appearance' => $row->appearance,
+                    'constraint' => $row->constraint,
+                    ...$this->getLanguageStrings($row, 'constraint_message'),
+                    'choice_filter' => $row->choice_filter,
+                    'repeat_count' => $row->repeat_count,
+                    ...$this->getLanguageStrings($row, 'mediaimage'),
+                    'default' => $row->default,
+                    ...$properties, // includes media items that are not per-language (e.g. "media::image")
+                ]);
+            });
+
+        $this->dynamicStylesRowLists = $this->getDynamicStylesRowLists($this->rows);
 
     }
 
@@ -83,12 +105,12 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
      */
     public function collection(): Collection
     {
-        return $this->surveyRows;
+        return $this->rows;
     }
 
     public function headings(): array
     {
-        return $this->surveyRows->first()->keys()->toArray();
+        return $this->rows->first()->keys()->toArray();
     }
 
     public function title(): string
@@ -96,27 +118,13 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
         return 'survey';
     }
 
-    private function getLanguageStrings(mixed $row, string $string): Collection
+    private function getLanguageStrings(SurveyRow $row, string $string): Collection
     {
-        return $this->languages
-            ->mapWithKeys(function (Language $language) use ($row, $string) {
+        return $this->locales
+            ->mapWithKeys(function (Locale $locale) use ($row, $string) {
+                $outputString = $this->expandMediaColumnHeaders($string);
 
-                // fix for mediaimage needing to be media::image, etc.
-                $outputString = $string;
-
-                if ($string === 'mediaimage') {
-                    $outputString = 'media::image';
-                }
-
-                if ($string === 'mediaaudio') {
-                    $outputString = 'media::audio';
-                }
-
-                if ($string === 'mediavideo') {
-                    $outputString = 'media::video';
-                }
-
-                $key = "$outputString::{$language->name} ({$language->iso_alpha2})";
+                $key = "$outputString::{$locale->language->name} ({$locale->language->iso_alpha2})";
                 $value = $row->languageStrings()
                     ->whereHas('languageStringType', fn($query) => $query->where('name', $string))
                     ->first()?->text ?? '';
@@ -125,13 +133,24 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
             });
     }
 
+    private function getHeadingsFromProperties(Collection $surveyRows): Collection
+    {
+        return $surveyRows
+            ->map(fn($surveyRow) => $surveyRow
+                ->properties
+                ?->mapWithKeys(fn(string $value, string $key) => [$this->expandMediaColumnHeaders($key) => $value])
+                ->keys())
+            ->filter()
+            ->flatten()
+            ->unique();
+    }
 
     public function columnWidths(): array
     {
-        $languageCount = $this->languages->count();
+        $languageCount = $this->locales->count();
 
-        $labelColumns = $this->languages->mapWithKeys(fn(Language $language, $index) => [chr(67 + $index) => 45]);
-        $hintColumns = $this->languages->mapWithKeys(fn(Language $language, $index) => [chr(67 + $languageCount + $index) => 45]);
+        $labelColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [chr(67 + $index) => 45]);
+        $hintColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [chr(67 + $languageCount + $index) => 45]);
 
         return [
             'A' => 20,
@@ -164,7 +183,7 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
 
     public function styles(Worksheet $sheet): void
     {
-        $languageCount = $this->languages->count();
+        $languageCount = $this->locales->count();
 
         $wrapStyle = ['alignment' => ['wrapText' => true]];
 
@@ -202,8 +221,8 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
 
 
         // starting at C, make label + hint columns auto-wrap per Xlsformtemplatelangauge
-        $wrapLabelList = $this->languages->map(fn(Language $language, $index) => chr(67 + $index));
-        $wrapHintList = $this->languages->map(fn(Language $language, $index) => chr(67 + $languageCount + $index));
+        $wrapLabelList = $this->locales->map(fn(Locale $language, $index) => chr(67 + $index));
+        $wrapHintList = $this->locales->map(fn(Locale $language, $index) => chr(67 + $languageCount + $index));
 
 
         // **** APPLY STYLES ****
@@ -249,5 +268,28 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
             'beginRepeatRows' => $beginRepeatRows->map(fn($id) => $id + 1),
             'endRepeatRows' => $endRepeatRows->map(fn($id) => $id + 1),
         ]);
+    }
+
+    /**
+     * @param string $string
+     * @return string
+     */
+    function expandMediaColumnHeaders(string $string): string
+    {
+        // fix for mediaimage needing to be media::image, etc.
+
+        if ($string === 'mediaimage') {
+            return 'media::image';
+        }
+
+        if ($string === 'mediaaudio') {
+            return 'media::audio';
+        }
+
+        if ($string === 'mediavideo') {
+            return 'media::video';
+        }
+
+        return $string;
     }
 }
