@@ -21,7 +21,6 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\UserResource;
-use Stats4sd\FilamentTeamManagement\Filament\Admin\Pages\Dashboard;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -43,7 +42,6 @@ class AdminPanelProvider extends PanelProvider
             ->discoverPages(in: app_path('Filament/Admin/Pages'), for: 'App\\Filament\\Admin\\Pages')
             ->discoverWidgets(in: app_path('Filament/Admin/Widgets'), for: 'App\\Filament\\Admin\\Widgets')
             ->pages([
-                Dashboard::class,
             ])
             ->widgets([])
             ->renderHook(
@@ -69,8 +67,8 @@ class AdminPanelProvider extends PanelProvider
                     ->label(__('Return to Front end'))
                     ->icon('heroicon-o-home')
                     ->url(url('/app'))
-            ])
-            ->darkMode(false)
+                    ->sort(1),
+            ])->darkMode(false)
             ->plugins([]);
     }
 }
