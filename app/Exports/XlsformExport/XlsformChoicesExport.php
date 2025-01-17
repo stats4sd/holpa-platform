@@ -18,6 +18,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithColumnWidths
@@ -122,10 +123,15 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
     public function columnWidths(): array
     {
+        $languageCount = $this->locales->count();
+
+        $labelColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [Coordinate::stringFromColumnIndex(4 + $index) => 60]);
+
         return [
-            'A' => 30,
-            'B' => 30,
-            'C' => 60,
+            'A' => 5, // id
+            'B' => 30, // list_name
+            'C' => 30, // name
+            ...$labelColumns->toArray(),
         ];
     }
 }

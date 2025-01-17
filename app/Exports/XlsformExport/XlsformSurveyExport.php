@@ -17,6 +17,7 @@ use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
@@ -149,35 +150,37 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
     {
         $languageCount = $this->locales->count();
 
-        $labelColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [chr(67 + $index) => 45]);
-        $hintColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [chr(67 + $languageCount + $index) => 45]);
+        $labelColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [Coordinate::stringFromColumnIndex(4 + $index) => 45]);
+        $hintColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [Coordinate::stringFromColumnIndex(4 + $languageCount + $index) => 45]);
 
         return [
-            'A' => 20,
-            'B' => 30,
+            'A' => 5, // ID
+            'B' => 20, // type
+            'C' => 30, // name
             ...$labelColumns->toArray(),
             ...$hintColumns->toArray(),
-            chr(67 + $languageCount * 2) => 15,
-            chr(67 + $languageCount * 2 + 1) => 15,
-            chr(67 + $languageCount * 2 + 2) => 15,
-            chr(67 + $languageCount * 2 + 3) => 15,
-            chr(67 + $languageCount * 2 + 4) => 15,
-            chr(67 + $languageCount * 2 + 5) => 15,
-            chr(67 + $languageCount * 2 + 6) => 15,
-            chr(67 + $languageCount * 2 + 7) => 15,
-            chr(67 + $languageCount * 2 + 8) => 15,
-            chr(67 + $languageCount * 2 + 9) => 15,
-            chr(67 + $languageCount * 2 + 10) => 15,
-            chr(67 + $languageCount * 2 + 11) => 15,
-            chr(67 + $languageCount * 2 + 12) => 15,
-            chr(67 + $languageCount * 2 + 13) => 15,
-            chr(67 + $languageCount * 2 + 14) => 15,
-            chr(67 + $languageCount * 2 + 15) => 15,
-            chr(67 + $languageCount * 2 + 16) => 15,
-            chr(67 + $languageCount * 2 + 17) => 15,
-            chr(67 + $languageCount * 2 + 18) => 15,
-            chr(67 + $languageCount * 2 + 19) => 15,
-            chr(67 + $languageCount * 2 + 20) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 1) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 2) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 3) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 4) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 5) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 6) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 7) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 8) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 9) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 10) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 11) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 12) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 13) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 14) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 15) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 16) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 17) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 18) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 19) => 15,
+            Coordinate::stringFromColumnIndex(4 + $languageCount * 2 + 20) => 15,
         ];
     }
 
