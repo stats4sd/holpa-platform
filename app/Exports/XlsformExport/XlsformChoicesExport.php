@@ -123,8 +123,6 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
     public function columnWidths(): array
     {
-        $languageCount = $this->locales->count();
-
         $labelColumns = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [Coordinate::stringFromColumnIndex(4 + $index) => 60]);
 
         return [
