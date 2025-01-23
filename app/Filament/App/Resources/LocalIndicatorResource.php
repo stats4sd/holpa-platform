@@ -2,18 +2,16 @@
 
 namespace App\Filament\App\Resources;
 
-use App\Models\GlobalIndicator;
-use Filament\Forms;
-use Filament\Tables;
-use App\Models\Theme;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Models\LocalIndicator;
-use Filament\Resources\Resource;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\App\Resources\LocalIndicatorResource\Pages;
 use App\Filament\App\Resources\LocalIndicatorResource\RelationManagers;
+use App\Models\Holpa\GlobalIndicator;
+use App\Models\Holpa\LocalIndicator;
+use App\Models\Holpa\Theme;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 use Illuminate\Support\Collection;
 
 class LocalIndicatorResource extends Resource

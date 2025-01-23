@@ -7,12 +7,9 @@ use App\Models\SurveyData\FarmSurveyData;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
-use App\Models\Traits\HasLinkedDataset;
 
 class FieldworkSite extends Model implements RepeatModel
 {
-    use HasLinkedDataset;
-
     protected $table = 'fieldwork_sites';
 
     protected $casts = [

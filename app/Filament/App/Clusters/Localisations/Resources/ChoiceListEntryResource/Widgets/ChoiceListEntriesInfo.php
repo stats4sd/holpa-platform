@@ -2,8 +2,8 @@
 
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Widgets;
 
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\SurveyRow;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
@@ -39,7 +39,7 @@ class ChoiceListEntriesInfo extends Widget
             ->map(fn(SurveyRow $surveyRow): array => [
                 'name' => $surveyRow->name,
                 'label' => $surveyRow->languageStrings()
-                        ->whereHas('xlsformTemplateLanguage', fn(Builder $query) => $query->where('language_id', 41))
+                        ->whereHas('locale', fn(Builder $query) => $query->where('language_id', 41))
                         ->where('language_string_type_id', 1)
                         ->first()?->text ?? 'tbc',
             ]);}

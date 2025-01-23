@@ -3,8 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\HelperService;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -22,7 +22,7 @@ class TimeFrame extends Page implements HasTable, HasForms
     use InteractsWithTable;
     use InteractsWithForms;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static bool $shouldRegisterNavigation = false;
     protected static string $view = 'filament.app.pages.time-frame';
 
     public ?array $data = [];
@@ -63,7 +63,7 @@ class TimeFrame extends Page implements HasTable, HasForms
 
         return $table
             ->query(fn() => SurveyRow::query()
-                ->whereHasMorph('template', [XlsformModuleVersion::class], fn($query) => $query->where('is_default', 1))
+                ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
                 ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
             )
             ->columns([

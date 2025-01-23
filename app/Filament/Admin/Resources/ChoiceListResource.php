@@ -4,16 +4,15 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ChoiceListResource\Pages;
 use App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ChoiceListResource extends Resource
 {
@@ -25,13 +24,8 @@ class ChoiceListResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\MorphToSelect::make('template')
-                    ->types([
-                        Forms\Components\MorphToSelect\Type::make(XlsformTemplate::class)
-                            ->titleAttribute('title'),
-                        Forms\Components\MorphToSelect\Type::make(XlsformModuleVersion::class)
-                            ->titleAttribute('name'),
-                    ]),
+                Forms\Components\Select::make('xlsformModuleVersion')
+                ->relationship('xlsformModuleVersion', 'name', modifyQueryUsing: fn(Builder $query) => $query->where('is_default', true)),
                 Forms\Components\TextInput::make('list_name')
                     ->required()
                     ->maxLength(255),

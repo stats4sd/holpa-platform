@@ -2,6 +2,17 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\TestTemplates\ChoiceListEntriesTableSeeder;
+use Database\Seeders\TestTemplates\ChoiceListsTableSeeder;
+use Database\Seeders\TestTemplates\LanguageStringsTableSeeder;
+use Database\Seeders\TestTemplates\RequiredMediaTableSeeder;
+use Database\Seeders\TestTemplates\SurveyRowsTableSeeder;
+use Database\Seeders\TestTemplates\XlsformModulesTableSeeder;
+use Database\Seeders\TestTemplates\XlsformModuleVersionLocaleTableSeeder;
+use Database\Seeders\TestTemplates\XlsformModuleVersionsTableSeeder;
+use Database\Seeders\TestTemplates\XlsformsTableSeeder;
+use Database\Seeders\TestTemplates\XlsformTemplateSectionsTableSeeder;
+use Database\Seeders\TestTemplates\XlsformTemplatesTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
@@ -22,7 +33,7 @@ class DatabaseSeeder extends Seeder
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
             $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
             $this->call($class);
-        }
+    }
 
         // Call the test seeders locally
         if (app()->environment('local')) {

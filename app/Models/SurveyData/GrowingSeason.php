@@ -2,7 +2,6 @@
 
 namespace App\Models\SurveyData;
 
-use App\Models\Traits\HasLinkedDataset;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SurveyData\FarmSurveyData;
 use App\Models\Interfaces\RepeatModel;
@@ -11,8 +10,6 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class GrowingSeason extends Model implements RepeatModel
 {
-    use HasLinkedDataset;
-
     protected $table = 'growing_seasons';
 
     protected $casts = [

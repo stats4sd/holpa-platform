@@ -3,8 +3,7 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Models\XlsformModuleVersion;
-use App\Models\XlsformTemplates\SurveyRow;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\HelperService;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -15,7 +14,6 @@ use Filament\Pages\Page;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Enums\FiltersLayout;
 use Filament\Tables\Table;
 
 class DietDiversity extends Page implements HasForms, HasTable
@@ -26,7 +24,7 @@ class DietDiversity extends Page implements HasForms, HasTable
     public ?array $data = [];
     public Team $team;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.diet-diversity';
 
@@ -39,6 +37,16 @@ class DietDiversity extends Page implements HasForms, HasTable
 
     public function form(Form $form): Form
     {
+        // If the team's `diet_diversity_module_version_id` is null, set the default using the team's country
+        if (is_null($this->team->diet_diversity_module_version_id)) {
+            $this->team->diet_diversity_module_version_id = XlsformModuleVersion::query()
+                ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                ->where('country_id', $this->team->country_id)
+                ->value('id');
+
+            $this->team->save();
+        }
+
         return $form
             ->statePath('data')
             ->model($this->team)
@@ -69,7 +77,6 @@ class DietDiversity extends Page implements HasForms, HasTable
     public function table(Table $table): Table
     {
         if ($this->team->diet_diversity_module_version_id) {
-            ray('ok');
             $moduleVersion = $this->team->dietDiversityModuleVersion;
         } else {
             //  default to the 'default' diet diversity module version;

@@ -3,8 +3,9 @@
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages;
 
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
+use App\Filament\App\Pages\PlaceAdaptations;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
@@ -40,6 +41,15 @@ class ListChoiceListEntries extends ListRecords
         } else {
             $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
         }
+    }
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            static::getUrl() => static::getTitle(),
+        ];
     }
 
     public function table(Table $table): Table

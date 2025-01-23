@@ -3,8 +3,8 @@
 namespace App\Imports\XlsformTemplate;
 
 use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -20,20 +20,31 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
 
     use Importable;
 
-    public function __construct(public WithXlsformFile $xlsformTemplate)
+    public function __construct(public XlsformModuleVersion $xlsformModuleVersion)
     {
     }
 
     public function sheets(): array
     {
         return [
-            'choices' => $this,
+            'survey' => $this,
         ];
     }
 
-    public function model(array $row): ChoiceList
+    public function model(array $row): ?ChoiceList
     {
         $row = collect($row);
+
+        // only review the rows in the current module
+        if($row['module'] !== $this->xlsformModuleVersion->xlsformModule->name) {
+            return null;
+        }
+
+        // only process select questions
+        if(!Str::startsWith($row['type'],'select_')) {
+            return null;
+        }
+
 
         if (isset($row['localisable'])) {
             $localisable = match ($row['localisable']) {
@@ -45,10 +56,12 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
             $localisable = false;
         }
 
+        // extract the list name from the type (e.g. "select_multiple crops" or "select_one farms")
+        $listName = Str::afterLast($row['type'], ' ');
+
         return new ChoiceList([
-            'template_id' => $this->xlsformTemplate->id,
-            'template_type' => get_class($this->xlsformTemplate),
-            'list_name' => $row['list_name'],
+            'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
+            'list_name' => $listName,
             'is_localisable' => $localisable,
         ]);
     }
@@ -58,8 +71,13 @@ class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, Wi
         return 500;
     }
 
+    public function isEmptyWhen(array $row): bool
+    {
+        return (!isset($row['type']) || $row['type'] === '');
+    }
+
     public function uniqueBy(): array
     {
-        return ['template_id', 'template_type', 'list_name'];
+        return ['xlsform_module_version_id', 'list_name'];
     }
 }

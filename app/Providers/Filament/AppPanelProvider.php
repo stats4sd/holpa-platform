@@ -2,27 +2,23 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Pages;
-use Filament\Panel;
-use App\Models\Team;
-use Filament\Widgets;
-use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
-use Filament\View\PanelsRenderHook;
-use App\Filament\App\Pages\TeamOdkView;
-use Filament\Navigation\NavigationItem;
-use Filament\Http\Middleware\Authenticate;
 use App\Filament\App\Pages\SurveyDashboard;
-use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Cookie\Middleware\EncryptCookies;
-use Illuminate\Routing\Middleware\SubstituteBindings;
-use Illuminate\Session\Middleware\AuthenticateSession;
-use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Models\Team;
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
+use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Filament\Navigation\NavigationItem;
+use Filament\Panel;
+use Filament\PanelProvider;
+use Filament\View\PanelsRenderHook;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
+use Illuminate\Routing\Middleware\SubstituteBindings;
+use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\Dashboard;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
@@ -111,7 +107,7 @@ class AppPanelProvider extends PanelProvider
                     900 => '235, 90, 69',
                     950 => '235, 90, 69',
                 ],
-                
+
 
                 'lightgreen' => ['216, 234, 208',
             ],
@@ -128,7 +124,6 @@ class AppPanelProvider extends PanelProvider
             ->discoverClusters(in: app_path('Filament/App/Clusters'), for: 'App\\Filament\\App\\Clusters')
             ->pages([
                 SurveyDashboard::class,
-                TeamOdkView::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
@@ -154,19 +149,10 @@ class AppPanelProvider extends PanelProvider
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('survey-dashboard')),
                 NavigationItem::make()
-                    ->label(__('ODK Form Management'))
-                    ->icon('heroicon-o-adjustments-horizontal')
-                    ->url(url('team-odk-view')),
-                NavigationItem::make()
                     ->label(__('Admin Panel'))
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
                     ->visible(fn() => auth()->user()->can('access admin panel')),
-                NavigationItem::make()
-                    ->label(__('Program Admin Panel'))
-                    ->icon('heroicon-o-adjustments-horizontal')
-                    ->url(url('program'))
-                    ->visible(fn() => auth()->user()->can('access program admin panel')),
             ])
             ->darkMode(false)
             ->topNavigation()

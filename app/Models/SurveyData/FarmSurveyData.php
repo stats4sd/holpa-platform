@@ -6,13 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
-use App\Models\Traits\HasLinkedDataset;
 use App\Models\SampleFrame\Farm;
 
 class FarmSurveyData extends Model
 {
-    use HasLinkedDataset;
-
     protected $table = 'farm_survey_data';
 
     protected $guarded = ['id', 'created_at', 'updated_at', 'deleted_at'];

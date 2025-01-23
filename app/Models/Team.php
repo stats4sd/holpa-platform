@@ -2,25 +2,29 @@
 
 namespace App\Models;
 
-use App\Models\Locale;
-use App\Models\XlsformModule;
+use App\Models\Holpa\LocalIndicator;
+use App\Models\Reference\Country;
 use App\Models\SampleFrame\Farm;
-use App\Models\Xlsforms\Xlsform;
-use Hoa\Compiler\Llk\Rule\Choice;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Spatie\MediaLibrary\HasMedia;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\XlsformTemplates\ChoiceList;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\Xlsform;
+use App\Models\Xlsforms\XlsformModule;
+use App\Models\Xlsforms\XlsformModuleVersion;
+use App\Models\Xlsforms\XlsformTemplate;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
 class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
@@ -46,9 +50,22 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             }
 
             // all teams get a default locale of english
-            $en = Locale::whereHas('language', fn(Builder $query) => $query->where('iso_alpha2', 'en'))->first();
+            $en = Language::where('iso_alpha2', 'en')->first();
 
-            $owner->locales()->attach($en);
+            $owner->languages()->attach($en);
+
+            // create xlsform models for all active xlsform template for this newly created team
+            $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
+
+            // suppose a newly created team does not have any xlsform, it is not necessary to do checking
+            foreach ($xlsformTemplates as $xlsformTemplate) {
+                $xlsform = Xlsform::create([
+                    'owner_id' => $owner->id,
+                    'owner_type' => static::class,
+                    'xlsform_template_id' => $xlsformTemplate->id,
+                    'title' => $xlsformTemplate->title,
+                ]);
+            }
 
             // all teams get a custom module for each ODK form
             $forms = Xlsform::where('owner_id', $owner->id)->get();
@@ -56,16 +73,16 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                 $xlsformModule = XlsformModule::create([
                     'form_type' => 'App\Models\Xlsforms\Xlsform',
                     'form_id' => $form->id,
-                    'label' => $owner->name . 'custom module',
-                    'name' => $owner->name . 'custom module',
+                    'label' => $owner->name . ' custom module',
+                    'name' => $owner->name . ' custom module',
                 ]);
-              
+
                 XlsformModuleVersion::create([
                     'xlsform_module_id' => $xlsformModule->id,
                     'name' => 'custom'
                 ]);
             }
-          
+
             // manually set the default time_frame
             $owner->time_frame = 'in the last 12 months';
             $owner->save();
@@ -78,9 +95,21 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->hasMany(LocalIndicator::class);
     }
 
+    public function languages(): BelongsToMany
+    {
+        return $this->belongsToMany(Language::class, 'language_team', 'team_id', 'language_id')
+            ->withPivot('locale_id');
+    }
+
     public function locales(): BelongsToMany
     {
-        return $this->belongsToMany(Locale::class, 'locale_team', 'team_id', 'locale_id');
+        return $this->belongsToMany(Locale::class, 'language_team', 'team_id', 'locale_id')
+            ->withPivot('language_id');
+    }
+
+    public function country(): BelongsTo
+    {
+        return $this->belongsTo(Country::class);
     }
 
     public function locationLevels(): MorphMany
@@ -134,6 +163,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     }
 
 
+    public function choiceListEntries(): MorphMany
+    {
+        return $this->morphMany(ChoiceListEntry::class, 'owner');
+    }
+
     // Customisations
 
     public function dietDiversityModuleVersion(): BelongsTo
@@ -166,4 +200,58 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         }
         return null;
     }
+
+    public function getLispProgressAttribute()
+    {
+        if ($this->lisp_complete === 1) {
+            return 'complete';
+        }
+
+        return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
+    }
+
+    public function getSamplingProgressAttribute()
+    {
+        if ($this->sampling_complete === 1) {
+            return 'complete';
+        }
+
+        return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
+    }
+
+    public function getLanguagesProgressAttribute()
+    {
+        if ($this->languages_complete === 1) {
+            return 'complete';
+        }
+
+        // teams have English as a language as default, check for others
+        $englishLanguageId = Language::where('name', 'English')->first()->id;
+
+        $hasAddedLanguages = $this->languages()
+            ->where('language_id', '!=', $englishLanguageId)
+            ->exists();
+
+        $hasCountry = $this->country()->exists();
+
+        return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
+    }
+
+    public function getPbaProgressAttribute()
+    {
+        if ($this->pba_complete === 1) {
+            return 'complete';
+        }
+
+        if (
+            $this->time_frame !== null ||
+            $this->diet_diversity_module_version_id !== null ||
+            $this->choiceListEntries()->exists()
+        ) {
+            return 'in_progress';
+        }
+
+        return 'not_started';
+    }
+
 }

@@ -2,17 +2,16 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\Language;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
+use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\ChoiceListEntry;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -66,12 +65,6 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
     public function title(): string
     {
         return 'choices';
-    }
-
-    private function getHeadingsForStringType(string $string): Collection
-    {
-        return $this->xlsformTemplateLanguages->map(fn(XlsformTemplateLanguage $xlsformTemplateLanguage) => "$string::{$xlsformTemplateLanguage->language->name} ({$xlsformTemplateLanguage->language->iso_alpha2})"
-        );
     }
 
     private function getHeadingsFromProperties(Collection $choiceListEntries): Collection

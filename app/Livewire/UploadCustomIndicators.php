@@ -2,24 +2,22 @@
 
 namespace App\Livewire;
 
-use Exception;
 use App\Models\Team;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Filament\Tables\Actions\Action;
-use App\Models\XlsformModuleVersion;
-use Maatwebsite\Excel\Facades\Excel;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Notifications\Notification;
+use App\Models\Xlsforms\XlsformModuleVersion;
+use Exception;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
-use App\Imports\XlsformTemplate\XlsformTemplateWorkbookImport;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class UploadCustomIndicators extends Component implements HasForms, HasTable
 {
@@ -37,16 +35,25 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         $this->team = Team::find(auth()->user()->latestTeam->id);
         $this->form->fill();
 
-        $this->uploadedFileHH = $this->team->xlsform_hh_module_version->getMedia('custom_indicators_hh')->first();
-        $this->uploadedFileFW = $this->team->xlsform_fw_module_version->getMedia('custom_indicators_fw')->first();
+        $this->uploadedFileHH = $this->team->xlsform_hh_module_version
+                                    ? $this->team->xlsform_hh_module_version->getMedia('custom_indicators_hh')->first()
+                                    : null;
+        $this->uploadedFileFW = $this->team->xlsform_fw_module_version
+                                    ? $this->team->xlsform_fw_module_version->getMedia('custom_indicators_fw')->first()
+                                    : null;
     }
 
     public function table(Table $table): Table
     {
-        $moduleVersionIds = [
-            $this->team->xlsformHhModuleVersion->id,
-            $this->team->xlsformFwModuleVersion->id,
-        ];
+        $moduleVersionIds = [];
+
+        if ($this->team->xlsformHhModuleVersion) {
+            $moduleVersionIds[] = $this->team->xlsformHhModuleVersion->id;
+        }
+        
+        if ($this->team->xlsformFwModuleVersion) {
+            $moduleVersionIds[] = $this->team->xlsformFwModuleVersion->id;
+        }
 
         return $table
         ->query(Media::query()
@@ -71,7 +78,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
             Action::make('replace')
                 ->label('Replace File')
                 ->modalHeading('Replace custom indicators file')
-                ->color('warning')
+                ->color('orange')
                 ->button()
                 ->form(function (Media $record) {
                     $collection = $record->collection_name;
@@ -143,27 +150,27 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
             $this->addError('missing_file', 'No file has been added.');
             return;
         }
-    
+
         try {
             // Process household indicators file if uploaded
             if (!empty($this->custom_indicators_hh) && is_array($this->custom_indicators_hh)) {
                 $fileHH = reset($this->custom_indicators_hh); // Get the first file
                 $this->processFileUpload($fileHH, 'custom_indicators_hh');
             }
-    
+
             // Process fieldwork indicators file if uploaded
             if (!empty($this->custom_indicators_fw) && is_array($this->custom_indicators_fw)) {
                 $fileFW = reset($this->custom_indicators_fw); // Get the first file
                 $this->processFileUpload($fileFW, 'custom_indicators_fw');
             }
-    
+
             // Display success message
             Notification::make()
                 ->title('Success')
                 ->body('Files uploaded successfully!')
                 ->success()
                 ->send();
-    
+
         } catch (Exception $e) {
             $this->addError('custom_indicators', 'An error occurred while uploading one or more files: ' . $e->getMessage());
         }
@@ -174,7 +181,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         try {
             // Get the original filename
             $originalFilename = $file->getClientOriginalName();
-    
+
             if ($collection === 'custom_indicators_hh') {
 
                 // Add the uploaded file to the specified media collection
@@ -196,7 +203,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
                 $this->uploadedFileFW = $this->team->xlsform_fw_module_version->getMedia($collection)->first();
 
             }
-    
+
         } catch (Exception $e) {
             $this->addError($collection, 'An error occurred while processing the file: ' . $e->getMessage());
         }

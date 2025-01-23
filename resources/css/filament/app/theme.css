@@ -10,6 +10,7 @@
     --orange: #EB5A45;
     --danger: #EB5A45;
     --dark-orange: #c3432f;
+    --light-orange: #F4A69B;
     --light-grey: #F2F2F8;
     --shadowgrey: #989898;
     --hyellow: #FFC84F;
@@ -18,18 +19,18 @@ body {
     @apply font-montserrat text-sm ;
 }
 
-body:has(#surveydash), {
+body:has(#surveydash) {
     @apply !bg-gray-100;
 }
 
-body:has(#languages),.actionblock, {
+body:has(#languages),.actionblock {
     h1 {
         @apply font-extrabold text-5xl;
     }
-    h3 {
+h2{
         @apply font-light text-2xl;
     }
-    h2{
+    h3 {
         @apply text-black font-bold text-lg }
 
 }
@@ -38,6 +39,9 @@ body:has(#languages),.actionblock, {
 }
 .instructionsvid {
     @apply float-right;
+}
+h4 {
+    @apply text-base font-bold uppercase;
 }
 
 
@@ -51,23 +55,29 @@ h3 {
     @apply text-black font-bold text-lg }
 
 .surveyblocks {
-    @apply container !bg-white drop-shadow-xl;
+    @apply container !bg-white drop-shadow-xl mb-32;
 }
 
 button {
-    @apply font-semibold !text-xs text-white py-2 !px-4 !rounded-full duration-200;
+    @apply font-semibold !text-xs text-white  !rounded-full duration-200;
     text-transform: uppercase ;
+
 }
 .fi-btn {
-    @apply rounded-full uppercase ;
+    @apply rounded-full uppercase duration-200;
     font-size: 0.75rem;
 }
-
+.fi-btn-color-orange:hover {
+    @apply bg-dark-orange;
+}
+.fi-btn-color-blue:hover {
+    @apply bg-dark-blue;
+}
 .greensection {
-    @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-44 2xl:w-52  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
+    @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-52 2xl:w-64  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
 }
 .whitesection {
-    @apply bg-white px-4 lg:px-0 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
+    @apply bg-white px-4  lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
 }
 .whitesection h2 {
     @apply !text-base;
@@ -90,7 +100,7 @@ h3 {
     @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }
 .buttona{
-    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 
 }
@@ -99,7 +109,7 @@ h3 {
 }
 
 .buttonb{
-    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full hover-effect duration-200;
+    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 }
 .buttonb:hover {
@@ -128,6 +138,15 @@ h3 {
     @apply text-sm;
 }
 
+.fi-modal-close-overlay{
+    @apply   -left-1/3 -top-2/3;
+    width: 200vw !important;
+    height: 200vh !important;
+    overflow: hidden;
+}
+.fi-modal-heading {
+    @apply !text-lg !font-bold text-green;
+}
 
 .rounded-3xl {
     border-radius: 1.5rem;
@@ -141,7 +160,7 @@ h3 {
 }
 .actionblockborder
 {
-    margin-left: 11rem;
+    margin-left: 8rem;
     margin-right: 5rem;
     border-color: #bbbbbb;
     margin-top: 2rem;
@@ -153,7 +172,7 @@ h3 {
 
 }
 .completebar {
-    @apply h-16 bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 place-content-center;
+    @apply md:h-16 h-max bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 pt-4;
 }
 
 .tabbuttons {
@@ -180,7 +199,18 @@ h3 {
 .lispboxselected {
     @apply bg-green border-l-4 border-green  text-white;
 }
-
+button:disabled {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
+button:disabled:hover {
+    background-color: #e0dfdf;
+    color: rgb(93, 93, 93);
+    cursor: not-allowed;
+    border: none;
+}
 
 #globalindicators {
     button {
@@ -189,18 +219,15 @@ h3 {
             font-size: 0.75rem !important;
                 }
             }
+
+
     /* div,table,tr,td {
         border-radius: 0%;
         border: none;
         box-shadow: none !important;
     }
 
-button:disabled {
-    background-color: #d3d3d3;
-    color: black;
-    cursor: not-allowed;
-    border: 1px solid #ccc;
-}
+
 
 
     thead {
@@ -247,4 +274,29 @@ button:disabled {
     a:hover {
         @apply bg-white text-orange;
     }
+}
+.uploadedindicatorstable th button {
+padding-left: 0px ;
+}
+
+.fi-main:has(.fi-resource-list-records-page) {
+    @apply 2xl:max-w-[80%] xl:px-12;
+}
+
+.fi-main .fi-page-sub-navigation-sidebar-ctn {
+    @apply w-60;
+}
+
+
+.success-row td  {
+    @apply !bg-lightgreen;
+}
+
+button:disabled.outline-none {
+    background-color: transparent !important;
+    color: var(--green) !important;
+}
+
+.fi-ta-ctn {
+    @apply !rounded-none;
 }

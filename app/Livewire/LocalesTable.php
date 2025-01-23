@@ -2,11 +2,10 @@
 
 namespace App\Livewire;
 
-use App\Models\Language;
-use App\Models\Locale;
 use App\Models\Team;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\XlsformTemplate;
+use App\Models\XlsformLanguages\Language;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Forms\Components\Button;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
@@ -53,7 +52,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                         'Ready for use' => 'success',
                         'Not added' => 'danger',
                         'Out of date' => 'danger',
-                    })
+                    }),
             ])
             ->actions([
                 \Filament\Tables\Actions\Action::make('viewOrUpdate')
@@ -77,14 +76,14 @@ class LocalesTable extends Component implements HasForms, HasTable
                         $team = Team::find($team);
                         $team->locales()->attach($record->id);
 
-                        $this->dispatch('refreshTable')->to(TeamLocalesTable::class);
+                        $this->dispatch('refreshTable')->to(TeamLanguagesTable::class);
 
                         Notification::make()
                             ->title('Success')
                             ->body('Translation \'' . $record->languageLabel . '\' successfully selected')
                             ->success()
                             ->send();
-                    })
+                    }),
             ])
             ->emptyStateHeading('No translations available for selection')
             ->emptyStateDescription('')
@@ -143,7 +142,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                                             }),
                                         TextInput::make('description')
                                             ->placeholder('Optional description')
-                                            ->maxLength(255)
+                                            ->maxLength(255),
                                     ])
                                     ->columnSpan(1),
                             ]),
@@ -157,16 +156,15 @@ class LocalesTable extends Component implements HasForms, HasTable
                         $xlsformTemplates = XlsformTemplate::all();
 
                         foreach ($xlsformTemplates as $template) {
-                            XlsformTemplateLanguage::create([
-                                'xlsform_template_id' => $template->id,
+                            $template->xlsformTemplateLanguages()->create([
                                 'language_id' => $data['language_id'],
                                 'locale_id' => $locale->id,
                             ]);
                         }
 
                         return $data;
-                    })
-                ]);
+                    }),
+            ]);
     }
 
     public function render()

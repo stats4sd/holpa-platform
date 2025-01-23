@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
+use App\Models\SurveyData\Crop;
 use App\Models\SampleFrame\Farm;
 use App\Models\SurveyData\FishUse;
+use App\Models\SurveyData\Product;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\SampleFrame\Location;
 use Illuminate\Support\Facades\Schema;
@@ -18,9 +21,17 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
-        // ray('SubmissionController.process() starts...');
-
         // application specific business logic goes here
+
+        // find survey start, survey end, survey duration in minutes
+        $surveyStart = Carbon::parse($submission->content['start']);
+        $surveyEnd = Carbon::parse($submission->content['end']);
+        $surveyDuration = $surveyStart->diffInMinutes($surveyEnd);
+
+        $submission->survey_started_at = $surveyStart;
+        $submission->survey_ended_at = $surveyEnd;
+        $submission->survey_duration = $surveyDuration;
+        $submission->save();
 
         // suppose there should be only one farm_survey_data for a submission id
         $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
@@ -46,6 +57,14 @@ class SubmissionController extends Controller
         // create records from nested repeat groups for fish_uses
         SubmissionController::handleFishUsesData($submission, $farmSurveyData);
 
+
+        // custom handling for products data
+        SubmissionController::handleProductsData($submission, $farmSurveyData);
+
+
+
+        // update farm_survey_data_id in repeat groups tables
+        SubmissionController::updateFarmSurveyDataId($submission, $farmSurveyData);
 
 
         // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
@@ -344,6 +363,183 @@ class SubmissionController extends Controller
         } else {
             // ray('fish_repeat data not found');
         }
+    }
+
+
+    // ******************** //
+
+
+    // custom handling for products data
+    public static function handleProductsData(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        // ray('SubmissionController.handleProductsData() starts...');
+
+        // get farm_products
+        if (isset($submission->content['survey']['income']['farm_characteristics']['farm_products'])) {
+            // ray('farm_products data found');
+
+            $farmProductsList = $submission->content['survey']['income']['farm_characteristics']['farm_products'];
+            // ray($farmProductsList);
+
+            // split farm products, handle them one by one
+            $farmProducts = str_getcsv($farmProductsList, ' ');
+            // ray($farmProducts);
+
+            foreach ($farmProducts as $farmProduct) {
+                $prefix = $farmProduct;
+
+                // special handling for "crops", change it to "crop" as prefix
+                if ($farmProduct == 'other') {
+                    $prefix = 'other_prod';
+                }
+
+                if ($farmProduct != 'other') {
+                    SubmissionController::prepareProductData($submission, $farmSurveyData, $prefix);
+                } else {
+                    SubmissionController::prepareOtherProductData($submission, $farmSurveyData, $prefix);
+                }
+            }
+        } else {
+            // ray('farm_products data not found');
+        }
+    }
+
+
+    // prepare data for crops,livestock, fish, trees, honey
+    public static function prepareProductData($submission, $farmSurveyData, $prefix): void
+    {
+        // use hardcoded product names temporary
+        $productNames = [
+            'crops' => 'Crops (including perennial crops)',
+            'livestock' => 'Livestock',
+            'fish' => 'Fish',
+            'trees' => 'Trees (e.g., for wood, bark, rubber)',
+            'honey' => 'Honey',
+        ];
+
+        $useItemNames = [
+            'hh_consumption',
+            'cooking',
+            'building',
+            'heating',
+            'hh_other_use',
+            'livestock_consumption',
+            'on_farm_use',
+            'sales',
+            'gifts',
+            'waster',
+            'other_use',
+            'other_use_specify',
+        ];
+
+        $salesBuyerItemNames = [
+            'buyer',
+            'buyer_other',
+            'fair_price',
+        ];
+
+        $result = [];
+
+        // special handling for "crops", change it from "crops" to "crop" before handling submission content
+        if ($prefix == 'crops') {
+            $prefix = 'crop';
+        }
+
+        $productUseData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_use'];
+        // ray($productUseData);
+
+        foreach ($useItemNames as $useItemName) {
+            if (isset($productUseData[$prefix . '_' . $useItemName])) {
+                $result[$useItemName] = $productUseData[$prefix . '_' . $useItemName];
+            }
+        }
+
+        $productSalesBuyerData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_sales_buyers'];
+        // ray($productSalesBuyerData);
+
+        foreach ($salesBuyerItemNames as $salesBuyerItemName) {
+            if (isset($productSalesBuyerData[$prefix . '_' . $salesBuyerItemName])) {
+                $result[$salesBuyerItemName] = $productSalesBuyerData[$prefix . '_' . $salesBuyerItemName];
+            }
+        }
+
+        // special handling for "crops", change it from "crop" to "crops" after handling submission content
+        if ($prefix == 'crop') {
+            $prefix = 'crops';
+        }
+
+        $result['product_id'] = $prefix;
+        $result['product_name'] = $productNames[$prefix];
+        $result['submission_id'] = $submission->id;
+        $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+        // ray($result);
+
+        // create products record
+        $product = Product::create($result);
+    }
+
+
+    // prepare data for other
+    public static function prepareOtherProductData($submission, $farmSurveyData, $prefix): void
+    {
+        // ray('SubmissionController.prepareOtherProductData() starts...');
+
+        $useSalesItemNames = [
+            'hh_consumption',
+            'cooking',
+            'building',
+            'heating',
+            'hh_other_use',
+            'livestock_consumption',
+            'on_farm_use',
+            'sales',
+            'gifts',
+            'waster',
+            'other_use',
+            'other_use_specify',
+            'buyer',
+            'buyer_other',
+            'fair_price',
+        ];
+
+        $result = [];
+
+        $otherProductRepeats = $submission->content['survey']['income']['farm_characteristics']['other_product_use_sales'];
+        // ray($otherProductRepeats);
+
+        foreach ($otherProductRepeats as $otherProductRepeat) {
+            // ray($otherProductRepeat);
+
+            foreach ($useSalesItemNames as $useSalesItemName) {
+                if (isset($otherProductRepeat[$prefix . '_' . $useSalesItemName])) {
+                    $result[$useSalesItemName] = $otherProductRepeat[$prefix . '_' . $useSalesItemName];
+                }
+            }
+
+            $result['product_name'] = $otherProductRepeat[$prefix . '_name'];
+            $result['submission_id'] = $submission->id;
+            $result['farm_survey_data_id'] = $farmSurveyData->id;
+
+            // ray($result);
+
+            // create products record
+            $product = Product::create($result);
+        }
+    }
+
+    // ******************** //
+
+    // update farm_survey_data_id in repeat groups tables
+    public static function updateFarmSurveyDataId(Submission $submission, FarmSurveyData $farmSurveyData): void
+    {
+        // update farm_survey_data_id in repeat group records that are created by filament-odk-link package
+        // fish_uses, livestock_uses, seasonal_worker_seasons, products records are created by custom handling, which fill in farm_survey_data_id already
+        DB::table('crops')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('ecological_practices')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('fishes')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('livestocks')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
+        DB::table('permanent_workers')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
     }
 
 

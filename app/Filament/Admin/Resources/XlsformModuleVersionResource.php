@@ -2,19 +2,15 @@
 
 namespace App\Filament\Admin\Resources;
 
-use App\Filament\Admin\Resources\XlsformTemplateModuleResource\Pages;
-use App\Filament\Admin\Resources\XlsformTemplateModuleResource\RelationManagers;
-use App\Models\XlsformModule;
-use App\Models\XlsformModuleVersion;
+use App\Filament\Admin\Resources\XlsformModuleVersionResource\Pages\ManageXlsformModuleVersion;
+use App\Models\Xlsforms\XlsformModule;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsFormDrafts;
 
 class XlsformModuleVersionResource extends Resource
 {
@@ -79,7 +75,7 @@ class XlsformModuleVersionResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageXlsformModuleVersion::route('/'),
+            'index' =>  ManageXlsformModuleVersion::route('/'),
         ];
     }
 }

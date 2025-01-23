@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Prep;
 
-use App\Models\Domain;
+use App\Models\Holpa\Domain;
 use Illuminate\Database\Seeder;
 
 class DomainSeeder extends Seeder

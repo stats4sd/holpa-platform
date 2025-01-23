@@ -4,25 +4,20 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
-use App\Models\LanguageStringType;
-use App\Models\Locale;
 use App\Models\Team;
-use App\Models\XlsformTemplateLanguage;
-use App\Models\XlsformTemplates\ChoiceList;
-use App\Models\XlsformTemplates\ChoiceListEntry;
-use App\Models\XlsformTemplates\LanguageString;
+use App\Models\XlsformLanguages\LanguageStringType;
+use App\Models\XlsformLanguages\Locale;
+use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
+use App\Models\Xlsforms\ChoiceList;
+use App\Models\Xlsforms\ChoiceListEntry;
+use App\Models\Xlsforms\LanguageString;
 use App\Services\HelperService;
-use Faker\Extension\Helper;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Navigation\NavigationItem;
 use Filament\Resources\Resource;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\DeleteAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -131,24 +126,23 @@ class ChoiceListEntryResource extends Resource
                     }
 
                     $locales = HelperService::getSelectedTeam()?->locales;
-
                     $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
-                    $xlsformTemplateLanguages = $choiceList->template->xlsformTemplateLanguages;
+
 
                     return $locales->map(fn(Locale $locale) => [
                         'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
-                        'xlsform_template_language_id' => $xlsformTemplateLanguages->where('language_id', $locale->language_id)->firstOrFail()->id,
+                        'locale_id' => $locale->id,
                         'text' => '',
                     ])->toArray();
                 })
                 ->schema([
-                    Hidden::make('xlsform_template_language_id'),
+                    Hidden::make('locale_id'),
                     Hidden::make('language_string_type_id'),
                     TextInput::make('text')
                         ->label(function (Get $get) {
-                            $xlsformTemplateLanguage = XlsformTemplateLanguage::find($get('xlsform_template_language_id'));
+                            $locale = Locale::find($get('locale_id'));
 
-                            return 'Label::' . $xlsformTemplateLanguage?->locale_language_label;
+                            return 'Label::' . $locale?->language_label;
                         })
                         ->required(),
                 ])
@@ -175,7 +169,7 @@ class ChoiceListEntryResource extends Resource
                         // only labels
                         ->filter(fn(LanguageString $languageString) => $languageString->language_string_type_id === LanguageStringType::where('name', 'label')->firstOrFail()->id)
                         // only ones for the current locale
-                        ->where('xlsform_template_language_id', XlsformTemplateLanguage::where('language_id', $locale->language_id)->firstOrFail()->id)
+                        ->filter(fn(LanguageString $languageString) => $languageString->locale_id === $locale->id)
                         ->first()
                         ?->text ?? '';
                 });

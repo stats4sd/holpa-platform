@@ -71,7 +71,6 @@ class XlsformResource extends Resource
         return [
             'index' => Pages\ListXlsforms::route('/'),
             'view' => Pages\ViewXlsform::route('/{record}'),
-            'monitor' => Pages\MonitorXlsform::route('/{record}/monitor'),
         ];
     }
 }
