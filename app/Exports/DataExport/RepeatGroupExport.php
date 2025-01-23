@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\DataExport;
 
 use App\Models\Interfaces\RepeatModel;
 use Illuminate\Support\Facades\DB;
@@ -8,8 +8,8 @@ use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
-use Maatwebsite\Excel\Concerns\WithTitle;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
+use Maatwebsite\Excel\Concerns\WithTitle;
 
 class RepeatGroupExport implements FromQuery, WithTitle, WithHeadings, WithMapping, WithStrictNullComparison
 {
