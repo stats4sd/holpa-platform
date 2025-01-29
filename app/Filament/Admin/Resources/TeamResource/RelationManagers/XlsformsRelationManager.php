@@ -2,12 +2,12 @@
 
 namespace App\Filament\Admin\Resources\TeamResource\RelationManagers;
 
-use App\Exports\XlsformExport\XlsformWorkbookExport;
 use App\Models\Xlsforms\Xlsform;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;
 use Maatwebsite\Excel\Facades\Excel;
+use Stats4sd\FilamentOdkLink\Exports\XlsformExport\XlsformWorkbookExport;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class XlsformsRelationManager extends \Stats4sd\FilamentTeamManagement\Filament\App\Resources\TeamResource\RelationManagers\XlsformsRelationManager

@@ -2,8 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\RemembersRowNumber;
@@ -12,6 +10,8 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class XlsformTemplateChoicesImport implements ToModel, WithHeadingRow, WithChunkReading, ShouldQueue, SkipsEmptyRows, WithUpserts
 {

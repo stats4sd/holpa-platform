@@ -2,9 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Exports\XlsformTemplateTranslationsExport;
 use App\Models\Team;
-use App\Models\XlsformLanguages\Locale;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -15,6 +13,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\View\View;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
+use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class TeamTranslationReview extends Component implements HasActions, HasForms
 {

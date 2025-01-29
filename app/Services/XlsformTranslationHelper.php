@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Imports\XlsformTemplate\XlsformTemplateHeadingRowImport;
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\LanguageStringType;
 use Illuminate\Support\Collection;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
 
 class XlsformTranslationHelper
 {

@@ -3,14 +3,14 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformModuleVersionResource\Pages\ManageXlsformModuleVersion;
-use App\Models\Xlsforms\XlsformModule;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use Awcodes\Shout\Components\Shout;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class XlsformModuleVersionResource extends Resource
 {

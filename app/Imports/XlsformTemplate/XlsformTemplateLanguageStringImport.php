@@ -2,12 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\LanguageString;
-use App\Models\Xlsforms\SurveyRow;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Database\Eloquent\Builder;
@@ -21,6 +15,12 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithUpserts;
 use Maatwebsite\Excel\Events\AfterImport;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class XlsformTemplateLanguageStringImport implements WithMultipleSheets, ShouldQueue, WithChunkReading, WithEvents, ToModel, WithHeadingRow, WithUpserts, SkipsEmptyRows
 {

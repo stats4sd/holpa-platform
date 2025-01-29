@@ -2,13 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Exports\XlsformTemplateTranslationsExport;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -31,6 +26,11 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
+use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
 {

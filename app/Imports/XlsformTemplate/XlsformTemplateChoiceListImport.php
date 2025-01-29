@@ -2,8 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\Importable;
@@ -13,6 +11,8 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class XlsformTemplateChoiceListImport implements ToModel, WithMultipleSheets, WithUpserts, WithChunkReading, ShouldQueue, SkipsEmptyRows, WithHeadingRow
 {

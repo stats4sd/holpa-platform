@@ -3,10 +3,10 @@
 namespace App\Jobs;
 
 use App\Imports\XlsformTemplate\XlsformTemplateLanguageStringImport;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Collection;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class ImportAllLanguageStrings implements ShouldQueue
 {

@@ -2,10 +2,6 @@
 
 namespace App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 
-use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
 use Filament\Forms;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
@@ -16,6 +12,10 @@ use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class ChoiceListEntriesRelationManager extends RelationManager
 {

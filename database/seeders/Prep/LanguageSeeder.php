@@ -2,8 +2,8 @@
 
 namespace Database\Seeders\Prep;
 
-use App\Models\XlsformLanguages\Language;
 use Illuminate\Database\Seeder;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
 class LanguageSeeder extends Seeder
 {

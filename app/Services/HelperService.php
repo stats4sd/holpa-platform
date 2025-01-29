@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Services;
-use App\Exports\ChoiceListModelsExport;
 use App\Models\SampleFrame\Farm;
 use App\Models\Team;
 use App\Models\Xlsforms\Xlsform;
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
+use Stats4sd\FilamentOdkLink\Exports\ChoiceListModelsExport;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\RequiredMedia;
 
 class HelperService
@@ -148,37 +148,6 @@ class HelperService
         } while ($tempLocation != null);
 
         return array_reverse($array);
-    }
-
-    // TODO: Move this into the ODK Link package when we move over the ChoiceList stuff
-    /**
-     * Creates a new csv lookup file from the database;
-     */
-    public function createCsvLookupFile(XLsform|XlsformTemplate $xlsform, RequiredMedia $requiredMedia): string
-    {
-
-        $choiceList = $requiredMedia->choiceList;
-
-        $filePath = 'xlsforms/' . $xlsform->getKey() . '/' . $requiredMedia->name;
-
-        // check if the folder exists; if not, create it
-        if (! Storage::disk(config('filament-odk-link.storage.xlsforms'))->exists('xlsforms')) {
-            Storage::disk(config('filament-odk-link.storage.xlsforms'))->makeDirectory('xlsforms');
-        }
-
-        if (! Storage::disk(config('filament-odk-link.storage.xlsforms'))->exists('xlsforms/' . $xlsform->getKey())) {
-            Storage::disk(config('filament-odk-link.storage.xlsforms'))->makeDirectory('xlsforms/' . $xlsform->getKey());
-        }
-
-        Excel::store(
-            new ChoiceListModelsExport($choiceList, $xlsform),
-            $filePath,
-            config('filament-odk-link.storage.xlsforms')
-        );
-
-        // TODO: Explore if we need select_one_from_external_file support.
-
-        return Storage::disk(config('filament-odk-link.storage.xlsforms'))->path($filePath);
     }
 
 

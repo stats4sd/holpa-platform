@@ -2,13 +2,13 @@
 
 namespace App\Jobs;
 
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Collection;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class LinkModuleVersionToLocales implements ShouldQueue
 {

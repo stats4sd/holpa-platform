@@ -2,12 +2,12 @@
 
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Widgets;
 
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\SurveyRow;
 use Filament\Widgets\Widget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\On;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class ChoiceListEntriesInfo extends Widget
 {

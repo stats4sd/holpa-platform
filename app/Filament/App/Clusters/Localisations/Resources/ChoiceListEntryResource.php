@@ -5,11 +5,6 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\Team;
-use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\LanguageString;
 use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
@@ -23,6 +18,11 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rules\Unique;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class ChoiceListEntryResource extends Resource
 {

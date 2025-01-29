@@ -2,12 +2,12 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Xlsforms\XlsformModule;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithUpserts;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
 
 class XlsformTemplateModuleTypeImport implements ToModel, WithUpserts, ShouldQueue, WithChunkReading, SkipsEmptyRows
 {

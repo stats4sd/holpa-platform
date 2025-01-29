@@ -3,12 +3,12 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Models\XlsformLanguages\Language;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Support\Collection;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
 class SurveyTranslations extends Page
 {

@@ -5,8 +5,6 @@ namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResou
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Filament\App\Pages\PlaceAdaptations;
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
@@ -18,6 +16,8 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 
 class ListChoiceListEntries extends ListRecords
 {

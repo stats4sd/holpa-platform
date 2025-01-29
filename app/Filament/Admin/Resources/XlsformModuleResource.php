@@ -3,12 +3,12 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\XlsformModuleResource\Pages\ManageXlsformModule;
-use App\Models\Xlsforms\XlsformModule;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
 
 class XlsformModuleResource extends Resource
 {

@@ -4,7 +4,6 @@ namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ChoiceListResource\Pages;
 use App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
-use App\Models\Xlsforms\ChoiceList;
 use Exception;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,6 +11,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 
 class ChoiceListResource extends Resource
 {

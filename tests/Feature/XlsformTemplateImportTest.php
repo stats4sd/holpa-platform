@@ -1,8 +1,8 @@
 <?php
 
 use App\Listeners\HandleXlsformTemplateAdded;
-use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 
 test('an xlsform template is correctly imported and updated', function () {
 

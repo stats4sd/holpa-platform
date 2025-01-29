@@ -2,12 +2,8 @@
 
 namespace App\Livewire;
 
-use App\Models\Team;
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\XlsformTemplate;
 use App\Services\HelperService;
-use Faker\Extension\Helper;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -27,6 +23,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\HtmlString;
 use Illuminate\View\View;
 use Livewire\Component;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class LocalesTable extends Component implements HasForms, HasTable
 {

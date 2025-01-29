@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\Test;
+namespace Database\Seeders\Prep\Test;
 
 use App\Models\Holpa\GlobalIndicator;
 use App\Models\Holpa\LocalIndicator;

@@ -2,7 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformTemplate;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -11,6 +10,7 @@ use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
 
 class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRows, WithMultipleSheets
 {
