@@ -2,6 +2,8 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
+use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Pages\SurveyDashboard;
 use Illuminate\Support\Str;
 use App\Imports\LocationImport;
 use App\Services\HelperService;
@@ -24,12 +26,12 @@ class ViewLocationLevel extends ViewRecord
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey locations',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
+            Sampling::getUrl() => 'Survey locations',
             route('filament.app.location-levels.resources.location-levels.view', [
                 'tenant' => HelperService::getSelectedTeam()->id,
                 'record' => $this->record->slug
-            ]) => Str::of($this->record->name)->plural(), 
+            ]) => Str::of($this->record->name)->plural(),
         ];
     }
 
@@ -48,7 +50,7 @@ class ViewLocationLevel extends ViewRecord
         if (filled($cluster = static::getCluster())) {
             return $this->generateNavigationItems($cluster::getClusteredComponents());
         }
- 
+
         return [];
     }
 }

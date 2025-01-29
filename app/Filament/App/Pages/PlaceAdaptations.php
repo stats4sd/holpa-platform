@@ -3,6 +3,8 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
+use App\Services\HelperService;
+use Faker\Extension\Helper;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
@@ -20,7 +22,7 @@ class PlaceAdaptations extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -36,7 +38,7 @@ class PlaceAdaptations extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getSelectedTeam()->update([
                     'pba_complete' => 1,
                 ]);
 
@@ -50,7 +52,7 @@ class PlaceAdaptations extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getSelectedTeam()->update([
                     'pba_complete' => 0,
                 ]);
 

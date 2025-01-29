@@ -39,7 +39,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
         public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             PlaceAdaptations::getUrl() => 'Place Adaptations',
             static::getUrl() => static::getTitle(),
         ];

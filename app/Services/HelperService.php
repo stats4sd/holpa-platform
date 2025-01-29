@@ -1,14 +1,20 @@
 <?php
 
 namespace App\Services;
+use App\Exports\ChoiceListModelsExport;
 use App\Models\SampleFrame\Farm;
 use App\Models\Team;
+use App\Models\Xlsforms\Xlsform;
+use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Facades\Filament;
 use Illuminate\Container\Container;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\RequiredMedia;
 
 class HelperService
 {
@@ -116,7 +122,7 @@ class HelperService
         return null;
     }
 
-    // find farm's full location details for data export to excel file
+    // find farm's full location details for data export to Excel file
     public static function findFarmLocationDetails(string $farmId): array
     {
         // find farm model
@@ -132,7 +138,7 @@ class HelperService
 
         // find all location levels until there is no more parent location
         do {
-            // a location Id field name should be lowercase, with underscore instead of hypen, e.g. sub_district
+            // a location ID field name should be lowercase, with underscore instead of hypen, e.g. sub_district
             $locationIdFieldName = Str::lower(Str::replace('-', '_', $tempLocation->locationLevel->name));
 
             $array[$locationIdFieldName . '_name'] = $tempLocation->name;
@@ -141,9 +147,38 @@ class HelperService
             $tempLocation = $tempLocation->parent;
         } while ($tempLocation != null);
 
-        $reversedArray = array_reverse($array);
+        return array_reverse($array);
+    }
 
-        return $reversedArray;
+    // TODO: Move this into the ODK Link package when we move over the ChoiceList stuff
+    /**
+     * Creates a new csv lookup file from the database;
+     */
+    public function createCsvLookupFile(XLsform|XlsformTemplate $xlsform, RequiredMedia $requiredMedia): string
+    {
+
+        $choiceList = $requiredMedia->choiceList;
+
+        $filePath = 'xlsforms/' . $xlsform->getKey() . '/' . $requiredMedia->name;
+
+        // check if the folder exists; if not, create it
+        if (! Storage::disk(config('filament-odk-link.storage.xlsforms'))->exists('xlsforms')) {
+            Storage::disk(config('filament-odk-link.storage.xlsforms'))->makeDirectory('xlsforms');
+        }
+
+        if (! Storage::disk(config('filament-odk-link.storage.xlsforms'))->exists('xlsforms/' . $xlsform->getKey())) {
+            Storage::disk(config('filament-odk-link.storage.xlsforms'))->makeDirectory('xlsforms/' . $xlsform->getKey());
+        }
+
+        Excel::store(
+            new ChoiceListModelsExport($choiceList, $xlsform),
+            $filePath,
+            config('filament-odk-link.storage.xlsforms')
+        );
+
+        // TODO: Explore if we need select_one_from_external_file support.
+
+        return Storage::disk(config('filament-odk-link.storage.xlsforms'))->path($filePath);
     }
 
 

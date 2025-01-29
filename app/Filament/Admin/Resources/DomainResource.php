@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\DomainResource\Pages;
-use App\Filament\Admin\Resources\DomainResource\RelationManagers;
 use App\Models\Holpa\Domain;
 use Filament\Forms;
 use Filament\Forms\Form;

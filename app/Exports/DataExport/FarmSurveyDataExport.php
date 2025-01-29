@@ -2,16 +2,6 @@
 
 namespace App\Exports\DataExport;
 
-use App\Models\SurveyData\Crop;
-use App\Models\SurveyData\EcologicalPractice;
-use App\Models\SurveyData\FieldworkSite;
-use App\Models\SurveyData\Fish;
-use App\Models\SurveyData\FishUse;
-use App\Models\SurveyData\Livestock;
-use App\Models\SurveyData\LivestockUse;
-use App\Models\SurveyData\PermanentWorker;
-use App\Models\SurveyData\Product;
-use App\Models\SurveyData\SeasonalWorkerSeason;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class FarmSurveyDataExport implements WithMultipleSheets

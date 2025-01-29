@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class XlsformModuleVersionLocaleTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('xlsform_module_version_locale')->delete();
+        DB::table('xlsform_module_version_locale')->delete();
 
-        \DB::table('xlsform_module_version_locale')->insert(array (
+        DB::table('xlsform_module_version_locale')->insert(array (
             0 =>
             array (
                 'id' => 1,

@@ -3,6 +3,7 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\Holpa\Theme;
+use DB;
 use Illuminate\Database\Seeder;
 
 class ThemesTableSeeder extends Seeder
@@ -13,11 +14,11 @@ class ThemesTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('themes')->delete();
+        DB::table('themes')->delete();
         Theme::create(['module' => 'Context', 'domain_id' => NULL, 'name' => 'Location']);
         Theme::create(['module' => 'Context', 'domain_id' => NULL, 'name' => 'Respondent characteristics']);
         Theme::create(['module' => 'Context', 'domain_id' => NULL, 'name' => 'Household characteristics']);

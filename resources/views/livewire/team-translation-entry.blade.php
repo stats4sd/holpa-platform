@@ -4,7 +4,7 @@
             <h5 class="w-full md:w-1/2 lg:w-1/4 font-bold text-lg">{{ $language->language_label }}</h5>
             <h5 class="w-full md:w-2/3 lg:w-1/2">
                 <span class="">Selected Translation:</span>
-                <span class="{{ $selectedLocale ? 'text-green' : 'text-dark-orange' }}">{{ $selectedLocale->description ?? 'none' }}</span>
+                <span class="{{ $selectedLocale ? 'text-green' : 'text-dark-orange' }}">{{ $selectedLocale ? $selectedLocale->description : 'none' }}</span>
             </h5>
 
         </div>

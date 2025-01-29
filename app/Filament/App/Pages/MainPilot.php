@@ -39,7 +39,7 @@ class MainPilot extends Page implements HasTable, HasInfolists, HasActions
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             Pilot::getUrl() => 'Pilot',
             static::getUrl() => static::getTitle(),
         ];

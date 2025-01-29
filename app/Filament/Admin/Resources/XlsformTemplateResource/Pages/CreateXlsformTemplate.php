@@ -6,9 +6,9 @@ use App\Filament\Admin\Resources\XlsformTemplateResource;
 use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Get;
-use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource\Pages\CreateXlsformTemplate as OdkLinkCreateXlsformTemplate;
+use Stats4sd\FilamentOdkLink\Filament\OdkAdmin\Resources\XlsformTemplateResource\Pages\CreateXlsformTemplate as OdkCreateXlsformTemplate;
 
-class CreateXlsformTemplate extends OdkLinkCreateXlsformTemplate
+class CreateXlsformTemplate extends OdkCreateXlsformTemplate
 {
     protected static string $resource = XlsformTemplateResource::class;
 

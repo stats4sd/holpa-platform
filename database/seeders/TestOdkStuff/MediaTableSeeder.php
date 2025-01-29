@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestOdkStuff;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class MediaTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class MediaTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('media')->delete();
+        DB::table('media')->delete();
 
-        \DB::table('media')->insert(array (
+        DB::table('media')->insert(array (
             0 =>
             array (
                 'id' => 1,

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestOdkStuff;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class OdkProjectsTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class OdkProjectsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('odk_projects')->delete();
+        DB::table('odk_projects')->delete();
 
-        \DB::table('odk_projects')->insert(array (
+        DB::table('odk_projects')->insert(array (
             0 =>
             array (
                 'id' => 1390,

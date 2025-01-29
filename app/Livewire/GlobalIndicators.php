@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Holpa\Domain;
 use App\Models\Holpa\GlobalIndicator;
 use App\Models\Holpa\LocalIndicator;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -19,19 +20,19 @@ class GlobalIndicators extends Component implements HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
-    public $selectedDomain = null;
-    public $selectedIndicator = null;
+    public ?Domain $selectedDomain = null;
+    public ?GlobalIndicator $selectedIndicator = null;
 
     protected $listeners = ['indicatorSelected', 'resetGlobalIndicators'];
 
-    public function indicatorSelected($data)
+    public function indicatorSelected($data): void
     {
         $this->selectedDomain = $data['indicator']['domain'];
         $this->selectedIndicator = LocalIndicator::find($data['indicator']['id']);
         $this->resetTable();
     }
 
-    public function resetGlobalIndicators()
+    public function resetGlobalIndicators(): void
     {
         $this->reset('selectedDomain');
         $this->reset('selectedIndicator');
@@ -50,18 +51,18 @@ class GlobalIndicators extends Component implements HasForms, HasTable
         // When a local indicator is selected show filtered global indicators based on theme domain
         $query = GlobalIndicator::query();
 
-        if ($this->selectedDomain) {
-            $query->whereHas('theme', function ($query) {
-                $query->where('domain_id', $this->selectedDomain);
-            });
-        }
+
+        $query->whereHas('theme', function ($query) {
+            $query->where('domain_id', $this->selectedDomain);
+        });
+
 
         return $table
             ->query($query)
             ->defaultGroup('type')
             ->columns([
                 TextColumn::make('name')
-                    ->label('')
+                    ->label(''),
             ])
             ->actions([
                 Action::make('select_match')
@@ -77,14 +78,14 @@ class GlobalIndicators extends Component implements HasForms, HasTable
                         }
 
                         $isAlreadyMatched = $record->localIndicators()
-                        ->where('team_id', $this->selectedIndicator->team_id)
-                        ->where('id', '!=', $this->selectedIndicator->id)
-                        ->exists();
+                            ->where('team_id', $this->selectedIndicator->team_id)
+                            ->where('id', '!=', $this->selectedIndicator->id)
+                            ->exists();
 
-                    return $isAlreadyMatched || (
-                        $this->selectedIndicator->globalIndicator &&
-                        $this->selectedIndicator->globalIndicator->id === $record->id
-                    );
+                        return $isAlreadyMatched || (
+                                $this->selectedIndicator->globalIndicator &&
+                                $this->selectedIndicator->globalIndicator->id === $record->id
+                            );
                     })
                     ->action(function ($record) {
                         if ($this->selectedIndicator) {
@@ -93,11 +94,11 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                             $this->dispatch('refreshLocalIndicators');
 
-                        Notification::make()
-                            ->title('Success')
-                            ->body($this->selectedIndicator->name . ' has been matched with ' . $this->selectedIndicator->globalIndicator->name .  '!')
-                            ->success()
-                            ->send();
+                            Notification::make()
+                                ->title('Success')
+                                ->body($this->selectedIndicator->name . ' has been matched with ' . $this->selectedIndicator->globalIndicator->name . '!')
+                                ->success()
+                                ->send();
                         }
                     }),
 
@@ -123,25 +124,25 @@ class GlobalIndicators extends Component implements HasForms, HasTable
                         }
                     }),
 
-                    Action::make('already_matched')
-                        ->label('Already Matched')
-                        ->color('gray')
-                        ->hidden(function ($record) {
-                            if (!$this->selectedIndicator) {
-                                return true;
-                            }
+                Action::make('already_matched')
+                    ->label('Already Matched')
+                    ->color('gray')
+                    ->hidden(function ($record) {
+                        if (!$this->selectedIndicator) {
+                            return true;
+                        }
 
-                            $isAlreadyMatched = $record->localIndicators()
+                        $isAlreadyMatched = $record->localIndicators()
                             ->where('team_id', $this->selectedIndicator->team_id)
                             ->where('id', '!=', $this->selectedIndicator->id)
                             ->exists();
                         return !$isAlreadyMatched;
-                        })
+                    }),
             ])
             ->paginated(false);
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
         return view('livewire.global-indicators');
     }

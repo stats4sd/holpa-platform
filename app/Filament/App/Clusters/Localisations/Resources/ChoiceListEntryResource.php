@@ -7,7 +7,6 @@ use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pa
 use App\Models\Team;
 use App\Models\XlsformLanguages\LanguageStringType;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
@@ -88,6 +87,7 @@ class ChoiceListEntryResource extends Resource
             )->toArray();
     }
 
+    /** @noinspection PhpRedundantOptionalArgumentInspection */
     public static function getFormSchema(ChoiceList $choiceList): array
     {
         if(isset($choiceList->properties['extra_properties'])) {
@@ -107,7 +107,7 @@ class ChoiceListEntryResource extends Resource
             Hidden::make('owner_type')
                 ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
-                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
+                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::where('list_name', $livewire->choiceListName)->first()->id),
             TextInput::make('name')->required()
             ->unique(ignoreRecord: true, modifyRuleUsing: function(Unique $rule, Get $get) {
                 return $rule
@@ -126,7 +126,6 @@ class ChoiceListEntryResource extends Resource
                     }
 
                     $locales = HelperService::getSelectedTeam()?->locales;
-                    $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
 
 
                     return $locales->map(fn(Locale $locale) => [

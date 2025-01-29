@@ -6,7 +6,8 @@ use App\Models\Team;
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\XlsformTemplate;
-use Filament\Forms\Components\Button;
+use App\Services\HelperService;
+use Faker\Extension\Helper;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -16,11 +17,15 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Filament\Support\Enums\MaxWidth;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\HtmlString;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class LocalesTable extends Component implements HasForms, HasTable
@@ -36,7 +41,7 @@ class LocalesTable extends Component implements HasForms, HasTable
             ->query(Locale::query()
                 // Exclude records already selected by the team
                 ->whereDoesntHave('teams', function ($query) {
-                    $query->where('locale_team.team_id', auth()->user()->latestTeam->id);
+                    $query->where('teams.id', HelperService::getSelectedTeam()->id);
                 })
             )
             ->columns([
@@ -45,38 +50,33 @@ class LocalesTable extends Component implements HasForms, HasTable
                 TextColumn::make('status')
                     ->icon(fn(string $state): string => match ($state) {
                         'Ready for use' => 'heroicon-o-check-circle',
-                        'Not added' => 'heroicon-o-exclamation-circle',
-                        'Out of date' => 'heroicon-o-exclamation-circle',
+                        'Not added', 'Out of date' => 'heroicon-o-exclamation-circle',
                     })
                     ->color(fn(string $state): string => match ($state) {
                         'Ready for use' => 'success',
-                        'Not added' => 'danger',
-                        'Out of date' => 'danger',
+                        'Not added', 'Out of date' => 'danger',
                     }),
             ])
             ->actions([
-                \Filament\Tables\Actions\Action::make('viewOrUpdate')
+                Action::make('viewOrUpdate')
                     ->label(fn($record) => $record->status === 'Ready for use' ? 'View' : 'Update')
                     ->color(fn($record) => $record->status === 'Ready for use' ? 'blue' : 'warning')
                     ->button()
                     ->modalHeading(fn($record) => $record->status === 'Ready for use' ? 'VIEW TRANSLATIONS' : 'UPDATE TRANSLATIONS')
-                    ->modalSubheading(fn($record) => $record->status === 'Ready for use'
+                    ->modalDescription(fn($record) => $record->status === 'Ready for use'
                         ? $record->languageLabel . ' is ready for use'
                         : $record->languageLabel . ' requires updates before it can be used')
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false)
                     ->modalContent(fn($record) => view('filament.app.locale-modal', ['locale_id' => $record->id])),
-                \Filament\Tables\Actions\Action::make('select')
+                Action::make('select')
                     ->label('Select')
                     ->color('success')
                     ->button()
                     ->visible(fn($record) => $record->status === 'Ready for use')
-                    ->action(function ($record, $livewire) {
-                        $team = auth()->user()->latestTeam->id;
-                        $team = Team::find($team);
+                    ->action(function ($record) {
+                        $team = HelperService::getSelectedTeam();
                         $team->locales()->attach($record->id);
-
-                        $this->dispatch('refreshTable')->to(TeamLanguagesTable::class);
 
                         Notification::make()
                             ->title('Success')
@@ -89,10 +89,10 @@ class LocalesTable extends Component implements HasForms, HasTable
             ->emptyStateDescription('')
             ->paginated(false)
             ->headerActions([
-                \Filament\Tables\Actions\Action::make('create')
+                Action::make('create')
                     ->label('ADD NEW TRANSLATION')
                     ->color('orange')
-                    ->modalButton('Add language')
+                    ->modalSubmitActionLabel('Add language')
                     ->modalCancelAction(false)
                     ->modalWidth(MaxWidth::SixExtraLarge)
                     ->form([
@@ -167,7 +167,7 @@ class LocalesTable extends Component implements HasForms, HasTable
             ]);
     }
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {
         return view('livewire.xlsform-languages-table');
     }

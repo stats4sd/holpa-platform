@@ -8,12 +8,11 @@ use App\Models\XlsformLanguages\Locale;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\View\View;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -26,7 +25,7 @@ class TeamTranslationReview extends Component implements HasActions, HasForms
     public Locale $locale;
 
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {
         return view('livewire.team-translation-review');
     }

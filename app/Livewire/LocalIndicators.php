@@ -3,12 +3,14 @@
 namespace App\Livewire;
 
 use App\Models\Holpa\LocalIndicator;
+use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class LocalIndicators extends Component implements HasForms, HasActions
@@ -16,22 +18,24 @@ class LocalIndicators extends Component implements HasForms, HasActions
     use InteractsWithActions;
     use InteractsWithForms;
 
-    public $indicators;
-    public $selectedIndicatorId = null;
+    /** @var Collection<LocalIndicator>  */
+    public Collection $indicators;
+
+    public ?string $selectedIndicatorId = null;
 
     protected $listeners = ['refreshLocalIndicators'];
 
-    public function mount()
+    public function mount(): void
     {
-        $this->indicators = LocalIndicator::where('team_id', auth()->user()->latestTeam->id)->get();
+        $this->getLocalIndicators();
     }
 
-    public function refreshLocalIndicators()
+    public function getLocalIndicators(): void
     {
-        $this->indicators = LocalIndicator::where('team_id', auth()->user()->latestTeam->id)->get();
+        $this->indicators = HelperService::getSelectedTeam()->localIndicators;
     }
 
-    public function selectIndicator($indicatorId)
+    public function selectIndicator($indicatorId): void
     {
         $this->selectedIndicatorId = $indicatorId;
         $indicator = LocalIndicator::find($indicatorId);
@@ -42,7 +46,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
                 'domain' => $indicator->domain,
                 'global_indicator_id' => $indicator->global_indicator_id,
                 'team_id' => $indicator->team_id,
-            ]
+            ],
             ]);
     }
 
@@ -51,14 +55,14 @@ class LocalIndicators extends Component implements HasForms, HasActions
         return Action::make('reset')
             ->requiresConfirmation()
             ->modalHeading('Confirm Reset')
-            ->modalSubheading('Are you sure you want to reset all matches? This action cannot be undone.')
-            ->modalButton('Yes, reset')
+            ->modalDescription('Are you sure you want to reset all matches? This action cannot be undone.')
+            ->modalSubmitActionLabel('Yes, reset')
             ->color('green')
             ->extraAttributes(['class' => 'py-2 px-6 hover-effect'])
             ->action(fn () => $this->resetIndicators());
     }
 
-    public function resetIndicators()
+    public function resetIndicators(): void
     {
         foreach ($this->indicators as $indicator) {
             $indicator->globalIndicator()->dissociate();
@@ -76,7 +80,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
             ->send();
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
         return view('livewire.local-indicators', [
             'indicators' => $this->indicators,

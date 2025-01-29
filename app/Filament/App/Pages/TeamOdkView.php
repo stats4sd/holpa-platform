@@ -180,7 +180,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                 //                    ->action(function (Xlsform $record) {
                 //                        $odkLinkService = app()->make(OdkLinkService::class);
                 //
-                //                        // call API to export data as excel file
+                //                        // call API to export data as Excel file
                 //                        // P.S. use return to trigger file download in browser
                 //                        return $odkLinkService->exportAsExcelFile($record);
                 //                    }),

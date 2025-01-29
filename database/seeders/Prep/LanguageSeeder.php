@@ -4,7 +4,6 @@ namespace Database\Seeders\Prep;
 
 use App\Models\XlsformLanguages\Language;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class LanguageSeeder extends Seeder
 {

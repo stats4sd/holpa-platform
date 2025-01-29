@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Imports\LocalIndicatorImport;
 use App\Models\Team;
+use App\Services\HelperService;
 use Exception;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -30,11 +31,11 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     public Team $team;
     public Collection $localIndicators;
     public ?array $local_indicator_list = null;
-    public $uploadedFile = null;
+    public ?Media $uploadedFile = null;
 
-    public function mount()
+    public function mount(): void
     {
-        $this->team = Team::find(auth()->user()->latestTeam->id);
+        $this->team = HelperService::getSelectedTeam();
         $this->localIndicators = $this->team->localIndicators;
         $this->form->fill();
         $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
@@ -53,7 +54,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             ]);
     }
 
-    public function uploadFile()
+    public function uploadFile(): void
     {
         // Check that a file is uploaded
         if (empty($this->local_indicator_list) || !is_array($this->local_indicator_list)) {
@@ -135,7 +136,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
         ->paginated(false);
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
         return view('livewire.upload-local-indicators');
     }

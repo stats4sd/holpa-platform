@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestOdkStuff;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class AppUsersTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class AppUsersTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('app_users')->delete();
+        DB::table('app_users')->delete();
 
-        \DB::table('app_users')->insert(array (
+        DB::table('app_users')->insert(array (
             0 =>
             array (
                 'id' => 1708,

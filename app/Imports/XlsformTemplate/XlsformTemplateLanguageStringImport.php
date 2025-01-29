@@ -2,10 +2,8 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Interfaces\WithXlsformFile;
 use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\SurveyRow;

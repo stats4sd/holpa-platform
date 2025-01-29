@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class SurveyRowsTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class SurveyRowsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('survey_rows')->delete();
+        DB::table('survey_rows')->delete();
 
-        \DB::table('survey_rows')->insert(array (
+        DB::table('survey_rows')->insert(array (
             0 =>
             array (
                 'id' => 1,

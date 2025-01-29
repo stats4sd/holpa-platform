@@ -3,6 +3,7 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
+use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
@@ -20,7 +21,7 @@ class DataCollection extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -36,7 +37,7 @@ class DataCollection extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getSelectedTeam();
                 $team->data_collection_progress = 'complete';
                 $team->save();
 
@@ -50,7 +51,7 @@ class DataCollection extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getSelectedTeam();
                 $team->data_collection_progress = 'not_started';
                 $team->save();
 

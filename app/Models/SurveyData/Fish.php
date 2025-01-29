@@ -3,7 +3,6 @@
 namespace App\Models\SurveyData;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\SurveyData\FarmSurveyData;
 use App\Models\Interfaces\RepeatModel;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

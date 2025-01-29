@@ -3,6 +3,7 @@
 namespace App\Models\Reference;
 
 use App\Models\Team;
+use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;

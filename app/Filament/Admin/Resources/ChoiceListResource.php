@@ -5,8 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\ChoiceListResource\Pages;
 use App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\XlsformModuleVersion;
-use App\Models\Xlsforms\XlsformTemplate;
+use Exception;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -55,6 +54,9 @@ class ChoiceListResource extends Resource
             ]);
     }
 
+    /**
+     * @throws Exception
+     */
     public static function table(Table $table): Table
     {
         return $table

@@ -11,9 +11,8 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHeadingRow
 {
-    public function __construct(Team $team)
+    public function __construct(public Team $team)
     {
-        $this->team = $team;
     }
 
     public function sheets(): array
@@ -23,10 +22,9 @@ class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHead
         ];
     }
 
-    public function collection(Collection $rows)
+    public function collection(Collection $rows): void
     {
-        foreach ($rows as $row)
-        {
+        foreach ($rows as $row) {
             LocalIndicator::create([
                 'name' => $row['name'],
                 'domain_id' => $row['domain_id'],

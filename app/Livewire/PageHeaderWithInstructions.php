@@ -2,7 +2,10 @@
 
 namespace App\Livewire;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\HtmlString;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class PageHeaderWithInstructions extends Component
@@ -17,7 +20,7 @@ class PageHeaderWithInstructions extends Component
     public string|HtmlString $instructions6;
     public string|HtmlString $instructionsmarkcomplete;
 
-    public function render()
+    public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {
         return view('livewire.page-header-with-instructions');
     }

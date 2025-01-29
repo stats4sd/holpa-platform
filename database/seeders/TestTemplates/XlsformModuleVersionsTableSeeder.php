@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class XlsformModuleVersionsTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class XlsformModuleVersionsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('xlsform_module_versions')->delete();
+        DB::table('xlsform_module_versions')->delete();
 
-        \DB::table('xlsform_module_versions')->insert(array (
+        DB::table('xlsform_module_versions')->insert(array (
             0 =>
             array (
                 'id' => 1,

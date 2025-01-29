@@ -2,11 +2,7 @@
 
 namespace App\Models\Xlsforms;
 
-use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Team;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
-use App\Services\XlsformTranslationHelper;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;

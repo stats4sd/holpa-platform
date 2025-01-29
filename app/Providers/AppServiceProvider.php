@@ -2,11 +2,8 @@
 
 namespace App\Providers;
 
-use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
-use App\Filament\App\Pages\AddData;
 use App\Filament\App\Pages\DataAnalysis;
 use App\Filament\App\Pages\DataCollection;
-use App\Filament\App\Pages\DietDiversity;
 use App\Filament\App\Pages\Lisp;
 use App\Filament\App\Pages\LispIndicators;
 use App\Filament\App\Pages\LispWorkshop;
@@ -17,7 +14,6 @@ use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Filament\App\Pages\SurveyTranslations;
 use App\Filament\App\Pages\TeamOdkView;
-use App\Filament\App\Pages\TimeFrame;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;

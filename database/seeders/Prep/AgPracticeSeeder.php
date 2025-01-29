@@ -3,7 +3,6 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\Reference\AgPracticeGroup;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AgPracticeSeeder extends Seeder

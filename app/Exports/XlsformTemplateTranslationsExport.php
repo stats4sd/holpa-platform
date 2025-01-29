@@ -2,18 +2,11 @@
 
 namespace App\Exports;
 
-use App\Filament\App\Pages\SurveyLanguages;
-use App\Models\Interfaces\HasLanguageStrings;
 use App\Models\XlsformLanguages\LanguageStringType;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\SurveyRow;
-use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithBackgroundColor;
@@ -22,10 +15,10 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Style\Alignment;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use function PHPSTORM_META\map;
 
 class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings, WithTitle, WithColumnWidths, WithStyles, WithBackgroundColor
 {
@@ -88,14 +81,17 @@ class XlsformTemplateTranslationsExport implements FromCollection, WithHeadings,
 
     }
 
-    public function backgroundColor()
+    public function backgroundColor(): string
     {
         // Adds fill to all rows/cols with no data
         return 'E7E7E7';
 
     }
 
-    public function styles(Worksheet $sheet)
+    /**
+     * @throws Exception
+     */
+    public function styles(Worksheet $sheet): void
     {
         // Define header style
         $h1 = [

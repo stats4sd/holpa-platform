@@ -61,7 +61,7 @@ class DietDiversity extends Page implements HasForms, HasTable
             ]);
     }
 
-    public function saveData()
+    public function saveData(): void
     {
 
         $this->team->update($this->form->getState());

@@ -2,6 +2,8 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
+use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Pages\SurveyDashboard;
 use Filament\Actions;
 use App\Imports\FarmImport;
 use Filament\Resources\Pages\ListRecords;
@@ -18,8 +20,8 @@ class ListFarms extends ListRecords
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey locations',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
+            Sampling::getUrl() => 'Survey locations',
             static::getUrl() => static::getTitle(),
         ];
     }

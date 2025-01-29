@@ -2,13 +2,12 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Pages;
+use Exception;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Auth;
 use Filament\Navigation\NavigationItem;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
@@ -28,6 +27,9 @@ use Stats4sd\FilamentTeamManagement\Filament\Program\Pages\Dashboard;
 
 class ProgramPanelProvider extends PanelProvider
 {
+    /**
+     * @throws Exception
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel

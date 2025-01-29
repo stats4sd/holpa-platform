@@ -2,9 +2,8 @@
 
 namespace App\Providers\Filament;
 
-use Filament\Pages;
+use Exception;
 use Filament\Panel;
-use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
@@ -24,6 +23,9 @@ use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\UserResource;
 
 class AdminPanelProvider extends PanelProvider
 {
+    /**
+     * @throws Exception
+     */
     public function panel(Panel $panel): Panel
     {
         return $panel

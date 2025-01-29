@@ -4,6 +4,7 @@ namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResou
 
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Filament\App\Pages\PlaceAdaptations;
+use App\Filament\App\Pages\SurveyDashboard;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Services\HelperService;
@@ -39,14 +40,14 @@ class ListChoiceListEntries extends ListRecords
 
             $this->choiceListName = $this->choiceList->list_name;
         } else {
-            $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+            $this->choiceList = ChoiceList::where('list_name', $this->choiceListName)->first();
         }
     }
 
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             PlaceAdaptations::getUrl() => 'Place Adaptations',
             static::getUrl() => static::getTitle(),
         ];

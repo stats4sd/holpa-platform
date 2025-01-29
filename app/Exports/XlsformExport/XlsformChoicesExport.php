@@ -2,10 +2,7 @@
 
 namespace App\Exports\XlsformExport;
 
-use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
-use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;
@@ -76,7 +73,10 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
     public function headings(): array
     {
-        return $this->choiceListRows->first()->keys()->toArray();
+        /** @var Collection $item */
+        $item = $this->choiceListRows->first();
+
+        return $item->keys()->toArray();
     }
 
     public function title(): string
@@ -93,10 +93,9 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
             ->unique();
     }
 
-    private function getLanguageStrings(mixed $row, string $string): Collection
+    private function getLanguageStrings(mixed $row): Collection
     {
-
-
+        $string = 'label';
         return $this->locales
             ->mapWithKeys(function (Locale $locale) use ($string, $row) {
 
@@ -109,7 +108,7 @@ class XlsformChoicesExport implements FromCollection, WithHeadings, WithTitle, W
 
     }
 
-    public function styles(Worksheet $sheet)
+    public function styles(Worksheet $sheet): array
     {
         // starting at C, make 1 column auto-wrap per Xlsformtemplatelangauge
         $wrapArray = $this->locales->mapWithKeys(fn(Locale $locale, $index) => [chr(67 + $index) => ['alignment' => ['wrapText' => true]]]

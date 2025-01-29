@@ -3,7 +3,6 @@
 namespace App\Exports\XlsformExport;
 
 use App\Models\Team;
-use App\Models\XlsformLanguages\Language;
 use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
@@ -18,9 +17,9 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithColumnWidths
 {
@@ -102,7 +101,7 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
     }
 
     /**
-     * @return \Illuminate\Support\Collection
+     * @return Collection
      */
     public function collection(): Collection
     {
@@ -184,6 +183,9 @@ class XlsformSurveyExport implements FromCollection, WithHeadings, WithTitle, Wi
         ];
     }
 
+    /**
+     * @throws Exception
+     */
     public function styles(Worksheet $sheet): void
     {
         $languageCount = $this->locales->count();

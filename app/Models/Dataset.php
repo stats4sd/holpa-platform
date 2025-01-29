@@ -2,14 +2,25 @@
 
 namespace App\Models;
 
+use App\Services\HelperService;
 use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
+use phpDocumentor\Reflection\Types\ClassString;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\RequiredMedia;
 
 class Dataset extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Dataset
 {
+
+    public function getEntityModel(): Attribute
+    {
+        return new Attribute(
+            /** @phpstan-return ClassString | string | null */
+            get: fn($value) => $this->entity_model
+        );
+    }
+
     public function databaseTable(): Attribute
     {
         return new Attribute(
@@ -57,7 +68,7 @@ class Dataset extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Dataset
     {
         if(Filament::hasTenancy()) {
             return new Attribute(
-                get: fn (): bool => $this->teamLookupTables->where('team_id', Filament::getTenant()->id)->first()->is_complete ?? false,
+                get: fn (): bool => $this->teamLookupTables->where('team_id', HelperService::getSelectedTeam()->id)->first()->is_complete ?? false,
             );
         } else {
             return new Attribute(
@@ -66,7 +77,7 @@ class Dataset extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Dataset
         }
     }
 
-    public function markLiveXlsformsWithMediaUpdate()
+    public function markLiveXlsformsWithMediaUpdate(): void
     {
         $this->requiredMedia
             ->each(function (RequiredMedia $media) {

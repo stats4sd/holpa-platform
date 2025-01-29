@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class LanguageStringsTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class LanguageStringsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('language_strings')->delete();
+        DB::table('language_strings')->delete();
 
-        \DB::table('language_strings')->insert(array (
+        DB::table('language_strings')->insert(array (
             0 =>
             array (
                 'id' => 1,

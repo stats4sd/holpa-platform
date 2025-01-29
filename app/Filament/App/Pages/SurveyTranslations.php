@@ -28,7 +28,7 @@ class SurveyTranslations extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -50,7 +50,7 @@ class SurveyTranslations extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getSelectedTeam()->update([
                     'languages_complete' => 1,
                 ]);
 
@@ -64,7 +64,7 @@ class SurveyTranslations extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getSelectedTeam()->update([
                     'languages_complete' => 0,
                 ]);
 

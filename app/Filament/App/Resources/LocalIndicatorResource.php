@@ -3,7 +3,6 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\LocalIndicatorResource\Pages;
-use App\Filament\App\Resources\LocalIndicatorResource\RelationManagers;
 use App\Models\Holpa\GlobalIndicator;
 use App\Models\Holpa\LocalIndicator;
 use App\Models\Holpa\Theme;
@@ -59,7 +58,7 @@ class LocalIndicatorResource extends Resource
                     ->searchable(),
                 Tables\Columns\SelectColumn::make('global_indicator_id')
                     ->label('Global indicator')
-                    ->options(fn(LocalIndicator $record): Collection => GlobalIndicator::get()->pluck('name', 'id'))
+                    ->options(fn(LocalIndicator $record): array => GlobalIndicator::get()->pluck('name', 'id')->toArray())
                     ->sortable()
                     ->searchable(),
             ])

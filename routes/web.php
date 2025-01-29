@@ -1,10 +1,10 @@
 <?php
 
+use App\Livewire\CoverPage;
 use Illuminate\Support\Facades\Route;
-use App\Filament\Actions\ExportDataAction;
 
 // redirect user from root path to app panel login page
-Route::get('/', \App\Livewire\CoverPage::class)->name('cover-page');
+Route::get('/', CoverPage::class)->name('cover-page');
 
 // when user logout from program admin panel, redirect user to app panel login pager
 Route::get('/program/login', function () {

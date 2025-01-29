@@ -9,13 +9,11 @@ use App\Jobs\FinishChoiceListEntryImport;
 use App\Jobs\FinishSurveyRowImport;
 use App\Jobs\ImportAllLanguageStrings;
 use App\Jobs\LinkModuleVersionToLocales;
-use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use Spatie\MediaLibrary\MediaCollections\Events\MediaHasBeenAddedEvent;
 
 class HandleXlsformTemplateAdded

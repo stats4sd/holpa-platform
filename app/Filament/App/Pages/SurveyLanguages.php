@@ -2,7 +2,6 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
@@ -21,7 +20,7 @@ class SurveyLanguages extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }

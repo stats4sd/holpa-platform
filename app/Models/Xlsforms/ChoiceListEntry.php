@@ -28,7 +28,7 @@ class ChoiceListEntry extends Model implements HasLanguageStrings
         'updated_during_import' => 'boolean',
     ];
 
-    protected static function booted()
+    protected static function booted(): void
     {
         // top-level scoping to ensure teams only receive their entries
         static::addGlobalScope('team', function (Builder $query) {

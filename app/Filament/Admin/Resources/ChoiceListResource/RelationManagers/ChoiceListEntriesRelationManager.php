@@ -4,7 +4,6 @@ namespace App\Filament\Admin\Resources\ChoiceListResource\RelationManagers;
 
 use App\Models\XlsformLanguages\LanguageStringType;
 use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\ChoiceListEntry;
 use Filament\Forms;

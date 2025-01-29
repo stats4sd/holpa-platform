@@ -6,6 +6,7 @@ use App\Exports\DataExport\FarmSurveyDataExport;
 use Filament\Actions\Action;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ExportDataAction extends Action
 {
@@ -30,7 +31,7 @@ class ExportDataAction extends Action
         return $filePath;
     }
 
-    public function download(string $filePath)
+    public function download(string $filePath): StreamedResponse
     {
         return Storage::download($filePath);
     }

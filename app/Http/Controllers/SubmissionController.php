@@ -3,12 +3,10 @@
 namespace App\Http\Controllers;
 
 use Carbon\Carbon;
-use App\Models\SurveyData\Crop;
 use App\Models\SampleFrame\Farm;
 use App\Models\SurveyData\FishUse;
 use App\Models\SurveyData\Product;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
 use App\Models\SampleFrame\Location;
 use Illuminate\Support\Facades\Schema;
 use App\Models\SurveyData\LivestockUse;
@@ -152,7 +150,7 @@ class SubmissionController extends Controller
         if (isset($submission->content['survey']['income']['labour']['household_mm_labour']['seasonal_workers'])) {
             // ray('seasonal_workers data found');
 
-            $class = \App\Models\SurveyData\SeasonalWorkerSeason::class;
+            $class = SeasonalWorkerSeason::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
             // ray($columnNames);
@@ -183,12 +181,8 @@ class SubmissionController extends Controller
 
                         $seasonalWorkerSeason = SeasonalWorkerSeason::create($result);
                     }
-                } else {
-                    // ray('seasonal_workers_s data not found');
                 }
             }
-        } else {
-            // ray('seasonal_workers data not found');
         }
     }
 
@@ -221,7 +215,7 @@ class SubmissionController extends Controller
         if (isset($submission->content['survey']['income']['labour']['labourers']['sesaonal_labourers'])) {
             // ray('sesaonal_labourers data found');
 
-            $class = \App\Models\SurveyData\SeasonalWorkerSeason::class;
+            $class = SeasonalWorkerSeason::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
             // ray($columnNames);
@@ -252,12 +246,8 @@ class SubmissionController extends Controller
 
                         $seasonalWorkerSeason = SeasonalWorkerSeason::create($result);
                     }
-                } else {
-                    // ray('seasonal_labourers_s data not found');
                 }
             }
-        } else {
-            // ray('sesaonal_labourers data not found');
         }
     }
 
@@ -276,7 +266,7 @@ class SubmissionController extends Controller
         if (isset($submission->content['survey']['income']['livestock_production']['primary_livestock_details'])) {
             // ray('primary_livestock_details data found');
 
-            $class = \App\Models\SurveyData\LivestockUse::class;
+            $class = LivestockUse::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
             // ray($columnNames);
@@ -304,12 +294,8 @@ class SubmissionController extends Controller
 
                         $livestockhUse = LivestockUse::create($result);
                     }
-                } else {
-                    // ray('primary_livestock_uses data not found');
                 }
             }
-        } else {
-            // ray('primary_livestock_details data not found');
         }
     }
 
@@ -328,7 +314,7 @@ class SubmissionController extends Controller
         if (isset($submission->content['survey']['income']['fish_production']['fish_repeat'])) {
             // ray('fish_repeat data found');
 
-            $class = \App\Models\SurveyData\FishUse::class;
+            $class = FishUse::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
             // ray($columnNames);
@@ -356,12 +342,8 @@ class SubmissionController extends Controller
 
                         $fishUse = FishUse::create($result);
                     }
-                } else {
-                    // ray('fish_production_repeat data not found');
                 }
             }
-        } else {
-            // ray('fish_repeat data not found');
         }
     }
 
@@ -399,8 +381,6 @@ class SubmissionController extends Controller
                     SubmissionController::prepareOtherProductData($submission, $farmSurveyData, $prefix);
                 }
             }
-        } else {
-            // ray('farm_products data not found');
         }
     }
 

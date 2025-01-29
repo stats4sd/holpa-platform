@@ -36,7 +36,6 @@ class Xlsform extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform
     }
 
     /**
-     * @throws RequestException
      * @throws FileDoesNotExist
      * @throws FileIsTooBig
      */

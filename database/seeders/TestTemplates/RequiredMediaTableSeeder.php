@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class RequiredMediaTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class RequiredMediaTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('required_media')->delete();
+        DB::table('required_media')->delete();
 
-        \DB::table('required_media')->insert(array (
+        DB::table('required_media')->insert(array (
             0 =>
             array (
                 'id' => 1,

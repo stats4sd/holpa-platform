@@ -10,7 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Dataset;
 
@@ -56,7 +55,7 @@ class DatasetResource extends Resource
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('entity_model')
                     ->label('Database Table')
-                    ->formatStateUsing(fn($state) => Str::of(collect(Str::ucsplit($state, '/'))->last())->lower()->plural()),
+                    ->formatStateUsing(fn($state) => Str::of(collect(Str::ucsplit($state))->last())->lower()->plural()),
                 Tables\Columns\TextColumn::make('variables_count')
                     ->label('# of Variables defined')
                     ->counts('variables'),

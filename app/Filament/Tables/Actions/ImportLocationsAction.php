@@ -5,6 +5,7 @@ namespace App\Filament\Tables\Actions;
 use App\Models\Import;
 use App\Models\SampleFrame\Location;
 use App\Models\Team;
+use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
 use Filament\Facades\Filament;
@@ -125,7 +126,7 @@ class ImportLocationsAction extends ExcelImportAction
             Hidden::make('user_id')
                 ->default(fn() => auth()->id()),
             Hidden::make('owner_id')
-                ->default(Filament::getTenant()->id),
+                ->default(HelperService::getSelectedTeam()->id),
             Hidden::make('owner_type')
                 ->default(Team::class),
         ];
@@ -147,12 +148,12 @@ class ImportLocationsAction extends ExcelImportAction
         return function (array $data, $livewire): bool {
 
             if ($data['override'] === 'yes') {
-                Location::where('owner_id', Filament::getTenant()->id)->delete();
+                HelperService::getSelectedTeam()->locations()->delete();
             }
 
 
             $import = Import::create([
-                'team_id' => Filament::getTenant()->id,
+                'team_id' => HelperService::getSelectedTeam()->id,
                 'model_type' => Location::class,
             ]);
 

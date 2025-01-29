@@ -2,8 +2,6 @@
 
 namespace App\Filament\Traits;
 
-use Filament\Resources\Pages\CreateRecord;
-
 trait RedirectsToListAfterSave
 {
 

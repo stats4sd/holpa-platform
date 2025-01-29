@@ -4,6 +4,7 @@ namespace App\Exports\XlsformExport;
 
 use App\Models\Xlsforms\Xlsform;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
@@ -19,7 +20,7 @@ class XlsformSettingsExport implements FromCollection, WithHeadings, WithTitle, 
     {
     }
 
-    public function collection(): \Illuminate\Support\Collection
+    public function collection(): Collection
     {
         // needs to be in the format
         // | form_id | form_title | version | instance_name

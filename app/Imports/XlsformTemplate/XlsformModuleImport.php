@@ -31,7 +31,7 @@ class XlsformModuleImport implements ToCollection, WithHeadingRow, SkipsEmptyRow
     /**
      * @param Collection $collection
      */
-    public function collection(Collection $collection)
+    public function collection(Collection $collection): void
     {
         // for any rows that do not have a module set... add them to a 'default' module
         // (this also handles the case where the xlsform file does not have a module column)

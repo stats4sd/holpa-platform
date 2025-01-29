@@ -5,10 +5,8 @@ namespace App\Models\XlsformLanguages;
 use App\Models\Xlsforms\LanguageString;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Znck\Eloquent\Relations\BelongsToThrough;
 
@@ -42,7 +40,7 @@ class XlsformModuleVersionLocale extends Pivot
         return $this->locale->languageLabel;
     }
 
-    // was this created from importing an Xlsform template file?
+    // was this created from importing a Xlsform template file?
     // if false, then this it was created through the platform as an extra translation
     public function isAddedFromXlsformTemplate(): Attribute
     {
@@ -51,7 +49,7 @@ class XlsformModuleVersionLocale extends Pivot
         );
     }
 
-    public function getStatusAttribute()
+    public function getStatusAttribute(): string
     {
         if($this->has_language_strings && !$this->needs_update) {
             return 'Ready for use';
@@ -62,5 +60,7 @@ class XlsformModuleVersionLocale extends Pivot
         elseif($this->has_language_strings && $this->needs_update) {
             return 'Out of date';
         }
+
+        return 'Unknown';
     }
 }

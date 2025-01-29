@@ -2,7 +2,6 @@
 
 namespace App\Imports\XlsformTemplate;
 
-use App\Models\Interfaces\WithXlsformFile;
 use App\Models\Xlsforms\ChoiceList;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use Illuminate\Contracts\Queue\ShouldQueue;

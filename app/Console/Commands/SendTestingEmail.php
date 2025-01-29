@@ -12,7 +12,7 @@ class SendTestingEmail extends Command
 
     protected $description = 'Send testing email';
 
-    public function handle()
+    public function handle(): int
     {
         $toRecipient = config('mail.to.support');
 

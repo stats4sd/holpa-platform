@@ -2,12 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Models\Interfaces\WithXlsformFile;
-use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Services\XlsformTranslationHelper;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Queue\Queueable;
 
 class FinishLanguageStringImport implements ShouldQueue

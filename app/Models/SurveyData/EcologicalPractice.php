@@ -3,7 +3,6 @@
 namespace App\Models\SurveyData;
 
 use App\Models\Interfaces\RepeatModel;
-use App\Models\SurveyData\FarmSurveyData;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;

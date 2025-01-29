@@ -5,9 +5,9 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\XlsformTemplateResource\Pages;
 use App\Filament\Admin\Resources\XlsformTemplateResource\RelationManagers;
 use App\Models\Xlsforms\XlsformTemplate;
-use Stats4sd\FilamentOdkLink\Filament\Resources\XlsformTemplateResource as OdkLinkXlsformTemplateResource;
+use Stats4sd\FilamentOdkLink\Filament\OdkAdmin\Resources\XlsformTemplateResource as OdkXlsformTemplateResource;
 
-class XlsformTemplateResource extends OdkLinkXlsformTemplateResource
+class XlsformTemplateResource extends OdkXlsformTemplateResource
 {
     protected static ?string $model = XlsformTemplate::class;
 

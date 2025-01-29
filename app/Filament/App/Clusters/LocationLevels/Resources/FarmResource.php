@@ -8,7 +8,6 @@ use Filament\Tables\Table;
 use App\Services\HelperService;
 use App\Models\SampleFrame\Farm;
 use Filament\Resources\Resource;
-use Filament\Navigation\NavigationItem;
 use App\Models\SampleFrame\LocationLevel;
 use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;

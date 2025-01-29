@@ -10,15 +10,12 @@ use App\Models\XlsformLanguages\Locale;
 use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\SurveyRow;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformModule;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Actions\StaticAction;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -26,16 +23,13 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Get;
 use Filament\Support\Enums\Alignment;
 use Filament\Tables\Actions\Action;
-use Filament\Tables\Actions\HeaderActionsPosition;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\HtmlString;
 use Livewire\Component;
-use Livewire\Form;
 use Maatwebsite\Excel\Facades\Excel;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
@@ -50,13 +44,8 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
     public bool $expanded;
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-//        // temp
-//        if ($this->language->iso_alpha2 === 'pt') {
-//            $this->expanded = true;
-//        }
-
         $this->selectedLocale = $this->team->locales()->wherePivot('language_id', $this->language->id)->first();
 
         return view('livewire.team-translation-entry');
@@ -179,7 +168,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             $file = collect($upload)->first();
 
             /** @var Collection $rows */
-            $rows = Excel::toCollection([], $file)[0];
+            $rows = Excel::toCollection((object)[], $file)[0];
 
             $headers = $rows->shift();
 

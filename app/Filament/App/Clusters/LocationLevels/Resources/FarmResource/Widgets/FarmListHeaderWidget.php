@@ -4,7 +4,6 @@ namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Widget
 
 use App\Services\HelperService;
 use Filament\Widgets\Widget;
-use Illuminate\Database\Eloquent\Builder;
 
 class FarmListHeaderWidget extends Widget
 {

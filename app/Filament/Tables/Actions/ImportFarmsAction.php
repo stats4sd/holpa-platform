@@ -5,8 +5,10 @@ namespace App\Filament\Tables\Actions;
 use App\Models\Import;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
+use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
+use Faker\Extension\Helper;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\FileUpload;
@@ -15,10 +17,12 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use Filament\Tables\Contracts\HasTable;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
+use RuntimeException;
 
 // use App\Models\SampleFrame\FarmGroup;
 // use App\Models\SampleFrame\FarmGrouping;
@@ -61,7 +65,7 @@ class ImportFarmsAction extends ExcelImportAction
 
         return [
             FileUpload::make('upload')
-                ->label(fn($livewire) => str($livewire->getTable()->getPluralModelLabel())->title() . ' Excel Data')
+                ->label(fn(HasTable $livewire) => str($livewire->getTable()->getPluralModelLabel())->title() . ' Excel Data')
                 ->helperText('Please make sure your data is in the first worksheet of the Excel file, and that the first row contains the column headers.')
                 ->disk($this->getDisk())
                 ->columns()
@@ -134,7 +138,7 @@ class ImportFarmsAction extends ExcelImportAction
                         ->columnSpanFull(),
 
                     Hidden::make('owner_id')
-                        ->default(Filament::getTenant()->id),
+                        ->default(HelperService::getSelectedTeam()->id),
                     Hidden::make('owner_type')
                         ->default('App\Models\Team'),
 
@@ -148,7 +152,7 @@ class ImportFarmsAction extends ExcelImportAction
     public function action(Closure|string|null $action): static
     {
         if ($action !== 'importData') {
-            throw new \RuntimeException('You cannot override the action for this plugin');
+            throw new RuntimeException('You cannot override the action for this plugin');
         }
 
         $this->action = $this->importData();
@@ -162,7 +166,7 @@ class ImportFarmsAction extends ExcelImportAction
 
             // create import record - for review and error tracking by users
             $import = Import::create([
-                'team_id' => Filament::getTenant()->id,
+                'team_id' => HelperService::getSelectedTeam()->id,
                 'model_type' => Farm::class,
             ]);
 

@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class DomainSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Domain::create(['id' => 1, 'name' => 'Agricultural']);
         Domain::create(['id' => 2, 'name' => 'Environmental']);

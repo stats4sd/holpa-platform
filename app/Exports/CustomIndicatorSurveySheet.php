@@ -2,6 +2,9 @@
 
 namespace App\Exports;
 
+use App\Models\Team;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Enumerable;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -12,8 +15,8 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize
 {
-    protected $team;
-    protected $surveyType;
+    protected Team $team;
+    protected string $surveyType;
 
     public function __construct($team, $surveyType)
     {
@@ -21,7 +24,7 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         $this->surveyType = $surveyType;
     }
 
-    public function collection()
+    public function collection(): Enumerable|Collection
     {
         return collect(
             $this->team->localIndicators()
@@ -91,13 +94,8 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         return $headings;
     }
 
-    public function styles(Worksheet $sheet)
+    public function styles(Worksheet $sheet): array
     {
-        $wrap = [
-            'alignment' => [
-                'wrapText' => true
-            ],
-        ];
 
         $h1 = [
             'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFF']],

@@ -15,7 +15,6 @@ use App\Models\Xlsforms\Xlsform;
 use App\Models\Xlsforms\XlsformModule;
 use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -35,6 +34,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     protected $table = 'teams';
 
     protected $appends = ['odk_qr_code'];
+
+    protected $casts = [
+        'lisp_complete' => 'boolean',
+        'sampling_complete' => 'boolean',
+        'languages_complete' => 'boolean',
+        'pba_complete' => 'boolean',
+    ];
 
     // TODO: I think this overrides the booted method on HasXlsForms - ideally we wouldn't need to copy the package stuff here...
     protected static function booted(): void
@@ -79,7 +85,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
                 XlsformModuleVersion::create([
                     'xlsform_module_id' => $xlsformModule->id,
-                    'name' => 'custom'
+                    'name' => 'custom',
                 ]);
             }
 
@@ -201,27 +207,28 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return null;
     }
 
-    public function getLispProgressAttribute()
+    public function getLispProgressAttribute(): string
     {
-        if ($this->lisp_complete === 1) {
+        if ($this->lisp_complete) {
             return 'complete';
+
         }
 
         return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
     }
 
-    public function getSamplingProgressAttribute()
+    public function getSamplingProgressAttribute(): string
     {
-        if ($this->sampling_complete === 1) {
+        if ($this->sampling_complete) {
             return 'complete';
         }
 
         return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
     }
 
-    public function getLanguagesProgressAttribute()
+    public function getLanguagesProgressAttribute(): string
     {
-        if ($this->languages_complete === 1) {
+        if ($this->languages_complete) {
             return 'complete';
         }
 
@@ -237,9 +244,9 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
     }
 
-    public function getPbaProgressAttribute()
+    public function getPbaProgressAttribute(): string
     {
-        if ($this->pba_complete === 1) {
+        if ($this->pba_complete) {
             return 'complete';
         }
 

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Rector\Transform\ValueObject\AttributeKeyToClassConstFetch;
 use Staudenmeir\EloquentHasManyDeep\HasManyDeep;
 use Staudenmeir\EloquentHasManyDeep\HasRelationships;
 
@@ -20,7 +19,7 @@ class XlsformModule extends Model
 
     protected $table = 'xlsform_modules';
 
-    protected static function booted()
+    protected static function booted(): void
     {
 
         // when a module is created, create a default Global version for it:

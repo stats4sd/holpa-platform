@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->json('errors')->nullable();
             $table->boolean('processed')->default(0);
 
-            // what data model entries were created when processing this submission? (e.g., if the application has custom data maps that populate tables from processed submissions.
+            // what data model entries were created when processing this submission? e.g., if the application has custom data maps that populate tables from processed submissions.
             $table->json('entries')->nullable();
             $table->timestamp('survey_started_at')->nullable();
             $table->timestamp('survey_ended_at')->nullable();

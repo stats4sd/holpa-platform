@@ -1,17 +1,19 @@
 <?php
 
-// config for Stats4sd/OdkLink
+use App\Models\Team;
+use App\Models\User;
+
 return [
 
     'models' => [
 
         /**
          * Tells the system which Team model in use.
-         * By default it is "Stats4sd\FilamentOdkLink\Models\TeamManagement\Team"
+         * By default, it is "\Stats4sd\FilamentOdkLink\Models\TeamManagement\Team"
          * User can define custom Team model in .env file config item "ODK_TEAM_MODEL"
          */
-        'team_model' => env('ODK_TEAM_MODEL', \Stats4sd\FilamentOdkLink\Models\TeamManagement\Team::class),
-        'user_model' => env('ODK_USER_MODEL', \App\Models\User::class)
+        'team_model' => env('ODK_TEAM_MODEL', Team::class),
+        'user_model' => env('ODK_USER_MODEL', User::class)
 
     ],
 

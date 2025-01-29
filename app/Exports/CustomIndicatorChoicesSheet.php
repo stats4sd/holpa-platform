@@ -2,6 +2,8 @@
 
 namespace App\Exports;
 
+use App\Models\Team;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -12,14 +14,14 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 
 class CustomIndicatorChoicesSheet implements FromCollection, WithHeadings, WithTitle, ShouldAutoSize, WithStyles
 {
-    protected $team;
+    protected Team $team;
 
     public function __construct($team)
     {
         $this->team = $team;
     }
 
-    public function collection()
+    public function collection(): Collection
     {
         return collect([]);
     }
@@ -42,21 +44,13 @@ class CustomIndicatorChoicesSheet implements FromCollection, WithHeadings, WithT
             $headings[] = "label::$locale->odk_label";
         }
 
-        $headings = array_merge($headings, [
+        return array_merge($headings, [
             'filter',
         ]);
-
-        return $headings;
     }
 
-    public function styles(Worksheet $sheet)
+    public function styles(Worksheet $sheet): array
     {
-        $wrap = [
-            'alignment' => [
-                'wrapText' => true
-            ],
-        ];
-
         $h1 = [
             'font' => ['bold' => true, 'color' => ['argb' => 'FFFFFF']],
             'fill' => [

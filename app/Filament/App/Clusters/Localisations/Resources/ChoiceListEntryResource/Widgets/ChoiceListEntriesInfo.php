@@ -19,7 +19,7 @@ class ChoiceListEntriesInfo extends Widget
     public Collection $surveyRows;
     public ChoiceList $choiceList;
 
-    public function mount()
+    public function mount(): void
     {
 
         $this->choiceList = ChoiceList::query()->where('list_name', $this->choiceListName)->first();
