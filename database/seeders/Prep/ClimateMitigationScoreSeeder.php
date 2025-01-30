@@ -4,7 +4,6 @@ namespace Database\Seeders\Prep;
 
 use App\Models\Reference\AgPractice;
 use App\Models\Reference\ClimateMitigationScore;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ClimateMitigationScoreSeeder extends Seeder
@@ -17,147 +16,147 @@ class ClimateMitigationScoreSeeder extends Seeder
 
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Monocultures annual')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Monocultures annual')->first()->id,
             'score' => 2.666666667,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Monocultures perennial')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Monocultures perennial')->first()->id,
             'score' => 3.833333333,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Agroforestry')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Agroforestry')->first()->id,
             'score' => 4.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Vegetation clearance')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Vegetation clearance')->first()->id,
             'score' => 1.666666667,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Green manure')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Green manure')->first()->id,
             'score' => 3.0,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Crop rotation')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Crop rotation')->first()->id,
             'score' => 3.0,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Embedded natural (hedgerows) - fallow')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Embedded natural (hedgerows) - fallow')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Embedded natural (hedgerows) - hedgerows')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Embedded natural (hedgerows) - hedgerows')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Homegarden')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Homegarden')->first()->id,
             'score' => 4.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Intercropping')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Intercropping')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Vegetation clearance')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Vegetation clearance')->first()->id,
             'score' => 1.666666667,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Mulching')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Mulching')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Embedded natural (hedgerows) - natural strips/vegetation')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Embedded natural (hedgerows) - natural strips/vegetation')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Embedded natural (hedgerows) - pollinator strips')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Embedded natural (hedgerows) - pollinator strips')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Push-Pull')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Push-Pull')->first()->id,
             'score' => 4.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Other')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Other')->first()->id,
             'score' => 3.630888889,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Biochar')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Biochar')->first()->id,
             'score' => 2.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Drip irrigation')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Drip irrigation')->first()->id,
             'score' => 2.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Microdosing')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Microdosing')->first()->id,
             'score' => 2.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Reduced tillage')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Reduced tillage')->first()->id,
             'score' => 3.66,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Rice_Biochar')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Rice_Biochar')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Rice_Green manure')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Rice_Green manure')->first()->id,
             'score' => 4.0,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Rice_Microdosing')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Rice_Microdosing')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Rice-fish integration')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Rice-fish integration')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Alternate wetting and drying')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Alternate wetting and drying')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Improved feed quality')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Improved feed quality')->first()->id,
             'score' => 4.0,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Planting N-fixing legumes')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Planting N-fixing legumes')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Rotational grazing')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Rotational grazing')->first()->id,
             'score' => 3.33,
         ]);
         ClimateMitigationScore::create([
             'region_id' => '202',
-            'ag_practice_id' => AgPractice::firstWhere('name', 'Improved feed quality')->id,
+            'ag_practice_id' => AgPractice::where('name', 'Improved feed quality')->first()->id,
             'score' => 3.0,
         ]);
 

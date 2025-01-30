@@ -1,10 +1,10 @@
 <x-filament-panels::page class="px-10 h-full">
 
     <livewire:page-header-with-instructions
-            instructions1='At this stage, the ODK forms are ready for a full pilot test.'
-            instructions2="The information below will help you set up the enumerator devices to access your locally-adapted ODK forms."
-            instructions3="You may wish to share the video on this page with the enumerator team before the training if they are not familiar with ODK Collect."
-            videoUrl='https://www.youtube.com/embed/VIDEO_ID'
+        instructions1='At this stage, the ODK forms are ready for a full pilot test.'
+        instructions2="The information below will help you set up the enumerator devices to access your locally-adapted ODK forms."
+        instructions3="You may wish to share the video on this page with the enumerator team before the training if they are not familiar with ODK Collect."
+        videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 
     <div class="container mx-auto xl:px-12">
@@ -13,7 +13,7 @@
             <div class="mb-10">
                 <div class="flex flex-row">
                     <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
-                        <div class="mx-auto">{{ QrCode::size(150)->generate(\App\Services\HelperService::getSelectedTeam()->odk_qr_code) }}</div>
+                        <div class="mx-auto">{{ QrCode::size(150)->generate(\Stats4sd\FilamentOdkLink\Services\HelperService::getCurrentOwner()->odk_qr_code) }}</div>
                         <h5 class="">SCAN QR Code in ODK Collect</h5>
                     </div>
 

@@ -3,7 +3,6 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\Reference\GniEntry;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class GniSeeder extends Seeder

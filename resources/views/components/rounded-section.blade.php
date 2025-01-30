@@ -1,4 +1,4 @@
-<div class=" actionblock   pl-0 ">
+<div class="actionblock pl-0">
     <div class="flex">
         <div class="bg-green " style="border-top-right-radius: 2.2rem; border-bottom-right-radius: 2.2rem; padding-left: 1rem; padding-right: 1rem; height: 7rem; place-content: center; margin-right: 4rem">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.0" stroke="white" class="" style="height: 2.5rem">

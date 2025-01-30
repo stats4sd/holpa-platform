@@ -3,7 +3,6 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\CodeBookEntry;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CodeBookEntrySeeder extends Seeder

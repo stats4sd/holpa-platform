@@ -9,8 +9,9 @@ use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use App\Models\Xlsforms\Xlsform;
 
 class XlsformResource extends Resource
 {
@@ -19,8 +20,7 @@ class XlsformResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
-    // do not show Xlsform resource in side bar
-    protected static bool $shouldRegisterNavigation = false;
+    protected static ?string $navigationGroup = 'Settings';
 
     public static function infolist(Infolist $infolist): Infolist
     {
@@ -44,7 +44,34 @@ class XlsformResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
+                    ->grow(false),
+                TextColumn::make('status')
+                    ->color(fn($state) => match ($state) {
+                        'UPDATES AVAILABLE' => 'danger',
+                        'LIVE' => 'success',
+                        'DRAFT' => 'info',
+                        default => 'light',
+                    })
+                    ->iconColor(fn($state) => match ($state) {
+                        'UPDATES AVAILABLE' => 'danger',
+                        'LIVE' => 'success',
+                        'DRAFT' => 'info',
+                        default => 'light',
+                    })
+                    ->icon(fn($state) => match ($state) {
+                        'UPDATES AVAILABLE' => 'heroicon-o-exclamation-circle',
+                        'LIVE' => 'heroicon-o-check',
+                        'DRAFT' => 'heroicon-o-pencil',
+                        default => 'heroicon-o-information-circle',
+                    })
+                    ->label('Status'),
+
+                TextColumn::make('live_submissions_count')
+                    ->label('No. of Submissions'),
+                TextColumn::make('submissions_count')
+                    ->label('Submissions in database')
+                    ->counts('submissions'),
             ])
             ->filters([
                 //

@@ -11,6 +11,12 @@ class Dashboard extends Page
     protected static string $view = 'filament.admin.pages.dashboard';
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
+    protected static ?int $navigationSort = 0;
+
+    public static function getNavigationLabel(): string
+    {
+        return 'Admin Panel Dashboard';
+    }
 
     public static function canAccess(): bool
     {

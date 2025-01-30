@@ -4,9 +4,7 @@ namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResou
 
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Filament\App\Pages\PlaceAdaptations;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Services\HelperService;
+use App\Filament\App\Pages\SurveyDashboard;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Form;
@@ -17,6 +15,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class ListChoiceListEntries extends ListRecords
 {
@@ -39,14 +40,14 @@ class ListChoiceListEntries extends ListRecords
 
             $this->choiceListName = $this->choiceList->list_name;
         } else {
-            $this->choiceList = ChoiceList::firstWhere('list_name', $this->choiceListName);
+            $this->choiceList = ChoiceList::where('list_name', $this->choiceListName)->first();
         }
     }
 
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             PlaceAdaptations::getUrl() => 'Place Adaptations',
             static::getUrl() => static::getTitle(),
         ];
@@ -65,9 +66,9 @@ class ListChoiceListEntries extends ListRecords
                 ->form(fn(Form $form) => $form->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
                 DeleteAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
                 \Filament\Tables\Actions\Action::make('Toggle Removed')
-                    ->label(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'Restore to Context' : 'Remove from Context')
+                    ->label(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
                     ->visible(fn(ChoiceListEntry $record) => $record->is_global_entry)
-                    ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getSelectedTeam())),
+                    ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getCurrentOwner())),
             ]);
     }
 
@@ -87,13 +88,13 @@ class ListChoiceListEntries extends ListRecords
                     ->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
 
             Action::make('Mark as Complete')
-                ->action(fn() => HelperService::getSelectedTeam()?->markLookupListAsComplete($this->choiceList))
-                ->visible(fn() => !HelperService::getSelectedTeam()?->hasCompletedLookupList($this->choiceList))
+                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))
+                ->visible(fn() => !HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
                 ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
 
             Action::make('Mark as Incomplete')
-                ->action(fn() => HelperService::getSelectedTeam()?->markLookupListAsIncomplete($this->choiceList))
-                ->visible(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($this->choiceList))
+                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsIncomplete($this->choiceList))
+                ->visible(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
                 ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
 
         ];

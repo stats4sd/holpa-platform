@@ -3,9 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\ProgramResource\Pages;
-use App\Providers\Filament\ProgramPanelProvider;
-use Filament\Facades\Filament;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Stats4sd\FilamentTeamManagement\Models\Program;
 

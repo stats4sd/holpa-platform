@@ -20,7 +20,7 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
     // The $data array is the data that is passed from the ImportFarmsAction form
     public function __construct(public array $data) {}
 
-    public function collection(Collection $rows)
+    public function collection(Collection $rows): array
     {
         $importedFarms = [];
 

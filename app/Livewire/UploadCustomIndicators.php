@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Team;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use Exception;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -18,6 +17,8 @@ use Filament\Tables\Table;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class UploadCustomIndicators extends Component implements HasForms, HasTable
 {
@@ -27,12 +28,12 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
     public Team $team;
     public ?array $custom_indicators_hh = null;
     public ?array $custom_indicators_fw = null;
-    public $uploadedFileHH = null;
-    public $uploadedFileFW = null;
+    public ?Media $uploadedFileHH = null;
+    public ?Media $uploadedFileFW = null;
 
-    public function mount()
+    public function mount(): void
     {
-        $this->team = Team::find(auth()->user()->latestTeam->id);
+        $this->team = HelperService::getCurrentOwner();
         $this->form->fill();
 
         $this->uploadedFileHH = $this->team->xlsform_hh_module_version
@@ -50,7 +51,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         if ($this->team->xlsformHhModuleVersion) {
             $moduleVersionIds[] = $this->team->xlsformHhModuleVersion->id;
         }
-        
+
         if ($this->team->xlsformFwModuleVersion) {
             $moduleVersionIds[] = $this->team->xlsformFwModuleVersion->id;
         }
@@ -102,6 +103,8 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
                                 ->preserveFilenames(),
                         ];
                     }
+
+                    return [];
                 })
                 ->action(function (array $data, Media $record) {
                     // Replace file
@@ -142,7 +145,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
             ])->columns(1);
     }
 
-    public function uploadFiles()
+    public function uploadFiles(): void
     {
         // Ensure at least one file is uploaded
         if ((empty($this->custom_indicators_hh) || !is_array($this->custom_indicators_hh)) &&
@@ -176,7 +179,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         }
     }
 
-    private function processFileUpload(TemporaryUploadedFile $file, string $collection)
+    private function processFileUpload(TemporaryUploadedFile $file, string $collection): void
     {
         try {
             // Get the original filename
@@ -209,7 +212,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
         }
     }
 
-    public function render()
+    public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
         return view('livewire.upload-custom-indicators');
     }

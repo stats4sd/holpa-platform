@@ -5,7 +5,6 @@ namespace App\Filament\App\Pages;
 use App\Filament\App\Resources\XlsformResource;
 use App\Models\Team;
 use App\Models\Xlsforms\Xlsform;
-use App\Services\HelperService;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
@@ -20,6 +19,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\HtmlString;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class TeamOdkView extends Page implements HasTable, HasInfolists
@@ -41,12 +41,12 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
 
     public function getRecord(): Team
     {
-        return HelperService::getSelectedTeam();
+        return HelperService::getCurrentOwner();
     }
 
     public function infolist(Infolist $infolist): Infolist
     {
-        $team = HelperService::getSelectedTeam()->load('odkProject.appUsers');
+        $team = HelperService::getCurrentOwner()->load('odkProject.appUsers');
 
         return $infolist
             ->state($team->toArray())
@@ -61,7 +61,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): MorphMany => HelperService::getSelectedTeam()->xlsforms())
+            ->relationship(fn(): MorphMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([
@@ -180,7 +180,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
                 //                    ->action(function (Xlsform $record) {
                 //                        $odkLinkService = app()->make(OdkLinkService::class);
                 //
-                //                        // call API to export data as excel file
+                //                        // call API to export data as Excel file
                 //                        // P.S. use return to trigger file download in browser
                 //                        return $odkLinkService->exportAsExcelFile($record);
                 //                    }),

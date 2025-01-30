@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class TestTemplatesSeeder extends Seeder
@@ -10,7 +11,7 @@ class TestTemplatesSeeder extends Seeder
     {
 
         // set foreign key constraints to 0
-        \DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
         foreach (glob(database_path('seeders/TestTemplates/*.php')) as $file) {
             $class = 'Database\\Seeders\\TestTemplates\\' . pathinfo($file, PATHINFO_FILENAME);
@@ -18,6 +19,6 @@ class TestTemplatesSeeder extends Seeder
         }
 
         // reset foreign key constraints
-        \DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
 }

@@ -2,12 +2,13 @@
 
 namespace App\Exports;
 
+use App\Models\Team;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class CustomIndicatorExport implements WithMultipleSheets
 {
-    protected $team;
-    protected $surveyType;
+    protected Team $team;
+    protected string $surveyType;
 
     public function __construct($team, $surveyType)
     {

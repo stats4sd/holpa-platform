@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('choice_list_team', function (Blueprint $table) {
+        Schema::create('language_owners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('choice_list_id')->constrained('choice_lists', 'id')->cascadeOnDelete();
-            $table->boolean('is_complete')->default(false);
+            $table->foreignId('language_id')->constrained('languages')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->morphs('owner');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('team_lookup_tables');
+        Schema::dropIfExists('language_owners');
     }
 };

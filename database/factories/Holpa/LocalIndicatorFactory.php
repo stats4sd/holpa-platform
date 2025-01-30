@@ -3,10 +3,11 @@
 namespace Database\Factories\Holpa;
 
 use App\Models\Holpa\Domain;
+use App\Models\Holpa\GlobalIndicator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Holpa\GlobalIndicator>
+ * @extends Factory<GlobalIndicator>
  */
 class LocalIndicatorFactory extends Factory
 {

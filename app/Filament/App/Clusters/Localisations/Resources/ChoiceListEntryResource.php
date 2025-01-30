@@ -5,13 +5,6 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\Team;
-use App\Models\XlsformLanguages\LanguageStringType;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\XlsformLanguages\XlsformModuleVersionLocale;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Models\Xlsforms\LanguageString;
-use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
@@ -24,6 +17,12 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Validation\Rules\Unique;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class ChoiceListEntryResource extends Resource
 {
@@ -44,7 +43,7 @@ class ChoiceListEntryResource extends Resource
             // only global and team-owned items
             ->where(fn(Builder $query) => $query
                 ->whereHasMorph('owner', [Team::class], fn(Builder $query) => $query
-                    ->where('teams.id', HelperService::getSelectedTeam()?->id
+                    ->where('teams.id', HelperService::getCurrentOwner()?->id
                     ))
                 ->orWhere('owner_id', null)
             )
@@ -76,8 +75,8 @@ class ChoiceListEntryResource extends Resource
         return $lists
             ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
                 ->group('Choice Lists')
-                ->icon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
-                ->activeIcon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+                ->icon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+                ->activeIcon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
                 ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.*')
                     && request()->get('choiceListName') === $choiceList->list_name
                 )
@@ -88,6 +87,7 @@ class ChoiceListEntryResource extends Resource
             )->toArray();
     }
 
+    /** @noinspection PhpRedundantOptionalArgumentInspection */
     public static function getFormSchema(ChoiceList $choiceList): array
     {
         if(isset($choiceList->properties['extra_properties'])) {
@@ -103,11 +103,11 @@ class ChoiceListEntryResource extends Resource
 
         return [
             Hidden::make('owner_id')
-                ->default(fn() => HelperService::getSelectedTeam()?->id),
+                ->default(fn() => HelperService::getCurrentOwner()?->id),
             Hidden::make('owner_type')
                 ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
-                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::firstWhere('list_name', $livewire->choiceListName)->id),
+                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::where('list_name', $livewire->choiceListName)->first()->id),
             TextInput::make('name')->required()
             ->unique(ignoreRecord: true, modifyRuleUsing: function(Unique $rule, Get $get) {
                 return $rule
@@ -118,15 +118,14 @@ class ChoiceListEntryResource extends Resource
             Repeater::make('languageStrings')
                 ->label('Add Labels for the following languages:')
                 ->relationship('languageStrings')
-                ->minItems(fn() => HelperService::getSelectedTeam()?->locales->count())
-                ->maxItems(fn() => HelperService::getSelectedTeam()?->locales->count())
+                ->minItems(fn() => HelperService::getCurrentOwner()?->locales->count())
+                ->maxItems(fn() => HelperService::getCurrentOwner()?->locales->count())
                 ->formatStateUsing(function (?ChoiceListEntry $record, $state, ListChoiceListEntries $livewire) {
                     if ($record) {
                         return $state;
                     }
 
-                    $locales = HelperService::getSelectedTeam()?->locales;
-                    $choiceList = ChoiceList::where('list_name', $livewire->choiceListName)->firstOrFail();
+                    $locales = HelperService::getCurrentOwner()?->locales;
 
 
                     return $locales->map(fn(Locale $locale) => [
@@ -157,7 +156,7 @@ class ChoiceListEntryResource extends Resource
     public static function table(Table $table): Table
     {
         // languages??
-        $locales = HelperService::getSelectedTeam()?->locales;
+        $locales = HelperService::getCurrentOwner()?->locales;
 
         $labelColumns = $locales->map(function (Locale $locale) {
             return TextColumn::make('label_' . $locale->language->id)
@@ -184,7 +183,7 @@ class ChoiceListEntryResource extends Resource
                     ->label('Localised Entry')
                     ->boolean(),
             ])
-            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'opacity-50' : '');
+            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
     }
 
 

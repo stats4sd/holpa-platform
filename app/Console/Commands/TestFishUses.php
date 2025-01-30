@@ -27,7 +27,7 @@ class TestFishUses extends Command
     /**
      * Execute the console command.
      */
-    public function handle()
+    public function handle(): void
     {
         $this->info('start');
 
@@ -40,7 +40,7 @@ class TestFishUses extends Command
 
         // existence check for nested repeat group data in submission content
         if (isset($submission->content['survey']['income']['fish_production']['fish_repeat'])) {
-            $class = \App\Models\SurveyData\FishUse::class;
+            $class = FishUse::class;
             $model = new $class;
             $columnNames = Schema::getColumnListing($model->getTable());
 
@@ -61,10 +61,8 @@ class TestFishUses extends Command
 
                         $fishUse = FishUse::create($result);
                     }
-                } else {
                 }
             }
-        } else {
         }
 
         $this->info('end');

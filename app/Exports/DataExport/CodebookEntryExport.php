@@ -3,9 +3,8 @@
 namespace App\Exports\DataExport;
 
 use App\Models\CodeBookEntry;
-use App\Models\XlsformTemplates\ChoiceListEntry;
+use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromQuery;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithTitle;
@@ -17,7 +16,7 @@ class CodebookEntryExport implements FromQuery, WithHeadings, WithMapping, WithT
     {
     }
 
-    public function query()
+    public function query(): Builder
     {
         return CodeBookEntry::query();
     }

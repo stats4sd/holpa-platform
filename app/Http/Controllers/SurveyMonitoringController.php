@@ -5,19 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\SampleFrame\Farm;
 use App\Models\Team;
 use Carbon\Carbon;
+use Illuminate\Contracts\Container\BindingResolutionException;
+use Illuminate\Contracts\Routing\ResponseFactory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 use Spatie\MediaLibrary\Support\MediaStream;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
+//TODO - generalise this and bring it into the package. Keep a custom version here for HOLPA-specific overrides.
 class SurveyMonitoringController extends Controller
 {
     /**
      * @param Team $team - the team to get the submission summary for
      * @param string $isTest - whether to get the submission summary for the test form or the live form (test/live) - NOTE: In this setup, it is assumed there are *only* 2 forms per team - one that is marked as test and one that is marked as live.
      * @return array - containing the count of submissions and the date of the latest submission
+     * @throws ConnectionException
+     * @throws RequestException
      */
-    public function getSubmissionSummary(Team $team, string $isTest)
+    public function getSubmissionSummary(Team $team, string $isTest): array
     {
         [$xlsform, $odkLinkService] = $this->getFormAndLinkService($team, $isTest === 'test');
 
@@ -111,7 +120,11 @@ class SurveyMonitoringController extends Controller
      * @param string $isTest - retrieve the test or live form?
      * @return \Illuminate\Http\Response (zip file containing the csv data)
      */
-    public function downloadData(Team $team, string $isTest)
+    /**
+     * @throws RequestException
+     * @throws ConnectionException
+     */
+    public function downloadData(Team $team, string $isTest): Application|Response|ResponseFactory
     {
         [$xlsform, $odkLinkService] = $this->getFormAndLinkService($team, $isTest === 'test');
         $token = $odkLinkService->authenticate();
@@ -133,6 +146,7 @@ class SurveyMonitoringController extends Controller
      * @param Team $team - which team?
      * @param $isTest - retrieve the test or live form?L
      * @return array
+     * @throws BindingResolutionException
      */
     public function getFormAndLinkService(Team $team, $isTest): array
     {
@@ -146,8 +160,9 @@ class SurveyMonitoringController extends Controller
      * @param Team $team - which team?
      * @param string $isTest - retrieve the test or live form?
      * @return MediaStream
+     * @throws BindingResolutionException
      */
-    public function downloadAttachedMedia(Team $team, string $isTest)
+    public function downloadAttachedMedia(Team $team, string $isTest): MediaStream
     {
         [$xlsform, $odkLinkService] = $this->getFormAndLinkService($team, $isTest === 'test');
 

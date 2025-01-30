@@ -3,7 +3,6 @@
 namespace App\Filament\App\Pages;
 
 use App\Filament\Actions\ExportDataAction;
-use App\Models\Team;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -11,6 +10,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class DataAnalysis extends Page implements HasForms, HasActions
 {
@@ -28,7 +28,7 @@ class DataAnalysis extends Page implements HasForms, HasActions
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -51,7 +51,7 @@ class DataAnalysis extends Page implements HasForms, HasActions
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getCurrentOwner();
                 $team->data_analysis_progress = 'complete';
                 $team->save();
 
@@ -65,7 +65,7 @@ class DataAnalysis extends Page implements HasForms, HasActions
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona block md:inline-block mb-6 md:mb-0 max-w-sm mx-auto'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getCurrentOwner();
                 $team->data_analysis_progress = 'not_started';
                 $team->save();
 

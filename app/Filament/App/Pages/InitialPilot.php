@@ -5,7 +5,6 @@ namespace App\Filament\App\Pages;
 use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
 use App\Models\Xlsforms\Xlsform;
-use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -21,6 +20,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
@@ -39,7 +39,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
         public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             PlaceAdaptations::getUrl() => 'Place Adaptations',
             static::getUrl() => static::getTitle(),
         ];
@@ -57,7 +57,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 
     public function getRecord(): Team
     {
-        return HelperService::getSelectedTeam();
+        return HelperService::getCurrentOwner();
     }
 
     public function viewSubmissionsAction(): Action
@@ -72,7 +72,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): MorphMany => HelperService::getSelectedTeam()->xlsforms())
+            ->relationship(fn(): MorphMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([

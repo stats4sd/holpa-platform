@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnWidths;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
+use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class DataDictionaryDataExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize, WithStyles, WithColumnWidths
@@ -71,7 +71,10 @@ class DataDictionaryDataExport implements FromQuery, WithMapping, WithHeadings, 
         ];
     }
 
-    public function styles(Worksheet $sheet)
+    /**
+     * @throws Exception
+     */
+    public function styles(Worksheet $sheet): void
     {
         $headingStyle = ['font' => ['bold' => true,],];
 

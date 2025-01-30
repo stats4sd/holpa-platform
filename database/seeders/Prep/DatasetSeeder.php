@@ -16,6 +16,7 @@ use App\Models\SurveyData\LivestockUse;
 use App\Models\SurveyData\PermanentWorker;
 use App\Models\SurveyData\Product;
 use App\Models\SurveyData\SeasonalWorkerSeason;
+use DB;
 use Illuminate\Database\Seeder;
 
 class DatasetSeeder extends Seeder
@@ -26,11 +27,11 @@ class DatasetSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('datasets')->delete();
+        DB::table('datasets')->delete();
 
         // datasets mentioned in Data Structure excel file
         $farmSurveyDataset = Dataset::create(['name' => 'Farm Survey Data', 'parent_id' => NULL, 'primary_key' => 'id', 'entity_model' => FarmSurveyData::class]);
@@ -47,7 +48,7 @@ class DatasetSeeder extends Seeder
         Dataset::create(['name' => 'Products', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => Product::class]);
         Dataset::create(['name' => 'Seasonal Workers in a Season', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id', 'entity_model' => SeasonalWorkerSeason::class]);
 
-        // datasets not mentioned in Data Structure excel file
+        // datasets not mentioned in Data Structure Excel file
         Dataset::create(['name' => 'Growing Seasons (Irrigation)', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id']);
         Dataset::create(['name' => 'Sites', 'parent_id' => $farmSurveyDataset->id, 'primary_key' => 'id']);
     }

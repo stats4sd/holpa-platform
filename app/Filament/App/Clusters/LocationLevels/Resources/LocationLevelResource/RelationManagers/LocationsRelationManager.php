@@ -2,6 +2,7 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers;
 
+use Exception;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -48,6 +49,9 @@ class LocationsRelationManager extends RelationManager
             ->columns(1);
     }
 
+    /**
+     * @throws Exception
+     */
     public function table(Table $table): Table
     {
         $columns = [];

@@ -2,10 +2,10 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Models\Team;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class Pilot extends Page
 {
@@ -20,7 +20,7 @@ class Pilot extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -36,7 +36,7 @@ class Pilot extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getCurrentOwner();
                 $team->pilot_progress = 'complete';
                 $team->save();
 
@@ -50,7 +50,7 @@ class Pilot extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = Team::find(auth()->user()->latestTeam->id);
+                $team = HelperService::getCurrentOwner();
                 $team->pilot_progress = 'not_started';
                 $team->save();
 

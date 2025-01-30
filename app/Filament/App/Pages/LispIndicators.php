@@ -4,7 +4,6 @@ namespace App\Filament\App\Pages;
 
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
-use App\Filament\App\Pages\SurveyDashboard;
 
 class LispIndicators extends Page
 {
@@ -17,11 +16,11 @@ class LispIndicators extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    public $activeTab = null;
+    public ?string $activeTab = null;
 
     protected $listeners = ['switch-to-match-tab' => 'setActiveTab'];
 
-    public function setActiveTab($tab)
+    public function setActiveTab($tab): void
     {
         $this->activeTab = $tab;
     }
@@ -34,7 +33,7 @@ class LispIndicators extends Page
             static::getUrl() => 'Customise indicators',
         ];
     }
-    
+
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;

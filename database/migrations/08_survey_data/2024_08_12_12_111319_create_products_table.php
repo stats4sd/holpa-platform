@@ -21,7 +21,7 @@ return new class extends Migration
             $table->text('product_name')->nullable();
             $table->text('hh_consumption')->nullable();
 
-            // In Data Structure excel file, variable names are hh_cooking, hh_building and hh_heating
+            // In Data Structure Excel file, variable names are hh_cooking, hh_building and hh_heating
             // In submission content, variable names are cooking, building and heating
             // Workaround: use variable names in submission content to populate data first
             $table->text('cooking')->nullable();

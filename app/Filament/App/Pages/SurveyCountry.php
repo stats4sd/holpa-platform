@@ -2,19 +2,16 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Models\Reference\Country;
 use App\Models\Team;
-use App\Services\HelperService;
-use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
-use Illuminate\Database\Eloquent\Builder;
+use Stats4sd\FilamentOdkLink\Models\Country;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class SurveyCountry extends Page implements HasForms
 {
@@ -31,7 +28,7 @@ class SurveyCountry extends Page implements HasForms
 
     public function mount(): void
     {
-        $this->team = HelperService::getSelectedTeam();
+        $this->team = HelperService::getCurrentOwner();
         $this->form->fill($this->team->toArray());
     }
 
@@ -93,7 +90,7 @@ class SurveyCountry extends Page implements HasForms
             ]);
     }
 
-    public function saveData()
+    public function saveData(): void
     {
         $this->team->update($this->form->getState());
     }

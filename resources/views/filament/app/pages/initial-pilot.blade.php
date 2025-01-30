@@ -1,10 +1,10 @@
 <x-filament-panels::page class="px-10 h-full">
 
     <livewire:page-header-with-instructions
-            instructions1='In this step, you have the option to review the ODK Survey with the current adaptations. You may return to this page at any time to review the latest version of your surveys.'
-            instructions2="It is recommended to review both survey forms with a local researcher or practitioner. If this is the first time using ODK, you can review the instructional video, which will show you how to access the surveys through the ODK Collect mobile app, or through the Web browser."
-            instructions3="The forms you access through this page are considered <b>Test</b> forms. You can use them to test your adaptations, and any submissions you make will be saved as <b>test</b> submissions, and not included in the final dataset."
-            videoUrl='https://www.youtube.com/embed/VIDEO_ID'
+        instructions1='In this step, you have the option to review the ODK Survey with the current adaptations. You may return to this page at any time to review the latest version of your surveys.'
+        instructions2="It is recommended to review both survey forms with a local researcher or practitioner. If this is the first time using ODK, you can review the instructional video, which will show you how to access the surveys through the ODK Collect mobile app, or through the Web browser."
+        instructions3="The forms you access through this page are considered <b>Test</b> forms. You can use them to test your adaptations, and any submissions you make will be saved as <b>test</b> submissions, and not included in the final dataset."
+        videoUrl='https://www.youtube.com/embed/VIDEO_ID'
     />
 
     <div class="container mx-auto xl:px-12">
@@ -13,7 +13,7 @@
             <div class="mb-10">
                 <div class="flex flex-row">
                     <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
-                        <div class="mx-auto">{{ QrCode::size(150)->generate(\App\Services\HelperService::getSelectedTeam()->odk_qr_code) }}</div>
+                        <div class="mx-auto">{{ QrCode::size(150)->generate(\Stats4sd\FilamentOdkLink\Services\HelperService::getCurrentOwner()->odk_qr_code) }}</div>
                         <h5 class="">SCAN QR Code in ODK Collect</h5>
                     </div>
 

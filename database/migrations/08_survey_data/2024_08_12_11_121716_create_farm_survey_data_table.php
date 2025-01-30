@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class() extends Migration {
 
     // Note: below error occurred if section below column "internet" is uncommented
-    // PDOException::("SQLSTATE[42000]: Syntax error or access violation: 1118 Row size too large (> 8126). Changing some columns to TEXT or BLOB may help. In current row format, BLOB prefix of 0 bytes is stored inline.")
+    // PDOException::("SQLSTATE[42000]: Syntax error or access violation: 1118 Row size too large (> 8126). Changing some columns to TEXT or BLOB may help. In current row format, BLOB prefix of 0 bytes is stored inline."
 
     // Google searched below stackoverflow thread:
     // MySQL: Error Code: 1118 Row size too large (> 8126). Changing some columns to TEXT or BLOB

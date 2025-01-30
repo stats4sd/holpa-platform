@@ -35,7 +35,7 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
         $this->data = $data;
     }
 
-    public function collection(Collection $rows)
+    public function collection(Collection $rows): array
     {
         $locationLevel = $this->data['level'];
 

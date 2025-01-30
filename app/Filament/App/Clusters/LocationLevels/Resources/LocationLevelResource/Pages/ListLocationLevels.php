@@ -2,10 +2,11 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
+use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Pages\SurveyDashboard;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
-use Filament\Support\Enums\MaxWidth;
 
 class ListLocationLevels extends ListRecords
 {
@@ -24,8 +25,8 @@ class ListLocationLevels extends ListRecords
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
-            \App\Filament\App\Pages\Sampling::getUrl() => 'Survey Locations',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
+            Sampling::getUrl() => 'Survey Locations',
             static::getUrl() => static::getTitle(),
         ];
     }

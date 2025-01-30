@@ -2,11 +2,12 @@
 
 namespace Database\Factories\Holpa;
 
+use App\Models\Holpa\GlobalIndicator;
 use App\Models\Holpa\Theme;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Holpa\GlobalIndicator>
+ * @extends Factory<GlobalIndicator>
  */
 class GlobalIndicatorFactory extends Factory
 {

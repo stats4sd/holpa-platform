@@ -34,12 +34,12 @@ class Location extends Model
         return $this->belongsTo(self::class, 'parent_id');
     }
 
-    public function children()
+    public function children(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(self::class, 'parent_id');
     }
 
-    public function farms()
+    public function farms(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Farm::class);
     }

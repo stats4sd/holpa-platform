@@ -3,27 +3,27 @@
 namespace App\Models;
 
 use App\Models\Holpa\LocalIndicator;
-use App\Models\Reference\Country;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\XlsformLanguages\Language;
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceList;
-use App\Models\Xlsforms\ChoiceListEntry;
 use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformModule;
-use App\Models\Xlsforms\XlsformModuleVersion;
 use App\Models\Xlsforms\XlsformTemplate;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Stats4sd\FilamentOdkLink\Models\Country;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
@@ -35,6 +35,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     protected $table = 'teams';
 
     protected $appends = ['odk_qr_code'];
+
+    protected $casts = [
+        'lisp_complete' => 'boolean',
+        'sampling_complete' => 'boolean',
+        'languages_complete' => 'boolean',
+        'pba_complete' => 'boolean',
+    ];
 
     // TODO: I think this overrides the booted method on HasXlsForms - ideally we wouldn't need to copy the package stuff here...
     protected static function booted(): void
@@ -79,7 +86,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
                 XlsformModuleVersion::create([
                     'xlsform_module_id' => $xlsformModule->id,
-                    'name' => 'custom'
+                    'name' => 'custom',
                 ]);
             }
 
@@ -137,10 +144,10 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->morphMany(Xlsform::class, 'owner');
     }
 
-    public function choiceLists(): BelongsToMany
+    /** @return MorphMany<ChoiceListEntry, $this> */
+    public function choiceListEntries(): MorphMany
     {
-        return $this->belongsToMany(ChoiceList::class, 'choice_list_team', 'team_id', 'choice_list_id')
-            ->withPivot('is_complete');
+        return $this->morphMany(ChoiceListEntry::class, 'owner');
     }
 
     public function markLookupListAsComplete(ChoiceList $choiceList): ?bool
@@ -162,11 +169,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
     }
 
-
-    public function choiceListEntries(): MorphMany
-    {
-        return $this->morphMany(ChoiceListEntry::class, 'owner');
-    }
 
     // Customisations
 
@@ -201,27 +203,28 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return null;
     }
 
-    public function getLispProgressAttribute()
+    public function getLispProgressAttribute(): string
     {
-        if ($this->lisp_complete === 1) {
+        if ($this->lisp_complete) {
             return 'complete';
+
         }
 
         return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
     }
 
-    public function getSamplingProgressAttribute()
+    public function getSamplingProgressAttribute(): string
     {
-        if ($this->sampling_complete === 1) {
+        if ($this->sampling_complete) {
             return 'complete';
         }
 
         return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
     }
 
-    public function getLanguagesProgressAttribute()
+    public function getLanguagesProgressAttribute(): string
     {
-        if ($this->languages_complete === 1) {
+        if ($this->languages_complete) {
             return 'complete';
         }
 
@@ -237,9 +240,9 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
     }
 
-    public function getPbaProgressAttribute()
+    public function getPbaProgressAttribute(): string
     {
-        if ($this->pba_complete === 1) {
+        if ($this->pba_complete) {
             return 'complete';
         }
 
@@ -254,4 +257,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return 'not_started';
     }
 
+    // For HOLPA, teams should automatically receive a version of all available XlsformTemplates.
+    public function shouldReceiveAllXlsformTemplates(): Attribute
+    {
+        return new Attribute(
+            get: fn(): bool => true,
+        );
+    }
 }

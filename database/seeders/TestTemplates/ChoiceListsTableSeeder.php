@@ -2,6 +2,7 @@
 
 namespace Database\Seeders\TestTemplates;
 
+use DB;
 use Illuminate\Database\Seeder;
 
 class ChoiceListsTableSeeder extends Seeder
@@ -12,13 +13,13 @@ class ChoiceListsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
 
 
-        \DB::table('choice_lists')->delete();
+        DB::table('choice_lists')->delete();
 
-        \DB::table('choice_lists')->insert(array (
+        DB::table('choice_lists')->insert(array (
             0 =>
             array (
                 'id' => 1,

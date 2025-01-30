@@ -5,6 +5,7 @@ namespace App\Filament\App\Pages;
 use App\Models\Team;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class SurveyDashboard extends Page
 {
@@ -16,11 +17,11 @@ class SurveyDashboard extends Page
 
     protected static ?string $title = '';
 
-    public $team;
+    public Team $team;
 
     public function mount(): void
     {
-        $this->team = Team::find(auth()->user()->latestTeam->id);
+        $this->team = HelperService::getCurrentOwner();
     }
 
     public function getMaxContentWidth(): MaxWidth

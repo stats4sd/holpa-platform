@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Reference\Continent;
-use App\Models\Reference\Country;
-use App\Models\Reference\Region;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Stats4sd\FilamentOdkLink\Models\Continent;
+use Stats4sd\FilamentOdkLink\Models\Country;
+use Stats4sd\FilamentOdkLink\Models\Region;
 
 class Un49LocationSeeder extends Seeder
 {

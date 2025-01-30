@@ -2,16 +2,15 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Services\HelperService;
-use App\Models\SampleFrame\Farm;
-use Filament\Resources\Resource;
-use Filament\Navigation\NavigationItem;
-use App\Models\SampleFrame\LocationLevel;
 use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
+use App\Models\SampleFrame\Farm;
+use App\Models\SampleFrame\LocationLevel;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class FarmResource extends Resource
 {
@@ -32,7 +31,7 @@ class FarmResource extends Resource
     public static function table(Table $table): Table
     {
 
-        $farms = Farm::all()->where('owner_id', HelperService::getSelectedTeam()->id);
+        $farms = Farm::all()->where('owner_id', HelperService::getCurrentOwner()->id);
 
         $locationLevelColumns = $farms->map(fn(Farm $farm) => $farm->location->locationLevel)
             ->unique()

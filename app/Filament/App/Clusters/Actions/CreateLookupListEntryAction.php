@@ -2,13 +2,13 @@
 
 namespace App\Filament\App\Clusters\Actions;
 
-use App\Models\XlsformLanguages\Locale;
-use App\Models\Xlsforms\ChoiceListEntry;
-use App\Services\HelperService;
 use Filament\Actions\CreateAction;
 use Filament\Facades\Filament;
 use Filament\Forms\Components\TextInput;
 use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class CreateLookupListEntryAction extends CreateAction
 {
@@ -16,7 +16,7 @@ class CreateLookupListEntryAction extends CreateAction
     {
         parent::setUp();
 
-        $locales = HelperService::getSelectedTeam()?->locales;
+        $locales = HelperService::getCurrentOwner()?->locales;
 
         $labelFields = $locales->map(function (Locale $locale) {
             return TextInput::make('label_' . $locale->language_id)
@@ -33,18 +33,15 @@ class CreateLookupListEntryAction extends CreateAction
             $this->mutateFormDataUsing(
                 function (array $data): array {
 
-                    $locales = HelperService::getSelectedTeam()?->locales;
                     return collect($data)
                         // don't include the 'label' entries - we will create languageStrings after creating the ChoiceListEntry
                         ->filter(fn($value, $key) => !Str::startsWith($key, 'label_'))
-                        ->put('owner_id', Filament::getTenant()->id)
-                        ->put('owner_type', get_class(Filament::getTenant()))
+                        ->put('owner_id', HelperService::getCurrentOwner()->id)
+                        ->put('owner_type', get_class(HelperService::getCurrentOwner()))
                         ->toArray();
                 })
                 ->after(function (ChoiceListEntry $record, array $data) {
-                    $locales = HelperService::getSelectedTeam()?->locales;
-
-                    dd($data);
+                    $locales = HelperService::getCurrentOwner()?->locales;
 
                     $languageStrings = $locales->map(function (Locale $locale) use ($record, $data) {
                         $xlsformTemplateLanguage = $record->xlsformTemplate->xlsformTemplateLanguages()->where('language_id', $locale->language_id)->first();

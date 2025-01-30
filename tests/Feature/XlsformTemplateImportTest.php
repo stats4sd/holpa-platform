@@ -1,10 +1,12 @@
 <?php
 
-use App\Listeners\HandleXlsformTemplateAdded;
+use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Listeners\HandleXlsformTemplateAdded;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 
 test('an xlsform template is correctly imported and updated', function () {
 
-    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
+    $this->xlsformTemplate = XlsformTemplate::forceCreateQuietly([
         'title' => 'Test Template',
     ]);
 
@@ -24,7 +26,7 @@ test('an xlsform template is correctly imported and updated', function () {
 
 
     // check for a specific entry
-    $choiceEntry = \App\Models\Xlsforms\ChoiceListEntry::firstWhere('name', '=', 'juice');
+    $choiceEntry = ChoiceListEntry::where('name', '=', 'juice')->first();
     $this->assertEquals('5', $choiceEntry->properties['filter2']);
 });
 

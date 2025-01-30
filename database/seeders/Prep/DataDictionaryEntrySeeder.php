@@ -3,7 +3,6 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\DataDictionaryEntry;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DataDictionaryEntrySeeder extends Seeder

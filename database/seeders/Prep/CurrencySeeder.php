@@ -3,7 +3,6 @@
 namespace Database\Seeders\Prep;
 
 use App\Models\Reference\Currency;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CurrencySeeder extends Seeder

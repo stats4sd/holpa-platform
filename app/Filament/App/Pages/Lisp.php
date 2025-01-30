@@ -2,10 +2,10 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Models\Team;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class Lisp extends Page
 {
@@ -20,7 +20,7 @@ class Lisp extends Page
     public function getBreadcrumbs(): array
     {
         return [
-            \App\Filament\App\Pages\SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -35,7 +35,7 @@ class Lisp extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getCurrentOwner()->update([
                     'lisp_complete' => 1,
                 ]);
 
@@ -49,7 +49,7 @@ class Lisp extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                Team::find(auth()->user()->latestTeam->id)->update([
+                HelperService::getCurrentOwner()->update([
                     'lisp_complete' => 0,
                 ]);
 
