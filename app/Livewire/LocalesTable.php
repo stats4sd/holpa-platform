@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Xlsforms\XlsformTemplate;
-use App\Services\HelperService;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;
@@ -25,6 +24,7 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class LocalesTable extends Component implements HasForms, HasTable
 {
@@ -39,7 +39,7 @@ class LocalesTable extends Component implements HasForms, HasTable
             ->query(Locale::query()
                 // Exclude records already selected by the team
                 ->whereDoesntHave('teams', function ($query) {
-                    $query->where('teams.id', HelperService::getSelectedTeam()->id);
+                    $query->where('teams.id', HelperService::getCurrentOwner()->id);
                 })
             )
             ->columns([
@@ -73,7 +73,7 @@ class LocalesTable extends Component implements HasForms, HasTable
                     ->button()
                     ->visible(fn($record) => $record->status === 'Ready for use')
                     ->action(function ($record) {
-                        $team = HelperService::getSelectedTeam();
+                        $team = HelperService::getCurrentOwner();
                         $team->locales()->attach($record->id);
 
                         Notification::make()

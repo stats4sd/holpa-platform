@@ -2,10 +2,10 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class SurveyLanguages extends Page
 {
@@ -36,7 +36,7 @@ class SurveyLanguages extends Page
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                HelperService::getSelectedTeam()->update([
+                HelperService::getCurrentOwner()->update([
                     'languages_complete' => 1,
                 ]);
 
@@ -50,7 +50,7 @@ class SurveyLanguages extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                HelperService::getSelectedTeam()->update([
+                HelperService::getCurrentOwner()->update([
                     'languages_complete' => 0,
                 ]);
 

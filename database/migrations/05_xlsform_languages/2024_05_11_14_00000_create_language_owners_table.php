@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locales', function (Blueprint $table) {
+        Schema::create('language_owners', function (Blueprint $table) {
             $table->id();
             $table->foreignId('language_id')->constrained('languages')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->nullableMorphs('creator');
-
-            $table->boolean('is_default')->default(false);
-            $table->text('description')->nullable();
-
+            $table->morphs('owner');
             $table->timestamps();
         });
     }
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locales');
+        Schema::dropIfExists('language_owners');
     }
 };

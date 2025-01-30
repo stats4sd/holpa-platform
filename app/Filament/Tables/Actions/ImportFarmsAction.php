@@ -5,11 +5,8 @@ namespace App\Filament\Tables\Actions;
 use App\Models\Import;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
-use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
-use Faker\Extension\Helper;
-use Filament\Facades\Filament;
 use Filament\Forms\Components\CheckboxList;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
@@ -23,6 +20,7 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
 use RuntimeException;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 // use App\Models\SampleFrame\FarmGroup;
 // use App\Models\SampleFrame\FarmGrouping;
@@ -138,7 +136,7 @@ class ImportFarmsAction extends ExcelImportAction
                         ->columnSpanFull(),
 
                     Hidden::make('owner_id')
-                        ->default(HelperService::getSelectedTeam()->id),
+                        ->default(HelperService::getCurrentOwner()->id),
                     Hidden::make('owner_type')
                         ->default('App\Models\Team'),
 
@@ -166,7 +164,7 @@ class ImportFarmsAction extends ExcelImportAction
 
             // create import record - for review and error tracking by users
             $import = Import::create([
-                'team_id' => HelperService::getSelectedTeam()->id,
+                'team_id' => HelperService::getCurrentOwner()->id,
                 'model_type' => Farm::class,
             ]);
 

@@ -1,34 +1,34 @@
 @php
 
-$locations = \App\Models\SampleFrame\Location::where('owner_id', \App\Services\HelperService::getSelectedTeam()->id)->get();
+    $locations = \App\Models\SampleFrame\Location::where('owner_id', \Stats4sd\FilamentOdkLink\Services\HelperService::getCurrentOwner()->id)->get();
 
-$submissions = $getRecord()->submissions;
-
-
-// comment below code and hardcode temporary for testing
-// TODO: revise to corresponding ODK variable in household form and fieldwork form
+    $submissions = $getRecord()->submissions;
 
 
-$submissionsByLocations = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
-
-$submission->location_id = $submission->content['context']['location']['village_name'];
-
-return $submission;
-})
-->groupBy('location_id');
+    // comment below code and hardcode temporary for testing
+    // TODO: revise to corresponding ODK variable in household form and fieldwork form
 
 
-/*
-$submissionsByEnumerators = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
+    $submissionsByLocations = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
 
-$submission->enumerator_id = $submission->content['survey_start']['inquirer'];
+    $submission->location_id = $submission->content['context']['location']['village_name'];
 
-return $submission;
-})->groupBy('enumerator_id');
-*/
+    return $submission;
+    })
+    ->groupBy('location_id');
 
 
-$submissionsByEnumerators = $submissions;
+    /*
+    $submissionsByEnumerators = $submissions->map(function(\Stats4sd\FilamentOdkLink\Models\OdkLink\Submission $submission) {
+
+    $submission->enumerator_id = $submission->content['survey_start']['inquirer'];
+
+    return $submission;
+    })->groupBy('enumerator_id');
+    */
+
+
+    $submissionsByEnumerators = $submissions;
 
 @endphp
 
@@ -43,10 +43,10 @@ $submissionsByEnumerators = $submissions;
         </x-slot>
 
         @foreach($submissionsByLocations as $key => $locationFromSubmission)
-        <div class="grid grid-cols-3 gap-3">
-            <b class="text-right">{{ $locations->firstWhere('id', $key)?->name ?? $key }}</b>
-            <span class="col-span-2">{{ $locationFromSubmission->count() }}</span>
-        </div>
+            <div class="grid grid-cols-3 gap-3">
+                <b class="text-right">{{ $locations->firstWhere('id', $key)?->name ?? $key }}</b>
+                <span class="col-span-2">{{ $locationFromSubmission->count() }}</span>
+            </div>
         @endforeach
 
     </x-filament::section>

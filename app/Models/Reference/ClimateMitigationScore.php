@@ -4,6 +4,7 @@ namespace App\Models\Reference;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Stats4sd\FilamentOdkLink\Models\Region;
 
 class ClimateMitigationScore extends Model
 {

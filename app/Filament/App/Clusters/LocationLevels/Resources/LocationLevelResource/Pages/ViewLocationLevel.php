@@ -2,15 +2,15 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
-use Illuminate\Support\Str;
+use App\Filament\Tables\Actions\ImportLocationsAction;
 use App\Imports\LocationImport;
-use App\Services\HelperService;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
-use App\Filament\Tables\Actions\ImportLocationsAction;
-use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
+use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class ViewLocationLevel extends ViewRecord
 {
@@ -29,7 +29,7 @@ class ViewLocationLevel extends ViewRecord
             SurveyDashboard::getUrl() => 'Survey Dashboard',
             Sampling::getUrl() => 'Survey locations',
             route('filament.app.location-levels.resources.location-levels.view', [
-                'tenant' => HelperService::getSelectedTeam()->id,
+                'tenant' => HelperService::getCurrentOwner()->id,
                 'record' => $this->record->slug
             ]) => Str::of($this->record->name)->plural(),
         ];

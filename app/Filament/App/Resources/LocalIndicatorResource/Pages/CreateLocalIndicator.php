@@ -3,9 +3,8 @@
 namespace App\Filament\App\Resources\LocalIndicatorResource\Pages;
 
 use App\Filament\App\Resources\LocalIndicatorResource;
-use App\Services\HelperService;
-use Filament\Facades\Filament;
 use Filament\Resources\Pages\CreateRecord;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class CreateLocalIndicator extends CreateRecord
 {
@@ -14,7 +13,7 @@ class CreateLocalIndicator extends CreateRecord
     // add latest team ID to the submitted request form, the newly created model will belong to this team
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $data['team_id'] = HelperService::getSelectedTeam()->id;
+        $data['team_id'] = HelperService::getCurrentOwner()->id;
 
         return $data;
     }

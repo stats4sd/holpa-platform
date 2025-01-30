@@ -2,8 +2,8 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Widgets;
 
-use App\Services\HelperService;
 use Filament\Widgets\Widget;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class FarmListHeaderWidget extends Widget
 {
@@ -14,7 +14,7 @@ class FarmListHeaderWidget extends Widget
     // check if there are locations at the correct admin level for farms to be linked.
     public function hasLocations(): bool
     {
-        return HelperService::getSelectedTeam()
+        return HelperService::getCurrentOwner()
             ->locationLevels()
             ->where('has_farms', true)
             ->whereHas('locations')

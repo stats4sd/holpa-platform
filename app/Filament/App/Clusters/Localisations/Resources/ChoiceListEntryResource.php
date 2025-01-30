@@ -5,7 +5,6 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\Team;
-use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
@@ -23,6 +22,7 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class ChoiceListEntryResource extends Resource
 {
@@ -43,7 +43,7 @@ class ChoiceListEntryResource extends Resource
             // only global and team-owned items
             ->where(fn(Builder $query) => $query
                 ->whereHasMorph('owner', [Team::class], fn(Builder $query) => $query
-                    ->where('teams.id', HelperService::getSelectedTeam()?->id
+                    ->where('teams.id', HelperService::getCurrentOwner()?->id
                     ))
                 ->orWhere('owner_id', null)
             )
@@ -75,8 +75,8 @@ class ChoiceListEntryResource extends Resource
         return $lists
             ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
                 ->group('Choice Lists')
-                ->icon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
-                ->activeIcon(fn() => HelperService::getSelectedTeam()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+                ->icon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+                ->activeIcon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
                 ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.*')
                     && request()->get('choiceListName') === $choiceList->list_name
                 )
@@ -103,7 +103,7 @@ class ChoiceListEntryResource extends Resource
 
         return [
             Hidden::make('owner_id')
-                ->default(fn() => HelperService::getSelectedTeam()?->id),
+                ->default(fn() => HelperService::getCurrentOwner()?->id),
             Hidden::make('owner_type')
                 ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
@@ -118,14 +118,14 @@ class ChoiceListEntryResource extends Resource
             Repeater::make('languageStrings')
                 ->label('Add Labels for the following languages:')
                 ->relationship('languageStrings')
-                ->minItems(fn() => HelperService::getSelectedTeam()?->locales->count())
-                ->maxItems(fn() => HelperService::getSelectedTeam()?->locales->count())
+                ->minItems(fn() => HelperService::getCurrentOwner()?->locales->count())
+                ->maxItems(fn() => HelperService::getCurrentOwner()?->locales->count())
                 ->formatStateUsing(function (?ChoiceListEntry $record, $state, ListChoiceListEntries $livewire) {
                     if ($record) {
                         return $state;
                     }
 
-                    $locales = HelperService::getSelectedTeam()?->locales;
+                    $locales = HelperService::getCurrentOwner()?->locales;
 
 
                     return $locales->map(fn(Locale $locale) => [
@@ -156,7 +156,7 @@ class ChoiceListEntryResource extends Resource
     public static function table(Table $table): Table
     {
         // languages??
-        $locales = HelperService::getSelectedTeam()?->locales;
+        $locales = HelperService::getCurrentOwner()?->locales;
 
         $labelColumns = $locales->map(function (Locale $locale) {
             return TextColumn::make('label_' . $locale->language->id)
@@ -183,7 +183,7 @@ class ChoiceListEntryResource extends Resource
                     ->label('Localised Entry')
                     ->boolean(),
             ])
-            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getSelectedTeam()) ? 'opacity-50' : '');
+            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
     }
 
 

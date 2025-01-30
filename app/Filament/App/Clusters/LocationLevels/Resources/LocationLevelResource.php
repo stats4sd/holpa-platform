@@ -6,7 +6,6 @@ use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
 use App\Models\SampleFrame\LocationLevel;
-use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -20,6 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class LocationLevelResource extends Resource
 {
@@ -74,7 +74,7 @@ class LocationLevelResource extends Resource
                     ->label('Are there farms at this level?')
                     ->helperText('Only say yes if there are farms directly at this location level, not in a lower location level. E.g. "Village" may have farms, but "District" may not.'),
                 Hidden::make('owner_id')
-                    ->default(fn() => HelperService::getSelectedTeam()->id),
+                    ->default(fn() => HelperService::getCurrentOwner()->id),
                 Hidden::make('owner_type')
                     ->default('App\Models\Team'),
             ])->columns(1);

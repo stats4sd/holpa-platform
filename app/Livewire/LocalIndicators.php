@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Holpa\LocalIndicator;
-use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -12,6 +11,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class LocalIndicators extends Component implements HasForms, HasActions
 {
@@ -32,7 +32,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
 
     public function getLocalIndicators(): void
     {
-        $this->indicators = HelperService::getSelectedTeam()->localIndicators;
+        $this->indicators = HelperService::getCurrentOwner()->localIndicators;
     }
 
     public function selectIndicator($indicatorId): void

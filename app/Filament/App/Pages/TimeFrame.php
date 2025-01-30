@@ -3,7 +3,6 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Team;
-use App\Services\HelperService;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -15,6 +14,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class TimeFrame extends Page implements HasTable, HasForms
 {
@@ -29,7 +29,7 @@ class TimeFrame extends Page implements HasTable, HasForms
 
     public function mount(): void
     {
-        $this->team = HelperService::getSelectedTeam();
+        $this->team = HelperService::getCurrentOwner();
         $this->form->fill($this->team->toArray());
     }
 

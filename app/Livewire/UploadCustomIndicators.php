@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Team;
-use App\Services\HelperService;
 use Exception;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -19,6 +18,7 @@ use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class UploadCustomIndicators extends Component implements HasForms, HasTable
 {
@@ -33,7 +33,7 @@ class UploadCustomIndicators extends Component implements HasForms, HasTable
 
     public function mount(): void
     {
-        $this->team = HelperService::getSelectedTeam();
+        $this->team = HelperService::getCurrentOwner();
         $this->form->fill();
 
         $this->uploadedFileHH = $this->team->xlsform_hh_module_version

@@ -5,9 +5,7 @@ namespace App\Livewire;
 use App\Exports\CustomIndicatorExport;
 use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
-use App\Services\HelperService;
 use Carbon\Carbon;
-use Faker\Extension\Helper;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables\Columns\CheckboxColumn;
@@ -20,7 +18,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
-use PHPUnit\TextUI\Help;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class CustomIndicators extends Component implements HasForms, HasTable
@@ -32,7 +30,7 @@ class CustomIndicators extends Component implements HasForms, HasTable
 
     public function mount(): void
     {
-        $this->team = HelperService::getSelectedTeam();
+        $this->team = HelperService::getCurrentOwner();
     }
 
     public function table(Table $table): Table

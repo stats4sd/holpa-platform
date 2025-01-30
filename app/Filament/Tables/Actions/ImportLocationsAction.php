@@ -5,10 +5,8 @@ namespace App\Filament\Tables\Actions;
 use App\Models\Import;
 use App\Models\SampleFrame\Location;
 use App\Models\Team;
-use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
-use Filament\Facades\Filament;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Section;
@@ -19,6 +17,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class ImportLocationsAction extends ExcelImportAction
 {
@@ -126,7 +125,7 @@ class ImportLocationsAction extends ExcelImportAction
             Hidden::make('user_id')
                 ->default(fn() => auth()->id()),
             Hidden::make('owner_id')
-                ->default(HelperService::getSelectedTeam()->id),
+                ->default(HelperService::getCurrentOwner()->id),
             Hidden::make('owner_type')
                 ->default(Team::class),
         ];
@@ -148,12 +147,12 @@ class ImportLocationsAction extends ExcelImportAction
         return function (array $data, $livewire): bool {
 
             if ($data['override'] === 'yes') {
-                HelperService::getSelectedTeam()->locations()->delete();
+                HelperService::getCurrentOwner()->locations()->delete();
             }
 
 
             $import = Import::create([
-                'team_id' => HelperService::getSelectedTeam()->id,
+                'team_id' => HelperService::getCurrentOwner()->id,
                 'model_type' => Location::class,
             ]);
 
