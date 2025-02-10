@@ -18,6 +18,7 @@ use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
+use Stats4sd\FilamentOdkLink\OdkLinkAdmin;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\UserResource;
 
@@ -71,6 +72,8 @@ class AdminPanelProvider extends PanelProvider
                     ->url(url('/app'))
                     ->sort(1),
             ])->darkMode(false)
-            ->plugins([]);
+            ->plugins([
+                OdkLinkAdmin::make(),
+            ]);
     }
 }
