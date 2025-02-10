@@ -21,6 +21,7 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageOwner;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
@@ -59,7 +60,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             // all teams get a default locale of english
             $en = Language::where('iso_alpha2', 'en')->first();
 
-            $owner->languages()->attach($en);
+            $owner->languagesOwned()->create(['language_id' => $en->id]);
 
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
@@ -100,18 +101,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function localIndicators(): HasMany
     {
         return $this->hasMany(LocalIndicator::class);
-    }
-
-    public function languages(): BelongsToMany
-    {
-        return $this->belongsToMany(Language::class, 'language_team', 'team_id', 'language_id')
-            ->withPivot('locale_id');
-    }
-
-    public function locales(): BelongsToMany
-    {
-        return $this->belongsToMany(Locale::class, 'language_team', 'team_id', 'locale_id')
-            ->withPivot('language_id');
     }
 
     public function country(): BelongsTo
