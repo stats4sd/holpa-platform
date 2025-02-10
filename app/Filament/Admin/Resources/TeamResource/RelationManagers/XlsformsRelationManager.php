@@ -34,7 +34,7 @@ class XlsformsRelationManager extends \Stats4sd\FilamentTeamManagement\Filament\
 
                         // create draft if there is no draft yet
                         if (!$record->has_draft) {
-                            $odkLinkService->createDraftForm($record);
+                            $record->deployDraft($odkLinkService);
                         }
 
                         // call API to publish form in ODK central
