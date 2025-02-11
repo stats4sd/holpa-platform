@@ -24,9 +24,10 @@ class DatabaseSeeder extends Seeder
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
             $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
             $this->call($class);
+        }
+
         $this->call(OdkProjectsTableSeeder::class);
         $this->call(MediaTableSeeder::class);
-    }
 
         // Call the test seeders locally
         if (app()->environment('local')) {
@@ -35,6 +36,5 @@ class DatabaseSeeder extends Seeder
                 $this->call($class);
             }
         }
-
     }
 }

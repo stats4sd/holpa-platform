@@ -19,7 +19,7 @@ use Stats4sd\FilamentOdkLink\Models\Country;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsForms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageOwner;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
@@ -30,7 +30,7 @@ use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
 class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 {
-    use HasXlsForms;
+    use HasXlsforms;
     use InteractsWithMedia;
 
     protected $table = 'teams';
@@ -44,7 +44,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         'pba_complete' => 'boolean',
     ];
 
-    // TODO: I think this overrides the booted method on HasXlsForms - ideally we wouldn't need to copy the package stuff here...
+    // TODO: I think this overrides the booted method on HasXlsforms - ideally we wouldn't need to copy the package stuff here...
     protected static function booted(): void
     {
 
@@ -94,7 +94,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             // manually set the default time_frame
             $owner->time_frame = 'in the last 12 months';
             $owner->save();
-
         });
     }
 
@@ -196,7 +195,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     {
         if ($this->lisp_complete) {
             return 'complete';
-
         }
 
         return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
