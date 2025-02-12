@@ -23,7 +23,7 @@ class MediaTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'model_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'model_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'model_id' => 1,
                 'uuid' => '62789a31-562d-4873-9b2e-5aa7a8c0a436',
                 'collection_name' => 'xlsform_file',
@@ -44,7 +44,7 @@ class MediaTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'model_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'model_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'model_id' => 2,
                 'uuid' => '02183c0b-6f17-4357-8e5a-64d1ecd5ab61',
                 'collection_name' => 'xlsform_file',

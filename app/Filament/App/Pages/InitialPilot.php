@@ -4,7 +4,7 @@ namespace App\Filament\App\Pages;
 
 use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
-use App\Models\Xlsforms\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;

@@ -2,7 +2,7 @@
 
 namespace App\Livewire;
 
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Group;
 use Filament\Forms\Components\Placeholder;

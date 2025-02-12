@@ -4,8 +4,8 @@ namespace App\Livewire;
 
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
-use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Actions\StaticAction;
