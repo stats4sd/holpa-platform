@@ -26,7 +26,7 @@ class CopyMediaForTestOdkStuff extends Command
     public function handle()
     {
         $this->info('Copying media files for TestOdkStuff seeder');
-        $this->info('This will overwrite any existing files in storage/app/');
+        $this->info('This may overwrite existing files in storage/app/');
         $this->info('Are you sure you want to continue?');
         if ($this->confirm('Continue?')) {
             $this->copyMediaFiles();
