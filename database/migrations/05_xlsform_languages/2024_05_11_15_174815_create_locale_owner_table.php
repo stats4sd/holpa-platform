@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locale_team', function (Blueprint $table) {
+        Schema::create('locale_owners', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained()->onDelete('cascade');
-            $table->foreignId('locale_id')->constrained()->onDelete('cascade');
+            $table->foreignId('locale_id')->constrained('locales')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->morphs('owner');
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locale_team');
+        Schema::dropIfExists('language_owners');
     }
 };
