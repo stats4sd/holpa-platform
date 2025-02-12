@@ -4,7 +4,7 @@ namespace App\Filament\App\Pages;
 
 use App\Filament\App\Resources\XlsformResource;
 use App\Models\Team;
-use App\Models\Xlsforms\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
 use Filament\Infolists\Concerns\InteractsWithInfolists;

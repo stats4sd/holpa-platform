@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Exception;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\OnEachRow;

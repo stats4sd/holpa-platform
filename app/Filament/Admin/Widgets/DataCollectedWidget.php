@@ -4,7 +4,7 @@ namespace App\Filament\Admin\Widgets;
 
 use App\Filament\Admin\Widgets\StatsOverviewWidget\Stat;
 use App\Models\SampleFrame\Farm;
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Filament\Widgets\StatsOverviewWidget;
 use Illuminate\Support\HtmlString;
 

@@ -6,8 +6,8 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use App\Models\Xlsforms\Xlsform;
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -79,7 +79,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             $forms = Xlsform::where('owner_id', $owner->id)->get();
             foreach ($forms as $form) {
                 $xlsformModule = XlsformModule::create([
-                    'form_type' => 'App\Models\Xlsforms\Xlsform',
+                    'form_type' => 'Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform',
                     'form_id' => $form->id,
                     'label' => $owner->name . ' custom module',
                     'name' => $owner->name . ' custom module',

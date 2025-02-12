@@ -2,7 +2,7 @@
 
 namespace App\Filament\Admin\Resources\TeamResource\RelationManagers;
 
-use App\Models\Xlsforms\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;

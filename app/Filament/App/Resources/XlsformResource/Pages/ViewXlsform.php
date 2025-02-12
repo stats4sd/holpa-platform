@@ -5,7 +5,7 @@ namespace App\Filament\App\Resources\XlsformResource\Pages;
 use App\Filament\Actions\ExportDataAction;
 use App\Filament\App\Resources\XlsformResource;
 use App\Http\Controllers\SurveyMonitoringController;
-use App\Models\Xlsforms\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Container\BindingResolutionException;

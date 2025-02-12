@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Xlsforms\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Stats4sd\FilamentOdkLink\Listeners\HandleXlsformTemplateAdded;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 
@@ -33,7 +33,7 @@ test('an xlsform template is correctly imported and updated', function () {
 //test('a language not in the xlsform template import is marked as needing an update', function () {
 //
 //
-//    $this->xlsformTemplate = \App\Models\Xlsforms\XlsformTemplate::forceCreateQuietly([
+//    $this->xlsformTemplate = \Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate::forceCreateQuietly([
 //        'title' => 'Test Template',
 //    ]);
 //

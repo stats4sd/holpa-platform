@@ -23,7 +23,7 @@ class XlsformModulesTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 1,
                 'label' => 'metadata',
                 'name' => 'metadata',
@@ -33,7 +33,7 @@ class XlsformModulesTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 1,
                 'label' => 'context',
                 'name' => 'context',
@@ -43,7 +43,7 @@ class XlsformModulesTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 1,
                 'label' => 'coffee',
                 'name' => 'coffee',
@@ -53,7 +53,7 @@ class XlsformModulesTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 4,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 1,
                 'label' => 'diet_quality',
                 'name' => 'diet_quality',
@@ -63,7 +63,7 @@ class XlsformModulesTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 5,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 1,
                 'label' => 'end',
                 'name' => 'end',
@@ -73,7 +73,7 @@ class XlsformModulesTableSeeder extends Seeder
             5 =>
             array (
                 'id' => 6,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 2,
                 'label' => 'metadata_fieldwork',
                 'name' => 'metadata_fieldwork',
@@ -83,7 +83,7 @@ class XlsformModulesTableSeeder extends Seeder
             6 =>
             array (
                 'id' => 7,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 2,
                 'label' => 'context_fieldwork',
                 'name' => 'context_fieldwork',
@@ -93,7 +93,7 @@ class XlsformModulesTableSeeder extends Seeder
             7 =>
             array (
                 'id' => 8,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 2,
                 'label' => 'fieldwork',
                 'name' => 'fieldwork',
@@ -103,7 +103,7 @@ class XlsformModulesTableSeeder extends Seeder
             8 =>
             array (
                 'id' => 9,
-                'form_type' => 'App\\Models\\Xlsforms\\XlsformTemplate',
+                'form_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\XlsformTemplate',
                 'form_id' => 2,
                 'label' => 'end_fieldwork',
                 'name' => 'end_fieldwork',
