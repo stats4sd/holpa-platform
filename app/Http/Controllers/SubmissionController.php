@@ -19,6 +19,13 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
+
+        // ignore application specific business logic temporary
+        return;
+
+
+
+
         // application specific business logic goes here
 
         // find survey start, survey end, survey duration in minutes
