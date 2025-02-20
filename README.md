@@ -35,7 +35,11 @@ Each team has 2 "mini" forms, which have the required parts to be compatible wit
 
 To create:
 
+1. Make sure you have `ODK_PLATFORM_PROJECT_ID=1390` in your .env file. 
+2. Run the following:
+
 ```
+
 php artisan migrate:fresh --seed
 php artisan db:seed TestWithMiniForms
 
@@ -58,6 +62,9 @@ This setup will give you 3 teams, all linked to the following ODK Projects on ou
 Each team has copies of the 2 real HOLPA forms, which have the required parts to be compatible with the existing HOLPA localisation setup, and very little else. 
 
 To create:
+
+1. Make sure you have `ODK_PLATFORM_PROJECT_ID=1654` in your .env file. 
+2. Run the following:
 
 ```
 php artisan migrate:fresh --seed
