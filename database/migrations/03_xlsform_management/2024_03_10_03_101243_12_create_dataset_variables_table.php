@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->timestamps();
 
+            $table->unique(['dataset_id', 'name']);
+
         });
     }
 

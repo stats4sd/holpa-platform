@@ -23,7 +23,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'dataset_id' => NULL,
+                'dataset_id' => 16,
                 'xlsform_template_id' => 1,
                 'parent_id' => NULL,
                 'structure_item' => 'drinks_rpt',
@@ -36,7 +36,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'dataset_id' => NULL,
+                'dataset_id' => 17,
                 'xlsform_template_id' => 1,
                 'parent_id' => NULL,
                 'structure_item' => 'drink_comment_rpt',
@@ -49,7 +49,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'dataset_id' => NULL,
+                'dataset_id' => 18,
                 'xlsform_template_id' => 1,
                 'parent_id' => NULL,
                 'structure_item' => 'root',
@@ -62,7 +62,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 4,
-                'dataset_id' => NULL,
+                'dataset_id' => 20,
                 'xlsform_template_id' => 2,
                 'parent_id' => NULL,
                 'structure_item' => 'fieldwork_repeat',
@@ -75,7 +75,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 5,
-                'dataset_id' => NULL,
+                'dataset_id' => 19,
                 'xlsform_template_id' => 2,
                 'parent_id' => NULL,
                 'structure_item' => 'root',

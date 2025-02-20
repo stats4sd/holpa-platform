@@ -2,10 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\TestOdkStuff\MediaTableSeeder;
-use Database\Seeders\TestOdkStuff\OdkProjectsTableSeeder;
-use Database\Seeders\TestTemplates\XlsformsTableSeeder;
-use Database\Seeders\TestTemplates\XlsformVersionsTableSeeder;
+use Database\Seeders\TestTemplates\DatasetsTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
