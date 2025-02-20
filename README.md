@@ -13,20 +13,60 @@
 
 ## Development
 
-There are multiple sets of database seeders available for testing different parts of the app:
+There are 3 ways to set up your environment for local development. The intention is that, at any time, you can reset your local database and environment to one of these 3 pre-configured setups:
 
-- `php artisan db:seed` will run the default seeders and populate the required lookup tables. If you are on APP_ENV=local, it will also seed the database with test users and teams.
-- `php artisan db:seed TestTemplatesSeeder` will add test HOLPA ODK form templates, and populate all the xlsform-related tables: 
-  - ChoiceListEntry
-  - ChoiceList
-  - LanguageString
-  - RequiredMedia
-  - SurveyRow
-  - XlsformModule
-  - XlsformModuleVersionLocal
-  - XlsformModuleVersion
-  - Xlsform
-  - XlsformTemplateSection
-  - XlsformTemplate
+### Default; no specific ODK Database Link
 
-- `php artisan db:seed TestOdkStuffSeeder` will add entries assuming you are connecting to the Stats4SD test ODK Central server. It will link your local teams to specific ODK projects, and assumes you have the env variable: ODK_PLATFORM_PROJECT_ID=1390.
+This setup will give you a clean database, with 3 teams (linked to new ODK Central projects, if you have the `ODK_*` .env variables required ), and no XlsformTemplate entries. 
+
+To create: 
+- `php artisan migrate:fresh --seed`.
+
+
+### Setup with Mini Test Forms
+
+This setup will give you 3 teams, all linked to the following ODK Projects on our ODK Staging site: 
+
+- 2025 - HOLPA Data Platform LOCAL- P1 Test Team: https://odk-test.stats4sdtest.online/#/projects/1447
+- 2025-HOLPA Data Platform LOCAL- P1 Test Team 2: https://odk-test.stats4sdtest.online/#/projects/1448
+- 2025-TEST - HOLPA Data Platform LOCAL- Non Program Test Team: https://odk-test.stats4sdtest.online/#/projects/1449
+
+Each team has 2 "mini" forms, which have the required parts to be compatible with the existing HOLPA localisation setup, and very little else. 
+
+To create:
+
+```
+php artisan migrate:fresh --seed
+php artisan db:seed TestWithMiniForms
+
+# run custom script to copy the media file assets into the storage/app folder
+php artisan app:copy-media-test
+
+# run custom command to update your xlsform_versions table, 
+# just in case the versions on ODK Central have been changed since the seeder was created.
+php artisan app:update-xlsform-versions-from-odk-central
+```
+
+### Setup with Real HOLPA Forms
+
+This setup will give you 3 teams, all linked to the following ODK Projects on our ODK Staging site: 
+
+- HOLPA Real Forms - Local Test Team 1: https://odk-test.stats4sdtest.online/#/projects/1655
+- HOLPA Real Forms - Local Test Team 2 : https://odk-test.stats4sdtest.online/#/projects/1656
+- HOLPA Real Forms - Local Non-Program Test Team: https://odk-test.stats4sdtest.online/#/projects/1657
+
+Each team has copies of the 2 real HOLPA forms, which have the required parts to be compatible with the existing HOLPA localisation setup, and very little else. 
+
+To create:
+
+```
+php artisan migrate:fresh --seed
+php artisan db:seed TestWithRealForms
+
+# run custom script to copy the media file assets into the storage/app folder
+php artisan app:copy-media-real
+
+# run custom command to update your xlsform_versions table, 
+# just in case the versions on ODK Central have been changed since the seeder was created.
+php artisan app:update-xlsform-versions-from-odk-central
+```

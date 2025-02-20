@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\Team;
 use Illuminate\Database\Seeder;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
 class LocalesTableSeeder extends Seeder
 {
@@ -14,24 +16,20 @@ class LocalesTableSeeder extends Seeder
      */
     public function run()
     {
-        
 
-        \DB::table('locales')->delete();
-        
-        \DB::table('locales')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'language_id' => 41,
-                'creator_type' => NULL,
-                'creator_id' => NULL,
-                'is_default' => 1,
-                'description' => NULL,
-                'created_at' => '2025-02-20 15:44:01',
-                'updated_at' => '2025-02-20 15:44:01',
-            ),
-        ));
-        
-        
+
+// create en + es locales
+
+        $localeEn = Language::firstWhere('iso_alpha2', 'en')
+            ->locales()
+            ->create([
+                'is_default' => true,
+            ]);
+
+        foreach (Team::all() as $team) {
+            $team->addLocale($localeEn);
+        }
+
+
     }
 }
