@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders\TestTemplates;
+namespace Database\Seeders\TestMiniForms;
 
 use App\Models\Team;
 use Illuminate\Database\Seeder;

@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\TestTemplates\DatasetsTableSeeder;
+use Database\Seeders\TestMiniForms\DatasetsTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
