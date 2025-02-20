@@ -4,30 +4,31 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class CopyMediaForTestOdkStuff extends Command
+class CopyMediaForRealOdkForms extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:copy-media-test';
+    protected $signature = 'app:copy-media-real';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Copies media files that match the TestWithMiniForms database seeder';
+    protected $description = 'Copies media files that match the TestWIthRealForms database seeder';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $folderPath = base_path('tests/assets/media-for-mini-forms');
+        $folderPath = base_path('tests/assets/media-for-real-forms');
 
-        $this->info('Copying media files for TestWithMiniForms seeder');
+
+        $this->info('Copying media files for TestWIthRealForms seeder');
         $this->info('This may overwrite existing files in storage/app/');
         $this->info('Are you sure you want to continue?');
         if ($this->confirm('Continue?')) {
@@ -35,7 +36,8 @@ class CopyMediaForTestOdkStuff extends Command
         }
 
     }
- public function copyMediaFiles(string $sourcePath): void
+
+    public function copyMediaFiles(string $sourcePath): void
     {
 
         $destinationPath = storage_path('app');
