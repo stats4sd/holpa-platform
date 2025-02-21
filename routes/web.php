@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadController;
 use App\Livewire\CoverPage;
 use Illuminate\Support\Facades\Route;
 
@@ -15,3 +16,8 @@ Route::get('/program/login', function () {
 Route::get('/admin/login', function () {
     return redirect('app');
 })->name('filament.admin.auth.login');
+
+// TODO: add additional authentication layer to ensure users cannot access downloads for a different team, etc.
+Route::get('/downloads/{file}', [DownloadController::class, 'download'])
+    ->where('file', '.*')
+    ->middleware('auth');
