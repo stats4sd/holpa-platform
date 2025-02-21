@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestRealForms;
 
 use Illuminate\Database\Seeder;
 
@@ -14,13 +14,13 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('xlsform_template_sections')->delete();
-        
-        \DB::table('xlsform_template_sections')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('xlsform_template_sections')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -32,8 +32,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'dataset_id' => 12,
                 'xlsform_template_id' => 1,
@@ -45,8 +45,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'id' => 3,
                 'dataset_id' => 11,
                 'xlsform_template_id' => 1,
@@ -58,8 +58,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'id' => 4,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -71,8 +71,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'id' => 5,
                 'dataset_id' => 13,
                 'xlsform_template_id' => 1,
@@ -84,8 +84,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'id' => 6,
                 'dataset_id' => 11,
                 'xlsform_template_id' => 1,
@@ -97,8 +97,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'id' => 7,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -110,8 +110,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'id' => 8,
                 'dataset_id' => 13,
                 'xlsform_template_id' => 1,
@@ -123,8 +123,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            8 => 
-            array (
+            8 =>
+            array(
                 'id' => 9,
                 'dataset_id' => 3,
                 'xlsform_template_id' => 1,
@@ -136,8 +136,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            9 => 
-            array (
+            9 =>
+            array(
                 'id' => 10,
                 'dataset_id' => 2,
                 'xlsform_template_id' => 1,
@@ -149,8 +149,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            10 => 
-            array (
+            10 =>
+            array(
                 'id' => 11,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -162,8 +162,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'id' => 12,
                 'dataset_id' => 8,
                 'xlsform_template_id' => 1,
@@ -175,8 +175,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            12 => 
-            array (
+            12 =>
+            array(
                 'id' => 13,
                 'dataset_id' => 9,
                 'xlsform_template_id' => 1,
@@ -188,8 +188,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            13 => 
-            array (
+            13 =>
+            array(
                 'id' => 14,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -201,8 +201,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            14 => 
-            array (
+            14 =>
+            array(
                 'id' => 15,
                 'dataset_id' => 6,
                 'xlsform_template_id' => 1,
@@ -214,8 +214,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            15 => 
-            array (
+            15 =>
+            array(
                 'id' => 16,
                 'dataset_id' => 7,
                 'xlsform_template_id' => 1,
@@ -227,8 +227,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            16 => 
-            array (
+            16 =>
+            array(
                 'id' => 17,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 1,
@@ -240,8 +240,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            17 => 
-            array (
+            17 =>
+            array(
                 'id' => 18,
                 'dataset_id' => 1,
                 'xlsform_template_id' => 1,
@@ -253,8 +253,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:41:00',
                 'updated_at' => '2025-02-20 15:42:20',
             ),
-            18 => 
-            array (
+            18 =>
+            array(
                 'id' => 19,
                 'dataset_id' => 15,
                 'xlsform_template_id' => 2,
@@ -266,8 +266,8 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'created_at' => '2025-02-20 15:51:44',
                 'updated_at' => '2025-02-20 15:52:17',
             ),
-            19 => 
-            array (
+            19 =>
+            array(
                 'id' => 20,
                 'dataset_id' => NULL,
                 'xlsform_template_id' => 2,
@@ -280,7 +280,5 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
                 'updated_at' => '2025-02-20 15:52:17',
             ),
         ));
-        
-        
     }
 }

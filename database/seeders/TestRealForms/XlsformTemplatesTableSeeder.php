@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestRealForms;
 
 use Illuminate\Database\Seeder;
 
@@ -14,13 +14,13 @@ class XlsformTemplatesTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('xlsform_templates')->delete();
-        
-        \DB::table('xlsform_templates')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('xlsform_templates')->insert(array(
+            0 =>
+            array(
                 'id' => 1,
                 'title' => 'HOLPA Household Form - Local Shared Test Version',
                 'description' => NULL,
@@ -40,8 +40,8 @@ class XlsformTemplatesTableSeeder extends Seeder
                 'updated_at' => '2025-02-20 15:53:14',
                 'deleted_at' => NULL,
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'id' => 2,
                 'title' => 'HOLPA Fieldwork Form - Local Shared Test Version',
                 'description' => NULL,
@@ -62,7 +62,5 @@ class XlsformTemplatesTableSeeder extends Seeder
                 'deleted_at' => NULL,
             ),
         ));
-        
-        
     }
 }

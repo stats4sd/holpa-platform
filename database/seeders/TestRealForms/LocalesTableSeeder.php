@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\TestRealForms;
 
 use App\Models\Team;
 use Illuminate\Database\Seeder;
@@ -18,7 +18,7 @@ class LocalesTableSeeder extends Seeder
     {
 
 
-// create en + es locales
+        // create en + es locales
 
         $localeEn = Language::firstWhere('iso_alpha2', 'en')
             ->locales()
@@ -29,7 +29,5 @@ class LocalesTableSeeder extends Seeder
         foreach (Team::all() as $team) {
             $team->addLocale($localeEn);
         }
-
-
     }
 }
