@@ -18,28 +18,26 @@ class CopyMediaForTestOdkStuff extends Command
      *
      * @var string
      */
-    protected $description = 'Copies media files that match the TestOdkStuff databsae seeder';
+    protected $description = 'Copies media files that match the TestWithMiniForms database seeder';
 
     /**
      * Execute the console command.
      */
     public function handle()
     {
-        $this->info('Copying media files for TestOdkStuff seeder');
+        $folderPath = base_path('tests/assets/media-for-mini-forms');
+
+        $this->info('Copying media files for TestWithMiniForms seeder');
         $this->info('This may overwrite existing files in storage/app/');
         $this->info('Are you sure you want to continue?');
         if ($this->confirm('Continue?')) {
-            $this->copyMediaFiles();
+            $this->copyMediaFiles($folderPath);
         }
 
     }
-
-    public function copyMediaFiles(): void
+ public function copyMediaFiles(string $sourcePath): void
     {
-        // copy files from /tests/assets/media/ to /storage/app/
 
-
-        $sourcePath = base_path('tests/assets/media');
         $destinationPath = storage_path('app');
 
         if (!is_dir($sourcePath)) {
