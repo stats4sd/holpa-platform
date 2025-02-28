@@ -46,7 +46,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-        $this->selectedLocale = $this->team->locales()->wherePivot('language_id', $this->language->id)->first();
+        $this->selectedLocale = $this->team->locales()->where('language_id', $this->language->id)->first();
 
         return view('livewire.team-translation-entry');
     }

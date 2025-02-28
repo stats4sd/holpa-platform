@@ -183,7 +183,7 @@ class ChoiceListEntryResource extends Resource
                     ->label('Localised Entry')
                     ->boolean(),
             ])
-            ->recordClasses(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
+            ->recordClasses(fn(ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
     }
 
 
