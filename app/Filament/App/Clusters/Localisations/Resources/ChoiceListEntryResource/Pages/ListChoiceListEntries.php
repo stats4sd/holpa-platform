@@ -66,7 +66,7 @@ class ListChoiceListEntries extends ListRecords
                 ->form(fn(Form $form) => $form->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
                 DeleteAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
                 \Filament\Tables\Actions\Action::make('Toggle Removed')
-                    ->label(fn(ChoiceListEntry $record) => $record->teamRemoved->contains(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
+                    ->label(fn(ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
                     ->visible(fn(ChoiceListEntry $record) => $record->is_global_entry)
                     ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getCurrentOwner())),
             ]);
@@ -87,15 +87,15 @@ class ListChoiceListEntries extends ListRecords
                 ->form(fn(Form $form) => $form
                     ->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
 
-            Action::make('Mark as Complete')
-                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))
-                ->visible(fn() => !HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
-                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
-
-            Action::make('Mark as Incomplete')
-                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsIncomplete($this->choiceList))
-                ->visible(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
-                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
+//            Action::make('Mark as Complete')
+//                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))
+//                ->visible(fn() => !HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
+//                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
+//
+//            Action::make('Mark as Incomplete')
+//                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsIncomplete($this->choiceList))
+//                ->visible(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
+//                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
 
         ];
     }

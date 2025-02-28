@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\TestMiniForms\DatasetsTableSeeder;
+use Database\Seeders\TestRealForms\ChoiceListsTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
@@ -23,7 +23,8 @@ class DatabaseSeeder extends Seeder
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
             $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
             $this->call($class);
-        }
+            $this->call(ChoiceListsTableSeeder::class);
+    }
 
         // Call the test seeders locally
         if (app()->environment('local')) {
