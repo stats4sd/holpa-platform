@@ -75,8 +75,8 @@ class ChoiceListEntryResource extends Resource
         return $lists
             ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
                 ->group('Choice Lists')
-                ->icon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
-                ->activeIcon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+//                ->icon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
+//                ->activeIcon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
                 ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.*')
                     && request()->get('choiceListName') === $choiceList->list_name
                 )
