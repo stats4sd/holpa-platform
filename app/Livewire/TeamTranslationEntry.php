@@ -97,71 +97,23 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
                     ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
                     ->modalCancelAction(fn(StaticAction $action) => $action->extraAttributes(['class' => 'buttonb']))
-//                    ->extraModalFooterActions(fn(Locale $record, Action $action) => [
-//                        Action::make('edit')->visible($record->is_editable && $record->status === 'Ready for use'),
-//                        Action::make('duplicate')
-//                            ->action(function (Locale $record) use ($action) {
-//                                $newRecord = $record->replicate();
-//                                $newRecord->is_default = false;
-//                                $newRecord->createdBy()->associate($this->team);
-//                                $newRecord->save();
-//                            })
-//                            ->modalHeading(fn(Locale $record) => 'Duplicate Translation for ' . $record->language_label)
-//                            ->requiresConfirmation()
-//                            ->cancelParentActions(),
-//                        Action::make('submit')
-//                            ->extraAttributes(['class' => 'buttona'])
-//                            ->visible(fn(Locale $record) => $record->is_editing),
-//                    ])
-                    ->modalFooterActionsAlignment(Alignment::End)
-                    ->form(fn(\Filament\Forms\Form $form, Locale $record): \Filament\Forms\Form => $form
-                        ->columns(2)
-                        ->schema(fn(): array => $this->team->xlsforms->map(fn(Xlsform $xlsform) => $xlsform->xlsformTemplate)
-                            ->map(fn(XlsformTemplate $xlsformTemplate) => Section::make($xlsformTemplate->title)
-                                ->schema([
-                                    Actions::make([
-
-                                        // download existing translations if they exist
-                                        Actions\Action::make('download_' . $xlsformTemplate->id)
-                                            ->link()
-                                            ->label("Download existing translations")
-                                            ->action(fn(Locale $record) => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $record), "{$xlsformTemplate->title} translation - {$record->language_label}.xlsx")),
-
-                                        // download blank template if needed
-                                        Actions\Action::make('download_' . $xlsformTemplate->id)
-                                            ->link()
-                                            ->visible(fn(Locale $record) => $record->is_editable && $record->status !== 'Ready for use')
-                                            ->label("Download empty translation template")
-                                            ->action(fn(Locale $record) => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $record, empty: true), "{$xlsformTemplate->title} translation - {$record->language_label}.xlsx")),
-                                    ]),
-                                    SpatieMediaLibraryFileUpload::make('upload_for_template_' . $xlsformTemplate->id)
-                                        ->collection('xlsform_template_translation_files')
-                                        ->visible(fn(Locale $record) => $record->is_editing)
-                                        ->label("Upload completed {$xlsformTemplate->title} translation file")
-                                        ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
-                                        ->maxSize(10240)
-                                        ->rules([
-                                            fn(Get $get, Locale $record) => $this->validateFileUpload($get('upload_for_template_' . $xlsformTemplate->id), $record, $xlsformTemplate),
-                                        ]),
-                                ])
-                                ->columnSpan(1),
-                            )->toArray(),
-                        )
-                    )
-                    ->action(function (array $data) {
-                        // upload the files
-                        ray('ok');
-
-                        if ($data['household_survey_translation']) {
-
-                            Excel::import(
-                                new XlsformTemplateLanguageImport($this->team->xlsforms->first()->xlsformTemplate, $this->selectedLocale),
-                                Storage::path($data['household_survey_translation'])
-                            );
-
-                        }
-                    }),
-
+                    ->extraModalFooterActions(fn(Locale $record, Action $action) => [
+                        Action::make('edit')->visible(fn() => $record->is_editable && $record->status === 'Ready for use'),
+                        Action::make('duplicate')
+                            ->action(function () use ($action, $record) {
+                                $newRecord = $record->replicate();
+                                $newRecord->is_default = false;
+                                $newRecord->createdBy()->associate($this->team);
+                                $newRecord->save();
+                            })
+                            ->modalHeading(fn(Locale $record) => 'Duplicate Translation for ' . $record->language_label)
+                            ->requiresConfirmation()
+                            ->cancelParentActions(),
+                        $action->makeModalSubmitAction('submit')
+                            ->extraAttributes(['class' => 'buttona'])
+                            ->visible(fn() => $record->is_editable && $record->status !== 'Ready for use'),
+                    ])
+                    ->modalFooterActionsAlignment(Alignment::End),
             ]);
     }
 
@@ -169,7 +121,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     {
         return function (string $attribute, string $value, \Closure $fail) use ($upload, $record, $xlsformTemplate) {
 
-            ray('hi');
+
             $file = collect($upload)->first();
 
             /** @var Collection $rows */
@@ -215,7 +167,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             // TODO: finish validating that all required rows are present;
             // TODO: validate that all translation_types are valid language string types.
 
-            ray('done');
 
             return true;
 
