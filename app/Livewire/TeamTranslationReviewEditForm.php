@@ -14,7 +14,6 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Maatwebsite\Excel\Facades\Excel;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
@@ -88,12 +87,12 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
         $this->locale->refresh();
 
         foreach (XlsformTemplate::all() as $xlsformTemplate) {
-            $file = $this->locale->getMedia('xlsform_template_translation_files', function(Media $media) use ($xlsformTemplate) {
+            $file = $this->locale->getMedia('xlsform_template_translation_files', function (Media $media) use ($xlsformTemplate) {
                 return isset($media->custom_properties['xlsform_template_id']) && $media->custom_properties['xlsform_template_id'] === $xlsformTemplate->id;
             })->first();
 
             // if the file doesn't exist, don't process it.
-            if(!$file) {
+            if (!$file) {
                 continue;
             }
 
@@ -105,6 +104,21 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
         // submit modal close event
         $this->dispatch('closeModal');
 
+    }
+
+    public function duplicate(): void
+    {
+        $newRecord = $this->locale->replicate();
+        $newRecord->is_default = false;
+        $newRecord->creator()->associate($this->team);
+        $newRecord->save();
+
+        $this->dispatch('closeModal');
+    }
+
+    public function cancel(): void
+    {
+        $this->dispatch('closeModal');
     }
 
 

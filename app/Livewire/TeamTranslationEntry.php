@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Livewire\Attributes\On;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -96,25 +97,16 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->label('View / Edit Translation')
                     ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
                     ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
-                    ->modalCancelAction(fn(StaticAction $action) => $action->extraAttributes(['class' => 'buttonb']))
-                    ->extraModalFooterActions(fn(Locale $record, Action $action) => [
-                        Action::make('edit')->visible(fn() => $record->is_editable && $record->status === 'Ready for use'),
-                        Action::make('duplicate')
-                            ->action(function () use ($action, $record) {
-                                $newRecord = $record->replicate();
-                                $newRecord->is_default = false;
-                                $newRecord->createdBy()->associate($this->team);
-                                $newRecord->save();
-                            })
-                            ->modalHeading(fn(Locale $record) => 'Duplicate Translation for ' . $record->language_label)
-                            ->requiresConfirmation()
-                            ->cancelParentActions(),
-                        $action->makeModalSubmitAction('submit')
-                            ->extraAttributes(['class' => 'buttona'])
-                            ->visible(fn() => $record->is_editable && $record->status !== 'Ready for use'),
-                    ])
-                    ->modalFooterActionsAlignment(Alignment::End),
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false),
+
             ]);
+    }
+
+    #[On('closeModal')]
+    public function closeModal()
+    {
+
     }
 
     public function validateFileUpload(array $upload, Locale $record, XlsformTemplate $xlsformTemplate): \Closure
