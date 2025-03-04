@@ -64,7 +64,7 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
                             ->collection('xlsform_template_translation_files')
                             ->filterMediaUsing(fn(Collection $media) => $media->where('custom_properties.xlsform_template_id', $xlsformTemplate->id))
                             ->customProperties(['xlsform_template_id' => $xlsformTemplate->id])
-                            ->visible(fn() => $this->locale->is_editing)
+                            ->visible(fn() => $this->locale->is_editable)
                             ->label("Upload completed {$xlsformTemplate->title} translation file")
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
