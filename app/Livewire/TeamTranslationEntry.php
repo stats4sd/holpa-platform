@@ -46,9 +46,14 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
     public bool $expanded;
 
+    public function mount(): void
+    {
+        $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
+
+    }
+
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-        $this->selectedLocale = $this->team->locales()->where('language_id', $this->language->id)->first();
 
         return view('livewire.team-translation-entry');
     }
@@ -90,7 +95,8 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->disabled(fn(Locale $record) => $this->selectedLocale?->id === $record->id)
                     ->tooltip('Select this translation for your survey')
                     ->action(function (Locale $record) {
-                        $record->language->teams()->updateExistingPivot($this->team->id, ['locale_id' => $record->id]);
+                        $record->language->owners()->updateExistingPivot($this->team->id, ['locale_id' => $record->id]);
+                        $this->selectedLocale = $record;
                     }),
 
                 Action::make('view-edit')

@@ -128,24 +128,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     }
 
 
-    public function markLookupListAsComplete(ChoiceList $choiceList): ?bool
-    {
-        $this->choiceLists()->sync([$choiceList->id => ['is_complete' => 1]], detaching: false);
 
-        return $this->hasCompletedLookupList($choiceList);
-    }
-
-    public function markLookupListAsInComplete(ChoiceList $choiceList): ?bool
-    {
-        $this->choiceLists()->detach($choiceList->id);
-
-        return $this->hasCompletedLookupList($choiceList);
-    }
-
-    public function hasCompletedLookupList(ChoiceList $choiceList): ?bool
-    {
-        return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
-    }
 
 
     // Customisations
