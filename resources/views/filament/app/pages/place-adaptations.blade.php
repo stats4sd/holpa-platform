@@ -32,7 +32,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             </x-rounded-section>
 
 
-            @if (auth()->user()->latestTeam->xlsforms()->count() == 0)
+            @if (auth()->user()->latestTeam->xlsforms()->count() != 0)
             <x-rounded-section
                 heading='Customise Qustionnaire - Adapt Diet Quality Module'
                 buttonLabel='Update'
@@ -47,7 +47,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             <x-slot:description>HOLPA uses an international standard "Diet Quality" module. This module is available for over 100 countries. We recommend you select the version most suited to your context.
             </x-slot:description>
 
-            @if (auth()->user()->latestTeam->xlsforms()->count() == 0)
+            @if (auth()->user()->latestTeam->xlsforms()->count() != 0)
             <x-rounded-section
                 heading='Customise place-based questionnaire'
                 description='Adapt units, crops, and other choice list entries to be locally relevant..'
