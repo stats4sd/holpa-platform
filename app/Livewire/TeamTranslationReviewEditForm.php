@@ -56,7 +56,7 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
                             // download blank template if needed
                             Actions\Action::make('download_' . $xlsformTemplate->id)
                                 ->link()
-                                ->visible(fn() => $this->locale->is_editable && $this->locale->status !== 'Ready for use')
+                                ->visible(fn() => $this->locale->is_editable)
                                 ->label("Download empty translation template")
                                 ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale, empty: true), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
                         ]),
