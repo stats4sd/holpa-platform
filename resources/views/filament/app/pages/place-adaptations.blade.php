@@ -31,36 +31,18 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 </x-slot:description>
             </x-rounded-section>
 
-
-            @if (auth()->user()->latestTeam->xlsforms()->count() != 0)
             <x-rounded-section
                 heading='Customise Qustionnaire - Adapt Diet Quality Module'
                 buttonLabel='Update'
                 :url='\App\Filament\App\Pages\DietDiversity::getUrl()' />
-            @else
-            <!-- TODO: it would be better to disable button and change button colour from blue to gray -->
-            <x-rounded-section
-                heading='Customise Qustionnaire - Adapt Diet Quality Module'
-                buttonLabel='Unable to Update' />
-            @endif
-
             <x-slot:description>HOLPA uses an international standard "Diet Quality" module. This module is available for over 100 countries. We recommend you select the version most suited to your context.
             </x-slot:description>
 
-            @if (auth()->user()->latestTeam->xlsforms()->count() != 0)
             <x-rounded-section
                 heading='Customise place-based questionnaire'
                 description='Adapt units, crops, and other choice list entries to be locally relevant..'
                 buttonLabel='Update'
                 :url='\App\Filament\App\Clusters\Localisations::getUrl()' />
-            @else
-            <!-- TODO: it would be better to disable button and change button colour from blue to gray -->
-            <x-rounded-section
-                heading='Customise place-based questionnaire'
-                description='Adapt units, crops, and other choice list entries to be locally relevant..'
-                buttonLabel='Unable to Update' />
-            @endif
-
             <livewire:offline-action
                 heading='Initial Pilot'
                 description='Initial piloting should be conducted to check the sense and functionality of the survey.'
