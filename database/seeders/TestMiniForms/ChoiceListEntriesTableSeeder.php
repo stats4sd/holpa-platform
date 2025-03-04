@@ -24,7 +24,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'choice_list_id' => 1,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '1',
                 'properties' => '[]',
@@ -37,7 +36,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'choice_list_id' => 1,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '0',
                 'properties' => '[]',
@@ -50,7 +48,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'choice_list_id' => 2,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'black_tea',
                 'properties' => '{"localisable": "yes"}',
@@ -63,7 +60,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'choice_list_id' => 2,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'green_tea',
                 'properties' => '{"localisable": "yes"}',
@@ -76,7 +72,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'choice_list_id' => 2,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'cola',
                 'properties' => '{"localisable": "yes"}',
@@ -89,7 +84,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'choice_list_id' => 2,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'diet_cola',
                 'properties' => '{"localisable": "yes"}',
@@ -102,7 +96,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'choice_list_id' => 2,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'juice',
                 'properties' => '{"localisable": "yes"}',
@@ -115,7 +108,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'choice_list_id' => 3,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'very_good',
                 'properties' => '[]',
@@ -128,7 +120,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'choice_list_id' => 3,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'good',
                 'properties' => '[]',
@@ -141,7 +132,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'choice_list_id' => 3,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'neutral',
                 'properties' => '[]',
@@ -154,7 +144,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 11,
                 'choice_list_id' => 3,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'bad',
                 'properties' => '[]',
@@ -167,7 +156,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 12,
                 'choice_list_id' => 3,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'very_bad',
                 'properties' => '[]',
@@ -180,7 +168,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 13,
                 'choice_list_id' => 4,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '1',
                 'properties' => '[]',
@@ -193,7 +180,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 14,
                 'choice_list_id' => 4,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '0',
                 'properties' => '[]',
@@ -206,7 +192,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 15,
                 'choice_list_id' => 5,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '1',
                 'properties' => '[]',
@@ -219,7 +204,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 16,
                 'choice_list_id' => 5,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => '0',
                 'properties' => '[]',
@@ -232,7 +216,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 17,
                 'choice_list_id' => 6,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'clay',
                 'properties' => '[]',
@@ -245,7 +228,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 18,
                 'choice_list_id' => 6,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'loam',
                 'properties' => '[]',
@@ -258,7 +240,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 19,
                 'choice_list_id' => 6,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'sand',
                 'properties' => '[]',
@@ -271,7 +252,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 20,
                 'choice_list_id' => 6,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'silt',
                 'properties' => '[]',
@@ -284,7 +264,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 21,
                 'choice_list_id' => 6,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'other',
                 'properties' => '[]',
@@ -297,7 +276,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 22,
                 'choice_list_id' => 7,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'wheat',
                 'properties' => '{"localisable": "yes"}',
@@ -310,7 +288,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 23,
                 'choice_list_id' => 7,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'maize',
                 'properties' => '{"localisable": "yes"}',
@@ -323,7 +300,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 24,
                 'choice_list_id' => 7,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'sorghum',
                 'properties' => '{"localisable": "yes"}',
@@ -336,7 +312,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 25,
                 'choice_list_id' => 7,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'quinoa',
                 'properties' => '{"localisable": "yes"}',
@@ -349,7 +324,6 @@ class ChoiceListEntriesTableSeeder extends Seeder
             array (
                 'id' => 26,
                 'choice_list_id' => 7,
-                'owner_type' => NULL,
                 'owner_id' => NULL,
                 'name' => 'cowpea',
                 'properties' => '{"localisable": "yes"}',

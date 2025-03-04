@@ -28,8 +28,7 @@ class LocaleSeeder extends Seeder
             ]);
 
         foreach (Team::all() as $team) {
-            $team->addLocale($localeEn);
-            $team->addLocale($localeEs);
+            $team->locales()->sync([$localeEn, $localeEs]);
         }
     }
 }

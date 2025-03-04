@@ -7,11 +7,9 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-
         Schema::create('odk_projects', function (Blueprint $table) {
             $table->unsignedBigInteger('id')->primary();
-            $table->foreignId('owner_id');
-            $table->string('owner_type');
+            $table->morphs('owner');
 
             $table->string('name');
             $table->text('description')->nullable();

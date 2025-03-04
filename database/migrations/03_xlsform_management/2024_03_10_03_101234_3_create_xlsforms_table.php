@@ -7,15 +7,17 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
+
+        $teamTable = (new (config('filament-odk-link.models.team_model')))->getTable();
+
         /**
          * Table to store the individual team's forms (many-many pivot table between Xlsform and Team)
          */
-        Schema::create('xlsforms', function (Blueprint $table) {
+        Schema::create('xlsforms', function (Blueprint $table) use ($teamTable) {
             $table->id();
             $table->foreignId('xlsform_template_id')->constrained('xlsform_templates');
 
-            $table->foreignId('owner_id');
-            $table->string('owner_type');
+            $table->foreignId('owner_id')->constrained($teamTable)->cascadeOnDelete()->cascadeOnUpdate();
             // direct link to the owner's project on ODK Central.
             $table->foreignId('odk_project_id')->nullable();
 

@@ -3,6 +3,7 @@
 namespace App\Models\SampleFrame;
 
 use App\Models\SurveyData\FarmSurveyData;
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,9 +17,10 @@ class Farm extends Model
         'properties' => 'collection',
     ];
 
-    public function owner(): MorphTo
+    /** @return BelongsTo<Team, $this> */
+    public function owner(): BelongsTo
     {
-        return $this->morphTo('owner');
+        return $this->belongsTo(Team::class);
     }
 
     public function getCsvContentsForOdk(?WithXlsforms $team = null): array

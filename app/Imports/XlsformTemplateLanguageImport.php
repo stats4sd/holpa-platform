@@ -73,13 +73,13 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
         // Find the corresponding language string type
         $languageStringType = LanguageStringType::where('language_string_types.name', $rowData['translation_type'])->first();
 
-        $relationship = match ($rowData['type']) {
+        $relationship = match ($rowData['row_type']) {
             'survey' => 'surveyRows',
             'choices' => 'choiceListEntries',
             default => null,
         };
 
-        $tableName = match ($rowData['type']) {
+        $tableName = match ($rowData['row_type']) {
             'survey' => 'survey_rows',
             'choices' => 'choice_list_entries',
             default => null,
@@ -87,14 +87,14 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
 
         // these should already be checked during the validation step.
         if (!$relationship || !$tableName || !$languageStringType) {
-            throw new Exception("Invalid row type: {$rowData['type']}");
+            throw new Exception("Invalid row type: {$rowData['row_type']}");
         }
 
         /** @var SurveyRow|ChoiceListEntry $entry */
         $entries = $this->xlsformTemplate->$relationship()->where("$tableName.name", $rowData['name'])->get();
 
         // survey rows within a specific template will be unique by name, except for begin and end group / repeats. Choice List Entries will not be, so we also check the choice_list_id
-        if ($rowData['type'] === 'choices') {
+        if ($rowData['row_type'] === 'choices') {
             $entries = $entries->filter(fn(ChoiceListEntry $entry) => $entry->choiceList->id === (int)$rowData['choice_list_id']);
         }
 
@@ -107,6 +107,8 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
                 [
                     'locale_id' => $this->locale->id,
                     'language_string_type_id' => $languageStringType->id,
+                    'linked_entry_id' => $entry->id,
+                    'linked_entry_type' => get_class($entry),
                 ],
                 [
                     'text' => $translation,

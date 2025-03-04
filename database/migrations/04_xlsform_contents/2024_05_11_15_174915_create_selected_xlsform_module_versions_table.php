@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('selected_xlsform_module_versions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('xlsform_module_version_id');
-            $table->foreign('xlsform_module_version_id', 'sxmv_xlsform_module_version_id_foreign')->references('id')->on('xlsform_module_versions');
+            $table->unsignedBigInteger('xlsform_module_version_id')->constrained(indexName: 'sxmv_xlsform_module_version_id_foreign');
             $table->foreignId('xlsform_id')->constrained('xlsforms')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('order');
             $table->timestamps();

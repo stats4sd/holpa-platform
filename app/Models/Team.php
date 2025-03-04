@@ -49,7 +49,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     {
 
         // when the model is created; automatically create an associated project on ODK Central and a top location level;
-        static::created(static function ($owner) {
+        static::created(static function (self $owner) {
 
             // check if we are in local-only (no-ODK link) mode
             $odkLinkService = app()->make(OdkLinkService::class);
@@ -60,7 +60,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             // all teams get a default locale of english
             $en = Language::where('iso_alpha2', 'en')->first();
 
-            $owner->languagesOwned()->create(['language_id' => $en->id]);
+            $owner->languages()->sync($en->id, false);
 
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
@@ -117,9 +117,9 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->morphMany(Location::class, 'owner');
     }
 
-    public function farms(): MorphMany
+    public function farms(): HasMany
     {
-        return $this->morphMany(Farm::class, 'owner');
+        return $this->hasMany(Farm::class, 'owner_id');
     }
 
     public function imports(): HasMany
@@ -127,40 +127,8 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->hasMany(Import::class);
     }
 
-    public function xlsforms(): MorphMany
-    {
-        return $this->morphMany(Xlsform::class, 'owner');
-    }
 
-    public function choiceLists(): MorphMany
-    {
-        return $this->morphMany(ChoiceList::class, 'owner');
-    }
 
-    /** @return MorphMany<ChoiceListEntry, $this> */
-    public function choiceListEntries(): MorphMany
-    {
-        return $this->morphMany(ChoiceListEntry::class, 'owner');
-    }
-
-//    public function markLookupListAsComplete(ChoiceList $choiceList): ?bool
-//    {
-//        $this->choiceLists()->sync([$choiceList->id => ['is_complete' => 1]], detaching: false);
-//
-//        return $this->hasCompletedLookupList($choiceList);
-//    }
-//
-//    public function markLookupListAsInComplete(ChoiceList $choiceList): ?bool
-//    {
-//        $this->choiceLists()->detach($choiceList->id);
-//
-//        return $this->hasCompletedLookupList($choiceList);
-//    }
-//
-//    public function hasCompletedLookupList(ChoiceList $choiceList): ?bool
-//    {
-//        return $this->choiceLists()->where('choice_lists.id', $choiceList->id)->first()?->pivot->is_complete;
-//    }
 
 
     // Customisations
