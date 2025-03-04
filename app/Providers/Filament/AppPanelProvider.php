@@ -113,8 +113,9 @@ class AppPanelProvider extends PanelProvider
                 ],
 
 
-                'lightgreen' => ['216, 234, 208',
-            ],
+                'lightgreen' => [
+                    '216, 234, 208',
+                ],
             ])
             ->viteTheme('resources/css/filament/app/theme.css')
             // to include XlsformResource from main repo
@@ -132,6 +133,10 @@ class AppPanelProvider extends PanelProvider
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
                 fn() => view('filament-team-management::appPanelTitle'),
+            )
+            ->renderHook(
+                PanelsRenderHook::HEAD_START,
+                fn() => view('filament.app.pages.info-panels.team-without-xlsform'),
             )
             ->middleware([
                 EncryptCookies::class,

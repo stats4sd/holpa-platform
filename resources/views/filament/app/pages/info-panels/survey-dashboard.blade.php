@@ -6,11 +6,6 @@
         <!-- Heading -->
         <h1 class="text-green  text-left  mb-12">HOLPA Survey Dashboard</h1>
 
-        @if (auth()->user()->latestTeam->xlsforms()->count() == 0)
-        <!-- Error message -->
-        <h3 class="text-white text-center mb-12 bg-blue">THIS TEAM DOES NOT HAVE ANY ODK FORMS. THIS IS DUE TO AN ISSUE WITH THE TEAM CREATION. PLEASE CONTACT {{ config('mail.to.support') }} FOR SUPPORT BEFORE CONTINUING.</h3>
-        @endif
-
         <!-- Content -->
         <div class="grid grid-cols-6 md:grid-cols-2 gap-6 mb-14">
 
