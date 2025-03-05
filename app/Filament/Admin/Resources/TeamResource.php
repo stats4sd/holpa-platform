@@ -65,7 +65,6 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
             UsersRelationManager::class,
             InvitesRelationManager::class,
             XlsformsRelationManager::class,
-            LocalesRelationManager::class,
         ];
     }
 }

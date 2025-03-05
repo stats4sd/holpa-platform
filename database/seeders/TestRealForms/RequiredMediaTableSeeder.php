@@ -27,11 +27,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'area_units.csv',
                 'type' => 'file',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:26',
             ),
             1 =>
             array (
@@ -41,11 +41,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'fert_units.csv',
                 'type' => 'file',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:26',
             ),
             2 =>
             array (
@@ -55,11 +55,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'yield_units.csv',
                 'type' => 'file',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:26',
             ),
             3 =>
             array (
@@ -69,11 +69,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'appearance.png',
                 'type' => 'image',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:44',
+                'updated_at' => '2025-03-05 10:36:37',
             ),
             4 =>
             array (
@@ -83,11 +83,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'disease_incidence.png',
                 'type' => 'image',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:44',
+                'updated_at' => '2025-03-05 10:36:37',
             ),
             5 =>
             array (
@@ -97,11 +97,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'insect_incidence.png',
                 'type' => 'image',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:44',
+                'updated_at' => '2025-03-05 10:36:37',
             ),
             6 =>
             array (
@@ -111,11 +111,11 @@ class RequiredMediaTableSeeder extends Seeder
                 'name' => 'soil_sample.png',
                 'type' => 'image',
                 'is_static' => 1,
-                'exists_on_odk' => 0,
+                'exists_on_odk' => 1,
                 'choice_list_id' => NULL,
                 'updated_during_import' => 1,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:44',
+                'updated_at' => '2025-03-05 10:36:37',
             ),
         ));
 

@@ -34,19 +34,19 @@ class XlsformsRelationManager extends \Stats4sd\FilamentTeamManagement\Filament\
                         $odkLinkService = app()->make(OdkLinkService::class);
 
                         // create draft if there is no draft yet
-                        if (!$record->has_draft) {
+//                        if (!$record->has_draft) {
                             $record->deployDraft($odkLinkService);
-                        }
+//                        }
 
-                        if($record->has_draft) {
-                        $odkLinkService->publishForm($record);
-                        } else {
-                            Notification::make('no_draft_deployed')
-                                ->title('No Draft Deployed')
-                                ->body("This form could not be deployed to ODK Central. Please see other error messages or check if the form is a valid ODK form")
-                                ->warning()
-                                ->send();
-                        }
+//                        if($record->has_draft) {
+//                        $odkLinkService->publishForm($record);
+//                        } else {
+//                            Notification::make('no_draft_deployed')
+//                                ->title('No Draft Deployed')
+//                                ->body("This form could not be deployed to ODK Central. Please see other error messages or check if the form is a valid ODK form")
+//                                ->warning()
+//                                ->send();
+//                        }
 
                         // call API to publish form in ODK central
                     }),
