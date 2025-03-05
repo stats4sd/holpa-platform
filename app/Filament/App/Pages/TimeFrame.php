@@ -22,10 +22,22 @@ class TimeFrame extends Page implements HasTable, HasForms
     use InteractsWithForms;
 
     protected static bool $shouldRegisterNavigation = false;
+
     protected static string $view = 'filament.app.pages.time-frame';
+    protected ?string $heading = "Survey Testing - Adapt Time Frame";
+    protected ?string $subheading = "Specify the time frame for your survey";
 
     public ?array $data = [];
     public Team $team;
+
+    public function getBreadcrumbs(): array
+    {
+        return [
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
+            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
 
     public function mount(): void
     {
@@ -61,9 +73,10 @@ class TimeFrame extends Page implements HasTable, HasForms
 
 
         return $table
-            ->query(fn() => SurveyRow::query()
-                ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
-                ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
+            ->query(
+                fn() => SurveyRow::query()
+                    ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
+                    ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
             )
             ->columns([
                 TextColumn::make('name')->label('Name'),
