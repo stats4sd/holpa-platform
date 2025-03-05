@@ -25,13 +25,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'language',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:46',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             1 =>
             array (
@@ -39,13 +39,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'district',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:46',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             2 =>
             array (
@@ -53,13 +53,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'sub_district',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:46',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             3 =>
             array (
@@ -67,13 +67,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'village',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:46',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             4 =>
             array (
@@ -81,13 +81,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'farm',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:46',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             5 =>
             array (
@@ -101,7 +101,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             6 =>
             array (
@@ -115,7 +115,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             7 =>
             array (
@@ -129,7 +129,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             8 =>
             array (
@@ -143,7 +143,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             9 =>
             array (
@@ -157,7 +157,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             10 =>
             array (
@@ -171,7 +171,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             11 =>
             array (
@@ -185,7 +185,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             12 =>
             array (
@@ -199,7 +199,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             13 =>
             array (
@@ -207,13 +207,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'occupation',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             14 =>
             array (
@@ -227,7 +227,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-02-20 15:40:47',
+                'updated_at' => '2025-03-05 10:38:09',
             ),
             15 =>
             array (
@@ -241,7 +241,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-02-20 15:40:51',
+                'updated_at' => '2025-03-05 10:38:11',
             ),
             16 =>
             array (
@@ -255,7 +255,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-02-20 15:40:51',
+                'updated_at' => '2025-03-05 10:38:11',
             ),
             17 =>
             array (
@@ -269,7 +269,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-02-20 15:40:51',
+                'updated_at' => '2025-03-05 10:38:11',
             ),
             18 =>
             array (
@@ -283,7 +283,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:54',
-                'updated_at' => '2025-02-20 15:40:54',
+                'updated_at' => '2025-03-05 10:38:14',
             ),
             19 =>
             array (
@@ -297,7 +297,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:40:57',
+                'updated_at' => '2025-03-05 10:38:16',
             ),
             20 =>
             array (
@@ -311,7 +311,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:40:57',
-                'updated_at' => '2025-02-20 15:40:57',
+                'updated_at' => '2025-03-05 10:38:16',
             ),
             21 =>
             array (
@@ -325,7 +325,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:21',
             ),
             22 =>
             array (
@@ -339,7 +339,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:21',
             ),
             23 =>
             array (
@@ -353,7 +353,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-02-20 15:41:00',
+                'updated_at' => '2025-03-05 10:38:21',
             ),
             24 =>
             array (
@@ -367,7 +367,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:02',
-                'updated_at' => '2025-02-20 15:41:02',
+                'updated_at' => '2025-03-05 10:38:23',
             ),
             25 =>
             array (
@@ -381,7 +381,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:02',
-                'updated_at' => '2025-02-20 15:41:02',
+                'updated_at' => '2025-03-05 10:38:23',
             ),
             26 =>
             array (
@@ -389,13 +389,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 8,
                 'list_name' => 'area_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:41:04',
+                'updated_at' => '2025-03-05 10:38:25',
             ),
             27 =>
             array (
@@ -409,7 +409,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:41:04',
+                'updated_at' => '2025-03-05 10:38:25',
             ),
             28 =>
             array (
@@ -417,13 +417,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 9,
                 'list_name' => 'shocks',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:41:05',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             29 =>
             array (
@@ -437,7 +437,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:41:05',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             30 =>
             array (
@@ -451,7 +451,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:41:05',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             31 =>
             array (
@@ -465,7 +465,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:41:05',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             32 =>
             array (
@@ -479,7 +479,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:41:05',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             33 =>
             array (
@@ -493,7 +493,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:06',
-                'updated_at' => '2025-02-20 15:41:06',
+                'updated_at' => '2025-03-05 10:38:28',
             ),
             34 =>
             array (
@@ -507,7 +507,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-02-20 15:41:08',
+                'updated_at' => '2025-03-05 10:38:30',
             ),
             35 =>
             array (
@@ -521,7 +521,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-02-20 15:41:08',
+                'updated_at' => '2025-03-05 10:38:30',
             ),
             36 =>
             array (
@@ -535,7 +535,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-02-20 15:41:08',
+                'updated_at' => '2025-03-05 10:38:30',
             ),
             37 =>
             array (
@@ -549,7 +549,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-02-20 15:41:08',
+                'updated_at' => '2025-03-05 10:38:30',
             ),
             38 =>
             array (
@@ -563,7 +563,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-02-20 15:41:11',
+                'updated_at' => '2025-03-05 10:38:38',
             ),
             39 =>
             array (
@@ -577,7 +577,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-02-20 15:41:11',
+                'updated_at' => '2025-03-05 10:38:38',
             ),
             40 =>
             array (
@@ -591,7 +591,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-02-20 15:41:11',
+                'updated_at' => '2025-03-05 10:38:38',
             ),
             41 =>
             array (
@@ -605,7 +605,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-02-20 15:41:11',
+                'updated_at' => '2025-03-05 10:38:38',
             ),
             42 =>
             array (
@@ -619,7 +619,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-02-20 15:41:11',
+                'updated_at' => '2025-03-05 10:38:38',
             ),
             43 =>
             array (
@@ -633,7 +633,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:13',
-                'updated_at' => '2025-02-20 15:41:14',
+                'updated_at' => '2025-03-05 10:38:42',
             ),
             44 =>
             array (
@@ -647,7 +647,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-02-20 15:41:14',
+                'updated_at' => '2025-03-05 10:38:42',
             ),
             45 =>
             array (
@@ -661,7 +661,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-02-20 15:41:14',
+                'updated_at' => '2025-03-05 10:38:42',
             ),
             46 =>
             array (
@@ -675,7 +675,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-02-20 15:41:14',
+                'updated_at' => '2025-03-05 10:38:42',
             ),
             47 =>
             array (
@@ -689,7 +689,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-02-20 15:41:16',
+                'updated_at' => '2025-03-05 10:38:44',
             ),
             48 =>
             array (
@@ -703,7 +703,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-02-20 15:41:16',
+                'updated_at' => '2025-03-05 10:38:44',
             ),
             49 =>
             array (
@@ -717,7 +717,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-02-20 15:41:16',
+                'updated_at' => '2025-03-05 10:38:44',
             ),
             50 =>
             array (
@@ -731,7 +731,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-02-20 15:41:17',
+                'updated_at' => '2025-03-05 10:38:44',
             ),
             51 =>
             array (
@@ -745,7 +745,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-02-20 15:41:17',
+                'updated_at' => '2025-03-05 10:38:44',
             ),
             52 =>
             array (
@@ -759,7 +759,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             53 =>
             array (
@@ -773,7 +773,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             54 =>
             array (
@@ -787,7 +787,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             55 =>
             array (
@@ -801,7 +801,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             56 =>
             array (
@@ -815,7 +815,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             57 =>
             array (
@@ -829,7 +829,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-02-20 15:41:19',
+                'updated_at' => '2025-03-05 10:38:48',
             ),
             58 =>
             array (
@@ -843,7 +843,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:21',
-                'updated_at' => '2025-02-20 15:41:21',
+                'updated_at' => '2025-03-05 10:38:50',
             ),
             59 =>
             array (
@@ -857,7 +857,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:41:21',
-                'updated_at' => '2025-02-20 15:42:02',
+                'updated_at' => '2025-03-05 10:39:24',
             ),
             60 =>
             array (
@@ -871,7 +871,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:01',
-                'updated_at' => '2025-02-20 15:42:02',
+                'updated_at' => '2025-03-05 10:39:24',
             ),
             61 =>
             array (
@@ -885,7 +885,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:01',
-                'updated_at' => '2025-02-20 15:42:02',
+                'updated_at' => '2025-03-05 10:39:24',
             ),
             62 =>
             array (
@@ -899,7 +899,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             63 =>
             array (
@@ -913,7 +913,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             64 =>
             array (
@@ -927,7 +927,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             65 =>
             array (
@@ -941,7 +941,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             66 =>
             array (
@@ -955,7 +955,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             67 =>
             array (
@@ -969,7 +969,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:05',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             68 =>
             array (
@@ -983,7 +983,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             69 =>
             array (
@@ -997,7 +997,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             70 =>
             array (
@@ -1011,7 +1011,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             71 =>
             array (
@@ -1025,7 +1025,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-02-20 15:42:04',
+                'updated_at' => '2025-03-05 10:39:26',
             ),
             72 =>
             array (
@@ -1033,13 +1033,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 18,
                 'list_name' => 'crops',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:06',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             73 =>
             array (
@@ -1053,7 +1053,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:06',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             74 =>
             array (
@@ -1067,7 +1067,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:06',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             75 =>
             array (
@@ -1081,7 +1081,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:06',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             76 =>
             array (
@@ -1095,7 +1095,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:06',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             77 =>
             array (
@@ -1109,7 +1109,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             78 =>
             array (
@@ -1123,7 +1123,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             79 =>
             array (
@@ -1131,13 +1131,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 18,
                 'list_name' => 'yield_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             80 =>
             array (
@@ -1151,7 +1151,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             81 =>
             array (
@@ -1165,7 +1165,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             82 =>
             array (
@@ -1179,7 +1179,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:42:07',
+                'updated_at' => '2025-03-05 10:39:28',
             ),
             83 =>
             array (
@@ -1193,7 +1193,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:08',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             84 =>
             array (
@@ -1207,7 +1207,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:08',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             85 =>
             array (
@@ -1221,7 +1221,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:08',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             86 =>
             array (
@@ -1235,7 +1235,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:08',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             87 =>
             array (
@@ -1243,13 +1243,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 19,
                 'list_name' => 'fert_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:09',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             88 =>
             array (
@@ -1263,7 +1263,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:42:08',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             89 =>
             array (
@@ -1277,7 +1277,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:42:09',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             90 =>
             array (
@@ -1291,7 +1291,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:42:09',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             91 =>
             array (
@@ -1305,7 +1305,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:42:09',
+                'updated_at' => '2025-03-05 10:39:30',
             ),
             92 =>
             array (
@@ -1319,7 +1319,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:42:10',
+                'updated_at' => '2025-03-05 10:39:32',
             ),
             93 =>
             array (
@@ -1333,7 +1333,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-02-20 15:42:11',
+                'updated_at' => '2025-03-05 10:39:34',
             ),
             94 =>
             array (
@@ -1347,7 +1347,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             95 =>
             array (
@@ -1361,7 +1361,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             96 =>
             array (
@@ -1375,7 +1375,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             97 =>
             array (
@@ -1389,7 +1389,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             98 =>
             array (
@@ -1403,7 +1403,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             99 =>
             array (
@@ -1417,7 +1417,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             100 =>
             array (
@@ -1431,7 +1431,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             101 =>
             array (
@@ -1445,7 +1445,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             102 =>
             array (
@@ -1459,7 +1459,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             103 =>
             array (
@@ -1473,7 +1473,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             104 =>
             array (
@@ -1487,7 +1487,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             105 =>
             array (
@@ -1501,7 +1501,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             106 =>
             array (
@@ -1515,7 +1515,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-02-20 15:42:38',
+                'updated_at' => '2025-03-05 10:40:02',
             ),
             107 =>
             array (
@@ -1529,7 +1529,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             108 =>
             array (
@@ -1537,13 +1537,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 22,
                 'list_name' => 'fish',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             109 =>
             array (
@@ -1557,7 +1557,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             110 =>
             array (
@@ -1571,7 +1571,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             111 =>
             array (
@@ -1585,7 +1585,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             112 =>
             array (
@@ -1599,7 +1599,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             113 =>
             array (
@@ -1613,7 +1613,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             114 =>
             array (
@@ -1627,7 +1627,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             115 =>
             array (
@@ -1641,7 +1641,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             116 =>
             array (
@@ -1655,7 +1655,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             117 =>
             array (
@@ -1669,7 +1669,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             118 =>
             array (
@@ -1683,7 +1683,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-02-20 15:42:40',
+                'updated_at' => '2025-03-05 10:40:04',
             ),
             119 =>
             array (
@@ -1697,7 +1697,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:42',
-                'updated_at' => '2025-02-20 15:42:42',
+                'updated_at' => '2025-03-05 10:40:05',
             ),
             120 =>
             array (
@@ -1711,7 +1711,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:42:43',
+                'updated_at' => '2025-03-05 10:40:06',
             ),
             121 =>
             array (
@@ -1725,7 +1725,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:42:43',
+                'updated_at' => '2025-03-05 10:40:06',
             ),
             122 =>
             array (
@@ -1739,7 +1739,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:42:43',
+                'updated_at' => '2025-03-05 10:40:06',
             ),
             123 =>
             array (
@@ -1753,7 +1753,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             124 =>
             array (
@@ -1767,7 +1767,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             125 =>
             array (
@@ -1781,7 +1781,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             126 =>
             array (
@@ -1795,7 +1795,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             127 =>
             array (
@@ -1809,7 +1809,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             128 =>
             array (
@@ -1823,7 +1823,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:42:44',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             129 =>
             array (
@@ -1837,7 +1837,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:45',
-                'updated_at' => '2025-02-20 15:42:45',
+                'updated_at' => '2025-03-05 10:40:07',
             ),
             130 =>
             array (
@@ -1851,7 +1851,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:42:46',
+                'updated_at' => '2025-03-05 10:40:08',
             ),
             131 =>
             array (
@@ -1865,7 +1865,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:42:46',
+                'updated_at' => '2025-03-05 10:40:08',
             ),
             132 =>
             array (
@@ -1879,7 +1879,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:42:46',
+                'updated_at' => '2025-03-05 10:40:08',
             ),
             133 =>
             array (
@@ -1893,7 +1893,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:42:46',
+                'updated_at' => '2025-03-05 10:40:09',
             ),
             134 =>
             array (
@@ -1907,7 +1907,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:42:47',
+                'updated_at' => '2025-03-05 10:40:09',
             ),
             135 =>
             array (
@@ -1921,7 +1921,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             136 =>
             array (
@@ -1929,13 +1929,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 28,
                 'list_name' => 'district',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             137 =>
             array (
@@ -1943,13 +1943,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 28,
                 'list_name' => 'sub_district',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             138 =>
             array (
@@ -1957,13 +1957,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 28,
                 'list_name' => 'village',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             139 =>
             array (
@@ -1971,13 +1971,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 28,
                 'list_name' => 'farm',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 1,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             140 =>
             array (
@@ -1991,7 +1991,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             141 =>
             array (
@@ -2005,7 +2005,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             142 =>
             array (
@@ -2019,7 +2019,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             143 =>
             array (
@@ -2033,7 +2033,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             144 =>
             array (
@@ -2047,7 +2047,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-02-20 15:51:41',
+                'updated_at' => '2025-03-05 10:36:33',
             ),
             145 =>
             array (
@@ -2061,7 +2061,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             146 =>
             array (
@@ -2075,7 +2075,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             147 =>
             array (
@@ -2089,7 +2089,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             148 =>
             array (
@@ -2103,7 +2103,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             149 =>
             array (
@@ -2117,7 +2117,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             150 =>
             array (
@@ -2131,7 +2131,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             151 =>
             array (
@@ -2145,7 +2145,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             152 =>
             array (
@@ -2159,7 +2159,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             153 =>
             array (
@@ -2173,7 +2173,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             154 =>
             array (
@@ -2187,7 +2187,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             155 =>
             array (
@@ -2201,7 +2201,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             156 =>
             array (
@@ -2215,7 +2215,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             157 =>
             array (
@@ -2229,7 +2229,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             158 =>
             array (
@@ -2243,7 +2243,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             159 =>
             array (
@@ -2257,7 +2257,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             160 =>
             array (
@@ -2271,7 +2271,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             161 =>
             array (
@@ -2285,7 +2285,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             162 =>
             array (
@@ -2299,7 +2299,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             163 =>
             array (
@@ -2313,7 +2313,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             164 =>
             array (
@@ -2327,7 +2327,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             165 =>
             array (
@@ -2341,7 +2341,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
             166 =>
             array (
@@ -2355,7 +2355,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'has_custom_handling' => 0,
                 'properties' => NULL,
                 'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-02-20 15:51:43',
+                'updated_at' => '2025-03-05 10:36:35',
             ),
         ));
 

@@ -26,8 +26,9 @@ class LocalesTableSeeder extends Seeder
                 'is_default' => true,
             ]);
 
-        foreach (Team::all() as $team) {
-            $team->locales()->sync($localeEn);
-        }
+        Team::all()->each(function (Team $team) use ($localeEn) {
+            $team->languages()->updateExistingPivot($localeEn->language->id, ['locale_id' => $localeEn->id]);
+        });
+
     }
 }

@@ -39,7 +39,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             1 =>
             array (
@@ -61,7 +61,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             2 =>
             array (
@@ -83,7 +83,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             3 =>
             array (
@@ -105,7 +105,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             4 =>
             array (
@@ -127,7 +127,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             5 =>
             array (
@@ -149,7 +149,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             6 =>
             array (
@@ -171,7 +171,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context", "sub_indicator": "language"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             7 =>
             array (
@@ -193,7 +193,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "localisable_text": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             8 =>
             array (
@@ -215,7 +215,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             9 =>
             array (
@@ -237,7 +237,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             10 =>
             array (
@@ -259,7 +259,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             11 =>
             array (
@@ -281,7 +281,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             12 =>
             array (
@@ -303,7 +303,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             13 =>
             array (
@@ -325,7 +325,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             14 =>
             array (
@@ -347,7 +347,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             15 =>
             array (
@@ -369,7 +369,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             16 =>
             array (
@@ -391,7 +391,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             17 =>
             array (
@@ -413,7 +413,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             18 =>
             array (
@@ -435,7 +435,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             19 =>
             array (
@@ -457,7 +457,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             20 =>
             array (
@@ -479,7 +479,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             21 =>
             array (
@@ -501,7 +501,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             22 =>
             array (
@@ -523,7 +523,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             23 =>
             array (
@@ -545,7 +545,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             24 =>
             array (
@@ -567,7 +567,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             25 =>
             array (
@@ -589,7 +589,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             26 =>
             array (
@@ -611,7 +611,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             27 =>
             array (
@@ -633,7 +633,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             28 =>
             array (
@@ -655,7 +655,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             29 =>
             array (
@@ -677,7 +677,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             30 =>
             array (
@@ -699,7 +699,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "repeat_flag": 1, "repeat_group_name": "location_levels_rpt"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             31 =>
             array (
@@ -721,7 +721,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "repeat_flag": 1, "repeat_group_name": "location_levels_rpt"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             32 =>
             array (
@@ -743,7 +743,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             33 =>
             array (
@@ -765,7 +765,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             34 =>
             array (
@@ -787,7 +787,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "MAY NEED TO BE UPDATED", "indicator": "general", "holpa_module": "context", "sub_indicator": "consent"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             35 =>
             array (
@@ -809,7 +809,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "MAY NEED TO BE UPDATED", "indicator": "general", "holpa_module": "context", "sub_indicator": "consent"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             36 =>
             array (
@@ -831,7 +831,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "MAY NEED TO BE UPDATED", "indicator": "general", "holpa_module": "context", "sub_indicator": "consent"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             37 =>
             array (
@@ -853,7 +853,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "MAY NEED TO BE UPDATED", "indicator": "general", "holpa_module": "context", "sub_indicator": "consent"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             38 =>
             array (
@@ -875,7 +875,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             39 =>
             array (
@@ -897,7 +897,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             40 =>
             array (
@@ -919,7 +919,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             41 =>
             array (
@@ -941,7 +941,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             42 =>
             array (
@@ -963,7 +963,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "general", "holpa_module": "context", "sub_indicator": "farm_layout"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             43 =>
             array (
@@ -985,7 +985,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             44 =>
             array (
@@ -1007,7 +1007,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             45 =>
             array (
@@ -1029,7 +1029,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "Assume could be pulled in from a sample frame", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "name"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             46 =>
             array (
@@ -1051,7 +1051,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "Assume could be pulled in from a sample frame", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "name"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             47 =>
             array (
@@ -1073,7 +1073,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             48 =>
             array (
@@ -1095,7 +1095,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             49 =>
             array (
@@ -1117,7 +1117,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "hh_head_relation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             50 =>
             array (
@@ -1139,7 +1139,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "hh_head_relation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             51 =>
             array (
@@ -1161,7 +1161,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             52 =>
             array (
@@ -1183,7 +1183,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             53 =>
             array (
@@ -1205,7 +1205,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "farmer_relation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             54 =>
             array (
@@ -1227,7 +1227,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "farmer_relation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             55 =>
             array (
@@ -1249,7 +1249,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             56 =>
             array (
@@ -1271,7 +1271,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             57 =>
             array (
@@ -1293,7 +1293,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "age_dob"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             58 =>
             array (
@@ -1315,7 +1315,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "age"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             59 =>
             array (
@@ -1337,7 +1337,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             60 =>
             array (
@@ -1359,7 +1359,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "age_community"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             61 =>
             array (
@@ -1381,7 +1381,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "gender"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             62 =>
             array (
@@ -1403,7 +1403,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "marital_status"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             63 =>
             array (
@@ -1425,7 +1425,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "marital_status"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             64 =>
             array (
@@ -1447,7 +1447,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "LOCALIZATION", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "ethnicity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             65 =>
             array (
@@ -1469,7 +1469,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             66 =>
             array (
@@ -1491,7 +1491,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             67 =>
             array (
@@ -1513,7 +1513,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "introduction", "indicator": "respondent_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "literacy/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             68 =>
             array (
@@ -1535,7 +1535,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "introduction", "comment": "LOCALIZATION", "indicator": "respondent_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "education/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             69 =>
             array (
@@ -1557,7 +1557,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "LOCALIZATION", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "education"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             70 =>
             array (
@@ -1579,7 +1579,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "primary_occupation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             71 =>
             array (
@@ -1601,7 +1601,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "primary_occupation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             72 =>
             array (
@@ -1623,7 +1623,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "secondary_occupation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             73 =>
             array (
@@ -1645,7 +1645,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "secondary_occupation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             74 =>
             array (
@@ -1667,7 +1667,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "secondary_occupation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             75 =>
             array (
@@ -1689,7 +1689,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             76 =>
             array (
@@ -1711,7 +1711,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             77 =>
             array (
@@ -1733,7 +1733,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             78 =>
             array (
@@ -1755,7 +1755,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             79 =>
             array (
@@ -1777,7 +1777,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             80 =>
             array (
@@ -1799,7 +1799,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             81 =>
             array (
@@ -1821,7 +1821,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "comment": "CONSTRAINTS? -max 15 each for now", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             82 =>
             array (
@@ -1843,7 +1843,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             83 =>
             array (
@@ -1865,7 +1865,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             84 =>
             array (
@@ -1887,7 +1887,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             85 =>
             array (
@@ -1909,7 +1909,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             86 =>
             array (
@@ -1931,7 +1931,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "structure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             87 =>
             array (
@@ -1953,7 +1953,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             88 =>
             array (
@@ -1975,7 +1975,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             89 =>
             array (
@@ -1997,7 +1997,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             90 =>
             array (
@@ -2019,7 +2019,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             91 =>
             array (
@@ -2041,7 +2041,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             92 =>
             array (
@@ -2063,7 +2063,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             93 =>
             array (
@@ -2085,7 +2085,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "introduction", "comment": "LOCALIZATION", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             94 =>
             array (
@@ -2107,7 +2107,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "introduction", "comment": "LOCALIZATION", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             95 =>
             array (
@@ -2129,7 +2129,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn_extra", "module": "introduction", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             96 =>
             array (
@@ -2151,7 +2151,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             97 =>
             array (
@@ -2173,7 +2173,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             98 =>
             array (
@@ -2195,7 +2195,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "introduction", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "training/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             99 =>
             array (
@@ -2217,7 +2217,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "introduction", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "training/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             100 =>
             array (
@@ -2239,7 +2239,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "introduction", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "training/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             101 =>
             array (
@@ -2261,7 +2261,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "introduction", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "training/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             102 =>
             array (
@@ -2283,7 +2283,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:49',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             103 =>
             array (
@@ -2305,7 +2305,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             104 =>
             array (
@@ -2327,7 +2327,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "project_involvement"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             105 =>
             array (
@@ -2349,7 +2349,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "project_involvement"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             106 =>
             array (
@@ -2371,7 +2371,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             107 =>
             array (
@@ -2393,7 +2393,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             108 =>
             array (
@@ -2415,7 +2415,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             109 =>
             array (
@@ -2437,7 +2437,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "respondent_characteristics", "holpa_module": "context", "sub_indicator": "agroecology_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             110 =>
             array (
@@ -2459,7 +2459,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             111 =>
             array (
@@ -2481,7 +2481,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             112 =>
             array (
@@ -2503,7 +2503,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             113 =>
             array (
@@ -2525,7 +2525,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             114 =>
             array (
@@ -2547,7 +2547,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             115 =>
             array (
@@ -2569,7 +2569,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             116 =>
             array (
@@ -2591,7 +2591,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             117 =>
             array (
@@ -2613,7 +2613,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "societal_factor"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             118 =>
             array (
@@ -2635,7 +2635,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             119 =>
             array (
@@ -2657,7 +2657,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             120 =>
             array (
@@ -2679,7 +2679,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             121 =>
             array (
@@ -2701,7 +2701,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             122 =>
             array (
@@ -2723,7 +2723,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             123 =>
             array (
@@ -2745,7 +2745,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             124 =>
             array (
@@ -2767,7 +2767,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             125 =>
             array (
@@ -2789,7 +2789,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             126 =>
             array (
@@ -2811,7 +2811,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "personal_factors"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             127 =>
             array (
@@ -2833,7 +2833,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "agroecology_perspective", "indicator": "motivations_agroecology", "holpa_module": "context", "sub_indicator": "societal_factor"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:52',
-                'updated_at' => '2025-02-20 15:43:50',
+                'updated_at' => '2025-03-05 10:41:00',
             ),
             128 =>
             array (
@@ -2855,7 +2855,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "human_wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             129 =>
             array (
@@ -2877,7 +2877,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "human_wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             130 =>
             array (
@@ -2899,7 +2899,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.1, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             131 =>
             array (
@@ -2921,7 +2921,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.2, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             132 =>
             array (
@@ -2943,7 +2943,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.3, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             133 =>
             array (
@@ -2965,7 +2965,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.4, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             134 =>
             array (
@@ -2987,7 +2987,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.5, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             135 =>
             array (
@@ -3009,7 +3009,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.6, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             136 =>
             array (
@@ -3031,7 +3031,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.7, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             137 =>
             array (
@@ -3053,7 +3053,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.8, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             138 =>
             array (
@@ -3075,7 +3075,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.9, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             139 =>
             array (
@@ -3097,7 +3097,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.1, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             140 =>
             array (
@@ -3119,7 +3119,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.11, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             141 =>
             array (
@@ -3141,7 +3141,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 18.12, "module": "human_wellbeing", "indicator": "social", "holpa_module": "performance", "sub_indicator": "wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             142 =>
             array (
@@ -3163,7 +3163,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "human_wellbeing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:01',
             ),
             143 =>
             array (
@@ -3185,7 +3185,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             144 =>
             array (
@@ -3207,7 +3207,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             145 =>
             array (
@@ -3226,10 +3226,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
+                'properties' => '{"kpi": 16, "module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             146 =>
             array (
@@ -3251,7 +3251,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             147 =>
             array (
@@ -3273,7 +3273,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             148 =>
             array (
@@ -3295,7 +3295,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             149 =>
             array (
@@ -3317,7 +3317,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             150 =>
             array (
@@ -3339,7 +3339,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             151 =>
             array (
@@ -3358,10 +3358,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
+                'properties' => '{"kpi": 16, "module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             152 =>
             array (
@@ -3383,7 +3383,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             153 =>
             array (
@@ -3405,7 +3405,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             154 =>
             array (
@@ -3427,7 +3427,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             155 =>
             array (
@@ -3449,7 +3449,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             156 =>
             array (
@@ -3471,7 +3471,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             157 =>
             array (
@@ -3493,7 +3493,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             158 =>
             array (
@@ -3515,7 +3515,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             159 =>
             array (
@@ -3537,7 +3537,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             160 =>
             array (
@@ -3559,7 +3559,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             161 =>
             array (
@@ -3581,7 +3581,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             162 =>
             array (
@@ -3603,7 +3603,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             163 =>
             array (
@@ -3625,7 +3625,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             164 =>
             array (
@@ -3647,7 +3647,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             165 =>
             array (
@@ -3669,7 +3669,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             166 =>
             array (
@@ -3691,7 +3691,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency", "indicator": "social", "holpa_module": "performance", "sub_indicator": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             167 =>
             array (
@@ -3713,7 +3713,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farmer_agency"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:58',
-                'updated_at' => '2025-02-20 15:43:51',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             168 =>
             array (
@@ -3735,7 +3735,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             169 =>
             array (
@@ -3757,7 +3757,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             170 =>
             array (
@@ -3779,7 +3779,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             171 =>
             array (
@@ -3801,7 +3801,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             172 =>
             array (
@@ -3823,7 +3823,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             173 =>
             array (
@@ -3845,7 +3845,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             174 =>
             array (
@@ -3867,7 +3867,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             175 =>
             array (
@@ -3889,7 +3889,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             176 =>
             array (
@@ -3911,7 +3911,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation", "comment": "CONSTRAINT OR CHOICE LIST", "indicator": "8_knowledge", "holpa_module": "agroecology", "sub_indicator": "8_knowledge"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             177 =>
             array (
@@ -3933,7 +3933,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "knowledge_co_creation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:40:59',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             178 =>
             array (
@@ -3955,7 +3955,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "governance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:01',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             179 =>
             array (
@@ -3977,7 +3977,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "governance", "indicator": "12_governance", "holpa_module": "agroecology", "sub_indicator": "12_governance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:01',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             180 =>
             array (
@@ -3999,7 +3999,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "governance", "indicator": "12_governance", "holpa_module": "agroecology", "sub_indicator": "12_governance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:01',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             181 =>
             array (
@@ -4021,7 +4021,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "governance", "indicator": "12_governance", "holpa_module": "agroecology", "sub_indicator": "12_governance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:01',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             182 =>
             array (
@@ -4043,7 +4043,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "governance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:01',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:02',
             ),
             183 =>
             array (
@@ -4065,7 +4065,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             184 =>
             array (
@@ -4087,7 +4087,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "membership"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             185 =>
             array (
@@ -4109,7 +4109,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation", "indicator": "household_characteristics/economic", "holpa_module": "context", "sub_indicator": "membership"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             186 =>
             array (
@@ -4131,7 +4131,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation", "indicator": "13_participation", "holpa_module": "agroecology", "sub_indicator": "13_participation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             187 =>
             array (
@@ -4153,7 +4153,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation", "indicator": "extra_participation", "holpa_module": "agroecology", "sub_indicator": "extra_participation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             188 =>
             array (
@@ -4175,7 +4175,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation", "indicator": "extra_participation", "holpa_module": "agroecology", "sub_indicator": "extra_participation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             189 =>
             array (
@@ -4197,7 +4197,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "participation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:03',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:03',
             ),
             190 =>
             array (
@@ -4219,7 +4219,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             191 =>
             array (
@@ -4241,7 +4241,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             192 =>
             array (
@@ -4263,7 +4263,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "comment": "LOCALIZATION", "indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all", "holpa_module": "agroecology/context/performance", "sub_indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             193 =>
             array (
@@ -4275,7 +4275,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'area_units\', \'conversion_rate\', \'name\', ${area_unit})',
+            'calculation' => 'pulldata(\'area_units\', \'conversion_rate\', \'id\', ${area_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -4285,7 +4285,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             194 =>
             array (
@@ -4307,7 +4307,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             195 =>
             array (
@@ -4319,7 +4319,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'area_units\', \'label_en\', \'name\', ${area_unit})',
+            'calculation' => 'pulldata(\'area_units\', \'name_en\', \'id\', ${area_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -4329,7 +4329,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             196 =>
             array (
@@ -4351,7 +4351,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "13.1/17.3", "module": "land_tenure", "indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all", "holpa_module": "agroecology/context/performance", "sub_indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             197 =>
             array (
@@ -4373,7 +4373,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             198 =>
             array (
@@ -4395,7 +4395,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             199 =>
             array (
@@ -4417,7 +4417,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "13.1/17.3", "module": "land_tenure", "indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all", "holpa_module": "agroecology/context/performance", "sub_indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             200 =>
             array (
@@ -4439,7 +4439,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             201 =>
             array (
@@ -4461,7 +4461,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             202 =>
             array (
@@ -4483,7 +4483,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "13.1/17.3", "module": "land_tenure", "indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all", "holpa_module": "agroecology/context/performance", "sub_indicator": "5_biodiversity/context_all/economic_all/environmental_all/social_all/agricultural_all"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             203 =>
             array (
@@ -4505,7 +4505,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             204 =>
             array (
@@ -4527,7 +4527,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             205 =>
             array (
@@ -4549,7 +4549,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             206 =>
             array (
@@ -4568,10 +4568,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "land_tenure"}',
+                'properties' => '{"kpi": 17, "module": "land_tenure", "indicator": "social", "holpa_module": "agroecology/context/performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             207 =>
             array (
@@ -4590,10 +4590,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "land_tenure"}',
+                'properties' => '{"kpi": 17, "module": "land_tenure", "indicator": "social", "holpa_module": "agroecology/context/performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             208 =>
             array (
@@ -4615,7 +4615,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             209 =>
             array (
@@ -4637,7 +4637,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             210 =>
             array (
@@ -4659,7 +4659,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             211 =>
             array (
@@ -4681,7 +4681,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             212 =>
             array (
@@ -4703,7 +4703,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             213 =>
             array (
@@ -4725,7 +4725,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             214 =>
             array (
@@ -4747,7 +4747,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             215 =>
             array (
@@ -4769,7 +4769,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             216 =>
             array (
@@ -4791,7 +4791,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             217 =>
             array (
@@ -4813,7 +4813,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             218 =>
             array (
@@ -4835,7 +4835,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             219 =>
             array (
@@ -4857,7 +4857,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             220 =>
             array (
@@ -4879,7 +4879,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             221 =>
             array (
@@ -4901,7 +4901,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             222 =>
             array (
@@ -4923,7 +4923,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             223 =>
             array (
@@ -4945,7 +4945,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             224 =>
             array (
@@ -4967,7 +4967,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             225 =>
             array (
@@ -4989,7 +4989,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             226 =>
             array (
@@ -5011,7 +5011,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             227 =>
             array (
@@ -5033,7 +5033,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             228 =>
             array (
@@ -5055,7 +5055,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             229 =>
             array (
@@ -5077,7 +5077,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             230 =>
             array (
@@ -5099,7 +5099,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             231 =>
             array (
@@ -5121,7 +5121,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             232 =>
             array (
@@ -5143,7 +5143,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             233 =>
             array (
@@ -5165,7 +5165,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             234 =>
             array (
@@ -5187,7 +5187,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             235 =>
             array (
@@ -5209,7 +5209,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             236 =>
             array (
@@ -5231,7 +5231,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             237 =>
             array (
@@ -5253,7 +5253,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             238 =>
             array (
@@ -5275,7 +5275,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             239 =>
             array (
@@ -5297,7 +5297,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             240 =>
             array (
@@ -5319,7 +5319,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             241 =>
             array (
@@ -5341,7 +5341,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             242 =>
             array (
@@ -5363,7 +5363,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             243 =>
             array (
@@ -5385,7 +5385,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             244 =>
             array (
@@ -5407,7 +5407,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             245 =>
             array (
@@ -5429,7 +5429,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             246 =>
             array (
@@ -5451,7 +5451,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             247 =>
             array (
@@ -5473,7 +5473,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             248 =>
             array (
@@ -5495,7 +5495,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 17.1, "module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             249 =>
             array (
@@ -5517,7 +5517,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 17.2, "module": "land_tenure", "comment": "CONVERSION AND CONSTRAINT TBA", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             250 =>
             array (
@@ -5536,10 +5536,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "land_tenure"}',
+                'properties' => '{"kpi": 17.2, "module": "land_tenure", "indicator": "social", "holpa_module": "performance", "sub_indicator": "land_tenure_security"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             251 =>
             array (
@@ -5561,7 +5561,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             252 =>
             array (
@@ -5583,7 +5583,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "land_tenure"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             253 =>
             array (
@@ -5605,7 +5605,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             254 =>
             array (
@@ -5627,7 +5627,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             255 =>
             array (
@@ -5649,7 +5649,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             256 =>
             array (
@@ -5671,7 +5671,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             257 =>
             array (
@@ -5693,7 +5693,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             258 =>
             array (
@@ -5715,7 +5715,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             259 =>
             array (
@@ -5734,10 +5734,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
+                'properties' => '{"kpi": 14.2, "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_shocks"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             260 =>
             array (
@@ -5759,7 +5759,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             261 =>
             array (
@@ -5781,7 +5781,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             262 =>
             array (
@@ -5803,7 +5803,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "resilience", "indicator": "farm_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             263 =>
             array (
@@ -5825,7 +5825,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "resilience", "indicator": "farm_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             264 =>
             array (
@@ -5847,7 +5847,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             265 =>
             array (
@@ -5869,7 +5869,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             266 =>
             array (
@@ -5891,7 +5891,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             267 =>
             array (
@@ -5913,7 +5913,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             268 =>
             array (
@@ -5935,7 +5935,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             269 =>
             array (
@@ -5957,7 +5957,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             270 =>
             array (
@@ -5979,7 +5979,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             271 =>
             array (
@@ -6001,7 +6001,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             272 =>
             array (
@@ -6023,7 +6023,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             273 =>
             array (
@@ -6045,7 +6045,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             274 =>
             array (
@@ -6067,7 +6067,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             275 =>
             array (
@@ -6089,7 +6089,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             276 =>
             array (
@@ -6111,7 +6111,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             277 =>
             array (
@@ -6133,7 +6133,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             278 =>
             array (
@@ -6155,7 +6155,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             279 =>
             array (
@@ -6177,7 +6177,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             280 =>
             array (
@@ -6199,7 +6199,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn_extra", "module": "resilience", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             281 =>
             array (
@@ -6221,7 +6221,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             282 =>
             array (
@@ -6243,7 +6243,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             283 =>
             array (
@@ -6265,7 +6265,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "resilience"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:07',
-                'updated_at' => '2025-02-20 15:43:52',
+                'updated_at' => '2025-03-05 10:41:04',
             ),
             284 =>
             array (
@@ -6287,7 +6287,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             285 =>
             array (
@@ -6309,7 +6309,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             286 =>
             array (
@@ -6331,7 +6331,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "income", "indicator": "7_economic_diversification/economic", "holpa_module": "agroecology/performance", "sub_indicator": "7_economic_diversification/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             287 =>
             array (
@@ -6350,10 +6350,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "income"}',
+                'properties' => '{"kpi": "14.1_ac_extra", "module": "income", "indicator": "7_economic_diversification/economic", "holpa_module": "agroecology/performance", "sub_indicator": "7_economic_diversification/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             288 =>
             array (
@@ -6375,7 +6375,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_extra", "module": "income", "indicator": "extra_economic_diversification/economic", "holpa_module": "agroecology/performance", "sub_indicator": "extra_economic_diversification/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             289 =>
             array (
@@ -6397,7 +6397,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_extra", "module": "income", "indicator": "7_economic_diversification/economic", "holpa_module": "agroecology/performance", "sub_indicator": "7_economic_diversification/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             290 =>
             array (
@@ -6419,7 +6419,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             291 =>
             array (
@@ -6441,7 +6441,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             292 =>
             array (
@@ -6463,7 +6463,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income", "comment": "option for USD?"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             293 =>
             array (
@@ -6482,10 +6482,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
+                'properties' => '{"kpi": "11.1/13.1", "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             294 =>
             array (
@@ -6504,10 +6504,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
+                'properties' => '{"kpi": "11.1/13.2", "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             295 =>
             array (
@@ -6526,10 +6526,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
+                'properties' => '{"kpi": "11.1/13.3", "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             296 =>
             array (
@@ -6551,7 +6551,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             297 =>
             array (
@@ -6573,7 +6573,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             298 =>
             array (
@@ -6595,7 +6595,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             299 =>
             array (
@@ -6617,7 +6617,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             300 =>
             array (
@@ -6639,7 +6639,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             301 =>
             array (
@@ -6661,7 +6661,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             302 =>
             array (
@@ -6683,7 +6683,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             303 =>
             array (
@@ -6702,10 +6702,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "income"}',
+                'properties' => '{"kpi": 11.1, "module": "income", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             304 =>
             array (
@@ -6727,7 +6727,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             305 =>
             array (
@@ -6749,7 +6749,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             306 =>
             array (
@@ -6771,7 +6771,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.4, "module": "income", "indicator": "household_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "income/income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             307 =>
             array (
@@ -6793,7 +6793,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.2, "module": "income", "indicator": "household_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "income/income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             308 =>
             array (
@@ -6815,7 +6815,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 11.3, "module": "income", "indicator": "household_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "income/income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             309 =>
             array (
@@ -6837,7 +6837,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income", "indicator": "household_characteristic", "holpa_module": "context", "sub_indicator": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             310 =>
             array (
@@ -6859,7 +6859,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "income"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:09',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:05',
             ),
             311 =>
             array (
@@ -6881,7 +6881,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             312 =>
             array (
@@ -6903,7 +6903,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             313 =>
             array (
@@ -6925,7 +6925,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             314 =>
             array (
@@ -6947,7 +6947,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             315 =>
             array (
@@ -6969,7 +6969,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             316 =>
             array (
@@ -6991,7 +6991,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             317 =>
             array (
@@ -7013,7 +7013,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             318 =>
             array (
@@ -7035,7 +7035,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             319 =>
             array (
@@ -7057,7 +7057,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             320 =>
             array (
@@ -7079,7 +7079,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             321 =>
             array (
@@ -7101,7 +7101,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             322 =>
             array (
@@ -7123,7 +7123,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             323 =>
             array (
@@ -7145,7 +7145,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             324 =>
             array (
@@ -7167,7 +7167,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ast", "module": "assets", "comment": "dropped other", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             325 =>
             array (
@@ -7189,7 +7189,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             326 =>
             array (
@@ -7199,7 +7199,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'name' => 'asset_other_count',
                 'type' => 'integer',
                 'required' => 1,
-                'relevant' => '${asset_other}!=""',
+                'relevant' => '${asset_other}>0',
                 'appearance' => NULL,
                 'calculation' => NULL,
                 'constraint' => '. >= 0 or .=-99',
@@ -7208,10 +7208,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "assets"}',
+                'properties' => '{"kpi": "14.1_ast", "module": "assets", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             327 =>
             array (
@@ -7233,7 +7233,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "assets"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:10',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             328 =>
             array (
@@ -7255,7 +7255,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             329 =>
             array (
@@ -7277,7 +7277,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             330 =>
             array (
@@ -7299,7 +7299,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "access_to_credit", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "credit_access/climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             331 =>
             array (
@@ -7321,7 +7321,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             332 =>
             array (
@@ -7343,7 +7343,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             333 =>
             array (
@@ -7365,7 +7365,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             334 =>
             array (
@@ -7387,7 +7387,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             335 =>
             array (
@@ -7409,7 +7409,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             336 =>
             array (
@@ -7431,7 +7431,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             337 =>
             array (
@@ -7453,7 +7453,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_extra", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             338 =>
             array (
@@ -7475,7 +7475,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "access_to_credit", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             339 =>
             array (
@@ -7497,7 +7497,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             340 =>
             array (
@@ -7519,7 +7519,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "access_to_credit"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:12',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:07',
             ),
             341 =>
             array (
@@ -7541,7 +7541,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             342 =>
             array (
@@ -7563,7 +7563,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             343 =>
             array (
@@ -7585,7 +7585,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "comment": "LOCALIZATION - COULD BE DIFFICULT TO VARY AS CONSIDERABLY AS SUGGESTED", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             344 =>
             array (
@@ -7607,7 +7607,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "comment": "- We will replace this entire section with the appropriate section based on country", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             345 =>
             array (
@@ -7629,7 +7629,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             346 =>
             array (
@@ -7651,7 +7651,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             347 =>
             array (
@@ -7673,7 +7673,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             348 =>
             array (
@@ -7695,7 +7695,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             349 =>
             array (
@@ -7717,7 +7717,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             350 =>
             array (
@@ -7739,7 +7739,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             351 =>
             array (
@@ -7761,7 +7761,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             352 =>
             array (
@@ -7783,7 +7783,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             353 =>
             array (
@@ -7805,7 +7805,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             354 =>
             array (
@@ -7827,7 +7827,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             355 =>
             array (
@@ -7849,7 +7849,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             356 =>
             array (
@@ -7871,7 +7871,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             357 =>
             array (
@@ -7893,7 +7893,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             358 =>
             array (
@@ -7915,7 +7915,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             359 =>
             array (
@@ -7937,7 +7937,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             360 =>
             array (
@@ -7959,7 +7959,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             361 =>
             array (
@@ -7981,7 +7981,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             362 =>
             array (
@@ -8003,7 +8003,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             363 =>
             array (
@@ -8025,7 +8025,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             364 =>
             array (
@@ -8047,7 +8047,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             365 =>
             array (
@@ -8069,7 +8069,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             366 =>
             array (
@@ -8091,7 +8091,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             367 =>
             array (
@@ -8113,7 +8113,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             368 =>
             array (
@@ -8135,7 +8135,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             369 =>
             array (
@@ -8157,7 +8157,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             370 =>
             array (
@@ -8179,7 +8179,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             371 =>
             array (
@@ -8201,7 +8201,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             372 =>
             array (
@@ -8223,7 +8223,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             373 =>
             array (
@@ -8245,7 +8245,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 15.1, "module": "diet_quality", "indicator": "social", "holpa_module": "performance", "sub_indicator": "nutrition", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             374 =>
             array (
@@ -8267,7 +8267,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             375 =>
             array (
@@ -8289,7 +8289,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             376 =>
             array (
@@ -8311,7 +8311,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             377 =>
             array (
@@ -8333,7 +8333,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "indicator": "9_social_values", "holpa_module": "agroecology", "sub_indicator": "9_social_values", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             378 =>
             array (
@@ -8355,7 +8355,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "indicator": "9_social_values", "holpa_module": "agroecology", "sub_indicator": "9_social_values", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             379 =>
             array (
@@ -8377,7 +8377,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "indicator": "9_social_values", "holpa_module": "agroecology", "sub_indicator": "9_social_values", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             380 =>
             array (
@@ -8399,7 +8399,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "indicator": "9_social_values", "holpa_module": "agroecology", "sub_indicator": "9_social_values", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             381 =>
             array (
@@ -8421,7 +8421,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             382 =>
             array (
@@ -8443,7 +8443,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "diet_quality", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             383 =>
             array (
@@ -8465,7 +8465,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ssn", "module": "diet_quality", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_social_network", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             384 =>
             array (
@@ -8487,7 +8487,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "diet_quality", "localalisable_module": true}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:15',
-                'updated_at' => '2025-02-20 15:43:53',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             385 =>
             array (
@@ -8509,7 +8509,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:17',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             386 =>
             array (
@@ -8531,7 +8531,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:17',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             387 =>
             array (
@@ -8553,7 +8553,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "housing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:17',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             388 =>
             array (
@@ -8575,7 +8575,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "housing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:17',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             389 =>
             array (
@@ -8597,7 +8597,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             390 =>
             array (
@@ -8619,7 +8619,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             391 =>
             array (
@@ -8641,7 +8641,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "housing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             392 =>
             array (
@@ -8663,7 +8663,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic", "indicator": "household_characteristics", "holpa_module": "context", "sub_indicator": "housing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             393 =>
             array (
@@ -8685,7 +8685,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             394 =>
             array (
@@ -8707,7 +8707,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             395 =>
             array (
@@ -8729,7 +8729,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             396 =>
             array (
@@ -8751,7 +8751,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             397 =>
             array (
@@ -8773,7 +8773,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             398 =>
             array (
@@ -8795,7 +8795,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             399 =>
             array (
@@ -8817,7 +8817,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             400 =>
             array (
@@ -8839,7 +8839,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             401 =>
             array (
@@ -8861,7 +8861,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             402 =>
             array (
@@ -8883,7 +8883,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             403 =>
             array (
@@ -8905,7 +8905,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             404 =>
             array (
@@ -8927,7 +8927,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             405 =>
             array (
@@ -8949,7 +8949,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             406 =>
             array (
@@ -8971,7 +8971,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             407 =>
             array (
@@ -8993,7 +8993,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             408 =>
             array (
@@ -9015,7 +9015,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             409 =>
             array (
@@ -9037,7 +9037,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             410 =>
             array (
@@ -9059,7 +9059,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             411 =>
             array (
@@ -9081,7 +9081,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             412 =>
             array (
@@ -9103,7 +9103,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             413 =>
             array (
@@ -9125,7 +9125,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             414 =>
             array (
@@ -9147,7 +9147,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             415 =>
             array (
@@ -9169,7 +9169,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             416 =>
             array (
@@ -9191,7 +9191,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             417 =>
             array (
@@ -9213,7 +9213,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             418 =>
             array (
@@ -9235,7 +9235,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             419 =>
             array (
@@ -9257,7 +9257,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             420 =>
             array (
@@ -9279,7 +9279,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             421 =>
             array (
@@ -9301,7 +9301,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             422 =>
             array (
@@ -9323,7 +9323,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             423 =>
             array (
@@ -9345,7 +9345,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             424 =>
             array (
@@ -9367,7 +9367,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             425 =>
             array (
@@ -9389,7 +9389,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             426 =>
             array (
@@ -9411,7 +9411,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             427 =>
             array (
@@ -9433,7 +9433,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             428 =>
             array (
@@ -9455,7 +9455,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             429 =>
             array (
@@ -9477,7 +9477,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             430 =>
             array (
@@ -9499,7 +9499,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             431 =>
             array (
@@ -9521,7 +9521,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             432 =>
             array (
@@ -9543,7 +9543,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             433 =>
             array (
@@ -9565,7 +9565,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             434 =>
             array (
@@ -9587,7 +9587,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             435 =>
             array (
@@ -9609,7 +9609,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             436 =>
             array (
@@ -9631,7 +9631,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             437 =>
             array (
@@ -9653,7 +9653,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             438 =>
             array (
@@ -9675,7 +9675,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             439 =>
             array (
@@ -9697,7 +9697,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             440 =>
             array (
@@ -9719,7 +9719,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             441 =>
             array (
@@ -9741,7 +9741,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_abs", "module": "socio_economic", "indicator": "household_characteristics/economic", "holpa_module": "context/performance", "sub_indicator": "accessibility/climate_resilience_basic_services"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             442 =>
             array (
@@ -9763,7 +9763,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             443 =>
             array (
@@ -9785,7 +9785,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "socio_economic"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:18',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             444 =>
             array (
@@ -9807,7 +9807,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             445 =>
             array (
@@ -9829,7 +9829,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             446 =>
             array (
@@ -9851,7 +9851,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             447 =>
             array (
@@ -9873,7 +9873,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             448 =>
             array (
@@ -9895,7 +9895,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             449 =>
             array (
@@ -9917,7 +9917,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             450 =>
             array (
@@ -9939,7 +9939,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             451 =>
             array (
@@ -9961,7 +9961,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             452 =>
             array (
@@ -9983,7 +9983,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             453 =>
             array (
@@ -10005,7 +10005,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             454 =>
             array (
@@ -10027,7 +10027,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             455 =>
             array (
@@ -10049,7 +10049,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             456 =>
             array (
@@ -10071,7 +10071,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             457 =>
             array (
@@ -10093,7 +10093,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_cover"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             458 =>
             array (
@@ -10115,7 +10115,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             459 =>
             array (
@@ -10137,7 +10137,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             460 =>
             array (
@@ -10159,7 +10159,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             461 =>
             array (
@@ -10181,7 +10181,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             462 =>
             array (
@@ -10203,7 +10203,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             463 =>
             array (
@@ -10225,7 +10225,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             464 =>
             array (
@@ -10247,7 +10247,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             465 =>
             array (
@@ -10269,7 +10269,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             466 =>
             array (
@@ -10291,7 +10291,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             467 =>
             array (
@@ -10313,7 +10313,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 7.2, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/landscape_complexity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             468 =>
             array (
@@ -10335,7 +10335,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             469 =>
             array (
@@ -10357,7 +10357,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.1, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_diversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             470 =>
             array (
@@ -10379,7 +10379,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.2, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_diversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             471 =>
             array (
@@ -10401,7 +10401,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.3, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_diversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             472 =>
             array (
@@ -10423,7 +10423,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.4, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_diversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             473 =>
             array (
@@ -10445,7 +10445,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.5, "module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_abundance"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             474 =>
             array (
@@ -10467,7 +10467,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 5.6, "module": "biodiversity", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_diversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             475 =>
             array (
@@ -10489,7 +10489,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             476 =>
             array (
@@ -10511,7 +10511,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             477 =>
             array (
@@ -10533,7 +10533,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity", "comment": "select?", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             478 =>
             array (
@@ -10555,7 +10555,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             479 =>
             array (
@@ -10577,7 +10577,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "biodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:20',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:08',
             ),
             480 =>
             array (
@@ -10599,7 +10599,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             481 =>
             array (
@@ -10621,7 +10621,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_systems"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             482 =>
             array (
@@ -10643,7 +10643,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             483 =>
             array (
@@ -10665,7 +10665,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             484 =>
             array (
@@ -10687,7 +10687,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "repeat_flag": 1, "repeat_group_name": "other_products"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             485 =>
             array (
@@ -10709,7 +10709,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "repeat_flag": 1, "repeat_group_name": "other_products"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             486 =>
             array (
@@ -10731,7 +10731,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use/production_systems", "repeat_group_name": "other_products"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             487 =>
             array (
@@ -10753,7 +10753,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             488 =>
             array (
@@ -10775,7 +10775,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             489 =>
             array (
@@ -10797,7 +10797,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             490 =>
             array (
@@ -10819,7 +10819,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             491 =>
             array (
@@ -10841,7 +10841,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             492 =>
             array (
@@ -10863,7 +10863,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             493 =>
             array (
@@ -10885,7 +10885,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             494 =>
             array (
@@ -10907,7 +10907,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             495 =>
             array (
@@ -10929,7 +10929,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             496 =>
             array (
@@ -10951,7 +10951,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             497 =>
             array (
@@ -10973,7 +10973,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             498 =>
             array (
@@ -10995,7 +10995,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:41:22',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             499 =>
             array (
@@ -11017,7 +11017,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
         ));
         \DB::table('survey_rows')->insert(array (
@@ -11041,7 +11041,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             1 =>
             array (
@@ -11063,7 +11063,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "holpa_module": "agroecology", "sub_indicator": "10_fairness"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             2 =>
             array (
@@ -11085,7 +11085,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             3 =>
             array (
@@ -11107,7 +11107,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             4 =>
             array (
@@ -11129,7 +11129,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             5 =>
             array (
@@ -11151,7 +11151,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             6 =>
             array (
@@ -11173,7 +11173,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             7 =>
             array (
@@ -11195,7 +11195,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             8 =>
             array (
@@ -11217,7 +11217,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             9 =>
             array (
@@ -11239,7 +11239,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             10 =>
             array (
@@ -11261,7 +11261,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             11 =>
             array (
@@ -11283,7 +11283,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             12 =>
             array (
@@ -11305,7 +11305,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             13 =>
             array (
@@ -11327,7 +11327,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             14 =>
             array (
@@ -11349,7 +11349,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             15 =>
             array (
@@ -11371,7 +11371,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             16 =>
             array (
@@ -11393,7 +11393,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "holpa_module": "agroecology", "sub_indicator": "10_fairness"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             17 =>
             array (
@@ -11415,7 +11415,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             18 =>
             array (
@@ -11437,7 +11437,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             19 =>
             array (
@@ -11459,7 +11459,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             20 =>
             array (
@@ -11481,7 +11481,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             21 =>
             array (
@@ -11503,7 +11503,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             22 =>
             array (
@@ -11525,7 +11525,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             23 =>
             array (
@@ -11547,7 +11547,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             24 =>
             array (
@@ -11569,7 +11569,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             25 =>
             array (
@@ -11591,7 +11591,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             26 =>
             array (
@@ -11613,7 +11613,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             27 =>
             array (
@@ -11635,7 +11635,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             28 =>
             array (
@@ -11657,7 +11657,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             29 =>
             array (
@@ -11679,7 +11679,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             30 =>
             array (
@@ -11701,7 +11701,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             31 =>
             array (
@@ -11723,7 +11723,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "holpa_module": "agroecology", "sub_indicator": "10_fairness"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             32 =>
             array (
@@ -11745,7 +11745,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             33 =>
             array (
@@ -11767,7 +11767,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             34 =>
             array (
@@ -11789,7 +11789,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             35 =>
             array (
@@ -11811,7 +11811,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             36 =>
             array (
@@ -11833,7 +11833,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             37 =>
             array (
@@ -11855,7 +11855,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             38 =>
             array (
@@ -11877,7 +11877,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             39 =>
             array (
@@ -11899,7 +11899,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             40 =>
             array (
@@ -11921,7 +11921,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             41 =>
             array (
@@ -11943,7 +11943,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             42 =>
             array (
@@ -11965,7 +11965,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             43 =>
             array (
@@ -11987,7 +11987,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             44 =>
             array (
@@ -12009,7 +12009,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             45 =>
             array (
@@ -12031,7 +12031,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             46 =>
             array (
@@ -12053,7 +12053,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             47 =>
             array (
@@ -12075,7 +12075,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             48 =>
             array (
@@ -12097,7 +12097,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "holpa_module": "agroecology", "sub_indicator": "10_fairness"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             49 =>
             array (
@@ -12119,7 +12119,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             50 =>
             array (
@@ -12141,7 +12141,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             51 =>
             array (
@@ -12163,7 +12163,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             52 =>
             array (
@@ -12185,7 +12185,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             53 =>
             array (
@@ -12207,7 +12207,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             54 =>
             array (
@@ -12229,7 +12229,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             55 =>
             array (
@@ -12251,7 +12251,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             56 =>
             array (
@@ -12273,7 +12273,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             57 =>
             array (
@@ -12295,7 +12295,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_end_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             58 =>
             array (
@@ -12317,7 +12317,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             59 =>
             array (
@@ -12339,7 +12339,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             60 =>
             array (
@@ -12361,7 +12361,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             61 =>
             array (
@@ -12383,7 +12383,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "holpa_module": "agroecology", "sub_indicator": "11_connectivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             62 =>
             array (
@@ -12405,7 +12405,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "holpa_module": "agroecology", "sub_indicator": "10_fairness"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             63 =>
             array (
@@ -12427,7 +12427,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             64 =>
             array (
@@ -12449,7 +12449,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             65 =>
             array (
@@ -12471,7 +12471,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "repeat_flag": 1, "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             66 =>
             array (
@@ -12493,7 +12493,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "repeat_flag": 1, "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             67 =>
             array (
@@ -12515,7 +12515,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             68 =>
             array (
@@ -12537,7 +12537,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             69 =>
             array (
@@ -12559,7 +12559,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             70 =>
             array (
@@ -12581,7 +12581,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics/11_connectivity", "repeat_flag": 1, "holpa_module": "context/agroecology", "sub_indicator": "production_end_use/11_connectivity", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             71 =>
             array (
@@ -12603,7 +12603,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             72 =>
             array (
@@ -12625,7 +12625,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             73 =>
             array (
@@ -12647,7 +12647,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             74 =>
             array (
@@ -12669,7 +12669,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "farm_characteristics", "repeat_flag": 1, "holpa_module": "context", "sub_indicator": "production_end_use", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             75 =>
             array (
@@ -12691,7 +12691,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "repeat_flag": 1, "holpa_module": "agroecology", "sub_indicator": "11_connectivity", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             76 =>
             array (
@@ -12713,7 +12713,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "11_connectivity", "repeat_flag": 1, "holpa_module": "agroecology", "sub_indicator": "11_connectivity", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             77 =>
             array (
@@ -12735,7 +12735,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics", "indicator": "10_fairness", "repeat_flag": 1, "holpa_module": "agroecology", "sub_indicator": "10_fairness", "repeat_group_name": "other_product_use_sales"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             78 =>
             array (
@@ -12757,7 +12757,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             79 =>
             array (
@@ -12779,7 +12779,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "farm_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             80 =>
             array (
@@ -12801,7 +12801,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             81 =>
             array (
@@ -12823,7 +12823,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             82 =>
             array (
@@ -12845,7 +12845,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             83 =>
             array (
@@ -12867,7 +12867,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             84 =>
             array (
@@ -12889,7 +12889,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             85 =>
             array (
@@ -12911,7 +12911,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             86 =>
             array (
@@ -12933,7 +12933,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             87 =>
             array (
@@ -12955,7 +12955,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             88 =>
             array (
@@ -12977,7 +12977,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             89 =>
             array (
@@ -12999,7 +12999,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             90 =>
             array (
@@ -13021,7 +13021,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             91 =>
             array (
@@ -13043,7 +13043,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             92 =>
             array (
@@ -13065,7 +13065,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             93 =>
             array (
@@ -13087,7 +13087,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             94 =>
             array (
@@ -13109,7 +13109,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             95 =>
             array (
@@ -13131,7 +13131,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             96 =>
             array (
@@ -13153,7 +13153,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             97 =>
             array (
@@ -13175,7 +13175,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             98 =>
             array (
@@ -13197,7 +13197,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             99 =>
             array (
@@ -13219,7 +13219,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             100 =>
             array (
@@ -13241,7 +13241,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             101 =>
             array (
@@ -13263,7 +13263,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             102 =>
             array (
@@ -13285,7 +13285,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             103 =>
             array (
@@ -13307,7 +13307,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             104 =>
             array (
@@ -13329,7 +13329,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             105 =>
             array (
@@ -13351,7 +13351,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             106 =>
             array (
@@ -13373,7 +13373,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             107 =>
             array (
@@ -13395,7 +13395,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             108 =>
             array (
@@ -13417,7 +13417,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             109 =>
             array (
@@ -13439,7 +13439,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             110 =>
             array (
@@ -13461,7 +13461,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             111 =>
             array (
@@ -13483,7 +13483,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             112 =>
             array (
@@ -13505,7 +13505,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             113 =>
             array (
@@ -13527,7 +13527,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             114 =>
             array (
@@ -13549,7 +13549,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             115 =>
             array (
@@ -13571,7 +13571,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             116 =>
             array (
@@ -13593,7 +13593,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             117 =>
             array (
@@ -13615,7 +13615,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             118 =>
             array (
@@ -13637,7 +13637,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             119 =>
             array (
@@ -13659,7 +13659,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             120 =>
             array (
@@ -13681,7 +13681,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             121 =>
             array (
@@ -13703,7 +13703,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             122 =>
             array (
@@ -13725,7 +13725,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             123 =>
             array (
@@ -13744,10 +13744,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "labour"}',
+                'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             124 =>
             array (
@@ -13769,7 +13769,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             125 =>
             array (
@@ -13791,7 +13791,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "comment": "constrant TBA", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             126 =>
             array (
@@ -13813,7 +13813,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             127 =>
             array (
@@ -13835,7 +13835,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             128 =>
             array (
@@ -13857,7 +13857,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             129 =>
             array (
@@ -13879,7 +13879,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             130 =>
             array (
@@ -13901,7 +13901,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             131 =>
             array (
@@ -13923,7 +13923,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             132 =>
             array (
@@ -13945,7 +13945,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             133 =>
             array (
@@ -13967,7 +13967,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             134 =>
             array (
@@ -13989,7 +13989,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             135 =>
             array (
@@ -14011,7 +14011,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             136 =>
             array (
@@ -14033,7 +14033,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             137 =>
             array (
@@ -14055,7 +14055,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             138 =>
             array (
@@ -14077,7 +14077,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             139 =>
             array (
@@ -14099,7 +14099,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             140 =>
             array (
@@ -14121,7 +14121,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             141 =>
             array (
@@ -14143,7 +14143,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             142 =>
             array (
@@ -14165,7 +14165,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             143 =>
             array (
@@ -14187,7 +14187,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             144 =>
             array (
@@ -14209,7 +14209,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             145 =>
             array (
@@ -14231,7 +14231,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             146 =>
             array (
@@ -14253,7 +14253,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             147 =>
             array (
@@ -14275,7 +14275,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "comment": "FIX"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             148 =>
             array (
@@ -14297,7 +14297,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             149 =>
             array (
@@ -14319,7 +14319,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             150 =>
             array (
@@ -14341,7 +14341,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             151 =>
             array (
@@ -14363,7 +14363,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             152 =>
             array (
@@ -14385,7 +14385,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             153 =>
             array (
@@ -14407,7 +14407,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             154 =>
             array (
@@ -14429,7 +14429,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             155 =>
             array (
@@ -14451,7 +14451,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             156 =>
             array (
@@ -14470,10 +14470,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers_s"}',
+                'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             157 =>
             array (
@@ -14495,7 +14495,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             158 =>
             array (
@@ -14517,7 +14517,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             159 =>
             array (
@@ -14539,7 +14539,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             160 =>
             array (
@@ -14561,7 +14561,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             161 =>
             array (
@@ -14583,7 +14583,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             162 =>
             array (
@@ -14605,7 +14605,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             163 =>
             array (
@@ -14627,7 +14627,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             164 =>
             array (
@@ -14649,7 +14649,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             165 =>
             array (
@@ -14671,7 +14671,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             166 =>
             array (
@@ -14693,7 +14693,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             167 =>
             array (
@@ -14715,7 +14715,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             168 =>
             array (
@@ -14737,7 +14737,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             169 =>
             array (
@@ -14759,7 +14759,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             170 =>
             array (
@@ -14781,7 +14781,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_workers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             171 =>
             array (
@@ -14803,7 +14803,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             172 =>
             array (
@@ -14825,7 +14825,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_workers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             173 =>
             array (
@@ -14847,7 +14847,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             174 =>
             array (
@@ -14869,7 +14869,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             175 =>
             array (
@@ -14891,7 +14891,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             176 =>
             array (
@@ -14913,7 +14913,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             177 =>
             array (
@@ -14935,7 +14935,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             178 =>
             array (
@@ -14957,7 +14957,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "farm_characteristic/economic", "holpa_module": "context/performance", "sub_indicator": "household_labour/labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             179 =>
             array (
@@ -14979,7 +14979,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             180 =>
             array (
@@ -15001,7 +15001,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             181 =>
             array (
@@ -15023,7 +15023,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             182 =>
             array (
@@ -15045,7 +15045,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             183 =>
             array (
@@ -15067,7 +15067,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             184 =>
             array (
@@ -15089,7 +15089,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             185 =>
             array (
@@ -15111,7 +15111,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             186 =>
             array (
@@ -15133,7 +15133,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             187 =>
             array (
@@ -15155,7 +15155,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             188 =>
             array (
@@ -15177,7 +15177,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             189 =>
             array (
@@ -15199,7 +15199,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             190 =>
             array (
@@ -15221,7 +15221,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             191 =>
             array (
@@ -15243,7 +15243,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             192 =>
             array (
@@ -15265,7 +15265,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             193 =>
             array (
@@ -15287,7 +15287,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             194 =>
             array (
@@ -15309,7 +15309,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "permanent_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             195 =>
             array (
@@ -15331,7 +15331,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             196 =>
             array (
@@ -15353,7 +15353,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             197 =>
             array (
@@ -15375,7 +15375,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "sesaonal_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             198 =>
             array (
@@ -15397,7 +15397,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "sesaonal_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             199 =>
             array (
@@ -15419,7 +15419,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             200 =>
             array (
@@ -15441,7 +15441,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             201 =>
             array (
@@ -15463,7 +15463,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             202 =>
             array (
@@ -15485,7 +15485,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             203 =>
             array (
@@ -15507,7 +15507,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             204 =>
             array (
@@ -15529,7 +15529,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             205 =>
             array (
@@ -15551,7 +15551,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 13.1, "module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             206 =>
             array (
@@ -15573,7 +15573,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             207 =>
             array (
@@ -15595,7 +15595,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             208 =>
             array (
@@ -15617,7 +15617,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             209 =>
             array (
@@ -15639,7 +15639,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             210 =>
             array (
@@ -15661,7 +15661,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             211 =>
             array (
@@ -15683,7 +15683,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             212 =>
             array (
@@ -15705,7 +15705,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             213 =>
             array (
@@ -15727,7 +15727,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             214 =>
             array (
@@ -15749,7 +15749,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             215 =>
             array (
@@ -15771,7 +15771,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             216 =>
             array (
@@ -15793,7 +15793,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             217 =>
             array (
@@ -15815,7 +15815,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "labour_productivity_extra", "repeat_group_name": "seasonal_labourers_s"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             218 =>
             array (
@@ -15837,7 +15837,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             219 =>
             array (
@@ -15859,7 +15859,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour", "repeat_flag": 1, "repeat_group_name": "sesaonal_labourers"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             220 =>
             array (
@@ -15881,7 +15881,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             221 =>
             array (
@@ -15903,7 +15903,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             222 =>
             array (
@@ -15925,7 +15925,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "labour"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:05',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             223 =>
             array (
@@ -15947,7 +15947,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "comment": "CONSTRAINTS TBA"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             224 =>
             array (
@@ -15969,7 +15969,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.1, "module": "crop_production", "comment": "LOCALIZATION", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             225 =>
             array (
@@ -15988,10 +15988,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production"}',
+                'properties' => '{"kpi": 6.1, "module": "crop_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             226 =>
             array (
@@ -16013,7 +16013,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             227 =>
             array (
@@ -16032,10 +16032,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production"}',
+                'properties' => '{"kpi": 13.1, "module": "crop_production", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             228 =>
             array (
@@ -16057,7 +16057,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             229 =>
             array (
@@ -16079,7 +16079,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "6_synergy/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             230 =>
             array (
@@ -16098,10 +16098,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production"}',
+                'properties' => '{"module": "crop_production", "indicator": "6_synergy/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             231 =>
             array (
@@ -16123,7 +16123,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             232 =>
             array (
@@ -16145,7 +16145,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             233 =>
             array (
@@ -16167,7 +16167,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             234 =>
             array (
@@ -16186,10 +16186,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
+                'properties' => '{"kpi": 8, "module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "agroecology/performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             235 =>
             array (
@@ -16211,7 +16211,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             236 =>
             array (
@@ -16233,7 +16233,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "6_synergy/environmental", "repeat_flag": 1, "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation", "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             237 =>
             array (
@@ -16255,7 +16255,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             238 =>
             array (
@@ -16274,10 +16274,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_lands"}',
+                'properties' => '{"kpi": 8, "module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             239 =>
             array (
@@ -16296,10 +16296,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
+                'properties' => '{"kpi": 8, "module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "agroecology/performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             240 =>
             array (
@@ -16321,7 +16321,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_lands"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             241 =>
             array (
@@ -16343,7 +16343,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             242 =>
             array (
@@ -16365,7 +16365,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             243 =>
             array (
@@ -16387,7 +16387,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             244 =>
             array (
@@ -16409,7 +16409,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             245 =>
             array (
@@ -16431,7 +16431,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             246 =>
             array (
@@ -16453,7 +16453,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             247 =>
             array (
@@ -16475,7 +16475,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             248 =>
             array (
@@ -16497,7 +16497,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             249 =>
             array (
@@ -16519,7 +16519,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             250 =>
             array (
@@ -16541,7 +16541,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             251 =>
             array (
@@ -16563,7 +16563,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             252 =>
             array (
@@ -16585,7 +16585,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             253 =>
             array (
@@ -16607,7 +16607,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             254 =>
             array (
@@ -16629,7 +16629,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             255 =>
             array (
@@ -16651,7 +16651,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             256 =>
             array (
@@ -16673,7 +16673,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             257 =>
             array (
@@ -16695,7 +16695,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             258 =>
             array (
@@ -16717,7 +16717,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             259 =>
             array (
@@ -16739,7 +16739,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             260 =>
             array (
@@ -16761,7 +16761,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             261 =>
             array (
@@ -16783,7 +16783,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             262 =>
             array (
@@ -16805,7 +16805,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             263 =>
             array (
@@ -16827,7 +16827,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             264 =>
             array (
@@ -16849,7 +16849,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             265 =>
             array (
@@ -16871,7 +16871,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             266 =>
             array (
@@ -16893,7 +16893,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             267 =>
             array (
@@ -16915,7 +16915,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             268 =>
             array (
@@ -16937,7 +16937,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             269 =>
             array (
@@ -16959,7 +16959,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             270 =>
             array (
@@ -16981,7 +16981,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             271 =>
             array (
@@ -17003,7 +17003,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             272 =>
             array (
@@ -17025,7 +17025,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             273 =>
             array (
@@ -17047,7 +17047,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             274 =>
             array (
@@ -17069,7 +17069,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             275 =>
             array (
@@ -17091,7 +17091,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             276 =>
             array (
@@ -17113,7 +17113,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             277 =>
             array (
@@ -17135,7 +17135,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             278 =>
             array (
@@ -17157,7 +17157,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             279 =>
             array (
@@ -17179,7 +17179,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             280 =>
             array (
@@ -17201,7 +17201,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             281 =>
             array (
@@ -17223,7 +17223,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             282 =>
             array (
@@ -17245,7 +17245,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             283 =>
             array (
@@ -17267,7 +17267,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             284 =>
             array (
@@ -17289,7 +17289,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             285 =>
             array (
@@ -17311,7 +17311,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             286 =>
             array (
@@ -17333,7 +17333,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             287 =>
             array (
@@ -17355,7 +17355,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             288 =>
             array (
@@ -17377,7 +17377,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             289 =>
             array (
@@ -17399,7 +17399,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             290 =>
             array (
@@ -17421,7 +17421,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             291 =>
             array (
@@ -17443,7 +17443,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             292 =>
             array (
@@ -17465,7 +17465,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "comment": "may need other crop lists", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             293 =>
             array (
@@ -17487,7 +17487,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             294 =>
             array (
@@ -17509,7 +17509,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             295 =>
             array (
@@ -17531,7 +17531,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             296 =>
             array (
@@ -17553,7 +17553,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             297 =>
             array (
@@ -17575,7 +17575,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             298 =>
             array (
@@ -17597,7 +17597,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             299 =>
             array (
@@ -17619,7 +17619,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             300 =>
             array (
@@ -17641,7 +17641,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             301 =>
             array (
@@ -17663,7 +17663,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             302 =>
             array (
@@ -17685,7 +17685,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             303 =>
             array (
@@ -17707,7 +17707,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             304 =>
             array (
@@ -17729,7 +17729,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             305 =>
             array (
@@ -17751,7 +17751,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             306 =>
             array (
@@ -17773,7 +17773,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             307 =>
             array (
@@ -17795,7 +17795,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             308 =>
             array (
@@ -17817,7 +17817,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             309 =>
             array (
@@ -17839,7 +17839,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             310 =>
             array (
@@ -17861,7 +17861,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "climate_mitigation", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             311 =>
             array (
@@ -17883,7 +17883,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             312 =>
             array (
@@ -17905,7 +17905,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             313 =>
             array (
@@ -17924,10 +17924,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "comment": "LOCALIZATION", "indicator": "performance", "repeat_flag": 1, "holpa_module": 12.1, "sub_indicator": "economic", "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "comment": "LOCALIZATION", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             314 =>
             array (
@@ -17946,10 +17946,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             315 =>
             array (
@@ -17968,10 +17968,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             316 =>
             array (
@@ -17983,17 +17983,17 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'yield_units\', \'label_en\', \'name\', ${yield_unit})',
+            'calculation' => 'pulldata(\'yield_units\', \'name_en\', \'name\', ${yield_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             317 =>
             array (
@@ -18012,10 +18012,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "indicator": "performance", "repeat_flag": 1, "holpa_module": 12.1, "sub_indicator": "economic", "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             318 =>
             array (
@@ -18034,10 +18034,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             319 =>
             array (
@@ -18056,10 +18056,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             320 =>
             array (
@@ -18078,10 +18078,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
+                'properties' => '{"kpi": 12.1, "module": "crop_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "yield_gap", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             321 =>
             array (
@@ -18103,7 +18103,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             322 =>
             array (
@@ -18125,7 +18125,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             323 =>
             array (
@@ -18147,7 +18147,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             324 =>
             array (
@@ -18169,7 +18169,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             325 =>
             array (
@@ -18191,7 +18191,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             326 =>
             array (
@@ -18213,7 +18213,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             327 =>
             array (
@@ -18235,7 +18235,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             328 =>
             array (
@@ -18257,7 +18257,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             329 =>
             array (
@@ -18279,7 +18279,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             330 =>
             array (
@@ -18301,7 +18301,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             331 =>
             array (
@@ -18323,7 +18323,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             332 =>
             array (
@@ -18345,7 +18345,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             333 =>
             array (
@@ -18367,7 +18367,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             334 =>
             array (
@@ -18389,7 +18389,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             335 =>
             array (
@@ -18411,7 +18411,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             336 =>
             array (
@@ -18433,7 +18433,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             337 =>
             array (
@@ -18455,7 +18455,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             338 =>
             array (
@@ -18477,7 +18477,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             339 =>
             array (
@@ -18499,7 +18499,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             340 =>
             array (
@@ -18521,7 +18521,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             341 =>
             array (
@@ -18543,7 +18543,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             342 =>
             array (
@@ -18565,7 +18565,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             343 =>
             array (
@@ -18587,7 +18587,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             344 =>
             array (
@@ -18609,7 +18609,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             345 =>
             array (
@@ -18631,7 +18631,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             346 =>
             array (
@@ -18653,7 +18653,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             347 =>
             array (
@@ -18675,7 +18675,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             348 =>
             array (
@@ -18697,7 +18697,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             349 =>
             array (
@@ -18719,7 +18719,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             350 =>
             array (
@@ -18741,7 +18741,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             351 =>
             array (
@@ -18763,7 +18763,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             352 =>
             array (
@@ -18785,7 +18785,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             353 =>
             array (
@@ -18807,7 +18807,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             354 =>
             array (
@@ -18829,7 +18829,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             355 =>
             array (
@@ -18851,7 +18851,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             356 =>
             array (
@@ -18873,7 +18873,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "repeat_flag": 1, "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             357 =>
             array (
@@ -18895,7 +18895,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             358 =>
             array (
@@ -18917,7 +18917,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             359 =>
             array (
@@ -18939,7 +18939,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             360 =>
             array (
@@ -18961,7 +18961,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "agricultural", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_crops", "repeat_group_name": "crop_production_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             361 =>
             array (
@@ -18983,7 +18983,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             362 =>
             array (
@@ -19005,7 +19005,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             363 =>
             array (
@@ -19027,7 +19027,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             364 =>
             array (
@@ -19049,7 +19049,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             365 =>
             array (
@@ -19071,7 +19071,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 1.1, "module": "crop_production", "comment": "could be a select? - get ranges ", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "crop_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             366 =>
             array (
@@ -19093,7 +19093,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "1.1_extra", "module": "crop_production", "comment": "surely could be a select option", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "crop_health_extra"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             367 =>
             array (
@@ -19115,7 +19115,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             368 =>
             array (
@@ -19137,7 +19137,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             369 =>
             array (
@@ -19159,7 +19159,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production", "indicator": "1_recycling", "holpa_module": "agroecology", "sub_indicator": "1_recycling"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             370 =>
             array (
@@ -19181,7 +19181,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.4, "module": "crop_production", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             371 =>
             array (
@@ -19203,7 +19203,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "crop_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-02-20 15:43:54',
+                'updated_at' => '2025-03-05 10:41:09',
             ),
             372 =>
             array (
@@ -19225,7 +19225,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             373 =>
             array (
@@ -19247,7 +19247,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "production_systems"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             374 =>
             array (
@@ -19269,7 +19269,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 3.3, "module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "production_systems/soil_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             375 =>
             array (
@@ -19291,7 +19291,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 3.4, "module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "production_systems/soil_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             376 =>
             array (
@@ -19313,7 +19313,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             377 =>
             array (
@@ -19335,7 +19335,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             378 =>
             array (
@@ -19357,7 +19357,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/2_input_reduction", "holpa_module": "context/agroecology", "sub_indicator": "inputs/2_input_reduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             379 =>
             array (
@@ -19379,7 +19379,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             380 =>
             array (
@@ -19401,7 +19401,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             381 =>
             array (
@@ -19423,7 +19423,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "LOCALIZATION", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             382 =>
             array (
@@ -19445,7 +19445,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             383 =>
             array (
@@ -19467,7 +19467,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             384 =>
             array (
@@ -19479,7 +19479,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'fert_units\', \'label_en\', \'name\', ${chem_fert_unit})',
+            'calculation' => 'pulldata(\'fert_units\', \'name_en\', \'name\', ${chem_fert_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -19489,7 +19489,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             385 =>
             array (
@@ -19511,7 +19511,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             386 =>
             array (
@@ -19533,7 +19533,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             387 =>
             array (
@@ -19555,7 +19555,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             388 =>
             array (
@@ -19577,7 +19577,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             389 =>
             array (
@@ -19599,7 +19599,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             390 =>
             array (
@@ -19621,7 +19621,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             391 =>
             array (
@@ -19640,10 +19640,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "soil_characteristics"}',
+                'properties' => '{"kpi": 4, "module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             392 =>
             array (
@@ -19665,7 +19665,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             393 =>
             array (
@@ -19687,7 +19687,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             394 =>
             array (
@@ -19709,7 +19709,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             395 =>
             array (
@@ -19731,7 +19731,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "1_recycling", "holpa_module": "agroecology", "sub_indicator": "1_recycling"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             396 =>
             array (
@@ -19753,7 +19753,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             397 =>
             array (
@@ -19775,7 +19775,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             398 =>
             array (
@@ -19797,7 +19797,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "LOCALIZATION", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             399 =>
             array (
@@ -19819,7 +19819,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             400 =>
             array (
@@ -19841,7 +19841,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             401 =>
             array (
@@ -19853,7 +19853,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'fert_units\', \'label_en\', \'name\', ${own_organic_fert_unit})',
+            'calculation' => 'pulldata(\'fert_units\', \'name_en\', \'name\', ${own_organic_fert_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -19863,7 +19863,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             402 =>
             array (
@@ -19885,7 +19885,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             403 =>
             array (
@@ -19907,7 +19907,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             404 =>
             array (
@@ -19929,7 +19929,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             405 =>
             array (
@@ -19951,7 +19951,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             406 =>
             array (
@@ -19973,7 +19973,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             407 =>
             array (
@@ -19995,7 +19995,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             408 =>
             array (
@@ -20014,10 +20014,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "soil_characteristics"}',
+                'properties' => '{"kpi": 4, "module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             409 =>
             array (
@@ -20039,7 +20039,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             410 =>
             array (
@@ -20061,7 +20061,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             411 =>
             array (
@@ -20083,7 +20083,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             412 =>
             array (
@@ -20105,7 +20105,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             413 =>
             array (
@@ -20127,7 +20127,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "LOCALIZATION", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             414 =>
             array (
@@ -20149,7 +20149,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             415 =>
             array (
@@ -20171,7 +20171,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             416 =>
             array (
@@ -20183,7 +20183,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'fert_units\', \'label_en\', \'name\', ${bought_organic_fert_unit})',
+            'calculation' => 'pulldata(\'fert_units\', \'name_en\', \'name\', ${bought_organic_fert_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -20193,7 +20193,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             417 =>
             array (
@@ -20215,7 +20215,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             418 =>
             array (
@@ -20237,7 +20237,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             419 =>
             array (
@@ -20259,7 +20259,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             420 =>
             array (
@@ -20281,7 +20281,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             421 =>
             array (
@@ -20303,7 +20303,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             422 =>
             array (
@@ -20325,7 +20325,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             423 =>
             array (
@@ -20344,10 +20344,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "soil_characteristics"}',
+                'properties' => '{"kpi": 4, "module": "soil_characteristics", "indicator": "farm_characteristics/agricultural", "holpa_module": "context/performance", "sub_indicator": "inputs/nutrient_use"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             424 =>
             array (
@@ -20369,7 +20369,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             425 =>
             array (
@@ -20391,7 +20391,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             426 =>
             array (
@@ -20413,7 +20413,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             427 =>
             array (
@@ -20435,7 +20435,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             428 =>
             array (
@@ -20457,7 +20457,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "3_soil_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "3_soil_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             429 =>
             array (
@@ -20476,10 +20476,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "soil_characteristics"}',
+                'properties' => '{"module": "soil_characteristics", "indicator": "3_soil_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "3_soil_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             430 =>
             array (
@@ -20501,7 +20501,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "3_soil_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "3_soil_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             431 =>
             array (
@@ -20523,7 +20523,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             432 =>
             array (
@@ -20545,7 +20545,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             433 =>
             array (
@@ -20567,7 +20567,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             434 =>
             array (
@@ -20589,7 +20589,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics/2_input_reduction", "holpa_module": "context/agroecology", "sub_indicator": "inputs/pesticides"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             435 =>
             array (
@@ -20611,7 +20611,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             436 =>
             array (
@@ -20633,7 +20633,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             437 =>
             array (
@@ -20655,7 +20655,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "Select?", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             438 =>
             array (
@@ -20677,7 +20677,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "LOCALIZATION", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             439 =>
             array (
@@ -20699,7 +20699,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             440 =>
             array (
@@ -20721,7 +20721,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             441 =>
             array (
@@ -20733,7 +20733,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'fert_units\', \'label_en\', \'name\', ${chemical_unit})',
+            'calculation' => 'pulldata(\'fert_units\', \'name_en\', \'name\', ${chemical_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -20743,7 +20743,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             442 =>
             array (
@@ -20765,7 +20765,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             443 =>
             array (
@@ -20787,7 +20787,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             444 =>
             array (
@@ -20809,7 +20809,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             445 =>
             array (
@@ -20831,7 +20831,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             446 =>
             array (
@@ -20853,7 +20853,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             447 =>
             array (
@@ -20875,7 +20875,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             448 =>
             array (
@@ -20897,7 +20897,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             449 =>
             array (
@@ -20919,7 +20919,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             450 =>
             array (
@@ -20941,7 +20941,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             451 =>
             array (
@@ -20963,7 +20963,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             452 =>
             array (
@@ -20985,7 +20985,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             453 =>
             array (
@@ -21007,7 +21007,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "Select?", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             454 =>
             array (
@@ -21029,7 +21029,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "comment": "LOCALIZATION", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             455 =>
             array (
@@ -21051,7 +21051,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             456 =>
             array (
@@ -21073,7 +21073,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             457 =>
             array (
@@ -21085,7 +21085,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'required' => 0,
                 'relevant' => NULL,
                 'appearance' => NULL,
-            'calculation' => 'pulldata(\'fert_units\', \'label_en\', \'name\', ${non_chemical_unit})',
+            'calculation' => 'pulldata(\'fert_units\', \'name_en\', \'name\', ${non_chemical_unit})',
                 'constraint' => NULL,
                 'choice_filter' => NULL,
                 'repeat_count' => NULL,
@@ -21095,7 +21095,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             458 =>
             array (
@@ -21117,7 +21117,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             459 =>
             array (
@@ -21139,7 +21139,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             460 =>
             array (
@@ -21161,7 +21161,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             461 =>
             array (
@@ -21183,7 +21183,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "farm_characteristics", "holpa_module": "context", "sub_indicator": "inputs"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             462 =>
             array (
@@ -21205,7 +21205,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             463 =>
             array (
@@ -21227,7 +21227,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             464 =>
             array (
@@ -21249,7 +21249,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             465 =>
             array (
@@ -21271,7 +21271,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             466 =>
             array (
@@ -21293,7 +21293,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             467 =>
             array (
@@ -21315,7 +21315,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             468 =>
             array (
@@ -21337,7 +21337,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             469 =>
             array (
@@ -21356,10 +21356,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "soil_characteristics"}',
+                'properties' => '{"module": "soil_characteristics", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             470 =>
             array (
@@ -21381,7 +21381,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "extra_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             471 =>
             array (
@@ -21403,7 +21403,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             472 =>
             array (
@@ -21425,7 +21425,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "soil_characteristics"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             473 =>
             array (
@@ -21447,7 +21447,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "inputs_subsidy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             474 =>
             array (
@@ -21469,7 +21469,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac", "module": "inputs_subsidy", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             475 =>
             array (
@@ -21491,7 +21491,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": "14.1_ac_extra", "module": "inputs_subsidy", "comment": "Select?", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "climate_resilience_adaptative_capacity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             476 =>
             array (
@@ -21513,7 +21513,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "inputs_subsidy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:10',
             ),
             477 =>
             array (
@@ -21535,7 +21535,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             478 =>
             array (
@@ -21557,7 +21557,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             479 =>
             array (
@@ -21579,7 +21579,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             480 =>
             array (
@@ -21601,7 +21601,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             481 =>
             array (
@@ -21620,10 +21620,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "livestock_production"}',
+                'properties' => '{"kpi": 13.1, "module": "livestock_production", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             482 =>
             array (
@@ -21645,7 +21645,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             483 =>
             array (
@@ -21667,7 +21667,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             484 =>
             array (
@@ -21686,10 +21686,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "livestock_production"}',
+                'properties' => '{"kpi": 13.1, "module": "livestock_production", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             485 =>
             array (
@@ -21711,7 +21711,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             486 =>
             array (
@@ -21733,7 +21733,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             487 =>
             array (
@@ -21755,7 +21755,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             488 =>
             array (
@@ -21777,7 +21777,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             489 =>
             array (
@@ -21799,7 +21799,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             490 =>
             array (
@@ -21821,7 +21821,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "livestock_other_rpt"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             491 =>
             array (
@@ -21843,7 +21843,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             492 =>
             array (
@@ -21865,7 +21865,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             493 =>
             array (
@@ -21887,7 +21887,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             494 =>
             array (
@@ -21909,7 +21909,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:12',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             495 =>
             array (
@@ -21931,7 +21931,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             496 =>
             array (
@@ -21953,7 +21953,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             497 =>
             array (
@@ -21975,7 +21975,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             498 =>
             array (
@@ -21997,7 +21997,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             499 =>
             array (
@@ -22019,7 +22019,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
         ));
         \DB::table('survey_rows')->insert(array (
@@ -22043,7 +22043,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             1 =>
             array (
@@ -22065,7 +22065,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             2 =>
             array (
@@ -22084,10 +22084,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "livestock_production"}',
+                'properties' => '{"kpi": 6.2, "module": "livestock_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             3 =>
             array (
@@ -22109,7 +22109,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             4 =>
             array (
@@ -22131,7 +22131,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             5 =>
             array (
@@ -22153,7 +22153,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             6 =>
             array (
@@ -22175,7 +22175,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             7 =>
             array (
@@ -22197,7 +22197,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             8 =>
             array (
@@ -22219,7 +22219,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock", "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             9 =>
             array (
@@ -22241,7 +22241,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             10 =>
             array (
@@ -22263,7 +22263,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             11 =>
             array (
@@ -22285,7 +22285,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock", "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             12 =>
             array (
@@ -22307,7 +22307,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             13 =>
             array (
@@ -22329,7 +22329,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             14 =>
             array (
@@ -22351,7 +22351,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             15 =>
             array (
@@ -22373,7 +22373,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_details"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             16 =>
             array (
@@ -22395,7 +22395,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             17 =>
             array (
@@ -22417,7 +22417,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             18 =>
             array (
@@ -22439,7 +22439,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             19 =>
             array (
@@ -22461,7 +22461,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             20 =>
             array (
@@ -22483,7 +22483,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             21 =>
             array (
@@ -22505,7 +22505,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             22 =>
             array (
@@ -22527,7 +22527,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             23 =>
             array (
@@ -22549,7 +22549,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             24 =>
             array (
@@ -22571,7 +22571,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             25 =>
             array (
@@ -22593,7 +22593,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             26 =>
             array (
@@ -22615,7 +22615,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             27 =>
             array (
@@ -22637,7 +22637,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             28 =>
             array (
@@ -22659,7 +22659,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             29 =>
             array (
@@ -22681,7 +22681,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             30 =>
             array (
@@ -22703,7 +22703,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             31 =>
             array (
@@ -22725,7 +22725,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             32 =>
             array (
@@ -22747,7 +22747,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             33 =>
             array (
@@ -22769,7 +22769,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             34 =>
             array (
@@ -22791,7 +22791,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             35 =>
             array (
@@ -22813,7 +22813,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             36 =>
             array (
@@ -22835,7 +22835,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             37 =>
             array (
@@ -22857,7 +22857,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "repeat_flag": 1, "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             38 =>
             array (
@@ -22879,7 +22879,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             39 =>
             array (
@@ -22901,7 +22901,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             40 =>
             array (
@@ -22923,7 +22923,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             41 =>
             array (
@@ -22945,7 +22945,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_livestock_extra", "repeat_group_name": "primary_livestock_uses"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             42 =>
             array (
@@ -22967,7 +22967,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             43 =>
             array (
@@ -22989,7 +22989,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             44 =>
             array (
@@ -23011,7 +23011,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             45 =>
             array (
@@ -23033,7 +23033,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "1_recycling", "holpa_module": "agroecology", "sub_indicator": "1_recycling"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             46 =>
             array (
@@ -23055,7 +23055,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 6.5, "module": "livestock_production", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             47 =>
             array (
@@ -23077,7 +23077,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "2_input_reduction", "holpa_module": "agroecology", "sub_indicator": "2_input_reduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             48 =>
             array (
@@ -23099,7 +23099,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             49 =>
             array (
@@ -23121,7 +23121,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             50 =>
             array (
@@ -23143,7 +23143,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 2.1, "module": "livestock_production", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             51 =>
             array (
@@ -23165,7 +23165,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             52 =>
             array (
@@ -23187,7 +23187,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             53 =>
             array (
@@ -23209,7 +23209,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "farm_characteristics/2_input_reduction", "holpa_module": "context/agroecology", "sub_indicator": "inputs/diseases"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             54 =>
             array (
@@ -23231,7 +23231,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "farm_characteristics/2_input_reduction", "holpa_module": "context/agroecology", "sub_indicator": "inputs/diseases"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             55 =>
             array (
@@ -23253,7 +23253,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             56 =>
             array (
@@ -23275,7 +23275,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "4_animal_health", "holpa_module": "agroecology", "sub_indicator": "4_animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             57 =>
             array (
@@ -23297,7 +23297,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             58 =>
             array (
@@ -23319,7 +23319,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "4_animal_health", "holpa_module": "agroecology", "sub_indicator": "4_animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             59 =>
             array (
@@ -23338,10 +23338,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "livestock_production"}',
+                'properties' => '{"module": "livestock_production", "indicator": "4_animal_health", "holpa_module": "agroecology", "sub_indicator": "4_animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             60 =>
             array (
@@ -23363,7 +23363,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "4_animal_health", "holpa_module": "agroecology", "sub_indicator": "4_animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             61 =>
             array (
@@ -23385,7 +23385,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             62 =>
             array (
@@ -23407,7 +23407,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             63 =>
             array (
@@ -23429,7 +23429,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "6_synergy/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             64 =>
             array (
@@ -23448,10 +23448,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "livestock_production"}',
+                'properties' => '{"module": "livestock_production", "indicator": "6_synergy/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             65 =>
             array (
@@ -23473,7 +23473,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production", "indicator": "6_synergy/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "6_synergy/climate_mitigation"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             66 =>
             array (
@@ -23495,7 +23495,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             67 =>
             array (
@@ -23517,7 +23517,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "livestock_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:39',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             68 =>
             array (
@@ -23539,7 +23539,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             69 =>
             array (
@@ -23561,7 +23561,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             70 =>
             array (
@@ -23583,7 +23583,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             71 =>
             array (
@@ -23605,7 +23605,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             72 =>
             array (
@@ -23627,7 +23627,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             73 =>
             array (
@@ -23649,7 +23649,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             74 =>
             array (
@@ -23668,10 +23668,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "fish_production"}',
+                'properties' => '{"kpi": 13.1, "module": "fish_production", "indicator": "economic", "holpa_module": "performance", "sub_indicator": "labour_productivity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             75 =>
             array (
@@ -23693,7 +23693,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             76 =>
             array (
@@ -23715,7 +23715,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             77 =>
             array (
@@ -23737,7 +23737,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             78 =>
             array (
@@ -23759,7 +23759,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             79 =>
             array (
@@ -23781,7 +23781,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_other_rpt"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             80 =>
             array (
@@ -23803,7 +23803,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             81 =>
             array (
@@ -23825,7 +23825,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             82 =>
             array (
@@ -23847,7 +23847,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             83 =>
             array (
@@ -23869,7 +23869,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             84 =>
             array (
@@ -23891,7 +23891,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             85 =>
             array (
@@ -23913,7 +23913,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             86 =>
             array (
@@ -23935,7 +23935,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             87 =>
             array (
@@ -23957,7 +23957,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             88 =>
             array (
@@ -23979,7 +23979,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             89 =>
             array (
@@ -24001,7 +24001,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             90 =>
             array (
@@ -24023,7 +24023,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             91 =>
             array (
@@ -24042,10 +24042,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "fish_production"}',
+                'properties' => '{"module": "fish_production", "indicator": "5_biodiversity/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "5_biodiversity/biodiversity_agrobiodiversity"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             92 =>
             array (
@@ -24067,7 +24067,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             93 =>
             array (
@@ -24089,7 +24089,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             94 =>
             array (
@@ -24111,7 +24111,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             95 =>
             array (
@@ -24133,7 +24133,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             96 =>
             array (
@@ -24155,7 +24155,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             97 =>
             array (
@@ -24177,7 +24177,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             98 =>
             array (
@@ -24199,7 +24199,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             99 =>
             array (
@@ -24221,7 +24221,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             100 =>
             array (
@@ -24243,7 +24243,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             101 =>
             array (
@@ -24265,7 +24265,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             102 =>
             array (
@@ -24287,7 +24287,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             103 =>
             array (
@@ -24309,7 +24309,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             104 =>
             array (
@@ -24331,7 +24331,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             105 =>
             array (
@@ -24353,7 +24353,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             106 =>
             array (
@@ -24375,7 +24375,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             107 =>
             array (
@@ -24397,7 +24397,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             108 =>
             array (
@@ -24419,7 +24419,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 12.1, "module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             109 =>
             array (
@@ -24441,7 +24441,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             110 =>
             array (
@@ -24463,7 +24463,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             111 =>
             array (
@@ -24485,7 +24485,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             112 =>
             array (
@@ -24507,7 +24507,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             113 =>
             array (
@@ -24529,7 +24529,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             114 =>
             array (
@@ -24551,7 +24551,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             115 =>
             array (
@@ -24573,7 +24573,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             116 =>
             array (
@@ -24595,7 +24595,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             117 =>
             array (
@@ -24617,7 +24617,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             118 =>
             array (
@@ -24639,7 +24639,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             119 =>
             array (
@@ -24661,7 +24661,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             120 =>
             array (
@@ -24683,7 +24683,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             121 =>
             array (
@@ -24705,7 +24705,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             122 =>
             array (
@@ -24727,7 +24727,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             123 =>
             array (
@@ -24749,7 +24749,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "repeat_flag": 1, "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             124 =>
             array (
@@ -24771,7 +24771,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             125 =>
             array (
@@ -24793,7 +24793,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             126 =>
             array (
@@ -24815,7 +24815,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             127 =>
             array (
@@ -24837,7 +24837,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "economic", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "productivity_fish", "repeat_group_name": "fish_production_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             128 =>
             array (
@@ -24859,7 +24859,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             129 =>
             array (
@@ -24881,7 +24881,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             130 =>
             array (
@@ -24903,7 +24903,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "1_recycling", "holpa_module": "agroecology", "sub_indicator": "1_recycling"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             131 =>
             array (
@@ -24925,7 +24925,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             132 =>
             array (
@@ -24947,7 +24947,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             133 =>
             array (
@@ -24969,7 +24969,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             134 =>
             array (
@@ -24991,7 +24991,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             135 =>
             array (
@@ -25013,7 +25013,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             136 =>
             array (
@@ -25035,7 +25035,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "2_input_reduction", "holpa_module": "agroecology", "sub_indicator": "2_input_reduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             137 =>
             array (
@@ -25057,7 +25057,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "extra_input_reduction", "holpa_module": "agroecology", "sub_indicator": "extra_input_reduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             138 =>
             array (
@@ -25079,7 +25079,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             139 =>
             array (
@@ -25101,7 +25101,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 2.2, "module": "fish_production", "indicator": "agricultural", "holpa_module": "performance", "sub_indicator": "animal_health"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             140 =>
             array (
@@ -25123,7 +25123,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "farm_characteristics/2_input_reduction", "holpa_module": "context/agroecology", "sub_indicator": "inputs/diseases"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             141 =>
             array (
@@ -25145,7 +25145,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             142 =>
             array (
@@ -25167,7 +25167,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             143 =>
             array (
@@ -25189,7 +25189,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "4_animal_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "4_animal_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             144 =>
             array (
@@ -25208,10 +25208,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "fish_production"}',
+                'properties' => '{"module": "fish_production", "indicator": "4_animal_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "4_animal_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             145 =>
             array (
@@ -25233,7 +25233,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production", "indicator": "4_animal_health/6_synergy", "holpa_module": "agroecology", "sub_indicator": "4_animal_health/6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             146 =>
             array (
@@ -25255,7 +25255,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             147 =>
             array (
@@ -25277,7 +25277,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fish_production"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:41',
-                'updated_at' => '2025-02-20 15:43:55',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             148 =>
             array (
@@ -25299,7 +25299,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "synergies"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             149 =>
             array (
@@ -25321,7 +25321,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "synergies", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             150 =>
             array (
@@ -25340,10 +25340,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "synergies"}',
+                'properties' => '{"module": "synergies", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             151 =>
             array (
@@ -25365,7 +25365,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "synergies", "indicator": "6_synergy", "holpa_module": "agroecology", "sub_indicator": "6_synergy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             152 =>
             array (
@@ -25387,7 +25387,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "synergies"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             153 =>
             array (
@@ -25409,7 +25409,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             154 =>
             array (
@@ -25431,7 +25431,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change", "indicator": "climate_perception", "holpa_module": "context", "sub_indicator": "climate_temp"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             155 =>
             array (
@@ -25453,7 +25453,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change", "indicator": "climate_perception", "holpa_module": "context", "sub_indicator": "climate_rainfall_change"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             156 =>
             array (
@@ -25475,7 +25475,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change", "indicator": "climate_perception", "holpa_module": "context", "sub_indicator": "climate_rainfall_timing"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             157 =>
             array (
@@ -25497,7 +25497,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change", "indicator": "climate_perception", "holpa_module": "context", "sub_indicator": "climate_flood"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             158 =>
             array (
@@ -25519,7 +25519,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change", "indicator": "climate_perception", "holpa_module": "context", "sub_indicator": "climate_drought"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             159 =>
             array (
@@ -25541,7 +25541,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "climate_change"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:11',
             ),
             160 =>
             array (
@@ -25563,7 +25563,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             161 =>
             array (
@@ -25585,7 +25585,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             162 =>
             array (
@@ -25607,7 +25607,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "farm_characteristics/environmental", "holpa_module": "context/performance", "sub_indicator": "production_systems/water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             163 =>
             array (
@@ -25629,7 +25629,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             164 =>
             array (
@@ -25651,7 +25651,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             165 =>
             array (
@@ -25673,7 +25673,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             166 =>
             array (
@@ -25695,7 +25695,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             167 =>
             array (
@@ -25717,7 +25717,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             168 =>
             array (
@@ -25739,7 +25739,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             169 =>
             array (
@@ -25761,7 +25761,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             170 =>
             array (
@@ -25783,7 +25783,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "water", "repeat_group_name": "irrigation_season_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             171 =>
             array (
@@ -25805,7 +25805,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "repeat_flag": 1, "holpa_module": "performance", "sub_indicator": "water", "repeat_group_name": "irrigation_season_repeat"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             172 =>
             array (
@@ -25827,7 +25827,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             173 =>
             array (
@@ -25849,7 +25849,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             174 =>
             array (
@@ -25871,7 +25871,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             175 =>
             array (
@@ -25893,7 +25893,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             176 =>
             array (
@@ -25915,7 +25915,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             177 =>
             array (
@@ -25937,7 +25937,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             178 =>
             array (
@@ -25959,7 +25959,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             179 =>
             array (
@@ -25981,7 +25981,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             180 =>
             array (
@@ -26003,7 +26003,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             181 =>
             array (
@@ -26025,7 +26025,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             182 =>
             array (
@@ -26047,7 +26047,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             183 =>
             array (
@@ -26069,7 +26069,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             184 =>
             array (
@@ -26091,7 +26091,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             185 =>
             array (
@@ -26110,10 +26110,10 @@ class SurveyRowsTableSeeder extends Seeder
                 'default' => NULL,
                 'note' => NULL,
                 'trigger' => NULL,
-                'properties' => '{"module": "water"}',
+                'properties' => '{"kpi": 9, "module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             186 =>
             array (
@@ -26135,7 +26135,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             187 =>
             array (
@@ -26157,7 +26157,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             188 =>
             array (
@@ -26179,7 +26179,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             189 =>
             array (
@@ -26201,7 +26201,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             190 =>
             array (
@@ -26223,7 +26223,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "water"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-02-20 15:43:56',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             191 =>
             array (
@@ -26245,7 +26245,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             192 =>
             array (
@@ -26267,7 +26267,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             193 =>
             array (
@@ -26289,7 +26289,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             194 =>
             array (
@@ -26311,7 +26311,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             195 =>
             array (
@@ -26333,7 +26333,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             196 =>
             array (
@@ -26355,7 +26355,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             197 =>
             array (
@@ -26377,7 +26377,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             198 =>
             array (
@@ -26399,7 +26399,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             199 =>
             array (
@@ -26421,7 +26421,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             200 =>
             array (
@@ -26443,7 +26443,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             201 =>
             array (
@@ -26465,7 +26465,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             202 =>
             array (
@@ -26487,7 +26487,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             203 =>
             array (
@@ -26509,7 +26509,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             204 =>
             array (
@@ -26531,7 +26531,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             205 =>
             array (
@@ -26553,7 +26553,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             206 =>
             array (
@@ -26575,7 +26575,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.1, "module": "energy", "indicator": "environmental", "holpa_module": "performance", "sub_indicator": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             207 =>
             array (
@@ -26597,7 +26597,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             208 =>
             array (
@@ -26619,7 +26619,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"kpi": 10.2, "module": "energy", "indicator": "1_recycling/environmental", "holpa_module": "agroecology/performance", "sub_indicator": "1_recycling/energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             209 =>
             array (
@@ -26641,7 +26641,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "energy"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             210 =>
             array (
@@ -26663,7 +26663,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             211 =>
             array (
@@ -26685,7 +26685,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             212 =>
             array (
@@ -26707,7 +26707,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end", "indicator": "general", "holpa_module": "context", "sub_indicator": "photo"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             213 =>
             array (
@@ -26729,7 +26729,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end", "indicator": "general", "holpa_module": "context", "sub_indicator": "photo"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             214 =>
             array (
@@ -26751,7 +26751,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end", "indicator": "general", "holpa_module": "context", "sub_indicator": "photo"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             215 =>
             array (
@@ -26773,7 +26773,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end", "indicator": "general", "holpa_module": "context", "sub_indicator": "photo"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             216 =>
             array (
@@ -26795,7 +26795,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end", "indicator": "general", "holpa_module": "context", "sub_indicator": "photo"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             217 =>
             array (
@@ -26817,7 +26817,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             218 =>
             array (
@@ -26839,7 +26839,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             219 =>
             array (
@@ -26861,7 +26861,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             220 =>
             array (
@@ -26883,7 +26883,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             221 =>
             array (
@@ -26905,7 +26905,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "survey_end"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:42:48',
-                'updated_at' => '2025-02-20 15:43:57',
+                'updated_at' => '2025-03-05 10:41:12',
             ),
             222 =>
             array (
@@ -26927,7 +26927,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             223 =>
             array (
@@ -26949,7 +26949,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             224 =>
             array (
@@ -26971,7 +26971,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             225 =>
             array (
@@ -26993,7 +26993,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             226 =>
             array (
@@ -27015,7 +27015,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             227 =>
             array (
@@ -27037,7 +27037,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             228 =>
             array (
@@ -27059,7 +27059,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             229 =>
             array (
@@ -27081,7 +27081,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             230 =>
             array (
@@ -27103,7 +27103,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             231 =>
             array (
@@ -27125,7 +27125,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             232 =>
             array (
@@ -27147,7 +27147,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             233 =>
             array (
@@ -27169,7 +27169,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             234 =>
             array (
@@ -27191,7 +27191,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             235 =>
             array (
@@ -27213,7 +27213,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             236 =>
             array (
@@ -27235,7 +27235,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             237 =>
             array (
@@ -27257,7 +27257,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             238 =>
             array (
@@ -27279,7 +27279,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             239 =>
             array (
@@ -27301,7 +27301,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             240 =>
             array (
@@ -27323,7 +27323,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             241 =>
             array (
@@ -27345,7 +27345,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             242 =>
             array (
@@ -27367,7 +27367,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             243 =>
             array (
@@ -27389,7 +27389,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             244 =>
             array (
@@ -27411,7 +27411,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             245 =>
             array (
@@ -27433,7 +27433,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             246 =>
             array (
@@ -27455,7 +27455,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             247 =>
             array (
@@ -27477,7 +27477,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             248 =>
             array (
@@ -27499,7 +27499,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             249 =>
             array (
@@ -27521,7 +27521,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             250 =>
             array (
@@ -27543,7 +27543,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             251 =>
             array (
@@ -27565,7 +27565,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             252 =>
             array (
@@ -27587,7 +27587,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             253 =>
             array (
@@ -27609,7 +27609,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             254 =>
             array (
@@ -27631,7 +27631,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             255 =>
             array (
@@ -27653,7 +27653,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             256 =>
             array (
@@ -27675,7 +27675,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             257 =>
             array (
@@ -27697,7 +27697,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             258 =>
             array (
@@ -27719,7 +27719,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             259 =>
             array (
@@ -27741,7 +27741,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             260 =>
             array (
@@ -27763,7 +27763,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             261 =>
             array (
@@ -27785,7 +27785,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             262 =>
             array (
@@ -27807,7 +27807,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             263 =>
             array (
@@ -27829,7 +27829,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             264 =>
             array (
@@ -27851,7 +27851,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             265 =>
             array (
@@ -27873,7 +27873,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             266 =>
             array (
@@ -27895,7 +27895,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             267 =>
             array (
@@ -27917,7 +27917,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             268 =>
             array (
@@ -27939,7 +27939,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             269 =>
             array (
@@ -27961,7 +27961,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             270 =>
             array (
@@ -27983,7 +27983,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             271 =>
             array (
@@ -28005,7 +28005,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             272 =>
             array (
@@ -28027,7 +28027,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             273 =>
             array (
@@ -28049,7 +28049,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             274 =>
             array (
@@ -28071,7 +28071,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             275 =>
             array (
@@ -28093,7 +28093,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_introduction"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:42',
-                'updated_at' => '2025-02-20 15:51:51',
+                'updated_at' => '2025-03-05 10:36:44',
             ),
             276 =>
             array (
@@ -28115,7 +28115,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             277 =>
             array (
@@ -28137,7 +28137,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             278 =>
             array (
@@ -28159,7 +28159,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             279 =>
             array (
@@ -28181,7 +28181,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             280 =>
             array (
@@ -28203,7 +28203,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             281 =>
             array (
@@ -28225,7 +28225,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             282 =>
             array (
@@ -28247,7 +28247,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             283 =>
             array (
@@ -28269,7 +28269,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             284 =>
             array (
@@ -28291,7 +28291,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             285 =>
             array (
@@ -28313,7 +28313,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             286 =>
             array (
@@ -28335,7 +28335,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             287 =>
             array (
@@ -28357,7 +28357,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             288 =>
             array (
@@ -28379,7 +28379,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             289 =>
             array (
@@ -28401,7 +28401,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             290 =>
             array (
@@ -28423,7 +28423,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             291 =>
             array (
@@ -28445,7 +28445,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             292 =>
             array (
@@ -28467,7 +28467,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             293 =>
             array (
@@ -28489,7 +28489,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             294 =>
             array (
@@ -28511,7 +28511,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             295 =>
             array (
@@ -28533,7 +28533,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             296 =>
             array (
@@ -28555,7 +28555,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             297 =>
             array (
@@ -28577,7 +28577,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             298 =>
             array (
@@ -28599,7 +28599,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             299 =>
             array (
@@ -28621,7 +28621,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             300 =>
             array (
@@ -28643,7 +28643,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             301 =>
             array (
@@ -28665,7 +28665,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             302 =>
             array (
@@ -28687,7 +28687,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             303 =>
             array (
@@ -28709,7 +28709,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             304 =>
             array (
@@ -28731,7 +28731,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             305 =>
             array (
@@ -28753,7 +28753,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "comment": "do they not always do this so why the relevancy?", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             306 =>
             array (
@@ -28775,7 +28775,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             307 =>
             array (
@@ -28797,7 +28797,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             308 =>
             array (
@@ -28819,7 +28819,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             309 =>
             array (
@@ -28841,7 +28841,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             310 =>
             array (
@@ -28863,7 +28863,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             311 =>
             array (
@@ -28885,7 +28885,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             312 =>
             array (
@@ -28907,7 +28907,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             313 =>
             array (
@@ -28929,7 +28929,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             314 =>
             array (
@@ -28951,7 +28951,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             315 =>
             array (
@@ -28973,7 +28973,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             316 =>
             array (
@@ -28995,7 +28995,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             317 =>
             array (
@@ -29017,7 +29017,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             318 =>
             array (
@@ -29039,7 +29039,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             319 =>
             array (
@@ -29061,7 +29061,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             320 =>
             array (
@@ -29083,7 +29083,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             321 =>
             array (
@@ -29105,7 +29105,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             322 =>
             array (
@@ -29127,7 +29127,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             323 =>
             array (
@@ -29149,7 +29149,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             324 =>
             array (
@@ -29171,7 +29171,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             325 =>
             array (
@@ -29193,7 +29193,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             326 =>
             array (
@@ -29215,7 +29215,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             327 =>
             array (
@@ -29237,7 +29237,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             328 =>
             array (
@@ -29259,7 +29259,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             329 =>
             array (
@@ -29281,7 +29281,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             330 =>
             array (
@@ -29303,7 +29303,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             331 =>
             array (
@@ -29325,7 +29325,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             332 =>
             array (
@@ -29347,7 +29347,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             333 =>
             array (
@@ -29369,7 +29369,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             334 =>
             array (
@@ -29391,7 +29391,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             335 =>
             array (
@@ -29413,7 +29413,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             336 =>
             array (
@@ -29435,7 +29435,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             337 =>
             array (
@@ -29457,7 +29457,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             338 =>
             array (
@@ -29479,7 +29479,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             339 =>
             array (
@@ -29501,7 +29501,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             340 =>
             array (
@@ -29523,7 +29523,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             341 =>
             array (
@@ -29545,7 +29545,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             342 =>
             array (
@@ -29567,7 +29567,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             343 =>
             array (
@@ -29589,7 +29589,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             344 =>
             array (
@@ -29611,7 +29611,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             345 =>
             array (
@@ -29633,7 +29633,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info", "repeat_group_name": "sites"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             346 =>
             array (
@@ -29655,7 +29655,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
             347 =>
             array (
@@ -29677,7 +29677,7 @@ class SurveyRowsTableSeeder extends Seeder
                 'properties' => '{"module": "fieldwork_site_info"}',
                 'updated_during_import' => 0,
                 'created_at' => '2025-02-20 15:51:44',
-                'updated_at' => '2025-02-20 15:51:52',
+                'updated_at' => '2025-03-05 10:36:45',
             ),
         ));
 
