@@ -28,6 +28,9 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
      */
     public function handle()
     {
+
+        $this->info('Updating xlsform versions from ODK Central');
+
         // for each xlsform, get all the versions from ODK Central
         Xlsform::all()->each(function (Xlsform $xlsform) {
 
@@ -55,5 +58,7 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
                 });
 
         });
+
+        $this->info('Xlsform versions updated successfully!');
     }
 }

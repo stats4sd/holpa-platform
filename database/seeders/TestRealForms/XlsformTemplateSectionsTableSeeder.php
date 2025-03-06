@@ -269,7 +269,7 @@ class XlsformTemplateSectionsTableSeeder extends Seeder
             19 =>
             array (
                 'id' => 20,
-                'dataset_id' => NULL,
+                'dataset_id' => 16,
                 'xlsform_template_id' => 2,
                 'parent_id' => NULL,
                 'structure_item' => 'root',

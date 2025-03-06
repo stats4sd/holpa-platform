@@ -274,6 +274,23 @@ class DatasetsTableSeeder extends Seeder
                 'updated_at' => '2025-02-20 15:39:44',
                 'deleted_at' => NULL,
             ),
+            15 =>
+            array (
+                'id' => 16,
+                'model_id' => NULL,
+                'model_type' => NULL,
+                'name' => 'Farm Fieldwork Data',
+                'parent_id' => 1,
+                'primary_key' => 'id',
+                'description' => "probably to be deleted; hopefully not needed",
+                'entity_model' => NULL,
+                'external_file' => 0,
+                'lookup_table' => 0,
+                'is_universal' => 0,
+                'created_at' => '2025-02-20 15:39:44',
+                'updated_at' => '2025-02-20 15:39:44',
+                'deleted_at' => NULL,
+            ),
         ));
 
 
