@@ -3,10 +3,27 @@
 namespace App\Services;
 
 use App\Models\SampleFrame\Farm;
+use App\Models\Team;
+use Filament\Facades\Filament;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class HelperService
 {
+    // Get the current team with the correct namespacing so phpstan doesn't complain whenever we get the current team
+    /**
+     * @return Team|Model|null
+     */
+    public static function getCurrentOwner(): Team | Model | null
+    {
+       if (Filament::hasTenancy() && is_a(Filament::getTenant(), Team::class)) {
+
+            return Filament::getTenant();
+        }
+
+        return null;
+    }
+
     // find farm's full location details for data export to Excel file
     public static function findFarmLocationDetails(string $farmId): array
     {
