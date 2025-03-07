@@ -21,7 +21,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
     /** @var Collection<LocalIndicator>  */
     public Collection $indicators;
 
-    public ?string $selectedIndicatorId = null;
+    public ?LocalIndicator $selectedLocalIndicator = null;
 
     protected $listeners = ['refreshLocalIndicators'];
 
@@ -35,19 +35,10 @@ class LocalIndicators extends Component implements HasForms, HasActions
         $this->indicators = HelperService::getCurrentOwner()->localIndicators;
     }
 
-    public function selectIndicator($indicatorId): void
+    public function selectIndicator(LocalIndicator $indicator): void
     {
-        $this->selectedIndicatorId = $indicatorId;
-        $indicator = LocalIndicator::find($indicatorId);
-        $this->dispatch('indicatorSelected', [
-            'indicator' => [
-                'id' => $indicator->id,
-                'name' => $indicator->name,
-                'domain' => $indicator->domain,
-                'global_indicator_id' => $indicator->global_indicator_id,
-                'team_id' => $indicator->team_id,
-            ],
-            ]);
+        $this->selectedLocalIndicator = $indicator;
+        $this->dispatch('localIndicatorSelected', $this->selectedLocalIndicator);
     }
 
     public function resetAction(): Action
@@ -69,8 +60,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
             $indicator->save();
         }
 
-        $this->selectedIndicatorId = null;
-
+        $this->selectedLocalIndicator = null;
         $this->dispatch('resetGlobalIndicators');
 
         Notification::make()

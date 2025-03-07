@@ -1,4 +1,4 @@
-<div  id="globalindicators">
+<div id="globalindicators">
 
     <div class="font-extrabold text-base ">
         Global indicators

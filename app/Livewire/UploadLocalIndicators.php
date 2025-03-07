@@ -79,6 +79,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                         ]),
                     ]),
                 Fieldset::make('Local Indicators List')
+                    ->columns(1)
                     ->schema([
                         TableRepeater::make('localIndicators')
                             ->label('')
@@ -89,10 +90,12 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                                 Header::make('domain'),
                             ])
                             ->schema([
-                                TextInput::make('name'),
+                                TextInput::make('name')->required(),
                                 Select::make('domain_id')
-                                    ->relationship('domain', 'name'),
-                            ]),
+                                    ->relationship('domain', 'name')->required(),
+                            ])
+                        ->emptyLabel('No local indicators added - click "Add Local Indicator" below to create a new entry')
+                        ->addActionLabel('Add Local Indicator')
                     ]),
             ]);
     }

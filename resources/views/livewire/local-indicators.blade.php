@@ -10,17 +10,17 @@
 
     <div class=" py-4 rounded-xl">
         @forelse ($indicators as $indicator)
-            <div class=" p-4 lispboxbase cursor-pointer {{ $selectedIndicatorId === $indicator->id ? ' lispboxselected ' : 'lispboxinactive text-current' }}" 
-                 wire:click="selectIndicator({{ $indicator->id }})">
+            <div class=" p-4 lispboxbase cursor-pointer {{ $selectedLocalIndicator?->id === $indicator->id ? ' lispboxselected ' : 'lispboxinactive text-current' }}"
+                 wire:click="selectIndicator({{ $indicator }})">
                 @if ($indicator->global_indicator_id)
-                    <div class="flex items-center   {{ $selectedIndicatorId === $indicator->id ? ' text-white': 'text-green' }}">
+                    <div class="flex items-center   {{ $selectedLocalIndicator?->id === $indicator->id ? ' text-white': 'text-green' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5  mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                         </svg>
                         <span class="text-sm  font-semibold">MATCHED</span>
                     </div>
                 @endif
-                <p style="padding-left: 1.3rem !important">
+                <p class="ps-6">
                     {{ $indicator->name }}
                 </p>
             </div>
