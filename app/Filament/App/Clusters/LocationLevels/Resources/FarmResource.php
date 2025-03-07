@@ -2,17 +2,18 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use Filament\Tables;
 use Filament\Forms;
+use Filament\Tables;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Forms\Components\Toggle;
-use Filament\Resources\Resource;
-use Filament\Http\Middleware\Authenticate;
 use App\Models\SampleFrame\Farm;
+use Filament\Resources\Resource;
 use App\Models\SampleFrame\LocationLevel;
+use Filament\Http\Middleware\Authenticate;
 use App\Filament\App\Clusters\LocationLevels;
 use Stats4sd\FilamentOdkLink\Services\HelperService;
+use ValentinMorice\FilamentJsonColumn\FilamentJsonColumn;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
 class FarmResource extends Resource
@@ -44,9 +45,13 @@ class FarmResource extends Resource
                     ->label('Unique Code')
                     ->numeric(),
 
-                // - identifiers, json editor
+                FilamentJsonColumn::make('identifiers')
+                    ->editorOnly()
+                    ->editorHeight(500),
 
-                // - properties, json editor
+                FilamentJsonColumn::make('properties')
+                    ->editorOnly()
+                    ->editorHeight(500),
 
                 Forms\Components\TextInput::make('latitude')
                     ->numeric(),
@@ -61,8 +66,8 @@ class FarmResource extends Resource
                     ->numeric(),
 
                 // Question:
-                // 1. these two flags should not be manually modified in Edit page
-                // 2. or should we hide them in Edit page directly?
+                // 1. these two flags should not be manually modified in Create / Edit page
+                // 2. should we hide them in Create / Edit page?
                 Forms\Components\Checkbox::make('household_form_completed')
                     ->disabled(),
 
