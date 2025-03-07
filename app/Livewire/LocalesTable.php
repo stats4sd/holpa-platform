@@ -24,7 +24,7 @@ use Illuminate\View\View;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class LocalesTable extends Component implements HasForms, HasTable
 {

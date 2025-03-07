@@ -10,7 +10,7 @@ use App\Imports\LocationImport;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class ViewLocationLevel extends ViewRecord
 {

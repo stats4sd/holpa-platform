@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Collection;
 use phpDocumentor\Reflection\Types\ClassString;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\RequiredMedia;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class Dataset extends \Stats4sd\FilamentOdkLink\Models\OdkLink\Dataset
 {
