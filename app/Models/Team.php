@@ -96,6 +96,13 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         });
     }
 
+ public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('local_indicators')
+            ->singleFile();
+
+    }
+
     public function localIndicators(): HasMany
     {
         return $this->hasMany(LocalIndicator::class);

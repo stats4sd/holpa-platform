@@ -10,8 +10,11 @@ use Awcodes\TableRepeater\Components\TableRepeater;
 use Awcodes\TableRepeater\Header;
 use Exception;
 use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -39,16 +42,13 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
 
     public Team $team;
 
-    /** @var Collection<LocalIndicator> */
-    public Collection $localIndicators;
-
     public ?Media $uploadedFile = null;
     public ?array $data;
 
     public function mount(): void
     {
         $this->team = HelperService::getCurrentOwner();
-        $this->localIndicators = $this->team->localIndicators;
+
         $this->form->fill($this->team->toArray());
         $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
     }
@@ -59,30 +59,40 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             ->statePath('data')
             ->model($this->team)
             ->schema([
-                FileUpload::make('local_indicator_list')
-                    ->label('')
-                    ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
-                    ->maxSize(10240)
-                    ->preserveFilenames()
-                    ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
-
-                Actions::make([
-                    Actions\Action::make('save_file')
-                        ->label('Save File')
-                        ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list'))),
-                ]),
-
-                TableRepeater::make('localIndicators')
-                    ->relationship('localIndicators')
-                    ->headers([
-                        Header::make('name')
-                        ->width('70%'),
-                        Header::make('domain'),
-                    ])
+                Fieldset::make('Upload Local Indicators')
+                    ->columns(6)
                     ->schema([
-                        TextInput::make('name'),
-                        Select::make('domain_id')
-                            ->relationship('domain', 'name'),
+                        SpatieMediaLibraryFileUpload::make('local_indicator_list')
+                            ->columnSpan(5)
+                            ->collection('local_indicators')
+                            ->downloadable()
+                            ->label('')
+                            ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
+                            ->maxSize(10240)
+                            ->preserveFilenames()
+                            ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
+
+                        Actions::make([
+                            Actions\Action::make('save_file')
+                                ->label('Save File')
+                                ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list'))),
+                        ]),
+                    ]),
+                Fieldset::make('Local Indicators List')
+                    ->schema([
+                        TableRepeater::make('localIndicators')
+                            ->label('')
+                            ->relationship('localIndicators')
+                            ->headers([
+                                Header::make('name')
+                                    ->width('70%'),
+                                Header::make('domain'),
+                            ])
+                            ->schema([
+                                TextInput::make('name'),
+                                Select::make('domain_id')
+                                    ->relationship('domain', 'name'),
+                            ]),
                     ]),
             ]);
     }
@@ -108,19 +118,8 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             // Proceed with the import
             Excel::import(new LocalIndicatorImport($this->team), $file->getRealPath());
 
-
-            // Get the original filename
-            $originalFilename = $file->getClientOriginalName();
-
-            // Add the uploaded file to the media collection
-            $this->team->addMedia($file->getRealPath())
-                ->usingName(pathinfo($originalFilename, PATHINFO_FILENAME))
-                ->usingFileName($originalFilename)
-                ->toMediaCollection('local_indicators');
-
-            // Update the uploaded file details
-            $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
-
+            $this->team->refresh();
+            $this->form->fill($this->team->toArray());
 
             // Display success message
             Notification::make()
