@@ -4,6 +4,7 @@ namespace App\Filament\App\Pages;
 
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Livewire\Attributes\Url;
 
 class LispIndicators extends Page
 {
@@ -16,7 +17,8 @@ class LispIndicators extends Page
 
     protected static bool $shouldRegisterNavigation = false;
 
-    public ?string $activeTab = null;
+    #[Url('tab')]
+    public ?string $activeTab = 'local';
 
     protected $listeners = ['switch-to-match-tab' => 'setActiveTab'];
 
