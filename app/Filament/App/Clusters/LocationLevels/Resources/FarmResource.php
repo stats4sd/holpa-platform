@@ -2,15 +2,18 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use App\Filament\App\Clusters\LocationLevels;
-use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
+use Filament\Tables;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Forms\Components\Toggle;
+use Filament\Resources\Resource;
+use Filament\Http\Middleware\Authenticate;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
+use App\Filament\App\Clusters\LocationLevels;
 use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
 class FarmResource extends Resource
 {
@@ -22,15 +25,54 @@ class FarmResource extends Resource
 
     public static function form(Form $form): Form
     {
+        // find location level that has farms
+        // 1. use location level name as location_id's label
+        // 2. use location level's locations for user selection
+        $locationLevelWithFarms = auth()->user()->latestTeam->locationLevels->where('has_farms', 1)->first();
+
         return $form
             ->schema([
-                //
+
+                Forms\Components\Select::make('location_id')
+                    ->label($locationLevelWithFarms->name)
+                    ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
+
+                // Questions:
+                // 1. farms.owner_type, farm must belong to a team. It is no longer a polymorphic-relationship. What does farms.owner_type use for?
+                // 2. farms.owner_id indicates this farm belongs to which Team already, what does team_code use for?
+                Forms\Components\TextInput::make('team_code')
+                    ->label('Unique Code')
+                    ->numeric(),
+
+                // - identifiers, json editor
+
+                // - properties, json editor
+
+                Forms\Components\TextInput::make('latitude')
+                    ->numeric(),
+
+                Forms\Components\TextInput::make('longitude')
+                    ->numeric(),
+
+                Forms\Components\TextInput::make('altitude')
+                    ->numeric(),
+
+                Forms\Components\TextInput::make('accuracy')
+                    ->numeric(),
+
+                // Question:
+                // 1. these two flags should not be manually modified in Edit page
+                // 2. or should we hide them in Edit page directly?
+                Forms\Components\Checkbox::make('household_form_completed')
+                    ->disabled(),
+
+                Forms\Components\Checkbox::make('field_work_completed')
+                    ->disabled(),
             ]);
     }
 
     public static function table(Table $table): Table
     {
-
         $farms = Farm::all()->where('owner_id', HelperService::getCurrentOwner()->id);
 
         $locationLevelColumns = $farms->map(fn(Farm $farm) => $farm->location->locationLevel)
@@ -43,7 +85,6 @@ class FarmResource extends Resource
                     ->sortable()
                     ->searchable()
             );
-
 
         $identifiers = $farms->map(fn(Farm $farm) => $farm->identifiers?->keys())
             ->flatten()->unique()->values();
