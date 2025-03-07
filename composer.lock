@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34bc6de28ccf07255247c3bf666f2047",
+    "content-hash": "e4d5f2cfa356eb2d94d2f1acbb940b67",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -7990,11 +7990,11 @@
         },
         {
             "name": "stats4sd/filament-odk-link",
-            "version": "dev-handle-nested-repeats",
+            "version": "dev-7765400924ce9c220680a37b3c055a5cf67fc478",
             "dist": {
                 "type": "path",
                 "url": "packages/filament-odk-link",
-                "reference": "df2b482f2573d6cb0cd3f01217ca2f46aa45d034"
+                "reference": "bfec4ad9b3cf50ed9d376a24efb3945a98903d74"
             },
             "require": {
                 "awcodes/filament-table-repeater": "^2.0",
@@ -15338,6 +15338,6 @@
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": {},
+    "platform-dev": [],
     "plugin-api-version": "2.6.0"
 }
