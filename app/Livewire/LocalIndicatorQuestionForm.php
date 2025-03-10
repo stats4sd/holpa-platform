@@ -19,6 +19,7 @@ use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Tables\Contracts\HasTable;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Relay\Table;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
@@ -120,7 +121,8 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasActio
                                     'text' => 'text',
                                 ])->live()
                                     ->required(),
-                                TextInput::make('name')->label('Variable Name')->live()->required(),
+                                TextInput::make('name')->label('Variable Name')->live()->required()
+                                ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
