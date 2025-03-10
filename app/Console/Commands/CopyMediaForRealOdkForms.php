@@ -35,6 +35,8 @@ class CopyMediaForRealOdkForms extends Command
             if ($this->confirm('Continue?')) {
                 $this->copyMediaFiles($folderPath);
             }
+        } else {
+            $this->copyMediaFiles($folderPath);
         }
 
     }
