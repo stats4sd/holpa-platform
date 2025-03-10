@@ -35,44 +35,38 @@ class FarmResource extends Resource
             ->schema([
 
                 Forms\Components\Select::make('location_id')
-                    ->label($locationLevelWithFarms->name)
+                    ->label('Select the ' . $locationLevelWithFarms->name . ' for this farm')
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
 
                 // Questions:
                 // 1. farms.owner_type, farm must belong to a team. It is no longer a polymorphic-relationship. What does farms.owner_type use for?
                 // 2. farms.owner_id indicates this farm belongs to which Team already, what does team_code use for?
                 Forms\Components\TextInput::make('team_code')
-                    ->label('Unique Code')
-                    ->numeric(),
+                    ->label('Please enter a unique code to identify this farm for your team')
+                    ->maxLength(255),
 
-                FilamentJsonColumn::make('identifiers')
-                    ->editorOnly()
-                    ->editorHeight(500),
+                // TODO: use KeyValue field
+                Forms\Components\TextInput::make('identifiers'),
 
-                FilamentJsonColumn::make('properties')
-                    ->editorOnly()
-                    ->editorHeight(500),
+                // TODO: use KeyValue field
+                Forms\Components\TextInput::make('properties'),
 
-                Forms\Components\TextInput::make('latitude')
-                    ->numeric(),
+                Forms\Components\Section::make('GPS Location')
+                    ->description('Optionally, add the GPS co-ordinates for the farm')
+                    ->schema([
+                        Forms\Components\TextInput::make('latitude')
+                            ->numeric(),
 
-                Forms\Components\TextInput::make('longitude')
-                    ->numeric(),
+                        Forms\Components\TextInput::make('longitude')
+                            ->numeric(),
 
-                Forms\Components\TextInput::make('altitude')
-                    ->numeric(),
+                        Forms\Components\TextInput::make('altitude')
+                            ->numeric(),
 
-                Forms\Components\TextInput::make('accuracy')
-                    ->numeric(),
+                        Forms\Components\TextInput::make('accuracy')
+                            ->numeric(),
+                    ])->columns(2),
 
-                // Question:
-                // 1. these two flags should not be manually modified in Create / Edit page
-                // 2. should we hide them in Create / Edit page?
-                Forms\Components\Checkbox::make('household_form_completed')
-                    ->disabled(),
-
-                Forms\Components\Checkbox::make('field_work_completed')
-                    ->disabled(),
             ]);
     }
 
