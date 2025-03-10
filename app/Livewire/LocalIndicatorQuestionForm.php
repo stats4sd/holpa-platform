@@ -150,13 +150,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasActio
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
                                     ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
-                                Repeater::make('choiceListEntries')
+                                TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
-                                    //                            ->dehydrated(true)
-//                                    ->headers([
-//                                        Header::make('name')->label('Name'),
-//                                        ...$choiceListHeaders,
-//                                    ])
+                                    ->headers([
+                                        Header::make('name')->label('Name'),
+                                        ...$choiceListHeaders,
+                                    ])
                                     ->schema([
                                         TextInput::make('name')->required(),
                                         Hidden::make('owner_id')->default(HelperService::getCurrentOwner()->id),
