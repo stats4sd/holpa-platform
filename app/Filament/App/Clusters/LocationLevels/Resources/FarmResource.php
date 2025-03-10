@@ -6,11 +6,13 @@ use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use App\Services\HelperService;
+use ValentinMorice\FilamentJsonColumn\FilamentJsonColumn;
 
 class FarmResource extends Resource
 {
@@ -24,7 +26,9 @@ class FarmResource extends Resource
     {
         return $form
             ->schema([
-                //
+                FilamentJsonColumn::make('identifiers')
+                    ->editorOnly()
+                ->label('Identifiers'),
             ]);
     }
 

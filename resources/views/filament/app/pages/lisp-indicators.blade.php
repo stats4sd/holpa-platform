@@ -10,24 +10,24 @@
         <!-- Tabs -->
         <div class="surveyblocks  pb-24 mb-32 pt-12 px-12">
             <div class="grid grid-cols-3 gap-4   h-max mb-12">
-                <div wire:click="setActiveTab('local')" class="{{ $activeTab === 'local' ? 'tabbuttons' : '' }}  rounded-2xl   cursor-pointer lisptabs bg-gray-100 ">
+                <a wire:click="setActiveTab('local')" class="{{ $activeTab === 'local' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100 ">
                     <livewire:rounded-square
                         heading="Upload local indicators"
                         description="Upload the local indicators you identified in the LISP workshop."
                     />
-                </div>
-                <div wire:click="setActiveTab('match')" class="{{ $activeTab === 'match' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
+                </a>
+                <a wire:click="setActiveTab('match')" class="{{ $activeTab === 'match' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
                     <livewire:rounded-square
                         heading="Match with existing global indicators"
                         description="Browse the list of indicators already available in the HOLPA global survey, and match them to your identified local indicators."
                     />
-                </div>
-                <div wire:click="setActiveTab('custom')" class="{{ $activeTab === 'custom' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
+                </a>
+                <a wire:click="setActiveTab('custom')" class="{{ $activeTab === 'custom' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
                     <livewire:rounded-square
-                        heading="Add custom indicators"
-                        description="If your local indicators do not already exist in the global survey, you can add them as custom indicators."
+                        heading="Add custom survey questions"
+                        description="The local indicators that are not matched to a HOLPA global indicator should be reviewed. For each indicator, you can add one or more questions to the survey to allow you to calculate the indicator."
                     />
-                </div>
+                </a>
             </div>
 
             <!-- Content -->
@@ -37,7 +37,7 @@
                 @elseif ($activeTab === 'match')
                     @include('filament.app.pages.match-indicators')
                 @elseif ($activeTab === 'custom')
-                    <livewire:custom-indicators/>
+                    <livewire:custom-module-versions/>
                 @else
                     <div class="mx-auto w-max">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  ">
