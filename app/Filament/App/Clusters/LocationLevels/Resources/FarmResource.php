@@ -38,31 +38,41 @@ class FarmResource extends Resource
                     ->label('Select the ' . $locationLevelWithFarms->name . ' for this farm')
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
 
-                // Questions:
-                // 1. farms.owner_type, farm must belong to a team. It is no longer a polymorphic-relationship. What does farms.owner_type use for?
-                // 2. farms.owner_id indicates this farm belongs to which Team already, what does team_code use for?
                 Forms\Components\TextInput::make('team_code')
                     ->label('Please enter a unique code to identify this farm for your team')
                     ->maxLength(255),
 
-                // TODO: use KeyValue field
-                Forms\Components\TextInput::make('identifiers'),
+                Forms\Components\Section::make('Personally Identifiable information')
+                    ->description('This section lets you add any information about the farm or farmer that lets your enumerators personally identify the farm / farmer.')
+                    ->schema([
+                        Forms\Components\KeyValue::make('identifiers')
+                            ->hint('For example: farm name, name of household head, phone number, physical address.')
+                            ->helperText('Information added here will be available to your team through data downloads, and if required can be included in the ODK survey to help enumerators ensure they reach the correct farms. However, it will never be included in any final data products that are intended for sharing beyond your team, and no-one outside of your team will have access to it.'),
+                    ]),
 
-                // TODO: use KeyValue field
-                Forms\Components\TextInput::make('properties'),
+                Forms\Components\Section::make('Other Farm Information')
+                    ->description('This section lets you add information about the farm that is not personally identifiable.')
+                    ->schema([
+                        Forms\Components\KeyValue::make('properties')
+                            ->hint('For example: gender of household head, active member of (name of your intervention project) - yes / no, farm typology information')
+                            ->helperText('The purpose of information here is to allow you to disaggregate results by these variables. For example, if you are interested in comparing results from farms that took part in a specific training activity with farms that did not take part, you should include that as a variable here. Variables entered here will be available in exported datasets so they can be used in your analysis.'),
+                    ]),
 
-                Forms\Components\Section::make('GPS Location')
+                Forms\Components\Section::make('GPS')
                     ->description('Optionally, add the GPS co-ordinates for the farm')
                     ->schema([
                         Forms\Components\TextInput::make('latitude')
-                            ->numeric(),
-
+                            ->numeric()
+                            ->minValue(-90)
+                            ->maxValue(90),
                         Forms\Components\TextInput::make('longitude')
-                            ->numeric(),
-
+                            ->numeric()
+                            ->minValue(-180)
+                            ->maxValue(180),
                         Forms\Components\TextInput::make('altitude')
-                            ->numeric(),
-
+                            ->numeric()
+                            ->minValue(-1240)
+                            ->maxValue(60000),
                         Forms\Components\TextInput::make('accuracy')
                             ->numeric(),
                     ])->columns(2),
