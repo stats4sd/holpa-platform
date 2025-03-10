@@ -5,7 +5,6 @@
             class="p-4 space-y-2"
             x-data
             x-sortable-source
-            x-on:sorted="console.log($event.detail)"
 
         >
 
@@ -14,7 +13,14 @@
                 To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
             </div>
             @foreach($localIndicators as $indicator)
-                <x-filament::section :heading="$indicator->name" x-sortable-item="{{ $indicator->id }}" class="bg-slate-200 rounded-none border-slate-900 border">
+
+                <x-filament::section
+                    :heading="$indicator->name"
+                    x-sortable-item="{{ $indicator->xlsformModuleVersion->id }}"
+                    class="bg-slate-200 rounded-none border-slate-900 border"
+                    collapsible
+                    collapsed
+                >
 
                     @foreach($indicator->xlsformModuleVersion->surveyRows as $surveyRow)
 
@@ -24,32 +30,43 @@
 
 
                 </x-filament::section>
+
             @endforeach
         </div>
 
         <div
             class="p-4 space-y-2"
-            x-data
-            x-sortable-target
-            x-on:sorted="console.log($event.detail)"
         >
-            @foreach($xlsformTemplates as $xlsformTemplate)
+            @foreach($xlsforms as $xlsform)
 
-                <h2>{{ $xlsformTemplate->title }}</h2>
+                <h2>{{ $xlsform->title }}</h2>
 
-                @foreach($xlsformTemplate->xlsformModules as $xlsformModule)
+                <div x-data
+                     x-sortable-target
+                     x-on:sorted="$wire.updateOrder($event.detail, '{{ $xlsform->id }}')"
+                >
 
-                    <x-filament::section :heading="$xlsformModule->name" collapsible collapsed x-sortable-item="{{ $xlsformModule->id }}" class="bg-gray-200 rounded-none border-gray-800 border global-module">
+                    @foreach($xlsform->xlsformModuleVersions as $xlsformModuleVersion)
+                        <x-filament::section
+                            :heading="$xlsformModuleVersion->name"
+                            collapsible
+                            collapsed
+                            x-sortable-item="{{ $xlsformModuleVersion->id }}"
+                            @class([
+                            "rounded-none border",
+                            "bg-gray-200 border-gray-500 global-module" => $xlsformModuleVersion->owner?->id !== $team->id,
+                            'bg-slate-200 border-slate-900' => $xlsformModuleVersion->owner?->id === $team->id,
+                            ])
+                        >
 
-                        @foreach($xlsformModule->defaultXlsformVersion->surveyRows as $surveyRow)
-                            <div class="flex items-center">{{ $surveyRow->name }} ( {{ $surveyRow->type }} )</div>
-                        @endforeach
+                            @foreach($xlsformModuleVersion->surveyRows as $surveyRow)
+                                <div class="flex items-center">{{ $surveyRow->name }} ( {{ $surveyRow->type }} )</div>
+                            @endforeach
 
+                        </x-filament::section>
 
-                    </x-filament::section>
-
-                @endforeach
-
+                    @endforeach
+                </div>
             @endforeach
         </div>
 

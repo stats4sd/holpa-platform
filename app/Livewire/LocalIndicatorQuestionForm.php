@@ -44,7 +44,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasActio
     public function mount(): void
     {
         $this->xlsformModuleVersion = $this->localIndicator->xlsformModuleVersion ?? $this->localIndicator->xlsformModuleVersion()->create([
-            'name' => $this->localIndicator->team->name . ' - ' . $this->localIndicator->name,
+            'name' => $this->localIndicator->name,
             'is_default' => false,
         ]);
 
