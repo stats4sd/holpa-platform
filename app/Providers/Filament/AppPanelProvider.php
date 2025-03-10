@@ -165,6 +165,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->darkMode(false)
             ->topNavigation()
+            ->renderHook(PanelsRenderHook::SCRIPTS_BEFORE, fn() => view('filament.app.scripts'))
             ->plugins([
                 new LocalLogins(),
             ]);

@@ -1,4 +1,5 @@
 <x-filament-panels::page>
+
     <div class="container mx-auto xl:px-12 !mb-4">
         <!-- <div class="surveyblocks py-16 mb-4">
         <div class="text-base px-12">
@@ -28,6 +29,12 @@
                         description="The local indicators that are not matched to a HOLPA global indicator should be reviewed. For each indicator, you can add one or more questions to the survey to allow you to calculate the indicator."
                     />
                 </a>
+                 <a wire:click="setActiveTab('ordering')" class="{{ $activeTab === 'ordering' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
+                    <livewire:rounded-square
+                        heading="Add custom questions to survey"
+                        description="Once you have defined the questions to ask, you need to insert them into either the Household or Fieldwork survey."
+                    />
+                </a>
             </div>
 
             <!-- Content -->
@@ -38,6 +45,8 @@
                     @include('filament.app.pages.match-indicators')
                 @elseif ($activeTab === 'custom')
                     <livewire:custom-module-versions/>
+                @elseif ($activeTab === 'ordering')
+                    <livewire:custom-module-ordering/>
                 @else
                     <div class="mx-auto w-max">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  ">
