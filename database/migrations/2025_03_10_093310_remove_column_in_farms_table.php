@@ -12,10 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('farms', function (Blueprint $table) {
-            // after running this migration file, column "owner_type" is still existed.
-            // suspects both column "owner_type" and "owner_id" need to exist when polymorphic relationship is created by below statement:
-            // $table->nullableMorphs('owner');
-            Schema::dropIfExists('owner_type');
+            $table->dropColumn('owner_type');
         });
     }
 
