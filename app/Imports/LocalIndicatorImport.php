@@ -16,8 +16,6 @@ class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHead
 {
     public function __construct(public Team $team)
     {
-
-        ray('hi from local indicator import');
     }
 
     public function sheets(): array

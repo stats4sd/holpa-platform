@@ -9,6 +9,13 @@
         <p>You can either add the questions directly using the "Add Question" buttons below, or download the Excel template, write your questions in a normal ODK "Xlsform" format, and upload the file. If you are confident writing ODK forms in Excel, this option will give you more flexibility, as you can add any feature that ODK supports.</p>
     </div>
 
+    <button wire:click="downloadTemplate" class="buttona">Download Xlsform Template</button>
+
+    <h2 class="my-8">Import Questions from an ODK Xlsform (Excel)</h2>
+
+    {{ $this->form }}
+
+    <h2 class="my-8">Add / Edit Questions Directly</h2>
     @foreach($unmatchedLocalIndicators as $localIndicator)
 
         <livewire:local-indicator-question-form :localIndicator="$localIndicator" :key="$localIndicator->id">
