@@ -28,6 +28,14 @@ class DietDiversity extends Page implements HasForms, HasTable
 
     protected static string $view = 'filament.app.pages.diet-diversity';
 
+    public function getBreadcrumbs(): array
+    {
+        return [
+            SurveyDashboard::getUrl() => 'Survey Dashboard',
+            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            static::getUrl() => static::getTitle(),
+        ];
+    }
 
     public function mount(): void
     {
@@ -53,9 +61,12 @@ class DietDiversity extends Page implements HasForms, HasTable
             ->schema([
                 Select::make('diet_diversity_module_version_id')
                     ->live()
-                    ->relationship('dietDiversityModuleVersion', 'name', fn($query) => $query
-                        ->where('is_default', 0)
-                        ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                    ->relationship(
+                        'dietDiversityModuleVersion',
+                        'name',
+                        fn($query) => $query
+                            ->where('is_default', 0)
+                            ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
                     )
                     ->afterStateUpdated(fn(self $livewire) => $livewire->saveData()),
             ]);
@@ -86,7 +97,8 @@ class DietDiversity extends Page implements HasForms, HasTable
         }
 
         return $table
-            ->query(fn() => $moduleVersion->surveyRows()
+            ->query(
+                fn() => $moduleVersion->surveyRows()
             )
             ->columns([
                 TextColumn::make('type')->label('Question Type'),
