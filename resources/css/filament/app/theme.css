@@ -300,3 +300,20 @@ button:disabled.outline-none {
 .fi-ta-ctn {
     @apply !rounded-none;
 }
+
+/* For complex repeater items in forms; make the borders around each item more clear */
+.fi-fo-repeater-item {
+    @apply border-2 border-green;
+}
+
+
+/* For 'inline repeater' elements, hide the defuault border, ring and shadow around items - to make the repeated fields look like they are 'in line' with the other fields and not a separate section of the form.
+    The intention is that these 'inline repeater' elements have a pre-set number of repeats. The user should not be able to add or remove elements, so to the user it should be not visible that this is a 'repeating' section at all.
+*/
+.fi-fo-repeater.inline-repeater * {
+    @apply border-none;
+}
+
+.inline-repeater .fi-fo-repeater-item {
+    @apply ring-0 shadow-none;
+}

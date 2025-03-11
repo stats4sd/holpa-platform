@@ -19,7 +19,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class TeamOdkView extends Page implements HasTable, HasInfolists

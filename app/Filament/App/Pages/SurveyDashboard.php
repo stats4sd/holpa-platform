@@ -5,7 +5,7 @@ namespace App\Filament\App\Pages;
 use App\Models\Team;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class SurveyDashboard extends Page
 {

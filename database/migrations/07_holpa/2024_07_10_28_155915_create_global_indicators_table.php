@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('global_indicators', function (Blueprint $table) {
             $table->id();
             $table->foreignId('theme_id')->nullable()->constrained('themes')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('type'); // "Core (required) indicators" or "Optional indicators"
+            //$table->string('type'); // "Core (required) indicators" or "Optional indicators"
             $table->text('name');
             $table->timestamps();
         });

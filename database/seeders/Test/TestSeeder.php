@@ -58,15 +58,8 @@ class TestSeeder extends Seeder
         $user->teams()->attach($nonProgramTeam->id);
         $programAdmin->programs()->attach($program->id);
 
-        // create global indicators
-        GlobalIndicator::factory()->count(50)->create();
-
         // create local indicators
         $teams = Team::all();
-        foreach ($teams as $team) {
-            LocalIndicator::factory()->count(9)->create([
-                'team_id' => $team->id,
-            ]);
-        }
+
     }
 }

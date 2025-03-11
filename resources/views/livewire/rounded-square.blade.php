@@ -1,9 +1,9 @@
-<div class=" h-full p-6 bg-grey ">
+<div class=" h-full p-6 bg-grey">
     <!-- Heading -->
     <h3 class="">
         {{ $heading }}
     </h3>
-    
+
     <div class="flex justify-between items-center pt-6 text-sm">
         <!-- Description -->
         <p class="max-w-md">

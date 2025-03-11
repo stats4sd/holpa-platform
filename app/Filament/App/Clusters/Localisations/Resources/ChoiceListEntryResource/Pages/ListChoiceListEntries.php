@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class ListChoiceListEntries extends ListRecords
 {

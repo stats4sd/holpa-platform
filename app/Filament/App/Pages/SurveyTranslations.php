@@ -8,7 +8,7 @@ use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class SurveyTranslations extends Page
 {

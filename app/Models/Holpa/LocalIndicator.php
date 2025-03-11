@@ -6,6 +6,7 @@ use App\Models\Team;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
 class LocalIndicator extends Model
 {
@@ -28,6 +29,11 @@ class LocalIndicator extends Model
     public function globalIndicator(): BelongsTo
     {
         return $this->belongsTo(GlobalIndicator::class);
+    }
+
+    public function xlsformModuleVersion(): BelongsTo
+    {
+        return $this->belongsTo(XlsformModuleVersion::class);
     }
 
 }

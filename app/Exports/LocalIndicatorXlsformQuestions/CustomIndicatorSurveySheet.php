@@ -1,42 +1,32 @@
 <?php
 
-namespace App\Exports;
+namespace App\Exports\LocalIndicatorXlsformQuestions;
 
 use App\Models\Team;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\RegistersEventListeners;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
+use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize
+class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithEvents
 {
-    protected Team $team;
-    protected string $surveyType;
 
-    public function __construct($team, $surveyType)
+    public function __construct(public Team $team)
     {
-        $this->team = $team;
-        $this->surveyType = $surveyType;
     }
 
     public function collection(): Enumerable|Collection
     {
-        return collect(
-            $this->team->localIndicators()
-                ->where('is_custom', 1)
-                ->where('survey', $this->surveyType)
-                ->get()
-            )->map(function ($indicator) {
-                return [
-                    'indicator_id' => $indicator->id,
-                    'indicator' => $indicator->name,
-                ];
-        });
+        return collect();
     }
 
     public function title(): string
@@ -49,7 +39,6 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         $locales = $this->team->locales()->with('language')->get();
 
         $headings = [
-            'indicator ID',
             'indicator',
             'type',
             'name',
@@ -106,7 +95,36 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         ];
 
         return [
-            1 => $h1
+            1 => $h1,
         ];
     }
+
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class => function (AfterSheet $event) {
+
+                $count = $this->team->localIndicators()
+                    ->whereDoesntHave('globalIndicator')->count();
+
+                $sheet = $event->sheet->getDelegate();
+
+                $indicatorLookupList = new DataValidation();
+                $indicatorLookupList->setType(DataValidation::TYPE_LIST);
+                $indicatorLookupList->setErrorStyle(DataValidation::STYLE_STOP);
+                $indicatorLookupList->setAllowBlank(false);
+                $indicatorLookupList->setShowInputMessage(true);
+                $indicatorLookupList->setShowErrorMessage(true);
+                $indicatorLookupList->setShowDropDown(true);
+                $indicatorLookupList->setErrorTitle('Input error');
+                $indicatorLookupList->setError('Please select an indicator from the list.');
+                $indicatorLookupList->setPromptTitle('Pick an indicator');
+                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$' . $count + 3);
+
+                $sheet->setDataValidation('A:A', $indicatorLookupList);
+            },
+        ];
+    }
+
 }

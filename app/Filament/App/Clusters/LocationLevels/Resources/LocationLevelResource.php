@@ -19,7 +19,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
+use App\Services\HelperService;
 
 class LocationLevelResource extends Resource
 {
