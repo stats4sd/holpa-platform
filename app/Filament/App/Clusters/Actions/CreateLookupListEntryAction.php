@@ -37,7 +37,6 @@ class CreateLookupListEntryAction extends CreateAction
                         // don't include the 'label' entries - we will create languageStrings after creating the ChoiceListEntry
                         ->filter(fn($value, $key) => !Str::startsWith($key, 'label_'))
                         ->put('owner_id', HelperService::getCurrentOwner()->id)
-                        ->put('owner_type', get_class(HelperService::getCurrentOwner()))
                         ->toArray();
                 })
                 ->after(function (ChoiceListEntry $record, array $data) {

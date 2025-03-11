@@ -4,6 +4,7 @@ namespace App\Filament\App\Pages;
 
 use App\Filament\App\Resources\XlsformResource;
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Infolists\Components\ViewEntry;
@@ -17,7 +18,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Support\HtmlString;
 use App\Services\HelperService;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
@@ -61,7 +61,7 @@ class TeamOdkView extends Page implements HasTable, HasInfolists
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): MorphMany => HelperService::getCurrentOwner()->xlsforms())
+            ->relationship(fn(): HasMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([

@@ -126,8 +126,6 @@ class ImportLocationsAction extends ExcelImportAction
                 ->default(fn() => auth()->id()),
             Hidden::make('owner_id')
                 ->default(HelperService::getCurrentOwner()->id),
-            Hidden::make('owner_type')
-                ->default(Team::class),
         ];
     }
 

@@ -4,6 +4,7 @@ namespace App\Filament\App\Pages;
 
 use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -72,7 +73,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): MorphMany => HelperService::getCurrentOwner()->xlsforms())
+            ->relationship(fn(): HasMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([

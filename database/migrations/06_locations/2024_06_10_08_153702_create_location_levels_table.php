@@ -14,7 +14,7 @@ return new class () extends Migration {
 
         Schema::create('location_levels', function (Blueprint $table) {
             $table->id();
-            $table->nullableMorphs('owner');
+            $table->foreignId('owner_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('parent_id')->nullable()->constrained('location_levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('name');
             $table->string('slug')->nullable();

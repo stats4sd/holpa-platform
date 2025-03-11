@@ -14,7 +14,7 @@ return new class () extends Migration {
 
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            $table->nullableMorphs('owner');
+            $table->foreignId('owner_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('location_level_id')->constrained('location_levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('parent_id')->nullable()->constrained('locations')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('code')->unique();
