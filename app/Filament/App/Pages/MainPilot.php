@@ -2,7 +2,6 @@
 
 namespace App\Filament\App\Pages;
 
-use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
@@ -66,7 +65,7 @@ class MainPilot extends Page implements HasTable, HasInfolists, HasActions
         return Action::make('viewSubmissions')
             ->color('blue')
             ->extraAttributes(['class' => 'buttona'])
-            ->url(SubmissionResource::getUrl('index'));
+            ->url('#');
     }
 
 
