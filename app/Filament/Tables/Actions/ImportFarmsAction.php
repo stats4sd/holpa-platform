@@ -137,8 +137,6 @@ class ImportFarmsAction extends ExcelImportAction
 
                     Hidden::make('owner_id')
                         ->default(HelperService::getCurrentOwner()->id),
-                    Hidden::make('owner_type')
-                        ->default('App\Models\Team'),
 
                 ]),
 

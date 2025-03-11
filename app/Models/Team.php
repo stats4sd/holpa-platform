@@ -69,7 +69,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             foreach ($xlsformTemplates as $xlsformTemplate) {
                 $xlsform = Xlsform::create([
                     'owner_id' => $owner->id,
-                    'owner_type' => static::class,
                     'xlsform_template_id' => $xlsformTemplate->id,
                     'title' => $xlsformTemplate->title,
                 ]);
