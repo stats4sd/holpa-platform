@@ -2,37 +2,39 @@
 
 namespace App\Livewire;
 
-use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Livewire\Attributes\On;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
-use Filament\Actions\Concerns\InteractsWithActions;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Actions\StaticAction;
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Get;
-use Filament\Support\Enums\Alignment;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Form;
 use Livewire\Component;
+use Filament\Tables\Table;
+use Livewire\Attributes\On;
+use Filament\Actions\StaticAction;
+use Illuminate\Support\Collection;
+use Filament\Tables\Actions\Action;
 use Maatwebsite\Excel\Facades\Excel;
-use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Filament\Support\Enums\Alignment;
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
+use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Actions\Contracts\HasActions;
+use App\Imports\XlsformTemplateLanguageImport;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
 {
@@ -49,7 +51,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     public function mount(): void
     {
         $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
-
     }
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
@@ -58,11 +59,23 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
         return view('livewire.team-translation-entry');
     }
 
+    // TODO:
+    // Question: will this function be called?
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+                TextInput::make('description')->label('Enter a label for the translation')
+                    ->helperText('E.g. "Portuguese (Brazil)"'),
+            ]);
+    }
+
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn() => $this->language
-                ->locales()
+            ->relationship(
+                fn() => $this->language
+                    ->locales()
             )
             ->recordClasses(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success-row' : '')
             ->columns([
@@ -99,6 +112,12 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         $this->selectedLocale = $record;
                     }),
 
+                Action::make('Edit')
+                    ->label('Edit')
+                    ->disabled(fn(Locale $record) => $record->is_default == 1)
+                    ->modalHeading('Edit Translation Label')
+                    ->modalContent(fn(Locale $record) => view('livewire.team-translation-label', ['locale' => $record, 'team' => $this->team])),
+
                 Action::make('view-edit')
                     ->label('View / Edit Translation')
                     ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
@@ -110,10 +129,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     }
 
     #[On('closeModal')]
-    public function closeModal()
-    {
-
-    }
+    public function closeModal() {}
 
     public function validateFileUpload(array $upload, Locale $record, XlsformTemplate $xlsformTemplate): \Closure
     {
@@ -167,8 +183,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
 
             return true;
-
         };
     }
-
 }
