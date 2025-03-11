@@ -5,6 +5,7 @@ namespace App\Filament\App\Pages;
 use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -28,16 +29,26 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 {
     use InteractsWithTable;
     use InteractsWithForms;
-    use InteractsWithInfolists;
     use InteractsWithActions;
 
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.initial-pilot';
     protected ?string $heading = "Survey Testing - Initial Pilot";
-    protected ?string $subheading = "Test with local researchers and practioners to review the initial localisations";
+    protected ?string $subheading = "Test with local researchers and practitioners to review the initial localisations";
 
-        public function getBreadcrumbs(): array
+    public Team $team;
+
+    /** @var \Illuminate\Database\Eloquent\Collection<Xlsform> */
+    public \Illuminate\Database\Eloquent\Collection $xlsforms;
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getCurrentOwner();
+        $this->xlsforms = $this->team->xlsforms()->get();
+    }
+
+    public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',

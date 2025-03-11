@@ -11,24 +11,22 @@
         <div class="surveyblocks p-10">
 
             <div class="mb-10">
-                <div class="flex flex-row">
-                    <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
-                        <div class="mx-auto">{{ QrCode::size(150)->generate(\Stats4sd\FilamentOdkLink\Services\HelperService::getCurrentOwner()->odk_qr_code) }}</div>
-                        <h5 class="">SCAN QR Code in ODK Collect</h5>
-                    </div>
-
-                    <div class="basis-3/4 px-12">
-                        Your project team has been setup. To link your Android device, install and open
-                        <b>ODK Collect</b>. When asked for project details, scan the QR code on this page. Your device will be linked and you will have access to the forms listed below.
-                        <br/><br/>
-                        Both forms will be available to you. The platform will automatically update the forms when you make local adaptations. If for some reason the survey is not fully up to date with your latest changes, you may manually deploy the latest version by clicking the
-                        <b>Deploy</b> button in the table below.
-                        <br/><br/>
-                        {{ $this->viewSubmissionsAction }}
-                    </div>
-
-
+                <h3>TESTING THE SURVEYS</h3>
+                <div class="">
+                    The QR codes below use ODK Central's "Draft" feature to allow you to access test versions of the surveys. These versions always have the latest adaptations, and allow you to test changes without affecting the published versions that are shared with your enumerators.
                 </div>
+
+                <div class="my-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Please do not share these codes with enumerators! All submissions to these test forms are temporary and will be reset whenever changes to the form or local adaptations are made.</div>
+
+                @foreach($xlsforms as $xlsform)
+                <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
+                    <div class="mx-auto">{{ QrCode::size(150)->generate($xlsform->draft_qr_code_string) }}</div>
+                    <h5 class="">SCAN QR Code in ODK Collect</h5>
+                </div>
+                @endforeach
+
+
+
             </div>
 
             {{ $this->table }}

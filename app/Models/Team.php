@@ -44,18 +44,11 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         'pba_complete' => 'boolean',
     ];
 
-    // TODO: I think this overrides the booted method on HasXlsforms - ideally we wouldn't need to copy the package stuff here...
     protected static function booted(): void
     {
 
         // when the model is created; automatically create an associated project on ODK Central and a top location level;
         static::created(static function (self $owner) {
-
-            // check if we are in local-only (no-ODK link) mode
-            $odkLinkService = app()->make(OdkLinkService::class);
-            if (config('filament-odk-link.odk.url') !== null && config('filament-odk-link.odk.url') !== '') {
-                $owner->createLinkedOdkProject($odkLinkService, $owner);
-            }
 
             // all teams get a default locale of english
             $en = Language::where('iso_alpha2', 'en')->first();
@@ -67,26 +60,10 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 
             // suppose a newly created team does not have any xlsform, it is not necessary to do checking
             foreach ($xlsformTemplates as $xlsformTemplate) {
-                $xlsform = Xlsform::create([
+                Xlsform::create([
                     'owner_id' => $owner->id,
                     'xlsform_template_id' => $xlsformTemplate->id,
                     'title' => $xlsformTemplate->title,
-                ]);
-            }
-
-            // all teams get a custom module for each ODK form
-            $forms = Xlsform::where('owner_id', $owner->id)->get();
-            foreach ($forms as $form) {
-                $xlsformModule = XlsformModule::create([
-                    'form_type' => 'Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform',
-                    'form_id' => $form->id,
-                    'label' => $owner->name . ' custom module',
-                    'name' => $owner->name . ' custom module',
-                ]);
-
-                XlsformModuleVersion::create([
-                    'xlsform_module_id' => $xlsformModule->id,
-                    'name' => 'custom',
                 ]);
             }
 
@@ -233,4 +210,5 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
             get: fn(): bool => true,
         );
     }
+
 }
