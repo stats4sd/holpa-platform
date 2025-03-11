@@ -2,10 +2,10 @@
 
 namespace App\Models\SampleFrame;
 
+use App\Models\Team;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
@@ -19,9 +19,9 @@ class Location extends Model
         'parent',
     ];
 
-    public function owner(): MorphTo
+    public function owner(): BelongsTo
     {
-        return $this->morphTo('owner');
+        return $this->belongsTo(Team::class, 'owner_id');
     }
 
     public function locationLevel(): BelongsTo

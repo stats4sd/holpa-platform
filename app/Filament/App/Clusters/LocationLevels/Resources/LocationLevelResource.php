@@ -75,8 +75,6 @@ class LocationLevelResource extends Resource
                     ->helperText('Only say yes if there are farms directly at this location level, not in a lower location level. E.g. "Village" may have farms, but "District" may not.'),
                 Hidden::make('owner_id')
                     ->default(fn() => HelperService::getCurrentOwner()->id),
-                Hidden::make('owner_type')
-                    ->default('App\Models\Team'),
             ])->columns(1);
     }
 
