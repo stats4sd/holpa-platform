@@ -42,7 +42,7 @@ class ChoiceListEntryResource extends Resource
         return parent::getEloquentQuery()
             // only global and team-owned items
             ->where(fn(Builder $query) => $query
-                ->whereHasMorph('owner', [Team::class], fn(Builder $query) => $query
+                ->whereHas('owner', fn(Builder $query) => $query
                     ->where('teams.id', HelperService::getCurrentOwner()?->id
                     ))
                 ->orWhere('owner_id', null)

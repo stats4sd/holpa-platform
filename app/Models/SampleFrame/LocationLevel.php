@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
@@ -32,9 +31,9 @@ class LocationLevel extends Model
         return 'slug';
     }
 
-    public function owner(): MorphTo
+    public function owner(): BelongsTo
     {
-        return $this->morphTo('owner');
+        return $this->belongsTo(Team::class, 'owner_id');
     }
 
     public function parent(): BelongsTo
