@@ -7980,7 +7980,7 @@
         },
         {
             "name": "stats4sd/filament-odk-link",
-            "version": "dev-custom-modules",
+            "version": "dev-odk-ui-for-holpa",
             "dist": {
                 "type": "path",
                 "url": "packages/filament-odk-link",

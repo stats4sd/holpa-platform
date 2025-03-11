@@ -12,7 +12,6 @@ use App\Models\SampleFrame\LocationLevel;
 use Filament\Http\Middleware\Authenticate;
 use App\Filament\App\Clusters\LocationLevels;
 use Stats4sd\FilamentOdkLink\Services\HelperService;
-use ValentinMorice\FilamentJsonColumn\FilamentJsonColumn;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
 class FarmResource extends Resource
