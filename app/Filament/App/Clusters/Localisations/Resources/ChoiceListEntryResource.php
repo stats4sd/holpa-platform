@@ -42,7 +42,7 @@ class ChoiceListEntryResource extends Resource
         return parent::getEloquentQuery()
             // only global and team-owned items
             ->where(fn(Builder $query) => $query
-                ->whereHasMorph('owner', [Team::class], fn(Builder $query) => $query
+                ->whereHas('owner', fn(Builder $query) => $query
                     ->where('teams.id', HelperService::getCurrentOwner()?->id
                     ))
                 ->orWhere('owner_id', null)
@@ -104,16 +104,13 @@ class ChoiceListEntryResource extends Resource
         return [
             Hidden::make('owner_id')
                 ->default(fn() => HelperService::getCurrentOwner()?->id),
-            Hidden::make('owner_type')
-                ->default('App\Models\Team'),
             Hidden::make('choice_list_id')
                 ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::where('list_name', $livewire->choiceListName)->first()->id),
             TextInput::make('name')->required()
             ->unique(ignoreRecord: true, modifyRuleUsing: function(Unique $rule, Get $get) {
                 return $rule
                     ->where('choice_list_id', $get('choice_list_id'))
-                    ->where('owner_id', $get('owner_id'))
-                    ->where('owner_type', $get('owner_type'));
+                    ->where('owner_id', $get('owner_id'));
             }),
             Repeater::make('languageStrings')
                 ->label('Add Labels for the following languages:')

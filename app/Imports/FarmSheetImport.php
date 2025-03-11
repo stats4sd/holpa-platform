@@ -47,7 +47,6 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
             // Create the farm
             $farm = new Farm([
                 'owner_id' => $this->data['owner_id'],
-                'owner_type' => $this->data['owner_type'],
                 'location_id' => $location->id,
                 'team_code' => $row[$farmCodeColumn],
                 'identifiers' => $identifierData,
