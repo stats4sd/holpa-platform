@@ -86,14 +86,14 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->belongsTo(Country::class);
     }
 
-    public function locationLevels(): MorphMany
+    public function locationLevels(): HasMany
     {
-        return $this->morphMany(LocationLevel::class, 'owner');
+        return $this->hasMany(LocationLevel::class, 'owner_id');
     }
 
-    public function locations(): MorphMany
+    public function locations(): HasMany
     {
-        return $this->morphMany(Location::class, 'owner');
+        return $this->hasMany(Location::class, 'owner_id');
     }
 
     public function farms(): HasMany
