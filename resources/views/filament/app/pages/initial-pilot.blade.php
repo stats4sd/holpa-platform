@@ -19,6 +19,7 @@
                 <div class="my-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">Please do not share these codes with enumerators! All submissions to these test forms are temporary and will be reset whenever changes to the form or local adaptations are made.</div>
 
                 @foreach($xlsforms as $xlsform)
+                    @dump($xlsform)
                 <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
                     <div class="mx-auto">{{ QrCode::size(150)->generate($xlsform->draft_qr_code_string) }}</div>
                     <h5 class="">SCAN QR Code in ODK Collect</h5>
