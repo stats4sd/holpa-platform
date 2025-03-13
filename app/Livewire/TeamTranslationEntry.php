@@ -4,14 +4,15 @@ namespace App\Livewire;
 
 use App\Models\Team;
 use Filament\Forms\Get;
-use Filament\Forms\Form;
 use Livewire\Component;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Livewire\Attributes\On;
 use Filament\Actions\StaticAction;
 use Illuminate\Support\Collection;
 use Filament\Tables\Actions\Action;
 use Maatwebsite\Excel\Facades\Excel;
+use Filament\Forms\Components\Hidden;
 use Filament\Support\Enums\Alignment;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Section;
@@ -42,32 +43,29 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     use InteractsWithForms;
     use InteractsWithTable;
 
+    public ?array $data = [];
+    public Locale $locale;
+
     public Team $team;
     public Language $language;
     public ?Locale $selectedLocale = null;
 
     public bool $expanded;
 
-    public function mount(): void
+    public function mount(Locale $locale): void
     {
         $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
+
+        // Reference: https://filamentphp.com/docs/3.x/forms/adding-a-form-to-a-livewire-component#adding-the-form
+
+        $this->form->fill();
+        // $this->form->fill($locale->toArray());
     }
+
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-
         return view('livewire.team-translation-entry');
-    }
-
-    // TODO:
-    // Question: will this function be called?
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-                TextInput::make('description')->label('Enter a label for the translation')
-                    ->helperText('E.g. "Portuguese (Brazil)"'),
-            ]);
     }
 
     public function table(Table $table): Table
@@ -112,11 +110,15 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         $this->selectedLocale = $record;
                     }),
 
+                // add Edit button to edit translation label
+                // TODO: change Edit button to a pencil icon, move it to the left of translation label in the table
                 Action::make('Edit')
                     ->label('Edit')
                     ->disabled(fn(Locale $record) => $record->is_default == 1)
-                    ->modalHeading('Edit Translation Label')
-                    ->modalContent(fn(Locale $record) => view('livewire.team-translation-label', ['locale' => $record, 'team' => $this->team])),
+                    ->modalHeading(fn(Locale $record) => 'Edit Translation Label for ' . $record->language_label)
+                    ->modalContent(fn(Locale $record) => view('livewire.team-translation-label', ['locale' => $record, 'team' => $this->team]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false),
 
                 Action::make('view-edit')
                     ->label('View / Edit Translation')
@@ -184,5 +186,59 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
             return true;
         };
+    }
+
+    // this form will be showed in a popup modal when user click "Edit" button
+    // form data will be stored in "data" array
+    public static function form(Form $form): Form
+    {
+        return $form
+            ->schema([
+
+                // Questions:
+                // 1. How do we know which locale is being edited by user?
+                // 2. Can we pass locale id into the form?
+
+                TextInput::make('description')
+                    ->label('Enter a label for the translation')
+                    ->helperText('E.g. "Portuguese (Brazil)"'),
+
+                // TODO: add locale id into form
+                TextInput::make('id'),
+            ])
+            ->statePath('data');
+    }
+
+    // execute when user click Submit button in popup modal
+    public function submit(): void
+    {
+        ray('TeamTranslationEntry.submit()...');
+
+        // TODO:
+        // 1. get locale record id
+        // 2. get translation label entered by user
+        // 3. update locale record
+        // 4. table will refresh to show latest translation label automatically
+
+        ray($this->form->getState());
+
+        // get submitted form data
+        $formData = $this->form->getState();
+
+        // hardcode temporary for testing
+        $localeId = 4;
+
+        $newDescription = $formData['description'];
+
+        Locale::find($localeId)
+            ->update(['description' => $newDescription]);
+    }
+
+    // execute when user click Cancel button in popup modal
+    public function cancel(): void
+    {
+        ray('TeamTranslationEntry.cancel()...');
+
+        // do nothing
     }
 }
