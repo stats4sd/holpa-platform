@@ -55,7 +55,7 @@ h3 {
     @apply text-black font-bold text-lg }
 
 .surveyblocks {
-    @apply container !bg-white drop-shadow-xl mb-32;
+    @apply container !bg-white shadow-xl mb-32;
 }
 
 button {
