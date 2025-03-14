@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Storage;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
 use Filament\Actions\Contracts\HasActions;
+use Filament\Tables\Enums\ActionsPosition;
 use App\Imports\XlsformTemplateLanguageImport;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -102,11 +103,19 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         $this->selectedLocale = $record;
                     }),
 
-                // add Edit button to edit translation label
-                // TODO: change Update button to a pencil icon
+                Action::make('view-edit')
+                    ->label('View / Edit Translation')
+                    ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
+                    ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelAction(false),
+
+                // add Update button to edit translation label
                 // TODO: move the pencil icon to the left of translation label in the table
                 Action::make('Update')
                     ->disabled(fn(Locale $record) => $record->is_default == 1)
+                    ->icon('heroicon-m-pencil-square')
+                    ->iconButton()
                     ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
                     ->form([
                         TextInput::make('description')
@@ -118,14 +127,12 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                         $record->save();
                     }),
 
-                Action::make('view-edit')
-                    ->label('View / Edit Translation')
-                    ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
-                    ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
-                    ->modalSubmitAction(false)
-                    ->modalCancelAction(false),
-
-            ]);
+                // Question:
+                // I can position all actions before columns. Is it possible to position only one action before columns?
+                //
+                // Referece:
+                // https://filamentphp.com/docs/3.x/tables/actions#positioning-row-actions-before-columns
+            ], position: ActionsPosition::BeforeColumns);
     }
 
     #[On('closeModal')]
