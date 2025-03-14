@@ -43,9 +43,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     use InteractsWithForms;
     use InteractsWithTable;
 
-    public ?array $data = [];
-    public Locale $locale;
-
     public Team $team;
     public Language $language;
     public ?Locale $selectedLocale = null;
@@ -55,11 +52,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     public function mount(Locale $locale): void
     {
         $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
-
-        // Reference: https://filamentphp.com/docs/3.x/forms/adding-a-form-to-a-livewire-component#adding-the-form
-
-        $this->form->fill();
-        // $this->form->fill($locale->toArray());
     }
 
 
@@ -111,14 +103,20 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     }),
 
                 // add Edit button to edit translation label
-                // TODO: change Edit button to a pencil icon, move it to the left of translation label in the table
-                Action::make('Edit')
-                    ->label('Edit')
+                // TODO: change Update button to a pencil icon
+                // TODO: move the pencil icon to the left of translation label in the table
+                Action::make('Update')
                     ->disabled(fn(Locale $record) => $record->is_default == 1)
-                    ->modalHeading(fn(Locale $record) => 'Edit Translation Label for ' . $record->language_label)
-                    ->modalContent(fn(Locale $record) => view('livewire.team-translation-label', ['locale' => $record, 'team' => $this->team]))
-                    ->modalSubmitAction(false)
-                    ->modalCancelAction(false),
+                    ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
+                    ->form([
+                        TextInput::make('description')
+                            ->label('Enter a new label for the translation')
+                            ->helperText('E.g. "Portuguese (Brazil)"'),
+                    ])
+                    ->action(function (array $data, Locale $record): void {
+                        $record->description = $data['description'];
+                        $record->save();
+                    }),
 
                 Action::make('view-edit')
                     ->label('View / Edit Translation')
@@ -186,59 +184,5 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
             return true;
         };
-    }
-
-    // this form will be showed in a popup modal when user click "Edit" button
-    // form data will be stored in "data" array
-    public static function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-
-                // Questions:
-                // 1. How do we know which locale is being edited by user?
-                // 2. Can we pass locale id into the form?
-
-                TextInput::make('description')
-                    ->label('Enter a label for the translation')
-                    ->helperText('E.g. "Portuguese (Brazil)"'),
-
-                // TODO: add locale id into form
-                TextInput::make('id'),
-            ])
-            ->statePath('data');
-    }
-
-    // execute when user click Submit button in popup modal
-    public function submit(): void
-    {
-        ray('TeamTranslationEntry.submit()...');
-
-        // TODO:
-        // 1. get locale record id
-        // 2. get translation label entered by user
-        // 3. update locale record
-        // 4. table will refresh to show latest translation label automatically
-
-        ray($this->form->getState());
-
-        // get submitted form data
-        $formData = $this->form->getState();
-
-        // hardcode temporary for testing
-        $localeId = 4;
-
-        $newDescription = $formData['description'];
-
-        Locale::find($localeId)
-            ->update(['description' => $newDescription]);
-    }
-
-    // execute when user click Cancel button in popup modal
-    public function cancel(): void
-    {
-        ray('TeamTranslationEntry.cancel()...');
-
-        // do nothing
     }
 }
