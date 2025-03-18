@@ -74,14 +74,16 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                 // add icon to indicate translation label can be edited
                 TextColumn::make('language_label')->label('Available Translations')
                     // do not show icon for default locale, to indicate it cannot be edited (even it is still clickable...)
-                    // it would be better if icon color can be changed from grey to black
                     ->icon(fn(Locale $record) => $record->is_default == 1 ? '' : 'heroicon-o-pencil-square')
-                    // change button color when user move mouse over the button, to indicate it is a clickable button visually
-                    ->extraAttributes(fn(Locale $record) => $record->is_default == 1 ? [] : ['class' => 'buttona'])
+                    ->iconColor(fn(Locale $record) => $record->is_default == 1 ? 'grey' : 'primary')
+                    // show underline when user move mouse over the column, to indicate user can click on it
+                    ->tooltip(fn(Locale $record) => $record->is_default == 1 ? '' : 'Click to update this translation label')
+                    ->extraCellAttributes(fn(Locale $record) => $record->is_default == 1 ? [] : ['class' => 'hover:underline'])
                     ->action(
                         Action::make('edit_label')
                             // the disabled() helper function helps to not showing the modal popup for the default locale
                             ->disabled(fn(Locale $record) => $record->is_default == 1)
+
                             ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
                             ->form([
                                 TextInput::make('description')
