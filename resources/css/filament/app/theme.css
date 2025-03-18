@@ -54,6 +54,10 @@ h2 {
 h3 {
     @apply text-black font-bold text-lg }
 
+h6 {
+    @apply text-green text-base font-semibold uppercase;
+}
+
 .surveyblocks {
     @apply container !bg-white shadow-xl mb-32;
 }
@@ -316,4 +320,12 @@ button:disabled.outline-none {
 
 .inline-repeater .fi-fo-repeater-item {
     @apply ring-0 shadow-none;
+}
+.translations-tables .fi-ta-ctn{
+    @apply shadow-none ring-0 border-b !rounded-xl m-4;
+
+}
+
+.translations-tables .fi-ta-content {
+    @apply border-x rounded-xl;
 }

@@ -29,7 +29,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             <x-rounded-section
                 :url="\App\Filament\App\Pages\SurveyTranslations::getUrl()"
                 >
-                <x-slot:heading>Review Translations</x-slot:heading>
+                <x-slot:heading>Survey Translations</x-slot:heading>
                 <x-slot:description>Review the available translations for your survey. You can upload new translations if required.</x-slot:description>
                 <x-slot:buttonLabel>Review Translations</x-slot:buttonLabel>
             </x-rounded-section>
