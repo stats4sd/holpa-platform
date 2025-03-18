@@ -70,7 +70,30 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             )
             ->recordClasses(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success-row' : '')
             ->columns([
-                TextColumn::make('language_label')->label('Available Translations'),
+
+                // add icon to indicate translation label can be edited
+                TextColumn::make('language_label')->label('Available Translations')
+                    // do not show icon for default locale, to indicate it cannot be edited (even it is still clickable...)
+                    // it would be better if icon color can be changed from grey to black
+                    ->icon(fn(Locale $record) => $record->is_default == 1 ? '' : 'heroicon-o-pencil-square')
+                    // change button color when user move mouse over the button, to indicate it is a clickable button visually
+                    ->extraAttributes(fn(Locale $record) => $record->is_default == 1 ? [] : ['class' => 'buttona'])
+                    ->action(
+                        Action::make('edit_label')
+                            // the disabled() helper function helps to not showing the modal popup for the default locale
+                            ->disabled(fn(Locale $record) => $record->is_default == 1)
+                            ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
+                            ->form([
+                                TextInput::make('description')
+                                    ->label('Enter a new label for the translation')
+                                    ->helperText('E.g. "Portuguese (Brazil)"'),
+                            ])
+                            ->action(function (array $data, Locale $record): void {
+                                $record->description = $data['description'];
+                                $record->save();
+                            }),
+                    ),
+
                 TextColumn::make('status')->label('Status'),
             ])
             ->paginated(false)
@@ -110,29 +133,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false),
 
-                // add Update button to edit translation label
-                // TODO: move the pencil icon to the left of translation label in the table
-                Action::make('Update')
-                    ->disabled(fn(Locale $record) => $record->is_default == 1)
-                    ->icon('heroicon-m-pencil-square')
-                    ->iconButton()
-                    ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
-                    ->form([
-                        TextInput::make('description')
-                            ->label('Enter a new label for the translation')
-                            ->helperText('E.g. "Portuguese (Brazil)"'),
-                    ])
-                    ->action(function (array $data, Locale $record): void {
-                        $record->description = $data['description'];
-                        $record->save();
-                    }),
-
-                // Question:
-                // I can position all actions before columns. Is it possible to position only one action before columns?
-                //
-                // Referece:
-                // https://filamentphp.com/docs/3.x/tables/actions#positioning-row-actions-before-columns
-            ], position: ActionsPosition::BeforeColumns);
+            ]);
     }
 
     #[On('closeModal')]
