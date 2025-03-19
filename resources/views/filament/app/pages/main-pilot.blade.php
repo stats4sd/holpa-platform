@@ -20,19 +20,40 @@
                     <div class="basis-3/4 px-12">
                         Your project team has been setup. To link your Android device, install and open
                         <b>ODK Collect</b>. When asked for project details, scan the QR code on this page. Your device will be linked and you will have access to the forms listed below.
+
                         <br/><br/>
-                        Both forms will be available to you. The platform will automatically update the forms when you make local adaptations. If for some reason the survey is not fully up to date with your latest changes, you may manually deploy the latest version by clicking the
-                        <b>Deploy</b> button in the table below.
+
+                        When you make changes to the forms on the platform, they are not automatically updated on your device. This is so that you can make changes, test them as
+                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\InitialPilot::getUrl() }}">DRAFT VERSIONS</a> and confirm they are working as expected before updating the versions that your enumerator team will see.
+
                         <br/><br/>
-                        {{ $this->viewSubmissionsAction }}
+
+                        If there are changes that can be published, you can do so by clicking the
+                        <b>Publish</b> button on the table below. We highly recommend reviewing the forms as DRAFT versions before publishing. You can do so on the
+                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\InitialPilot::getUrl() }}">Initial Pilot Page</a>.
+
                     </div>
 
 
                 </div>
             </div>
 
-            {{ $this->table }}
+            <div class="flex justify-center mb-8">
+                <x-filament::tabs>
+                    <x-filament::tabs.item wire:click="$set('tab', 'xlsforms')" :active="$tab === 'xlsforms'">
+                        Survey Forms
+                    </x-filament::tabs.item>
+                    <x-filament::tabs.item wire:click="$set('tab', 'submissions')" :active="$tab === 'submissions'">
+                        Submissions
+                    </x-filament::tabs.item>
+                </x-filament::tabs>
+            </div>
 
+            @if ($tab === 'xlsforms')
+                <livewire:xlsforms-table-view/>
+            @elseif ($tab === 'submissions')
+                <livewire:submissions-table-view/>
+            @endif
         </div>
     </div>
 </x-filament-panels::page>
