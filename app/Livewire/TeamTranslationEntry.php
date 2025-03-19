@@ -2,37 +2,41 @@
 
 namespace App\Livewire;
 
-use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Livewire\Attributes\On;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
-use Filament\Actions\Concerns\InteractsWithActions;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Actions\StaticAction;
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Get;
-use Filament\Support\Enums\Alignment;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Livewire\Attributes\On;
+use Filament\Actions\StaticAction;
+use Illuminate\Support\Collection;
+use Filament\Tables\Actions\Action;
 use Maatwebsite\Excel\Facades\Excel;
-use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Filament\Forms\Components\Hidden;
+use Filament\Support\Enums\Alignment;
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
+use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\FileUpload;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Tables\Enums\ActionsPosition;
+use App\Imports\XlsformTemplateLanguageImport;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
 {
@@ -46,27 +50,52 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
     public bool $expanded;
 
-    public function mount(): void
+    public function mount(Locale $locale): void
     {
         $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
-
     }
+
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-
         return view('livewire.team-translation-entry');
     }
 
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn() => $this->language
-                ->locales()
+            ->relationship(
+                fn() => $this->language
+                    ->locales()
             )
             ->recordClasses(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success-row' : '')
             ->columns([
-                TextColumn::make('language_label')->label('Available Translations'),
+
+                // add icon to indicate translation label can be edited
+                TextColumn::make('language_label')->label('Available Translations')
+                    // do not show icon for default locale, to indicate it cannot be edited (even it is still clickable...)
+                    ->icon(fn(Locale $record) => $record->is_default == 1 ? '' : 'heroicon-o-pencil-square')
+                    ->iconColor(fn(Locale $record) => $record->is_default == 1 ? 'grey' : 'primary')
+                    // show underline when user move mouse over the column, to indicate user can click on it
+                    ->tooltip(fn(Locale $record) => $record->is_default == 1 ? '' : 'Click to update this translation label')
+                    ->extraCellAttributes(fn(Locale $record) => $record->is_default == 1 ? [] : ['class' => 'hover:underline'])
+                    ->action(
+                        Action::make('edit_label')
+                            // the disabled() helper function helps to not showing the modal popup for the default locale
+                            ->disabled(fn(Locale $record) => $record->is_default == 1)
+
+                            ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
+                            ->form([
+                                TextInput::make('description')
+                                    ->label('Enter a new label for the translation')
+                                    ->helperText('E.g. "Portuguese (Brazil)"'),
+                            ])
+                            ->action(function (array $data, Locale $record): void {
+                                $record->description = $data['description'];
+                                $record->save();
+                            }),
+                    ),
+
                 TextColumn::make('status')->label('Status'),
             ])
             ->paginated(false)
@@ -110,10 +139,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     }
 
     #[On('closeModal')]
-    public function closeModal()
-    {
-
-    }
+    public function closeModal() {}
 
     public function validateFileUpload(array $upload, Locale $record, XlsformTemplate $xlsformTemplate): \Closure
     {
@@ -167,8 +193,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
 
             return true;
-
         };
     }
-
 }
