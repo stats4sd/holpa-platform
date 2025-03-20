@@ -4,6 +4,7 @@ namespace App\Filament\App\Pages;
 
 use App\Models\Team;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Livewire\Attributes\Url;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -31,6 +32,7 @@ class MainPilot extends Page
     protected ?string $heading = "Survey Testing - Pilot and Enumerator Training";
     protected ?string $subheading = "Test with enumerators; pilot with real farmers";
 
+    #[Url]
     public string $tab = 'xlsforms';
 
     public function getBreadcrumbs(): array

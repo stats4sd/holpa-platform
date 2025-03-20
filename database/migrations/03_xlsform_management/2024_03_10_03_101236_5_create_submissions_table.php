@@ -22,11 +22,17 @@ return new class extends Migration {
 
             // what data model entries were created when processing this submission? e.g., if the application has custom data maps that populate tables from processed submissions.
             $table->json('entries')->nullable();
+
+            $table->boolean('draft_data')->default(0);
+            $table->boolean('test_data')->default(0);
+
+
+
+            // HOLPA CUSTOM
             $table->timestamp('survey_started_at')->nullable();
             $table->timestamp('survey_ended_at')->nullable();
             $table->float('survey_duration')->nullable()->comment('The time difference between survey start time and survey end time in minutes');
 
-            $table->boolean('from_draft')->default(0);
 
             $table->timestamps();
             $table->softDeletes();

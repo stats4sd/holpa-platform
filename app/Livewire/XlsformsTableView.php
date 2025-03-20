@@ -88,8 +88,9 @@ class XlsformsTableView extends Component implements HasTable, HasActions, HasFo
                 Action::make('pull-submissions')
                     ->label('Manually Get Submissions')
                     ->action(function (Xlsform $record) {
-                        $submissionCount = $record->getSubmissions();
 
+
+                        $submissionCount = $record->getSubmissions();
 
                         $record->refresh();
                         Notification::make('update_success')

@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('country_id')->nullable()->constrained()->cascadeOnUpdate()->nullOnDelete();
             $table->string('name');
             $table->text('description')->nullable();
+            $table->boolean('live_data_collection_started')->default(false);
             $table->timestamps();
         });
     }

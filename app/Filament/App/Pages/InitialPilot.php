@@ -87,7 +87,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
     {
         return $table
             ->heading('Draft Submissions')
-            ->query(fn(): Builder => Submission::onlyDrafts())
+            ->query(fn(): Builder => Submission::onlyDraftData())
             ->recordTitleAttribute('uuid')
             ->columns([
                 TextColumn::make('xlsform_title')
