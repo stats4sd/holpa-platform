@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use Couchbase\Group;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\Contracts\HasAffixActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Infolists\Concerns\InteractsWithInfolists;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -32,18 +34,23 @@ class SubmissionsTableView extends Component implements HasTable, HasActions, Ha
     public function table(Table $table): Table
     {
         return $table
+            ->defaultGroup(\Filament\Tables\Grouping\Group::make('xlsformVersion.xlsform.title')->label(''))
             ->query(fn() => Submission::whereHas('xlsformVersion',
                 fn($query) => $query->whereHas('xlsform',
                     fn($query) => $query->where('owner_id', HelperService::getCurrentOwner()->id)
                 )
             ))
             ->columns([
-                TextColumn::make('odk_id')->label('uuid'),
-                TextColumn::make('xlsformVersion.xlsform.title')->label('Form'),
-                TextColumn::make('xlsformVersion.version')->label('Version'),
+                TextColumn::make('xlsformVersion.version')->label('Xlsform Version'),
                 TextColumn::make('survey_started_at'),
                 TextColumn::make('survey_ended_at'),
                 TextColumn::make('submitted_at')->label('Submitted at'),
+            ])
+            ->actions([
+                Action::make('view')
+                    ->label('View Raw Data')
+                    ->icon('heroicon-o-eye')
+                    ->modalContent(fn(Submission $record) => view('livewire.submission-view', ['submission' => $record])),
             ]);
     }
 }
