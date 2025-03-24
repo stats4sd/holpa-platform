@@ -4,13 +4,26 @@
         'fi-resource-' . str_replace('/', '-', $this->getResource()::getSlug()),
     ])
 >
-    <div class="flex flex-col gap-y-6">
-        <x-filament-panels::resources.tabs />
 
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_BEFORE, scopes: $this->getRenderHookScopes()) }}
 
-        {{ $this->table }}
+    {{--    TODO: DAVE START HERE AGAIN--}}
+    <table class="table-auto w-full ">
+        <tbody>
 
-        {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::RESOURCE_PAGES_LIST_RECORDS_TABLE_AFTER, scopes: $this->getRenderHookScopes()) }}
-    </div>
+        @foreach($this->surveyRows as $surveyRow)
+            <tr>
+                <td>
+                    ( {{ $surveyRow->name }} )
+                </td>
+                <td>
+                    {{ $surveyRow->type }}
+                </td>
+                <td>
+                    {{ $surveyRow->default_label }}
+                </td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
+
 </x-filament-panels::page>

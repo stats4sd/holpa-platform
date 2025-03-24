@@ -5,20 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Dataset;
 use Carbon\Carbon;
 use App\Models\SampleFrame\Farm;
-use App\Models\SurveyData\FishUse;
-use App\Models\SurveyData\Product;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 use App\Models\SampleFrame\Location;
-use Illuminate\Support\Facades\Schema;
-use App\Models\SurveyData\LivestockUse;
-use App\Models\SurveyData\FarmSurveyData;
-use App\Models\SurveyData\SeasonalWorkerSeason;
 use Illuminate\Support\Str;
-use Spatie\LaravelIgnition\ArgumentReducers\CollectionArgumentReducer;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SubmissionController extends Controller
@@ -38,6 +27,24 @@ class SubmissionController extends Controller
         $submission->survey_duration = $surveyDuration;
         $submission->save();
 
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->name, 'HOLPA Household Form')) {
+            static::processHouseholdSubmission($submission);
+        }
+
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->name, 'HOLPA Fieldwork Form')) {
+            static::processFieldworkSubmission($submission);
+        }
+
+
+        // TODO: farms table, update column household_form_completed, fieldwork_form_completed
+
+        // custom handling to create new locations
+        // SubmissionController::handleLocationData($submission);
+
+    }
+
+    public static function processHouseholdSubmission(Submission $submission): void
+    {
         $farmDataEntity = $submission->rootEntity;
 
         // custom handling to fill in 12 months irrigation percentage in farm_survey_data record
@@ -54,12 +61,11 @@ class SubmissionController extends Controller
         $farmDataEntity->addChildEntities(SubmissionController::handleProductsData($submission), $farmProductsDataset);
         $farmDataEntity->addChildEntities(SubmissionController::handleOtherProductData($submission), $farmProductsDataset);
 
-        // TODO: farms table, update column household_form_completed, fieldwork_form_completed
+    }
 
-        // custom handling to create new locations
-        // SubmissionController::handleLocationData($submission);
-
-
+    public static function processFieldworkSubmission(Submission $submission): void
+    {
+        //
     }
 
 
@@ -224,7 +230,7 @@ class SubmissionController extends Controller
         return collect(str_getcsv($farmProductsList, ' '))
             ->map(function (string $farmProduct) use ($submission): ?array {
 
-                if($farmProduct === 'other') {
+                if ($farmProduct === 'other') {
                     return null;
                 }
 
@@ -257,7 +263,7 @@ class SubmissionController extends Controller
 
     public static function handleOtherProductData(Submission $submission): Collection
     {
-        if(!isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
+        if (!isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
             return collect();
         }
 
@@ -267,14 +273,13 @@ class SubmissionController extends Controller
                 // name is included in the other_product_use_sales repeat group, so we don't need to set it.
                 $result = [];
 
-                foreach($otherProduct as $key => $value) {
+                foreach ($otherProduct as $key => $value) {
                     $newKey = Str::replace('other_prod_', '', $key);
                     $result[$newKey] = $value;
                 }
                 return $result;
             })
             ->filter();
-
     }
 
 

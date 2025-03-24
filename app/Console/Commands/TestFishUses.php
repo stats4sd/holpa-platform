@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\SurveyData\FishUse;
 use App\Models\SurveyData\FarmSurveyData;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
 class TestFishUses extends Command
 {
@@ -15,7 +16,7 @@ class TestFishUses extends Command
      *
      * @var string
      */
-    protected $signature = 'app:test-fish-uses';
+    protected $signature = 'app:test';
 
     /**
      * The console command description.
@@ -29,42 +30,10 @@ class TestFishUses extends Command
      */
     public function handle(): void
     {
-        $this->info('start');
 
-        // get irrigation data from submission JSON content
-        $submission = Submission::first();
+        $xlsform = Xlsform::find(1);
 
-        // suppose there should be only one farm_survey_data for a submission id
-        $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
-
-
-        // existence check for nested repeat group data in submission content
-        if (isset($submission->content['survey']['income']['fish_production']['fish_repeat'])) {
-            $class = FishUse::class;
-            $model = new $class;
-            $columnNames = Schema::getColumnListing($model->getTable());
-
-            $fishRepeats = $submission->content['survey']['income']['fish_production']['fish_repeat'];
-
-            foreach ($fishRepeats as $fishRepeat) {
-
-                if (isset($fishRepeat['fish_production_repeat'])) {
-                    // get data from submission JSON content
-                    $fishProductionRepeats = $fishRepeat['fish_production_repeat'];
-
-                    // handle nested repeat groups one by one
-                    foreach ($fishProductionRepeats as $fishProductionRepeat) {
-                        $result = $this->prepareFishUseData($fishProductionRepeat, $columnNames);
-
-                        $result['submission_id'] = $submission->id;
-                        $result['farm_survey_data_id'] = $farmSurveyData->id;
-
-                        $fishUse = FishUse::create($result);
-                    }
-                }
-            }
-        }
-
+        dd($xlsform->surveyRows->sortBy('row_number')->pluck('name', 'row_number'));
         $this->info('end');
     }
 

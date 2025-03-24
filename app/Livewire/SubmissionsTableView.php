@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Filament\App\Resources\SubmissionResource;
 use Couchbase\Group;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -50,7 +51,7 @@ class SubmissionsTableView extends Component implements HasTable, HasActions, Ha
                 Action::make('view')
                     ->label('View Raw Data')
                     ->icon('heroicon-o-eye')
-                    ->modalContent(fn(Submission $record) => view('livewire.submission-view', ['submission' => $record])),
+                    ->url(fn(Submission $record) => SubmissionResource::getUrl('view', ['record' => $record])),
             ]);
     }
 }
