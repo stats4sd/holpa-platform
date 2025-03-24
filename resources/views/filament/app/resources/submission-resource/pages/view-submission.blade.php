@@ -10,16 +10,16 @@
     <table class="table-auto w-full ">
         <tbody>
 
-        @foreach($this->surveyRows as $surveyRow)
+        @foreach($this->surveyRowData as $surveyRow)
             <tr>
                 <td>
-                    ( {{ $surveyRow->name }} )
+                    ( {{ $surveyRow['name'] }} )
                 </td>
                 <td>
-                    {{ $surveyRow->type }}
+                    {{ $surveyRow['type'] }}
                 </td>
                 <td>
-                    {{ $surveyRow->default_label }}
+                    {{ (is_array($surveyRow['value'])) ? json_encode($surveyRow['value']) : $surveyRow['value'] }}
                 </td>
             </tr>
         @endforeach
