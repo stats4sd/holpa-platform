@@ -8,6 +8,7 @@ use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
 use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SubmissionController extends Controller
@@ -16,7 +17,6 @@ class SubmissionController extends Controller
     public static function process(Submission $submission): void
     {
         // application specific business logic goes here
-
         // find survey start, survey end, survey duration in minutes
         $surveyStart = Carbon::parse($submission->content['start']);
         $surveyEnd = Carbon::parse($submission->content['end']);
@@ -27,11 +27,11 @@ class SubmissionController extends Controller
         $submission->survey_duration = $surveyDuration;
         $submission->save();
 
-        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->name, 'HOLPA Household Form')) {
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
             static::processHouseholdSubmission($submission);
         }
 
-        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->name, 'HOLPA Fieldwork Form')) {
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
             static::processFieldworkSubmission($submission);
         }
 

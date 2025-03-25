@@ -7,12 +7,15 @@ use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class ViewSubmission extends ViewRecord
 {
     protected static string $resource = SubmissionResource::class;
     protected static string $view = 'filament.app.resources.submission-resource.pages.view-submission';
+    protected ?string $maxContentWidth = '7xl';
+
 
     /** @var Collection<SurveyRow> */
     public Collection $surveyRows;
@@ -40,63 +43,88 @@ class ViewSubmission extends ViewRecord
             ->xlsformVersion
             ->xlsform
             ->surveyRows()
+            ->with('defaultLabel')
             ->orderBy('row_number')
             ->get();
 
-        // TODO: FIX RECURSION.
-        $this->surveyRowData = $this->surveyRows->map(function (SurveyRow $surveyRow) {
+        $this->surveyRowData = collect($this->record->content)
+            ->map(function ($value, $key) {
+                if (!$value) {
+                    return null;
+                }
 
-            $value = $this->matchSubmissionContentToSurveyRows($this->record->content, $surveyRow);
-            while (is_array($value)) {
-                $value = $this->matchSubmissionContentToSurveyRows($value, $surveyRow);
-            }
-
-            return [
-                'name' => $surveyRow->name,
-                'type' => $surveyRow->type,
-                'value' => $value,
-            ];
-
-        });
-
+                return $this->matchContentToSurveyRow($value, $key);
+            })
+            ->filter(fn($value) => ! isset($value['type']) || $value['type'] !== 'note')
+       ;
 
     }
 
-    // Returns a collection when finding a repeat group. Otherwise returns the string value from the content
-    public function matchSubmissionContentToSurveyRows(array $content, SurveyRow $surveyRow): array|string|null
+    public function matchContentToSurveyRow(string|array|null $value, string $key): ?Collection
     {
-        ray('missioning for ' . $surveyRow->name);
 
-        $path = explode('/', $surveyRow->path);
-        array_shift($path);
+       // ray()->count();
 
-        $repeatPath = $surveyRow->repeat_group_path;
+        /** @var SurveyRow $surveyRow */
+        $surveyRow = $this->surveyRows->where('name', $key)->first();
 
-        if($surveyRow->type === 'begin repeat' || $surveyRow->type === 'begin_repeat') {
+        if (!$surveyRow) {
+            // TODO: need to keep survey rows from older versions in the future!
+            // Meanwhile, try to guess the type:
 
-            $repeatPath = explode('/', $repeatPath);
-            array_shift($repeatPath);
-
-            foreach($repeatPath as $key) {
-                if($key) {
-                    $content = $content[$key] ?? null;
-                }
+            if (is_array($value)) {
+                return collect($value)
+                    ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
             }
 
-            return $content;
+            return collect([
+                'name' => $key,
+                'label' => $key,
+                'type' => null,
+                'value' => $value,
+            ]);
         }
 
 
-        // for normal items;
-        $value = $content;
+        // for repeat groups
+        if ($surveyRow->type === 'begin repeat' || $surveyRow->type === 'begin_repeat' ||
+            $surveyRow->type === 'end repeat' || $surveyRow->type === 'end_repeat'
+        ) {
 
-        foreach ($path as $key) {
-            if ($key) {
-                $value = $value[$key] ?? null;
+            $output = collect([]);
+            foreach ($value as $repeatInstance) {
+
+                $output[] = collect($repeatInstance)
+                    ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
             }
+
+            return $output;
         }
 
-        return $value;
+        if ($surveyRow->type === 'geopoint') {
+            return collect();
+        }
+
+        // for regular groups
+        if (is_array($value)) {
+
+            return collect($value)
+                ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
+        }
+
+
+        // if $key is a navigationLink to a repeat section...
+        if (Str::endsWith($key, '@odata.navigationLink')) {
+            return collect();
+        }
+
+        return collect([
+            'name' => $surveyRow->name,
+            'type' => $surveyRow->type,
+            'label' => $surveyRow->defaultLabel?->text,
+            'value' => $value,
+        ]);
+
     }
 
 }

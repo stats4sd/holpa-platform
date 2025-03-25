@@ -34,7 +34,7 @@ class TestCommand extends Command
     public function handle(): void
     {
 
-        foreach (XlsformTemplate::all() as $model) {
+        foreach (XlsformTemplate::where('id', 1)->get() as $model) {
 
             /** @var Collection<SurveyRow> $surveyRows */
             $surveyRows = $model->surveyRows()->orderBy('row_number')->get();
@@ -43,7 +43,6 @@ class TestCommand extends Command
 
             foreach ($surveyRows as $surveyRow) {
                 // if begin group or begin repeat; append to path
-
 
                 switch ($surveyRow->type) {
                     case 'begin group':
@@ -67,7 +66,7 @@ class TestCommand extends Command
 
                     case 'begin repeat':
                     case 'begin_repeat':
-                        $repeatPaths->push($path . $surveyRow->name);
+                        $repeatPaths->push($path . $surveyRow->name . '/');
                         $path = '/';
                         $surveyRow->update([
                             'path' => $path,
@@ -78,6 +77,10 @@ class TestCommand extends Command
                     case 'end repeat':
                     case 'end_repeat':
                         $path = $repeatPaths->pop();
+
+                        $path = substr($path, 0, -1);
+                        $path = substr($path, 0, strrpos($path, '/') + 1);
+
                         $surveyRow->update([
                             'path' => $path,
                             'repeat_group_path' => $repeatPaths->last() ?? null,
