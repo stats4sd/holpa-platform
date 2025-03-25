@@ -31,7 +31,7 @@ class AddChoiceListIdToExistingSurveyRows extends Command
         SurveyRow::all()
             ->filter(fn($surveyRow) => Str::contains($surveyRow->type, 'select'))
             ->each(function (SurveyRow $surveyRow) {
-               $choiceListName = collect(explode(' ', $surveyRow->type))->last();
+               $choiceListName = collect(explode(' ', trim($surveyRow->type)))->last();
 
                $surveyRow->choiceList()->associate($surveyRow->xlsformModuleVersion->choiceLists()->where('list_name', '=', $choiceListName)->first());
 

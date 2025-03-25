@@ -43,7 +43,7 @@ class ViewSubmission extends ViewRecord
             ->xlsformVersion
             ->xlsform
             ->surveyRows()
-            ->with('defaultLabel')
+            ->with(['defaultLabel', 'choiceList.choiceListEntries'])
             ->orderBy('row_number')
             ->get();
 
@@ -55,15 +55,14 @@ class ViewSubmission extends ViewRecord
 
                 return $this->matchContentToSurveyRow($value, $key);
             })
-            ->filter(fn($value) => ! isset($value['type']) || $value['type'] !== 'note')
-       ;
+            ->filter(fn($value) => !isset($value['type']) || $value['type'] !== 'note');
 
     }
 
     public function matchContentToSurveyRow(string|array|null $value, string $key): ?Collection
     {
 
-       // ray()->count();
+        // ray()->count();
 
         /** @var SurveyRow $surveyRow */
         $surveyRow = $this->surveyRows->where('name', $key)->first();
@@ -71,6 +70,15 @@ class ViewSubmission extends ViewRecord
         if (!$surveyRow) {
             // TODO: need to keep survey rows from older versions in the future!
             // Meanwhile, try to guess the type:
+
+            // if $key is a navigationLink to a repeat section...
+            if (
+                Str::contains($key, '@odata.navigationLink') ||
+                $key === '__id'
+            ) {
+                return collect();
+            }
+
 
             if (is_array($value)) {
                 return collect($value)
@@ -92,8 +100,15 @@ class ViewSubmission extends ViewRecord
         ) {
 
             $output = collect([]);
-            foreach ($value as $repeatInstance) {
-
+            foreach ($value as $index => $repeatInstance) {
+                $output[] = collect([
+                    'key' => $key,
+                    'iteration' => $index + 1,
+                    'count' => collect($value)->count(),
+                    'name' => $surveyRow->name,
+                    'type' => $surveyRow->type,
+                    'label' => $surveyRow->defaultLabel?->text,
+                ]);
                 $output[] = collect($repeatInstance)
                     ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
             }
@@ -112,10 +127,23 @@ class ViewSubmission extends ViewRecord
                 ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
         }
 
+        // for selects, find the value label
+        if (Str::startsWith($surveyRow->type, 'select_')) {
 
-        // if $key is a navigationLink to a repeat section...
-        if (Str::endsWith($key, '@odata.navigationLink')) {
-            return collect();
+            if (!$surveyRow->choice_list_id) {
+                ray($surveyRow);
+            }
+
+            $choiceListEntries = $surveyRow->choiceList->choiceListEntries;
+            $entry = $choiceListEntries->where('name', $value)->first();
+
+            if (!$entry?->defaultLabel?->text) {
+                ray($surveyRow);
+            }
+
+            $value = $entry?->defaultLabel?->text ?? $value;
+
+
         }
 
         return collect([
