@@ -35,19 +35,19 @@ class TestSeeder extends Seeder
         $user = User::create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('password123'),
         ]);
 
         $admin = User::create([
             'name' => 'Test Admin',
             'email' => 'admin@example.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('password123'),
         ]);
 
         $programAdmin = User::create([
             'name' => 'Test Program Admin',
             'email' => 'program_admin@example.com',
-            'password' => bcrypt('password'),
+            'password' => bcrypt('passwor123d'),
         ]);
 
         // assign role to users

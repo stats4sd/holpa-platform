@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Schema;
@@ -11,6 +12,7 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class TestCommand extends Command
 {
@@ -33,71 +35,10 @@ class TestCommand extends Command
      */
     public function handle(): void
     {
+        $odkLinkService = app()->make(OdkLinkService::class);
 
-        foreach (XlsformTemplate::where('id', 1)->get() as $model) {
+        $result = $odkLinkService->createUser(User::where('email', 'test@example.com')->first(), 'password');
 
-            /** @var Collection<SurveyRow> $surveyRows */
-            $surveyRows = $model->surveyRows()->orderBy('row_number')->get();
-            $path = '/';
-            $repeatPaths = collect(); // for nested repeats
-
-            foreach ($surveyRows as $surveyRow) {
-                // if begin group or begin repeat; append to path
-
-                switch ($surveyRow->type) {
-                    case 'begin group':
-                    case 'begin_group':
-                        $path .= $surveyRow->name . '/';
-                        $surveyRow->update([
-                            'path' => $path,
-                            'repeat_group_path' => $repeatPaths->last() ?? null,
-                        ]);
-                        break;
-
-                    case 'end group':
-                    case 'end_group':
-                        $path = substr($path, 0, -1);
-                        $path = substr($path, 0, strrpos($path, '/') + 1);
-                        $surveyRow->update([
-                            'path' => $path,
-                            'repeat_group_path' => $repeatPaths->last() ?? null,
-                        ]);
-                        break;
-
-                    case 'begin repeat':
-                    case 'begin_repeat':
-                        $repeatPaths->push($path . $surveyRow->name . '/');
-                        $path = '/';
-                        $surveyRow->update([
-                            'path' => $path,
-                            'repeat_group_path' => $repeatPaths->last() ?? null,
-                        ]);
-                        break;
-
-                    case 'end repeat':
-                    case 'end_repeat':
-                        $path = $repeatPaths->pop();
-
-                        $path = substr($path, 0, -1);
-                        $path = substr($path, 0, strrpos($path, '/') + 1);
-
-                        $surveyRow->update([
-                            'path' => $path,
-                            'repeat_group_path' => $repeatPaths->last() ?? null,
-                        ]);
-                        break;
-
-                    default:
-                        $surveyRow->update([
-                            'path' => $path . $surveyRow->name,
-                            'repeat_group_path' => $repeatPaths->last() ?? null,
-                        ]);
-                        break;
-                }
-
-
-            }
-        }
-
+        dd($result);
     }
 }
