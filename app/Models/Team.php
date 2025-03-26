@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -36,6 +37,30 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         'languages_complete' => 'boolean',
         'pba_complete' => 'boolean',
     ];
+
+    public function users(): BelongsToMany
+    {
+        return parent::users()
+            ->using(TeamMembership::class);
+    }
+
+    public function admins(): BelongsToMany
+    {
+        return parent::admins()
+            ->using(TeamMembership::class);
+    }
+
+    public function members(): BelongsToMany
+    {
+        return parent::members()
+            ->using(TeamMembership::class);
+    }
+
+    /** @return  HasMany<TeamMembership, $this> */
+    public function teamMemberships(): HasMany
+    {
+        return $this->hasMany(TeamMembership::class);
+    }
 
     protected static function booted(): void
     {

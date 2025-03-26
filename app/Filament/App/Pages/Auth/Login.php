@@ -10,6 +10,7 @@ use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithOdkCentralAccount;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class Login extends \Filament\Pages\Auth\Login
@@ -53,15 +54,8 @@ class Login extends \Filament\Pages\Auth\Login
 
         ray('hi', $user->odk_id);
 
-        if (!$user->odk_id) {
-
-            $odkService = app()->make(OdkLinkService::class);
-            $response = $odkService->createUser($this->getCredentialsFromFormData($data));
-
-            // match user roles
-            $user->update(['odk_id' => $response['id']]);
-            $user->syncWithOdkCentral($response['id']);
-
+        if (!$user->odk_id && $user instanceof WithOdkCentralAccount) {
+            $user->registerOnOdkCentral($this->getCredentialsFromFormData($data)['password']);
         }
 
 

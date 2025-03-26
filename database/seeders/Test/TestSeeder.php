@@ -6,11 +6,19 @@ use App\Models\Holpa\GlobalIndicator;
 use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
 use App\Models\User;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Seeder;
+use Illuminate\Http\Client\ConnectionException;
+use Illuminate\Http\Client\RequestException;
 use Stats4sd\FilamentTeamManagement\Models\Program;
 
 class TestSeeder extends Seeder
 {
+    /**
+     * @throws RequestException
+     * @throws ConnectionException
+     * @throws BindingResolutionException
+     */
     public function run(): void
     {
         // create programs
@@ -47,8 +55,16 @@ class TestSeeder extends Seeder
         $programAdmin = User::create([
             'name' => 'Test Program Admin',
             'email' => 'program_admin@example.com',
-            'password' => bcrypt('passwor123d'),
+            'password' => bcrypt('passwor123'),
         ]);
+
+        // link users to OdkCentral
+        if(config('filament-odk-link.odk.url')) {
+            $user->registerOnOdkCentral('password123');
+            $admin->registerOnOdkCentral('password123');
+            $programAdmin->registerOnOdkCentral('password123');
+
+        }
 
         // assign role to users
         $admin->assignRole('Super Admin');
