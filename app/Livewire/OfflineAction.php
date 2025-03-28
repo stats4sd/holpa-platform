@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 use Illuminate\View\View;
 use Livewire\Component;
 
-class offlineaction extends Component
+class OfflineAction extends Component
 {
     public string $heading;
     public string|HtmlString $description;
