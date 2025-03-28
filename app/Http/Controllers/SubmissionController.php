@@ -8,6 +8,7 @@ use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
 use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
@@ -52,9 +53,20 @@ class SubmissionController extends Controller
 
         // create records from nested repeat groups for seasonal_worker_seasons
 
+        $permanentWorkersEntities = $submission->entities->whereHas('dataset', fn($query) => $query->where('name', 'Permanent Workers'))
+            ->each(function (Entity $entity) {
+               // harmonise variable names from "perm_labourer_" to "perm_labour_"
+                foreach($entity->values as $value) {
+                    if(Str::contains($value->dataset_variable_name, 'perm_labourer_')) {
+                        $newKey = Str::replace('perm_labourer_', 'perm_labour_', $value->dataset_variable_name);
+                        $value->dataset_variable_name = $newKey;
+                        $value->save();
+                    }
+                }
+            });
+
         $seasonalWorkersDataset = Dataset::firstWhere('name', 'Seasonal Workers in a Season');
         $farmDataEntity->addChildEntities(SubmissionController::handleSeasonalWorkersData($submission), $seasonalWorkersDataset);
-
         $farmDataEntity->addChildEntities(SubmissionController::handleSeasonalLaboursData($submission), $seasonalWorkersDataset);
 
         $farmProductsDataset = Dataset::firstWhere('name', 'Products');
@@ -133,6 +145,12 @@ class SubmissionController extends Controller
 
 
     // ******************** //
+    public static function handlePermanentWorkersData(Submission $submission): Collection
+    {
+        if(!isset($submission->content['survey']['labour']['household_mm_labour']['permanent_workers'])) {
+        }
+    }
+
 
 
     // custom handling for seasonal_worker_seasons data
