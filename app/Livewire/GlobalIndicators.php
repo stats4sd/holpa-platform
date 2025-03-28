@@ -71,7 +71,8 @@ class GlobalIndicators extends Component implements HasForms, HasTable
             ->relationship(fn() => $query)
             ->columns([
                 TextColumn::make('name')
-                    ->label(''),
+                    ->label('')
+                    ->wrap(),
             ])
             ->recordClasses(fn(GlobalIndicator $record): string => $this->selectedLocalIndicator->globalIndicator?->id === $record->id ? 'font-bold bg-lightgreen' : '')
             ->actions([
@@ -118,7 +119,6 @@ class GlobalIndicators extends Component implements HasForms, HasTable
                             ->body('Match removed!')
                             ->success()
                             ->send();
-
                     }),
 
                 Action::make('already_matched')
