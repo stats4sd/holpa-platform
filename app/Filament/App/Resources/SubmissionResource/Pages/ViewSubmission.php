@@ -76,23 +76,10 @@ class ViewSubmission extends ViewRecord
                             ->extraModalFooterActions([
                             Action::make('edit_confirm')
                                 ->label('Edit on ODK Central')
+                                ->modalWidth('6xl')
+                                ->modalContent(fn() => view('filament.app.pages.submissions.modal_edit_on_central', ['submission' => $this->record]))
                                 ->action(function () {
-
-                                    $odkLinkService = app()->make(OdkLinkService::class);
-
-                                    $token = $odkLinkService->authenticate();
-
-                                    $cookies = Http::get(config('filament-odk-link.odk.base_endpoint') . '/sessions', [
-                                        'email' => config('filament-odk-link.odk.username'),
-                                        'password' => config('filament-odk-link.odk.password'),
-                                    ])->cookies();
-
-                                    foreach ($cookies->toArray() as $cookie) {
-                                        setcookie($cookie);
-                                    }
-
-                                    return redirect($this->record->odk_central_view_page_url);
-
+                                    dd('hi');
                                 }),
                         ]),
                 ]),
