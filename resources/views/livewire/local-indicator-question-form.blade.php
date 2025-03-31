@@ -7,13 +7,19 @@
 
             <button class="buttona text-nowrap flex items-center justify-between" wire:click="$toggle('expanded')">
                 @if($expanded)
-                <x-heroicon-o-chevron-up class="h-6 font-bold text-lg pe-4"/>Hide Questions
+                <x-heroicon-o-chevron-up class="h-6 font-bold text-lg pe-4" />Hide Questions
                 @else
-                <x-heroicon-o-chevron-down class="h-6 font-bold text-lg pe-4"/>Show Questions
+                <x-heroicon-o-chevron-down class="h-6 font-bold text-lg pe-4" />Show Questions
                 @endif
-                </button>
+            </button>
         </div>
     </div>
+
+
+    <div class="p-4 border border-gray-200 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
+        {{ $this->table }}
+    </div>
+
 
     <div class="p-4 border border-gray-200 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
         {{ $this->form }}
