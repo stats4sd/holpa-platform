@@ -35,10 +35,8 @@ class TestCommand extends Command
      */
     public function handle(): void
     {
-        $odkLinkService = app()->make(OdkLinkService::class);
+       $xlsform = Xlsform::find(1);
 
-        $result = $odkLinkService->createUser(User::where('email', 'test@example.com')->first(), 'password');
-
-        dd($result);
+       $xlsform->generateXlsfile();
     }
 }

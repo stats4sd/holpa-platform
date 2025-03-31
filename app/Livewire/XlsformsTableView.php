@@ -74,13 +74,21 @@ class XlsformsTableView extends Component implements HasTable, HasActions, HasFo
                     ->label('Deploy Updates')
                     ->action(function (Xlsform $record) {
 
+                        ray('publishing');
+
                         $record->syncWithTemplate();
-                        $record->deployDraft(app()->make(OdkLinkService::class));
+
+                        ray('synced');
+
+                        $record->deployDraft()->afterResponse();
+
+                        ray('deploying');
+
                         $record->refresh();
 
                         Notification::make('update_success')
                             ->title('Success!')
-                            ->body("The form {$record->title} has the latest updates and is ready for testing")
+                            ->body("The form {$record->title} is being compiled and will be deployed shortly.")
                             ->color('success')
                             ->send();
                     }),

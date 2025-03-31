@@ -75,11 +75,8 @@ class XlsformsRelationManager extends RelationManager
                 CreateAction::make()
                     ->label('Add Xlsform to Team')
                     ->after(function (Xlsform $record) {
-
-                        $odkLinkService = app()->make(OdkLinkService::class);
-
                         $record->refresh();
-                        $record->deployDraft($odkLinkService);
+                        $record->deployDraft();
                     }),
             ]);
     }
