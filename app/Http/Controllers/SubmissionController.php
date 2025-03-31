@@ -53,7 +53,8 @@ class SubmissionController extends Controller
 
         // create records from nested repeat groups for seasonal_worker_seasons
 
-        $permanentWorkersEntities = $submission->entities->whereHas('dataset', fn($query) => $query->where('name', 'Permanent Workers'))
+        $permanentWorkersEntities = $submission->entities()->whereHas('dataset', fn($query) => $query->where('name', 'Permanent Workers'))
+            ->get()
             ->each(function (Entity $entity) {
                // harmonise variable names from "perm_labourer_" to "perm_labour_"
                 foreach($entity->values as $value) {
@@ -72,6 +73,9 @@ class SubmissionController extends Controller
         $farmProductsDataset = Dataset::firstWhere('name', 'Products');
         $farmDataEntity->addChildEntities(SubmissionController::handleProductsData($submission), $farmProductsDataset);
         $farmDataEntity->addChildEntities(SubmissionController::handleOtherProductData($submission), $farmProductsDataset);
+
+
+        // handle multi-selects for new / updated data
 
     }
 
