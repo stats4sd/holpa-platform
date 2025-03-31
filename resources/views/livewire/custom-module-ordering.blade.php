@@ -58,8 +58,6 @@
                             'bg-slate-200 border-slate-900' => $xlsformModuleVersion->owner?->id === $team->id,
                             ])
                         >
-                            Owner: {{ $xlsformModuleVersion?->owner?->name }}<br/>
-                            Current Team {{ $team?->name }}<br/>
 
                             @foreach($xlsformModuleVersion->surveyRows as $surveyRow)
                                 <div class="flex items-center">{{ $surveyRow->name }} ( {{ $surveyRow->type }} )</div>
