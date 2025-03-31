@@ -384,3 +384,7 @@ fieldset {
 .fi-section-header {
     @apply pb-0;
 }
+
+.fi-topbar-item-button {
+    border-radius: 9999px;
+}

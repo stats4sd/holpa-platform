@@ -1,17 +1,23 @@
 <div>
+
+<div class="text-lg font-bold text-green pb-4 uppercase">
+      Place custom questions in survey
+    </div>
+        
+    <div class="text-black pb-4 mb-9">
+    To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
+    </div>
     <div class="grid grid-cols-2 gap-4">
 
         <div
-            class="p-4 space-y-2"
+            class="space-y-2"
             x-data
             x-sortable-source
 
         >
 
-            <h2>Local Indicator Questions</h2>
-            <div class="bg-info-100 rounded-none p-7 border">
-                To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
-            </div>
+            <span class="text-base font-semibold mb-2">Local Indicator Questions</span>
+
             @foreach($localIndicators as $indicator)
 
                 <x-filament::section
@@ -39,7 +45,7 @@
         >
             @foreach($xlsforms as $xlsform)
 
-                <h2>{{ $xlsform->title }}</h2>
+            <span class="text-base font-semibold mb-2">{{ $xlsform->title }}</span>
 
                 <div x-data
                      x-sortable-target

@@ -74,6 +74,8 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
 
                         Actions::make([
                             Actions\Action::make('save_file')
+                            ->extraAttributes(['class' => ' buttona'])
+
                                 ->label('Save File')
                                 ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list'))),
                         ]),
@@ -96,6 +98,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                             ])
                         ->emptyLabel('No local indicators added - click "Add Local Indicator" below to create a new entry')
                         ->addActionLabel('Add Local Indicator')
+                        
                     ]),
             ]);
     }

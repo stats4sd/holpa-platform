@@ -45,10 +45,10 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 </svg>
                 <span class="ml-1 inline text-sm font-bold">SECTION COMPLETE </span>
             </div>
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonc block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
             {{ $this->markIncompleteAction }}
         @else
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonc mx-4 inline-block">Go back</a>
             {{ $this->markCompleteAction }}
         @endif
     </div>
