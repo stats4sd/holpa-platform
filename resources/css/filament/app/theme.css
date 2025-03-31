@@ -374,21 +374,10 @@ Question:
 */
 
 
-.fi-ta-header-cell {
+.lisp-global-indicators .fi-ta-header-cell {
     @apply hidden;
 }
 
-.fi-ta-actions-header-cell {
+.lisp-global-indicators .fi-ta-actions-header-cell {
     @apply hidden;
 }
-
-
-/*
-.fi-ta .fi-ta-ctn .fi-ta-content .fi-ta-table .fi-ta-header-cell {
-    @apply hidden;
-}
-
-.fi-ta .fi-ta-ctn .fi-ta-content .fi-ta-table .fi-ta-actions-header-cell {
-    @apply hidden;
-}
-*/
