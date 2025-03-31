@@ -20,6 +20,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\DeleteAction;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
@@ -104,14 +105,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id),
             )
             ->columns([
+                // TODO: add "DRAG TO REORDER" button
                 TextColumn::make('type')->label('Question Type'),
                 TextColumn::make('name')->label('Variable Name'),
                 TextColumn::make('defaultLabel')->label('Default Label'),
             ])
-            // TODO:
-            // 1. set more horizontal space for modal popup
-            // 2. show form content in full span
-            // 3. fill in data into form
+            // show form content in modal popup
             ->actions([
 
                 Action::make('view_edit_question')
@@ -120,6 +119,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->color('blue')
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
+                    // fill the form with existing data
+                    // Question: why the changes of type and name cannot be saved into survey_rows record?
+                    ->fillForm(fn(SurveyRow $record): array => [
+                        'type' => $record->type,
+                        'name' => $record->name,
+                    ])
                     ->form([
                         Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                         Fieldset::make('Question Information')
@@ -202,6 +207,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ]),
 
                     ]),
+
+                // add "DELETE QUESTION" button in table row instead of inside modal popup
+                DeleteAction::make()
+                    ->label('DELETE QUESTION')
+                    ->button(),
+
             ]);
     }
 
