@@ -6,6 +6,7 @@ use App\Filament\App\Resources\SubmissionResource;
 use Filament\Actions;
 use Filament\Actions\Action;
 use Filament\Actions\StaticAction;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
@@ -51,6 +52,8 @@ class ViewSubmission extends ViewRecord
 
     protected function getHeaderActions(): array
     {
+
+
         return [
             Actions\Action::make('edit_on_central')
                 ->openUrlInNewTab(true)
@@ -59,30 +62,14 @@ class ViewSubmission extends ViewRecord
                 ->modalDescription(fn(): HtmlString => new HtmlString('
 
                 Editing the raw submission is only recommended when you have clear information directly from the enumerator that some specific values are incorrect. In most cases, it is recommended to modify the processed data instead.
-
+                   <br/><br/>
+                To edit the submission, you need to log in directly to ODK Central. You will be shown the ODK Central login screen to confirm your identity, and after securely authenticating, you will be redirected to the current submission for editing.
+                   <br/><br/>
                 Do you wish to continue?
                 '))
-                ->modalSubmitAction(false)
-                ->extraModalFooterActions([
-                    Action::make('edit_on_central_continue')
-                        ->openUrlInNewTab(true)
-                        ->label('Edit on ODK Central')
-                        ->modalDescription(fn(): HtmlString => new HtmlString('
-                    This action will take you directly to the ODK Central platform that this xlsform is deployed to. You will be asked to log in with your existing HOLPA Platform email and password.
-                       <br/><br/>
-                     Once you have completed your edits, it is recommended to close the tab and return to this page.
-                    '))
-                            ->modalSubmitAction(false)
-                            ->extraModalFooterActions([
-                            Action::make('edit_confirm')
-                                ->label('Edit on ODK Central')
-                                ->modalWidth('6xl')
-                                ->modalContent(fn() => view('filament.app.pages.submissions.modal_edit_on_central', ['submission' => $this->record]))
-                                ->action(function () {
-                                    dd('hi');
-                                }),
-                        ]),
-                ]),
+                ->action(function () {
+                    $this->record->editOnEnketo(static::getUrl(['record' => $this->record]));
+                }),
 
         ];
     }
@@ -184,16 +171,8 @@ class ViewSubmission extends ViewRecord
         // for selects, find the value label
         if (Str::startsWith($surveyRow->type, 'select_')) {
 
-            if (!$surveyRow->choice_list_id) {
-                ray($surveyRow);
-            }
-
             $choiceListEntries = $surveyRow->choiceList->choiceListEntries;
             $entry = $choiceListEntries->where('name', $value)->first();
-
-            if (!$entry?->defaultLabel?->text) {
-                ray($surveyRow);
-            }
 
             $value = $entry?->defaultLabel?->text ?? $value;
 

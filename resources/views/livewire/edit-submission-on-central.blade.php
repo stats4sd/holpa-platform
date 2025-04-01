@@ -10,12 +10,7 @@
         />
 
     @else
-        <iframe
-            src="{{ config('filament-odk-link.odk.url') }}"
-            style="height: 80vh; min-height: 500px"
-            onload="alert(this.contentWindow.location)"
-            class="w-full"
-        />
+
     @endif
 
 </div>

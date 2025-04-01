@@ -46,6 +46,9 @@ class SubmissionsTableView extends Component implements HasTable, HasActions, Ha
                 TextColumn::make('survey_started_at'),
                 TextColumn::make('survey_ended_at'),
                 TextColumn::make('submitted_at')->label('Submitted at'),
+                TextColumn::make('if_updated_at')
+                    ->label('Updated at')
+
             ])
             ->actions([
                 Action::make('view')
