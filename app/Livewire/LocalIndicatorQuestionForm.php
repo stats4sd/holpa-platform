@@ -102,7 +102,9 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
         return $table
             ->query(
                 fn() => SurveyRow::query()
-                    ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id),
+                    ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id)
+                    // sort record by row_number, to reflect the user defined ordering by drag and drop
+                    ->orderBy('row_number'),
             )
             ->columns([
                 // TODO: add "DRAG TO REORDER" button
@@ -110,6 +112,8 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                 TextColumn::make('name')->label('Variable Name'),
                 TextColumn::make('defaultLabel')->label('Default Label'),
             ])
+            // allow user to change the ordering by drag and drop
+            ->reorderable('row_number')
             // show form content in modal popup
             ->actions([
 
