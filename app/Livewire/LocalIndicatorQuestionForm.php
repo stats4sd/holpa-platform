@@ -107,7 +107,6 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->orderBy('row_number'),
             )
             ->columns([
-                // TODO: add "DRAG TO REORDER" button
                 TextColumn::make('type')->label('Question Type'),
                 TextColumn::make('name')->label('Variable Name'),
                 TextColumn::make('defaultLabel')->label('Default Label'),
@@ -126,11 +125,14 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     // fill the form with existing data
                     // Question: why the changes of type and name cannot be saved into survey_rows record?
                     ->fillForm(fn(SurveyRow $record): array => [
+                        'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
+                        'id' => $record->id,
                         'type' => $record->type,
                         'name' => $record->name,
                     ])
                     ->form([
                         Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+                        Hidden::make('id'),
                         Fieldset::make('Question Information')
                             ->columns([
                                 'sm' => 1,
@@ -210,7 +212,17 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                                     ]),
                             ]),
 
-                    ]),
+                    ])
+                    // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
+                    ->action(function (array $data) {
+                        $surveyRow = SurveyRow::find($data['id']);
+
+                        $surveyRow->type = $data['type'];
+                        $surveyRow->name = $data['name'];
+
+                        $surveyRow->save();
+                    }),
+
 
                 // add "DELETE QUESTION" button in table row instead of inside modal popup
                 DeleteAction::make()
