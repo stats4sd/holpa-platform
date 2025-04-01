@@ -61,5 +61,6 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
         });
 
         $this->info('Xlsform versions updated successfully!');
+
     }
 }
