@@ -89,7 +89,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             ->heading('')
             ->headerActions([
                 Action::make('Add New')
-                    ->extraAttributes(['class' => 'buttonb'])
+                    ->extraAttributes(['class' => 'buttonb text-base'])
                     ->icon('heroicon-o-plus-circle')
                     ->form([
                         TextInput::make('description')->label('Enter a label for the translation')
@@ -104,6 +104,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             ])
             ->actions([
                 Action::make('Select')
+                ->extraAttributes(['class' => ' mx-auto'])
                     ->icon(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'heroicon-o-check-circle' : '')
                     ->color(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success' : 'primary')
                     ->label(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'Selected' : 'Select')
@@ -115,9 +116,13 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     }),
 
                 Action::make('view-edit')
+                    ->extraAttributes(['class' => 'ml-2 buttona '])
+                    ->color('white')
                     ->label('View / Edit Translation')
                     ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
                     ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
+                    ->modalWidth(MaxWidth::SixExtraLarge)
+                    ->extraModalWindowAttributes(['class' => 'py-4 px-10'])
                     ->modalSubmitAction(false)
                     ->modalCancelAction(false),
 

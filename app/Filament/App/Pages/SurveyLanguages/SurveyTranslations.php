@@ -30,6 +30,7 @@ class SurveyTranslations extends Page
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
+            SurveyLanguages::getUrl() => 'Survey Languages',
             static::getUrl() => static::getTitle(),
         ];
     }

@@ -23,15 +23,15 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             >
                 <x-slot:heading>Select Country and Languages</x-slot:heading>
                 <x-slot:description>Pick the country you will be conducting the survey in, and the languages you will want to use. You can select multiple languages.</x-slot:description>
-                <x-slot:buttonLabel>Select Country and Languages</x-slot:buttonLabel>
+                <x-slot:buttonLabel>Update</x-slot:buttonLabel>
             </x-rounded-section>
 
             <x-rounded-section
                 :url="\App\Filament\App\Pages\SurveyLanguages\SurveyTranslations::getUrl()"
             >
-                <x-slot:heading>Review Translations</x-slot:heading>
+                <x-slot:heading>Survey Translations</x-slot:heading>
                 <x-slot:description>Review the available translations for your survey. You can upload new translations if required.</x-slot:description>
-                <x-slot:buttonLabel>Review Translations</x-slot:buttonLabel>
+                <x-slot:buttonLabel>Update</x-slot:buttonLabel>
             </x-rounded-section>
         </div>
     </div>
@@ -45,10 +45,10 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 </svg>
                 <span class="ml-1 inline text-sm font-bold">SECTION COMPLETE </span>
             </div>
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonc block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
             {{ $this->markIncompleteAction }}
         @else
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonc mx-4 inline-block">Go back</a>
             {{ $this->markCompleteAction }}
         @endif
     </div>

@@ -48,7 +48,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
             ->modalHeading('Confirm Reset')
             ->modalDescription('Are you sure you want to reset all matches? This action cannot be undone.')
             ->modalSubmitActionLabel('Yes, reset')
-            ->color('green')
+            ->color('orange')
             ->extraAttributes(['class' => 'py-2 px-6 hover-effect'])
             ->action(fn () => $this->resetIndicators());
     }

@@ -11,11 +11,11 @@
 
     <button wire:click="downloadTemplate" class="buttona">Download Xlsform Template</button>
 
-    <h2 class="my-8">Import Questions from an ODK Xlsform (Excel)</h2>
+    <h3 class="my-8">Import Questions from an ODK Xlsform (Excel)</h3>
 
     {{ $this->form }}
 
-    <h2 class="my-8">Add / Edit Questions Directly</h2>
+    <h3 class="my-8">Add / Edit Questions Directly</h3>
     @foreach($unmatchedLocalIndicators as $localIndicator)
 
         <livewire:local-indicator-question-form :localIndicator="$localIndicator" :key="$localIndicator->id">

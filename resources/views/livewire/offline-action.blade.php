@@ -7,7 +7,7 @@
         </svg>
 
     </div>
-    <div class=""  style="width: 60%; place-content: center;  ">
+    <div class="w-1/2 xl:w-2/3"  style="place-content: center;  ">
         <!-- Heading -->
         <h3 class="">
             {{ $heading }}
