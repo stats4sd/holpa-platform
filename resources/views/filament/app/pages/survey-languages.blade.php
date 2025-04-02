@@ -19,7 +19,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
         <div class="surveyblocks pr-10 pt-8">
 
             <x-rounded-section
-                :url="\App\Filament\App\Pages\SurveyCountry::getUrl()"
+                :url="\App\Filament\App\Pages\SurveyLanguages\SurveyCountry::getUrl()"
             >
                 <x-slot:heading>Select Country and Languages</x-slot:heading>
                 <x-slot:description>Pick the country you will be conducting the survey in, and the languages you will want to use. You can select multiple languages.</x-slot:description>
@@ -27,8 +27,8 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             </x-rounded-section>
 
             <x-rounded-section
-                :url="\App\Filament\App\Pages\SurveyTranslations::getUrl()"
-                >
+                :url="\App\Filament\App\Pages\SurveyLanguages\SurveyTranslations::getUrl()"
+            >
                 <x-slot:heading>Review Translations</x-slot:heading>
                 <x-slot:description>Review the available translations for your survey. You can upload new translations if required.</x-slot:description>
                 <x-slot:buttonLabel>Review Translations</x-slot:buttonLabel>

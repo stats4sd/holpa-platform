@@ -1,42 +1,28 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\SurveyLanguages;
 
 use App\Models\Team;
-use Filament\Forms\Get;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Livewire\Attributes\On;
-use Filament\Actions\StaticAction;
-use Illuminate\Support\Collection;
-use Filament\Tables\Actions\Action;
-use Maatwebsite\Excel\Facades\Excel;
-use Filament\Forms\Components\Hidden;
-use Filament\Support\Enums\Alignment;
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Components\Section;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Tables\Actions\EditAction;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
-use Illuminate\Support\Facades\Storage;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\FileUpload;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Tables\Enums\ActionsPosition;
-use App\Imports\XlsformTemplateLanguageImport;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Actions\Concerns\InteractsWithActions;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Actions\Action;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
+use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
 class TeamTranslationEntry extends Component implements HasActions, HasForms, HasTable
 {

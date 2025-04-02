@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\SurveyLanguages;
 
 use App\Models\Team;
 use Filament\Actions\Action;

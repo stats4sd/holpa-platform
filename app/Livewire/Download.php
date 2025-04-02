@@ -8,7 +8,7 @@ use Illuminate\Support\HtmlString;
 use Illuminate\View\View;
 use Livewire\Component;
 
-class download extends Component
+class Download extends Component
 {
     public string $heading;
     public string|HtmlString $description;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\SurveyLanguages;
 
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;

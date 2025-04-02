@@ -12,13 +12,13 @@ use App\Filament\App\Pages\Pilot;
 use App\Filament\App\Pages\PlaceAdaptations;
 use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyTranslations;
+use App\Filament\App\Pages\SurveyLanguages\SurveyTranslations;
 use App\Filament\App\Pages\TeamOdkView;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -64,72 +64,6 @@ class AppServiceProvider extends ServiceProvider
             fn(array $scopes):
             View => view('filament.app.pages.info-panels.survey-dashboard', ['scopes' => $scopes]),
             scopes: SurveyDashboard::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.data-analysis', ['scopes' => $scopes]),
-            scopes: DataAnalysis::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.data-collection', ['scopes' => $scopes]),
-            scopes: DataCollection::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.lisp', ['scopes' => $scopes]),
-            scopes: Lisp::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.lisp-indicators', ['scopes' => $scopes]),
-            scopes: LispIndicators::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.lisp-workshop', ['scopes' => $scopes]),
-            scopes: LispWorkshop::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.more-instructions', ['scopes' => $scopes]),
-            scopes: MoreInstructions::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.pilot', ['scopes' => $scopes]),
-            scopes: Pilot::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.place-adaptations', ['scopes' => $scopes]),
-            scopes: PlaceAdaptations::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.sampling', ['scopes' => $scopes]),
-            scopes: Sampling::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.survey-languages', ['scopes' => $scopes]),
-            scopes: SurveyTranslations::class,
-        );
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes): View => view('filament.app.pages.info-panels.team-odk-view', ['scopes' => $scopes]),
-            scopes: TeamOdkView::class,
         );
 
     }
