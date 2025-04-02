@@ -23,7 +23,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             >
                 <x-slot:heading>Select Country and Languages</x-slot:heading>
                 <x-slot:description>Pick the country you will be conducting the survey in, and the languages you will want to use. You can select multiple languages.</x-slot:description>
-                <x-slot:buttonLabel>Select Country and Languages</x-slot:buttonLabel>
+                <x-slot:buttonLabel>Update</x-slot:buttonLabel>
             </x-rounded-section>
 
             <x-rounded-section
@@ -31,7 +31,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 >
                 <x-slot:heading>Survey Translations</x-slot:heading>
                 <x-slot:description>Review the available translations for your survey. You can upload new translations if required.</x-slot:description>
-                <x-slot:buttonLabel>Review Translations</x-slot:buttonLabel>
+                <x-slot:buttonLabel>Update</x-slot:buttonLabel>
             </x-rounded-section>
         </div>
     </div>

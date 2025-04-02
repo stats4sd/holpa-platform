@@ -388,3 +388,51 @@ fieldset {
 .fi-topbar-item-button {
     border-radius: 9999px;
 }
+.indicator {
+    @apply bg-gray-50 !rounded-none ;
+
+    .fi-section-header {
+        @apply pb-4 ;
+        
+    }
+    h3 {
+        @apply !text-sm;
+    font-weight: 400 !important;
+
+    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
+}
+}
+.draggable {
+    @apply bg-gray-50 rounded-none;
+    background-color: #72bb6c1c;
+    .fi-section-header {
+        @apply pb-4;
+        
+    }
+    h3 {
+        @apply !text-sm;
+    font-weight: 400 !important;
+
+    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
+}
+}
+.draggable.indicator:hover {
+    @apply text-black;
+    h3 {
+        @apply !text-green;
+    }
+}
+.indicator:hover {
+    @apply !text-black;
+
+}
+.indicator_questions {
+@apply pr-6  ml-6 pl-4 mb-3 font-light;
+
+   border-left: 3px solid var(--green);
+   overflow-wrap: anywhere;
+}
