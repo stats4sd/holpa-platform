@@ -16,6 +16,21 @@ class LocalIndicator extends Model
 
     protected $guarded = ['id'];
 
+    protected static function booted()
+    {
+        static::created(function (self $localIndicator) {
+            $xlsformModuleVersion = $localIndicator->xlsformModuleVersion()->create([
+                'owner_id' => $localIndicator->team_id,
+                'name' => $localIndicator->name,
+                'is_default' => false,
+            ]);
+
+            // I have no idea why the above doesn't automatically associate the new module version with the current local indicator...
+            $localIndicator->xlsformModuleVersion()->associate($xlsformModuleVersion);
+            $localIndicator->save();
+        });
+    }
+
     public function domain(): BelongsTo
     {
         return $this->belongsTo(Domain::class);
