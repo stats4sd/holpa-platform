@@ -8,7 +8,6 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 
 ?>
 
-
 <x-filament-panels::page>
 
     <x-instructions-sidebar :videoUrl="'#'">
@@ -19,6 +18,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
             The dashboard below sets out the tasks required to prepare and deliver the survey, tracks your progress, and will support you with customising and implementing the survey. The sections do not have to be completed in order (although making certain changes, such as adding another language, may require reviewing some sections). Changes can be made at any point, even if a section has already been marked as complete. You can mark each section as complete to help you keep track.
         </x-slot:instructions>
     </x-instructions-sidebar>
+
     <div id="surveydash">
         <!-- Main Section -->
         <div class="container mx-auto xl:px-24">
