@@ -49,13 +49,14 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
 
                             // download existing translations if they exist
                             Actions\Action::make('download_' . $xlsformTemplate->id)
-                                ->link()
+                                // ->link()
                                 ->label("Download existing translations")
+                                ->extraAttributes(['class' => 'buttona w-full'])
                                 ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
 
                             // download blank template if needed
                             Actions\Action::make('download_' . $xlsformTemplate->id)
-                                ->link()
+                            ->extraAttributes(['class' => 'buttona w-full'])
                                 ->visible(fn() => $this->locale->is_editable)
                                 ->label("Download empty translation template")
                                 ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale, empty: true), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),

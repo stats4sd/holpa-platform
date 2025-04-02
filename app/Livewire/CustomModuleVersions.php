@@ -67,6 +67,7 @@ class CustomModuleVersions extends Component implements HasForms
                         Actions::make([
                             Action::make('save_file')
                                 ->label('Save File')
+            ->extraAttributes(['class' => 'buttona'])
                                 ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file'))),
                         ]),
                     ]),

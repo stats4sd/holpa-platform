@@ -1,14 +1,14 @@
 <div>
 
-    <div class="text-base font-extrabold ">
+    <div class="text-base font-semibold ">
         Local indicators
     </div>
 
-    <div class="pt-2 pb-4 text-sm font-normal">
+    <div class="pt-2 pb-4 text-sm font-normal h-20">
         Select an indicator to start looking for matches.
     </div>
 
-    <div class=" py-4 rounded-xl">
+    <div class=" rounded-xl">
         @forelse ($indicators as $indicator)
             <div class=" p-4 lispboxbase cursor-pointer {{ $selectedLocalIndicator?->id === $indicator->id ? ' lispboxselected ' : 'lispboxinactive text-current' }}"
                  wire:click="selectIndicator({{ $indicator }})">
@@ -20,7 +20,7 @@
                         <span class="text-sm  font-semibold">MATCHED</span>
                     </div>
                 @endif
-                <p class="ps-6">
+                <p class="ps-6 ml-1">
                     {{ $indicator->name }}
                 </p>
             </div>
@@ -29,7 +29,7 @@
         @endforelse
     </div>
 
-    <div class="flex justify-center gap-4 py-8">
+    <div class="flex justify-center gap-4 py-4">
         {{ $this->resetAction }}
     </div>
 

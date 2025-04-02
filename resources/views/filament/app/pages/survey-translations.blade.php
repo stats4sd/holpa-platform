@@ -18,7 +18,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
         <div class=" container mx-auto xl:px-12 ">
             <div class="surveyblocks px-10 h-full pt-10 pb-16">
 
-                <div class="mb-8">
+                <div class="mb-8 translations-tables">
                     <div class="pb-4">
                         <h3 class=" mb-4">Survey Languages</h3>
                     </div>
