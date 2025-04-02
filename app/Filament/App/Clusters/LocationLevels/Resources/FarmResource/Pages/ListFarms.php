@@ -2,13 +2,13 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Pages\Sampling;
-use App\Filament\App\Pages\SurveyDashboard;
-use Filament\Actions;
-use App\Imports\FarmImport;
-use Filament\Resources\Pages\ListRecords;
-use App\Filament\Tables\Actions\ImportFarmsAction;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
+use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
+use App\Filament\Tables\Actions\ImportFarmsAction;
+use App\Imports\FarmImport;
+use Filament\Actions;
+use Filament\Resources\Pages\ListRecords;
 
 class ListFarms extends ListRecords
 {
@@ -21,7 +21,7 @@ class ListFarms extends ListRecords
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            Sampling::getUrl() => 'Survey locations',
+            SurveyLocationsIndex::getUrl() => 'Survey locations',
             static::getUrl() => static::getTitle(),
         ];
     }

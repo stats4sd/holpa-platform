@@ -6,6 +6,8 @@ use App\Models\Team;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 use App\Services\HelperService;
+use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Contracts\View\View;
 
 class SurveyDashboard extends Page
 {
@@ -15,7 +17,12 @@ class SurveyDashboard extends Page
 
     protected static ?string $navigationLabel = 'Survey Dashboard';
 
-    protected static ?string $title = '';
+    protected static ?string $title = 'Holpa Survey Dashboard'; // set to empty because the dashboard has a custom header
+
+    public function getHeader(): ?View
+    {
+        return view('components.survey-dashboard-header');
+    }
 
     public Team $team;
 

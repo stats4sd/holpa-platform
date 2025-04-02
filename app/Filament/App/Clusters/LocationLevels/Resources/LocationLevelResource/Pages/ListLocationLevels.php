@@ -2,11 +2,11 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
-use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 
 class ListLocationLevels extends ListRecords
 {
@@ -26,7 +26,7 @@ class ListLocationLevels extends ListRecords
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            Sampling::getUrl() => 'Survey Locations',
+            SurveyLocationsIndex::getUrl() => 'Survey Locations',
             static::getUrl() => static::getTitle(),
         ];
     }

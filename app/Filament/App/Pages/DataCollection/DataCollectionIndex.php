@@ -1,36 +1,27 @@
 <?php
 
-namespace App\Filament\App\Pages\SurveyLanguages;
+namespace App\Filament\App\Pages\DataCollection;
 
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
-use Illuminate\Support\Collection;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
-class SurveyTranslations extends Page
+class DataCollectionIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.survey-languages.survey-translations';
+    protected static string $view = 'filament.app.pages.data-collection';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $title = 'Context: Survey Translations';
+    protected static ?string $title = 'Data Collection';
 
     protected $listeners = ['refreshPage' => '$refresh'];
-
-    public Team $team;
-
-    /** @var Collection<Language> */
-    public Collection $languages;
 
     public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            SurveyLanguagesIndex::getUrl() => 'Survey Languages',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -40,21 +31,15 @@ class SurveyTranslations extends Page
         return MaxWidth::Full;
     }
 
-    public function mount(): void
-    {
-        $this->team = HelperService::getCurrentOwner();
-        $this->languages = $this->team->languages;
-    }
-
     public function markCompleteAction(): Action
     {
         return Action::make('markComplete')
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                HelperService::getCurrentOwner()->update([
-                    'languages_complete' => 1,
-                ]);
+                $team = HelperService::getCurrentOwner();
+                $team->data_collection_progress = 'complete';
+                $team->save();
 
                 $this->dispatch('refreshPage');
             });
@@ -66,11 +51,12 @@ class SurveyTranslations extends Page
             ->label('MARK AS INCOMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                HelperService::getCurrentOwner()->update([
-                    'languages_complete' => 0,
-                ]);
+                $team = HelperService::getCurrentOwner();
+                $team->data_collection_progress = 'not_started';
+                $team->save();
 
                 $this->dispatch('refreshPage');
             });
     }
+
 }

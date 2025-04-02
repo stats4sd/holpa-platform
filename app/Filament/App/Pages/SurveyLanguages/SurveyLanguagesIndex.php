@@ -3,34 +3,25 @@
 namespace App\Filament\App\Pages\SurveyLanguages;
 
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
-use Illuminate\Support\Collection;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
-class SurveyTranslations extends Page
+class SurveyLanguagesIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.survey-languages.survey-translations';
+    protected static string $view = 'filament.app.pages.survey-languages';
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static ?string $title = 'Context: Survey Translations';
+    protected static ?string $title = 'Survey Languages';
 
     protected $listeners = ['refreshPage' => '$refresh'];
-
-    public Team $team;
-
-    /** @var Collection<Language> */
-    public Collection $languages;
 
     public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            SurveyLanguagesIndex::getUrl() => 'Survey Languages',
             static::getUrl() => static::getTitle(),
         ];
     }
@@ -38,12 +29,6 @@ class SurveyTranslations extends Page
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;
-    }
-
-    public function mount(): void
-    {
-        $this->team = HelperService::getCurrentOwner();
-        $this->languages = $this->team->languages;
     }
 
     public function markCompleteAction(): Action
@@ -73,4 +58,5 @@ class SurveyTranslations extends Page
                 $this->dispatch('refreshPage');
             });
     }
+
 }

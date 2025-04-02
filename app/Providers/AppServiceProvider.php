@@ -2,18 +2,7 @@
 
 namespace App\Providers;
 
-use App\Filament\App\Pages\DataAnalysis;
-use App\Filament\App\Pages\DataCollection;
-use App\Filament\App\Pages\Lisp;
-use App\Filament\App\Pages\LispIndicators;
-use App\Filament\App\Pages\LispWorkshop;
-use App\Filament\App\Pages\MoreInstructions;
-use App\Filament\App\Pages\Pilot;
-use App\Filament\App\Pages\PlaceAdaptations;
-use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyLanguages\SurveyTranslations;
-use App\Filament\App\Pages\TeamOdkView;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Contracts\View\View;
@@ -45,8 +34,6 @@ class AppServiceProvider extends ServiceProvider
             return $user->hasRole('Super Admin') ? true : null;
         });
 
-        $this->registerPageSpecificHooks();
-
         // Enable migrations in subfolders
         $migrationsPath = database_path('migrations');
         $directories = glob($migrationsPath.'/*', GLOB_ONLYDIR);
@@ -56,15 +43,4 @@ class AppServiceProvider extends ServiceProvider
 
     }
 
-    public function registerPageSpecificHooks(): void
-    {
-
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::TOPBAR_AFTER,
-            fn(array $scopes):
-            View => view('filament.app.pages.info-panels.survey-dashboard', ['scopes' => $scopes]),
-            scopes: SurveyDashboard::class,
-        );
-
-    }
 }

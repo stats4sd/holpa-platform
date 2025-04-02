@@ -3,7 +3,6 @@
 namespace App\Filament\App\Pages\SurveyLanguages;
 
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyLanguages;
 use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Forms\Components\Select;
@@ -19,7 +18,7 @@ class SurveyCountry extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static string $view = 'filament.app.pages.survey-country';
+    protected static string $view = 'filament.app.pages.survey-languages.survey-country';
 
     protected static bool $shouldRegisterNavigation = false;
 
@@ -38,7 +37,7 @@ class SurveyCountry extends Page implements HasForms
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            SurveyLanguages::getUrl() => 'Survey Languages',
+            SurveyLanguagesIndex::getUrl() => 'Survey Languages',
             static::getUrl() => static::getTitle(),
         ];
     }

@@ -1,14 +1,24 @@
 <?php
 
-use App\Filament\App\Pages\DataAnalysis;
-use App\Filament\App\Pages\Lisp;
-use App\Filament\App\Pages\Pilot;
-use App\Filament\App\Pages\PlaceAdaptations;
-use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Pages\DataAnalysis\DataAnalysisIndex;
+use App\Filament\App\Pages\Lisp\LispIndex;
+use App\Filament\App\Pages\Pilot\PilotIndex;
+use App\Filament\App\Pages\PlaceAdaptations\PlaceAdaptationsIndex;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 
 ?>
 
+
 <x-filament-panels::page>
+
+    <x-instructions-sidebar :videoUrl="'#'">
+        <x-slot:heading>Your Guide to the HOLPA Platform</x-slot>
+        <x-slot:instructions>
+            This is the HOLPA survey builder dashboard, designed to support and facilitate the customisation and delivery of the HOLPA survey, and allow teams to collect and manage HOLPA survey data.
+            <a href="{{ url('/') }}">Find out more about HOLPA here</a>.<br/><br/>
+            The dashboard below sets out the tasks required to prepare and deliver the survey, tracks your progress, and will support you with customising and implementing the survey. The sections do not have to be completed in order (although making certain changes, such as adding another language, may require reviewing some sections). Changes can be made at any point, even if a section has already been marked as complete. You can mark each section as complete to help you keep track.
+        </x-slot:instructions>
+    </x-instructions-sidebar>
     <div id="surveydash">
         <!-- Main Section -->
         <div class="container mx-auto xl:px-24">
@@ -16,7 +26,7 @@ use App\Filament\App\Pages\Sampling;
 
                 <!-- Context card -->
                 <div class="flex flex-col lg:flex-row drop-shadow-lg overflow-hidden lg:h-72 col-span-12 lg:col-span-6">
-                    <div class=" greensection">
+                    <div class="greensection">
                         <img src="/images/context_icon.png" alt="Context Icon" class="w-8 mb-2 ml-8 lg:ml-0">
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
                             <span class="mt-2 text-center">Prepare survey</span>
@@ -79,7 +89,7 @@ use App\Filament\App\Pages\Sampling;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ \App\Filament\App\Pages\SurveyLanguages::getUrl() }}" class="buttona">
+                                <a href="{{ \App\Filament\App\Pages\SurveyLanguages\SurveyLanguagesIndex::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
@@ -140,7 +150,7 @@ use App\Filament\App\Pages\Sampling;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ url(Sampling::getUrl()) }}" class="buttona">
+                                <a href="{{ url(SurveyLocationsIndex::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
@@ -202,7 +212,7 @@ use App\Filament\App\Pages\Sampling;
                                             <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                         </div>
                                     @endif
-                                    <a href="{{ PlaceAdaptations::getUrl() }}" class="buttona">
+                                    <a href="{{ PlaceAdaptationsIndex::getUrl() }}" class="buttona">
                                         VIEW AND UPDATE
                                     </a>
                                 </div>
@@ -239,7 +249,7 @@ use App\Filament\App\Pages\Sampling;
                                             <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                         </div>
                                     @endif
-                                    <a href="{{ url(Lisp::getUrl()) }}" class="buttona">
+                                    <a href="{{ url(LispIndex::getUrl()) }}" class="buttona">
                                         VIEW AND UPDATE
                                     </a>
                                 </div>
@@ -269,7 +279,7 @@ use App\Filament\App\Pages\Sampling;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ url(Pilot::getUrl()) }}" class="buttona">
+                                <a href="{{ url(PilotIndex::getUrl()) }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
@@ -386,7 +396,7 @@ use App\Filament\App\Pages\Sampling;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                <a href="{{ DataAnalysis::getUrl() }}" class="buttona">
+                                <a href="{{ DataAnalysisIndex::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>

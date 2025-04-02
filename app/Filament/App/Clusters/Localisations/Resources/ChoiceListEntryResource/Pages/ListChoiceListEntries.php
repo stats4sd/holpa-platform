@@ -3,9 +3,9 @@
 namespace App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages;
 
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
-use App\Filament\App\Pages\PlaceAdaptations;
+use App\Filament\App\Pages\PlaceAdaptations\PlaceAdaptationsIndex;
 use App\Filament\App\Pages\SurveyDashboard;
-use Filament\Actions\Action;
+use App\Services\HelperService;
 use Filament\Actions\CreateAction;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\ListRecords;
@@ -17,7 +17,6 @@ use Illuminate\Support\Str;
 use Livewire\Attributes\Url;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
-use App\Services\HelperService;
 
 class ListChoiceListEntries extends ListRecords
 {
@@ -48,7 +47,7 @@ class ListChoiceListEntries extends ListRecords
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            PlaceAdaptations::getUrl() => 'Place Adaptations',
+            PlaceAdaptationsIndex::getUrl() => 'Place Adaptations',
             static::getUrl() => static::getTitle(),
         ];
     }
