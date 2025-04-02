@@ -10,7 +10,7 @@ use Filament\Support\Enums\MaxWidth;
 
 class DataCollectionIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.data-collection';
+    protected static string $view = 'filament.app.pages.data-collection.data-collection-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

@@ -72,7 +72,7 @@ class LocalIndicators extends Component implements HasForms, HasActions
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-        return view('livewire.local-indicators', [
+        return view('livewire.lisp.local-indicators', [
             'indicators' => $this->indicators,
         ]);
     }

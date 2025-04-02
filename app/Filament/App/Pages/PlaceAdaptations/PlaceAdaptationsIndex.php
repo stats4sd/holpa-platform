@@ -10,7 +10,7 @@ use Filament\Support\Enums\MaxWidth;
 
 class PlaceAdaptationsIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.place-adaptations';
+    protected static string $view = 'filament.app.pages.place-adaptations.place-adaptations-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

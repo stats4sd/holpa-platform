@@ -125,6 +125,6 @@ class TeamTranslationReviewEditForm extends Component implements HasForms, HasAc
 
     public function render()
     {
-        return view('livewire.team-translation-review-edit-form');
+        return view('livewire.survey-languages.team-translation-review-edit-form');
     }
 }

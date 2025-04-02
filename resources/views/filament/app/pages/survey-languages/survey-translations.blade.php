@@ -24,7 +24,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     </div>
 
                     @foreach($languages as $language)
-                        <livewire:team-translation-entry :language="$language" :key="$language->id" :team="$team"/>
+                        <livewire:survey-languages.team-translation-entry :language="$language" :key="$language->id" :team="$team"/>
                     @endforeach
 
                 </div>

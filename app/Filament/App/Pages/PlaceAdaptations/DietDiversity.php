@@ -27,7 +27,7 @@ class DietDiversity extends Page implements HasForms, HasTable
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string $view = 'filament.app.pages.diet-diversity';
+    protected static string $view = 'filament.app.pages.place-adaptations.diet-diversity';
 
     public function getBreadcrumbs(): array
     {

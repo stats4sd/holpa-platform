@@ -33,7 +33,7 @@ class MainPilot extends Page implements HasTable, HasInfolists, HasActions
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string $view = 'filament.app.pages.main-pilot';
+    protected static string $view = 'filament.app.pages.pilot.main-pilot';
     protected ?string $heading = "Survey Testing - Pilot and Enumerator Training";
     protected ?string $subheading = "Test with enumerators; pilot with real farmers";
 

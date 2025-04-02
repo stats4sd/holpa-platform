@@ -196,6 +196,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-        return view('livewire.upload-local-indicators');
+        return view('livewire.lisp.upload-local-indicators');
     }
 }

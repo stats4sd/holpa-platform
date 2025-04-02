@@ -18,7 +18,7 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
     use InteractsWithForms;
     use InteractsWithActions;
 
-    protected static string $view = 'filament.app.pages.data-analysis';
+    protected static string $view = 'filament.app.pages.data-analysis.data-analysis-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

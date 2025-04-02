@@ -10,7 +10,7 @@ use Filament\Support\Enums\MaxWidth;
 
 class LispIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.lisp';
+    protected static string $view = 'filament.app.pages.lisp.lisp-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

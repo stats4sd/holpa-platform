@@ -10,7 +10,7 @@ use Filament\Support\Enums\MaxWidth;
 
 class PilotIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.pilot';
+    protected static string $view = 'filament.app.pages.pilot.pilot-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

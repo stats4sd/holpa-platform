@@ -24,7 +24,7 @@ class TimeFrame extends Page implements HasTable, HasForms
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string $view = 'filament.app.pages.time-frame';
+    protected static string $view = 'filament.app.pages.place-adaptations.time-frame';
     protected ?string $heading = "Survey Testing - Adapt Time Frame";
     protected ?string $subheading = "Specify the time frame for your survey";
 

@@ -11,7 +11,7 @@ class LispIndicators extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.app.pages.lisp-indicators';
+    protected static string $view = 'filament.app.pages.lisp.lisp-indicators';
 
     protected static ?string $title = 'Localisation: LISP';
     protected ?string $subheading = 'Customise indicators';

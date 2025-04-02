@@ -100,6 +100,6 @@ class CustomModuleVersions extends Component implements HasForms
 
     public function render(): Factory|Application|View|\Illuminate\View\View|null
     {
-        return view('livewire.custom-module-versions');
+        return view('livewire.lisp.custom-module-versions');
     }
 }

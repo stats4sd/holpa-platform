@@ -12,41 +12,41 @@
         <div class="surveyblocks  pb-24 mb-32 pt-12 px-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4   h-max mb-12">
                 <a wire:click="setActiveTab('local')" class="{{ $activeTab === 'local' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100 ">
-                    <livewire:rounded-square
-                        heading="Upload local indicators"
-                        description="Upload the local indicators you identified in the LISP workshop."
-                    />
+                    <x-rounded-square>
+                        <x-slot:heading>Upload local indicators</x-slot:heading>
+                        <x-slot:description>Upload the local indicators you identified in the LISP workshop.</x-slot:description>
+                    </x-rounded-square>
                 </a>
                 <a wire:click="setActiveTab('match')" class="{{ $activeTab === 'match' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
-                    <livewire:rounded-square
-                        heading="Match with existing global indicators"
-                        description="Browse the list of indicators already available in the HOLPA global survey, and match them to your identified local indicators."
-                    />
+                    <x-rounded-square>
+                        <x-slot:heading>Match with existing global indicators</x-slot:heading>
+                        <x-slot:description>Browse the list of indicators already available in the HOLPA global survey, and match them to your identified local indicators.</x-slot:description>
+                    </x-rounded-square>
                 </a>
                 <a wire:click="setActiveTab('custom')" class="{{ $activeTab === 'custom' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
-                    <livewire:rounded-square
-                        heading="Add custom survey questions"
-                        description="The local indicators that are not matched to a HOLPA global indicator should be reviewed. For each indicator, you can add one or more questions to the survey to allow you to calculate the indicator."
-                    />
+                    <x-rounded-square>
+                        <x-slot:heading>Add custom survey questions</x-slot:heading>
+                        <x-slot:description>The local indicators that are not matched to a HOLPA global indicator should be reviewed. For each indicator, you can add one or more questions to the survey to allow you to calculate the indicator.</x-slot:description>
+                    </x-rounded-square>
                 </a>
                 <a wire:click="setActiveTab('ordering')" class="{{ $activeTab === 'ordering' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100">
-                    <livewire:rounded-square
-                        heading="Add custom questions to survey"
-                        description="Once you have defined the questions to ask, you need to insert them into either the Household or Fieldwork survey."
-                    />
+                    <x-rounded-square>
+                        <x-slot:heading>Add custom questions to survey</x-slot:heading>
+                        <x-slot:description>Once you have defined the questions to ask, you need to insert them into either the Household or Fieldwork survey.</x-slot:description>
+                    </x-rounded-square>
                 </a>
             </div>
 
             <!-- Content -->
             <div class="px-6">
                 @if ($activeTab === 'local')
-                    <livewire:upload-local-indicators/>
+                    <livewire:lisp.upload-local-indicators/>
                 @elseif ($activeTab === 'match')
                     @include('livewire.lisp.match-indicators')
                 @elseif ($activeTab === 'custom')
-                    <livewire:custom-module-versions/>
+                    <livewire:lisp.custom-module-versions/>
                 @elseif ($activeTab === 'ordering')
-                    <livewire:custom-module-ordering/>
+                    <livewire:lisp.custom-module-ordering/>
                 @else
                     <div class="mx-auto w-max">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  ">

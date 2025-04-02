@@ -137,6 +137,6 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
-        return view('livewire.global-indicators');
+        return view('livewire.lisp.global-indicators');
     }
 }

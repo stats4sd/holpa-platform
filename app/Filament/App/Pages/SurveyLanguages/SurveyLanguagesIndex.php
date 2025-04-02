@@ -10,7 +10,7 @@ use Filament\Support\Enums\MaxWidth;
 
 class SurveyLanguagesIndex extends Page
 {
-    protected static string $view = 'filament.app.pages.survey-languages';
+    protected static string $view = 'filament.app.pages.survey-languages.survey-languages-index';
 
     protected static bool $shouldRegisterNavigation = false;
 

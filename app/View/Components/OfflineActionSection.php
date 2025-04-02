@@ -10,10 +10,10 @@ use Illuminate\View\Component;
 
 class OfflineActionSection extends Component
 {
-    public string $heading;
-    public string|HtmlString $description;
-    public string $buttonLabel;
-    public string $url;
+    public string $heading = '';
+    public string|HtmlString $description = '';
+    public string $buttonLabel = '';
+    public string $url = '';
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {

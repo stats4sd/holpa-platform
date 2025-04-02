@@ -10,7 +10,7 @@ class LispWorkshop extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.app.pages.lisp-workshop';
+    protected static string $view = 'filament.app.pages.lisp.lisp-workshop';
 
     protected static ?string $title = 'Localisation: LISP';
     protected ?string $subheading = 'Workshop';

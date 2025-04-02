@@ -18,7 +18,7 @@
     <h3 class="my-8">Add / Edit Questions Directly</h3>
     @foreach($unmatchedLocalIndicators as $localIndicator)
 
-        <livewire:local-indicator-question-form :localIndicator="$localIndicator" :key="$localIndicator->id">
+        <livewire:lisp.local-indicator-question-form :localIndicator="$localIndicator" :key="$localIndicator->id">
 
     @endforeach
 </div>

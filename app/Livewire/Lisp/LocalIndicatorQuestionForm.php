@@ -178,7 +178,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasActio
 
     public function render()
     {
-        return view('livewire.local-indicator-question-form');
+        return view('livewire.lisp.local-indicator-question-form');
     }
 
     public function saveFormData()

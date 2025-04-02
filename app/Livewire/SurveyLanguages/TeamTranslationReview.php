@@ -27,7 +27,7 @@ class TeamTranslationReview extends Component implements HasActions, HasForms
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {
-        return view('livewire.team-translation-review');
+        return view('livewire.survey-languages.team-translation-review');
     }
 
     public function downloadHouseholdAction(): Action

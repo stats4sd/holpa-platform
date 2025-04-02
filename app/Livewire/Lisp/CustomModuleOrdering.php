@@ -41,7 +41,7 @@ class CustomModuleOrdering extends Component
 
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\View\View
     {
-        return view('livewire.custom-module-ordering');
+        return view('livewire.lisp.custom-module-ordering');
     }
 
     /**
