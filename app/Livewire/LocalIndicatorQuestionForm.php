@@ -185,8 +185,13 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+
+                                // Question:
+                                // 1. Does it run when modal popup showed? When creating a new question, name field is empty at that moment
+                                // 2. For editing record, will choice list name be changed if we change the question name?
                                 Hidden::make('list_name')->live()
                                     ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -339,6 +344,9 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
             ]);
     }
 
+
+
+
     public function form(Form $form): Form
     {
         $locales = $this->localIndicator->team->locales;
@@ -372,6 +380,17 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                 'text' => '',
             ];
         })->toArray();
+
+
+        // issues found during testing:
+        // 1. when create a new question, choice_lists.list_name is _choices. It looks like name field is empty when constructing value for list_name
+        // 2. choice_list_entries records not saved after saving a newly created question
+        // 3. after deleting question, survey_rows record is deleted. But the related choice_lists records reamin in database
+        //
+        // possible solution:
+        // 1. constructing value for list_name after user clicking "Save" button
+        // 2. is choice_lists record created yet? Should we create a choice_lists record when user changes type to select_one or select_multiple?
+        // 3. add onDelete() to survey_roes.choice_list_id?
 
         return $form->statePath('data')
             ->model($this->xlsformModuleVersion)
@@ -429,13 +448,16 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                         Fieldset::make('Choice List')
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            // ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
                                     ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
+                                    // avoid showing a pre-created empty record on screen by setting default items to 0,
+                                    // it does not help to resolve issue that choice list entries record not saved when creating new question
+                                    ->defaultItems(0)
                                     ->headers([
                                         Header::make('name')->label('Name'),
                                         ...$choiceListHeaders,
@@ -463,7 +485,8 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ]),
 
                     ]),
-            ]);
+            ])
+        ;
     }
 
     public function render()
