@@ -127,7 +127,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->createAnother(false)
                     ->mutateFormDataUsing(function (array $data): array {
                         // find the largest row_number of survey_rows records
-                        $lastRowNumber = $this->xlsformModuleVersion->surveyRows != null ? $this->xlsformModuleVersion->surveyRows->last()->row_number : 0;
+                        $lastRowNumber = $this->xlsformModuleVersion->surveyRows->count() != 0 ? $this->xlsformModuleVersion->surveyRows->last()->row_number : 0;
 
                         $data['row_number'] = $lastRowNumber + 1;
 
