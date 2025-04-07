@@ -19,11 +19,6 @@
         {{ $this->table }}
     </div>
 
-    <!-- TODO: remove this section when table works -->
-    <div class="p-4 border border-gray-200 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
-        {{ $this->form }}
-
-        <button wire:click="saveFormData()" class="buttona text-sm">Save Questions</button>
-    </div>
+    <!-- TODO: show the original form for further testing after revising front end styling -->
 
 </div>

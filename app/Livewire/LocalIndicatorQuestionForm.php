@@ -185,13 +185,8 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-
-                                // Question:
-                                // 1. Does it run when modal popup showed? When creating a new question, name field is empty at that moment
-                                // 2. For editing record, will choice list name be changed if we change the question name?
                                 Hidden::make('list_name')->live()
                                     ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
-
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -344,9 +339,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
             ]);
     }
 
-
-
-
+    // keep the original form() function for further testing after revising front end styling
     public function form(Form $form): Form
     {
         $locales = $this->localIndicator->team->locales;
@@ -382,15 +375,15 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
         })->toArray();
 
 
-        // issues found during testing:
-        // 1. when create a new question, choice_lists.list_name is _choices. It looks like name field is empty when constructing value for list_name
+        // issues found in the original form during testing:
+        // 1. when create a new question, choice_lists.list_name is always "_choices". list_name is constructed when name is empty at the very beginning.
         // 2. choice_list_entries records not saved after saving a newly created question
-        // 3. after deleting question, survey_rows record is deleted. But the related choice_lists records reamin in database
+        // 3. after deleting question, survey_rows record is deleted. But the related choice_lists records remain in database
         //
         // possible solution:
-        // 1. constructing value for list_name after user clicking "Save" button
+        // 1. construct list_name value before save
         // 2. is choice_lists record created yet? Should we create a choice_lists record when user changes type to select_one or select_multiple?
-        // 3. add onDelete() to survey_roes.choice_list_id?
+        // 3. add onDelete(), so that choice_lists record will be deleted when survey_rows record is deleted
 
         return $form->statePath('data')
             ->model($this->xlsformModuleVersion)
@@ -404,7 +397,6 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->label('')
                     ->itemLabel(fn(array $state) => $state['name'] ?? 'New Question')
                     ->orderColumn('row_number')
-                    // TODO: change to show below form in a modal popup
                     ->schema([
                         Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                         Fieldset::make('Question Information')
@@ -448,15 +440,26 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                         Fieldset::make('Choice List')
                             ->live()
                             ->relationship('choiceList')
-                            // ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+
+                                // It is executed at the very beginning.
+                                // For create a new question, list_name is "_choices" because name field is empty.
+                                // For updating a question, list_name is [name]_choices. But it does not change if user updated name field before save.
+                                //
+                                // For proper operation, we may need to construct list_name value before save.
+                                //
+                                // TODO: change list_name from [name]_choices to [survey_rows.id]_[name]_choices
+
                                 Hidden::make('list_name')->live()
                                     ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     // avoid showing a pre-created empty record on screen by setting default items to 0,
-                                    // it does not help to resolve issue that choice list entries record not saved when creating new question
+                                    // but it does not help to resolve issue that choice list entries record not saved when creating new question.
+                                    // it looks like choice list entrties record cannot be saved before choice list record is created.
                                     ->defaultItems(0)
                                     ->headers([
                                         Header::make('name')->label('Name'),
