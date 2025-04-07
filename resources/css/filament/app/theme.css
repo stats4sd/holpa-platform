@@ -53,6 +53,9 @@ h2 {
 }
 h3 {
     @apply text-black font-bold text-lg }
+h5 {
+    @apply text-black font-bold  mt-4;
+}
 
 h6 {
     @apply text-green text-base font-semibold uppercase;
@@ -435,4 +438,46 @@ fieldset {
 
    border-left: 3px solid var(--green);
    overflow-wrap: anywhere;
+}
+
+.full-width {
+    position: relative;
+    right: 50%;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    width: 100vw;
+}
+.instruction_sidebar:hover {
+padding-right: 2rem;
+transition:  100ms ease-in-out;
+background-color: #83be7f;
+cursor: pointer;
+}
+
+.fi-modal-slide-over-window {
+
+.fi-modal-header {
+    @apply !border-none mx-8;
+}
+.fi-modal-heading {
+    @apply !text-xl uppercase;
+}
+.fi-btn {
+    @apply buttonb mx-auto shadow-none !ring-0 border-none;
+}
+}
+
+.instructions_list {
+    margin-left: 20px;
+    li {
+        @apply my-2;
+    }
+}
+.instructions_note {
+    @apply rounded-xl py-6 px-9 my-6;
+    padding: 20px 30px;
+    background-color: #5fa35a2b;
+    
 }

@@ -22,6 +22,16 @@ class SurveyTranslations extends Page
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public Team $team;
+    
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+    {
+        return view('components.custom-header', [
+            'heading' => $this->getHeading(),
+            'subheading' => $this->getSubheading(),
+            'actions' => $this->getHeaderActions(),
+            'breadcrumbs' => $this->getBreadcrumbs(),
+        ]);
+    }
 
     /** @var Collection<Language> */
     public Collection $languages;

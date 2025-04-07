@@ -36,6 +36,15 @@ class Dashboard extends Page
             DataCollectedWidget::class,
         ];
     }
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+{
+    return view('components.custom-header', [
+        'heading' => $this->getHeading(),
+        'subheading' => $this->getSubheading(),
+        'actions' => $this->getHeaderActions(),
+        'breadcrumbs' => $this->getBreadcrumbs(),
+    ]);
+}
 
     protected ?string $heading = '';
 }
