@@ -8,6 +8,8 @@
         Browse the available indicators in the global survey to search for a match for the selected local indicator.
     </div>
 
-    {{ $this->table }}
+    <div class="lisp-global-indicators">
+        {{ $this->table }}
+    </div>
 
 </div>
