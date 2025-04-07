@@ -1,26 +1,27 @@
-<div class="{{ $expanded ? 'border border-gray-200' : '' }}">
-    <div class="py-4 px-8 border border-gray-200 flex justify-between items-center space-x-8 bg-gray-100">
-        <div class="w-full flex justify-start">
-            <h5 class="w-full md:w-1/2 lg:w-1/4 font-bold text-lg">{{ $language->language_label }}</h5>
-            <h5 class="w-full md:w-2/3 lg:w-1/2">
-                <span class="">Selected Translation:</span>
+<div class="{{ $expanded ? '' : '' }}">
+    <div class="py-6 md:px-6 border-b border-gray-300 sm:flex justify-between items-center md:space-x-6 ">
+        <div class="sm:w-2/3 md:flex justify-start">
+            <h6 class="w-full md:w-1/2 lg:w-1/4 ">{{ $language->language_label }}</h6>
+            <h5 class="w-full md:w-1/2 lg:w-3/4 md:flex items-center ">
+                <span class="mr-2">Selected Translation: </span>
                 <span class="{{ $selectedLocale ? 'text-green' : 'text-dark-orange' }}">{{ $selectedLocale ? $selectedLocale->description : 'none' }}</span>
             </h5>
 
         </div>
-        <div class="self-end">
+        <div class="md:self-end  md:w-1/3 md:flex justify-end mt-5 sm:mt-0">
 
-            <button class="buttona text-nowrap flex items-center justify-between" wire:click="$toggle('expanded')">
+            <button class=" text-nowrap flex text-black  items-center  justify-between " wire:click="$toggle('expanded')">
+                Select Translation
                 @if($expanded)
-                <x-heroicon-o-chevron-up class="h-6 font-bold text-lg pe-4"/>
+                <x-heroicon-o-chevron-up class="h-6 ml-4 font-bold text-lg "/>
                 @else
-                <x-heroicon-o-chevron-down class="h-6 font-bold text-lg pe-4"/>
+                <x-heroicon-o-chevron-down class="h-6 ml-4 font-bold text-lg "/>
                 @endif
-                Select Translation</button>
+                </button>
         </div>
     </div>
 
-    <div class="p-0 border border-gray-200 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
+    <div class="px-6 pb-6 border-b-2 border-gray-300 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
         {{ $this->table }}
     </div>
 </div>

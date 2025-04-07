@@ -9,7 +9,7 @@
         <a href="{{ url('files/HOLPA_indicator_template.xlsx') }}">template</a>, or enter each indicator manually into the table below.
     </div>
 
-    <div class="px-8 py-4">
+    <div class="py-4 indicator-upload">
         <div class="mx-auto  ">
             <div class="p-6 bg-white  ">
                 {{ $this->form }}

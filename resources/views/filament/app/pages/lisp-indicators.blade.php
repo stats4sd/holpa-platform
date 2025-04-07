@@ -10,7 +10,7 @@
     </div> -->
         <!-- Tabs -->
         <div class="surveyblocks  pb-24 mb-32 pt-12 px-12">
-            <div class="grid grid-cols-3 gap-4   h-max mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4   h-max mb-12">
                 <a wire:click="setActiveTab('local')" class="{{ $activeTab === 'local' ? 'tabbuttons' : '' }}  rounded-2xl cursor-pointer lisptabs bg-gray-100 ">
                     <livewire:rounded-square
                         heading="Upload local indicators"

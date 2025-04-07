@@ -4,7 +4,7 @@
 
 :root {
     --green: #5fa35a;
-    --lightgreen: #f8fff5;
+    --lightgreen: #f8fff5; 
     --blue: #3FA9F5;
     --dark-blue: #296fa1;
     --orange: #EB5A45;
@@ -63,6 +63,10 @@ h2 {
 
 h3 {
     @apply text-black font-bold text-lg
+}
+
+h6 {
+    @apply text-green text-base font-semibold uppercase;
 }
 
 .surveyblocks {
@@ -127,7 +131,12 @@ button {
 }
 
 .buttona:hover {
-    @apply shadow-none bg-dark-blue;
+    @apply shadow-none bg-dark-blue ;
+    text-decoration: none !important;
+}
+
+.buttona span:hover {
+    text-decoration: none !important;
 }
 
 .buttonb {
@@ -139,8 +148,7 @@ button {
     @apply shadow-none bg-dark-orange;
 }
 
-.actionblock .buttona,
-.actionblock .buttonb {
+.actionblock .buttona,.actionblock .buttonb {
     @apply text-sm;
 }
 
@@ -218,6 +226,10 @@ button {
     h3 {
         @apply text-white;
     }
+}
+
+.lisptabs-desc {
+    @apply hidden lg:block ;
 }
 
 .lispboxinactive {
@@ -357,22 +369,10 @@ button:disabled.outline-none {
     @apply border-none;
 }
 
+
 .inline-repeater .fi-fo-repeater-item {
     @apply ring-0 shadow-none;
 }
-
-/*
-To hide the table header row in below page:
- - Localisation: LISP > Match with existing global indicators > Global indicators table
-
-Issue:
- - This change also affects table header row of other tables in other pages, e.g.
-  - Survey Dashboard > Place Adaptations > Diet Diversity
-
-Question:
-1. Is there any way to add something to a table to make it uniquely identified in the whole application, so that we can do a CSS hack to that particular table only?
-*/
-
 
 .lisp-global-indicators .fi-ta-header-cell {
     @apply hidden;
@@ -380,4 +380,106 @@ Question:
 
 .lisp-global-indicators .fi-ta-actions-header-cell {
     @apply hidden;
+
+.translations-tables .fi-ta-ctn{
+    @apply shadow-none ring-0 border-b  m-4;
+
+}
+
+.translations-tables .fi-ta-content {
+    @apply border-x ;
+}
+.translation-modal button {
+    margin-left: 0.6rem;
+}
+
+
+.fi-ta-header-cell-label {
+    text-transform: none !important;
+}
+
+
+.indicator-upload .table-repeater-container {
+    @apply !rounded-none;
+    --tw-ring-color: rgba(9, 9, 11, 0.11);
+    .table-repeater-header-column {
+        @apply !text-sm font-semibold py-3 ;
+    }
+    td {
+        @apply py-4;
+    }
+}
+
+
+fieldset {
+    @apply !p-0 !border-none;
+    legend {
+        @apply !text-base !font-semibold mt-2 mb-4 ;
+    }
+}
+
+[class^="fi-section"] {
+    @apply border-none ring-0 shadow-none;
+    h3 {
+        @apply !text-base !font-semibold;
+    }
+}
+.fi-section-header-heading {
+    @apply border-none ring-0 shadow-none;
+}
+.fi-section-header {
+    @apply pb-0;
+}
+
+.fi-topbar-item-button {
+    border-radius: 9999px;
+}
+.indicator {
+    @apply bg-gray-50 !rounded-none ;
+
+    .fi-section-header {
+        @apply pb-4 ;
+        
+    }
+    h3 {
+        @apply !text-sm;
+    font-weight: 400 !important;
+
+    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
+}
+}
+.draggable {
+    @apply bg-gray-50 rounded-none;
+    background-color: #72bb6c1c;
+    .fi-section-header {
+        @apply pb-4;
+        
+    }
+    h3 {
+        @apply !text-sm;
+    font-weight: 400 !important;
+
+    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
+}
+}
+.draggable.indicator:hover {
+    @apply text-black;
+    h3 {
+        @apply !text-green;
+    }
+}
+.indicator:hover {
+    @apply !text-black;
+
+}
+.indicator_questions {
+@apply pr-6  ml-6 pl-4 mb-3 font-light;
+
+   border-left: 3px solid var(--green);
+   overflow-wrap: anywhere;
+
 }
