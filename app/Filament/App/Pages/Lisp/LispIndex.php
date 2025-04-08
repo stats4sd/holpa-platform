@@ -25,6 +25,18 @@ class LispIndex extends Page
             static::getUrl() => static::getTitle(),
         ];
     }
+
+
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+    {
+        return view('components.small-header', [
+            'heading' => $this->getHeading(),
+            'subheading' => $this->getSubheading(),
+            'actions' => $this->getHeaderActions(),
+            'breadcrumbs' => $this->getBreadcrumbs(),
+        ]);
+    }
+
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;

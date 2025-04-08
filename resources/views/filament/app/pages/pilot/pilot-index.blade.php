@@ -26,11 +26,11 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     the translation of your survey in future steps.
                 </p>
             </div>
-            <x-offline-action :url="\App\Filament\App\Pages\Pilot\MainPilot::getUrl()">
+            <x-offline-action-section :url="\App\Filament\App\Pages\Pilot\MainPilot::getUrl()">
                 <x-slot:heading>Pilot and enumerator training</x-slot:heading>
                 <x-slot:description>Once the local indicators have been included, the HOLPA tool is ready to be piloted by the enumerators with local farmers.</x-slot:description>
                 <x-slot:buttonLabel>View details</x-slot:buttonLabel>
-            </x-offline-action>
+            </x-offline-action-section>
         </div>
     </div>
 

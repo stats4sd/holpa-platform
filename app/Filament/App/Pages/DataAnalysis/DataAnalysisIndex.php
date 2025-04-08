@@ -45,6 +45,16 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
             ->label('Export Data')
             ->extraAttributes(['class' => 'buttona']);
     }
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+    {
+        return view('components.small-header', [
+            'heading' => $this->getHeading(),
+            'subheading' => $this->getSubheading(),
+            'actions' => $this->getHeaderActions(),
+            'breadcrumbs' => $this->getBreadcrumbs(),
+        ]);
+    }
+
 
     public function markCompleteAction(): Action
     {

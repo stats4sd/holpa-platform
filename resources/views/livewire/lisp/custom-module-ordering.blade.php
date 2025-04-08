@@ -63,7 +63,7 @@
                             @class([
                             "rounded-none border indicator my-2",
                             "bg-gray-200 border-gray-500 global-module indicator" => $xlsformModuleVersion->owner?->id !== $team->id,
-                            'bg-slate-200 border-slate-900 indicator my-2' => $xlsformModuleVersion->owner?->id === $team->id,
+                            'bg-slate-200 border-slate-900 indicator draggable my-2' => $xlsformModuleVersion->owner?->id === $team->id,
                             ])
                         >
 

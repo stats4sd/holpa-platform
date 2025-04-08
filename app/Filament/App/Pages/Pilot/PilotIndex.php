@@ -30,6 +30,16 @@ class PilotIndex extends Page
     {
         return MaxWidth::Full;
     }
+    
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+    {
+        return view('components.small-header', [
+            'heading' => $this->getHeading(),
+            'subheading' => $this->getSubheading(),
+            'actions' => $this->getHeaderActions(),
+            'breadcrumbs' => $this->getBreadcrumbs(),
+        ]);
+    }
 
     public function markCompleteAction(): Action
     {

@@ -47,7 +47,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 description='Adapt units, crops, and other choice list entries to be locally relevant..'
                 buttonLabel='Update'
                 :url='\App\Filament\App\Clusters\Localisations::getUrl()'/>
-            <x-offline-action
+            <x-offline-action-section
                 heading='Initial Pilot'
                 description='Initial piloting should be conducted to check the sense and functionality of the survey.'
                 buttonLabel='View details'

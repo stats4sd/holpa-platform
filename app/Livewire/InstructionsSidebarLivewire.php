@@ -18,7 +18,6 @@ class InstructionsSidebarLivewire extends Component implements HasActions, HasFo
     use InteractsWithForms;
     use InteractsWithActions;
 
-    public string $videoUrl;
     public string|HtmlString $heading;
     public string|HtmlString $instructions;
     public string|HtmlString $instructionsmarkcomplete;
@@ -35,7 +34,7 @@ class InstructionsSidebarLivewire extends Component implements HasActions, HasFo
             ->icon('heroicon-o-information-circle')
             ->extraAttributes(['class' => '!shadow-none !font-bold py-2 !text-sm '])
             ->color('none')
-            ->modelLabel($this->heading)
+            ->modalHeading($this->heading)
             ->modalContent(new HtmlString($this->instructions))
             ->modalSubmitAction(false)
             ->modalCancelActionLabel('Close')

@@ -7,7 +7,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
 
 <x-filament-panels::page class="h-full">
 
-<x-instructions-sidebar :videoUrl="'#'">
+<x-instructions-sidebar>
         <x-slot:heading>Your Guide to the HOLPA Platform</x-slot:heading>
         <x-slot:instructions>
 
