@@ -40,7 +40,7 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 4,
                 'list_name' => 'drinks',
                 'description' => NULL,
-                'is_localisable' => 0,
+                'is_localisable' => 1,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
