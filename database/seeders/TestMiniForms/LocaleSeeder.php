@@ -19,15 +19,17 @@ class LocaleSeeder extends Seeder
             ->locales()
             ->create([
                 'is_default' => true,
+                'description' => 'English (Default)',
             ]);
 
         $localeEs = Language::firstWhere('iso_alpha2', 'es')
             ->locales()
             ->create([
                 'is_default' => true,
+                'description' => 'Spanish (Default)',
             ]);
 
-        Team::all()->each(function(Team $team) use ($localeEs, $localeEn) {
+        Team::all()->each(function (Team $team) use ($localeEs, $localeEn) {
             $team->languages()->updateExistingPivot($localeEn->language->id, ['locale_id' => $localeEn->id]);
 
             $team->languages()->updateExistingPivot($localeEs->language->id, ['locale_id' => $localeEs->id]);
