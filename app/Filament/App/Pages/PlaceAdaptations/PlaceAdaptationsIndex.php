@@ -16,6 +16,9 @@ class PlaceAdaptationsIndex extends Page
 
     protected static ?string $title = 'Localisation: Place-based adaptations';
 
+    protected ?string $summary = 'Customise details for questions and answer options to ensure the survey is relevant and suitable for use in the intended location.';
+
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -38,6 +41,7 @@ class PlaceAdaptationsIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

@@ -30,7 +30,7 @@
 
                     @foreach($indicator->xlsformModuleVersion->surveyRows as $surveyRow)
 
-                        <div class="flex items-center indicator_questions">{{ $surveyRow->name }} <br>({{ $surveyRow->type }})</div>
+                        <div class="flex items-center indicator_questions">{{ $surveyRow->name }}<br>( {{ $surveyRow->type }} )</div>
 
                     @endforeach
 
@@ -51,6 +51,7 @@
                      x-sortable-target
                      x-on:sorted="$wire.updateOrder($event.detail, '{{ $xlsform->id }}')"
                      class="!mb-8"
+                     
                 >
 
                     @foreach($xlsform->xlsformModuleVersions as $xlsformModuleVersion)
@@ -68,7 +69,7 @@
                         >
 
                             @foreach($xlsformModuleVersion->surveyRows as $surveyRow)
-                                <div class="flex items-center indicator_questions">{{ $surveyRow->name }} ( {{ $surveyRow->type }} )</div>
+                                <div class="flex items-center indicator_questions">{{ $surveyRow->name }}<br>( {{ $surveyRow->type }} )</div>
                             @endforeach
 
                         </x-filament::section>

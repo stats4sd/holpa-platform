@@ -11,13 +11,13 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 <x-filament-panels::page>
 
     <x-instructions-sidebar :videoUrl="'#'">
-        <x-slot:heading>Your Guide to the HOLPA Platform</x-slot:heading>
+        <x-slot:heading>Instructions</x-slot:heading>
         <x-slot:instructions>
 
-            <div class="pr-4 content-center  mx-auto my-4">
+            {{-- <div class="pr-4 content-center  mx-auto my-4">
                 <iframe class="rounded-3xl" src="https://www.youtube.com/embed/TODO_ADD_VIDEO_ID" style="width: 560px; height: 315px;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="mx-12 my-4">
+            </div> --}}
+            <div class="mx-12 mb-4">
                 <p class="mb-2">
                   This is the HOLPA survey builder dashboard. Here you can see an overview of the tasks required to prepare and deliver the survey, and you can keep track of your progress.</p>
                    <!-- <a class="buttona px-auto" href="{{ url('/') }}">Find out more about HOLPA here</a><br/><br/> -->

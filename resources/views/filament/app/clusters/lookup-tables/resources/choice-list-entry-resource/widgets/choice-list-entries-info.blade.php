@@ -1,4 +1,6 @@
+
 <x-filament-widgets::widget>
+
     <x-filament::section class="mb-4" :heading="$choiceListName">
         {{ $choiceList->description ?? "The list below includes a set of possible responses to some of the survey questions. Please review the list and make sure it is appropriate for your context. You may add new entries and remove existing entries if they are not relevant."}}
     </x-filament::section>

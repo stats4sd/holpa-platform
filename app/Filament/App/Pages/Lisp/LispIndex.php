@@ -16,6 +16,9 @@ class LispIndex extends Page
 
     protected static ?string $title = 'Localisation: LISP';
 
+    protected ?string $summary = 'The local indicator selection process (LISP) involves conducting a workshop with local farmers and stakeholders to brainstorm and prioritise a set of local indicators to include in the HOLPA tool.';
+
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -34,6 +37,7 @@ class LispIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

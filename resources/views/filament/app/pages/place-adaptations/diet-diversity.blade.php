@@ -1,4 +1,26 @@
 <x-filament-panels::page>
+<x-instructions-sidebar>
+        <x-slot:heading>Instructions</x-slot:heading>
+        <x-slot:instructions>
+
+            {{-- <div class="pr-4 content-center  mx-auto my-4">
+                <iframe class="rounded-3xl" src="https://www.youtube.com/embed/TODO_ADD_VIDEO_ID" style="width: 560px; height: 315px;" frameborder="0" allowfullscreen></iframe>
+            </div> --}}
+            <div class="mx-12 mb-4">
+
+<h5>Diet Diversity module </h5>
+
+ <p class="mb-2"> 
+HOLPA uses an internationally validated indicator for "dietary diversity". The questions in this section ask whether members of the household have consumed anything from specific food groups within the last 24 hours, such as grain food, tubers, pulses, green veg, etc. The default survey has all the needed questions, but does not include lists of locally contextualised example foods for each group. 
+</p>
+ <p class="mb-2"> 
+The platform can incorporate localised versions of the questions from the <a href="https://www.dietquality.org/tools" class="text-green font-semibold">Global Diet Quality Project</a>, which add relevant example foods for each category customised for over 100 countries. If you would like to include these in your survey, select the suitable country from the list of available countries. The page shows the questions that will appear in the survey, so you can review the default and the localised versions with examples, and decide what to use for your survey.
+</p>
+
+               
+            </div>
+        </x-slot:instructions>
+    </x-instructions-sidebar>
     <div class="container mx-auto  ">
         <div class="surveyblocks pt-16 pb-24 mb-32 px-12 lg:px-16">
             <p>HOLPA uses an internationally validated indicator for "dietary diversity". The questions in this section ask whether members of the household have consumed anything from specific food groups within the last 24 hours, such as grain food, tubers, pulses, green veg, etc. The default survey has all the needed questions, but does not include lists of locally contextualised example foods for each group.</p>

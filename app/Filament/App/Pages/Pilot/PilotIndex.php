@@ -16,6 +16,9 @@ class PilotIndex extends Page
 
     protected static ?string $title = 'Localisation: Pilot';
 
+    protected ?string $summary = 'Conduct a pilot run of the survey, both for quality control of the customised HOLPA survey and training of enumerators.';
+
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -38,6 +41,7 @@ class PilotIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

@@ -22,7 +22,7 @@ class ListChoiceListEntries extends ListRecords
 {
     protected static string $resource = ChoiceListEntryResource::class;
 
-    protected ?string $heading = 'Contextualise Survey';
+    protected ?string $heading = 'Contextualise choice lists';
 
     #[Url]
     public string $choiceListName = '';
@@ -46,9 +46,9 @@ class ListChoiceListEntries extends ListRecords
     public function getBreadcrumbs(): array
     {
         return [
-            SurveyDashboard::getUrl() => 'Survey Dashboard',
-            PlaceAdaptationsIndex::getUrl() => 'Place Adaptations',
-            static::getUrl() => static::getTitle(),
+            SurveyDashboard::getUrl() => 'Survey dashboard',
+            PlaceAdaptationsIndex::getUrl() => 'Place-based adaptations',
+            static::getUrl() => 'Contextualise choice lists',
         ];
     }
 

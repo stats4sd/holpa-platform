@@ -408,31 +408,31 @@ fieldset {
 }
 }
 .draggable {
-    @apply bg-gray-50 rounded-none;
-    background-color: #72bb6c1c;
+    @apply bg-green rounded-none text-white;
     .fi-section-header {
-        @apply pb-4;
+        @apply pb-4 !text-white;
         
     }
     h3 {
-        @apply !text-sm;
-    font-weight: 400 !important;
+        @apply !text-sm text-white !font-semibold;
 
     }
-.fi-section-content {
-   @apply px-4 pt-0 pb-2;
-}
+    .fi-icon-btn-icon {
+        @apply !text-white;
+    }
+    .fi-section-content {
+        padding: 0.1px 1rem;
+    background-color: #ffffffe1;
+
+    .indicator_questions {
+        @apply px-4 pt-0 pb-2 my-4 text-black;
+    }
+    }
 }
 .draggable.indicator:hover {
-    @apply text-black;
-    h3 {
-        @apply !text-green;
-    }
+    @apply text-white shadow-lg;
 }
-.indicator:hover {
-    @apply !text-black;
 
-}
 .indicator_questions {
 @apply pr-6  ml-6 pl-4 mb-3 font-light;
 
@@ -455,6 +455,11 @@ transition:  100ms ease-in-out;
 background-color: #83be7f;
 cursor: pointer;
 }
+.instruction_sidebar .fi-btn-icon {
+height: 1.7rem;
+width: 1.7rem;
+margin-right: 0.5rem;
+}
 
 .fi-modal-slide-over-window {
 
@@ -470,9 +475,11 @@ cursor: pointer;
 }
 
 .instructions_list {
-    margin-left: 20px;
+    margin-left: 30px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
     li {
-        @apply my-2;
+        @apply my-1;
     }
 }
 .instructions_note {

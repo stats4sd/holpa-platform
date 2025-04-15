@@ -8,13 +8,13 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
 <x-filament-panels::page class="h-full">
 
 <x-instructions-sidebar>
-        <x-slot:heading>Your Guide to the HOLPA Platform</x-slot:heading>
+        <x-slot:heading>Instructions</x-slot:heading>
         <x-slot:instructions>
 
-            <div class="pr-4 content-center  mx-auto my-4">
+            {{-- <div class="pr-4 content-center  mx-auto my-4">
                 <iframe class="rounded-3xl" src="https://www.youtube.com/embed/TODO_ADD_VIDEO_ID" style="width: 560px; height: 315px;" frameborder="0" allowfullscreen></iframe>
-            </div>
-            <div class="mx-12 my-4">
+            </div> --}}
+            <div class="mx-12 mb-4">
                 <p class="mb-2">                
                   The first step to set up the survey is to select the country and languages your team will conduct the survey in. Bear in mind that if you change these details later, you may need to review some of the other steps.
                 </p>
@@ -31,7 +31,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     When you have selected the languages for your survey, you should review the available translations. 
                     </p>
                     <p class="mb-2">  
-                        HOLPA is available in multiple languages. On the translations page, for each of the languages you selected previously, you will need to select the translation to use. Click 'select translation' to show the available translations for a language. 
+                        HOLPA is available in multiple languages. On the translations page, for each of the languages you selected previously, you will need to select the translation to use. Click "Select translation" to show the available translations for a language. 
                     </p>
                     <p class="mb-2">  
                         If there is no existing translation, or the available translations are not suitable for your survey location, you should add a new translation. You may wish to duplicate an existing translation to use as a starting point. 
@@ -88,19 +88,18 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
 
     <!-- Footer -->
     <div class="completebar">
-        @if(auth()->user()->latestTeam->languages_complete === 1)
-            <div class="mb-6 mx-auto md:mr-24 md:ml-0 md:inline-block block text-green ">
+        @if(auth()->user()->latestTeam->data_collection_progress === 'complete')
+        <div class="mb-6 mx-auto md:mr-24 md:ml-0 md:inline-block block text-green ">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline " fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
                 <span class="ml-1 inline text-sm font-bold">SECTION COMPLETE </span>
             </div>
-            <a href="{{ $surveyDashboardUrl }}" class="buttonc block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonb block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
             {{ $this->markIncompleteAction }}
         @else
-            <a href="{{ $surveyDashboardUrl }}" class="buttonc mx-4 inline-block">Go back</a>
+            <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
             {{ $this->markCompleteAction }}
         @endif
     </div>
-
 </x-filament-panels::page>

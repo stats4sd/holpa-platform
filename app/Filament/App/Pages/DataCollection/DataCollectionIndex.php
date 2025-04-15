@@ -16,6 +16,9 @@ class DataCollectionIndex extends Page
 
     protected static ?string $title = 'Data Collection';
 
+    protected ?string $summary = 'View and manage the survey and incoming data.';
+
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -33,6 +36,7 @@ class DataCollectionIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

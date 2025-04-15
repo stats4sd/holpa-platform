@@ -16,6 +16,8 @@ class SurveyLanguagesIndex extends Page
 
     protected static ?string $title = 'Survey Languages';
 
+    protected ?string $summary = 'Select the country, language or languages in which you plan to run the survey and either select an existing translation of the tool or create your own using a provided template.';
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -33,6 +35,7 @@ class SurveyLanguagesIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

@@ -24,6 +24,8 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
 
     protected static ?string $title = 'Data Analysis';
 
+    protected ?string $summary = 'Download data to conduct data analysis.';
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -52,6 +54,7 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

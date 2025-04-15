@@ -16,6 +16,8 @@ class SurveyLocationsIndex extends Page
 
     protected static ?string $title = 'Survey Locations';
 
+    protected ?string $summary = 'Add the details of the farms you will visit, to allow the enumerators to carry out data collection.';
+
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -33,6 +35,7 @@ class SurveyLocationsIndex extends Page
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),
             'breadcrumbs' => $this->getBreadcrumbs(),
+            'summary' => $this->summary,
         ]);
     }
 

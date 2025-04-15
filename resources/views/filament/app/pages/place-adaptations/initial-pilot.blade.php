@@ -4,7 +4,24 @@
 {{--        instructions2="It is recommended to review both survey forms with a local researcher or practitioner. If this is the first time using ODK, you can review the instructional video, which will show you how to access the surveys through the ODK Collect mobile app, or through the Web browser."--}}
 {{--        instructions3="The forms you access through this page are considered <b>Test</b> forms. You can use them to test your adaptations, and any submissions you make will be saved as <b>test</b> submissions, and not included in the final dataset."--}}
 {{--        videoUrl='https://www.youtube.com/embed/VIDEO_ID'--}}
+<x-instructions-sidebar>
+        <x-slot:heading>Instructions</x-slot:heading>
+        <x-slot:instructions>
 
+ 
+<h5>Pilot test</h5>
+ <p class="mb-2"> 
+Following customisation, a pilot test should be conducted to check the sense and functionality of the survey. The initial pilot page contains more detailed guidance on this process, and this is where you can find the QR code to scan to start testing the survey using ODK. 
+
+</p>
+ <p class="mb-2"> 
+Note that this QR code should only be used for this initial testing - the 'data collection' section contains a different link for the full pilot and live data collection, and it is important to use the correct version of the survey. 
+</p>
+
+               
+            </div>
+        </x-slot:instructions>
+    </x-instructions-sidebar>
     <div class="container mx-auto xl:px-12">
         <div class="surveyblocks p-10">
 
