@@ -21,3 +21,10 @@ Route::get('/admin/login', function () {
 Route::get('/downloads/{file}', [DownloadController::class, 'download'])
     ->where('file', '.*')
     ->middleware('auth');
+
+
+Route::get('/app/profile', function () {
+    return redirect('/app/' . Auth::user()->latest_team_id . '/profile');
+
+})->middleware('auth')
+->name('filament.app.auth.profile');

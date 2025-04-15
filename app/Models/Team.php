@@ -6,24 +6,23 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Stats4sd\FilamentOdkLink\Models\Country;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsforms;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
-class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
+class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
 {
     use HasXlsforms;
     use InteractsWithMedia;
@@ -39,18 +38,35 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
         'pba_complete' => 'boolean',
     ];
 
-    // TODO: I think this overrides the booted method on HasXlsforms - ideally we wouldn't need to copy the package stuff here...
+    public function users(): BelongsToMany
+    {
+        return parent::users()
+            ->using(TeamMembership::class);
+    }
+
+    public function admins(): BelongsToMany
+    {
+        return parent::admins()
+            ->using(TeamMembership::class);
+    }
+
+    public function members(): BelongsToMany
+    {
+        return parent::members()
+            ->using(TeamMembership::class);
+    }
+
+    /** @return  HasMany<TeamMembership, $this> */
+    public function teamMemberships(): HasMany
+    {
+        return $this->hasMany(TeamMembership::class);
+    }
+
     protected static function booted(): void
     {
 
         // when the model is created; automatically create an associated project on ODK Central and a top location level;
         static::created(static function (self $owner) {
-
-            // check if we are in local-only (no-ODK link) mode
-            $odkLinkService = app()->make(OdkLinkService::class);
-            if (config('filament-odk-link.odk.url') !== null && config('filament-odk-link.odk.url') !== '') {
-                $owner->createLinkedOdkProject($odkLinkService, $owner);
-            }
 
             // all teams get a default locale of english
             $en = Language::where('iso_alpha2', 'en')->first();
@@ -62,26 +78,10 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
             // suppose a newly created team does not have any xlsform, it is not necessary to do checking
             foreach ($xlsformTemplates as $xlsformTemplate) {
-                $xlsform = Xlsform::create([
+                Xlsform::create([
                     'owner_id' => $owner->id,
                     'xlsform_template_id' => $xlsformTemplate->id,
                     'title' => $xlsformTemplate->title,
-                ]);
-            }
-
-            // all teams get a custom module for each ODK form
-            $forms = Xlsform::where('owner_id', $owner->id)->get();
-            foreach ($forms as $form) {
-                $xlsformModule = XlsformModule::create([
-                    'form_type' => 'Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform',
-                    'form_id' => $form->id,
-                    'label' => $owner->name.' custom module',
-                    'name' => $owner->name.' custom module',
-                ]);
-
-                XlsformModuleVersion::create([
-                    'xlsform_module_id' => $xlsformModule->id,
-                    'name' => 'custom',
                 ]);
             }
 
@@ -131,6 +131,7 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
         return $this->hasMany(Import::class);
     }
 
+
     // Customisations
 
     public function dietDiversityModuleVersion(): BelongsTo
@@ -148,7 +149,6 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
                 return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
             }
         }
-
         return null;
     }
 
@@ -162,7 +162,6 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
                 return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
             }
         }
-
         return null;
     }
 
@@ -223,7 +222,8 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
     public function shouldReceiveAllXlsformTemplates(): Attribute
     {
         return new Attribute(
-            get: fn (): bool => true,
+            get: fn(): bool => true,
         );
     }
+
 }

@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TeamResource\Pages;
-use App\Filament\Admin\Resources\TeamResource\RelationManagers\LocalesRelationManager;
 use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 use App\Models\Team;
 use Filament\Tables;
@@ -17,9 +16,6 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
 
     protected static bool $shouldRegisterNavigation = true;
 
-    // if this class is called TeamResource.php, table() function cannot override table() function in superclass.
-    // we need to rename this class as NewTeamResource.php, then table() function can be overwritten.
-    // same route name maybe the possible cause.
     public static function table(Table $table): Table
     {
         return $table

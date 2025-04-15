@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('xlsform_modules', function (Blueprint $table) {
             $table->id();
-            $table->morphs('form');
+            $table->foreignId('xlsform_template_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('label');
             $table->string('name');
             $table->timestamps();
 
-            $table->unique(['form_id','form_type', 'name']);
+            $table->unique(['xlsform_template_id', 'name']);
         });
     }
 

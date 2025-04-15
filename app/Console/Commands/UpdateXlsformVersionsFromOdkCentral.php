@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
+// TODO: move into package?
 class UpdateXlsformVersionsFromOdkCentral extends Command
 {
     /**
@@ -60,5 +61,6 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
         });
 
         $this->info('Xlsform versions updated successfully!');
+
     }
 }

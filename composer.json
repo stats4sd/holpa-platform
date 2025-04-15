@@ -26,7 +26,7 @@
         "shiftonelabs/laravel-cascade-deletes": "^2.0",
         "spatie/laravel-ignition": "^2.9",
         "stats4sd/filament-odk-link": "*",
-        "stats4sd/filament-team-management": "^1.0",
+        "stats4sd/filament-team-management": "^1.1",
         "stats4sd/laravel-sql-views": "^1.2",
         "staudenmeir/belongs-to-through": "^2.16",
         "staudenmeir/eloquent-has-many-deep": "^1.20",

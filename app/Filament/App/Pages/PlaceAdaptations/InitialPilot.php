@@ -4,8 +4,16 @@ namespace App\Filament\App\Pages\PlaceAdaptations;
 
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Filament\App\Resources\SubmissionResource;
+use App\Events\XlsformDraftWasDeployed;
 use App\Models\Team;
 use App\Services\HelperService;
+use Faker\Extension\Helper;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -20,8 +28,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
@@ -38,6 +44,30 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
     protected ?string $heading = 'Survey Testing - Initial Pilot';
 
     protected ?string $subheading = 'Test with local researchers and practioners to review the initial localisations';
+
+    public Team $team;
+
+    /** @var \Illuminate\Database\Eloquent\Collection<Xlsform> */
+    public \Illuminate\Database\Eloquent\Collection $xlsforms;
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getCurrentOwner();
+        $this->xlsforms = $this->team->xlsforms()->get();
+
+        $this->xlsforms->each(function (Xlsform $xlsform) {
+            if ($xlsform->needs_update) {
+                ray('deploying . ' . $xlsform->id);
+                $xlsform->deployDraft();
+            }
+        });
+    }
+
+    #[On('echo:xlsforms,XlsformDraftWasDeployed')]
+    public function handleXlsformDraftWasDeployed($event): void
+    {
+        $this->xlsforms->find($event['xlsformId'])->refresh();
+    }
 
     public function getBreadcrumbs(): array
     {
@@ -71,71 +101,46 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
             ->url(SubmissionResource::getUrl('index'));
     }
 
+
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn (): HasMany => HelperService::getCurrentOwner()->xlsforms())
-            ->inverseRelationship('owner')
-            ->recordTitleAttribute('title')
+            ->heading('Draft Submissions')
+            ->query(fn(): Builder => Submission::onlyDraftData())
+            ->recordTitleAttribute('uuid')
             ->columns([
-                TextColumn::make('title')
+                TextColumn::make('xlsform_title')
                     ->grow(false),
-                TextColumn::make('status')
-                    ->color(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'danger',
-                        'LIVE' => 'success',
-                        'DRAFT' => 'info',
-                        default => 'light',
-                    })
-                    ->iconColor(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'danger',
-                        'LIVE' => 'success',
-                        'DRAFT' => 'info',
-                        default => 'light',
-                    })
-                    ->icon(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'heroicon-o-exclamation-circle',
-                        'LIVE' => 'heroicon-o-check',
-                        'DRAFT' => 'heroicon-o-pencil',
-                        default => 'heroicon-o-information-circle',
-                    })
-                    ->label('Status'),
-
-                TextColumn::make('live_submissions_count')
-                    ->label('No. of Submissions'),
-                TextColumn::make('submissions_count')
-                    ->label('Submissions in database')
-                    ->counts('submissions'),
+                TextColumn::make('xlsformVersion.odk_version'),
+                TextColumn::make('submitted_by'),
+                TextColumn::make('submitted_at'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                TableAction::make('update_published_version')
-                    // ->visible(fn(Xlsform $record) => !$record->has_latest_template)
-                    ->label('Deploy Updates')
-                    ->action(function (Xlsform $record) {
-
-                        $record->syncWithTemplate();
-                        $record->deployDraft(app()->make(OdkLinkService::class));
-                        $record->refresh();
-
-                        Notification::make('update_success')
-                            ->title('Success!')
-                            ->body("The form {$record->title} has the latest updates and is ready for testing")
-                            ->color('success')
-                            ->send();
-                    }),
-
+                \Filament\Tables\Actions\Action::make('view')
+                    ->modalContent(fn(Submission $record) => view('filament.app.pages.submissions.modal_view', ['submission' => $record]))
+                    ->modalSubmitAction(false)
+                    ->modalCancelActionLabel('Close'),
+            ])
+            ->headerActions([
+                TableAction::make('test-on-odk-central')
+                    ->url(fn() => HelperService::getCurrentOwner()->odkProject->odk_url),
                 TableAction::make('pull-submissions')
                     ->label('Manually Get Submissions')
-                    ->action(function (Xlsform $record) {
-                        $submissionCount = $record->getSubmissions();
+                    ->action(function (self $livewire) {
 
-                        $record->refresh();
+                        $count = HelperService::getCurrentOwner()->xlsforms->map(function (Xlsform $record) {
+                            return $record->getDraftSubmissions();
+                        })
+                            ->reduce(fn(int $carry, int $item) => $carry + $item, 0);
+
+                        $livewire->resetTable();
+
                         Notification::make('update_success')
                             ->title('Success!')
-                            ->body("{$submissionCount} submissions have been pulled from the ODK server for the form {$record->title} (they may take a moment to process).")
+                            ->body("{$count} submissions have been pulled from the ODK server. (they may take a moment to process).")
                             ->color('success')
                             ->send();
                     }),

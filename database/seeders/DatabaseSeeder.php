@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\TestRealForms\SelectedXlsformModuleVersionsTableSeeder;
+use Database\Seeders\TestRealForms\SurveyRowsTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 

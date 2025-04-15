@@ -21,6 +21,7 @@ return new class extends Migration {
 
 
             $table->boolean('active')->default(0);
+            $table->boolean('is_draft')->default(0);
             $table->timestamps();
         });
     }

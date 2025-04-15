@@ -2,13 +2,17 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Pages\Auth\EditProfile;
+use App\Filament\App\Pages\Auth\Login;
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Models\Team;
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
 use Exception;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -41,9 +45,9 @@ class AppPanelProvider extends PanelProvider
             ->tenantMiddleware([
                 SetLatestTeamMiddleware::class,
             ])
-            ->login()
+            ->profile(EditProfile::class, isSimple: false)
+            ->login(Login::class)
             ->passwordReset()
-            ->profile() // TODO: Implement more full-featured profile page
             ->colors([
                 'blue' => [
                     50 => '63, 169, 245',
@@ -127,6 +131,7 @@ class AppPanelProvider extends PanelProvider
             ->discoverClusters(in: app_path('Filament/App/Clusters'), for: 'App\\Filament\\App\\Clusters')
             ->pages([
                 SurveyDashboard::class,
+                EditProfile::class,
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
