@@ -15,7 +15,7 @@
                 <div class="relative flex items-center mb-0  text-center lg:text-left px-4 pt-20 lg:pt-36">
                     <div class="flex flex-col lg:flex-row  space-y-6 lg:space-y-0 lg:space-x-8 w-full items-center lg:items-stretch  mt-10 lg:mt-16 pb-8">
                         <div class="flex-grow max-w-3xl">
-                            <h2 class="text-white text-5xl mb-2 lg:mb-4 font-extralight" style="letter-spacing: 0.3em;">HOLPA</h3>
+                            <h2 class="text-white text-5xl mb-2 lg:mb-4 font-extralight" style="letter-spacing: 0.3em;">HOLPA</h2>
                                 <h1 class="text-hyellow text-2xl sm:text-3xl lg:text-5xl mb-2 lg:mb-4">Holistic Localised Performance Assessment for Agroecology</h1>
                         </div>
 
@@ -79,7 +79,7 @@
             </div>
 
             <div class="col-span-1  flex-col px-16 place-content-center">
-                <h3 class="text-3xl mb-8 text-hyellow">What is HOLPA? </h2>
+                <h3 class="text-3xl mb-8 text-hyellow">What is HOLPA? </h3>
                     <p>Ad veniam labore duis consequat eu elit reprehenderit et laborum dolore culpa nostrud tempor. Elit elit eu sit sit eiusmod laborum nisi veniam. Minim esse amet ullamco irure minim aliquip consequat exercitation pariatur aute eu in duis in anim. Dolor eu commodo do deserunt excepteur fugiat. Aliquip culpa reprehenderit dolore sit et nisi nisi in elit sunt. Commodo ex dolor exercitation quis cillum cillum aliquip esse magna cillum duis aute nostrud amet. Tempor anim mollit anim ad labore ut.</p>
                     <p>Veniam esse reprehenderit cillum ipsum. Officia incididunt ipsum magna ullamco sunt duis exercitation occaecat enim qui cupidatat Lorem. Eiusmod minim excepteur nisi voluptate anim anim enim excepteur nulla. Non sint do velit.</p>
             </div>
@@ -89,7 +89,7 @@
 
 
             <div class="col-span-1  flex-col px-16 place-content-center">
-                <h3 class="text-3xl mb-8 text-hyellow">Online Tool </h2>
+                <h3 class="text-3xl mb-8 text-hyellow">Online Tool </h3>
                     <p>Ad veniam labore duis consequat eu elit reprehenderit et laborum dolore culpa nostrud tempor. Elit elit eu sit sit eiusmod laborum nisi veniam. Minim esse amet ullamco irure minim aliquip consequat exercitation pariatur aute eu in duis in anim. Dolor eu commodo do deserunt excepteur fugiat. Aliquip culpa reprehenderit dolore sit et nisi nisi in elit sunt. Commodo ex dolor exercitation quis cillum cillum aliquip esse magna cillum duis aute nostrud amet. Tempor anim mollit anim ad labore ut.</p>
                     <div class="mt-8 place-content-center flex flex-row w-full">
                         <a href="{{ url('app') }} " class="buttona mx-2 px-4">Log in</a>
@@ -109,7 +109,7 @@
             </div>
 
             <div class="col-span-1  flex-col px-16 place-content-center">
-                <h3 class="text-3xl mb-8 text-hyellow">Results </h2>
+                <h3 class="text-3xl mb-8 text-hyellow">Results </h3>
                     <p>Ad veniam labore duis consequat eu elit reprehenderit et laborum dolore culpa nostrud tempor. Elit elit eu sit sit eiusmod laborum nisi veniam. Minim esse amet ullamco irure minim aliquip consequat exercitation pariatur aute eu in duis in anim. Dolor eu commodo do deserunt excepteur fugiat. Aliquip culpa reprehenderit dolore sit et nisi nisi in elit sunt. Commodo ex dolor exercitation quis cillum cillum aliquip esse magna cillum duis aute nostrud amet. Tempor anim mollit anim ad labore ut.</p>
                     <p>Veniam esse reprehenderit cillum ipsum. Officia incididunt ipsum magna ullamco sunt duis exercitation occaecat enim qui cupidatat Lorem. Eiusmod minim excepteur nisi voluptate anim anim enim excepteur nulla. Non sint do velit.</p>
             </div>

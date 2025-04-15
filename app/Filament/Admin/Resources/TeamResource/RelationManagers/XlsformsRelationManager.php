@@ -4,15 +4,14 @@ namespace App\Filament\Admin\Resources\TeamResource\RelationManagers;
 
 use Filament\Notifications\Notification;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ViewColumn;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ViewColumn;
 use Filament\Tables\Table;
 use Maatwebsite\Excel\Facades\Excel;
 use Stats4sd\FilamentOdkLink\Exports\XlsformExport\XlsformWorkbookExport;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
 class XlsformsRelationManager extends RelationManager
 {
@@ -55,7 +54,7 @@ class XlsformsRelationManager extends RelationManager
                     ->action(function (Xlsform $record) {
 
                         // create draft if there is no draft yet
-                        if (!$record->has_draft) {
+                        if (! $record->has_draft) {
                             $record->deployDraft(true);
                         }
 

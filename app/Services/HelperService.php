@@ -15,7 +15,9 @@ class HelperService
     {
         if (Filament::hasTenancy() && is_a(Filament::getTenant(), Team::class)) {
 
-            return Filament::getTenant();
+            /** @var Team $team */
+            $team = Filament::getTenant();
+            return $team;
         }
 
         return null;

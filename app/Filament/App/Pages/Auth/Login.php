@@ -11,7 +11,6 @@ use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\RequestException;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithOdkCentralAccount;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class Login extends \Filament\Pages\Auth\Login
 {
@@ -35,29 +34,26 @@ class Login extends \Filament\Pages\Auth\Login
 
         $data = $this->form->getState();
 
-        if (!Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
+        if (! Filament::auth()->attempt($this->getCredentialsFromFormData($data), $data['remember'] ?? false)) {
             $this->throwFailureValidationException();
         }
-
 
         $user = Filament::auth()->user();
 
         if (
             ($user instanceof FilamentUser) &&
-            (!$user->canAccessPanel(Filament::getCurrentPanel()))
+            (! $user->canAccessPanel(Filament::getCurrentPanel()))
         ) {
             Filament::auth()->logout();
 
             $this->throwFailureValidationException();
         }
 
-
         ray('hi', $user->odk_id);
 
-        if (!$user->odk_id && $user instanceof WithOdkCentralAccount) {
+        if (! $user->odk_id && $user instanceof WithOdkCentralAccount) {
             $user->registerOnOdkCentral($this->getCredentialsFromFormData($data)['password']);
         }
-
 
         return app(LoginResponse::class);
     }

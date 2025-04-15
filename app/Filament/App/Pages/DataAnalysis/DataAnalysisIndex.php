@@ -12,6 +12,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Illuminate\Contracts\View\View;
 
 class DataAnalysisIndex extends Page implements HasActions, HasForms
 {
@@ -48,7 +49,7 @@ class DataAnalysisIndex extends Page implements HasActions, HasForms
             ->extraAttributes(['class' => 'buttona']);
     }
 
-    public function getHeader(): ?\Illuminate\Contracts\View\View
+    public function getHeader(): ?View
     {
         return view('components.small-header', [
             'heading' => $this->getHeading(),

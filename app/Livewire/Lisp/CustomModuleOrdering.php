@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
 use App\Services\HelperService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\View\View;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
@@ -38,7 +39,7 @@ class CustomModuleOrdering extends Component
 
     }
 
-    public function render(): \Illuminate\Contracts\View\View|\Illuminate\View\View
+    public function render(): \Illuminate\Contracts\View\View|View
     {
         return view('livewire.lisp.custom-module-ordering');
     }

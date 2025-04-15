@@ -4,26 +4,22 @@ namespace App\Filament\App\Resources\SubmissionResource\Pages;
 
 use App\Filament\App\Resources\SubmissionResource;
 use Filament\Actions;
-use Filament\Actions\Action;
-use Filament\Actions\StaticAction;
-use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class ViewSubmission extends ViewRecord
 {
     protected static string $resource = SubmissionResource::class;
-    protected static string $view = 'filament.app.resources.submission-resource.pages.view-submission';
-    protected ?string $maxContentWidth = '7xl';
 
+    protected static string $view = 'filament.app.resources.submission-resource.pages.view-submission';
+
+    protected ?string $maxContentWidth = '7xl';
 
     /** @var Collection<SurveyRow> */
     public Collection $surveyRows;
@@ -31,35 +27,33 @@ class ViewSubmission extends ViewRecord
     /** @var Collection<Collection> */
     public Collection $surveyRowData;
 
-    /** @return Submission | Model */
     public function getRecord(): Submission|Model
     {
         /** @var Submission $record */
         $record = parent::getRecord();
+
         return $record;
     }
 
-
     public function getHeading(): string
     {
-        return 'Submission: ' . $this->record->odk_id;
+        return 'Submission: '.$this->getRecord()->odk_id;
     }
 
     public function getSubheading(): string|Htmlable|null
     {
-        return $this->record->xlsform_title . ' - Raw Data';
+        return $this->getRecord()->xlsform_title.' - Raw Data';
     }
 
     protected function getHeaderActions(): array
     {
-
 
         return [
             Actions\Action::make('edit_on_central')
                 ->openUrlInNewTab(true)
                 ->label('Edit Submission')
                 ->modalWidth('2xl')
-                ->modalDescription(fn(): HtmlString => new HtmlString('
+                ->modalDescription(fn (): HtmlString => new HtmlString('
 
                 Editing the raw submission is only recommended when you have clear information directly from the enumerator that some specific values are incorrect. In most cases, it is recommended to modify the processed data instead.
                    <br/><br/>
@@ -68,19 +62,17 @@ class ViewSubmission extends ViewRecord
                 Do you wish to continue?
                 '))
                 ->action(function () {
-                    $this->record->editOnEnketo(static::getUrl(['record' => $this->record]));
+                    $this->getRecord()->editOnEnketo(static::getUrl(['record' => $this->getRecord()]));
                 }),
 
         ];
     }
 
-
     public function mount(int|string $record): void
     {
         parent::mount($record);
 
-
-        $this->surveyRows = $this->record
+        $this->surveyRows = $this->getRecord()
             ->xlsformVersion
             ->xlsform
             ->surveyRows()
@@ -90,13 +82,13 @@ class ViewSubmission extends ViewRecord
 
         $this->surveyRowData = collect($this->record->content)
             ->map(function ($value, $key) {
-                if (!$value) {
+                if (! $value) {
                     return null;
                 }
 
                 return $this->matchContentToSurveyRow($value, $key);
             })
-            ->filter(fn($value) => !isset($value['type']) || $value['type'] !== 'note');
+            ->filter(fn ($value) => ! isset($value['type']) || $value['type'] !== 'note');
 
     }
 
@@ -105,10 +97,10 @@ class ViewSubmission extends ViewRecord
 
         // ray()->count();
 
-        /** @var SurveyRow $surveyRow */
+        /** @var ?SurveyRow $surveyRow */
         $surveyRow = $this->surveyRows->where('name', $key)->first();
 
-        if (!$surveyRow) {
+        if ($surveyRow === null) {
             // TODO: need to keep survey rows from older versions in the future!
             // Meanwhile, try to guess the type:
 
@@ -120,10 +112,9 @@ class ViewSubmission extends ViewRecord
                 return collect();
             }
 
-
             if (is_array($value)) {
                 return collect($value)
-                    ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
+                    ->map(fn ($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
             }
 
             return collect([
@@ -133,7 +124,6 @@ class ViewSubmission extends ViewRecord
                 'value' => $value,
             ]);
         }
-
 
         // for repeat groups
         if ($surveyRow->type === 'begin repeat' || $surveyRow->type === 'begin_repeat' ||
@@ -151,7 +141,7 @@ class ViewSubmission extends ViewRecord
                     'label' => $surveyRow->defaultLabel?->text,
                 ]);
                 $output[] = collect($repeatInstance)
-                    ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
+                    ->map(fn ($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
             }
 
             return $output;
@@ -165,7 +155,7 @@ class ViewSubmission extends ViewRecord
         if (is_array($value)) {
 
             return collect($value)
-                ->map(fn($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
+                ->map(fn ($innerValue, $innerKey) => $this->matchContentToSurveyRow($innerValue, $innerKey));
         }
 
         // for selects, find the value label
@@ -174,8 +164,7 @@ class ViewSubmission extends ViewRecord
             $choiceListEntries = $surveyRow->choiceList->choiceListEntries;
             $entry = $choiceListEntries->where('name', $value)->first();
 
-            $value = $entry?->defaultLabel?->text ?? $value;
-
+            $value = $entry->defaultLabel->text ?? $value;
 
         }
 
@@ -187,5 +176,4 @@ class ViewSubmission extends ViewRecord
         ]);
 
     }
-
 }

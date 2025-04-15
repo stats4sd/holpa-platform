@@ -6,6 +6,7 @@ use App\Exports\LocalIndicatorXlsformQuestions\CustomIndicatorExport;
 use App\Models\Holpa\LocalIndicator;
 use App\Models\Team;
 use App\Services\HelperService;
+use Exception;
 use Filament\Forms\Components\Actions;
 use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Fieldset;
@@ -94,7 +95,7 @@ class CustomModuleVersions extends Component implements HasForms
         try {
             $handler->processXlsformTemplate($file->getRealPath(), $moduleVersions, 'indicator');
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }
 

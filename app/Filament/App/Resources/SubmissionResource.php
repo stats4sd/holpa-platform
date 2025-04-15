@@ -3,15 +3,10 @@
 namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\SubmissionResource\Pages;
-use App\Filament\App\Resources\SubmissionResource\RelationManagers;
-use App\Models\Submission;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SubmissionResource extends Resource
 {
@@ -59,7 +54,7 @@ class SubmissionResource extends Resource
     {
         return [
             'index' => Pages\ListSubmissions::route('/'),
-            'view' => Pages\ViewSubmission::route('/{record}')
+            'view' => Pages\ViewSubmission::route('/{record}'),
         ];
     }
 }

@@ -88,7 +88,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHe
             throw new Exception("Invalid row type: {$rowData['row_type']}");
         }
 
-        /** @var SurveyRow|ChoiceListEntry $entry */
+        /** @var SurveyRow|ChoiceListEntry $entries */
         $entries = $this->xlsformTemplate->$relationship()->where("$tableName.name", $rowData['name'])->get();
 
         // survey rows within a specific template will be unique by name, except for begin and end group / repeats. Choice List Entries will not be, so we also check the choice_list_id
@@ -117,7 +117,6 @@ class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHe
 
         // Update the template language to mark that it has language strings
 
-        /** @var XlsformModuleVersion $moduleVersion */
         $entries->first()
             ->xlsformModuleVersion
             ->locales()

@@ -19,12 +19,12 @@ class SurveyDashboard extends Page
 
     protected static ?string $title = 'Holpa Survey Dashboard'; // set to empty because the dashboard has a custom header
 
+    public Team $team;
+
     public function getHeader(): ?View
     {
         return view('components.survey-dashboard-header');
     }
-
-    public Team $team;
 
     public function mount(): void
     {

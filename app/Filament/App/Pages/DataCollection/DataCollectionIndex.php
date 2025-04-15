@@ -7,6 +7,7 @@ use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Illuminate\Contracts\View\View;
 
 class DataCollectionIndex extends Page
 {
@@ -29,7 +30,7 @@ class DataCollectionIndex extends Page
         ];
     }
 
-    public function getHeader(): ?\Illuminate\Contracts\View\View
+    public function getHeader(): ?View
     {
         return view('components.small-header', [
             'heading' => $this->getHeading(),

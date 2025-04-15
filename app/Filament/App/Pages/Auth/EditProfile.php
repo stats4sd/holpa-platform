@@ -44,7 +44,7 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
                     ->operation('edit')
                     ->model($this->getUser())
                     ->statePath('data')
-                    ->inlineLabel(!static::isSimple()),
+                    ->inlineLabel(! static::isSimple()),
             ),
         ];
     }
@@ -82,7 +82,6 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
             ->dehydrated(false);
     }
 
-
     protected function mutateFormDataBeforeSave(array $data): array
     {
 
@@ -117,6 +116,7 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
             }
 
         }
+
         return $record;
 
     }

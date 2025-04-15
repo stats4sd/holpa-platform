@@ -4,8 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -18,9 +16,9 @@ class XlsformDraftWasDeployed implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public int $xlsformId) //passing xlsform as the serialised xlsform is large (it includes the full schema as json... maybe it shouldn't )
+    public function __construct(public int $xlsformId) // passing xlsform as the serialised xlsform is large (it includes the full schema as json... maybe it shouldn't )
     {
-        ray('boo ' . $xlsformId);
+        ray('boo '.$xlsformId);
     }
 
     /**

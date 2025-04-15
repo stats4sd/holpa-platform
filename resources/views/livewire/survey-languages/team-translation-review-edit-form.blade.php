@@ -7,5 +7,5 @@
             <button class="buttona" wire:click="duplicate">Duplicate</button>
             <button class="buttona" wire:click="submit">Submit</button>
         </div>
-    </form>
+
 </div>

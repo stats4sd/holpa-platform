@@ -36,5 +36,5 @@
             {{ $this->markCompleteAction }}
         @endif
     </div>
-
+</div>
 </x-filament-panels::page>

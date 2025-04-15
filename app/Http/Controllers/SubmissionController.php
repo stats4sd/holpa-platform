@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Dataset;
-use Carbon\Carbon;
 use App\Models\SampleFrame\Farm;
-use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
+use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
@@ -36,7 +36,6 @@ class SubmissionController extends Controller
             static::processFieldworkSubmission($submission);
         }
 
-
         // TODO: farms table, update column household_form_completed, fieldwork_form_completed
 
         // custom handling to create new locations
@@ -53,12 +52,12 @@ class SubmissionController extends Controller
 
         // create records from nested repeat groups for seasonal_worker_seasons
 
-        $permanentWorkersEntities = $submission->entities()->whereHas('dataset', fn($query) => $query->where('name', 'Permanent Workers'))
+        $permanentWorkersEntities = $submission->entities()->whereHas('dataset', fn ($query) => $query->where('name', 'Permanent Workers'))
             ->get()
             ->each(function (Entity $entity) {
-               // harmonise variable names from "perm_labourer_" to "perm_labour_"
-                foreach($entity->values as $value) {
-                    if(Str::contains($value->dataset_variable_name, 'perm_labourer_')) {
+                // harmonise variable names from "perm_labourer_" to "perm_labour_"
+                foreach ($entity->values as $value) {
+                    if (Str::contains($value->dataset_variable_name, 'perm_labourer_')) {
                         $newKey = Str::replace('perm_labourer_', 'perm_labour_', $value->dataset_variable_name);
                         $value->dataset_variable_name = $newKey;
                         $value->save();
@@ -74,7 +73,6 @@ class SubmissionController extends Controller
         $farmDataEntity->addChildEntities(SubmissionController::handleProductsData($submission), $farmProductsDataset);
         $farmDataEntity->addChildEntities(SubmissionController::handleOtherProductData($submission), $farmProductsDataset);
 
-
         // handle multi-selects for new / updated data
 
     }
@@ -84,9 +82,7 @@ class SubmissionController extends Controller
         //
     }
 
-
     // ******************** //
-
 
     // custom handling for irrigation data
     // to fill in irrigation percentage for 12 months in farm_survey_data record
@@ -94,20 +90,19 @@ class SubmissionController extends Controller
     public static function getIrrigationData(Submission $submission): Collection
     {
         // existence check for irrigation data in submission content
-        if (!isset($submission->content['survey']['water']['irrigation_season_repeat'])) {
+        if (! isset($submission->content['survey']['water']['irrigation_season_repeat'])) {
             return collect();
         }
 
         // initialise irrigation result, assume zero percentage irrigation for all months at the beginning
-        $irrigationValues = new Collection();
+        $irrigationValues = new Collection;
 
         for ($i = 1; $i <= 12; $i++) {
-            $irrigationValues['irrigation_percentage_month_' . $i] = EntityValue::make([
-                'dataset_variable_name' => 'irrigation_percentage_month_' . $i,
+            $irrigationValues['irrigation_percentage_month_'.$i] = EntityValue::make([
+                'dataset_variable_name' => 'irrigation_percentage_month_'.$i,
                 'value' => 0,
             ]);
         }
-
 
         // get irrigation data from submission JSON content
         $irrigationRepeats = $submission->content['survey']['water']['irrigation_season_repeat'];
@@ -117,12 +112,9 @@ class SubmissionController extends Controller
             $irrigationValues = SubmissionController::prepareIrrigationData($irrigationValues, $irrigationRepeat);
         }
 
-
         return $irrigationValues->values();
 
-
     }
-
 
     /** @return Collection<EntityValue> */
     public static function prepareIrrigationData(Collection $irrigationValues, array $irrigation): Collection
@@ -130,29 +122,22 @@ class SubmissionController extends Controller
         $irrigationPercentage = $irrigation['irrigation_percentage'];
 
         // do nothing if irrigation_percentage is null or "null"
-        if ($irrigationPercentage == null || $irrigationPercentage == "null") {
+        if ($irrigationPercentage == null || $irrigationPercentage == 'null') {
             // ray('irrigation_percentage is null, do nothing');
-            return $irrigationResult;
+            return $irrigationValues;
         }
 
         $irrigationMonths = str_getcsv($irrigation['irrigation_months'], ' ');
 
         foreach ($irrigationMonths as $irrigationMonth) {
             // if a month is selected multiple times, take the higher value.
-            if ($irrigationPercentage > $irrigationValues['irrigation_percentage_month_' . $irrigationMonth]['value']) {
+            if ($irrigationPercentage > $irrigationValues['irrigation_percentage_month_'.$irrigationMonth]['value']) {
 
-                $irrigationValues['irrigation_percentage_month_' . $irrigationMonth]['value'] = $irrigationPercentage;
+                $irrigationValues['irrigation_percentage_month_'.$irrigationMonth]['value'] = $irrigationPercentage;
             }
         }
 
         return $irrigationValues;
-    }
-
-    // ******************** //
-    public static function handlePermanentWorkersData(Submission $submission): Collection
-    {
-        if(!isset($submission->content['survey']['labour']['household_mm_labour']['permanent_workers'])) {
-        }
     }
 
 
@@ -165,15 +150,14 @@ class SubmissionController extends Controller
     {
 
         // existence check for nested repeat group data in submission content
-        if (!isset($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])) {
+        if (! isset($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])) {
             return collect();
         }
-
 
         return collect($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])
             ->map(function (array $seasonalWorker): ?Collection {
 
-                if (!isset($seasonalWorker['seasonal_workers_s'])) {
+                if (! isset($seasonalWorker['seasonal_workers_s'])) {
                     return null;
                 }
 
@@ -190,7 +174,6 @@ class SubmissionController extends Controller
             ->filter()
             ->flatten(1);
 
-
     }
 
     // ******************** //
@@ -203,13 +186,13 @@ class SubmissionController extends Controller
     {
 
         // existence check for nested repeat group data in submission content
-        if (!isset($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])) {
+        if (! isset($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])) {
             return collect();
         }
 
         return collect($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])
             ->map(function (array $seasonalLabour): ?Collection {
-                if (!isset($seasonalLabour['seasonal_labourers_s'])) {
+                if (! isset($seasonalLabour['seasonal_labourers_s'])) {
                     return null;
                 }
 
@@ -237,17 +220,17 @@ class SubmissionController extends Controller
             ->flatten(1);
     }
 
-
     // custom handling for products data
     public static function handleProductsData(Submission $submission): Collection
     {
 
         // get farm_products
-        if (!isset($submission->content['survey']['farm_characteristics']['farm_products'])) {
+        if (! isset($submission->content['survey']['farm_characteristics']['farm_products'])) {
             return collect();
         }
 
         $farmProductsList = $submission->content['survey']['farm_characteristics']['farm_products'];
+
         // split farm products, handle them one by one
         return collect(str_getcsv($farmProductsList, ' '))
             ->map(function (string $farmProduct) use ($submission): ?array {
@@ -269,12 +252,12 @@ class SubmissionController extends Controller
                 ];
 
                 foreach ($useData as $key => $value) {
-                    $newKey = Str::replace($farmProduct . '_', '', $key);
+                    $newKey = Str::replace($farmProduct.'_', '', $key);
                     $result[$newKey] = $value;
                 }
 
                 foreach ($salesData as $key => $value) {
-                    $newKey = Str::replace($farmProduct . '_', '', $key);
+                    $newKey = Str::replace($farmProduct.'_', '', $key);
                     $result[$newKey] = $value;
                 }
 
@@ -285,12 +268,12 @@ class SubmissionController extends Controller
 
     public static function handleOtherProductData(Submission $submission): Collection
     {
-        if (!isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
+        if (! isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
             return collect();
         }
 
         return collect($submission->content['survey']['farm_characteristics']['other_product_use_sales'])
-            ->map(function (array $otherProduct) use ($submission): ?array {
+            ->map(function (array $otherProduct): ?array {
 
                 // name is included in the other_product_use_sales repeat group, so we don't need to set it.
                 $result = [];
@@ -299,15 +282,15 @@ class SubmissionController extends Controller
                     $newKey = Str::replace('other_prod_', '', $key);
                     $result[$newKey] = $value;
                 }
+
                 return $result;
             })
             ->filter();
     }
 
-
-// custom handling for location
-// to create new locations
-// TODO: this code segment is tested with location selection test form, not yet tested with Fieldwork form and Household form
+    // custom handling for location
+    // to create new locations
+    // TODO: this code segment is tested with location selection test form, not yet tested with Fieldwork form and Household form
     public static function handleLocationData(Submission $submission): void
     {
         // find owner (team) of this submission
@@ -347,7 +330,6 @@ class SubmissionController extends Controller
             $parentLocationId = $parentLocation->id;
         }
 
-
         // get farm details
         $rootSection = $submission->content['location'];
 
@@ -367,13 +349,12 @@ class SubmissionController extends Controller
                     'location_id' => $parentLocationId,
                     // there is no team_code in location selection test ODK form, use a timestamp as a unique id temporary
                     // TODO: get team_code from ODK submission content
-                    'team_code' => 'C' . Carbon::now()->getTimestampMs(),
+                    'team_code' => 'C'.Carbon::now()->getTimestampMs(),
                     'identifiers' => $identifiers,
                 ]);
             }
         }
     }
-
 
     public static function prepareNewRecordData($items, $columnNames): array
     {
@@ -387,6 +368,4 @@ class SubmissionController extends Controller
 
         return $result;
     }
-
-
 }

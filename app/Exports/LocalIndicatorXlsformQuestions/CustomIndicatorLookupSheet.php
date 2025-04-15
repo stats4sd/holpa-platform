@@ -2,13 +2,14 @@
 
 namespace App\Exports\LocalIndicatorXlsformQuestions;
 
+use App\Models\Team;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
 class CustomIndicatorLookupSheet implements FromCollection, WithHeadings, WithTitle
 {
-    public function __construct(public \App\Models\Team $team) {}
+    public function __construct(public Team $team) {}
 
     public function headings(): array
     {

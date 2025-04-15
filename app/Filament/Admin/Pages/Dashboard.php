@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Pages;
 use App\Filament\Admin\Widgets\DataCollectedWidget;
 use App\Filament\Admin\Widgets\RegistrationsWidget;
 use Filament\Pages\Page;
+use Illuminate\Contracts\View\View;
 
 class Dashboard extends Page
 {
@@ -38,7 +39,7 @@ class Dashboard extends Page
         ];
     }
 
-    public function getHeader(): ?\Illuminate\Contracts\View\View
+    public function getHeader(): ?View
     {
         return view('components.custom-header', [
             'heading' => $this->getHeading(),

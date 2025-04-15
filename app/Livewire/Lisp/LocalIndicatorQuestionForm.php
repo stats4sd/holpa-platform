@@ -2,42 +2,42 @@
 
 namespace App\Livewire\Lisp;
 
-use Filament\Forms\Get;
-use Livewire\Component;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use App\Services\HelperService;
-use Awcodes\TableRepeater\Header;
-use Filament\Tables\Actions\Action;
 use App\Models\Holpa\LocalIndicator;
-use Filament\Support\Enums\MaxWidth;
+use App\Services\HelperService;
+use Awcodes\TableRepeater\Components\TableRepeater;
+use Awcodes\TableRepeater\Header;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Components\Fieldset;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Contracts\HasTable;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Support\Enums\MaxWidth;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
-use Filament\Actions\Contracts\HasActions;
-use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
-use Awcodes\TableRepeater\Components\TableRepeater;
-use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 
-class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable, HasActions
+class LocalIndicatorQuestionForm extends Component implements HasActions, HasForms, HasTable
 {
-    use InteractsWithTable;
-    use InteractsWithForms;
     use InteractsWithActions;
     use InteractsWithForms;
+    use InteractsWithForms;
+    use InteractsWithTable;
 
     public LocalIndicator $localIndicator;
 
@@ -57,12 +57,10 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
         $this->localIndicator->xlsformModuleVersion()->associate($this->xlsformModuleVersion);
         $this->localIndicator->save();
 
-
         $this->xlsformModuleVersion->load(['surveyRows.languageStrings', 'surveyRows.choiceList.choiceListEntries.languageStrings']);
 
         $this->form->fill($this->xlsformModuleVersion->toArray());
     }
-
 
     // show questions in a table for better readability
     public function table(Table $table): Table
@@ -71,7 +69,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
 
         $choiceListHeaders = $locales->map(function (Locale $locale) {
             return [
-                Header::make('label_' . $locale->id)->label('Label - ' . $locale->language_label),
+                Header::make('label_'.$locale->id)->label('Label - '.$locale->language_label),
             ];
         })->flatten()->toArray();
 
@@ -99,10 +97,9 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
             ];
         })->toArray();
 
-
         return $table
             ->query(
-                fn() => SurveyRow::query()
+                fn () => SurveyRow::query()
                     ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id)
                     // sort record by row_number, to reflect the user defined ordering by drag and drop
                     ->orderBy('row_number'),
@@ -152,7 +149,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                                 ])->live()
                                     ->required(),
                                 TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
+                                    ->dehydrateStateUsing(fn ($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
@@ -168,7 +165,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -182,11 +179,11 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ])
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -230,7 +227,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     // fill the form with existing data
                     // Question: why the changes of type and name cannot be saved into survey_rows record?
-                    ->fillForm(fn(SurveyRow $record): array => [
+                    ->fillForm(fn (SurveyRow $record): array => [
                         'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
                         'id' => $record->id,
                         'type' => $record->type,
@@ -255,7 +252,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                                 ])->live()
                                     ->required(),
                                 TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
+                                    ->dehydrateStateUsing(fn ($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
@@ -271,7 +268,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -285,11 +282,11 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ])
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -328,7 +325,6 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
 
                         $surveyRow->save();
                     }),
-
 
                 // add "DELETE QUESTION" button in table row instead of inside modal popup
                 DeleteAction::make()
@@ -374,7 +370,6 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
             ];
         })->toArray();
 
-
         // issues found in the original form during testing:
         // 1. when create a new question, choice_lists.list_name is always "_choices". list_name is constructed when name is empty at the very beginning.
         // 2. choice_list_entries records not saved after saving a newly created question
@@ -390,12 +385,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
             ->schema([
                 Repeater::make('surveyRows')
                     ->relationship('surveyRows')
-                    ->deleteAction(fn($action) => $action->button()->label('Delete Question'))
+                    ->deleteAction(fn ($action) => $action->button()->label('Delete Question'))
                     ->reorderableWithDragAndDrop()
-                    ->reorderAction(fn($action) => $action->button()->label('Drag to Reorder Questions'))
+                    ->reorderAction(fn ($action) => $action->button()->label('Drag to Reorder Questions'))
                     ->addActionLabel('Add Question')
                     ->label('')
-                    ->itemLabel(fn(array $state) => $state['name'] ?? 'New Question')
+                    ->itemLabel(fn (array $state) => $state['name'] ?? 'New Question')
                     ->orderColumn('row_number')
                     ->schema([
                         Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
@@ -431,7 +426,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -440,7 +435,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                         Fieldset::make('Choice List')
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
 
@@ -453,7 +448,7 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                                 // TODO: change list_name from [name]_choices to [survey_rows.id]_[name]_choices
 
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
 
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
@@ -488,13 +483,12 @@ class LocalIndicatorQuestionForm extends Component implements HasForms, HasTable
                             ]),
 
                     ]),
-            ])
-        ;
+            ]);
     }
 
     public function render()
     {
-         return view('livewire.lisp.local-indicator-question-form');
+        return view('livewire.lisp.local-indicator-question-form');
     }
 
     public function saveFormData()

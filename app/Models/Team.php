@@ -6,23 +6,22 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Stats4sd\FilamentOdkLink\Models\Country;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasXlsforms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
 
-class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
+class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 {
     use HasXlsforms;
     use InteractsWithMedia;
@@ -131,7 +130,6 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
         return $this->hasMany(Import::class);
     }
 
-
     // Customisations
 
     public function dietDiversityModuleVersion(): BelongsTo
@@ -149,6 +147,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                 return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
             }
         }
+
         return null;
     }
 
@@ -162,6 +161,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
                 return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
             }
         }
+
         return null;
     }
 
@@ -222,8 +222,7 @@ class Team extends FilamentTeamManagementTeam implements WithXlsforms, HasMedia
     public function shouldReceiveAllXlsformTemplates(): Attribute
     {
         return new Attribute(
-            get: fn(): bool => true,
+            get: fn (): bool => true,
         );
     }
-
 }

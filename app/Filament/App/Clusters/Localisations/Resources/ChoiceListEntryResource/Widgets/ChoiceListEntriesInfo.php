@@ -17,8 +17,10 @@ class ChoiceListEntriesInfo extends Widget
 
     public string $choiceListName = '';
 
+    /** @var Collection<SurveyRow> $surveyRows */
     public Collection $surveyRows;
 
+    /** @var ChoiceList $choiceList */
     public ChoiceList $choiceList;
 
     public function mount(): void
@@ -43,7 +45,7 @@ class ChoiceListEntriesInfo extends Widget
                 'label' => $surveyRow->languageStrings()
                     ->whereHas('locale', fn (Builder $query) => $query->where('language_id', 41))
                     ->where('language_string_type_id', 1)
-                    ->first()?->text ?? 'tbc',
+                    ->first()->text ?? 'tbc',
             ]);
     }
 }
