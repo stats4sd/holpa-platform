@@ -25,7 +25,7 @@ class SurveyTranslations extends Page
 
     public function getHeader(): ?\Illuminate\Contracts\View\View
     {
-        return view('components.custom-header', [
+        return view('components.small-header', [
             'heading' => $this->getHeading(),
             'subheading' => $this->getSubheading(),
             'actions' => $this->getHeaderActions(),

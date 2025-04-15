@@ -1,11 +1,11 @@
 <div>
 
-<div class="text-lg font-bold text-green pb-4 uppercase">
-      Place custom questions in survey
+    <div class="text-lg font-bold text-green pb-4 uppercase">
+        Place custom questions in survey
     </div>
-        
+
     <div class="text-black pb-4 mb-9">
-    To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
+        To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
     </div>
     <div class="grid grid-cols-2 gap-4">
 
@@ -30,7 +30,9 @@
 
                     @foreach($indicator->xlsformModuleVersion->surveyRows as $surveyRow)
 
-                        <div class="flex items-center indicator_questions">{{ $surveyRow->name }}<br>( {{ $surveyRow->type }} )</div>
+                        <div class="flex items-center indicator_questions">{{ $surveyRow->name }}
+                            <br>( {{ $surveyRow->type }} )
+                        </div>
 
                     @endforeach
 
@@ -45,13 +47,13 @@
         >
             @foreach($xlsforms as $xlsform)
 
-            <span class="text-base font-semibold  ">{{ $xlsform->title }}</span>
+                <span class="text-base font-semibold  ">{{ $xlsform->title }}</span>
 
                 <div x-data
                      x-sortable-target
                      x-on:sorted="$wire.updateOrder($event.detail, '{{ $xlsform->id }}')"
                      class="!mb-8"
-                     
+
                 >
 
                     @foreach($xlsform->xlsformModuleVersions as $xlsformModuleVersion)
@@ -69,7 +71,9 @@
                         >
 
                             @foreach($xlsformModuleVersion->surveyRows as $surveyRow)
-                                <div class="flex items-center indicator_questions">{{ $surveyRow->name }}<br>( {{ $surveyRow->type }} )</div>
+                                <div class="flex items-center indicator_questions">{{ $surveyRow->name }}
+                                    <br>( {{ $surveyRow->type }} )
+                                </div>
                             @endforeach
 
                         </x-filament::section>
@@ -80,7 +84,7 @@
         </div>
 
     </div>
-<div class="w-100 text-center">
-<a class ="buttonb" > Reset all </a>
-</div>
+    <div class="w-100 text-center">
+        <a class="buttonb"> Reset all </a>
+    </div>
 </div>

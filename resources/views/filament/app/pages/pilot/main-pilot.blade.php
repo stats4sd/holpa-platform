@@ -24,13 +24,13 @@
                         <br/><br/>
 
                         When you make changes to the forms on the platform, they are not automatically updated on your device. This is so that you can make changes, test them as
-                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\InitialPilot::getUrl() }}">DRAFT VERSIONS</a> and confirm they are working as expected before updating the versions that your enumerator team will see.
+                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\PlaceAdaptations\InitialPilot::getUrl() }}">DRAFT VERSIONS</a> and confirm they are working as expected before updating the versions that your enumerator team will see.
 
                         <br/><br/>
 
                         If there are changes that can be published, you can do so by clicking the
                         <b>Publish</b> button on the table below. We highly recommend reviewing the forms as DRAFT versions before publishing. You can do so on the
-                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\InitialPilot::getUrl() }}">Initial Pilot Page</a>.
+                        <a class="underline text-blue" href="{{ \App\Filament\App\Pages\PlaceAdaptations\InitialPilot::getUrl() }}">Initial Pilot Page</a>.
 
                     </div>
 

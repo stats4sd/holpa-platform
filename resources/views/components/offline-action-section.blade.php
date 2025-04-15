@@ -12,18 +12,18 @@
         <h3 class="">
             {{ $heading }}
         </h3>
-        
+
         <div class="flex justify-between items-center mt-2   ">
             <!-- Description -->
             <p class="">
                 {!! $description !!}
             </p>
-        </div> 
-    </div> 
+        </div>
+    </div>
     <div style="place-content: center; " class="mx-auto">
         <!-- Button (Right) -->
-        <a href="{{ $url }}" 
-           class="buttonb ml-4">
+        <a href="{{ $url }}"
+           class="buttonb ml-4 text-nowrap">
             {{ $buttonLabel }}
         </a>
         </div>

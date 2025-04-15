@@ -44,29 +44,29 @@
             </div>
             <h3 class="mb-6">Downloads</h3>
             <div>
-                <x-download :url="url('files/HOLPA_indicator_template.xlsx')">
+                <x-download-section :url="url('files/HOLPA_indicator_template.xlsx')">
                     <x-slot:heading>Indicator template</x-slot:heading>
                     <x-slot:description>To create the local indicators and incorporate them into the HOLPA survey,
                         <b>you will need to use this template file.</b> This will ensure the required information for the indicators is included, and you will need to use it to upload your indicators to include in your survey.
                     </x-slot:description>
                     <x-slot:buttonLabel>Download .xlsx</x-slot:buttonLabel>
-                </x-download>
+                </x-download-section>
             </div>
 
             <h3 class="mb-6">Optional workshop supporting materials</h3>
 
             <div>
-                <x-download :url="url('#')">
+                <x-download-section :url="url('#')">
                     <x-slot:heading>Slideshow template</x-slot:heading>
                         <x-slot:description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.</x-slot:description>
                         <x-slot:buttonLabel>Download .xlsx</x-slot:buttonLabel>
-                </x-download>
+                </x-download-section>
 
-                <x-download :url="url('#')">
+                <x-download-section :url="url('#')">
                     <x-slot:heading>Global survey indicators</x-slot:heading>
                         <x-slot:description>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit. Vivamus non urna ac turpis hendrerit tincidunt ut eget risus.</x-slot:description>
                         <x-slot:buttonLabel>Download .xlsx</x-slot:buttonLabel>
-                </x-download>
+                </x-download-section>
             </div>
 
             <div class="flex justify-center my-8">
