@@ -32,7 +32,9 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     use InteractsWithTable;
 
     public Team $team;
+
     public Language $language;
+
     public ?Locale $selectedLocale = null;
 
     public bool $expanded;
@@ -41,7 +43,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     {
         $this->selectedLocale = Locale::find($this->language->pivot->locale_id);
     }
-
 
     public function render(): \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\View|\Illuminate\View\View|null
     {
@@ -52,26 +53,26 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     {
         return $table
             ->relationship(
-                fn() => $this->language
+                fn () => $this->language
                     ->locales()
             )
-            ->recordClasses(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success-row' : '')
+            ->recordClasses(fn (Locale $record) => $record->id === $this->selectedLocale?->id ? 'success-row' : '')
             ->columns([
 
                 // add icon to indicate translation label can be edited
                 TextColumn::make('language_label')->label('Available Translations')
                     // do not show icon for default locale, to indicate it cannot be edited (even it is still clickable...)
-                    ->icon(fn(Locale $record) => $record->is_default == 1 ? '' : 'heroicon-o-pencil-square')
-                    ->iconColor(fn(Locale $record) => $record->is_default == 1 ? 'grey' : 'primary')
+                    ->icon(fn (Locale $record) => $record->is_default == 1 ? '' : 'heroicon-o-pencil-square')
+                    ->iconColor(fn (Locale $record) => $record->is_default == 1 ? 'grey' : 'primary')
                     // show underline when user move mouse over the column, to indicate user can click on it
-                    ->tooltip(fn(Locale $record) => $record->is_default == 1 ? '' : 'Click to update this translation label')
-                    ->extraCellAttributes(fn(Locale $record) => $record->is_default == 1 ? [] : ['class' => 'hover:underline'])
+                    ->tooltip(fn (Locale $record) => $record->is_default == 1 ? '' : 'Click to update this translation label')
+                    ->extraCellAttributes(fn (Locale $record) => $record->is_default == 1 ? [] : ['class' => 'hover:underline'])
                     ->action(
                         Action::make('edit_label')
                             // the disabled() helper function helps to not showing the modal popup for the default locale
-                            ->disabled(fn(Locale $record) => $record->is_default == 1)
+                            ->disabled(fn (Locale $record) => $record->is_default == 1)
 
-                            ->modalHeading(fn(Locale $record) => 'Update Translation Label for ' . $record->description)
+                            ->modalHeading(fn (Locale $record) => 'Update Translation Label for '.$record->description)
                             ->form([
                                 TextInput::make('description')
                                     ->label('Enter a new label for the translation')
@@ -86,7 +87,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                 TextColumn::make('status')->label('Status'),
             ])
             ->paginated(false)
-            ->emptyStateHeading("No translations available.")
+            ->emptyStateHeading('No translations available.')
             ->heading('')
             ->headerActions([
                 Action::make('Add New')
@@ -105,11 +106,11 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             ])
             ->actions([
                 Action::make('Select')
-                ->extraAttributes(['class' => ' mx-auto'])
-                    ->icon(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'heroicon-o-check-circle' : '')
-                    ->color(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'success' : 'primary')
-                    ->label(fn(Locale $record) => $record->id === $this->selectedLocale?->id ? 'Selected' : 'Select')
-                    ->disabled(fn(Locale $record) => $this->selectedLocale?->id === $record->id)
+                    ->extraAttributes(['class' => ' mx-auto'])
+                    ->icon(fn (Locale $record) => $record->id === $this->selectedLocale?->id ? 'heroicon-o-check-circle' : '')
+                    ->color(fn (Locale $record) => $record->id === $this->selectedLocale?->id ? 'success' : 'primary')
+                    ->label(fn (Locale $record) => $record->id === $this->selectedLocale?->id ? 'Selected' : 'Select')
+                    ->disabled(fn (Locale $record) => $this->selectedLocale?->id === $record->id)
                     ->tooltip('Select this translation for your survey')
                     ->action(function (Locale $record) {
                         $record->language->owners()->updateExistingPivot($this->team->id, ['locale_id' => $record->id]);
@@ -120,8 +121,8 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->extraAttributes(['class' => 'ml-2 buttona '])
                     ->color('white')
                     ->label('View / Edit Translation')
-                    ->modalHeading(fn(Locale $record) => 'View / Edit Translation for ' . $record->language_label)
-                    ->modalContent(fn(Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
+                    ->modalHeading(fn (Locale $record) => 'View / Edit Translation for '.$record->language_label)
+                    ->modalContent(fn (Locale $record) => view('team-translation-review', ['locale' => $record, 'team' => $this->team]))
                     ->modalWidth(MaxWidth::SixExtraLarge)
                     ->extraModalWindowAttributes(['class' => 'py-4 px-10'])
                     ->modalSubmitAction(false)
@@ -137,11 +138,10 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     {
         return function (string $attribute, string $value, \Closure $fail) use ($upload, $record, $xlsformTemplate) {
 
-
             $file = collect($upload)->first();
 
             /** @var Collection $rows */
-            $rows = Excel::toCollection((object)[], $file)[0];
+            $rows = Excel::toCollection((object) [], $file)[0];
 
             $headers = $rows->shift();
 
@@ -166,23 +166,22 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             $processor = new XlsformTemplateTranslationsExport($xlsformTemplate, $record);
 
             $templateSurveyRows = $xlsformTemplate->surveyRows
-                ->map(fn(SurveyRow $entry) => $processor->processEntry($entry));
+                ->map(fn (SurveyRow $entry) => $processor->processEntry($entry));
             $templateChoiceListEntries = $xlsformTemplate->choiceListEntries
-                ->map(fn(ChoiceListEntry $entry) => $processor->processEntry($entry));
+                ->map(fn (ChoiceListEntry $entry) => $processor->processEntry($entry));
 
             // make sure all template survey rows are present in the $rows collection
             $missingSurveyRows = $templateSurveyRows
-                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'name'))
-                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
+                ->filter(fn ($entry) => $rows->doesntcontain($entry, '=', 'name'))
+                ->filter(fn ($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
 
             // make sure all template choice list rows are present in the $rows collection
             $missingChoiceListEntries = $templateChoiceListEntries
-                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'name'))
-                ->filter(fn($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
+                ->filter(fn ($entry) => $rows->doesntcontain($entry, '=', 'name'))
+                ->filter(fn ($entry) => $rows->doesntcontain($entry, '=', 'translation_type'));
 
             // TODO: finish validating that all required rows are present;
             // TODO: validate that all translation_types are valid language string types.
-
 
             return true;
         };

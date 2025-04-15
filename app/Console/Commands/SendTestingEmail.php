@@ -16,7 +16,7 @@ class SendTestingEmail extends Command
     {
         $toRecipient = config('mail.to.support');
 
-        Mail::to($toRecipient)->send(new TestingEmail());
+        Mail::to($toRecipient)->send(new TestingEmail);
 
         return self::SUCCESS;
     }

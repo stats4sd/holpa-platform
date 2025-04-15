@@ -13,12 +13,12 @@ use Filament\Notifications\Notification;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
-class LocalIndicators extends Component implements HasForms, HasActions
+class LocalIndicators extends Component implements HasActions, HasForms
 {
     use InteractsWithActions;
     use InteractsWithForms;
 
-    /** @var Collection<LocalIndicator>  */
+    /** @var Collection<LocalIndicator> */
     public Collection $indicators;
 
     public ?LocalIndicator $selectedLocalIndicator = null;

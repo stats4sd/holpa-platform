@@ -4,7 +4,7 @@ namespace App\Filament\Tables\Actions;
 
 use App\Models\Import;
 use App\Models\SampleFrame\Location;
-use App\Models\Team;
+use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
 use Filament\Forms\Components\FileUpload;
@@ -17,7 +17,6 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
-use App\Services\HelperService;
 
 class ImportLocationsAction extends ExcelImportAction
 {
@@ -36,8 +35,6 @@ class ImportLocationsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction ends here...
 
-
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -51,13 +48,13 @@ class ImportLocationsAction extends ExcelImportAction
     {
         return [
             FileUpload::make('upload')
-                ->label(fn($livewire) => str($livewire->getRecord()->name)->plural()->title() . ' ' . 'Excel Data')
+                ->label(fn ($livewire) => str($livewire->getRecord()->name)->plural()->title().' '.'Excel Data')
                 ->disk($this->getDisk())
                 ->columns()
                 ->required()
                 ->live()
                 ->afterStateUpdated(function (?TemporaryUploadedFile $state, Set $set) {
-                    $headings = (new HeadingRowImport())->toArray($state->getRealPath());
+                    $headings = (new HeadingRowImport)->toArray($state->getRealPath());
 
                     // $headings is an array(sheets) of arrays(headers)
                     // We only want the first sheet
@@ -80,13 +77,13 @@ class ImportLocationsAction extends ExcelImportAction
                     $parentQuestions = $parents->reverse()->map(callback: function ($parent) {
                         return collect([
                             Select::make("parent_{$parent->id}_code_column")
-                                ->label(fn($livewire) => "Which column contains the {$parent->name} unique code?")
-                                ->options(fn(Get $get) => $get('header_columns'))
+                                ->label(fn ($livewire) => "Which column contains the {$parent->name} unique code?")
+                                ->options(fn (Get $get) => $get('header_columns'))
                                 ->notIn(['na'])
                                 ->required(),
                             Select::make("parent_{$parent->id}_name_column")
-                                ->label(fn($livewire) => "Which column contains the {$parent->name} name?")
-                                ->options(fn(Get $get) => $get('header_columns'))
+                                ->label(fn ($livewire) => "Which column contains the {$parent->name} name?")
+                                ->options(fn (Get $get) => $get('header_columns'))
                                 ->notIn(['na'])
                                 ->required(),
                         ]);
@@ -94,13 +91,13 @@ class ImportLocationsAction extends ExcelImportAction
 
                     $currentLevelQuestions = collect([
                         Select::make('code_column')
-                            ->label(fn($livewire) => "Which column contains the {$livewire->getRecord()->name} unique code?")
-                            ->options(fn(Get $get) => $get('header_columns'))
+                            ->label(fn ($livewire) => "Which column contains the {$livewire->getRecord()->name} unique code?")
+                            ->options(fn (Get $get) => $get('header_columns'))
                             ->notIn(['na'])
                             ->required(),
                         Select::make('name_column')
-                            ->label(fn($livewire) => "Which column contains the {$livewire->getRecord()->name} name?")
-                            ->options(fn(Get $get) => $get('header_columns'))
+                            ->label(fn ($livewire) => "Which column contains the {$livewire->getRecord()->name} name?")
+                            ->options(fn (Get $get) => $get('header_columns'))
                             ->notIn(['na'])
                             ->required(),
                     ]);
@@ -121,9 +118,9 @@ class ImportLocationsAction extends ExcelImportAction
                 ->default(['na' => '~~upload a file to see the headers~~'])
                 ->live(),
             Hidden::make('level')
-                ->default(fn($livewire) => $livewire->getRecord()),
+                ->default(fn ($livewire) => $livewire->getRecord()),
             Hidden::make('user_id')
-                ->default(fn() => auth()->id()),
+                ->default(fn () => auth()->id()),
             Hidden::make('owner_id')
                 ->default(HelperService::getCurrentOwner()->id),
         ];
@@ -147,7 +144,6 @@ class ImportLocationsAction extends ExcelImportAction
             if ($data['override'] === 'yes') {
                 HelperService::getCurrentOwner()->locations()->delete();
             }
-
 
             $import = Import::create([
                 'team_id' => HelperService::getCurrentOwner()->id,

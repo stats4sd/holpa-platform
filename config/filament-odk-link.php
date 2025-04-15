@@ -13,7 +13,7 @@ return [
          * User can define custom Team model in .env file config item "ODK_TEAM_MODEL"
          */
         'team_model' => env('ODK_TEAM_MODEL', Team::class),
-        'user_model' => env('ODK_USER_MODEL', User::class)
+        'user_model' => env('ODK_USER_MODEL', User::class),
 
     ],
 
@@ -34,7 +34,7 @@ return [
          * If you use a custom installation of ODK Central or Kobotoolbox, it will be the base url to your service.
          */
         'url' => env('ODK_URL', null),
-        'base_endpoint' => env('ODK_URL', '') . '/v1',
+        'base_endpoint' => env('ODK_URL', '').'/v1',
 
         'platform_project_id' => env('ODK_PLATFORM_PROJECT_ID', null),
 

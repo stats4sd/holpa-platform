@@ -23,6 +23,7 @@ class DietDiversity extends Page implements HasForms, HasTable
     use InteractsWithTable;
 
     public ?array $data = [];
+
     public Team $team;
 
     protected static bool $shouldRegisterNavigation = false;
@@ -49,7 +50,7 @@ class DietDiversity extends Page implements HasForms, HasTable
         // If the team's `diet_diversity_module_version_id` is null, set the default using the team's country
         if (is_null($this->team->diet_diversity_module_version_id)) {
             $this->team->diet_diversity_module_version_id = XlsformModuleVersion::query()
-                ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
                 ->where('country_id', $this->team->country_id)
                 ->value('id');
 
@@ -65,11 +66,11 @@ class DietDiversity extends Page implements HasForms, HasTable
                     ->relationship(
                         'dietDiversityModuleVersion',
                         'name',
-                        fn($query) => $query
+                        fn ($query) => $query
                             ->where('is_default', 0)
-                            ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                            ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
                     )
-                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData()),
+                    ->afterStateUpdated(fn (self $livewire) => $livewire->saveData()),
             ]);
     }
 
@@ -93,13 +94,13 @@ class DietDiversity extends Page implements HasForms, HasTable
         } else {
             //  default to the 'default' diet diversity module version;
             $moduleVersion = XlsformModuleVersion::where('is_default', 1)
-                ->whereHas('xlsformModule', fn($query) => $query->where('name', 'diet_quality'))
+                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
                 ->first();
         }
 
         return $table
             ->query(
-                fn() => $moduleVersion->surveyRows()
+                fn () => $moduleVersion->surveyRows()
             )
             ->columns([
                 TextColumn::make('type')->label('Question Type'),

@@ -6,7 +6,6 @@ use App\Models\Team;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\RegistersEventListeners;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -17,12 +16,9 @@ use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTitle, WithStyles, ShouldAutoSize, WithEvents
+class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
 {
-
-    public function __construct(public Team $team)
-    {
-    }
+    public function __construct(public Team $team) {}
 
     public function collection(): Enumerable|Collection
     {
@@ -99,7 +95,6 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
         ];
     }
 
-
     public function registerEvents(): array
     {
         return [
@@ -110,7 +105,7 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
 
                 $sheet = $event->sheet->getDelegate();
 
-                $indicatorLookupList = new DataValidation();
+                $indicatorLookupList = new DataValidation;
                 $indicatorLookupList->setType(DataValidation::TYPE_LIST);
                 $indicatorLookupList->setErrorStyle(DataValidation::STYLE_STOP);
                 $indicatorLookupList->setAllowBlank(false);
@@ -120,11 +115,10 @@ class CustomIndicatorSurveySheet implements FromCollection, WithHeadings, WithTi
                 $indicatorLookupList->setErrorTitle('Input error');
                 $indicatorLookupList->setError('Please select an indicator from the list.');
                 $indicatorLookupList->setPromptTitle('Pick an indicator');
-                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$' . $count + 3);
+                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$'.$count + 3);
 
                 $sheet->setDataValidation('A:A', $indicatorLookupList);
             },
         ];
     }
-
 }

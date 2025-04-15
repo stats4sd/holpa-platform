@@ -26,16 +26,17 @@ class ListChoiceListEntries extends ListRecords
 
     #[Url]
     public string $choiceListName = '';
+
     public ChoiceList $choiceList;
 
     public function mount(): void
     {
         parent::mount();
 
-        if(!$this->choiceListName) {
+        if (! $this->choiceListName) {
             $this->choiceList = ChoiceList::where('is_localisable', true)
-            ->where('has_custom_handling', false)
-            ->first();
+                ->where('has_custom_handling', false)
+                ->first();
 
             $this->choiceListName = $this->choiceList->list_name;
         } else {
@@ -55,19 +56,19 @@ class ListChoiceListEntries extends ListRecords
     public function table(Table $table): Table
     {
         return parent::table($table)
-            ->modifyQueryUsing(fn(Builder $query) => $query
-                ->whereHas('choiceList', fn(Builder $query) => $query
+            ->modifyQueryUsing(fn (Builder $query) => $query
+                ->whereHas('choiceList', fn (Builder $query) => $query
                     ->where('choice_lists.list_name', $this->choiceListName)
                 )
             )
             ->actions([
-                EditAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry)
-                ->form(fn(Form $form) => $form->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
-                DeleteAction::make()->visible(fn(ChoiceListEntry $record) => !$record->is_global_entry),
+                EditAction::make()->visible(fn (ChoiceListEntry $record) => ! $record->is_global_entry)
+                    ->form(fn (Form $form) => $form->schema(fn () => $this->getResource()::getFormSchema($this->choiceList))),
+                DeleteAction::make()->visible(fn (ChoiceListEntry $record) => ! $record->is_global_entry),
                 \Filament\Tables\Actions\Action::make('Toggle Removed')
-                    ->label(fn(ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
-                    ->visible(fn(ChoiceListEntry $record) => $record->is_global_entry)
-                    ->action(fn(ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getCurrentOwner())),
+                    ->label(fn (ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
+                    ->visible(fn (ChoiceListEntry $record) => $record->is_global_entry)
+                    ->action(fn (ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getCurrentOwner())),
             ]);
     }
 
@@ -82,19 +83,19 @@ class ListChoiceListEntries extends ListRecords
     {
         return [
             CreateAction::make()
-                ->label('Add new ' . Str::singular($this->choiceListName))
-                ->form(fn(Form $form) => $form
-                    ->schema(fn() => $this->getResource()::getFormSchema($this->choiceList))),
+                ->label('Add new '.Str::singular($this->choiceListName))
+                ->form(fn (Form $form) => $form
+                    ->schema(fn () => $this->getResource()::getFormSchema($this->choiceList))),
 
-//            Action::make('Mark as Complete')
-//                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))
-//                ->visible(fn() => !HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
-//                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
-//
-//            Action::make('Mark as Incomplete')
-//                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsIncomplete($this->choiceList))
-//                ->visible(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
-//                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
+            //            Action::make('Mark as Complete')
+            //                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))
+            //                ->visible(fn() => !HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
+            //                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
+            //
+            //            Action::make('Mark as Incomplete')
+            //                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsIncomplete($this->choiceList))
+            //                ->visible(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($this->choiceList))
+            //                ->after(fn() => $this->redirect($this->getResource()::getUrl('index', ['choiceListName' => $this->choiceListName]))),
 
         ];
     }

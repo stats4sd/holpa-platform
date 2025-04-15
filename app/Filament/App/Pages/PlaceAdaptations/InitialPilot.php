@@ -24,20 +24,22 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
+class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
 {
-    use InteractsWithTable;
+    use InteractsWithActions;
     use InteractsWithForms;
     use InteractsWithInfolists;
-    use InteractsWithActions;
+    use InteractsWithTable;
 
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.place-adaptations.initial-pilot';
-    protected ?string $heading = "Survey Testing - Initial Pilot";
-    protected ?string $subheading = "Test with local researchers and practioners to review the initial localisations";
 
-        public function getBreadcrumbs(): array
+    protected ?string $heading = 'Survey Testing - Initial Pilot';
+
+    protected ?string $subheading = 'Test with local researchers and practioners to review the initial localisations';
+
+    public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
@@ -69,30 +71,29 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
             ->url(SubmissionResource::getUrl('index'));
     }
 
-
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn(): HasMany => HelperService::getCurrentOwner()->xlsforms())
+            ->relationship(fn (): HasMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([
                 TextColumn::make('title')
                     ->grow(false),
                 TextColumn::make('status')
-                    ->color(fn($state) => match ($state) {
+                    ->color(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'danger',
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->iconColor(fn($state) => match ($state) {
+                    ->iconColor(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'danger',
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->icon(fn($state) => match ($state) {
+                    ->icon(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'heroicon-o-exclamation-circle',
                         'LIVE' => 'heroicon-o-check',
                         'DRAFT' => 'heroicon-o-pencil',
@@ -111,7 +112,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
             ])
             ->actions([
                 TableAction::make('update_published_version')
-                    //->visible(fn(Xlsform $record) => !$record->has_latest_template)
+                    // ->visible(fn(Xlsform $record) => !$record->has_latest_template)
                     ->label('Deploy Updates')
                     ->action(function (Xlsform $record) {
 
@@ -130,7 +131,6 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
                     ->label('Manually Get Submissions')
                     ->action(function (Xlsform $record) {
                         $submissionCount = $record->getSubmissions();
-
 
                         $record->refresh();
                         Notification::make('update_success')

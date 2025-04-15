@@ -17,18 +17,21 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
-class TimeFrame extends Page implements HasTable, HasForms
+class TimeFrame extends Page implements HasForms, HasTable
 {
-    use InteractsWithTable;
     use InteractsWithForms;
+    use InteractsWithTable;
 
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.place-adaptations.time-frame';
-    protected ?string $heading = "Survey Testing - Adapt Time Frame";
-    protected ?string $subheading = "Specify the time frame for your survey";
+
+    protected ?string $heading = 'Survey Testing - Adapt Time Frame';
+
+    protected ?string $subheading = 'Specify the time frame for your survey';
 
     public ?array $data = [];
+
     public Team $team;
 
     public function getBreadcrumbs(): array
@@ -54,7 +57,7 @@ class TimeFrame extends Page implements HasTable, HasForms
             ->schema([
                 TextInput::make('time_frame')
                     ->live()
-                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData()),
+                    ->afterStateUpdated(fn (self $livewire) => $livewire->saveData()),
             ]);
     }
 
@@ -72,12 +75,11 @@ class TimeFrame extends Page implements HasTable, HasForms
     public function table(Table $table): Table
     {
 
-
         return $table
             ->query(
-                fn() => SurveyRow::query()
-                    ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
-                    ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
+                fn () => SurveyRow::query()
+                    ->whereHas('xlsformModuleVersion', fn ($query) => $query->where('is_default', 1))
+                    ->whereHas('languageStrings', fn ($query) => $query->whereLike('text', '%${time_frame}%'))
             )
             ->columns([
                 TextColumn::make('name')->label('Name'),

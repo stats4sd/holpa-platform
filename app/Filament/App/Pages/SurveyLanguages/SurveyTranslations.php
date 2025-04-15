@@ -22,7 +22,7 @@ class SurveyTranslations extends Page
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public Team $team;
-    
+
     public function getHeader(): ?\Illuminate\Contracts\View\View
     {
         return view('components.custom-header', [

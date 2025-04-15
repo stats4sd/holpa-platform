@@ -2,26 +2,25 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Forms\Components\Toggle;
-use App\Models\SampleFrame\Farm;
-use Filament\Resources\Resource;
-use App\Models\SampleFrame\LocationLevel;
-use Filament\Http\Middleware\Authenticate;
 use App\Filament\App\Clusters\LocationLevels;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
-use ValentinMorice\FilamentJsonColumn\FilamentJsonColumn;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
+use App\Models\SampleFrame\Farm;
+use App\Models\SampleFrame\LocationLevel;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class FarmResource extends Resource
 {
     protected static ?string $model = Farm::class;
 
     protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $cluster = LocationLevels::class;
+
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
     public static function form(Form $form): Form
@@ -35,7 +34,7 @@ class FarmResource extends Resource
             ->schema([
 
                 Forms\Components\Select::make('location_id')
-                    ->label('Select the ' . $locationLevelWithFarms->name . ' for this farm')
+                    ->label('Select the '.$locationLevelWithFarms->name.' for this farm')
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
 
                 Forms\Components\TextInput::make('team_code')
@@ -84,26 +83,26 @@ class FarmResource extends Resource
     {
         $farms = Farm::all()->where('owner_id', HelperService::getCurrentOwner()->id);
 
-        $locationLevelColumns = $farms->map(fn(Farm $farm) => $farm->location->locationLevel)
+        $locationLevelColumns = $farms->map(fn (Farm $farm) => $farm->location->locationLevel)
             ->unique()
             ->values()
             ->map(
-                fn(LocationLevel $locationLevel) => Tables\Columns\TextColumn::make("location_{$locationLevel->id}")
-                    ->getStateUsing(fn($record) => $record->location->location_level_id === $locationLevel->id ? $record->location->name : '')
+                fn (LocationLevel $locationLevel) => Tables\Columns\TextColumn::make("location_{$locationLevel->id}")
+                    ->getStateUsing(fn ($record) => $record->location->location_level_id === $locationLevel->id ? $record->location->name : '')
                     ->label($locationLevel->name)
                     ->sortable()
                     ->searchable()
             );
 
-        $identifiers = $farms->map(fn(Farm $farm) => $farm->identifiers?->keys())
+        $identifiers = $farms->map(fn (Farm $farm) => $farm->identifiers?->keys())
             ->flatten()->unique()->values();
 
-        $idColumns = $identifiers->map(fn($identifier) => Tables\Columns\TextColumn::make("identifiers.{$identifier}")->label(ucfirst($identifier))->sortable()->searchable());
+        $idColumns = $identifiers->map(fn ($identifier) => Tables\Columns\TextColumn::make("identifiers.{$identifier}")->label(ucfirst($identifier))->sortable()->searchable());
 
-        $properties = $farms->map(fn(Farm $farm) => $farm->properties?->keys())
+        $properties = $farms->map(fn (Farm $farm) => $farm->properties?->keys())
             ->flatten()->unique()->values();
 
-        $propertyColumns = $properties->map(fn($property) => Tables\Columns\TextColumn::make("properties.{$property}")->label(ucfirst($property))->sortable()->searchable());
+        $propertyColumns = $properties->map(fn ($property) => Tables\Columns\TextColumn::make("properties.{$property}")->label(ucfirst($property))->sortable()->searchable());
 
         return $table
             ->columns([

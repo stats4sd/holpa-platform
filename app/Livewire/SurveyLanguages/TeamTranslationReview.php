@@ -18,12 +18,12 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 
 class TeamTranslationReview extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     public Team $team;
-    public Locale $locale;
 
+    public Locale $locale;
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null
     {
@@ -38,7 +38,7 @@ class TeamTranslationReview extends Component implements HasActions, HasForms
 
                 $xlsformTemplate = $this->team->xlsforms->first()->xlsformTemplate; // Hardcoded assumption for now. TODO: Update!
 
-                return Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), 'HOLPA_household_translations - ' . $this->locale->language_label . '.xlsx');
+                return Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), 'HOLPA_household_translations - '.$this->locale->language_label.'.xlsx');
 
             });
     }
@@ -51,7 +51,7 @@ class TeamTranslationReview extends Component implements HasActions, HasForms
 
                 $xlsformTemplate = $this->team->xlsforms->last()->xlsformTemplate; // Hardcoded assumption for now. TODO: Update!
 
-                return Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), 'HOLPA_household_translations - ' . $this->locale->language_label . '.xlsx');
+                return Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), 'HOLPA_household_translations - '.$this->locale->language_label.'.xlsx');
 
             });
     }

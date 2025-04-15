@@ -28,6 +28,7 @@ class CustomModuleVersions extends Component implements HasForms
     use InteractsWithForms;
 
     public Team $team;
+
     public ?array $data;
 
     /** @var Collection<LocalIndicator> */
@@ -63,12 +64,12 @@ class CustomModuleVersions extends Component implements HasForms
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
-                            ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
+                            ->helperText(fn (self $livewire) => new HtmlString('<span class="text-red-700">'.collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>').'</span>')),
                         Actions::make([
                             Action::make('save_file')
                                 ->label('Save File')
-            ->extraAttributes(['class' => 'buttona'])
-                                ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file'))),
+                                ->extraAttributes(['class' => 'buttona'])
+                                ->action(fn (Get $get) => $this->uploadFile($get('custom_questions_file'))),
                         ]),
                     ]),
             ]);
@@ -77,17 +78,18 @@ class CustomModuleVersions extends Component implements HasForms
     public function uploadFile($customQuestionList)
     {
         // Check that a file is uploaded
-        if (empty($customQuestionList) || !is_array($customQuestionList)) {
+        if (empty($customQuestionList) || ! is_array($customQuestionList)) {
             $this->addError('local_indicator_list', 'Please upload a file before proceeding.');
+
             return;
         }
 
         $file = reset($customQuestionList);
 
         // follow process for importing XlsformTemplates
-        $handler = new HandleXlsformTemplateAdded();
+        $handler = new HandleXlsformTemplateAdded;
 
-        $moduleVersions = $this->unmatchedLocalIndicators->map(fn(LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
+        $moduleVersions = $this->unmatchedLocalIndicators->map(fn (LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
 
         try {
             $handler->processXlsformTemplate($file->getRealPath(), $moduleVersions, 'indicator');

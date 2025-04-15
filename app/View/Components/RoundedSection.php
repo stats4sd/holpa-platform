@@ -12,19 +12,14 @@ use Illuminate\View\View;
 
 class RoundedSection extends Component
 {
-
-
     public function __construct(
-        public ?string                $heading,
+        public ?string $heading,
         public string|HtmlString|null $description,
-        public ?string                $buttonLabel,
-        public ?string                $url
-    )
-    {
-    }
+        public ?string $buttonLabel,
+        public ?string $url
+    ) {}
 
-    public
-    function render(): \Illuminate\Contracts\View\View|Application|Factory|Htmlable|Closure|string|View|null
+    public function render(): \Illuminate\Contracts\View\View|Application|Factory|Htmlable|Closure|string|View|null
     {
         return view('components.rounded-section');
     }

@@ -15,11 +15,13 @@ use Livewire\Component;
 
 class InstructionsSidebarLivewire extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     public string|HtmlString $heading;
+
     public string|HtmlString $instructions;
+
     public string|HtmlString $instructionsmarkcomplete;
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null

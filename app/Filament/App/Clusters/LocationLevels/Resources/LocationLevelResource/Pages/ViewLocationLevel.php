@@ -20,7 +20,7 @@ class ViewLocationLevel extends ViewRecord
 
     public function getSubheading(): string|Htmlable
     {
-        return 'List of ' . Str::of($this->record->name)->plural()->title();
+        return 'List of '.Str::of($this->record->name)->plural()->title();
     }
 
     public function getBreadcrumbs(): array
@@ -30,7 +30,7 @@ class ViewLocationLevel extends ViewRecord
             SurveyLocationsIndex::getUrl() => 'Survey locations',
             route('filament.app.location-levels.resources.location-levels.view', [
                 'tenant' => HelperService::getCurrentOwner()->id,
-                'record' => $this->record->slug
+                'record' => $this->record->slug,
             ]) => Str::of($this->record->name)->plural(),
         ];
     }
@@ -40,8 +40,8 @@ class ViewLocationLevel extends ViewRecord
         return [
             ImportLocationsAction::make()
                 ->use(LocationImport::class)
-            ->color('primary')
-            ->label('Import ' . Str::of($this->record->name)->plural()),
+                ->color('primary')
+                ->label('Import '.Str::of($this->record->name)->plural()),
         ];
     }
 

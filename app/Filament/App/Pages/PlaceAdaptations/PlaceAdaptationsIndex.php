@@ -18,7 +18,6 @@ class PlaceAdaptationsIndex extends Page
 
     protected ?string $summary = 'Customise details for questions and answer options to ensure the survey is relevant and suitable for use in the intended location.';
 
-
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -33,7 +32,7 @@ class PlaceAdaptationsIndex extends Page
     {
         return MaxWidth::Full;
     }
-    
+
     public function getHeader(): ?\Illuminate\Contracts\View\View
     {
         return view('components.small-header', [

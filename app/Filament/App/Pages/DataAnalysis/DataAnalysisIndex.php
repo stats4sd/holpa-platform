@@ -13,10 +13,10 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 
-class DataAnalysisIndex extends Page implements HasForms, HasActions
+class DataAnalysisIndex extends Page implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     protected static string $view = 'filament.app.pages.data-analysis.data-analysis-index';
 
@@ -47,6 +47,7 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
             ->label('Export Data')
             ->extraAttributes(['class' => 'buttona']);
     }
+
     public function getHeader(): ?\Illuminate\Contracts\View\View
     {
         return view('components.small-header', [
@@ -57,7 +58,6 @@ class DataAnalysisIndex extends Page implements HasForms, HasActions
             'summary' => $this->summary,
         ]);
     }
-
 
     public function markCompleteAction(): Action
     {

@@ -47,10 +47,10 @@ class SubmissionResource extends Resource
                 Tables\Columns\TextColumn::make('consent')
                     ->getStateUsing(function ($record) {
                         if (isset($record->content['consent'])) {
-                            return $record->content['consent']['consent_interview'] === "1" ? "Yes" : "No";
+                            return $record->content['consent']['consent_interview'] === '1' ? 'Yes' : 'No';
                         } else {
                             // for fieldwork;
-                            return $record->content['consent_begin_group']['consent_1'] === "1" ? "Yes" : "No";
+                            return $record->content['consent_begin_group']['consent_1'] === '1' ? 'Yes' : 'No';
                         }
 
                     }),
@@ -65,13 +65,13 @@ class SubmissionResource extends Resource
                         $odkProjectId = $record->xlsformVersion->xlsform->owner->odkProject->id;
                         $odkXlsformId = $record->xlsformVersion->xlsform->odk_id;
 
-                        $url = config('filament-odk-link.odk.base_endpoint') . "/projects/$odkProjectId/forms/$odkXlsformId/submissions/$record->odk_id/edit";
+                        $url = config('filament-odk-link.odk.base_endpoint')."/projects/$odkProjectId/forms/$odkXlsformId/submissions/$record->odk_id/edit";
 
                         $token = app()->make(OdkLinkService::class)->authenticate();
 
                         $redirect = Http::withToken($token)
                             ->get($url)
-                        ->transferStats->getHandlerStat('url');
+                            ->transferStats->getHandlerStat('url');
 
                         return redirect($redirect);
 

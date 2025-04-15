@@ -11,7 +11,6 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
 class CustomModuleOrdering extends Component
 {
-
     /** @var Collection<Xlsform> */
     public Collection $xlsforms;
 
@@ -33,7 +32,7 @@ class CustomModuleOrdering extends Component
         ray($order);
         ray($xlsform->id);
 
-        $orderWithKeys = collect($order)->mapWithKeys(fn($item, $key) => [$item => ['order' => $key]]);
+        $orderWithKeys = collect($order)->mapWithKeys(fn ($item, $key) => [$item => ['order' => $key]]);
         $xlsform->xlsformModuleVersions()->sync($orderWithKeys);
         $this->setupLists();
 
@@ -44,9 +43,6 @@ class CustomModuleOrdering extends Component
         return view('livewire.lisp.custom-module-ordering');
     }
 
-    /**
-     * @return void
-     */
     private function setupLists(): void
     {
         $this->xlsforms = Xlsform::query()

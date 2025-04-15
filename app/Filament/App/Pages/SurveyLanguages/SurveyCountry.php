@@ -25,6 +25,7 @@ class SurveyCountry extends Page implements HasForms
     protected static ?string $title = 'Survey Country & Languages';
 
     public Team $team;
+
     public array $formData = [];
 
     public function mount(): void
@@ -57,7 +58,7 @@ class SurveyCountry extends Page implements HasForms
                     ->relationship('country', 'name')
                     ->searchable()
                     ->preload()
-                    ->createOptionForm(fn() => [
+                    ->createOptionForm(fn () => [
                         Select::make('region_id')
                             ->relationship('region', 'name')
                             ->label('Select the region for this country'),
@@ -73,19 +74,19 @@ class SurveyCountry extends Page implements HasForms
 
                         return Country::create($data)->getKey();
                     })
-                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData())
+                    ->afterStateUpdated(fn (self $livewire) => $livewire->saveData())
                     ->live(),
                 Select::make('languages')
                     ->relationship(
                         'languages',
                         'name',
                         // TODO: setup dataset for link between language and country
-                        //modifyQueryUsing: fn(Builder $query, Get $get) => $get('country_id') ? $query->whereHas('countries', fn(Builder $query) => $query->where('countries.id', $get('country_id'))) : $query
+                        // modifyQueryUsing: fn(Builder $query, Get $get) => $get('country_id') ? $query->whereHas('countries', fn(Builder $query) => $query->where('countries.id', $get('country_id'))) : $query
                     )
                     ->multiple()
                     ->searchable()
                     ->preload()
-                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData())
+                    ->afterStateUpdated(fn (self $livewire) => $livewire->saveData())
                     ->live(),
 
             ]);
@@ -95,5 +96,4 @@ class SurveyCountry extends Page implements HasForms
     {
         $this->team->update($this->form->getState());
     }
-
 }

@@ -29,7 +29,7 @@ class CopyMediaForRealOdkForms extends Command
 
         $this->info('Copying media files for TestWIthRealForms seeder');
 
-        if (!$this->argument('programatic')) {
+        if (! $this->argument('programatic')) {
             $this->info('This may overwrite existing files in storage/app/');
             $this->info('Are you sure you want to continue?');
             if ($this->confirm('Continue?')) {
@@ -46,8 +46,9 @@ class CopyMediaForRealOdkForms extends Command
 
         $destinationPath = storage_path('app');
 
-        if (!is_dir($sourcePath)) {
+        if (! is_dir($sourcePath)) {
             $this->error('Source directory does not exist.');
+
             return;
         }
 
@@ -55,11 +56,11 @@ class CopyMediaForRealOdkForms extends Command
 
         if ($files === false) {
             $this->error('Unable to read source directory.');
+
             return;
         }
 
         $this->recursiveCopy($sourcePath, $destinationPath);
-
 
         $this->info('Media files copied successfully.');
     }
@@ -71,10 +72,10 @@ class CopyMediaForRealOdkForms extends Command
         @mkdir($dest);
         while (false !== ($file = readdir($dir))) {
             if (($file != '.') && ($file != '..')) {
-                if (is_dir($src . '/' . $file)) {
-                    $this->recursiveCopy($src . '/' . $file, $dest . '/' . $file);
+                if (is_dir($src.'/'.$file)) {
+                    $this->recursiveCopy($src.'/'.$file, $dest.'/'.$file);
                 } else {
-                    copy($src . '/' . $file, $dest . '/' . $file);
+                    copy($src.'/'.$file, $dest.'/'.$file);
                 }
             }
         }

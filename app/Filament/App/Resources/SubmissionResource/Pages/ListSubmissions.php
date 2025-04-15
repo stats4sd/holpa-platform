@@ -12,11 +12,11 @@ class ListSubmissions extends ListRecords
 {
     protected static string $resource = SubmissionResource::class;
 
-    protected ?string $heading = "Test Submissions";
+    protected ?string $heading = 'Test Submissions';
 
     protected static string $view = 'filament.app.resources.submission-resource.pages.view-submission';
 
-        public function getBreadcrumbs(): array
+    public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',

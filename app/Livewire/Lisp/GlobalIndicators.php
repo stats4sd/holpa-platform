@@ -24,8 +24,11 @@ class GlobalIndicators extends Component implements HasForms, HasTable
     use InteractsWithTable;
 
     public ?Domain $selectedDomain = null;
+
     public ?GlobalIndicator $selectedGlobalIndicator = null;
+
     public ?LocalIndicator $selectedLocalIndicator = null;
+
     public Team $team;
 
     public function mount(): void
@@ -54,7 +57,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
     public function table(Table $table): Table
     {
         // When no local indicator selected show no global indicators
-        if (!$this->selectedDomain) {
+        if (! $this->selectedDomain) {
             return $table
                 ->query(GlobalIndicator::query()->where('id', '=', 0))
                 ->emptyStateHeading('Select a local indicator to see corresponding global indicators with the same theme');
@@ -64,12 +67,12 @@ class GlobalIndicators extends Component implements HasForms, HasTable
         $query = $this->selectedDomain->globalIndicators();
 
         return $table
-            ->relationship(fn() => $query)
+            ->relationship(fn () => $query)
             ->columns([
                 TextColumn::make('name')
                     ->label(''),
             ])
-            ->recordClasses(fn(GlobalIndicator $record): string => $this->selectedLocalIndicator->globalIndicator?->id === $record->id ? 'font-bold bg-lightgreen' : '')
+            ->recordClasses(fn (GlobalIndicator $record): string => $this->selectedLocalIndicator->globalIndicator?->id === $record->id ? 'font-bold bg-lightgreen' : '')
             ->actions([
                 Action::make('select_match')
                     ->button()
@@ -86,15 +89,15 @@ class GlobalIndicators extends Component implements HasForms, HasTable
 
                         Notification::make()
                             ->title('Success')
-                            ->body($this->selectedLocalIndicator->name . ' has been matched with ' . $this->selectedLocalIndicator->globalIndicator->name . '!')
+                            ->body($this->selectedLocalIndicator->name.' has been matched with '.$this->selectedLocalIndicator->globalIndicator->name.'!')
                             ->success()
                             ->send();
                     }),
 
                 Action::make('already_matched')
                     ->disabled()
-                    ->label(fn(GlobalIndicator $record) => 'Matched to ' . $this->team->localIndicators->where('global_indicator_id', $record->id)->first()->name)
-                    ->visible(fn(GlobalIndicator $record) => $record->localIndicators()->where('team_id', $this->team->id)->exists() && $this->selectedLocalIndicator->globalIndicator?->id !== $record->id),
+                    ->label(fn (GlobalIndicator $record) => 'Matched to '.$this->team->localIndicators->where('global_indicator_id', $record->id)->first()->name)
+                    ->visible(fn (GlobalIndicator $record) => $record->localIndicators()->where('team_id', $this->team->id)->exists() && $this->selectedLocalIndicator->globalIndicator?->id !== $record->id),
 
                 Action::make('remove_match')
                     ->button()
@@ -121,7 +124,7 @@ class GlobalIndicators extends Component implements HasForms, HasTable
                     ->label('Already Matched')
                     ->color('gray')
                     ->hidden(function ($record) {
-                        if (!$this->selectedGlobalIndicator) {
+                        if (! $this->selectedGlobalIndicator) {
                             return true;
                         }
 
@@ -129,7 +132,8 @@ class GlobalIndicators extends Component implements HasForms, HasTable
                             ->where('team_id', $this->selectedGlobalIndicator->team_id)
                             ->where('id', '!=', $this->selectedGlobalIndicator->id)
                             ->exists();
-                        return !$isAlreadyMatched;
+
+                        return ! $isAlreadyMatched;
                     }),
             ])
             ->paginated(false);

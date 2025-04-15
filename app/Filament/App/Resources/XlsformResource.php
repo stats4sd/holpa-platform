@@ -18,6 +18,7 @@ class XlsformResource extends Resource
     protected static ?string $model = Xlsform::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
     protected static ?string $navigationGroup = 'Settings';
@@ -28,7 +29,7 @@ class XlsformResource extends Resource
             ->schema([
                 ViewEntry::make('submission_summary')
                     ->view('submission_summary_wrapper')
-                    ->columnSpanFull()
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -47,19 +48,19 @@ class XlsformResource extends Resource
                 TextColumn::make('title')
                     ->grow(false),
                 TextColumn::make('status')
-                    ->color(fn($state) => match ($state) {
+                    ->color(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'danger',
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->iconColor(fn($state) => match ($state) {
+                    ->iconColor(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'danger',
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->icon(fn($state) => match ($state) {
+                    ->icon(fn ($state) => match ($state) {
                         'UPDATES AVAILABLE' => 'heroicon-o-exclamation-circle',
                         'LIVE' => 'heroicon-o-check',
                         'DRAFT' => 'heroicon-o-pencil',

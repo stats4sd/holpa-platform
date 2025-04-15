@@ -18,7 +18,6 @@ class PilotIndex extends Page
 
     protected ?string $summary = 'Conduct a pilot run of the survey, both for quality control of the customised HOLPA survey and training of enumerators.';
 
-
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array
@@ -33,7 +32,7 @@ class PilotIndex extends Page
     {
         return MaxWidth::Full;
     }
-    
+
     public function getHeader(): ?\Illuminate\Contracts\View\View
     {
         return view('components.small-header', [
@@ -72,5 +71,4 @@ class PilotIndex extends Page
                 $this->dispatch('refreshPage');
             });
     }
-
 }

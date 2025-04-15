@@ -2,14 +2,14 @@
 
 namespace App\Imports;
 
-use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
 class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison
@@ -23,14 +23,14 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
 
         $keys = collect(array_keys($data));
 
-        $parentColumns = $keys->filter(fn($key) => str_starts_with($key, 'parent_'));
+        $parentColumns = $keys->filter(fn ($key) => str_starts_with($key, 'parent_'));
 
         foreach ($parentColumns as $parentColumn) {
             $data[$parentColumn] = $data['header_columns'][$data[$parentColumn]] ?? null;
         }
 
-        $this->parentIds = $parentColumns->filter(fn($key) => str_contains($key, '_code'))
-            ->map(fn($key) => str_replace(['parent_', '_code_column'], '', $key));
+        $this->parentIds = $parentColumns->filter(fn ($key) => str_contains($key, '_code'))
+            ->map(fn ($key) => str_replace(['parent_', '_code_column'], '', $key));
 
         $this->data = $data;
     }
@@ -73,7 +73,7 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
                 uniqueBy: 'code'
             );
 
-            $currentLocation = Location::where('code', $row[$this->data["code_column"]])->first();
+            $currentLocation = Location::where('code', $row[$this->data['code_column']])->first();
 
             $importedLocations[] = $currentLocation;
         }

@@ -39,6 +39,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     public Team $team;
 
     public ?Media $uploadedFile = null;
+
     public ?array $data;
 
     public function mount(): void
@@ -66,14 +67,14 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
-                            ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
+                            ->helperText(fn (self $livewire) => new HtmlString('<span class="text-red-700">'.collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>').'</span>')),
 
                         Actions::make([
                             Actions\Action::make('save_file')
-                            ->extraAttributes(['class' => ' buttona'])
+                                ->extraAttributes(['class' => ' buttona'])
 
                                 ->label('Save File')
-                                ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list'))),
+                                ->action(fn (Get $get) => $this->uploadFile($get('local_indicator_list'))),
                         ]),
                     ]),
                 Fieldset::make('Local Indicators List')
@@ -92,8 +93,8 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                                 Select::make('domain_id')
                                     ->relationship('domain', 'name')->required(),
                             ])
-                        ->emptyLabel('No local indicators added - click "Add Local Indicator" below to create a new entry')
-                        ->addActionLabel('Add Local Indicator')
+                            ->emptyLabel('No local indicators added - click "Add Local Indicator" below to create a new entry')
+                            ->addActionLabel('Add Local Indicator'),
 
                     ]),
             ]);
@@ -108,8 +109,9 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     public function uploadFile($localIndicatorList): void
     {
         // Check that a file is uploaded
-        if (empty($localIndicatorList) || !is_array($localIndicatorList)) {
+        if (empty($localIndicatorList) || ! is_array($localIndicatorList)) {
             $this->addError('local_indicator_list', 'Please upload a file before proceeding.');
+
             return;
         }
 
@@ -143,9 +145,9 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                     return "Row $keyRow, Column $keyColumn: $errors";
                 });
 
-            ray(new HtmlString('It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>')));
+            ray(new HtmlString('It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>'.$errors->join('<br/>')));
 
-            $this->addError('local_indicator_list', 'It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>'));
+            $this->addError('local_indicator_list', 'It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>'.$errors->join('<br/>'));
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }

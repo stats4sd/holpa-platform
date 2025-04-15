@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\SampleFrame\Farm;
-use App\Models\SurveyData\FishUse;
-use App\Models\SurveyData\Product;
-use Illuminate\Support\Facades\DB;
 use App\Models\SampleFrame\Location;
-use Illuminate\Support\Facades\Schema;
-use App\Models\SurveyData\LivestockUse;
 use App\Models\SurveyData\FarmSurveyData;
+use App\Models\SurveyData\FishUse;
+use App\Models\SurveyData\LivestockUse;
+use App\Models\SurveyData\Product;
 use App\Models\SurveyData\SeasonalWorkerSeason;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class SubmissionController extends Controller
@@ -22,9 +22,6 @@ class SubmissionController extends Controller
 
         // ignore application specific business logic temporary
         return;
-
-
-
 
         // application specific business logic goes here
 
@@ -41,52 +38,38 @@ class SubmissionController extends Controller
         // suppose there should be only one farm_survey_data for a submission id
         $farmSurveyData = FarmSurveyData::where('submission_id', $submission->id)->first();
 
-
         // custom handling to fill in 12 months irrigation percentage in farm_survey_data record
         SubmissionController::handleIrrigationData($submission, $farmSurveyData);
 
-
         // nested repeat groups data handling can be generalised.
         // I would expect to include this feature in core ODK handling package in the future
-
 
         // create records from nested repeat groups for seasonal_worker_seasons
         SubmissionController::handleSeasonalWorkersData($submission, $farmSurveyData);
         SubmissionController::handleSeasonalLaboursData($submission, $farmSurveyData);
 
-
         // create records from nested repeat groups for livestock_uses
         SubmissionController::handleLivestockUsesData($submission, $farmSurveyData);
-
 
         // create records from nested repeat groups for fish_uses
         SubmissionController::handleFishUsesData($submission, $farmSurveyData);
 
-
         // custom handling for products data
         SubmissionController::handleProductsData($submission, $farmSurveyData);
-
-
 
         // update farm_survey_data_id in repeat groups tables
         SubmissionController::updateFarmSurveyDataId($submission, $farmSurveyData);
 
-
         // TODO: submissions table, fill in values to columns started_at, ended_at, survey_duration
 
-
         // TODO: farms table, update column household_form_completed, fieldwork_form_completed
-
 
         // custom handling to create new locations
         // SubmissionController::handleLocationData($submission);
 
-
     }
 
-
     // ******************** //
-
 
     // custom handling for irrigation data
     // to fill in irrigation percentage for 12 months in farm_survey_data record
@@ -96,7 +79,7 @@ class SubmissionController extends Controller
         $irrigationResult = [];
 
         for ($i = 1; $i <= 12; $i++) {
-            $irrigationResult['irrigation_percentage_month_' . $i] = 0;
+            $irrigationResult['irrigation_percentage_month_'.$i] = 0;
         }
 
         // existence check for irrigation data in submission content
@@ -113,20 +96,19 @@ class SubmissionController extends Controller
 
         // update irrigation data for 12 months
         for ($i = 1; $i <= 12; $i++) {
-            $farmSurveyData['irrigation_percentage_month_' . $i] = $irrigationResult['irrigation_percentage_month_' . $i];
+            $farmSurveyData['irrigation_percentage_month_'.$i] = $irrigationResult['irrigation_percentage_month_'.$i];
         }
 
         // save farm_survey_data record
         $farmSurveyData->save();
     }
 
-
     public static function prepareIrrigationData($irrigationResult, $irrigation): array
     {
         $irrigationPercentage = $irrigation['irrigation_percentage'];
 
         // do nothing if irrigation_percentage is null or "null"
-        if ($irrigationPercentage == null || $irrigationPercentage == "null") {
+        if ($irrigationPercentage == null || $irrigationPercentage == 'null') {
             // ray('irrigation_percentage is null, do nothing');
             return $irrigationResult;
         }
@@ -134,17 +116,15 @@ class SubmissionController extends Controller
         $irrigationMonths = str_getcsv($irrigation['irrigation_months'], ' ');
 
         foreach ($irrigationMonths as $irrigationMonth) {
-            if ($irrigationPercentage > $irrigationResult['irrigation_percentage_month_' . $irrigationMonth]) {
-                $irrigationResult['irrigation_percentage_month_' . $irrigationMonth] = $irrigationPercentage;
+            if ($irrigationPercentage > $irrigationResult['irrigation_percentage_month_'.$irrigationMonth]) {
+                $irrigationResult['irrigation_percentage_month_'.$irrigationMonth] = $irrigationPercentage;
             }
         }
 
         return $irrigationResult;
     }
 
-
     // ******************** //
-
 
     // custom handling for seasonal_worker_seasons data
     // create records from nested repeat groups for seasonal_worker_seasons
@@ -193,7 +173,6 @@ class SubmissionController extends Controller
         }
     }
 
-
     public static function prepareNewRecordData($items, $columnNames): array
     {
         $result = [];
@@ -207,9 +186,7 @@ class SubmissionController extends Controller
         return $result;
     }
 
-
     // ******************** //
-
 
     // custom handling for seasonal_worker_seasons data
     // create records from nested repeat groups for seasonal_worker_seasons
@@ -258,9 +235,7 @@ class SubmissionController extends Controller
         }
     }
 
-
     // ******************** //
-
 
     // custom handling for livestock_uses data
     // create records from nested repeat groups for livestock_uses
@@ -306,9 +281,7 @@ class SubmissionController extends Controller
         }
     }
 
-
     // ******************** //
-
 
     // custom handling for fish_uses data
     // create records from nested repeat groups for fish_uses
@@ -354,9 +327,7 @@ class SubmissionController extends Controller
         }
     }
 
-
     // ******************** //
-
 
     // custom handling for products data
     public static function handleProductsData(Submission $submission, FarmSurveyData $farmSurveyData): void
@@ -390,7 +361,6 @@ class SubmissionController extends Controller
             }
         }
     }
-
 
     // prepare data for crops,livestock, fish, trees, honey
     public static function prepareProductData($submission, $farmSurveyData, $prefix): void
@@ -432,21 +402,21 @@ class SubmissionController extends Controller
             $prefix = 'crop';
         }
 
-        $productUseData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_use'];
+        $productUseData = $submission->content['survey']['income']['farm_characteristics'][$prefix.'_use'];
         // ray($productUseData);
 
         foreach ($useItemNames as $useItemName) {
-            if (isset($productUseData[$prefix . '_' . $useItemName])) {
-                $result[$useItemName] = $productUseData[$prefix . '_' . $useItemName];
+            if (isset($productUseData[$prefix.'_'.$useItemName])) {
+                $result[$useItemName] = $productUseData[$prefix.'_'.$useItemName];
             }
         }
 
-        $productSalesBuyerData = $submission->content['survey']['income']['farm_characteristics'][$prefix . '_sales_buyers'];
+        $productSalesBuyerData = $submission->content['survey']['income']['farm_characteristics'][$prefix.'_sales_buyers'];
         // ray($productSalesBuyerData);
 
         foreach ($salesBuyerItemNames as $salesBuyerItemName) {
-            if (isset($productSalesBuyerData[$prefix . '_' . $salesBuyerItemName])) {
-                $result[$salesBuyerItemName] = $productSalesBuyerData[$prefix . '_' . $salesBuyerItemName];
+            if (isset($productSalesBuyerData[$prefix.'_'.$salesBuyerItemName])) {
+                $result[$salesBuyerItemName] = $productSalesBuyerData[$prefix.'_'.$salesBuyerItemName];
             }
         }
 
@@ -465,7 +435,6 @@ class SubmissionController extends Controller
         // create products record
         $product = Product::create($result);
     }
-
 
     // prepare data for other
     public static function prepareOtherProductData($submission, $farmSurveyData, $prefix): void
@@ -499,12 +468,12 @@ class SubmissionController extends Controller
             // ray($otherProductRepeat);
 
             foreach ($useSalesItemNames as $useSalesItemName) {
-                if (isset($otherProductRepeat[$prefix . '_' . $useSalesItemName])) {
-                    $result[$useSalesItemName] = $otherProductRepeat[$prefix . '_' . $useSalesItemName];
+                if (isset($otherProductRepeat[$prefix.'_'.$useSalesItemName])) {
+                    $result[$useSalesItemName] = $otherProductRepeat[$prefix.'_'.$useSalesItemName];
                 }
             }
 
-            $result['product_name'] = $otherProductRepeat[$prefix . '_name'];
+            $result['product_name'] = $otherProductRepeat[$prefix.'_name'];
             $result['submission_id'] = $submission->id;
             $result['farm_survey_data_id'] = $farmSurveyData->id;
 
@@ -529,9 +498,7 @@ class SubmissionController extends Controller
         DB::table('permanent_workers')->where('submission_id', $submission->id)->update(['farm_survey_data_id' => $farmSurveyData->id]);
     }
 
-
     // ******************** //
-
 
     // custom handling for location
     // to create new locations
@@ -575,7 +542,6 @@ class SubmissionController extends Controller
             $parentLocationId = $parentLocation->id;
         }
 
-
         // get farm details
         $rootSection = $submission->content['location'];
 
@@ -595,7 +561,7 @@ class SubmissionController extends Controller
                     'location_id' => $parentLocationId,
                     // there is no team_code in location selection test ODK form, use a timestamp as a unique id temporary
                     // TODO: get team_code from ODK submission content
-                    'team_code' => 'C' . Carbon::now()->getTimestampMs(),
+                    'team_code' => 'C'.Carbon::now()->getTimestampMs(),
                     'identifiers' => $identifiers,
                 ]);
             }
