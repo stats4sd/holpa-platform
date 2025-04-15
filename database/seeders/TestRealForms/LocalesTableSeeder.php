@@ -24,7 +24,6 @@ class LocalesTableSeeder extends Seeder
             ->locales()
             ->create([
                 'is_default' => true,
-                'description' => 'English (Default)',
             ]);
 
         Team::all()->each(function (Team $team) use ($localeEn) {
