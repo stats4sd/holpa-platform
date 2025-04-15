@@ -18,9 +18,9 @@ class XlsformDraftWasDeployed implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public Xlsform $xlsform)
+    public function __construct(public int $xlsformId) //passing xlsform as the serialised xlsform is large (it includes the full schema as json... maybe it shouldn't )
     {
-        ray('boo ' . $xlsform->id);
+        ray('boo ' . $xlsformId);
     }
 
     /**
@@ -31,7 +31,7 @@ class XlsformDraftWasDeployed implements ShouldBroadcast
     public function broadcastOn(): array
     {
         return [
-            new Channel('xlsforms.' . $this->xlsform->id),
+            new Channel('xlsforms'),
         ];
     }
 }

@@ -59,10 +59,10 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
         });
     }
 
-    #[On(XlsformDraftWasDeployed::class)]
-    public function handleXlsformDraftWasDeployed(): void
+    #[On('echo:xlsforms,XlsformDraftWasDeployed')]
+    public function handleXlsformDraftWasDeployed($event): void
     {
-        dd('test');
+        $this->xlsforms->find($event['xlsformId'])->refresh();
     }
 
     public function getBreadcrumbs(): array
