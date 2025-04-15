@@ -27,7 +27,7 @@ class LocaleSeeder extends Seeder
                 'is_default' => true,
             ]);
 
-        Team::all()->each(function(Team $team) use ($localeEs, $localeEn) {
+        Team::all()->each(function (Team $team) use ($localeEs, $localeEn) {
             $team->languages()->updateExistingPivot($localeEn->language->id, ['locale_id' => $localeEn->id]);
 
             $team->languages()->updateExistingPivot($localeEs->language->id, ['locale_id' => $localeEs->id]);

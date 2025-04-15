@@ -4,7 +4,7 @@
             <h6 class="w-full md:w-1/2 lg:w-1/4 ">{{ $language->language_label }}</h6>
             <h5 class="w-full md:w-1/2 lg:w-3/4 md:flex items-center ">
                 <span class="mr-2">Selected Translation: </span>
-                <span class="{{ $selectedLocale ? 'text-green' : 'text-dark-orange' }}">{{ $selectedLocale ? $selectedLocale->description : 'none' }}</span>
+                <span class="{{ $selectedLocale ? 'text-green' : 'text-dark-orange' }}">{{ $selectedLocale ? $selectedLocale->languageLabel : 'none' }}</span>
             </h5>
 
         </div>
@@ -13,11 +13,11 @@
             <button class=" text-nowrap flex text-black  items-center  justify-between " wire:click="$toggle('expanded')">
                 Select Translation
                 @if($expanded)
-                <x-heroicon-o-chevron-up class="h-6 ml-4 font-bold text-lg "/>
+                <x-heroicon-o-chevron-up class="h-6 ml-4 font-bold text-lg " />
                 @else
-                <x-heroicon-o-chevron-down class="h-6 ml-4 font-bold text-lg "/>
+                <x-heroicon-o-chevron-down class="h-6 ml-4 font-bold text-lg " />
                 @endif
-                </button>
+            </button>
         </div>
     </div>
 
