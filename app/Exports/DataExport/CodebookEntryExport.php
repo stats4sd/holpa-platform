@@ -11,10 +11,7 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 
 class CodebookEntryExport implements FromQuery, WithHeadings, WithMapping, WithTitle
 {
-
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function query(): Builder
     {

@@ -1,4 +1,4 @@
-<div class="space-y-8">
+<div class="space-y-2 translation-modal">
     <p>You can review the text for both ODK forms by downloading the files below.</p>
 
     @if($locale->is_default)
@@ -13,9 +13,10 @@
             <li>Re-upload the completed Excel file below. If there is already a file uploaded, you can delete it and upload a replacement.</li>
         </ol>
         </p>
+        <div class=" border-b py-4"></div>
     @endif
 
-    <livewire:team-translation-review-edit-form :locale="$locale" :team="$team"/>
+    <livewire:survey-languages.team-translation-review-edit-form :locale="$locale" :team="$team"/>
 
 
 </div>

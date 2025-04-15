@@ -2,24 +2,25 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources;
 
-use Filament\Forms;
-use Filament\Tables;
-use Filament\Forms\Form;
-use Filament\Tables\Table;
-use App\Models\SampleFrame\Farm;
-use Filament\Resources\Resource;
-use App\Models\SampleFrame\LocationLevel;
-use Filament\Http\Middleware\Authenticate;
 use App\Filament\App\Clusters\LocationLevels;
-use Stats4sd\FilamentOdkLink\Services\HelperService;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
+use App\Models\SampleFrame\Farm;
+use App\Models\SampleFrame\LocationLevel;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Stats4sd\FilamentOdkLink\Services\HelperService;
 
 class FarmResource extends Resource
 {
     protected static ?string $model = Farm::class;
 
     protected static bool $shouldRegisterNavigation = false;
+
     protected static ?string $cluster = LocationLevels::class;
+
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
 
     public static function form(Form $form): Form
@@ -33,7 +34,7 @@ class FarmResource extends Resource
             ->schema([
 
                 Forms\Components\Select::make('location_id')
-                    ->label('Select the ' . $locationLevelWithFarms->name . ' for this farm')
+                    ->label('Select the '.$locationLevelWithFarms->name.' for this farm')
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
 
                 Forms\Components\TextInput::make('team_code')

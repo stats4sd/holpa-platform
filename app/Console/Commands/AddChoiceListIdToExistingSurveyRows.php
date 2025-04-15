@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class AddChoiceListIdToExistingSurveyRows extends Command
@@ -29,13 +28,13 @@ class AddChoiceListIdToExistingSurveyRows extends Command
     public function handle()
     {
         SurveyRow::all()
-            ->filter(fn($surveyRow) => Str::contains($surveyRow->type, 'select'))
+            ->filter(fn ($surveyRow) => Str::contains($surveyRow->type, 'select'))
             ->each(function (SurveyRow $surveyRow) {
                $choiceListName = collect(explode(' ', trim($surveyRow->type)))->last();
 
-               $surveyRow->choiceList()->associate($surveyRow->xlsformModuleVersion->choiceLists()->where('list_name', '=', $choiceListName)->first());
+                $surveyRow->choiceList()->associate($surveyRow->xlsformModuleVersion->choiceLists()->where('list_name', '=', $choiceListName)->first());
 
-               $surveyRow->save();
+                $surveyRow->save();
 
             });
     }

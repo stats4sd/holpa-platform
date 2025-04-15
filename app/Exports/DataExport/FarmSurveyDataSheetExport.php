@@ -11,23 +11,23 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class FarmSurveyDataSheetExport implements FromCollection, WithHeadings, WithTitle, WithMapping, WithStrictNullComparison
+class FarmSurveyDataSheetExport implements FromCollection, WithHeadings, WithMapping, WithStrictNullComparison, WithTitle
 {
     public array $mainSurveyFields;
 
     public function __construct()
     {
-        $mainSurveyTable = (new FarmSurveyData())->getTable();
+        $mainSurveyTable = (new FarmSurveyData)->getTable();
 
         $this->mainSurveyFields = array_diff(DB::getSchemaBuilder()
             ->getColumnListing($mainSurveyTable), [
-            'id',
-            'created_at',
-            'updated_at',
-            'yeswomenhh', // not needed in output
-            'farm_id', // manually added into the start of the output
-            'final_location_id', // manually added into the start of the output
-        ]);
+                'id',
+                'created_at',
+                'updated_at',
+                'yeswomenhh', // not needed in output
+                'farm_id', // manually added into the start of the output
+                'final_location_id', // manually added into the start of the output
+            ]);
     }
 
     public function collection(): Collection

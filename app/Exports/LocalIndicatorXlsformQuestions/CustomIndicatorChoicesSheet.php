@@ -12,7 +12,7 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class CustomIndicatorChoicesSheet implements FromCollection, WithHeadings, WithTitle, ShouldAutoSize, WithStyles
+class CustomIndicatorChoicesSheet implements FromCollection, ShouldAutoSize, WithHeadings, WithStyles, WithTitle
 {
     protected Team $team;
 
@@ -60,7 +60,7 @@ class CustomIndicatorChoicesSheet implements FromCollection, WithHeadings, WithT
         ];
 
         return [
-            1 => $h1
+            1 => $h1,
         ];
     }
 }

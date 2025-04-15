@@ -3,10 +3,10 @@
 namespace App\Models\SampleFrame;
 
 use App\Models\Team;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Support\Facades\Cache;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
 
 class Location extends Model
@@ -48,7 +48,7 @@ class Location extends Model
     public function hasFarms(): Attribute
     {
         return new Attribute(
-            get: fn(): bool => $this->locationLevel?->has_households ?? false,
+            get: fn (): bool => $this->locationLevel?->has_households ?? false,
         );
     }
 
@@ -59,7 +59,7 @@ class Location extends Model
     {
         return new Attribute(
             get: function () {
-                return Cache::remember($this->cacheKey() . ':farmsAllCount', now()->addMinutes(5), function () {
+                return Cache::remember($this->cacheKey().':farmsAllCount', now()->addMinutes(5), function () {
                     return $this->children->reduce(function ($carry, $location) {
                         return $carry + $location->farmsAllCount;
                     }, $this->farms->count());

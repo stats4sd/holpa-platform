@@ -2,9 +2,9 @@
 
 namespace App\Console\Commands;
 
+use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
-use Illuminate\Console\Command;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 // TODO: move into package?
@@ -41,22 +41,22 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
             $projectId = $xlsform->odk_project_id;
             $formId = $xlsform->odk_id;
 
-                $versions = Http::withToken($odkLinkService->authenticate())
-                    ->get($baseUrl . '/projects/' . $projectId . '/forms/' . $formId . '/versions')
-                    ->throw()
-                    ->json();
+            $versions = Http::withToken($odkLinkService->authenticate())
+                ->get($baseUrl.'/projects/'.$projectId.'/forms/'.$formId.'/versions')
+                ->throw()
+                ->json();
 
-                collect($versions)->each(function ($version) use ($xlsform) {
-                   $versionName = $version['version'];
+            collect($versions)->each(function ($version) use ($xlsform) {
+                $versionName = $version['version'];
 
-                   if($xlsform->xlsformVersions()->where('odk_version', $versionName)->count() === 0) {
-                       $xlsform->xlsformVersions()->create([
-                           'version' => $versionName,
-                           'odk_version' => $versionName,
-                           // schema will be null, but I don't think we use the xlsform version schema at the moment.
-                       ]);
-                   }
-                });
+                if ($xlsform->xlsformVersions()->where('odk_version', $versionName)->count() === 0) {
+                    $xlsform->xlsformVersions()->create([
+                        'version' => $versionName,
+                        'odk_version' => $versionName,
+                        // schema will be null, but I don't think we use the xlsform version schema at the moment.
+                    ]);
+                }
+            });
 
         });
 

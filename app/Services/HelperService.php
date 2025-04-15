@@ -11,12 +11,9 @@ use Illuminate\Support\Str;
 class HelperService
 {
     // Get the current team with the correct namespacing so phpstan doesn't complain whenever we get the current team
-    /**
-     * @return Team|Model|null
-     */
-    public static function getCurrentOwner(): Team | Model | null
+    public static function getCurrentOwner(): Team|Model|null
     {
-       if (Filament::hasTenancy() && is_a(Filament::getTenant(), Team::class)) {
+        if (Filament::hasTenancy() && is_a(Filament::getTenant(), Team::class)) {
 
             return Filament::getTenant();
         }
@@ -43,8 +40,8 @@ class HelperService
             // a location ID field name should be lowercase, with underscore instead of hypen, e.g. sub_district
             $locationIdFieldName = Str::lower(Str::replace('-', '_', $tempLocation->locationLevel->name));
 
-            $array[$locationIdFieldName . '_name'] = $tempLocation->name;
-            $array[$locationIdFieldName . '_id'] = $tempLocation->id;
+            $array[$locationIdFieldName.'_name'] = $tempLocation->name;
+            $array[$locationIdFieldName.'_id'] = $tempLocation->id;
 
             $tempLocation = $tempLocation->parent;
         } while ($tempLocation != null);

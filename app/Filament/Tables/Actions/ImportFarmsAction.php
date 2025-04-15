@@ -5,6 +5,7 @@ namespace App\Filament\Tables\Actions;
 use App\Models\Import;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
+use App\Services\HelperService;
 use Closure;
 use EightyNine\ExcelImport\ExcelImportAction;
 use Filament\Forms\Components\CheckboxList;
@@ -20,7 +21,6 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
 use RuntimeException;
-use App\Services\HelperService;
 
 // use App\Models\SampleFrame\FarmGroup;
 // use App\Models\SampleFrame\FarmGrouping;
@@ -46,8 +46,6 @@ class ImportFarmsAction extends ExcelImportAction
 
     // Code segment belongs to superclass ExcelImportAction ends here...
 
-
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -63,7 +61,7 @@ class ImportFarmsAction extends ExcelImportAction
 
         return [
             FileUpload::make('upload')
-                ->label(fn(HasTable $livewire) => str($livewire->getTable()->getPluralModelLabel())->title() . ' Excel Data')
+                ->label(fn (HasTable $livewire) => str($livewire->getTable()->getPluralModelLabel())->title().' Excel Data')
                 ->helperText('Please make sure your data is in the first worksheet of the Excel file, and that the first row contains the column headers.')
                 ->disk($this->getDisk())
                 ->columns()
@@ -71,7 +69,7 @@ class ImportFarmsAction extends ExcelImportAction
                 ->live()
                 ->preserveFilenames()
                 ->afterStateUpdated(function (?TemporaryUploadedFile $state, Set $set) {
-                    $headings = (new HeadingRowImport())->toArray($state?->getRealPath());
+                    $headings = (new HeadingRowImport)->toArray($state?->getRealPath());
 
                     // $headings is an array(sheets) of arrays(headers)
                     // We only want the first sheet
@@ -96,8 +94,8 @@ class ImportFarmsAction extends ExcelImportAction
                         ->live(),
 
                     Select::make('location_code_column')
-                        ->options(fn(Get $get) => $get('header_columns'))
-                        ->label(fn(Get $get) => 'Which column contains the ' . (LocationLevel::find($get('location_level_id'))?->name ?? 'location') . ' unique code?')
+                        ->options(fn (Get $get) => $get('header_columns'))
+                        ->label(fn (Get $get) => 'Which column contains the '.(LocationLevel::find($get('location_level_id'))?->name ?? 'location').' unique code?')
                         ->placeholder('Select a column'),
                 ]),
 
@@ -109,14 +107,14 @@ class ImportFarmsAction extends ExcelImportAction
                         ->placeholder('Select a column')
                         ->helperText('e.g. farm_id or farm_code')
                         ->live()
-                        ->options(fn(Get $get) => $get('header_columns')),
+                        ->options(fn (Get $get) => $get('header_columns')),
 
                     CheckboxList::make('farm_identifiers')
                         ->label('Are there any additional columns that contain identifiers for the farm? Tick all that apply.')
                         ->helperText('For example: family name, farm name, telephone numbers, etc. These are columns that can be useful for enumerators or project team members to identify the farm, but that should not be shared outside the project for data protection purposes.')
-                        ->options(fn(Get $get): array => $get('header_columns'))
+                        ->options(fn (Get $get): array => $get('header_columns'))
                         ->disableOptionWhen(
-                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
+                            fn (string $value, Get $get): bool => $value === (string) $get('farm_code_column') ||
                                 collect($get('farm_properties'))->contains($value) ||
                                 $value === 'na'
                         )
@@ -126,9 +124,9 @@ class ImportFarmsAction extends ExcelImportAction
                     CheckboxList::make('farm_properties')
                         ->label('Are there any additional columns that contain properties of the farm? Tick all that apply.')
                         ->helperText('These are not identifiers, but are properties of the farm that are useful for analysis. For example: size of the farm, year of first engagement, etc. These are columns that can potentially be shared outside the project for analysis purposes.')
-                        ->options(fn(Get $get) => $get('header_columns'))
+                        ->options(fn (Get $get) => $get('header_columns'))
                         ->disableOptionWhen(
-                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
+                            fn (string $value, Get $get): bool => $value === (string) $get('farm_code_column') ||
                                 collect($get('farm_identifiers'))->contains($value) ||
                                 $value === 'na'
                         )

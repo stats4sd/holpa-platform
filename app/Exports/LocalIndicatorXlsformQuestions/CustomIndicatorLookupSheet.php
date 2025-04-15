@@ -3,34 +3,27 @@
 namespace App\Exports\LocalIndicatorXlsformQuestions;
 
 use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\RegistersEventListeners;
-use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Events\AfterSheet;
-use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 
 class CustomIndicatorLookupSheet implements FromCollection, WithHeadings, WithTitle
 {
-    public function __construct(public \App\Models\Team $team)
-    {
-    }
+    public function __construct(public \App\Models\Team $team) {}
 
     public function headings(): array
     {
         return [
             ['NOTE: please do not edit this sheet. It was created from the HOLPA database and allows you to match questions you add on the "survey" sheet with your locally defined indicators.'],
-            ['indicator_id', 'name',],
+            ['indicator_id', 'name'],
         ];
     }
-
 
     public function collection()
     {
         return $this->team->localIndicators()
             ->whereDoesntHave('globalIndicator')
             ->get()
-            ->map(fn($indicator) => [
+            ->map(fn ($indicator) => [
                 'id' => $indicator->id,
                 'name' => $indicator->name,
             ]);
@@ -40,6 +33,4 @@ class CustomIndicatorLookupSheet implements FromCollection, WithHeadings, WithTi
     {
         return 'indicators';
     }
-
-
 }

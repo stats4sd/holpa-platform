@@ -131,7 +131,8 @@ class SubmissionController extends Controller
 
         // do nothing if irrigation_percentage is null or "null"
         if ($irrigationPercentage == null || $irrigationPercentage == "null") {
-            return $irrigationValues;
+            // ray('irrigation_percentage is null, do nothing');
+            return $irrigationResult;
         }
 
         $irrigationMonths = str_getcsv($irrigation['irrigation_months'], ' ');
@@ -146,7 +147,6 @@ class SubmissionController extends Controller
 
         return $irrigationValues;
     }
-
 
     // ******************** //
     public static function handlePermanentWorkersData(Submission $submission): Collection

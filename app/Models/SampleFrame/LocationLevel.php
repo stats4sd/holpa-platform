@@ -70,7 +70,7 @@ class LocationLevel extends Model
     public function pos(): Attribute
     {
         return new Attribute(
-            get: fn() => $this->getPos(),
+            get: fn () => $this->getPos(),
         );
     }
 

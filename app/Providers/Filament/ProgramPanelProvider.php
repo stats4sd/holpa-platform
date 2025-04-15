@@ -3,27 +3,27 @@
 namespace App\Providers\Filament;
 
 use Exception;
+use Filament\Http\Middleware\Authenticate;
+use Filament\Http\Middleware\DisableBladeIconComponents;
+use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Panel;
-use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
-use Filament\Navigation\NavigationItem;
-use Filament\Http\Middleware\Authenticate;
-use Illuminate\Session\Middleware\StartSession;
+use Filament\Widgets;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
-use Stats4sd\FilamentTeamManagement\Models\Program;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterProgram;
+use Stats4sd\FilamentTeamManagement\Filament\Program\Pages\Dashboard;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfProgramAdmin;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestProgramMiddleware;
-use Stats4sd\FilamentTeamManagement\Filament\Program\Pages\Dashboard;
+use Stats4sd\FilamentTeamManagement\Models\Program;
 
 class ProgramPanelProvider extends PanelProvider
 {
@@ -59,7 +59,7 @@ class ProgramPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
-                fn() => view('filament-team-management::programAdminPanelTitle'),
+                fn () => view('filament-team-management::programAdminPanelTitle'),
             )
             ->middleware([
                 EncryptCookies::class,

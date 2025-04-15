@@ -17,6 +17,7 @@ class ExportDataAction extends Action
         $this->action(function () {
 
             $filePath = $this->exportAll();
+
             return $this->download($filePath);
         });
     }
@@ -26,7 +27,7 @@ class ExportDataAction extends Action
 
         // $filePath = 'HOLPA-data-export' . '-' . now()->toDateTimeString() . '.xlsx';
         $filePath = 'HOLPA-data-export.xlsx';
-        Excel::store(new FarmSurveyDataExport(), $filePath);
+        Excel::store(new FarmSurveyDataExport, $filePath);
 
         return $filePath;
     }

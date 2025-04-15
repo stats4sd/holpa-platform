@@ -24,7 +24,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Stats4sd\FilamentOdkLink\OdkLinkAdmin;
 use Stats4sd\FilamentTeamManagement\Filament\App\Pages\RegisterTeam;
 use Stats4sd\FilamentTeamManagement\Http\Middleware\SetLatestTeamMiddleware;
 
@@ -116,7 +115,6 @@ class AppPanelProvider extends PanelProvider
                     950 => '235, 90, 69',
                 ],
 
-
                 'lightgreen' => [
                     '216, 234, 208',
                 ],
@@ -137,11 +135,11 @@ class AppPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
-                fn() => view('filament-team-management::appPanelTitle'),
+                fn () => view('filament-team-management::appPanelTitle'),
             )
             ->renderHook(
                 PanelsRenderHook::HEAD_START,
-                fn() => view('filament.app.pages.info-panels.team-without-xlsform'),
+                fn () => view('filament.app.pages.info-panels.team-without-xlsform'),
             )
             ->middleware([
                 EncryptCookies::class,
@@ -166,13 +164,13 @@ class AppPanelProvider extends PanelProvider
                     ->label(__('Admin Panel'))
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
-                    ->visible(fn() => auth()->user()->can('access admin panel')),
+                    ->visible(fn () => auth()->user()->can('access admin panel')),
             ])
             ->darkMode(false)
             ->topNavigation()
-            ->renderHook(PanelsRenderHook::SCRIPTS_BEFORE, fn() => view('filament.app.scripts'))
+            ->renderHook(PanelsRenderHook::SCRIPTS_BEFORE, fn () => view('filament.app.scripts'))
             ->plugins([
-                new LocalLogins(),
+                new LocalLogins,
             ]);
     }
 }

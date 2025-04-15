@@ -53,6 +53,13 @@ h2 {
 }
 h3 {
     @apply text-black font-bold text-lg }
+h5 {
+    @apply text-black font-bold  mt-4;
+}
+
+h6 {
+    @apply text-green text-base font-semibold uppercase;
+}
 
 .surveyblocks {
     @apply container !bg-white shadow-xl mb-32;
@@ -105,7 +112,12 @@ h3 {
 
 }
 .buttona:hover {
-    @apply shadow-none bg-dark-blue;
+    @apply shadow-none bg-dark-blue ;
+    text-decoration: none !important;
+}
+
+.buttona span:hover {
+    text-decoration: none !important;
 }
 
 .buttonb{
@@ -115,6 +127,8 @@ h3 {
 .buttonb:hover {
     @apply shadow-none bg-dark-orange;
 }
+
+
 .actionblock .buttona,.actionblock .buttonb {
     @apply text-sm;
 }
@@ -185,6 +199,12 @@ h3 {
     @apply bg-green text-white;
     h3 {@apply text-white;}
 }
+.lisptabs-desc {
+    @apply hidden lg:block ;
+}
+
+
+
 .lispboxinactive {
     @apply bg-gray-50 border-l-4 border-gray-50;
 }
@@ -314,6 +334,166 @@ button:disabled.outline-none {
     @apply border-none;
 }
 
+
 .inline-repeater .fi-fo-repeater-item {
     @apply ring-0 shadow-none;
+}
+
+.lisp-global-indicators .fi-ta-header-cell {
+    @apply hidden;
+}
+
+.lisp-global-indicators .fi-ta-actions-header-cell {
+    @apply hidden;
+}
+
+.translations-tables .fi-ta-ctn{
+    @apply shadow-none ring-0 border-b  m-4;
+
+}
+
+.translations-tables .fi-ta-content {
+    @apply border-x ;
+}
+.translation-modal button {
+    margin-left: 0.6rem;
+}
+
+
+.fi-ta-header-cell-label {
+    text-transform: none !important;
+}
+
+
+.indicator-upload .table-repeater-container {
+    @apply !rounded-none;
+    --tw-ring-color: rgba(9, 9, 11, 0.11);
+    .table-repeater-header-column {
+        @apply !text-sm font-semibold py-3 ;
+    }
+    td {
+        @apply py-4;
+    }
+}
+
+
+fieldset {
+    @apply !p-0 !border-none;
+    legend {
+        @apply !text-base !font-semibold mt-2 mb-4 ;
+    }
+}
+
+[class^="fi-section"] {
+    @apply border-none ring-0 shadow-none;
+    h3 {
+        @apply !text-base !font-semibold;
+    }
+}
+.fi-section-header-heading {
+    @apply border-none ring-0 shadow-none;
+}
+.fi-section-header {
+    @apply pb-0;
+}
+
+.fi-topbar-item-button {
+    border-radius: 9999px;
+}
+.indicator {
+    @apply bg-gray-50 !rounded-none ;
+
+    .fi-section-header {
+        @apply pb-4 ;
+
+    }
+    h3 {
+        @apply !text-sm;
+    font-weight: 400 !important;
+
+    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
+}
+}
+.draggable {
+    @apply bg-green rounded-none text-white;
+    .fi-section-header {
+        @apply pb-4 !text-white;
+
+    }
+    h3 {
+        @apply !text-sm text-white !font-semibold;
+
+    }
+    .fi-icon-btn-icon {
+        @apply !text-white;
+    }
+    .fi-section-content {
+        padding: 0.1px 1rem;
+    background-color: #ffffffe1;
+
+    .indicator_questions {
+        @apply px-4 pt-0 pb-2 my-4 text-black;
+    }
+    }
+}
+.draggable.indicator:hover {
+    @apply text-white shadow-lg;
+}
+
+.indicator_questions {
+@apply pr-6  ml-6 pl-4 mb-3 font-light;
+
+   border-left: 3px solid var(--green);
+   overflow-wrap: anywhere;
+}
+
+.full-width {
+    position: relative;
+    right: 50%;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    width: 100vw;
+}
+.instruction_sidebar:hover {
+padding-right: 2rem;
+transition:  100ms ease-in-out;
+background-color: #83be7f;
+cursor: pointer;
+}
+.instruction_sidebar .fi-btn-icon {
+height: 1.7rem;
+width: 1.7rem;
+margin-right: 0.5rem;
+}
+
+.fi-modal-slide-over-window {
+
+.fi-modal-header {
+    @apply !border-none mx-8;
+}
+.fi-modal-heading {
+    @apply !text-xl uppercase;
+}
+.fi-btn {
+    @apply buttonb mx-auto shadow-none !ring-0 border-none;
+}
+}
+
+.instructions_list {
+    margin-left: 30px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    li {
+        @apply my-1;
+    }
+}
+.instructions_note {
+    @apply rounded-xl py-6 px-9 my-6;
+    padding: 20px 30px;
+    background-color: #5fa35a2b;
+
 }
