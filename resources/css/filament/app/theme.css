@@ -4,7 +4,7 @@
 
 :root {
     --green: #5fa35a;
-    --lightgreen: #f8fff5; 
+    --lightgreen: #f8fff5;
     --blue: #3FA9F5;
     --dark-blue: #296fa1;
     --orange: #EB5A45;
@@ -338,6 +338,15 @@ button:disabled.outline-none {
 .inline-repeater .fi-fo-repeater-item {
     @apply ring-0 shadow-none;
 }
+
+.lisp-global-indicators .fi-ta-header-cell {
+    @apply hidden;
+}
+
+.lisp-global-indicators .fi-ta-actions-header-cell {
+    @apply hidden;
+}
+
 .translations-tables .fi-ta-ctn{
     @apply shadow-none ring-0 border-b  m-4;
 
@@ -396,7 +405,7 @@ fieldset {
 
     .fi-section-header {
         @apply pb-4 ;
-        
+
     }
     h3 {
         @apply !text-sm;
@@ -411,7 +420,7 @@ fieldset {
     @apply bg-green rounded-none text-white;
     .fi-section-header {
         @apply pb-4 !text-white;
-        
+
     }
     h3 {
         @apply !text-sm text-white !font-semibold;
@@ -486,5 +495,5 @@ margin-right: 0.5rem;
     @apply rounded-xl py-6 px-9 my-6;
     padding: 20px 30px;
     background-color: #5fa35a2b;
-    
+
 }
