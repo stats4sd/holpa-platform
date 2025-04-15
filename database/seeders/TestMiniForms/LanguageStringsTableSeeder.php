@@ -19,11 +19,11 @@ class LanguageStringsTableSeeder extends Seeder
 
         DB::table('language_strings')->delete();
 
-        DB::table('language_strings')->insert(array (
+        DB::table('language_strings')->insert(array(
             0 =>
-            array (
+            array(
                 'id' => 1,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 1,
@@ -33,9 +33,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:54',
             ),
             1 =>
-            array (
+            array(
                 'id' => 2,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 2,
@@ -45,9 +45,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:54',
             ),
             2 =>
-            array (
+            array(
                 'id' => 3,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 2,
@@ -57,9 +57,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:54',
             ),
             3 =>
-            array (
+            array(
                 'id' => 4,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 1,
@@ -69,9 +69,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:54',
             ),
             4 =>
-            array (
+            array(
                 'id' => 5,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 2,
@@ -81,9 +81,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:54',
             ),
             5 =>
-            array (
+            array(
                 'id' => 6,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 4,
@@ -93,9 +93,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             6 =>
-            array (
+            array(
                 'id' => 7,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 5,
@@ -105,9 +105,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             7 =>
-            array (
+            array(
                 'id' => 8,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 6,
@@ -117,9 +117,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             8 =>
-            array (
+            array(
                 'id' => 9,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 4,
@@ -129,9 +129,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             9 =>
-            array (
+            array(
                 'id' => 10,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 6,
@@ -141,9 +141,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             10 =>
-            array (
+            array(
                 'id' => 11,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 6,
@@ -153,9 +153,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:55',
             ),
             11 =>
-            array (
+            array(
                 'id' => 12,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 7,
@@ -165,9 +165,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             12 =>
-            array (
+            array(
                 'id' => 13,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 8,
@@ -177,9 +177,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             13 =>
-            array (
+            array(
                 'id' => 14,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 12,
@@ -189,9 +189,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             14 =>
-            array (
+            array(
                 'id' => 15,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 13,
@@ -201,9 +201,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             15 =>
-            array (
+            array(
                 'id' => 16,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 14,
@@ -213,9 +213,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             16 =>
-            array (
+            array(
                 'id' => 17,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 15,
@@ -225,9 +225,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             17 =>
-            array (
+            array(
                 'id' => 18,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 7,
@@ -237,9 +237,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             18 =>
-            array (
+            array(
                 'id' => 19,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 13,
@@ -249,9 +249,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             19 =>
-            array (
+            array(
                 'id' => 20,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 15,
@@ -261,9 +261,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             20 =>
-            array (
+            array(
                 'id' => 21,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 3,
@@ -273,9 +273,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             21 =>
-            array (
+            array(
                 'id' => 22,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 4,
@@ -285,9 +285,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             22 =>
-            array (
+            array(
                 'id' => 23,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 5,
@@ -297,9 +297,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             23 =>
-            array (
+            array(
                 'id' => 24,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 6,
@@ -309,21 +309,21 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             24 =>
-            array (
+            array(
                 'id' => 25,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 7,
-            'text' => 'Fruit juice (any kind)',
+                'text' => 'Fruit juice (any kind)',
                 'updated_during_import' => 0,
                 'created_at' => '2025-01-07 16:56:45',
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             25 =>
-            array (
+            array(
                 'id' => 26,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 8,
@@ -333,9 +333,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             26 =>
-            array (
+            array(
                 'id' => 27,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 9,
@@ -345,9 +345,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             27 =>
-            array (
+            array(
                 'id' => 28,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 10,
@@ -357,9 +357,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             28 =>
-            array (
+            array(
                 'id' => 29,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 11,
@@ -369,9 +369,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             29 =>
-            array (
+            array(
                 'id' => 30,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 12,
@@ -381,9 +381,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:56',
             ),
             30 =>
-            array (
+            array(
                 'id' => 31,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 19,
@@ -393,9 +393,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             31 =>
-            array (
+            array(
                 'id' => 32,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 20,
@@ -405,9 +405,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             32 =>
-            array (
+            array(
                 'id' => 33,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 21,
@@ -417,9 +417,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             33 =>
-            array (
+            array(
                 'id' => 34,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 22,
@@ -429,9 +429,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             34 =>
-            array (
+            array(
                 'id' => 35,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 19,
@@ -441,21 +441,21 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             35 =>
-            array (
+            array(
                 'id' => 36,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 20,
-            'text' => '(Or yourself if you are completing it on your own)',
+                'text' => '(Or yourself if you are completing it on your own)',
                 'updated_during_import' => 0,
                 'created_at' => '2025-01-07 16:56:45',
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             36 =>
-            array (
+            array(
                 'id' => 37,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 21,
@@ -465,9 +465,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             37 =>
-            array (
+            array(
                 'id' => 38,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 22,
@@ -477,9 +477,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             38 =>
-            array (
+            array(
                 'id' => 39,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 13,
@@ -489,9 +489,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             39 =>
-            array (
+            array(
                 'id' => 40,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 14,
@@ -501,9 +501,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:57',
             ),
             40 =>
-            array (
+            array(
                 'id' => 41,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 24,
@@ -513,9 +513,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:58',
             ),
             41 =>
-            array (
+            array(
                 'id' => 42,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 25,
@@ -525,9 +525,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:58',
             ),
             42 =>
-            array (
+            array(
                 'id' => 43,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 26,
@@ -537,9 +537,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:58',
             ),
             43 =>
-            array (
+            array(
                 'id' => 44,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 24,
@@ -549,9 +549,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:58',
             ),
             44 =>
-            array (
+            array(
                 'id' => 45,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 25,
@@ -561,9 +561,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 16:56:58',
             ),
             45 =>
-            array (
+            array(
                 'id' => 46,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 27,
@@ -573,9 +573,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             46 =>
-            array (
+            array(
                 'id' => 47,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 28,
@@ -585,9 +585,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             47 =>
-            array (
+            array(
                 'id' => 48,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 29,
@@ -597,9 +597,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             48 =>
-            array (
+            array(
                 'id' => 49,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 27,
@@ -609,9 +609,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:31',
             ),
             49 =>
-            array (
+            array(
                 'id' => 50,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 29,
@@ -621,9 +621,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:31',
             ),
             50 =>
-            array (
+            array(
                 'id' => 51,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 27,
@@ -633,9 +633,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             51 =>
-            array (
+            array(
                 'id' => 52,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 28,
@@ -645,9 +645,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             52 =>
-            array (
+            array(
                 'id' => 53,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 29,
@@ -657,9 +657,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             53 =>
-            array (
+            array(
                 'id' => 54,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 27,
@@ -669,9 +669,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:31',
             ),
             54 =>
-            array (
+            array(
                 'id' => 55,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 29,
@@ -681,9 +681,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:31',
             ),
             55 =>
-            array (
+            array(
                 'id' => 56,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 5,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 29,
@@ -693,9 +693,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:32',
             ),
             56 =>
-            array (
+            array(
                 'id' => 57,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 30,
@@ -705,9 +705,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             57 =>
-            array (
+            array(
                 'id' => 58,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 31,
@@ -717,9 +717,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             58 =>
-            array (
+            array(
                 'id' => 59,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 32,
@@ -729,9 +729,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             59 =>
-            array (
+            array(
                 'id' => 60,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 33,
@@ -741,9 +741,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             60 =>
-            array (
+            array(
                 'id' => 61,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 30,
@@ -753,21 +753,21 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             61 =>
-            array (
+            array(
                 'id' => 62,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 31,
-            'text' => '(Or yourself if you are completing it on your own)',
+                'text' => '(Or yourself if you are completing it on your own)',
                 'updated_during_import' => 0,
                 'created_at' => '2025-01-07 17:01:13',
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             62 =>
-            array (
+            array(
                 'id' => 63,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 32,
@@ -777,9 +777,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             63 =>
-            array (
+            array(
                 'id' => 64,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 33,
@@ -789,9 +789,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             64 =>
-            array (
+            array(
                 'id' => 65,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 30,
@@ -801,9 +801,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             65 =>
-            array (
+            array(
                 'id' => 66,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 31,
@@ -813,9 +813,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             66 =>
-            array (
+            array(
                 'id' => 67,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 32,
@@ -825,9 +825,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             67 =>
-            array (
+            array(
                 'id' => 68,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 33,
@@ -837,9 +837,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             68 =>
-            array (
+            array(
                 'id' => 69,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 30,
@@ -849,21 +849,21 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             69 =>
-            array (
+            array(
                 'id' => 70,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 31,
-            'text' => '(O a usted mismo si lo está completando por su cuenta) ',
+                'text' => '(O a usted mismo si lo está completando por su cuenta) ',
                 'updated_during_import' => 0,
                 'created_at' => '2025-01-07 17:01:14',
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             70 =>
-            array (
+            array(
                 'id' => 71,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 32,
@@ -873,9 +873,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             71 =>
-            array (
+            array(
                 'id' => 72,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 33,
@@ -885,9 +885,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:33',
             ),
             72 =>
-            array (
+            array(
                 'id' => 73,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 15,
@@ -897,9 +897,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             73 =>
-            array (
+            array(
                 'id' => 74,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 16,
@@ -909,9 +909,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             74 =>
-            array (
+            array(
                 'id' => 75,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 15,
@@ -921,9 +921,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             75 =>
-            array (
+            array(
                 'id' => 76,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 16,
@@ -933,9 +933,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             76 =>
-            array (
+            array(
                 'id' => 77,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 35,
@@ -945,9 +945,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             77 =>
-            array (
+            array(
                 'id' => 78,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 37,
@@ -957,9 +957,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             78 =>
-            array (
+            array(
                 'id' => 79,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 38,
@@ -969,9 +969,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             79 =>
-            array (
+            array(
                 'id' => 80,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 39,
@@ -981,9 +981,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             80 =>
-            array (
+            array(
                 'id' => 81,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 35,
@@ -993,9 +993,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:34',
             ),
             81 =>
-            array (
+            array(
                 'id' => 82,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 35,
@@ -1005,9 +1005,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             82 =>
-            array (
+            array(
                 'id' => 83,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 37,
@@ -1017,9 +1017,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             83 =>
-            array (
+            array(
                 'id' => 84,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 38,
@@ -1029,9 +1029,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             84 =>
-            array (
+            array(
                 'id' => 85,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 39,
@@ -1041,9 +1041,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             85 =>
-            array (
+            array(
                 'id' => 86,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 17,
@@ -1053,9 +1053,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             86 =>
-            array (
+            array(
                 'id' => 87,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 18,
@@ -1065,9 +1065,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             87 =>
-            array (
+            array(
                 'id' => 88,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 19,
@@ -1077,9 +1077,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             88 =>
-            array (
+            array(
                 'id' => 89,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 20,
@@ -1089,9 +1089,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             89 =>
-            array (
+            array(
                 'id' => 90,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 21,
@@ -1101,9 +1101,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             90 =>
-            array (
+            array(
                 'id' => 91,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 22,
@@ -1113,9 +1113,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             91 =>
-            array (
+            array(
                 'id' => 92,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 23,
@@ -1125,9 +1125,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             92 =>
-            array (
+            array(
                 'id' => 93,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 24,
@@ -1137,9 +1137,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             93 =>
-            array (
+            array(
                 'id' => 94,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 25,
@@ -1149,9 +1149,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             94 =>
-            array (
+            array(
                 'id' => 95,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 26,
@@ -1161,9 +1161,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             95 =>
-            array (
+            array(
                 'id' => 96,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 17,
@@ -1173,9 +1173,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             96 =>
-            array (
+            array(
                 'id' => 97,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 18,
@@ -1185,9 +1185,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             97 =>
-            array (
+            array(
                 'id' => 98,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 19,
@@ -1197,9 +1197,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             98 =>
-            array (
+            array(
                 'id' => 99,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 20,
@@ -1209,9 +1209,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             99 =>
-            array (
+            array(
                 'id' => 100,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 21,
@@ -1221,9 +1221,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             100 =>
-            array (
+            array(
                 'id' => 101,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 22,
@@ -1233,9 +1233,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             101 =>
-            array (
+            array(
                 'id' => 102,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 23,
@@ -1245,9 +1245,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             102 =>
-            array (
+            array(
                 'id' => 103,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 24,
@@ -1257,9 +1257,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             103 =>
-            array (
+            array(
                 'id' => 104,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 25,
@@ -1269,9 +1269,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             104 =>
-            array (
+            array(
                 'id' => 105,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\ChoiceListEntry',
                 'linked_entry_id' => 26,
@@ -1281,9 +1281,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             105 =>
-            array (
+            array(
                 'id' => 106,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 43,
@@ -1293,9 +1293,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             106 =>
-            array (
+            array(
                 'id' => 107,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 44,
@@ -1305,9 +1305,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             107 =>
-            array (
+            array(
                 'id' => 108,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 45,
@@ -1317,9 +1317,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             108 =>
-            array (
+            array(
                 'id' => 109,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 43,
@@ -1329,9 +1329,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             109 =>
-            array (
+            array(
                 'id' => 110,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 44,
@@ -1341,9 +1341,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:36',
             ),
             110 =>
-            array (
+            array(
                 'id' => 111,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 43,
@@ -1353,9 +1353,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             111 =>
-            array (
+            array(
                 'id' => 112,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 44,
@@ -1365,9 +1365,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             112 =>
-            array (
+            array(
                 'id' => 113,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 45,
@@ -1377,9 +1377,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:38',
             ),
             113 =>
-            array (
+            array(
                 'id' => 114,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 43,
@@ -1389,9 +1389,9 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:37',
             ),
             114 =>
-            array (
+            array(
                 'id' => 115,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'language_string_type_id' => 2,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 44,
@@ -1401,7 +1401,5 @@ class LanguageStringsTableSeeder extends Seeder
                 'updated_at' => '2025-01-07 17:01:37',
             ),
         ));
-
-
     }
 }
