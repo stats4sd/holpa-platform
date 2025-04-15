@@ -48,7 +48,7 @@ class ListChoiceListEntries extends ListRecords
         return [
             SurveyDashboard::getUrl() => 'Survey dashboard',
             PlaceAdaptationsIndex::getUrl() => 'Place-based adaptations',
-            static::getUrl() => 'Contextualise choice lists',
+            static::getUrl() => static::getHeading(),
         ];
     }
 

@@ -22,7 +22,7 @@ class LispWorkshop extends Page
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
             LispIndex::getUrl() => 'Localisation: LISP',
-            static::getUrl() => 'Workshop',
+            static::getUrl() => static::getSubheading(),
         ];
     }
     public function getMaxContentWidth(): MaxWidth

@@ -12,15 +12,10 @@ class ListLocationLevels extends ListRecords
 {
     protected static string $resource = LocationLevelResource::class;
 
-    protected ?string $heading = 'Survey Locations';
+    protected ?string $heading = 'Survey locations';
     protected ?string $subheading = 'Manage hierarchy';
 
-    protected static string $view = 'filament.app.pages.list-location-levels';
-
-//    public function getMaxContentWidth(): MaxWidth|string|null
-//    {
-//        return MaxWidth::Full;
-//    }
+    protected static string $view = 'filament.app.clusters.location-levels.resources.location-level-resource.pages.list-location-levels';
 
     public function getBreadcrumbs(): array
     {
