@@ -2,11 +2,13 @@
 
 namespace App\Filament\App\Pages;
 
+use App\Events\XlsformDraftWasDeployed;
 use App\Models\Team;
 use Faker\Extension\Helper;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
@@ -48,6 +50,19 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
     {
         $this->team = HelperService::getCurrentOwner();
         $this->xlsforms = $this->team->xlsforms()->get();
+
+        $this->xlsforms->each(function (Xlsform $xlsform) {
+            if ($xlsform->needs_update) {
+                ray('deploying . ' . $xlsform->id);
+                $xlsform->deployDraft();
+            }
+        });
+    }
+
+    #[On(XlsformDraftWasDeployed::class)]
+    public function handleXlsformDraftWasDeployed(): void
+    {
+        dd('test');
     }
 
     public function getBreadcrumbs(): array
