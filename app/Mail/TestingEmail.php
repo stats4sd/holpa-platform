@@ -15,9 +15,7 @@ class TestingEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     /**
      * Build the message.
@@ -25,7 +23,7 @@ class TestingEmail extends Mailable
     public function build(): static
     {
         return $this->from(config('mail.from.address'))
-            ->subject(config('app.name') . ': Testing Email')
+            ->subject(config('app.name').': Testing Email')
             ->markdown('emails.testing_email');
     }
 }

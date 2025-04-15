@@ -12,11 +12,9 @@ use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithValidation;
 
-class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHeadingRow, SkipsEmptyRows, WithValidation
+class LocalIndicatorImport implements SkipsEmptyRows, ToCollection, WithHeadingRow, WithMultipleSheets, WithValidation
 {
-    public function __construct(public Team $team)
-    {
-    }
+    public function __construct(public Team $team) {}
 
     public function sheets(): array
     {
@@ -32,7 +30,7 @@ class LocalIndicatorImport implements WithMultipleSheets, ToCollection, WithHead
 
         foreach ($rows as $row) {
 
-            $domain = $domains->filter(fn(Domain $domain) => $domain->name === $row['domain'])->first(); // names should be unique
+            $domain = $domains->filter(fn (Domain $domain) => $domain->name === $row['domain'])->first(); // names should be unique
 
             LocalIndicator::create([
                 'name' => $row['name'],

@@ -3,14 +3,14 @@
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
-use App\Filament\App\Pages\Sampling;
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 use App\Filament\Tables\Actions\ImportLocationsAction;
 use App\Imports\LocationImport;
+use App\Services\HelperService;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
-use App\Services\HelperService;
 
 class ViewLocationLevel extends ViewRecord
 {
@@ -20,17 +20,17 @@ class ViewLocationLevel extends ViewRecord
 
     public function getSubheading(): string|Htmlable
     {
-        return 'List of ' . Str::of($this->record->name)->plural()->title();
+        return 'List of '.Str::of($this->record->name)->plural()->title();
     }
 
     public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            Sampling::getUrl() => 'Survey locations',
+            SurveyLocationsIndex::getUrl() => 'Survey locations',
             route('filament.app.location-levels.resources.location-levels.view', [
                 'tenant' => HelperService::getCurrentOwner()->id,
-                'record' => $this->record->slug
+                'record' => $this->record->slug,
             ]) => Str::of($this->record->name)->plural(),
         ];
     }
@@ -40,8 +40,8 @@ class ViewLocationLevel extends ViewRecord
         return [
             ImportLocationsAction::make()
                 ->use(LocationImport::class)
-            ->color('primary')
-            ->label('Import ' . Str::of($this->record->name)->plural()),
+                ->color('primary')
+                ->label('Import '.Str::of($this->record->name)->plural()),
         ];
     }
 

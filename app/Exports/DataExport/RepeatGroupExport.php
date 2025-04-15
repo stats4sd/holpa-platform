@@ -11,16 +11,17 @@ use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithTitle;
 
-class RepeatGroupExport implements FromQuery, WithTitle, WithHeadings, WithMapping, WithStrictNullComparison
+class RepeatGroupExport implements FromQuery, WithHeadings, WithMapping, WithStrictNullComparison, WithTitle
 {
     public string $title;
+
     public array $fields;
 
     public function __construct(
         public RepeatModel $model,
         public array $excludedColumns = ['id', 'created_at', 'updated_at', 'farm_survey_data_id'],
     ) {
-        $tableName = (new $model())->getTable();
+        $tableName = (new $model)->getTable();
 
         $this->title = Str::title($tableName);
 
@@ -54,7 +55,7 @@ class RepeatGroupExport implements FromQuery, WithTitle, WithHeadings, WithMappi
     public function map($row): array
     {
         $map = collect($this->fields)
-            ->map(fn($field) => $row[$field]);
+            ->map(fn ($field) => $row[$field]);
 
         // $map = $map->prepend($row->mainSurvey->farm->team_code);
         // $map = $map->prepend($row->mainSurvey->farm_id);

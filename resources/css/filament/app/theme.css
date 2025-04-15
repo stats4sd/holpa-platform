@@ -14,40 +14,32 @@
     --light-grey: #F2F2F8;
     --shadowgrey: #989898;
     --hyellow: #FFC84F;
-}
-
+  }
 body {
-    @apply font-montserrat text-sm;
+    @apply font-montserrat text-sm ;
 }
 
 body:has(#surveydash) {
     @apply !bg-gray-100;
 }
 
-body:has(#languages),
-.actionblock {
+body:has(#languages),.actionblock {
     h1 {
         @apply font-extrabold text-5xl;
     }
-
-    h2 {
+h2{
         @apply font-light text-2xl;
     }
-
     h3 {
-        @apply text-black font-bold text-lg
-    }
+        @apply text-black font-bold text-lg }
 
 }
-
 .surveystepshead {
     @apply mx-auto container !grid xl:px-12;
 }
-
 .instructionsvid {
     @apply float-right;
 }
-
 h4 {
     @apply text-base font-bold uppercase;
 }
@@ -56,13 +48,13 @@ h4 {
 h1 {
     @apply font-extrabold text-5xl;
 }
-
 h2 {
     @apply font-light text-2xl;
 }
-
 h3 {
-    @apply text-black font-bold text-lg
+    @apply text-black font-bold text-lg }
+h5 {
+    @apply text-black font-bold  mt-4;
 }
 
 h6 {
@@ -74,64 +66,53 @@ h6 {
 }
 
 button {
-    @apply font-semibold !text-xs text-white !rounded-full duration-200;
-    text-transform: uppercase;
+    @apply font-semibold !text-xs text-white  !rounded-full duration-200;
+    text-transform: uppercase ;
 
 }
-
 .fi-btn {
     @apply rounded-full uppercase duration-200;
     font-size: 0.75rem;
 }
-
 .fi-btn-color-orange:hover {
     @apply bg-dark-orange;
 }
-
 .fi-btn-color-blue:hover {
     @apply bg-dark-blue;
 }
-
 .greensection {
-    @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-52 2xl:w-64 lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
+    @apply flex-none bg-green text-white text-xl font-extrabold flex flex-row lg:flex-col lg:w-52 2xl:w-64  lg:h-72 items-center justify-center px-4 py-8 lg:py-0 relative;
 }
-
 .whitesection {
-    @apply bg-white px-4 lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
+    @apply bg-white px-4  lg:py-0 lg:py-6 lg:h-72 flex flex-grow w-full lg:w-52 xl:w-64 2xl:w-80;
 }
-
 .whitesection h2 {
     @apply !text-base;
 }
-
 .whiteborderbox {
     @apply border-b lg:border-b-0 lg:border-r border-gray-300 w-full;
 }
-
 .whitecard {
-    @apply relative min-w-40 lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
-
-    h3 {
-        @apply text-base;
-    }
+@apply relative min-w-40  lg:mx-auto text-xs h-full w-full px-4 xl:px-8 flex flex-row flex-grow lg:flex-col py-8 lg:py-0;
+h3 {
+    @apply text-base;
+}
 }
 
 .dashdescdiv {
-    @apply w-2/4 lg:w-full ml-4 lg:ml-0;
+    @apply w-2/4 lg:w-full ml-4 lg:ml-0 ;
 }
 
 .dashbuttondiv {
-    @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2 w-2/4 pl-20 lg:pl-0 lg:w-full;
+    @apply text-center lg:absolute lg:inset-x-0 lg:bottom-2  w-2/4 pl-20 lg:pl-0 lg:w-full ;
 }
-
-.buttona {
-    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full duration-200;
+.buttona{
+    @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 
 }
-
 .buttona:hover {
-    @apply shadow-none bg-dark-blue;
+    @apply shadow-none bg-dark-blue ;
     text-decoration: none !important;
 }
 
@@ -139,20 +120,18 @@ button {
     text-decoration: none !important;
 }
 
-.buttonb {
-    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full duration-200;
+.buttonb{
+    @apply bg-orange font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
 }
-
 .buttonb:hover {
     @apply shadow-none bg-dark-orange;
 }
 
-.actionblock .buttona,
-.actionblock .buttonb {
+
+.actionblock .buttona,.actionblock .buttonb {
     @apply text-sm;
 }
-
 .hover-effect {
     transition: all 0.2s ease-in-out;
 }
@@ -166,20 +145,19 @@ button {
 }
 
 .fi-header-subheading {
-    @apply text-xl;
+    @apply  text-xl;
 }
 
 .fi-breadcrumbs {
     @apply text-sm;
 }
 
-.fi-modal-close-overlay {
-    @apply -left-1/3 -top-2/3;
+.fi-modal-close-overlay{
+    @apply   -left-1/3 -top-2/3;
     width: 200vw !important;
     height: 200vh !important;
     overflow: hidden;
 }
-
 .fi-modal-heading {
     @apply !text-lg !font-bold text-green;
 }
@@ -187,7 +165,6 @@ button {
 .rounded-3xl {
     border-radius: 1.5rem;
 }
-
 .container {
     display: block;
     justify-content: revert;
@@ -195,43 +172,38 @@ button {
     background-color: revert;
     border-bottom: none;
 }
-
-.actionblockborder {
+.actionblockborder
+{
     margin-left: 8rem;
     margin-right: 5rem;
     border-color: #bbbbbb;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
-
-.actionblock:last-child .actionblockborder {
+.actionblock:last-child .actionblockborder
+{
     border-color: white !important;
 
 }
-
 .completebar {
-    @apply md:h-16 h-max bg-gray-900 text-center fixed w-screen bottom-0 -left-0 pt-4;
+    @apply md:h-16 h-max bg-gray-900 text-center fixed  w-screen bottom-0 -left-0 pt-4;
 }
 
 .tabbuttons {
     @apply bg-green text-white;
 }
-
 .tabbuttons h3 {
     @apply text-white;
 }
-
 .lisptabs:hover {
     @apply bg-green text-white;
-
-    h3 {
-        @apply text-white;
-    }
+    h3 {@apply text-white;}
 }
-
 .lisptabs-desc {
-    @apply hidden lg:block;
+    @apply hidden lg:block ;
 }
+
+
 
 .lispboxinactive {
     @apply bg-gray-50 border-l-4 border-gray-50;
@@ -240,22 +212,19 @@ button {
 .lispboxinactive:hover {
     @apply bg-gray-50 border-l-4 border-green text-green;
 }
-
 .lispboxinactive {
     @apply bg-gray-50 border-l-4 border-gray-50;
 }
 
 .lispboxselected {
-    @apply bg-green border-l-4 border-green text-white;
+    @apply bg-green border-l-4 border-green  text-white;
 }
-
 button:disabled {
     background-color: #e0dfdf;
     color: rgb(93, 93, 93);
     cursor: not-allowed;
     border: none;
 }
-
 button:disabled:hover {
     background-color: #e0dfdf;
     color: rgb(93, 93, 93);
@@ -266,11 +235,10 @@ button:disabled:hover {
 #globalindicators {
     button {
         width: 8rem;
-
         span {
             font-size: 0.75rem !important;
-        }
-    }
+                }
+            }
 
 
     /* div,table,tr,td {
@@ -304,7 +272,6 @@ button:disabled:hover {
 
     }} */
 }
-
 /* .fi-ta,div,th,td,table,tbody, tr fi-ta-group-header {
     @apply ring-0 shadow-none;
     --tw-ring-color: transparent;
@@ -320,19 +287,16 @@ button:disabled:hover {
 } */
 .warningbox {
     @apply bg-orange w-3/4 mx-auto rounded-3xl p-6 text-white;
-
     a {
         text-transform: uppercase;
         @apply bg-orange border border-white text-white font-semibold duration-200;
     }
-
     a:hover {
         @apply bg-white text-orange;
     }
 }
-
 .uploadedindicatorstable th button {
-    padding-left: 0px;
+padding-left: 0px ;
 }
 
 .fi-main:has(.fi-resource-list-records-page) {
@@ -344,7 +308,7 @@ button:disabled:hover {
 }
 
 
-.success-row td {
+.success-row td  {
     @apply !bg-lightgreen;
 }
 
@@ -383,15 +347,14 @@ button:disabled.outline-none {
     @apply hidden;
 }
 
-.translations-tables .fi-ta-ctn {
-    @apply shadow-none ring-0 border-b m-4;
+.translations-tables .fi-ta-ctn{
+    @apply shadow-none ring-0 border-b  m-4;
 
 }
 
 .translations-tables .fi-ta-content {
-    @apply border-x;
+    @apply border-x ;
 }
-
 .translation-modal button {
     margin-left: 0.6rem;
 }
@@ -405,11 +368,9 @@ button:disabled.outline-none {
 .indicator-upload .table-repeater-container {
     @apply !rounded-none;
     --tw-ring-color: rgba(9, 9, 11, 0.11);
-
     .table-repeater-header-column {
-        @apply !text-sm font-semibold py-3;
+        @apply !text-sm font-semibold py-3 ;
     }
-
     td {
         @apply py-4;
     }
@@ -418,24 +379,20 @@ button:disabled.outline-none {
 
 fieldset {
     @apply !p-0 !border-none;
-
     legend {
-        @apply !text-base !font-semibold mt-2 mb-4;
+        @apply !text-base !font-semibold mt-2 mb-4 ;
     }
 }
 
 [class^="fi-section"] {
     @apply border-none ring-0 shadow-none;
-
     h3 {
         @apply !text-base !font-semibold;
     }
 }
-
 .fi-section-header-heading {
     @apply border-none ring-0 shadow-none;
 }
-
 .fi-section-header {
     @apply pb-0;
 }
@@ -443,63 +400,100 @@ fieldset {
 .fi-topbar-item-button {
     border-radius: 9999px;
 }
-
 .indicator {
-    @apply bg-gray-50 !rounded-none;
+    @apply bg-gray-50 !rounded-none ;
 
     .fi-section-header {
-        @apply pb-4;
+        @apply pb-4 ;
 
     }
-
     h3 {
         @apply !text-sm;
-        font-weight: 400 !important;
+    font-weight: 400 !important;
 
     }
-
-    .fi-section-content {
-        @apply px-4 pt-0 pb-2;
-    }
+.fi-section-content {
+   @apply px-4 pt-0 pb-2;
 }
-
+}
 .draggable {
-    @apply bg-gray-50 rounded-none;
-    background-color: #72bb6c1c;
-
+    @apply bg-green rounded-none text-white;
     .fi-section-header {
-        @apply pb-4;
+        @apply pb-4 !text-white;
 
     }
-
     h3 {
-        @apply !text-sm;
-        font-weight: 400 !important;
+        @apply !text-sm text-white !font-semibold;
 
     }
-
+    .fi-icon-btn-icon {
+        @apply !text-white;
+    }
     .fi-section-content {
-        @apply px-4 pt-0 pb-2;
+        padding: 0.1px 1rem;
+    background-color: #ffffffe1;
+
+    .indicator_questions {
+        @apply px-4 pt-0 pb-2 my-4 text-black;
+    }
     }
 }
-
 .draggable.indicator:hover {
-    @apply text-black;
-
-    h3 {
-        @apply !text-green;
-    }
-}
-
-.indicator:hover {
-    @apply !text-black;
-
+    @apply text-white shadow-lg;
 }
 
 .indicator_questions {
-    @apply pr-6 ml-6 pl-4 mb-3 font-light;
+@apply pr-6  ml-6 pl-4 mb-3 font-light;
 
-    border-left: 3px solid var(--green);
-    overflow-wrap: anywhere;
+   border-left: 3px solid var(--green);
+   overflow-wrap: anywhere;
+}
+
+.full-width {
+    position: relative;
+    right: 50%;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    max-width: 100vw;
+    width: 100vw;
+}
+.instruction_sidebar:hover {
+padding-right: 2rem;
+transition:  100ms ease-in-out;
+background-color: #83be7f;
+cursor: pointer;
+}
+.instruction_sidebar .fi-btn-icon {
+height: 1.7rem;
+width: 1.7rem;
+margin-right: 0.5rem;
+}
+
+.fi-modal-slide-over-window {
+
+.fi-modal-header {
+    @apply !border-none mx-8;
+}
+.fi-modal-heading {
+    @apply !text-xl uppercase;
+}
+.fi-btn {
+    @apply buttonb mx-auto shadow-none !ring-0 border-none;
+}
+}
+
+.instructions_list {
+    margin-left: 30px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    li {
+        @apply my-1;
+    }
+}
+.instructions_note {
+    @apply rounded-xl py-6 px-9 my-6;
+    padding: 20px 30px;
+    background-color: #5fa35a2b;
 
 }

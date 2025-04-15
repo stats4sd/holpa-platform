@@ -5,6 +5,7 @@ namespace App\Filament\App\Clusters\Localisations\Resources;
 use App\Filament\App\Clusters\Localisations;
 use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource\Pages\ListChoiceListEntries;
 use App\Models\Team;
+use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\TextInput;
@@ -22,15 +23,13 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
-use App\Services\HelperService;
 
 class ChoiceListEntryResource extends Resource
 {
-
-
     protected static ?string $model = ChoiceListEntry::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
+
     protected static ?int $navigationSort = 2;
 
     protected static ?string $cluster = Localisations::class;
@@ -41,23 +40,22 @@ class ChoiceListEntryResource extends Resource
     {
         return parent::getEloquentQuery()
             // only global and team-owned items
-            ->where(fn(Builder $query) => $query
-                ->whereHas('owner', fn(Builder $query) => $query
+            ->where(fn (Builder $query) => $query
+                ->whereHas('owner', fn (Builder $query) => $query
                     ->where('teams.id', HelperService::getCurrentOwner()?->id
                     ))
                 ->orWhere('owner_id', null)
             )
             // only localisable lists
-            ->whereHas('choiceList', fn(Builder $query) => $query
+            ->whereHas('choiceList', fn (Builder $query) => $query
                 ->where('is_localisable', true)
             )
             // and only entries that are not linked to lists that are datasets
-            ->whereDoesntHave('choiceList', fn(Builder $query) => $query
+            ->whereDoesntHave('choiceList', fn (Builder $query) => $query
                 ->where('is_dataset', true)
             );
 
     }
-
 
     public static function getNavigationItems(): array
     {
@@ -66,57 +64,57 @@ class ChoiceListEntryResource extends Resource
             ->where('has_custom_handling', false)
             ->get();
 
-        if(!$lists) {
+        if (! $lists) {
             return [
 
             ];
         }
 
         return $lists
-            ->map(fn(ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
+            ->map(fn (ChoiceList $choiceList) => NavigationItem::make($choiceList->list_name)
                 ->group('Choice Lists')
 //                ->icon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
 //                ->activeIcon(fn() => HelperService::getCurrentOwner()?->hasCompletedLookupList($choiceList) ? 'heroicon-o-check' : 'heroicon-o-exclamation-circle')
-                ->isActiveWhen(fn() => request()->routeIs(static::getRouteBaseName() . '.*')
+                ->isActiveWhen(fn () => request()->routeIs(static::getRouteBaseName().'.*')
                     && request()->get('choiceListName') === $choiceList->list_name
                 )
                 ->badge(static::getNavigationBadge(), color: static::getNavigationBadgeColor())
                 ->badgeTooltip(static::getNavigationBadgeTooltip())
                 ->sort(static::getNavigationSort())
-                ->url(static::getNavigationUrl() . '?' . http_build_query(['choiceListName' => $choiceList->list_name]))
+                ->url(static::getNavigationUrl().'?'.http_build_query(['choiceListName' => $choiceList->list_name]))
             )->toArray();
     }
 
     /** @noinspection PhpRedundantOptionalArgumentInspection */
     public static function getFormSchema(ChoiceList $choiceList): array
     {
-        if(isset($choiceList->properties['extra_properties'])) {
+        if (isset($choiceList->properties['extra_properties'])) {
 
-        $propFields = collect($choiceList->properties['extra_properties'])
-            ->map(fn($property) => TextInput::make('properties.' . $property['name'])
-                ->label($property['label'])
-                ->helperText($property['helper_text'])
-            );
+            $propFields = collect($choiceList->properties['extra_properties'])
+                ->map(fn ($property) => TextInput::make('properties.'.$property['name'])
+                    ->label($property['label'])
+                    ->helperText($property['helper_text'])
+                );
         } else {
             $propFields = collect([]);
         }
 
         return [
             Hidden::make('owner_id')
-                ->default(fn() => HelperService::getCurrentOwner()?->id),
+                ->default(fn () => HelperService::getCurrentOwner()?->id),
             Hidden::make('choice_list_id')
-                ->formatStateUsing(fn(?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::where('list_name', $livewire->choiceListName)->first()->id),
+                ->formatStateUsing(fn (?ChoiceListEntry $record, ListChoiceListEntries $livewire) => $record ? $record->choiceList->id : ChoiceList::where('list_name', $livewire->choiceListName)->first()->id),
             TextInput::make('name')->required()
-            ->unique(ignoreRecord: true, modifyRuleUsing: function(Unique $rule, Get $get) {
-                return $rule
-                    ->where('choice_list_id', $get('choice_list_id'))
-                    ->where('owner_id', $get('owner_id'));
-            }),
+                ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule, Get $get) {
+                    return $rule
+                        ->where('choice_list_id', $get('choice_list_id'))
+                        ->where('owner_id', $get('owner_id'));
+                }),
             Repeater::make('languageStrings')
                 ->label('Add Labels for the following languages:')
                 ->relationship('languageStrings')
-                ->minItems(fn() => HelperService::getCurrentOwner()?->locales->count())
-                ->maxItems(fn() => HelperService::getCurrentOwner()?->locales->count())
+                ->minItems(fn () => HelperService::getCurrentOwner()?->locales->count())
+                ->maxItems(fn () => HelperService::getCurrentOwner()?->locales->count())
                 ->formatStateUsing(function (?ChoiceListEntry $record, $state, ListChoiceListEntries $livewire) {
                     if ($record) {
                         return $state;
@@ -124,8 +122,7 @@ class ChoiceListEntryResource extends Resource
 
                     $locales = HelperService::getCurrentOwner()?->locales;
 
-
-                    return $locales->map(fn(Locale $locale) => [
+                    return $locales->map(fn (Locale $locale) => [
                         'language_string_type_id' => LanguageStringType::where('name', 'label')->firstOrFail()->id,
                         'locale_id' => $locale->id,
                         'text' => '',
@@ -138,7 +135,7 @@ class ChoiceListEntryResource extends Resource
                         ->label(function (Get $get) {
                             $locale = Locale::find($get('locale_id'));
 
-                            return 'Label::' . $locale?->language_label;
+                            return 'Label::'.$locale?->language_label;
                         })
                         ->required(),
                 ])
@@ -146,7 +143,6 @@ class ChoiceListEntryResource extends Resource
                 ->deletable(false),
             ...$propFields->toArray(),
         ];
-
 
     }
 
@@ -156,16 +152,15 @@ class ChoiceListEntryResource extends Resource
         $locales = HelperService::getCurrentOwner()?->locales;
 
         $labelColumns = $locales->map(function (Locale $locale) {
-            return TextColumn::make('label_' . $locale->language->id)
-                ->label('label::' . $locale->language_label)
+            return TextColumn::make('label_'.$locale->language->id)
+                ->label('label::'.$locale->language_label)
                 ->state(function (ChoiceListEntry $record) use ($locale) {
-
 
                     return $record->languageStrings
                         // only labels
-                        ->filter(fn(LanguageString $languageString) => $languageString->language_string_type_id === LanguageStringType::where('name', 'label')->firstOrFail()->id)
+                        ->filter(fn (LanguageString $languageString) => $languageString->language_string_type_id === LanguageStringType::where('name', 'label')->firstOrFail()->id)
                         // only ones for the current locale
-                        ->filter(fn(LanguageString $languageString) => $languageString->locale_id === $locale->id)
+                        ->filter(fn (LanguageString $languageString) => $languageString->locale_id === $locale->id)
                         ->first()
                         ?->text ?? '';
                 });
@@ -180,9 +175,8 @@ class ChoiceListEntryResource extends Resource
                     ->label('Localised Entry')
                     ->boolean(),
             ])
-            ->recordClasses(fn(ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
+            ->recordClasses(fn (ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'opacity-50' : '');
     }
-
 
     public static function getRelations(): array
     {

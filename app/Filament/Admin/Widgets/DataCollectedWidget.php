@@ -4,9 +4,9 @@ namespace App\Filament\Admin\Widgets;
 
 use App\Filament\Admin\Widgets\StatsOverviewWidget\Stat;
 use App\Models\SampleFrame\Farm;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Filament\Widgets\StatsOverviewWidget;
 use Illuminate\Support\HtmlString;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
 class DataCollectedWidget extends StatsOverviewWidget
 {
@@ -22,7 +22,6 @@ class DataCollectedWidget extends StatsOverviewWidget
 
         array_push($result, Stat::make(new HtmlString('Farms surveyed'), $farmsSurveyed));
 
-
         // find total number of submissions for each xlsform template
         $xlsformTemplates = XlsFormTemplate::all();
 
@@ -34,7 +33,7 @@ class DataCollectedWidget extends StatsOverviewWidget
                 }
             }
 
-            array_push($result, Stat::make(new HtmlString('Submissions for Xlsform Template -<br/>' . $xlsformTemplate->title), $total));
+            array_push($result, Stat::make(new HtmlString('Submissions for Xlsform Template -<br/>'.$xlsformTemplate->title), $total));
         }
 
         return $result;

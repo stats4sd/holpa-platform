@@ -6,6 +6,7 @@ use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers\LocationsRelationManager;
 use App\Models\SampleFrame\LocationLevel;
+use App\Services\HelperService;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -19,12 +20,13 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use App\Services\HelperService;
 
 class LocationLevelResource extends Resource
 {
     protected static ?string $model = LocationLevel::class;
+
     protected static ?string $tenantOwnershipRelationshipName = 'owner';
+
     protected static ?string $cluster = LocationLevels::class;
 
     public static function getNavigationItems(): array
@@ -32,7 +34,7 @@ class LocationLevelResource extends Resource
         // make sure the original nav item is only 'active' when the index page is active.
         $original = collect(parent::getNavigationItems())
             ->map(function ($item) {
-                return $item->isActiveWhen(fn () => request()->routeIs(static::getRouteBaseName() . '.index'));
+                return $item->isActiveWhen(fn () => request()->routeIs(static::getRouteBaseName().'.index'));
             })->toArray();
 
         $baseRoute = static::getUrl('index');
@@ -42,9 +44,9 @@ class LocationLevelResource extends Resource
             ->get()
             ->map(function ($level) use ($baseRoute) {
                 return NavigationItem::make(Str::plural($level->name))
-                    ->url($baseRoute . '/' . $level->slug)
+                    ->url($baseRoute.'/'.$level->slug)
                     ->isActiveWhen(function () use ($level) {
-                        $isViewRoute = request()->routeIs(static::getRouteBaseName() . '.view');
+                        $isViewRoute = request()->routeIs(static::getRouteBaseName().'.view');
                         $isMatchingRecord = request()->route('record') === $level->slug;
 
                         return $isViewRoute && $isMatchingRecord;
@@ -53,7 +55,7 @@ class LocationLevelResource extends Resource
 
         $farmNavItem = NavigationItem::make('Farms')
             ->url(FarmResource::getUrl())
-            ->isActiveWhen(fn () => request()->routeIs(FarmResource::getRouteBaseName() . '.index'));
+            ->isActiveWhen(fn () => request()->routeIs(FarmResource::getRouteBaseName().'.index'));
 
         return array_merge($original, $navItems->toArray(), [$farmNavItem]);
     }
@@ -66,7 +68,7 @@ class LocationLevelResource extends Resource
                     ->label('Is this location level a sub-level of another level?')
                     ->helperText('E.g. "Village" may be a sub-level of "District", and "District" may be a sub-level of "Province".')
                     ->relationship('parent', 'name')
-                    ->hidden(fn(?LocationLevel $record) => $record && $record->top_level === 1),
+                    ->hidden(fn (?LocationLevel $record) => $record && $record->top_level === 1),
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -74,7 +76,7 @@ class LocationLevelResource extends Resource
                     ->label('Are there farms at this level?')
                     ->helperText('Only say yes if there are farms directly at this location level, not in a lower location level. E.g. "Village" may have farms, but "District" may not.'),
                 Hidden::make('owner_id')
-                    ->default(fn() => HelperService::getCurrentOwner()->id),
+                    ->default(fn () => HelperService::getCurrentOwner()->id),
             ])->columns(1);
     }
 
@@ -118,7 +120,7 @@ class LocationLevelResource extends Resource
             Section::make('Key Details')
                 ->schema([
                     TextEntry::make('name')->label('Level'),
-                    TextEntry::make('parent.name')->label('Parent Level')->hidden(fn(LocationLevel $record) => $record->top_level === 1),
+                    TextEntry::make('parent.name')->label('Parent Level')->hidden(fn (LocationLevel $record) => $record->top_level === 1),
                 ]),
         ])
             ->columns(2);

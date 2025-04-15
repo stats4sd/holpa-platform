@@ -2,8 +2,8 @@
 
 namespace App\Filament\Admin\Pages;
 
-use App\Filament\Admin\Widgets\RegistrationsWidget;
 use App\Filament\Admin\Widgets\DataCollectedWidget;
+use App\Filament\Admin\Widgets\RegistrationsWidget;
 use Filament\Pages\Page;
 
 class Dashboard extends Page
@@ -11,6 +11,7 @@ class Dashboard extends Page
     protected static string $view = 'filament.admin.pages.dashboard';
 
     protected static ?string $navigationIcon = 'heroicon-o-home';
+
     protected static ?int $navigationSort = 0;
 
     public static function getNavigationLabel(): string
@@ -35,6 +36,16 @@ class Dashboard extends Page
         return [
             DataCollectedWidget::class,
         ];
+    }
+
+    public function getHeader(): ?\Illuminate\Contracts\View\View
+    {
+        return view('components.custom-header', [
+            'heading' => $this->getHeading(),
+            'subheading' => $this->getSubheading(),
+            'actions' => $this->getHeaderActions(),
+            'breadcrumbs' => $this->getBreadcrumbs(),
+        ]);
     }
 
     protected ?string $heading = '';

@@ -77,9 +77,9 @@ class FarmImport implements ShouldQueue, WithBatchInserts, WithChunkReading, Wit
 
                 Notification::make()
                     ->title('Import of Farm Data Failed')
-                    ->body(fn(): HtmlString => new HtmlString(
+                    ->body(fn (): HtmlString => new HtmlString(
                         'The import of farm data failed with the following errors:<br/><br/>'
-                            . $event->getException()->getMessage()
+                            .$event->getException()->getMessage()
                     ))
                     ->danger()
                     ->sendToDatabase($recipient, isEventDispatched: true)
