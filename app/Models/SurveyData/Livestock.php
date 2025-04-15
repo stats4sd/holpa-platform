@@ -2,10 +2,10 @@
 
 namespace App\Models\SurveyData;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Models\Interfaces\RepeatModel;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class Livestock extends Model implements RepeatModel

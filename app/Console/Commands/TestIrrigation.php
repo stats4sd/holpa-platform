@@ -32,9 +32,8 @@ class TestIrrigation extends Command
         $irrigationResult = [];
 
         for ($i = 1; $i <= 12; $i++) {
-            $irrigationResult['irrigation_percentage_month_' . $i] = 0;
+            $irrigationResult['irrigation_percentage_month_'.$i] = 0;
         }
-
 
         // get irrigation data from submission JSON content
         $submission = Submission::first();
@@ -49,21 +48,20 @@ class TestIrrigation extends Command
         $this->info('end');
     }
 
-
     public function prepareIrrigationData($irrigationResult, $irrigation): array
     {
         $irrigationPercentage = $irrigation['irrigation_percentage'];
 
         // do nothing if irrigation_percentage is null or "null"
-        if ($irrigationPercentage == null || $irrigationPercentage == "null") {
+        if ($irrigationPercentage == null || $irrigationPercentage == 'null') {
             return $irrigationResult;
         }
 
         $irrigationMonths = str_getcsv($irrigation['irrigation_months'], ' ');
 
         foreach ($irrigationMonths as $irrigationMonth) {
-            if ($irrigationPercentage > $irrigationResult['irrigation_percentage_month_' . $irrigationMonth]) {
-                $irrigationResult['irrigation_percentage_month_' . $irrigationMonth] = $irrigationPercentage;
+            if ($irrigationPercentage > $irrigationResult['irrigation_percentage_month_'.$irrigationMonth]) {
+                $irrigationResult['irrigation_percentage_month_'.$irrigationMonth] = $irrigationPercentage;
             }
         }
 

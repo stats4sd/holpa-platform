@@ -11,7 +11,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Support\Collection;
 
 class LocalIndicatorResource extends Resource
 {
@@ -58,7 +57,7 @@ class LocalIndicatorResource extends Resource
                     ->searchable(),
                 Tables\Columns\SelectColumn::make('global_indicator_id')
                     ->label('Global indicator')
-                    ->options(fn(LocalIndicator $record): array => GlobalIndicator::get()->pluck('name', 'id')->toArray())
+                    ->options(fn (LocalIndicator $record): array => GlobalIndicator::get()->pluck('name', 'id')->toArray())
                     ->sortable()
                     ->searchable(),
             ])

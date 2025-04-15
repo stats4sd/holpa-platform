@@ -17,11 +17,10 @@ class ProgramResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Re
         ];
     }
 
-    //override table from package
+    // override table from package
     public static function table(Table $table): Table
     {
         return parent::table($table)
-            ->recordUrl(fn($record) => url('program/' . $record->id));
+            ->recordUrl(fn ($record) => url('program/'.$record->id));
     }
-
 }

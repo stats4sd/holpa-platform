@@ -15,7 +15,7 @@ class Theme extends Model
     // there are some themes with same name in different module, show theme name with module name to ease identification
     public function getDisplayNameAttribute(): string
     {
-        return $this->name . ' (' . $this->module . ')';
+        return $this->name.' ('.$this->module.')';
     }
 
     public function globalIndicators(): HasMany

@@ -14,12 +14,9 @@ use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Exception;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
-class DataDictionaryDataExport implements FromQuery, WithMapping, WithHeadings, WithTitle, ShouldAutoSize, WithStyles, WithColumnWidths
+class DataDictionaryDataExport implements FromQuery, ShouldAutoSize, WithColumnWidths, WithHeadings, WithMapping, WithStyles, WithTitle
 {
-
-    public function __construct()
-    {
-    }
+    public function __construct() {}
 
     public function query(): Builder
     {
@@ -60,7 +57,7 @@ class DataDictionaryDataExport implements FromQuery, WithMapping, WithHeadings, 
 
     public function columnWidths(): array
     {
-         return [
+        return [
             'A' => 20,
             'B' => 30,
             'C' => 35,
@@ -76,7 +73,7 @@ class DataDictionaryDataExport implements FromQuery, WithMapping, WithHeadings, 
      */
     public function styles(Worksheet $sheet): void
     {
-        $headingStyle = ['font' => ['bold' => true,],];
+        $headingStyle = ['font' => ['bold' => true]];
 
         $sheet->getStyle('1:1')->applyFromArray($headingStyle);
     }

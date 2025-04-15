@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0cd8fc279a88da1cd2e24477098935f7",
+    "content-hash": "3e4f7b540dd88f05c6a527f1326b9c34",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -2902,6 +2902,63 @@
             ],
             "description": "A library that can provide of a list of classes in a given namespace",
             "time": "2023-06-18T17:43:01+00:00"
+        },
+        {
+            "name": "joserick/laravel-livewire-discover",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/joserick/laravel-livewire-discover.git",
+                "reference": "07daa3eaa54e6cd93c9c8cd34c66721db1aeb8c9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/joserick/laravel-livewire-discover/zipball/07daa3eaa54e6cd93c9c8cd34c66721db1aeb8c9",
+                "reference": "07daa3eaa54e6cd93c9c8cd34c66721db1aeb8c9",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^3.0",
+                "spatie/laravel-package-tools": "^1.16"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.18",
+                "orchestra/testbench": "^8.5",
+                "pestphp/pest": "^2.35"
+            },
+            "type": "package",
+            "extra": {
+                "laravel": {
+                    "aliases": {
+                        "LaravelLivewireDiscover": "Joserick\\LaravelLivewireDiscover\\LaravelLivewireDiscover"
+                    },
+                    "providers": [
+                        "Joserick\\LaravelLivewireDiscover\\LaravelLivewireDiscoverServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Joserick\\LaravelLivewireDiscover\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "joserick",
+                    "email": "support@joserick.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Discover and autoload multiples components of livewire by convention (componentNamespace)",
+            "support": {
+                "issues": "https://github.com/joserick/laravel-livewire-discover/issues",
+                "source": "https://github.com/joserick/laravel-livewire-discover/tree/v1.3.1"
+            },
+            "time": "2024-11-06T18:12:02+00:00"
         },
         {
             "name": "kirschbaum-development/eloquent-power-joins",
@@ -7980,7 +8037,7 @@
         },
         {
             "name": "stats4sd/filament-odk-link",
-            "version": "dev-d0cd7bc0b3c482ec64e56c29d934a3bb44cd1808",
+            "version": "dev-odk-ui-for-holpa",
             "dist": {
                 "type": "path",
                 "url": "packages/filament-odk-link",

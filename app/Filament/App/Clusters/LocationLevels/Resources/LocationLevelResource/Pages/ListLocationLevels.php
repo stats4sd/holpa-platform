@@ -2,31 +2,26 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\Pages;
 
-use App\Filament\App\Pages\Sampling;
+use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource;
 
 class ListLocationLevels extends ListRecords
 {
     protected static string $resource = LocationLevelResource::class;
 
-    protected ?string $heading = 'Survey Locations';
+    protected ?string $heading = 'Survey locations';
     protected ?string $subheading = 'Manage hierarchy';
 
-    protected static string $view = 'filament.app.pages.list-location-levels';
-
-//    public function getMaxContentWidth(): MaxWidth|string|null
-//    {
-//        return MaxWidth::Full;
-//    }
+    protected static string $view = 'filament.app.clusters.location-levels.resources.location-level-resource.pages.list-location-levels';
 
     public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            Sampling::getUrl() => 'Survey Locations',
+            SurveyLocationsIndex::getUrl() => 'Survey Locations',
             static::getUrl() => static::getTitle(),
         ];
     }

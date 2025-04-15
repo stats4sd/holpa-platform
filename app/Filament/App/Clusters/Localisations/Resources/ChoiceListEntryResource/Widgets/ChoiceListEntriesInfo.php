@@ -16,7 +16,9 @@ class ChoiceListEntriesInfo extends Widget
     protected int|string|array $columnSpan = 'full';
 
     public string $choiceListName = '';
+
     public Collection $surveyRows;
+
     public ChoiceList $choiceList;
 
     public function mount(): void
@@ -33,14 +35,15 @@ class ChoiceListEntriesInfo extends Widget
 
         /** @var Collection $surveyRows */
         $this->surveyRows = SurveyRow::query()
-            ->whereLike('type', 'select_multiple ' . $this->choiceListName)
-            ->orWhereLike('type', 'select_one ' . $this->choiceListName)
+            ->whereLike('type', 'select_multiple '.$this->choiceListName)
+            ->orWhereLike('type', 'select_one '.$this->choiceListName)
             ->get()
-            ->map(fn(SurveyRow $surveyRow): array => [
+            ->map(fn (SurveyRow $surveyRow): array => [
                 'name' => $surveyRow->name,
                 'label' => $surveyRow->languageStrings()
-                        ->whereHas('locale', fn(Builder $query) => $query->where('language_id', 41))
-                        ->where('language_string_type_id', 1)
-                        ->first()?->text ?? 'tbc',
-            ]);}
+                    ->whereHas('locale', fn (Builder $query) => $query->where('language_id', 41))
+                    ->where('language_string_type_id', 1)
+                    ->first()?->text ?? 'tbc',
+            ]);
+    }
 }

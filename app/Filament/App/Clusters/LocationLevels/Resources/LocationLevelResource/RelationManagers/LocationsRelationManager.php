@@ -4,13 +4,13 @@ namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResour
 
 use Exception;
 use Filament\Forms;
-use Filament\Tables;
 use Filament\Forms\Form;
-use Filament\Tables\Table;
-use Illuminate\Support\Str;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Filament\Resources\RelationManagers\RelationManager;
+use Filament\Tables;
+use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class LocationsRelationManager extends RelationManager
 {
@@ -34,7 +34,8 @@ class LocationsRelationManager extends RelationManager
                     ->label(fn () => $this->getOwnerRecord()->parent->name)
                     ->relationship('parent', 'name', function ($query) {
                         $parent_location_level_id = $this->getOwnerRecord()->parent->id;
-                        $query->where('location_level_id', $parent_location_level_id);                    })
+                        $query->where('location_level_id', $parent_location_level_id);
+                    })
                     ->required()
                     ->searchable()
                     ->preload()
@@ -76,7 +77,7 @@ class LocationsRelationManager extends RelationManager
             ->filters($filters)
             ->headerActions([
                 Tables\Actions\CreateAction::make()
-                    ->label(fn () => 'Add new ' . $this->getOwnerRecord()->name),
+                    ->label(fn () => 'Add new '.$this->getOwnerRecord()->name),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Exception;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\OnEachRow;
@@ -16,14 +15,13 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
-class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsEmptyRows, WithValidation, WithStrictNullComparison
+class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHeadingRow, WithStrictNullComparison, WithValidation
 {
     protected array $headerMap = [];
 
-    public function __construct(public XlsformTemplate $xlsformTemplate, public Locale $locale)
-    {
-    }
+    public function __construct(public XlsformTemplate $xlsformTemplate, public Locale $locale) {}
 
     // Normalize header names for comparison
     protected function normalizeHeading($heading): string
@@ -86,7 +84,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
         };
 
         // these should already be checked during the validation step.
-        if (!$relationship || !$tableName || !$languageStringType) {
+        if (! $relationship || ! $tableName || ! $languageStringType) {
             throw new Exception("Invalid row type: {$rowData['row_type']}");
         }
 
@@ -95,7 +93,7 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
 
         // survey rows within a specific template will be unique by name, except for begin and end group / repeats. Choice List Entries will not be, so we also check the choice_list_id
         if ($rowData['row_type'] === 'choices') {
-            $entries = $entries->filter(fn(ChoiceListEntry $entry) => $entry->choiceList->id === (int)$rowData['choice_list_id']);
+            $entries = $entries->filter(fn (ChoiceListEntry $entry) => $entry->choiceList->id === (int) $rowData['choice_list_id']);
         }
 
         // Normally, there will only be one entry here. However:
@@ -125,7 +123,6 @@ class XlsformTemplateLanguageImport implements OnEachRow, WithHeadingRow, SkipsE
             ->locales()
             ->sync([$this->locale->id => ['has_language_strings' => 1, 'needs_update' => 0]], detaching: false);
     }
-
 
     public function isEmptyWhen(array $row): bool
     {

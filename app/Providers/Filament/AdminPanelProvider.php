@@ -3,24 +3,24 @@
 namespace App\Providers\Filament;
 
 use Exception;
+use Filament\Http\Middleware\Authenticate;
+use Filament\Http\Middleware\DisableBladeIconComponents;
+use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\View\PanelsRenderHook;
-use Filament\Navigation\NavigationItem;
-use Filament\Http\Middleware\Authenticate;
-use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Filament\Http\Middleware\DisableBladeIconComponents;
-use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
-use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Stats4sd\FilamentOdkLink\OdkLinkAdmin;
-use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\UserResource;
+use Stats4sd\FilamentTeamManagement\Http\Middleware\CheckIfAdmin;
 
 class AdminPanelProvider extends PanelProvider
 {
@@ -49,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
-                fn() => view('filament-team-management::adminPanelTitle'),
+                fn () => view('filament-team-management::adminPanelTitle'),
             )
             ->middleware([
                 EncryptCookies::class,

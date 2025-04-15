@@ -16,13 +16,14 @@ use Spatie\MediaLibrary\Support\MediaStream;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-//TODO - generalise this and bring it into the package. Keep a custom version here for HOLPA-specific overrides.
+// TODO - generalise this and bring it into the package. Keep a custom version here for HOLPA-specific overrides.
 class SurveyMonitoringController extends Controller
 {
     /**
-     * @param Team $team - the team to get the submission summary for
-     * @param string $isTest - whether to get the submission summary for the test form or the live form (test/live) - NOTE: In this setup, it is assumed there are *only* 2 forms per team - one that is marked as test and one that is marked as live.
+     * @param  Team  $team  - the team to get the submission summary for
+     * @param  string  $isTest  - whether to get the submission summary for the test form or the live form (test/live) - NOTE: In this setup, it is assumed there are *only* 2 forms per team - one that is marked as test and one that is marked as live.
      * @return array - containing the count of submissions and the date of the latest submission
+     *
      * @throws ConnectionException
      * @throws RequestException
      */
@@ -46,16 +47,15 @@ class SurveyMonitoringController extends Controller
             ->throw()
             ->json();
 
-
         $householdCount = count($householdResults);
         $fieldworkCount = count($fieldworkResults);
 
         $latestHouseholdSubmission = collect($householdResults)
-            ->sort(fn($submission) => $submission['createdAt'])
+            ->sort(fn ($submission) => $submission['createdAt'])
             ->last();
 
         $latestFieldworkSubmission = collect($fieldworkResults)
-            ->sort(fn($submission) => $submission['createdAt'])
+            ->sort(fn ($submission) => $submission['createdAt'])
             ->last();
 
         if ($householdCount === 0 || $fieldworkCount === 0) {
@@ -92,13 +92,11 @@ class SurveyMonitoringController extends Controller
         // find number of farms that completed household form and fieldwork form
         $farmsFullySurveyed = Farm::whereIn('id', $farmsSurveyed)->where('household_form_completed', 1)->where('fieldwork_form_completed', 1)->count();
 
-
         // hardcode all figures to 0 for testing temporary
         $successfulSurveys = $submissions;
         $surveysWithoutRespondentPresent = 0;
         $surveysWithNonConsentingRespondent = 0;
         $farmsFullySurvey = $farmsFullySurveyed;
-
 
         return [
             'householdCount' => $householdCount,
@@ -112,7 +110,6 @@ class SurveyMonitoringController extends Controller
 
         ];
     }
-
 
     /*
      * Function to download the submissions from ODK Central. The submission data are retrieved directly from the API and returned exactly as if you downloaded the data manually from ODK Central.
@@ -130,7 +127,6 @@ class SurveyMonitoringController extends Controller
         $token = $odkLinkService->authenticate();
         $endpoint = config('odk-link.odk.base_endpoint');
 
-
         $results = Http::withToken($token)
             ->get("{$endpoint}/projects/{$xlsform->owner->odkProject->id}/forms/{$xlsform->odk_id}/submissions.csv.zip")
             ->throw();
@@ -143,23 +139,26 @@ class SurveyMonitoringController extends Controller
 
     /**
      * Function to retrieve the XLSForm model and the Link Service class instance. This is a helper function to avoid repeating the same code in multiple functions.
-     * @param Team $team - which team?
-     * @param $isTest - retrieve the test or live form?L
-     * @return array
+     *
+     * @param  Team  $team  - which team?
+     * @param  $isTest  - retrieve the test or live form?L
+     *
      * @throws BindingResolutionException
      */
     public function getFormAndLinkService(Team $team, $isTest): array
     {
         $xlsform = $team->xlsforms->where('is_test', $isTest)->first();
         $odkLinkService = app()->make(OdkLinkService::class);
+
         return [$xlsform, $odkLinkService];
     }
 
     /**
      * Function to download all attached media from the submissions. This assumes the submissions (and their media) have already been pulled from ODK Central. This function will zip all the media files and return a MediaStream object.
-     * @param Team $team - which team?
-     * @param string $isTest - retrieve the test or live form?
-     * @return MediaStream
+     *
+     * @param  Team  $team  - which team?
+     * @param  string  $isTest  - retrieve the test or live form?
+     *
      * @throws BindingResolutionException
      */
     public function downloadAttachedMedia(Team $team, string $isTest): MediaStream

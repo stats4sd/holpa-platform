@@ -3,17 +3,17 @@
 namespace App\Imports;
 
 use App\Models\SampleFrame\Farm;
-use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithValidation;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
+use Maatwebsite\Excel\Concerns\WithValidation;
 
 class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison, WithValidation
 {
@@ -35,14 +35,14 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
                 ->first();
 
             // Find the identifier columns;
-            $identifierColumns = collect($this->data['farm_identifiers'])->map(fn($identifier) => $headers[$identifier]);
+            $identifierColumns = collect($this->data['farm_identifiers'])->map(fn ($identifier) => $headers[$identifier]);
             // Get the data from those columns;
-            $identifierData = $identifierColumns->mapWithKeys(fn($column) => [$column => $row[$column]]);
+            $identifierData = $identifierColumns->mapWithKeys(fn ($column) => [$column => $row[$column]]);
 
             // Find the property columns;
-            $propertyColumns = collect($this->data['farm_properties'])->map(fn($property) => $headers[$property]);
+            $propertyColumns = collect($this->data['farm_properties'])->map(fn ($property) => $headers[$property]);
             // Get the data from those columns;
-            $propertyData = $propertyColumns->mapWithKeys(fn($column) => [$column => $row[$column]]);
+            $propertyData = $propertyColumns->mapWithKeys(fn ($column) => [$column => $row[$column]]);
 
             // Create the farm
             $farm = new Farm([
@@ -77,10 +77,11 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
         $headers = $this->data['header_columns'];
         $locationCodeColumn = $headers[$this->data['location_code_column']];
         $farmCodeColumn = $headers[$this->data['farm_code_column']];
+
         return [
             "$locationCodeColumn.required" => "The $locationCodeColumn cannot be empty.",
-            "$locationCodeColumn.exists" => "The location with this code does not exist in the database.",
-            "$farmCodeColumn.required" => "The farm code cannot be empty.",
+            "$locationCodeColumn.exists" => 'The location with this code does not exist in the database.',
+            "$farmCodeColumn.required" => 'The farm code cannot be empty.',
         ];
     }
 

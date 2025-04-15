@@ -1,1 +1,0 @@
-<livewire:locale-modal-table locale_id="{{ $locale_id }}" />
