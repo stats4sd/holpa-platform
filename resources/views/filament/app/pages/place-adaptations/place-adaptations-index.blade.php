@@ -5,7 +5,7 @@ use App\Filament\App\Pages\SurveyDashboard;
 $surveyDashboardUrl = SurveyDashboard::getUrl();
 ?>
 
-<x-filament-panels::page class=" px-10 h-full">
+<x-filament-panels::page class="px-10 h-full">
 
     <x-instructions-sidebar>
         <x-slot:heading>Instructions</x-slot:heading>

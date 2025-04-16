@@ -61,7 +61,7 @@ class Location extends Model
             get: function () {
                 return Cache::remember($this->cacheKey().':farmsAllCount', now()->addMinutes(5), function () {
                     return $this->children->reduce(function ($carry, $location) {
-                        return $carry + $location->farmsAllCount;
+                        return $carry + $location->farms_all_count;
                     }, $this->farms->count());
                 });
             }
@@ -89,7 +89,7 @@ class Location extends Model
             'parent_id' => $this->parent_id,
             'parent_name' => $this->parent?->name,
             'has_farms' => $this->locationLevel?->has_farms,
-            'farms_all_count' => $this->farmsAllCount,
+            'farms_all_count' => $this->farms_all_count,
         ];
     }
 }
