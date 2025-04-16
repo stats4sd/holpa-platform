@@ -64,13 +64,18 @@ class CustomModuleVersions extends Component implements HasForms
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
+                            ->label(fn($state) => count($state) === 0
+                                ? 'Upload your completed Xlsform file with the custom questions for your indicators.'
+                                : 'To upload a new set of questions, delete the existing file with the "x" icon below and upload the new completed file.'
+                            )
                             ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
                         Actions::make([
                             Action::make('save_file')
                                 ->label('Save File')
                                 ->extraAttributes(['class' => 'buttona'])
                                 ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file'))),
-                        ]),
+                        ])
+                        ->extraAttributes(['class']),
                     ]),
             ]);
     }
@@ -95,6 +100,9 @@ class CustomModuleVersions extends Component implements HasForms
             foreach ($moduleVersions as $moduleVersion) {
                 $handler->processXlsformTemplate($file->getRealPath(), $moduleVersion, 'indicator');
             }
+
+            $this->team->addMedia($file)->toMediaCollection('custom_questions');
+
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }
