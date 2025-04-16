@@ -5,6 +5,7 @@ namespace App\Providers\Filament;
 use App\Filament\App\Pages\Auth\EditProfile;
 use App\Filament\App\Pages\Auth\Login;
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\App\Resources\TeamResource\Pages\ViewTeam;
 use App\Models\Team;
 use BetterFuturesStudio\FilamentLocalLogins\LocalLogins;
 use Exception;
@@ -123,7 +124,7 @@ class AppPanelProvider extends PanelProvider
             // to include XlsformResource from main repo
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             // to include "My Team" filament resource from package stats4sd/filament-team-management
-            ->discoverResources(in: app_path('../vendor/stats4sd/filament-team-management/src/Filament/App/Resources'), for: 'Stats4sd\\FilamentTeamManagement\\Filament\\App\\Resources')
+
             // to include ODK Form Management filament page
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')
             // to include role register, program register, register filament pages from package stats4sd/filament-team-management
@@ -165,6 +166,10 @@ class AppPanelProvider extends PanelProvider
                     ->icon('heroicon-o-adjustments-horizontal')
                     ->url(url('admin'))
                     ->visible(fn () => auth()->user()->can('access admin panel')),
+                NavigationItem::make()
+                ->label(__('My Team'))
+                ->icon('heroicon-o-home')
+                ->url(fn() => ViewTeam::getUrl(['record' => Filament::getTenant()])),
             ])
             ->darkMode(false)
             ->topNavigation()
