@@ -41,7 +41,6 @@ class CustomModuleVersions extends Component implements HasForms
         $this->unmatchedLocalIndicators = $this->team->localIndicators()->where('global_indicator_id', null)->get();
 
         $this->form->fill($this->team->toArray());
-
     }
 
     public function downloadTemplate()
@@ -65,12 +64,12 @@ class CustomModuleVersions extends Component implements HasForms
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
-                            ->helperText(fn (self $livewire) => new HtmlString('<span class="text-red-700">'.collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>').'</span>')),
+                            ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
                         Actions::make([
                             Action::make('save_file')
                                 ->label('Save File')
                                 ->extraAttributes(['class' => 'buttona'])
-                                ->action(fn (Get $get) => $this->uploadFile($get('custom_questions_file'))),
+                                ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file'))),
                         ]),
                     ]),
             ]);
@@ -90,15 +89,15 @@ class CustomModuleVersions extends Component implements HasForms
         // follow process for importing XlsformTemplates
         $handler = new HandleXlsformTemplateAdded;
 
-        $moduleVersions = $this->unmatchedLocalIndicators->map(fn (LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
+        $moduleVersions = $this->unmatchedLocalIndicators->map(fn(LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
 
         try {
-            $handler->processXlsformTemplate($file->getRealPath(), $moduleVersions, 'indicator');
-
+            foreach ($moduleVersions as $moduleVersion) {
+                $handler->processXlsformTemplate($file->getRealPath(), $moduleVersion, 'indicator');
+            }
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }
-
     }
 
     public function render(): Factory|Application|View|\Illuminate\View\View|null
