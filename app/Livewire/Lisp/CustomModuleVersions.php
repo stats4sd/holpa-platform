@@ -92,8 +92,6 @@ class CustomModuleVersions extends Component implements HasForms
         $moduleVersions = $this->unmatchedLocalIndicators->map(fn(LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
 
         try {
-            // $handler->processXlsformTemplate($file->getRealPath(), $moduleVersions, 'indicator');
-
             foreach ($moduleVersions as $moduleVersion) {
                 $handler->processXlsformTemplate($file->getRealPath(), $moduleVersion, 'indicator');
             }
