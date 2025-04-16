@@ -16,6 +16,8 @@ class SubmissionResource extends Resource
 
     protected static bool $isScopedToTenant = false;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public static function form(Form $form): Form
     {
         return $form

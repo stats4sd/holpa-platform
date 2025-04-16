@@ -42,7 +42,7 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
             $formId = $xlsform->odk_id;
 
             $versions = Http::withToken($odkLinkService->authenticate())
-                ->get($baseUrl.'/projects/'.$projectId.'/forms/'.$formId.'/versions')
+                ->get($baseUrl . '/projects/' . $projectId . '/forms/' . $formId . '/versions')
                 ->throw()
                 ->json();
 
@@ -57,6 +57,32 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
                     ]);
                 }
             });
+
+
+            // create a draft version
+            $draft = Http::withToken($odkLinkService->authenticate())
+                ->get($baseUrl . '/projects/' . $projectId . '/forms/' . $formId . '/draft');
+
+            if ($draft->status() === 404) {
+                // create draft
+                $xlsform->deployDraft();
+                $this->alert('NOTE - The form with id ' . $xlsform->id . ' does not have a draft version on ODK Central. Deployment has been queued. Please run the job queue to deploy the draft version, and then re-run "php artisan app:update-xlsform-versions-from-odk-central"');
+            }
+
+            if ($draft->ok()) {
+
+                $draft = $draft
+                    ->json();
+
+                $xlsform->xlsformVersions()->updateOrCreate([
+                    'is_draft' => true,
+                ],
+                    [
+                        'version' => $draft['version'],
+                        'odk_version' => $draft['version'],
+                    ],
+                );
+            }
 
         });
 
