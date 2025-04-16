@@ -2,10 +2,16 @@
 
 namespace App\Filament\App\Pages\PlaceAdaptations;
 
+use App\Events\XlsformDraftWasDeployed;
 use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Resources\SubmissionResource;
 use App\Models\Team;
-use App\Services\HelperService;
+use Faker\Extension\Helper;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -20,25 +26,21 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Livewire\Attributes\On;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Services\HelperService;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
-class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
+class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 {
-    use InteractsWithActions;
-    use InteractsWithForms;
-    use InteractsWithInfolists;
     use InteractsWithTable;
+    use InteractsWithForms;
+    use InteractsWithActions;
 
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.place-adaptations.initial-pilot';
-
-    protected ?string $heading = 'Survey Testing - Initial Pilot';
-
-    protected ?string $subheading = 'Test with local researchers and practioners to review the initial localisations';
+    protected ?string $heading = "Survey Testing - Initial Pilot";
+    protected ?string $subheading = "Test with local researchers and practitioners to review the initial localisations";
 
     public Team $team;
 
@@ -52,7 +54,7 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
 
         $this->xlsforms->each(function (Xlsform $xlsform) {
             if ($xlsform->needs_update) {
-                ray('deploying . '.$xlsform->id);
+                ray('deploying . ' . $xlsform->id);
                 $xlsform->deployDraft();
             }
         });
@@ -93,14 +95,15 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
         return Action::make('viewSubmissions')
             ->color('blue')
             ->extraAttributes(['class' => 'buttona'])
-            ->url(SubmissionResource::getUrl('index'));
+            ->url('#');
     }
+
 
     public function table(Table $table): Table
     {
         return $table
             ->heading('Draft Submissions')
-            ->query(fn (): Builder => Submission::onlyDraftData())
+            ->query(fn(): Builder => Submission::onlyDraftData())
             ->recordTitleAttribute('uuid')
             ->columns([
                 TextColumn::make('xlsform_title')
@@ -114,13 +117,13 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
             ])
             ->actions([
                 \Filament\Tables\Actions\Action::make('view')
-                    ->modalContent(fn (Submission $record) => view('filament.app.pages.submissions.modal_view', ['submission' => $record]))
+                    ->modalContent(fn(Submission $record) => view('filament.app.pages.submissions.modal_view', ['submission' => $record]))
                     ->modalSubmitAction(false)
                     ->modalCancelActionLabel('Close'),
             ])
             ->headerActions([
                 TableAction::make('test-on-odk-central')
-                    ->url(fn () => HelperService::getCurrentOwner()->odkProject->odk_url),
+                    ->url(fn() => HelperService::getCurrentOwner()->odkProject->odk_url),
                 TableAction::make('pull-submissions')
                     ->label('Manually Get Submissions')
                     ->action(function (self $livewire) {
@@ -128,7 +131,7 @@ class InitialPilot extends Page implements HasActions, HasInfolists, HasTable
                         $count = HelperService::getCurrentOwner()->xlsforms->map(function (Xlsform $record) {
                             return $record->getDraftSubmissions();
                         })
-                            ->reduce(fn (int $carry, int $item) => $carry + $item, 0);
+                            ->reduce(fn(int $carry, int $item) => $carry + $item, 0);
 
                         $livewire->resetTable();
 

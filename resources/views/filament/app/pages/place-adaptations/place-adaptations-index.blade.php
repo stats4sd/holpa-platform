@@ -103,24 +103,20 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             <x-rounded-section
                 heading='Adapt Diet Quality Module'
                 buttonLabel='Update'
-                :url='\App\Filament\App\Pages\PlaceAdaptations\DietDiversity::getUrl()'>
-                <x-slot:description>HOLPA uses an international standard "Diet Quality" module. This module is available for over 100 countries. We recommend you select the version most suited to your context.
-                </x-slot:description>
-            </x-rounded-section>
+                :url='\App\Filament\App\Pages\PlaceAdaptations\DietDiversity::getUrl()'/>
+            <x-slot:description>HOLPA uses an international standard "Diet Quality" module. This module is available for over 100 countries. We recommend you select the version most suited to your context.
+            </x-slot:description>
 
             <x-rounded-section
                 heading='Contextualise choice lists'
                 description='Adapt units, crops, and other choice list entries to be locally relevant..'
                 buttonLabel='Update'
-                :url='\App\Filament\App\Clusters\Localisations::getUrl()'
-            />
-
+                :url='\App\Filament\App\Clusters\Localisations::getUrl()'/>
             <x-offline-action-section
                 heading='Initial Pilot'
                 description='Initial piloting should be conducted to check the sense and functionality of the survey.'
                 buttonLabel='View details'
-                :url="\App\Filament\App\Pages\PlaceAdaptations\InitialPilot::getUrl()"
-            />
+                :url="\App\Filament\App\Pages\PlaceAdaptations\InitialPilot::getUrl()"/>
         </div>
     </div>
 

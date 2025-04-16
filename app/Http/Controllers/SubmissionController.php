@@ -19,15 +19,18 @@ class SubmissionController extends Controller
     {
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
-        $surveyStart = Carbon::parse($submission->content['start']);
-        $surveyEnd = Carbon::parse($submission->content['end']);
-        $surveyDuration = $surveyStart->diffInMinutes($surveyEnd);
+        if (isset($submission->content['start']) && isset($submission->content['end'])) {
 
-        $submission->survey_started_at = $surveyStart;
-        $submission->survey_ended_at = $surveyEnd;
-        $submission->survey_duration = $surveyDuration;
-        $submission->save();
+            $surveyStart = Carbon::parse($submission->content['start']);
+            $surveyEnd = Carbon::parse($submission->content['end']);
+            $surveyDuration = $surveyStart->diffInMinutes($surveyEnd);
 
+            $submission->survey_started_at = $surveyStart;
+            $submission->survey_ended_at = $surveyEnd;
+            $submission->survey_duration = $surveyDuration;
+            $submission->save();
+
+        }
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
             static::processHouseholdSubmission($submission);
         }
@@ -52,7 +55,7 @@ class SubmissionController extends Controller
 
         // create records from nested repeat groups for seasonal_worker_seasons
 
-        $permanentWorkersEntities = $submission->entities()->whereHas('dataset', fn ($query) => $query->where('name', 'Permanent Workers'))
+        $permanentWorkersEntities = $submission->entities()->whereHas('dataset', fn($query) => $query->where('name', 'Permanent Workers'))
             ->get()
             ->each(function (Entity $entity) {
                 // harmonise variable names from "perm_labourer_" to "perm_labour_"
@@ -90,7 +93,7 @@ class SubmissionController extends Controller
     public static function getIrrigationData(Submission $submission): Collection
     {
         // existence check for irrigation data in submission content
-        if (! isset($submission->content['survey']['water']['irrigation_season_repeat'])) {
+        if (!isset($submission->content['survey']['water']['irrigation_season_repeat'])) {
             return collect();
         }
 
@@ -98,8 +101,8 @@ class SubmissionController extends Controller
         $irrigationValues = new Collection;
 
         for ($i = 1; $i <= 12; $i++) {
-            $irrigationValues['irrigation_percentage_month_'.$i] = EntityValue::make([
-                'dataset_variable_name' => 'irrigation_percentage_month_'.$i,
+            $irrigationValues['irrigation_percentage_month_' . $i] = EntityValue::make([
+                'dataset_variable_name' => 'irrigation_percentage_month_' . $i,
                 'value' => 0,
             ]);
         }
@@ -131,9 +134,9 @@ class SubmissionController extends Controller
 
         foreach ($irrigationMonths as $irrigationMonth) {
             // if a month is selected multiple times, take the higher value.
-            if ($irrigationPercentage > $irrigationValues['irrigation_percentage_month_'.$irrigationMonth]['value']) {
+            if ($irrigationPercentage > $irrigationValues['irrigation_percentage_month_' . $irrigationMonth]['value']) {
 
-                $irrigationValues['irrigation_percentage_month_'.$irrigationMonth]['value'] = $irrigationPercentage;
+                $irrigationValues['irrigation_percentage_month_' . $irrigationMonth]['value'] = $irrigationPercentage;
             }
         }
 
@@ -150,14 +153,14 @@ class SubmissionController extends Controller
     {
 
         // existence check for nested repeat group data in submission content
-        if (! isset($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])) {
+        if (!isset($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])) {
             return collect();
         }
 
         return collect($submission->content['survey']['labour']['household_mm_labour']['seasonal_workers'])
             ->map(function (array $seasonalWorker): ?Collection {
 
-                if (! isset($seasonalWorker['seasonal_workers_s'])) {
+                if (!isset($seasonalWorker['seasonal_workers_s'])) {
                     return null;
                 }
 
@@ -186,13 +189,13 @@ class SubmissionController extends Controller
     {
 
         // existence check for nested repeat group data in submission content
-        if (! isset($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])) {
+        if (!isset($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])) {
             return collect();
         }
 
         return collect($submission->content['survey']['labour']['labourers']['sesaonal_labourers'])
             ->map(function (array $seasonalLabour): ?Collection {
-                if (! isset($seasonalLabour['seasonal_labourers_s'])) {
+                if (!isset($seasonalLabour['seasonal_labourers_s'])) {
                     return null;
                 }
 
@@ -225,7 +228,7 @@ class SubmissionController extends Controller
     {
 
         // get farm_products
-        if (! isset($submission->content['survey']['farm_characteristics']['farm_products'])) {
+        if (!isset($submission->content['survey']['farm_characteristics']['farm_products'])) {
             return collect();
         }
 
@@ -252,12 +255,12 @@ class SubmissionController extends Controller
                 ];
 
                 foreach ($useData as $key => $value) {
-                    $newKey = Str::replace($farmProduct.'_', '', $key);
+                    $newKey = Str::replace($farmProduct . '_', '', $key);
                     $result[$newKey] = $value;
                 }
 
                 foreach ($salesData as $key => $value) {
-                    $newKey = Str::replace($farmProduct.'_', '', $key);
+                    $newKey = Str::replace($farmProduct . '_', '', $key);
                     $result[$newKey] = $value;
                 }
 
@@ -268,7 +271,7 @@ class SubmissionController extends Controller
 
     public static function handleOtherProductData(Submission $submission): Collection
     {
-        if (! isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
+        if (!isset($submission->content['survey']['farm_characteristics']['other_product_use_sales'])) {
             return collect();
         }
 
@@ -349,7 +352,7 @@ class SubmissionController extends Controller
                     'location_id' => $parentLocationId,
                     // there is no team_code in location selection test ODK form, use a timestamp as a unique id temporary
                     // TODO: get team_code from ODK submission content
-                    'team_code' => 'C'.Carbon::now()->getTimestampMs(),
+                    'team_code' => 'C' . Carbon::now()->getTimestampMs(),
                     'identifiers' => $identifiers,
                 ]);
             }
