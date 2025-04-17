@@ -25,6 +25,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
 use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\Validators\ValidationException;
@@ -37,9 +38,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     use WithFileUploads;
 
     public Team $team;
-
-    public ?Media $uploadedFile = null;
-
     public ?array $data;
 
     public function mount(): void
@@ -47,7 +45,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
         $this->team = HelperService::getCurrentOwner();
 
         $this->form->fill($this->team->toArray());
-        $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
     }
 
     public function form(Form $form): Form
@@ -77,8 +74,10 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                             Actions\Action::make('save_file')
                                 ->extraAttributes(['class' => ' buttona'])
                                 ->label('Save File')
-                                ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list'))),
-                        ]),
+                                ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list')))
+                                ->disabled(fn(Get $get) => ! collect($get('local_indicator_list'))->first() instanceof TemporaryUploadedFile),
+                        ])
+                            ->extraAttributes(['class' => 'flex justify-center']),
                     ]),
                 Fieldset::make('Local Indicators List')
                     ->columns(1)
@@ -186,9 +185,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
 
                         // Delete the local indicator records
                         $this->team->localIndicators()->delete();
-
-                        // Update the uploaded file details
-                        $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
 
                         // Display success message
                         Notification::make()
