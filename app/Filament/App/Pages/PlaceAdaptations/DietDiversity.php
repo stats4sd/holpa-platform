@@ -102,11 +102,12 @@ class DietDiversity extends Page implements HasForms, HasTable
             ->query(
                 fn () => $moduleVersion->surveyRows()
             )
+            ->paginated(false)
             ->columns([
                 TextColumn::make('type')->label('Question Type'),
                 TextColumn::make('name')->label('Name'),
-                TextColumn::make('default_label')->label('Label (en)')->wrap(),
-                TextColumn::make('default_hint')->label('Hint (en)')->wrap(),
+                TextColumn::make('defaultLabel.text')->label('Label (en)')->wrap(),
+                TextColumn::make('defaultHint.text')->label('Hint (en)')->wrap(),
             ]);
     }
 }
