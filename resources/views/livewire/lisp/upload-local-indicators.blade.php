@@ -12,15 +12,17 @@
     <div class="py-4 indicator-upload">
         <div class="mx-auto  ">
             <div class="p-6 bg-white  ">
+                <!-- local indicator excel template file upload file -->
                 {{ $this->form }}
             </div>
 
-            <div class="flex justify-center mt-6">
-                <button wire:click="saveIndicators"
-                        class="buttona">
-                    Save
-                </button>
+            <div class="p-6 bg-white  ">
+                <!-- allow user to maintain local indicators (uploaded or manually created) in a table -->
+                {{ $this->table }}
             </div>
+
         </div>
     </div>
+
+
 </div>
