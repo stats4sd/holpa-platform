@@ -125,10 +125,10 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             // Proceed with the import
             Excel::import(new LocalIndicatorImport($this->team), $file->getRealPath());
 
+            $this->team->addMedia($file)->toMediaCollection('local_indicators');
             $this->team->refresh();
             $this->form->fill($this->team->toArray());
 
-            $this->team->addMedia($file)->toMediaCollection('local_indicators');
 
             // Display success message
             Notification::make()
