@@ -244,7 +244,7 @@ return new class() extends Migration {
 //            $table->integer('income_other')->nullable();
 //            $table->integer('income_sum')->nullable();
 //
-//            $table->text('suffcient_income')->nullable();
+//            $table->text('sufficient_income')->nullable();
 //            $table->text('income_stability')->nullable();
 //            $table->text('farm_loss')->nullable();
 //            $table->text('farm_loss_text')->nullable();
