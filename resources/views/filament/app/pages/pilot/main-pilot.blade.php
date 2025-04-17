@@ -8,11 +8,11 @@
 
 
     <div class="container mx-auto xl:px-12">
-        <div class="surveyblocks p-10">
+        <div class="surveyblocks p-12 lg:px-16">
 
             <div class="mb-10">
                 <div class="flex flex-row">
-                    <div class="mr-4 text-center basis-1/4 border border-gray-400 rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
+                    <div class="mr-4 text-center basis-1/4  rounded-lg p-4 bg-white flex flex-col justify-center space-y-4">
                         <div class="mx-auto">{{ QrCode::size(150)->generate(\Stats4sd\FilamentOdkLink\Services\HelperService::getCurrentOwner()->odk_qr_code) }}</div>
                         <h5 class="">SCAN QR Code in ODK Collect</h5>
                     </div>
