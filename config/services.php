@@ -42,4 +42,7 @@ return [
         'scheme' => 'https',
     ],
 
+    'R' => [
+        'rscript_path' => env('RSCRIPT_PATH', '/usr/bin/Rscript'),
+    ],
 ];
