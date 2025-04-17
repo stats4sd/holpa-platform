@@ -14,7 +14,9 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Support\Collection;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
+use phpDocumentor\Reflection\Types\Boolean;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
@@ -31,6 +33,8 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
     public Locale $locale;
 
     public Team $team;
+
+    public bool $canSave = false;
 
     public function mount()
     {
@@ -75,7 +79,13 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
                                         : "To replace the translations, delete the existing file with the 'x' icon below and upload the new completed translations file."
                                     )
                                     ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
-                                    ->maxSize(10240),
+                                    ->maxSize(10240)
+                                ->afterStateUpdated(function($state) {
+                                    if ($state instanceof TemporaryUploadedFile) {
+                                        $this->enableSave();
+                                    }
+
+                                        }),
                             ])
                             ->columnSpan(1),
                     )->toArray(),
@@ -131,6 +141,11 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
     public function cancel(): void
     {
         $this->dispatch('closeModal');
+    }
+
+    public function enableSave(): void
+    {
+        $this->canSave = true;
     }
 
     public function render()
