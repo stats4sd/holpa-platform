@@ -224,6 +224,9 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                     ->button()
                     ->color('blue')
                     // disable editing uploaded custom questions
+                    // Note: we use survey_rows.path to determine if a custom question is uploaded or not now,
+                    // when we start using survey_rows.path for matching submissions to SurveyRow entries,
+                    // we will need to create a new column as a flag for indication
                     ->disabled(fn(SurveyRow $record) => $record->path != null)
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
