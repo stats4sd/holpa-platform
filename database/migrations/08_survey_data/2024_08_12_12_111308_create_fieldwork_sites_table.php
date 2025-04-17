@@ -55,7 +55,7 @@ return new class extends Migration
             $table->text('enemy_abundance')->nullable();
             $table->text('weeds')->nullable();
             $table->text('natural_vegetation')->nullable();
-            $table->text('magagement')->nullable();
+            $table->text('management')->nullable();
 
             $table->foreignId('submission_id')->nullable();
 

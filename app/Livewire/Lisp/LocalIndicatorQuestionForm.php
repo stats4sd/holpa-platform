@@ -69,7 +69,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
         $choiceListHeaders = $locales->map(function (Locale $locale) {
             return [
-                Header::make('label_'.$locale->id)->label('Label - '.$locale->language_label),
+                Header::make('label_' . $locale->id)->label('Label - ' . $locale->language_label),
             ];
         })->flatten()->toArray();
 
@@ -99,7 +99,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
         return $table
             ->query(
-                fn () => SurveyRow::query()
+                fn() => SurveyRow::query()
                     ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id)
                     // sort record by row_number, to reflect the user defined ordering by drag and drop
                     ->orderBy('row_number'),
@@ -149,7 +149,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                                 ])->live()
                                     ->required(),
                                 TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn ($state): string => Str::lower(Str::slug($state, '_'))),
+                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
@@ -165,7 +165,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -179,11 +179,11 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                             ])
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
+                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -223,11 +223,16 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                     ->icon('heroicon-m-pencil')
                     ->button()
                     ->color('blue')
+                    // disable editing uploaded custom questions
+                    // Note: we use survey_rows.path to determine if a custom question is uploaded or not now,
+                    // when we start using survey_rows.path for matching submissions to SurveyRow entries,
+                    // we will need to create a new column as a flag for indication
+                    ->disabled(fn(SurveyRow $record) => $record->path != null)
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     // fill the form with existing data
                     // Question: why the changes of type and name cannot be saved into survey_rows record?
-                    ->fillForm(fn (SurveyRow $record): array => [
+                    ->fillForm(fn(SurveyRow $record): array => [
                         'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
                         'id' => $record->id,
                         'type' => $record->type,
@@ -252,7 +257,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                                 ])->live()
                                     ->required(),
                                 TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn ($state): string => Str::lower(Str::slug($state, '_'))),
+                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
@@ -268,7 +273,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -282,11 +287,11 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                             ])
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
+                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
                                     ->headers([
@@ -342,7 +347,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
         $choiceListHeaders = $locales->map(function (Locale $locale) {
             return [
-                Header::make('label_'.$locale->id)->label('Label - '.$locale->language_label),
+                Header::make('label_' . $locale->id)->label('Label - ' . $locale->language_label),
             ];
         })->flatten()->toArray();
 
@@ -385,12 +390,12 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
             ->schema([
                 Repeater::make('surveyRows')
                     ->relationship('surveyRows')
-                    ->deleteAction(fn ($action) => $action->button()->label('Delete Question'))
+                    ->deleteAction(fn($action) => $action->button()->label('Delete Question'))
                     ->reorderableWithDragAndDrop()
-                    ->reorderAction(fn ($action) => $action->button()->label('Drag to Reorder Questions'))
+                    ->reorderAction(fn($action) => $action->button()->label('Drag to Reorder Questions'))
                     ->addActionLabel('Add Question')
                     ->label('')
-                    ->itemLabel(fn (array $state) => $state['name'] ?? 'New Question')
+                    ->itemLabel(fn(array $state) => $state['name'] ?? 'New Question')
                     ->orderColumn('row_number')
                     ->schema([
                         Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
@@ -410,7 +415,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                                 ])->live()
                                     ->required(),
                                 TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn ($state): string => Str::lower(Str::slug($state, '_'))),
+                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
                                 Repeater::make('languageStrings')
                                     ->extraAttributes(['class' => 'inline-repeater'])
                                     ->label('')
@@ -426,7 +431,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
                                         TextInput::make('text')
                                             ->required()
-                                            ->label(fn (Get $get) => LanguageStringType::find($get('language_string_type_id'))->name.' - '.Locale::find($get('locale_id'))->language_label),
+                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
                                     ])
                                     ->default($defaultLanguageStringState)
                                     ->live(),
@@ -435,7 +440,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                         Fieldset::make('Choice List')
                             ->live()
                             ->relationship('choiceList')
-                            ->visible(fn (Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
+                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
                             ->schema([
                                 Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
 
@@ -448,7 +453,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                                 // TODO: change list_name from [name]_choices to [survey_rows.id]_[name]_choices
 
                                 Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn (Get $get) => $get('../name').'_choices'),
+                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
 
                                 TableRepeater::make('choiceListEntries')
                                     ->relationship('choiceListEntries')
