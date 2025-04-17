@@ -7,10 +7,14 @@ use App\Models\Team;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\IsPrimaryDataSubject;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasSubmissions;
 
-class Farm extends Model
+class Farm extends Model implements IsPrimaryDataSubject
 {
+    use HasSubmissions;
+
     protected $casts = [
         'identifiers' => 'collection',
         'properties' => 'collection',

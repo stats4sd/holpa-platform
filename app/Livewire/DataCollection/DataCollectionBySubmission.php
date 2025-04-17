@@ -35,7 +35,8 @@ class DataCollectionBySubmission extends Component implements HasTable, HasActio
             ->query(Submission::query())
             ->columns([
                 // TextColumn::make('farm.location.name')->label(fn(Submission $record) => $record->farms())...
-                TextColumn::make('farm.name')->label('Farm'),
+                TextColumn::make('primaryDataSubject.team_code')->label('Farm Code'),
+                TextColumn::make('primaryDataSubject.identifiers.name')->label('Farm Name'),
                 TextColumn::make('xlsformVersion.xlsform.title')->label('Xlsform'),
                 TextColumn::make('xlsformVersion.version')->label('Xlsform Version'),
                 TextColumn::make('survey_started_at')->label('Survey Start Time'),
