@@ -9,6 +9,7 @@ use App\Models\SampleFrame\LocationLevel;
 use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
@@ -21,7 +22,6 @@ class SubmissionController extends Controller
     {
 
         static::handleLocationData($submission);
-
 
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
@@ -45,10 +45,11 @@ class SubmissionController extends Controller
             static::processFieldworkSubmission($submission);
         }
 
-        // TODO: farms table, update column household_form_completed, fieldwork_form_completed
-
-        // custom handling to create new locations
-        // SubmissionController::handleLocationData($submission);
+        // Run R scripts
+        Process::path(base_path('packages/holpa-r-scripts'))
+            ->run('Rscript data_processing/holpa_agroecology_scores.R');
+        Process::path(base_path('packages/holpa-r-scripts'))
+            ->run('Rscript data_processing/key_performance_indicators.R');
 
     }
 
@@ -379,18 +380,5 @@ class SubmissionController extends Controller
 
             $submission->primaryDataSubject()->associate($farm);
         }
-    }
-
-    public static function prepareNewRecordData($items, $columnNames): array
-    {
-        $result = [];
-
-        foreach ($items as $key => $value) {
-            if (in_array($key, $columnNames)) {
-                $result[$key] = $value;
-            }
-        }
-
-        return $result;
     }
 }
