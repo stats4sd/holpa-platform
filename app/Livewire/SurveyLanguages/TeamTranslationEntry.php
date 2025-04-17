@@ -91,7 +91,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
             ->heading('')
             ->headerActions([
                 Action::make('Add New')
-                    ->extraAttributes(['class' => 'buttonb text-base'])
+                    ->extraAttributes(['class' => 'buttonb my-4 shadow-none !py-21'])
                     ->icon('heroicon-o-plus-circle')
                     ->form([
                         TextInput::make('description')->label('Enter a label for the translation')
@@ -118,7 +118,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     }),
 
                 Action::make('view-edit')
-                    ->extraAttributes(['class' => 'ml-2 buttona '])
+                    ->extraAttributes(['class' => 'ml-2 buttona translations_viewedit'])
                     ->color('white')
                     ->label('View / Edit Translation')
                     ->modalHeading(fn (Locale $record) => 'View / Edit Translation for '.$record->language_label)

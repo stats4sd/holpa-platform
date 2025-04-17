@@ -6,11 +6,11 @@ use App\Filament\App\Clusters\Localisations\Resources\ChoiceListEntryResource;
 use App\Filament\App\Pages\PlaceAdaptations\PlaceAdaptationsIndex;
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Services\HelperService;
-use Filament\Actions\CreateAction;
 use Filament\Forms\Form;
 use Filament\Resources\Pages\ListRecords;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
@@ -69,7 +69,11 @@ class ListChoiceListEntries extends ListRecords
                     ->label(fn (ChoiceListEntry $record) => $record->isRemoved(HelperService::getCurrentOwner()) ? 'Restore to Context' : 'Remove from Context')
                     ->visible(fn (ChoiceListEntry $record) => $record->is_global_entry)
                     ->action(fn (ChoiceListEntry $record) => $record->toggleRemoved(HelperService::getCurrentOwner())),
-            ]);
+            ])
+            ->headerActions([CreateAction::make()
+            ->label('Add new '.Str::singular($this->choiceListName))
+            ->form(fn (Form $form) => $form
+                ->schema(fn () => $this->getResource()::getFormSchema($this->choiceList))),]);
     }
 
     protected function getHeaderWidgets(): array
@@ -82,10 +86,7 @@ class ListChoiceListEntries extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            CreateAction::make()
-                ->label('Add new '.Str::singular($this->choiceListName))
-                ->form(fn (Form $form) => $form
-                    ->schema(fn () => $this->getResource()::getFormSchema($this->choiceList))),
+            
 
             //            Action::make('Mark as Complete')
             //                ->action(fn() => HelperService::getCurrentOwner()?->markLookupListAsComplete($this->choiceList))

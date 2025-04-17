@@ -23,15 +23,15 @@ class SurveyTranslations extends Page
 
     public Team $team;
 
-    public function getHeader(): ?\Illuminate\Contracts\View\View
-    {
-        return view('components.small-header', [
-            'heading' => $this->getHeading(),
-            'subheading' => $this->getSubheading(),
-            'actions' => $this->getHeaderActions(),
-            'breadcrumbs' => $this->getBreadcrumbs(),
-        ]);
-    }
+    // public function getHeader(): ?\Illuminate\Contracts\View\View
+    // {
+    //     return view('components.small-header', [
+    //         'heading' => $this->getHeading(),
+    //         'subheading' => $this->getSubheading(),
+    //         'actions' => $this->getHeaderActions(),
+    //         'breadcrumbs' => $this->getBreadcrumbs(),
+    //     ]);
+    // }
 
     /** @var Collection<Language> */
     public Collection $languages;

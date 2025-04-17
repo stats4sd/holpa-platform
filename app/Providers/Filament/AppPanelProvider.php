@@ -49,6 +49,10 @@ class AppPanelProvider extends PanelProvider
             ->login(Login::class)
             ->passwordReset()
             ->colors([
+                'primary' => [
+                    500 => "#c3432f",
+                    600 => "#EB5A45",
+                ],
                 'blue' => [
                     50 => '63, 169, 245',
                     100 => '63, 169, 245',
