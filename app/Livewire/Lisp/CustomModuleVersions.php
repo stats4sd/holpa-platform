@@ -73,7 +73,8 @@ class CustomModuleVersions extends Component implements HasForms
                             Action::make('save_file')
                                 ->label('Save File')
                                 ->extraAttributes(['class' => 'buttona'])
-                                ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file'))),
+                                ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file')))
+                            ->disabled(fn(Get $get) => ! collect($get('custom_questions_file'))->first() instanceof TemporaryUplo),
                         ]),
                     ]),
             ]);
