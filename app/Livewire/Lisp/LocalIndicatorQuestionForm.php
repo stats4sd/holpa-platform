@@ -223,6 +223,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                     ->icon('heroicon-m-pencil')
                     ->button()
                     ->color('blue')
+                    // disable editing uploaded custom questions
                     ->disabled(fn(SurveyRow $record) => $record->path != null)
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
