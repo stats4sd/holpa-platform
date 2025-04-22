@@ -2,13 +2,17 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
-use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
-use App\Filament\Tables\Actions\ImportFarmsAction;
-use App\Imports\FarmImport;
 use Filament\Actions;
+use App\Imports\FarmImport;
+use Filament\Forms\Components\Wizard;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Forms\Components\Wizard\Step;
+use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\Tables\Actions\ImportFarmsAction;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
+use Filament\Forms\Components\Actions as ComponentActions;
+use Filament\Forms\Components\Actions\Action as ComponentAction;
 
 class ListFarms extends ListRecords
 {
@@ -36,11 +40,17 @@ class ListFarms extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            // use CreateFarm to show wizard temporary, move wizard to a new page later
+            // Actions\CreateAction::make(),
+
+            Actions\CreateAction::make()
+                ->label('Import Locations and Farm List'),
+
             ImportFarmsAction::make()
                 ->use(FarmImport::class)
                 ->color('primary')
                 ->label('Import Farm list'),
+
         ];
     }
 }
