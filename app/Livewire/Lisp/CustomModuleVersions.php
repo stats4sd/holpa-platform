@@ -15,12 +15,14 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
 use Stats4sd\FilamentOdkLink\Listeners\HandleXlsformTemplateAdded;
 
@@ -70,12 +72,13 @@ class CustomModuleVersions extends Component implements HasForms
                             )
                             ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
                         Actions::make([
-                            Action::make('save_file')
-                                ->label('Save File')
+                            Actions\Action::make('save_file')
                                 ->extraAttributes(['class' => 'buttona'])
+                                ->label('Save File')
                                 ->action(fn(Get $get) => $this->uploadFile($get('custom_questions_file')))
-                            ->disabled(fn(Get $get) => ! collect($get('custom_questions_file'))->first() instanceof TemporaryUplo),
-                        ]),
+                                ->disabled(fn(Get $get) => ! collect($get('custom_questions_file'))->first() instanceof TemporaryUploadedFile),
+                        ])
+                            ->extraAttributes(['class' => 'flex justify-center']),
                     ]),
             ]);
     }
@@ -102,6 +105,13 @@ class CustomModuleVersions extends Component implements HasForms
             }
 
             $this->team->addMedia($file)->toMediaCollection('custom_questions');
+
+            // Display success message
+            Notification::make()
+                ->title('File uploaded successfully!')
+                ->body('The file will be processed in the background and the questions will appear below once complete. You may leave this page without interrupting this process.') // TODO: listen for server-side event nad refresh the list of questions when the import jobs complete!
+                ->success()
+                ->send();
 
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
