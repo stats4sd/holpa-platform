@@ -107,7 +107,9 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
             ->columns([
                 TextColumn::make('type')->label('Question Type'),
                 TextColumn::make('name')->label('Variable Name'),
-                TextColumn::make('defaultLabel')->label('Default Label'),
+
+                // fix to show default label as string instead of a JSON array
+                TextColumn::make('defaultLabel.text')->label('Default Label'),
             ])
             // allow user to change the ordering by drag and drop
             ->reorderable('row_number')
