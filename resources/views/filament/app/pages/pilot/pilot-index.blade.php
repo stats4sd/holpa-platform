@@ -42,7 +42,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 In the "Forms and submissions" section, you can see an overview of the current forms and view the submissions. If new submissions have not yet appeared on the page, you can use the "manually get submissions" option on the survey forms view to prompt this to refresh. 
                 </p>
                 <p class="mb-2">
-                The survey submissions view shows you all the submissions for your forms. Here you can view a summary of submitted data and view individual submissions to conduct quality checks. This will help you identify frequent errors or omissions which may necessitate further enumerator training or adjustments to the form. 
+                The survey submissions view shows you all the submissions for your forms. You can view individual submissions to conduct quality checks. This will help you identify frequent errors or omissions which may necessitate further enumerator training or adjustments to the form. 
                 </p>
                 <p class="mb-2">
                 When you have completed the pilot, you will likely then need to return to previous sections to make additional edits to the survey. Revisit any section from the dashboard as needed. You may choose to carry out further pilots or technical tests before commencing live data collection. 
