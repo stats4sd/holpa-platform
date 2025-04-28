@@ -6,12 +6,12 @@
 
             <div class="mx-12 mb-4">
 
-            <h5 class="mt-0">Pilot test</h5>
+            <h5 class="mt-0">Initial pilot test</h5>
             <p class="my-2">
                 Following customisation, a pilot test should be conducted to check the sense and functionality of the survey. On this page, you will find the QR code to scan to start testing the survey using ODK.
                 Note that this QR code should only be used for this initial testing - the 'data collection' section contains a different link for the full pilot and live data collection, and it is important to use the correct version of the survey.
                             </p>
-<p class="mb-2">
+            <p class="mb-2">
                 
                 The initial pilot can be completed by a member of your team with at least one local researcher or practitioner. To conduct the test:
                 <ol class="mb-4 ml-6 list-decimal">
@@ -51,13 +51,17 @@
         
                     <x-heroicon-o-exclamation-triangle class="w-16 sm:w-20 flex-shrink-0 text-red mb-2 md:mb-0"/>
                     <div class="md:ml-8 py-auto">
-                               The QR codes below are <span class="font-semibold">DRAFTS</span>. <br>
-                Please <span class="font-semibold">do not share </span>these codes with enumerators! <br>
-                <span class="font-semibold"> All submissions to the test forms are temporary </span> and will be reset whenever you take an action using the survey dashboard that changes the forms.<br>
-                Do not use these forms for live data collection.
+                                    The QR codes below are <span class="font-semibold">DRAFTS</span>. <br>
+                        Please <span class="font-semibold">do not share </span>these codes with enumerators! <br>
+                        <span class="font-semibold"> All submissions to the test forms are temporary </span> and will be reset whenever you take an action using the survey dashboard that changes the forms.<br>
+                        Do not use these forms for live data collection.
 
                     </div>
-         </div>
+                 </div>
+                                 <h5> Mark this section as complete when:</h5>
+            <p class="mb-2">
+                You have conducted the technical test and are happy with the changes to the forms and the technical functioning of the survey up to this point.
+            </p>
 
 </div>
         </x-slot:instructions>

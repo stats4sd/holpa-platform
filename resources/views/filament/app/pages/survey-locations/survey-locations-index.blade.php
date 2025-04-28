@@ -90,7 +90,7 @@
                     When importing a list, you will need to include columns with the farm unique code, and the unique code for the location it is in. When you upload the list, you need to select the location level the farms are located in. You can also optionally include extra columns with details that identify the farm, such as farm name, telephone number, family name etc, or for details that contain properties of the farm which may be useful for future analysis, such as the size of the farm. 
 </p>
 
- <h5>Mark this section as complete when </h5>
+ <h5>Mark this section as complete when: </h5>
  <p class="mb-2">
                     You have added all the location levels, locations, and a full list of the farms where you will conduct the survey.
                     </p>

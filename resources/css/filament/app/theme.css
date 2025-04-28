@@ -538,3 +538,13 @@ margin-right: 0.5rem;
         @apply capitalize;
     }
 }
+
+/* Messy button workaround */
+button.text-white span {
+    color: white !important;
+    
+}
+
+button.font-normal span {
+    font-weight: 500 !important;
+}
