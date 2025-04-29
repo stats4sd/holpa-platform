@@ -40,11 +40,12 @@ class ListFarms extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            // use CreateFarm to show wizard temporary, move wizard to a new page later
-            // Actions\CreateAction::make(),
+            Actions\CreateAction::make(),
 
-            Actions\CreateAction::make()
-                ->label('Import Locations and Farm List'),
+            // add a button to divert to import custom page
+            Actions\Action::make('import')
+                ->label('Import Locations and Farm List')
+                ->url('farms/import'),
 
             ImportFarmsAction::make()
                 ->use(FarmImport::class)
