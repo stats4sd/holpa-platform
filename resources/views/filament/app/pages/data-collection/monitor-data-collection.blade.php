@@ -18,15 +18,17 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <x-filament::section heading="Data Collected">
-                Total Counts
+                Household Submissions: {NUMBER}<br/>
+                Fieldwork Submissions: {NUMBER}<br/>
             </x-filament::section>
 
             <x-filament::section heading="Summary">
-                Responses
+                Farms Fully Surveyed: {NUMBER} / {TOTAL}<br/>
+                Non-consenting Farms: {NUMBER}
             </x-filament::section>
 
         </div>
-
+        <h2>Submissions By Location</h2>
         <x-filament::tabs>
             @foreach ($team->locationLevels as $level)
                 <x-filament::tabs.item :active="$level->id === $this->locationLevelId" wire:click="$set('locationLevelId', {{$level->id}})" :key="'location-level-'.$level->id.'-tab'" class="cursor-pointer">

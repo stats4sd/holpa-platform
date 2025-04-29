@@ -39,15 +39,15 @@ class Dashboard extends Page
         ];
     }
 
-    public function getHeader(): ?View
-    {
-        return view('components.custom-header', [
-            'heading' => $this->getHeading(),
-            'subheading' => $this->getSubheading(),
-            'actions' => $this->getHeaderActions(),
-            'breadcrumbs' => $this->getBreadcrumbs(),
-        ]);
-    }
+//    public function getHeader(): ?View
+//    {
+//        return view('components.custom-header', [
+//            'heading' => $this->getHeading(),
+//            'subheading' => $this->getSubheading(),
+//            'actions' => $this->getHeaderActions(),
+//            'breadcrumbs' => $this->getBreadcrumbs(),
+//        ]);
+//    }
 
     protected ?string $heading = '';
 }
