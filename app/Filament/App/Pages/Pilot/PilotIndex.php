@@ -17,7 +17,7 @@ class PilotIndex extends Page
 
     protected ?string $heading = 'Survey Testing - Pilot and Enumerator Training';
 
-    protected ?string $subheading = 'Test with enumerators; pilot with real farmers';
+    // protected ?string $subheading = 'Test with enumerators; pilot with real farmers';
 
     #[Url]
     public string $tab = 'xlsforms';

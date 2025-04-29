@@ -14,7 +14,7 @@ class LispIndicators extends Page
     protected static string $view = 'filament.app.pages.lisp.lisp-indicators';
 
     protected static ?string $title = 'Localisation: LISP';
-    protected ?string $subheading = 'Customise indicators';
+    // protected ?string $subheading = 'Customise indicators';
 
     protected static bool $shouldRegisterNavigation = false;
 

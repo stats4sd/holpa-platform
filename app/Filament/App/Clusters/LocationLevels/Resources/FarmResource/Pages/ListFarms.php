@@ -15,7 +15,7 @@ class ListFarms extends ListRecords
     protected static string $resource = FarmResource::class;
 
     protected ?string $heading = 'Survey locations';
-    protected ?string $subheading = 'List of farms';
+    // protected ?string $subheading = 'List of farms';
 
     public function getBreadcrumbs(): array
     {

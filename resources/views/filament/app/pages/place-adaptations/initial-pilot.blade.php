@@ -158,7 +158,7 @@
             </div>
 
             <div class="pb-8" id="draft_subs">Any submissions to these DRAFT versions will appear below, so you can confirm that the data you have submitted has been recognised. Note that these DRAFTs are intended as a technical test of the forms themselves, and the DRAFT submissions are not intended to be kept and processed. To conduct a full pilot, including data export and a test of the analysis process, please go to the
-                <a class="font-semibold text-green" href="{{ App\Filament\App\Pages\Pilot\MainPilot::getUrl() }}">Localisation: Pilot</a> page.
+                <a class="font-semibold text-green" href="{{ App\Filament\App\Pages\Pilot\PilotIndex::getUrl() }}">Localisation: Pilot</a> page.
             </div>
 
             {{ $this->table }}
