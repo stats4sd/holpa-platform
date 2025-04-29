@@ -45,8 +45,8 @@
                     </ul>
                     <p class="mb-2">
                     Once you have added levels, you can select them to view a list of the locations that have been added at that level and add locations. You have to option to import them from an excel file or add them manually. 
-</p>
-<p class="mb-2">
+                    </p>
+                    <p class="mb-2">
 
                     To import locations, upload an excel spreadsheet with the required details:
                     </p>
@@ -58,7 +58,7 @@
                     A column with the unique IDs for the locations. (These can be generated however you like, but each one must be unique)
                     </li>
                     <li>                    
-                    If the location level you are adding to is a sub-level of another location level, then you need to also have a column with the name and unique ID of the location in the level above (in our province > district > village example, "Village A" might be located in "District C", and you would need to include the details of both. 
+                    If the location level you are adding to is a sub-level of another location level, then you need to also have a column with the name and unique ID of the location in the level above (in our province > district > village example, "Village A" might be located in "District C", and you would need to include the details of both.) 
                     </li>
                     <li>
                     The first row of the worksheet should contain column headings, not your first location. 
