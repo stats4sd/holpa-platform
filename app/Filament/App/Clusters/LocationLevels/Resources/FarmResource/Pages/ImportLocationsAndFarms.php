@@ -34,13 +34,11 @@ class ImportLocationsAndFarms extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    public ?array $data = [];
-
     protected static string $resource = FarmResource::class;
 
     protected static string $view = 'filament.app.clusters.location-levels.resources.farm-resource.pages.import-locations-and-farms';
 
-    // Code segment belongs to superclass ExcelImportAction starts here...
+    public ?array $data = [];
 
     protected ?string $disk = null;
 
@@ -48,9 +46,6 @@ class ImportLocationsAndFarms extends Page implements HasForms
     {
         return $this->disk ?: config('filesystems.default');
     }
-
-    // Code segment belongs to superclass ExcelImportAction ends here...
-
 
     public function mount(): void
     {
@@ -71,14 +66,12 @@ class ImportLocationsAndFarms extends Page implements HasForms
     // add a function to handle the submitted form
     public function save(): void
     {
-        ray('save()...');
-
         try {
             // get the submitted form data for further processing
             $data = $this->form->getState();
-            ray($data);
 
-            // copy the uploaded excel file, it will be stored with the import model for farm
+            // the uploaded excel file will be stored with import model for locations
+            // copy the uploaded excel file as a duplicate file, which will be stored with the import model for farms
             Storage::copy($data['upload'], $data['upload'] . '_duplicate');
 
 
@@ -93,12 +86,8 @@ class ImportLocationsAndFarms extends Page implements HasForms
             ]);
 
             $locationImport->addMedia(Storage::path($data['upload']))->toMediaCollection();
-
             $data['import_id'] = $locationImport->id;
-
-            // Question: why all locations are imported as districts?
             Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
-
 
 
             // import farms
@@ -108,25 +97,22 @@ class ImportLocationsAndFarms extends Page implements HasForms
                 'model_type' => Farm::class,
             ]);
 
-
             $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
-
             $data['import_id'] = $farmImport->id;
-
-            // run import
             Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
-
 
             // send notification
             Notification::make()
                 ->success()
-                ->title('Import of Locations and Farm Data Complete')
+                ->title('Locations and farms are being imported.')
                 ->send();
+
+            // redirect to farms list page
+            redirect(FarmResource::getUrl('index'));
         } catch (Halt $exception) {
             return;
         }
     }
-
 
     public function form(Form $form): Form
     {
@@ -158,10 +144,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
                                     $set('header_columns', $headings ?? []);
                                 }),
 
-                        ])
-                        ->afterValidation(function () {
-                            ray('step 1 afterValidation');
-                        }),
+                        ]),
 
 
                     // Step 2
@@ -225,17 +208,19 @@ class ImportLocationsAndFarms extends Page implements HasForms
                                 Hidden::make('header_columns')
                                     ->default(['na' => '~~upload a file to see the headers~~'])
                                     ->live(),
+
+                                // find the location level that has farms
+                                // Question: can one team has more than one location levels that have farms?
                                 Hidden::make('level')
-                                    ->default(LocationLevel::where('has_farms', 0)->first()),
+                                    ->default(LocationLevel::where('has_farms', 1)->first()),
+
                                 Hidden::make('user_id')
                                     ->default(fn() => auth()->id()),
+
                                 Hidden::make('owner_id')
                                     ->default(HelperService::getCurrentOwner()->id),
                             ]
-                        )
-                        ->afterValidation(function () {
-                            ray('step 2 afterValidation');
-                        }),
+                        ),
 
 
                     // Step 3
@@ -249,8 +234,9 @@ class ImportLocationsAndFarms extends Page implements HasForms
                             Section::make('Location')
                                 ->schema([
 
-                                    // Question: is it possible to have more than one location levels have farms?
-                                    // can we set default value to simplify the import process?
+                                    // Question:
+                                    // 1. can one team has more than one location levels that have farms?
+                                    // 2. can we set default value to simplify the import process?
                                     Select::make('location_level_id')
                                         ->label('Which location level are the farms linked to?')
                                         ->options(
@@ -308,12 +294,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
                             Hidden::make('user_id')
                                 ->default(auth()->id()),
 
-
-                        ])
-                        ->afterValidation(function () {
-                            ray('step 3 afterValidation');
-                        }),
-
+                        ]),
 
                 ])
 
