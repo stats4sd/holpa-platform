@@ -2,38 +2,33 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
+use App\Models\Import;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Forms\Form;
+use App\Imports\FarmImport;
 use Filament\Actions\Action;
+use App\Imports\LocationImport;
 use App\Services\HelperService;
+use App\Models\SampleFrame\Farm;
 use Filament\Resources\Pages\Page;
+use App\Models\SampleFrame\Location;
+use Maatwebsite\Excel\Facades\Excel;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Wizard;
+use Filament\Support\Exceptions\Halt;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Contracts\HasForms;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\HeadingRowImport;
-use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
 use App\Models\SampleFrame\LocationLevel;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Wizard\Step;
-use Filament\Resources\Pages\CreateRecord;
 use Filament\Forms\Components\CheckboxList;
-use Illuminate\Http\Client\RequestException;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Platform;
-use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
-use Stats4sd\FilamentOdkLink\Jobs\UpdateXlsformTitleInFile;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
-use Illuminate\Contracts\Container\BindingResolutionException;
+use Filament\Forms\Concerns\InteractsWithForms;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
-
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Support\Exceptions\Halt;
-use Filament\Notifications\Notification;
-
 
 class ImportLocationsAndFarms extends Page implements HasForms
 {
@@ -72,6 +67,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
         ];
     }
 
+
     // add a function to handle the submitted form
     public function save(): void
     {
@@ -80,18 +76,57 @@ class ImportLocationsAndFarms extends Page implements HasForms
         try {
             // get the submitted form data for further processing
             $data = $this->form->getState();
-
             ray($data);
+
+            // copy the uploaded excel file, it will be stored with the import model for farm
+            Storage::copy($data['upload'], $data['upload'] . '_duplicate');
+
+
+            // import locations
+            if ($data['override'] === 'yes') {
+                HelperService::getCurrentOwner()->locations()->delete();
+            }
+
+            $locationImport = Import::create([
+                'team_id' => HelperService::getCurrentOwner()->id,
+                'model_type' => Location::class,
+            ]);
+
+            $locationImport->addMedia(Storage::path($data['upload']))->toMediaCollection();
+
+            $data['import_id'] = $locationImport->id;
+
+            // Question: why all locations are imported as districts?
+            Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
+
+
+
+            // import farms
+            // create import record - for review and error tracking by users
+            $farmImport = Import::create([
+                'team_id' => HelperService::getCurrentOwner()->id,
+                'model_type' => Farm::class,
+            ]);
+
+
+            $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
+
+            $data['import_id'] = $farmImport->id;
+
+            // run import
+            Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
+
 
             // send notification
             Notification::make()
                 ->success()
-                ->title(__('filament-panels::resources/pages/edit-record.notifications.saved.title'))
+                ->title('Import of Locations and Farm Data Complete')
                 ->send();
         } catch (Halt $exception) {
             return;
         }
     }
+
 
     public function form(Form $form): Form
     {
@@ -270,6 +305,10 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
                                 ]),
 
+                            Hidden::make('user_id')
+                                ->default(auth()->id()),
+
+
                         ])
                         ->afterValidation(function () {
                             ray('step 3 afterValidation');
@@ -278,7 +317,6 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
                 ])
 
-            ])
-            ->statePath('data');
+            ])->statePath('data');
     }
 }
