@@ -1,3 +1,9 @@
+<?php
+
+use App\Filament\App\Pages\PlaceAdaptations\InitialPilot;
+
+?>
+
 @props([
   'actions' => [],
   'breadcrumbs' => [],
@@ -20,4 +26,15 @@
 
 
     </div>
+</div>
+<div class=" w-screen full-width -mt-8 bg-green">
+  <div class="container mx-auto xl:px-28 !flex flex-col md:flex-row  py-2 md:py-8 content-center">
+    <div class="md:w-1/2 py-4 md:py-0">
+      <h3 class="text-white"> Shortcut: test or preview survey</h3>
+      <p class="font-normal text-white"> Jump to the ‘initial pilot’ page to access a draft version of your survey questionnaires.</p>
+    </div>
+    <div class="md:w-1/2 py-4 md:py-0 text-center md:text-right pt-0 relative content-center mt-4 md:mt-0">
+      <a class="button bg-white text-green font-semibold uppercase rounded-full py-2 px-4 " href="{{ InitialPilot::getUrl() }}">Preview</a>
+    </div>
+  </div>
 </div>
