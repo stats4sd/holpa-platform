@@ -11,17 +11,17 @@
         <div class="surveyblocks pr-10  pt-8">
 
             <x-rounded-section
-                heading='View and manage survey'
+                heading='Set up the survey'
                 description='Manage the ODK survey to be used for data collection'
                 buttonLabel='Update'
-                url='url_to_be_added_here'
+                :url='"tbd"'
             />
 
             <x-rounded-section
-                heading='View and manage submissions'
+                heading='Monitor Data Collection'
                 description='Review and quality-check incoming data'
                 buttonLabel='Update'
-                url='url_to_be_added_here'
+                :url='\App\Filament\App\Pages\DataCollection\MonitorDataCollection::getUrl()'
             />
 
         </div>

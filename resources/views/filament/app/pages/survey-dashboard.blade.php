@@ -399,7 +399,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                                     </div>
                                 @endif
                                 {{-- TODO: fix links to monitoring page --}}
-                                <a href="{{ \App\Filament\App\Pages\DataCollection\MonitorDataCollection::getUrl() }}" class="buttona">
+                                <a href="{{ \App\Filament\App\Pages\DataCollection\DataCollectionIndex::getUrl() }}" class="buttona">
                                     VIEW SURVEY PROGRESS
                                 </a>
                             </div>
