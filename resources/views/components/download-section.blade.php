@@ -1,6 +1,6 @@
 <div class=" xl:w-[80%]  pb-12">
     <div class="flex flex-col md:flex-row h-full items-center" >
-    <div class="bg-blue rounded-full mx-auto mb-4 md:m-0 md:mr-6 lg:mr-14 hidden md:flex items-center" style="height: 4rem; width: 4rem; ; place-content: center; ">
+    <div class="bg-blue rounded-full mx-auto mb-4 md:m-0 md:mr-2 hidden md:flex items-center" style="height: 4rem; width: 4rem; ; place-content: center; ">
 
 
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="mx-auto " style="height: 2rem;">
