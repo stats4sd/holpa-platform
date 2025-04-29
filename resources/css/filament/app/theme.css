@@ -548,3 +548,7 @@ button.text-white span {
 button.font-normal span {
     font-weight: 500 !important;
 }
+
+div:has(> .fi-page-sub-navigation-sidebar-ctn) {
+    @apply bg-white p-16 shadow-xl;
+}
