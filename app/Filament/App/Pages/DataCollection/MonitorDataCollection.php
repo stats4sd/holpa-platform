@@ -30,6 +30,7 @@ class MonitorDataCollection extends Page
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
+            DatacollectionIndex::getUrl() => 'Data Collection',
             static::getUrl() => 'Monitor Data Collection',
         ];
     }
