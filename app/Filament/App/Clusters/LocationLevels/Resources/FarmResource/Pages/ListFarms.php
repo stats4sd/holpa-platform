@@ -2,13 +2,17 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 
-use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
-use App\Filament\App\Pages\SurveyDashboard;
-use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
-use App\Filament\Tables\Actions\ImportFarmsAction;
-use App\Imports\FarmImport;
 use Filament\Actions;
+use App\Imports\FarmImport;
+use Filament\Forms\Components\Wizard;
 use Filament\Resources\Pages\ListRecords;
+use Filament\Forms\Components\Wizard\Step;
+use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\Tables\Actions\ImportFarmsAction;
+use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
+use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource;
+use Filament\Forms\Components\Actions as ComponentActions;
+use Filament\Forms\Components\Actions\Action as ComponentAction;
 
 class ListFarms extends ListRecords
 {
@@ -37,10 +41,17 @@ class ListFarms extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+
+            // add a button to divert to import custom page
+            Actions\Action::make('import')
+                ->label('Import Locations and Farm List')
+                ->url('farms/import'),
+
             ImportFarmsAction::make()
                 ->use(FarmImport::class)
                 ->color('primary')
                 ->label('Import Farm list'),
+
         ];
     }
 }
