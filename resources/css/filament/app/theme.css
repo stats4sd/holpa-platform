@@ -115,6 +115,10 @@ h3 {
     @apply shadow-none bg-dark-blue ;
     text-decoration: none !important;
 }
+.buttona:disabled.outline-none {
+    @apply !ring-0 !bg-gray-200 !text-gray-600;
+    cursor: not-allowed;
+}
 
 .buttona span:hover {
     text-decoration: none !important;
@@ -496,4 +500,12 @@ margin-right: 0.5rem;
     padding: 20px 30px;
     background-color: #5fa35a2b;
 
+}
+.results-summary {
+    .fi-section {
+        @apply bg-gray-100;
+    }
+    .fi-section-content {
+        @apply pt-2;
+    }
 }
