@@ -66,9 +66,10 @@ class CustomModuleVersions extends Component implements HasForms
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
-                            ->label(fn($state) => count($state) === 0
-                                ? 'Upload your completed Xlsform file with the custom questions for your indicators.'
-                                : 'To upload a new set of questions, delete the existing file with the "x" icon below and upload the new completed file.'
+                            ->label(
+                                fn($state) => count($state) === 0
+                                    ? 'Upload your completed Xlsform file with the custom questions for your indicators.'
+                                    : 'To upload a new set of questions, delete the existing file with the "x" icon below and upload the new completed file.'
                             )
                             ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
                         Actions::make([
@@ -112,7 +113,6 @@ class CustomModuleVersions extends Component implements HasForms
                 ->body('The file will be processed in the background and the questions will appear below once complete. You may leave this page without interrupting this process.') // TODO: listen for server-side event nad refresh the list of questions when the import jobs complete!
                 ->success()
                 ->send();
-
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }
