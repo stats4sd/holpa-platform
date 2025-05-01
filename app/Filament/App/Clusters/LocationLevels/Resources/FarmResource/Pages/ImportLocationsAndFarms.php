@@ -103,8 +103,9 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
             // send notification
             Notification::make()
-                ->success()
                 ->title('Locations and farms are being imported.')
+                ->body('The file will be processed in the background and the data will appear below once complete. You may leave this page without interrupting this process.') // TODO: listen for server-side event nad refresh the list of farms when the import jobs complete!
+                ->success()
                 ->send();
 
             // redirect to farms list page
