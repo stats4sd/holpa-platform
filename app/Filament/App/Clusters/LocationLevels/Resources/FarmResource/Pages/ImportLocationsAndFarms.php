@@ -66,53 +66,49 @@ class ImportLocationsAndFarms extends Page implements HasForms
     // add a function to handle the submitted form
     public function save(): void
     {
-        try {
-            // get the submitted form data for further processing
-            $data = $this->form->getState();
+        // get the submitted form data for further processing
+        $data = $this->form->getState();
 
-            // the uploaded excel file will be stored with import model for locations
-            // copy the uploaded excel file as a duplicate file, which will be stored with the import model for farms
-            Storage::copy($data['upload'], $data['upload'] . '_duplicate');
-
-
-            // import locations
-            if ($data['override'] === 'yes') {
-                HelperService::getCurrentOwner()->locations()->delete();
-            }
-
-            $locationImport = Import::create([
-                'team_id' => HelperService::getCurrentOwner()->id,
-                'model_type' => Location::class,
-            ]);
-
-            $locationImport->addMedia(Storage::path($data['upload']))->toMediaCollection();
-            $data['import_id'] = $locationImport->id;
-            Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
+        // the uploaded excel file will be stored with import model for locations
+        // copy the uploaded excel file as a duplicate file, which will be stored with the import model for farms
+        Storage::copy($data['upload'], $data['upload'] . '_duplicate');
 
 
-            // import farms
-            // create import record - for review and error tracking by users
-            $farmImport = Import::create([
-                'team_id' => HelperService::getCurrentOwner()->id,
-                'model_type' => Farm::class,
-            ]);
-
-            $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
-            $data['import_id'] = $farmImport->id;
-            Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
-
-            // send notification
-            Notification::make()
-                ->title('Locations and farms are being imported.')
-                ->body('The file will be processed in the background and the data will appear below once complete. You may leave this page without interrupting this process.') // TODO: listen for server-side event nad refresh the list of farms when the import jobs complete!
-                ->success()
-                ->send();
-
-            // redirect to farms list page
-            redirect(FarmResource::getUrl('index'));
-        } catch (Halt $exception) {
-            return;
+        // import locations
+        if ($data['override'] === 'yes') {
+            HelperService::getCurrentOwner()->locations()->delete();
         }
+
+        $locationImport = Import::create([
+            'team_id' => HelperService::getCurrentOwner()->id,
+            'model_type' => Location::class,
+        ]);
+
+        $locationImport->addMedia(Storage::path($data['upload']))->toMediaCollection();
+        $data['import_id'] = $locationImport->id;
+        Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
+
+
+        // import farms
+        // create import record - for review and error tracking by users
+        $farmImport = Import::create([
+            'team_id' => HelperService::getCurrentOwner()->id,
+            'model_type' => Farm::class,
+        ]);
+
+        $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
+        $data['import_id'] = $farmImport->id;
+        Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
+
+        // send notification
+        Notification::make()
+            ->title('Locations and farms are being imported.')
+            ->body('The file will be processed in the background and the data will appear below once complete. You may leave this page without interrupting this process.') // TODO: listen for server-side event nad refresh the list of farms when the import jobs complete!
+            ->success()
+            ->send();
+
+        // redirect to farms list page
+        redirect(FarmResource::getUrl('index'));
     }
 
     public function form(Form $form): Form
