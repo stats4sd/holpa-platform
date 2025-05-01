@@ -5,16 +5,17 @@ namespace App\Exports\LocalIndicatorXlsformQuestions;
 use App\Models\Team;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
+use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
 {
@@ -22,7 +23,39 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
 
     public function collection(): Enumerable|Collection
     {
-        return collect();
+        // find related xlsform module version Ids
+        $xlsformModuleVersionIds = $this->team->localIndicators->pluck('xlsform_module_version_id')->toArray();
+
+        // TODO: get related columns only
+
+        // indicator	type	name	label::English (en)	hint::English (en)	required	required_message::English (en)	calculation	relevant
+        // appearance	constraint	constraint_message::English (en)	choice_filter	repeat_count	default	note	trigger	media::image::English (en)
+
+        // label::English (en)
+        // hint::English (en)
+        // required_message::English (en)
+        // constraint_message::English (en)
+        // media::image::English (en)
+
+        // create an empty collection
+        $records = collect();
+
+        // find related custom questions
+        $surveyRows = SurveyRow::whereIn('xlsform_module_version_id', $xlsformModuleVersionIds)
+            ->select('type', 'name', 'required', 'calculation', 'relevant', 'appearance', 'constraint', 'choice_filter', 'repeat_count', 'default', 'note', 'trigger')
+            ->get();
+
+        // add custom questions to collection one by one
+        foreach ($surveyRows as $surveyRow) {
+            // TODO: find label
+            ray($surveyRow->defaultLabel());
+
+            // TODO: study how to pre-select an option in "Indicator" column
+            // TODO: find label, hint, required message, constraint message
+            $records->add(['', $surveyRow->type, $surveyRow->name, 'TODO:label']);
+        }
+
+        return $records;
     }
 
     public function title(): string
@@ -115,7 +148,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
                 $indicatorLookupList->setErrorTitle('Input error');
                 $indicatorLookupList->setError('Please select an indicator from the list.');
                 $indicatorLookupList->setPromptTitle('Pick an indicator');
-                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$'.$count + 3);
+                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$' . $count + 3);
 
                 $sheet->setDataValidation('A:A', $indicatorLookupList);
             },
