@@ -25,7 +25,7 @@ class CustomIndicatorSurveySheet extends DefaultValueBinder implements FromColle
 {
     public function __construct(public Team $team) {}
 
-    // TODO: study how to pre-select a value for "Indicator" column
+    // TODO, TO_TEST: study how to pre-select a value for "Indicator" column
     // reference: https://duncanmcclean.com/select-dropdown-cells-with-laravel-excel
     public function bindValue(Cell $cell, $value)
     {
@@ -48,33 +48,51 @@ class CustomIndicatorSurveySheet extends DefaultValueBinder implements FromColle
         // find related xlsform module version Ids
         $xlsformModuleVersionIds = $this->team->localIndicators->pluck('xlsform_module_version_id')->toArray();
 
-        // TODO: get related columns only
-
-        // indicator	type	name	label::English (en)	hint::English (en)	required	required_message::English (en)	calculation	relevant
-        // appearance	constraint	constraint_message::English (en)	choice_filter	repeat_count	default	note	trigger	media::image::English (en)
-
-        // label::English (en)
-        // hint::English (en)
-        // required_message::English (en)
-        // constraint_message::English (en)
-        // media::image::English (en)
-
-        // create an empty collection
+        // create an empty collection for one excel sheet
         $records = collect();
 
         // find related custom questions
         $surveyRows = SurveyRow::whereIn('xlsform_module_version_id', $xlsformModuleVersionIds)
-            // ->select('type', 'name', 'required', 'calculation', 'relevant', 'appearance', 'constraint', 'choice_filter', 'repeat_count', 'default', 'note', 'trigger')
             ->get();
 
         // add custom questions to collection one by one
         foreach ($surveyRows as $surveyRow) {
-            // TODO: find label
-            ray($surveyRow->defaultLabel());
+
+            // create a new record for one row
+            $record = [];
+
+            // I tried to put indicator id "2" as a number and a string, both just put value "2" in the excel file template
+            // array_push($record, 2);
+            // array_push($record, '2');
 
             // TODO: study how to pre-select an option in "Indicator" column
-            // TODO: find label, hint, required message, constraint message
-            $records->add(['', $surveyRow->type, $surveyRow->name, 'TODO:label']);
+            array_push($record, 'TODO');
+
+            array_push($record, $surveyRow->type);
+            array_push($record, $surveyRow->name);
+
+            // TODO: prepare all the language strings for the team's selected locales, not just the default / english
+            array_push($record, $surveyRow->getLanguageString('label', 'en'));
+            array_push($record, $surveyRow->getLanguageString('hint', 'en'));
+
+            array_push($record, $surveyRow->required);
+            array_push($record, $surveyRow->getLanguageString('required_message', 'en'));
+
+            array_push($record, $surveyRow->calculation);
+            array_push($record, $surveyRow->relevant);
+            array_push($record, $surveyRow->appearance);
+
+            array_push($record, $surveyRow->constraint);
+            array_push($record, $surveyRow->getLanguageString('constraint_message', 'en'));
+
+            array_push($record, $surveyRow->choice_filter);
+            array_push($record, $surveyRow->repeat_count);
+            array_push($record, $surveyRow->default);
+            array_push($record, $surveyRow->note);
+            array_push($record, $surveyRow->trigger);
+            array_push($record, $surveyRow->getLanguageString('mediaimage', 'en'));
+
+            $records->add($record);
         }
 
         return $records;
