@@ -15,11 +15,33 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
+use PhpOffice\PhpSpreadsheet\Cell\Cell;
+use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
-class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
+// TODO: study how to pre-select a value for "Indicator" column
+class CustomIndicatorSurveySheet extends DefaultValueBinder implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
 {
     public function __construct(public Team $team) {}
+
+    // TODO: study how to pre-select a value for "Indicator" column
+    // reference: https://duncanmcclean.com/select-dropdown-cells-with-laravel-excel
+    public function bindValue(Cell $cell, $value)
+    {
+        if (is_array($value)) {
+            $validation = $cell->getDataValidation();
+            $validation->setType(DataValidation::TYPE_LIST);
+            $validation->setAllowBlank(true);
+            $validation->setShowDropDown(true);
+            $validation->setFormula1('"' . collect($value)->join(',') . '"');
+
+            $value = '';
+        }
+
+        return parent::bindValue($cell, $value);
+    }
+
 
     public function collection(): Enumerable|Collection
     {
@@ -42,7 +64,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
 
         // find related custom questions
         $surveyRows = SurveyRow::whereIn('xlsform_module_version_id', $xlsformModuleVersionIds)
-            ->select('type', 'name', 'required', 'calculation', 'relevant', 'appearance', 'constraint', 'choice_filter', 'repeat_count', 'default', 'note', 'trigger')
+            // ->select('type', 'name', 'required', 'calculation', 'relevant', 'appearance', 'constraint', 'choice_filter', 'repeat_count', 'default', 'note', 'trigger')
             ->get();
 
         // add custom questions to collection one by one
