@@ -28,7 +28,7 @@ class TimeFrame extends Page implements HasForms, HasTable
 
     protected ?string $heading = 'Survey Testing - Adapt Time Frame';
 
-    protected ?string $subheading = 'Specify the time frame for your survey';
+    // protected ?string $subheading = 'Specify the time frame for your survey';
 
     public ?array $data = [];
 

@@ -109,7 +109,8 @@ h3 {
 .buttona{
     @apply bg-blue font-semibold text-xs text-white py-2 px-4 rounded-full  duration-200;
     text-transform: uppercase;
-
+    .fi-btn-icon {
+        @apply !text-white;}
 }
 .buttona:hover {
     @apply shadow-none bg-dark-blue ;
@@ -322,9 +323,9 @@ button:disabled.outline-none {
 }
 
 /* For complex repeater items in forms; make the borders around each item more clear */
-.fi-fo-repeater-item {
+/* .fi-fo-repeater-item {
     @apply border-2 border-green;
-}
+} */
 
 
 /* For 'inline repeater' elements, hide the defuault border, ring and shadow around items - to make the repeated fields look like they are 'in line' with the other fields and not a separate section of the form.
@@ -334,7 +335,9 @@ button:disabled.outline-none {
     @apply border-none;
 }
 
-
+.inline-repeater .fi-fo-repeater-item-content {
+    @apply px-0;
+}
 .inline-repeater .fi-fo-repeater-item {
     @apply ring-0 shadow-none;
 }
@@ -347,12 +350,41 @@ button:disabled.outline-none {
     @apply hidden;
 }
 
-.translations-tables .fi-ta-ctn{
-    @apply shadow-none ring-0 border-b  m-4;
 
+.dropdown_tables {
+   .fi-ta-header,.fi-ta-header-toolbar {
+    @apply shadow-none ring-0 !border-none divide-none py-0;
+   }
+   .fi-ta-reorder-indicator {
+    @apply border;
+   }
+
+
+.fi-ta-ctn{
+    @apply shadow-none ring-0 border-b ;
+margin: 0.5rem 1rem 3rem 1rem;
+.translations_viewedit {
+    @apply ml-4;
+    span {
+    @apply !text-xs ;
+}
+}
+}
 }
 
-.translations-tables .fi-ta-content {
+.dropdown_tables .fi-ta-header .fi-ta-actions:has(> .add_questions_btn) {
+    @apply py-0 my-0 h-0;
+   .add_questions_btn {
+    @apply  shadow-none;
+}
+.add_questions_btn:hover {
+    background-color: var(--dark-orange);
+}
+}
+.dropdown_tables .fi-ta-text-item svg {
+@apply mr-2;
+}
+.dropdown_tables .fi-ta-content {
     @apply border-x ;
 }
 .translation-modal button {
@@ -364,8 +396,8 @@ button:disabled.outline-none {
     text-transform: none !important;
 }
 
-
-.indicator-upload .table-repeater-container {
+/* affects all table-repeaters - come back if it breaks anything i guess :) */
+.table-repeater-container {
     @apply !rounded-none;
     --tw-ring-color: rgba(9, 9, 11, 0.11);
     .table-repeater-header-column {
@@ -496,4 +528,27 @@ margin-right: 0.5rem;
     padding: 20px 30px;
     background-color: #5fa35a2b;
 
+}
+.add_questions_modal {
+    @apply py-4 px-8;
+    .fi-modal-footer-actions {
+        @apply justify-end
+    }
+    .fi-fo-field-wrp-label {
+        @apply capitalize;
+    }
+}
+
+/* Messy button workaround */
+button.text-white span {
+    color: white !important;
+    
+}
+
+button.font-normal span {
+    font-weight: 500 !important;
+}
+
+div:has(> .fi-page-sub-navigation-sidebar-ctn) {
+    @apply bg-white p-16 shadow-xl;
 }

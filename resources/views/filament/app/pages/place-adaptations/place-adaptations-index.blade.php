@@ -63,7 +63,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 </p>
 
 
-                <h5>Mark this section as complete when </h5>
+                <h5>Mark this section as complete when: </h5>
                 <p class="mb-2">
                     You have made all the desired adaptions to the details available for change in this step, piloted the full survey with a local researcher or practitioner, and made any needed adjustments.
                 </p>

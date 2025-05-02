@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Services\HelperService;
 use Awcodes\TableRepeater\Components\TableRepeater;
 use Awcodes\TableRepeater\Header;
+use Filament\Actions\StaticAction;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\Fieldset;
@@ -65,6 +66,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
     // show questions in a table for better readability
     public function table(Table $table): Table
     {
+
         $locales = $this->localIndicator->team->locales;
 
         $choiceListHeaders = $locales->map(function (Locale $locale) {
@@ -106,13 +108,18 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
             )
             ->columns([
                 TextColumn::make('type')->label('Question Type'),
-                TextColumn::make('name')->label('Variable Name'),
-
+                TextColumn::make('name')->label('Variable Name')->wrap(),
                 // fix to show default label as string instead of a JSON array
                 TextColumn::make('defaultLabel.text')->label('Default Label'),
             ])
             // allow user to change the ordering by drag and drop
             ->reorderable('row_number')
+            ->reorderRecordsTriggerAction(
+                fn (Action $action, bool $isReordering) => $action
+                    ->button()
+                    ->label($isReordering ? 'Disable reordering' : 'Enable reordering')
+                    ->extraAttributes(['class' => 'buttona border-0 !ring-0 !shadow-none -ml-2  mb-4']))
+            ->paginated(false)
 
             // add "create new record" button in table header
             ->headerActions([
@@ -121,8 +128,14 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                     ->icon('heroicon-m-plus')
                     ->button()
                     ->color('danger')
+                    ->extraAttributes(['class' => 'add_questions_btn'])
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     ->modalHeading('ADD QUESTION')
+                    ->extraModalWindowAttributes(['class' => 'add_questions_modal'])
+                    ->modalSubmitAction(fn (StaticAction $action) => $action
+                        ->extraAttributes(['class' => 'buttona shadow-none !ring-0 border-0']))
+                    ->modalCancelAction(fn (StaticAction $action) => $action
+                        ->extraAttributes(['class' => 'buttonb shadow-none !ring-0 ']))
                     ->createAnother(false)
                     ->mutateFormDataUsing(function (array $data): array {
                         // find the largest row_number of survey_rows records
@@ -207,7 +220,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                                                 Hidden::make('language_string_type_id'),
 
                                                 TextInput::make('text')
-                                                    ->label('test'),
+                                                    ->label(''),
                                             ])
                                             ->default($defaultChoiceLanguageStringState)
                                             ->live(),
@@ -223,6 +236,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                 Action::make('view_edit_question')
                     ->label('VIEW/EDIT QUESTION')
                     ->icon('heroicon-m-pencil')
+                    ->extraAttributes(['class' => 'py-2 shadow-none'])
                     ->button()
                     ->color('blue')
                     // disable editing uploaded custom questions
@@ -336,6 +350,7 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
                 // add "DELETE QUESTION" button in table row instead of inside modal popup
                 DeleteAction::make()
                     ->label('DELETE QUESTION')
+                    ->extraAttributes(['class' => 'py-2 shadow-none'])
                     ->button()
                     ->modalHeading('Delete Question'),
 

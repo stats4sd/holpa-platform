@@ -40,7 +40,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 
     protected static string $view = 'filament.app.pages.place-adaptations.initial-pilot';
     protected ?string $heading = "Survey Testing - Initial Pilot";
-    protected ?string $subheading = "Test with local researchers and practitioners to review the initial localisations";
+    // protected ?string $subheading = "Test with local researchers and practitioners to review the initial localisations";
 
     public Team $team;
 
