@@ -17,10 +17,9 @@ class PilotIndex extends Page
 
     protected ?string $heading = 'Survey Testing - Pilot and Enumerator Training';
 
-    // protected ?string $subheading = 'Test with enumerators; pilot with real farmers';
-
     #[Url]
     public string $tab = 'xlsforms';
+    public Team $team;
 
     public function getBreadcrumbs(): array
     {
@@ -40,8 +39,8 @@ class PilotIndex extends Page
         return [];
     }
 
-    public function getRecord(): Team
+    public function mount(): void
     {
-        return HelperService::getCurrentOwner();
+        $this->team = HelperService::getCurrentOwner();
     }
 }

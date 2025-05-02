@@ -69,7 +69,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
             ])
             ->actions([
                 Action::make('update_published_version')
-                    // ->visible(fn(Xlsform $record) => !$record->has_latest_template)
+                    ->visible(fn(Xlsform $record) => $record->live_needs_update)
                     ->label('Publish changes')
                     ->extraAttributes(['class' => 'buttona text-white font-normal'])
                     ->action(function (Xlsform $record) {
