@@ -2,33 +2,37 @@
 
 namespace App\Livewire\Lisp;
 
-use App\Imports\LocalIndicatorImport;
-use App\Models\Team;
-use App\Services\HelperService;
-use Awcodes\TableRepeater\Components\TableRepeater;
-use Awcodes\TableRepeater\Header;
 use Exception;
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
+use App\Models\Team;
 use Filament\Forms\Get;
-use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
-use Illuminate\Support\HtmlString;
 use Livewire\Component;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
 use Livewire\WithFileUploads;
+use App\Services\HelperService;
+use Awcodes\TableRepeater\Header;
+use Illuminate\Support\HtmlString;
+use App\Models\Holpa\LocalIndicator;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\LocalIndicatorImport;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Actions;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Components\Fieldset;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Forms\Components\TextInput;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\CreateAction;
+use Filament\Tables\Actions\DeleteAction;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Tables\Concerns\InteractsWithTable;
+use Awcodes\TableRepeater\Components\TableRepeater;
 use Maatwebsite\Excel\Validators\ValidationException;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UploadLocalIndicators extends Component implements HasForms, HasTable
 {
@@ -37,9 +41,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     use WithFileUploads;
 
     public Team $team;
-
-    public ?Media $uploadedFile = null;
-
     public ?array $data;
 
     public function mount(): void
@@ -47,7 +48,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
         $this->team = HelperService::getCurrentOwner();
 
         $this->form->fill($this->team->toArray());
-        $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
     }
 
     public function form(Form $form): Form
@@ -67,35 +67,21 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                             ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                             ->maxSize(10240)
                             ->preserveFilenames()
-                            ->helperText(fn (self $livewire) => new HtmlString('<span class="text-red-700">'.collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>').'</span>')),
+                            ->label(
+                                fn($state) => count($state) === 0
+                                    ? 'Upload your list of local indicators here.'
+                                    : 'To upload a new set of indicators, delete the existing file with the "x" icon below and upload the new completed file.'
+                            )
+                            ->helperText(fn(self $livewire) => new HtmlString('<span class="text-red-700">' . collect($livewire->getErrorBag()->get('local_indicator_list'))->join('<br/>') . '</span>')),
 
                         Actions::make([
                             Actions\Action::make('save_file')
                                 ->extraAttributes(['class' => ' buttona'])
-
                                 ->label('Save File')
-                                ->action(fn (Get $get) => $this->uploadFile($get('local_indicator_list'))),
-                        ]),
-                    ]),
-                Fieldset::make('Local Indicators List')
-                    ->columns(1)
-                    ->schema([
-                        TableRepeater::make('localIndicators')
-                            ->label('')
-                            ->relationship('localIndicators')
-                            ->headers([
-                                Header::make('name')
-                                    ->width('70%'),
-                                Header::make('domain'),
-                            ])
-                            ->schema([
-                                TextInput::make('name')->required(),
-                                Select::make('domain_id')
-                                    ->relationship('domain', 'name')->required(),
-                            ])
-                            ->emptyLabel('No local indicators added - click "Add Local Indicator" below to create a new entry')
-                            ->addActionLabel('Add Local Indicator'),
-
+                                ->action(fn(Get $get) => $this->uploadFile($get('local_indicator_list')))
+                                ->disabled(fn(Get $get) => ! collect($get('local_indicator_list'))->first() instanceof TemporaryUploadedFile),
+                        ])
+                            ->extraAttributes(['class' => 'flex justify-center']),
                     ]),
             ]);
     }
@@ -109,7 +95,7 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
     public function uploadFile($localIndicatorList): void
     {
         // Check that a file is uploaded
-        if (empty($localIndicatorList) || ! is_array($localIndicatorList)) {
+        if (empty($localIndicatorList) || !is_array($localIndicatorList)) {
             $this->addError('local_indicator_list', 'Please upload a file before proceeding.');
 
             return;
@@ -122,8 +108,10 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
             // Proceed with the import
             Excel::import(new LocalIndicatorImport($this->team), $file->getRealPath());
 
+            $this->team->addMedia($file)->toMediaCollection('local_indicators');
             $this->team->refresh();
             $this->form->fill($this->team->toArray());
+
 
             // Display success message
             Notification::make()
@@ -131,7 +119,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                 ->body('File uploaded successfully!')
                 ->success()
                 ->send();
-
         } catch (ValidationException $e) {
 
             ray($e->validator->errors());
@@ -145,53 +132,56 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                     return "Row $keyRow, Column $keyColumn: $errors";
                 });
 
-            ray(new HtmlString('It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>'.$errors->join('<br/>')));
+            ray(new HtmlString('It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>')));
 
-            $this->addError('local_indicator_list', 'It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>'.$errors->join('<br/>'));
+            $this->addError('local_indicator_list', 'It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>'));
         } catch (Exception $e) {
             $this->addError('local_indicator_list', 'An error occurred while uploading the file.');
         }
     }
 
+    // the original table function shows the uploaded file name, upload date and Delete button (it looks like this table is not being used in application)
+    // use table function to let user to maintain local indicator records
     public function table(Table $table): Table
     {
         return $table
-            ->query(Media::query()
-                ->where('model_id', $this->team->id)
-                ->where('model_type', Team::class)
-                ->where('collection_name', 'local_indicators')
+            ->query(
+                LocalIndicator::query()
+                    ->where('team_id', auth()->user()->latestTeam->id),
             )
+            ->heading('Local Indicators List')
             ->columns([
-                TextColumn::make('file_name')
-                    ->label('Uploaded file')
+                TextColumn::make('name')
                     ->sortable(),
-                TextColumn::make('created_at')
-                    ->label('Upload date')
-                    ->dateTime('Y/m/d'),
+                TextColumn::make('domain.name'),
             ])
             ->actions([
-                Action::make('delete')
-                    ->label('Delete')
-                    ->color('danger')
-                    ->button()
-                    ->requiresConfirmation()
-                    ->action(function (Media $record) {
-                        // Delete the media file
-                        $record->delete();
-
-                        // Delete the local indicator records
-                        $this->team->localIndicators()->delete();
-
-                        // Update the uploaded file details
-                        $this->uploadedFile = $this->team->getMedia('local_indicators')->first();
-
-                        // Display success message
-                        Notification::make()
-                            ->title('Success')
-                            ->body('File deleted successfully!')
-                            ->success()
-                            ->send();
-                    }),
+                EditAction::make()
+                    ->form([
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Select::make('domain_id')
+                            ->relationship('domain', 'name')
+                            ->required(),
+                    ]),
+                DeleteAction::make(),
+            ])
+            ->headerActions([
+                CreateAction::make()
+                    ->model(LocalIndicator::class)
+                    ->label('ADD LOCAL INDICATOR')
+                    ->form([
+                        Hidden::make('team_id')
+                            ->required()
+                            ->default(auth()->user()->latestTeam->id),
+                        TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Select::make('domain_id')
+                            ->relationship('domain', 'name')
+                            ->required(),
+                    ])
             ])
             ->paginated(false);
     }
