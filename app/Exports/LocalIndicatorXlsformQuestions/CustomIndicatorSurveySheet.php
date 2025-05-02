@@ -15,36 +15,16 @@ use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use Maatwebsite\Excel\Concerns\WithCustomValueBinder;
-use PhpOffice\PhpSpreadsheet\Cell\Cell;
-use PhpOffice\PhpSpreadsheet\Cell\DefaultValueBinder;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
-// TODO: study how to pre-select a value for "Indicator" column
-class CustomIndicatorSurveySheet extends DefaultValueBinder implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
+class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
 {
     public function __construct(public Team $team) {}
 
-    // TODO, TO_TEST: study how to pre-select a value for "Indicator" column
-    // reference: https://duncanmcclean.com/select-dropdown-cells-with-laravel-excel
-    public function bindValue(Cell $cell, $value)
-    {
-        if (is_array($value)) {
-            $validation = $cell->getDataValidation();
-            $validation->setType(DataValidation::TYPE_LIST);
-            $validation->setAllowBlank(true);
-            $validation->setShowDropDown(true);
-            $validation->setFormula1('"' . collect($value)->join(',') . '"');
-
-            $value = '';
-        }
-
-        return parent::bindValue($cell, $value);
-    }
-
-
     public function collection(): Enumerable|Collection
     {
+        $locales = $this->team->locales()->with('language')->get();
+
         // find related xlsform module version Ids
         $xlsformModuleVersionIds = $this->team->localIndicators->pluck('xlsform_module_version_id')->toArray();
 
@@ -61,36 +41,42 @@ class CustomIndicatorSurveySheet extends DefaultValueBinder implements FromColle
             // create a new record for one row
             $record = [];
 
-            // I tried to put indicator id "2" as a number and a string, both just put value "2" in the excel file template
-            // array_push($record, 2);
-            // array_push($record, '2');
-
-            // TODO: study how to pre-select an option in "Indicator" column
-            array_push($record, 'TODO');
+            // TODO: find indicator name
+            // hardcode temporary for testing
+            array_push($record, 'Local Indicator 1');
 
             array_push($record, $surveyRow->type);
             array_push($record, $surveyRow->name);
 
-            // TODO: prepare all the language strings for the team's selected locales, not just the default / english
-            array_push($record, $surveyRow->getLanguageString('label', 'en'));
-            array_push($record, $surveyRow->getLanguageString('hint', 'en'));
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('label', $locale->language->iso_alpha2));
+                array_push($record, $surveyRow->getLanguageString('hint', $locale->language->iso_alpha2));
+            }
 
             array_push($record, $surveyRow->required);
-            array_push($record, $surveyRow->getLanguageString('required_message', 'en'));
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('required_message', 'en'));
+            }
 
             array_push($record, $surveyRow->calculation);
             array_push($record, $surveyRow->relevant);
             array_push($record, $surveyRow->appearance);
-
             array_push($record, $surveyRow->constraint);
-            array_push($record, $surveyRow->getLanguageString('constraint_message', 'en'));
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('constraint_message', 'en'));
+            }
 
             array_push($record, $surveyRow->choice_filter);
             array_push($record, $surveyRow->repeat_count);
             array_push($record, $surveyRow->default);
             array_push($record, $surveyRow->note);
             array_push($record, $surveyRow->trigger);
-            array_push($record, $surveyRow->getLanguageString('mediaimage', 'en'));
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('mediaimage', 'en'));
+            }
 
             $records->add($record);
         }
