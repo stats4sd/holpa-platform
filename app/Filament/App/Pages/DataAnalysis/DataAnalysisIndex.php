@@ -25,7 +25,7 @@ class DataAnalysisIndex extends Page implements HasActions, HasForms
 
     protected static ?string $title = 'Data Analysis';
 
-    protected ?string $summary = 'Download data to conduct data analysis.';
+
 
     protected $listeners = ['refreshPage' => '$refresh'];
 
@@ -49,16 +49,6 @@ class DataAnalysisIndex extends Page implements HasActions, HasForms
             ->extraAttributes(['class' => 'buttona']);
     }
 
-    public function getHeader(): ?View
-    {
-        return view('components.small-header', [
-            'heading' => $this->getHeading(),
-            'subheading' => $this->getSubheading(),
-            'actions' => $this->getHeaderActions(),
-            'breadcrumbs' => $this->getBreadcrumbs(),
-            'summary' => $this->summary,
-        ]);
-    }
 
     public function markCompleteAction(): Action
     {

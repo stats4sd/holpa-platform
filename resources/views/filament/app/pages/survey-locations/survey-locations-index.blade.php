@@ -45,8 +45,8 @@
                     </ul>
                     <p class="mb-2">
                     Once you have added levels, you can select them to view a list of the locations that have been added at that level and add locations. You have to option to import them from an excel file or add them manually. 
-</p>
-<p class="mb-2">
+                    </p>
+                    <p class="mb-2">
 
                     To import locations, upload an excel spreadsheet with the required details:
                     </p>
@@ -58,7 +58,7 @@
                     A column with the unique IDs for the locations. (These can be generated however you like, but each one must be unique)
                     </li>
                     <li>                    
-                    If the location level you are adding to is a sub-level of another location level, then you need to also have a column with the name and unique ID of the location in the level above (in our province > district > village example, "Village A" might be located in "District C", and you would need to include the details of both. 
+                    If the location level you are adding to is a sub-level of another location level, then you need to also have a column with the name and unique ID of the location in the level above (in our province > district > village example, "Village A" might be located in "District C", and you would need to include the details of both.) 
                     </li>
                     <li>
                     The first row of the worksheet should contain column headings, not your first location. 
@@ -90,7 +90,7 @@
                     When importing a list, you will need to include columns with the farm unique code, and the unique code for the location it is in. When you upload the list, you need to select the location level the farms are located in. You can also optionally include extra columns with details that identify the farm, such as farm name, telephone number, family name etc, or for details that contain properties of the farm which may be useful for future analysis, such as the size of the farm. 
 </p>
 
- <h5>Mark this section as complete when </h5>
+ <h5>Mark this section as complete when: </h5>
  <p class="mb-2">
                     You have added all the location levels, locations, and a full list of the farms where you will conduct the survey.
                     </p>

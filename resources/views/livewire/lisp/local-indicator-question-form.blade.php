@@ -1,7 +1,8 @@
-<div class="{{ $expanded ? '' : '' }}">
+<div class="{{ $expanded ? '' : '' }} ">
     <div class="py-6 px-8 border-b border-gray-300 flex justify-between items-center space-x-8">
         <div class="w-full flex justify-start">
-            <h5 class="w-full md:w-1/2 lg:w-1/4 font-bold text-lg">{{ $localIndicator->name }}</h5>
+        <h6 class="w-full ">{{ $localIndicator->name }}</h6>
+           
         </div>
         <div class="self-end ">
 
@@ -15,7 +16,7 @@
         </div>
     </div>
 
-    <div class="p-4 border border-gray-200 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
+    <div class="p-4 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
         {{ $this->table }}
     </div>
 

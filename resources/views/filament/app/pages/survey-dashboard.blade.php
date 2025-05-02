@@ -182,7 +182,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                         </div>
                     </div>
                     <!-- White Section -->
-                    <div class="whitesection">
+                    <div class="whitesection"> 
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Survey Locations</h3>

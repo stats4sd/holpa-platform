@@ -13,7 +13,7 @@ class LispWorkshop extends Page
     protected static string $view = 'filament.app.pages.lisp.lisp-workshop';
 
     protected static ?string $title = 'Localisation: LISP';
-    protected ?string $subheading = 'Workshop';
+    // protected ?string $subheading = 'Workshop';
 
     protected static bool $shouldRegisterNavigation = false;
 

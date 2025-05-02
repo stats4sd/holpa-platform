@@ -52,11 +52,15 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
         <div class=" container mx-auto xl:px-12 ">
             <div class="surveyblocks px-10 h-full pt-10 pb-16">
 
-                <div class="mb-8 translations-tables">
+                <div class="mb-8 dropdown_tables">
                     <div class="pb-4">
-                        <h3 class=" mb-4">Survey Languages</h3>
-                    </div>
-
+                        <h3 class=" ">Survey Languages</h3>
+                        <p class="mb-8">
+                   
+                      
+                    Below are the languages you selected for your survey. For each one, click on "Select translation" to see available translations, and either select an appropriate option from the list or add the translation for the language. 
+                </p>
+ </div>
                     @foreach($languages as $language)
                         <livewire:survey-languages.team-translation-entry :language="$language" :key="$language->id" :team="$team"/>
                     @endforeach

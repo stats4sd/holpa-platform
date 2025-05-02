@@ -1,4 +1,4 @@
-<div>
+<div class="dropdown_tables">
 
     <div class="text-lg font-bold text-green mb-8">
         ADD CUSTOM SURVEY QUESTIONS

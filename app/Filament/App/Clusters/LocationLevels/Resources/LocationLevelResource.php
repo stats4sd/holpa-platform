@@ -85,10 +85,8 @@ class LocationLevelResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name')
-                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('parent.name')
-                    ->searchable()
                     ->sortable()
                     ->placeholder('Top Level'),
                 Tables\Columns\TextColumn::make('locations_count')
@@ -99,6 +97,7 @@ class LocationLevelResource extends Resource
                     ->boolean()
                     ->sortable(),
             ])
+            ->paginated(false)
             ->defaultSort('parent_id', 'asc')
             ->filters([
                 //
@@ -106,6 +105,9 @@ class LocationLevelResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+            ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

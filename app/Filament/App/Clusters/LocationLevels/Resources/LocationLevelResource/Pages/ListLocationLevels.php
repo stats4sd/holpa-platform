@@ -13,7 +13,7 @@ class ListLocationLevels extends ListRecords
     protected static string $resource = LocationLevelResource::class;
 
     protected ?string $heading = 'Survey locations';
-    protected ?string $subheading = 'Manage hierarchy';
+    // protected ?string $subheading = 'Manage hierarchy';
 
     protected static string $view = 'filament.app.clusters.location-levels.resources.location-level-resource.pages.list-location-levels';
 
@@ -28,8 +28,6 @@ class ListLocationLevels extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            Actions\CreateAction::make(),
-        ];
+        return [];
     }
 }
