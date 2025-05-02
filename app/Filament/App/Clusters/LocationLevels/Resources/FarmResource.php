@@ -117,6 +117,9 @@ class FarmResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->headerActions([
+                Tables\Actions\CreateAction::make(),
+            ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -135,8 +138,7 @@ class FarmResource extends Resource
     {
         return [
             'index' => Pages\ListFarms::route('/'),
-            'create' => Pages\CreateFarm::route('/create'),
-            'edit' => Pages\EditFarm::route('/{record}/edit'),
+
         ];
     }
 }

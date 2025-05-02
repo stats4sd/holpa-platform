@@ -36,7 +36,6 @@ class ListFarms extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
             ImportFarmsAction::make()
                 ->use(FarmImport::class)
                 ->color('primary')
