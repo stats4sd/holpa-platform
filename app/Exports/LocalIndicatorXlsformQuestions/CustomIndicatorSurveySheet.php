@@ -41,9 +41,9 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
             // create a new record for one row
             $record = [];
 
-            // TODO: find indicator name
-            // hardcode temporary for testing
-            array_push($record, 'Local Indicator 1');
+            // find local indicator name
+            $localIndicator = $this->team->localIndicators->where('xlsform_module_version_id', $surveyRow->xlsform_module_version_id)->first();
+            array_push($record, $localIndicator->name);
 
             array_push($record, $surveyRow->type);
             array_push($record, $surveyRow->name);
