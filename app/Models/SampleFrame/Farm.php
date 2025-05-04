@@ -4,6 +4,7 @@ namespace App\Models\SampleFrame;
 
 use App\Models\SurveyData\FarmSurveyData;
 use App\Models\Team;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -18,6 +19,8 @@ class Farm extends Model implements IsPrimaryDataSubject
     protected $casts = [
         'identifiers' => 'collection',
         'properties' => 'collection',
+        'household_form_completed' => 'boolean',
+        'first_visit_form_completed' => 'boolean',
     ];
 
     /** @return BelongsTo<Team, $this> */
@@ -33,7 +36,7 @@ class Farm extends Model implements IsPrimaryDataSubject
             'location_id' => $this->location_id,
             'location_name' => $this->location?->name,
             'team_code' => $this->team_code,
-            'team_code_name' => $this->identifiers ? $this->identifiers['name'].'(No. '.$this->team_code.')' : 'No. '.$this->team_code,
+            'team_code_name' => $this->identifiers ? $this->identifiers['name'] . '(No. ' . $this->team_code . ')' : 'No. ' . $this->team_code,
             'name' => $this->identifiers ? $this->identifiers['name'] : '',
             'sex' => $this->properties ? $this->properties['sex'] : '',
             'year' => $this->properties ? $this->properties['year'] : '',
@@ -49,5 +52,13 @@ class Farm extends Model implements IsPrimaryDataSubject
     public function farmSurveyData(): HasMany
     {
         return $this->hasMany(FarmSurveyData::class);
+    }
+
+    /** @return Attribute<string, never> */
+    protected function identifyingAttribute(): Attribute
+    {
+        return new Attribute(
+            get: fn() => $this->identifiers['name'] ?? ($this->identifiers->first() ?? null),
+        );
     }
 }

@@ -11,6 +11,7 @@ use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
@@ -30,6 +31,12 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
     public function table(Table $table): Table
     {
         return $table
+            ->heading('Pilot Test Submissions')
+            ->groups([
+                \Filament\Tables\Grouping\Group::make('xlsformVersion.xlsform.title')->label('Form'),
+                Group::make('primary_data_subject_id')
+                    ->label('Farm ID'),
+            ])
             ->defaultGroup(\Filament\Tables\Grouping\Group::make('xlsformVersion.xlsform.title')->label(''))
             ->query(fn () => Submission::whereHas('xlsformVersion',
                 fn ($query) => $query->whereHas('xlsform',
@@ -37,10 +44,10 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
                 )
             ))
             ->columns([
-                TextColumn::make('xlsformVersion.version')->label('Xlsform Version'),
-                TextColumn::make('survey_started_at'),
-                TextColumn::make('survey_ended_at'),
-                TextColumn::make('submitted_at')->label('Submitted at'),
+
+                TextColumn::make('primaryDataSubject.location.name')->label('Farm Location'),
+                TextColumn::make('primaryDataSubject.identifying_attribute')->label('Farm Name'),
+                TextColumn::make('survey_started_at')->label('Submitted at'),
                 TextColumn::make('if_updated_at')
                     ->label('Updated at'),
 

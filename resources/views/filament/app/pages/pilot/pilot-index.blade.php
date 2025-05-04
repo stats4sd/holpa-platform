@@ -155,7 +155,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                         Survey Forms
                     </x-filament::tabs.item>
                     <x-filament::tabs.item wire:click="$set('tab', 'submissions')" :active="$tab === 'submissions'">
-                        Submissions
+                        Pilot Test Submissions
                     </x-filament::tabs.item>
                 </x-filament::tabs>
             </div>

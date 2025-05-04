@@ -9,6 +9,7 @@ use App\Models\SampleFrame\LocationLevel;
 use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
@@ -22,6 +23,8 @@ class SubmissionController extends Controller
     {
 
         static::handleLocationData($submission);
+
+        $farm = $submission->primaryDataSubject;
 
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
@@ -39,18 +42,31 @@ class SubmissionController extends Controller
         }
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
             static::processHouseholdSubmission($submission);
+            $farm->update(['household_form_completed' => true]);
+
         }
 
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
             static::processFieldworkSubmission($submission);
+            $farm->update(['fieldwork_form_completed' => true]);
         }
 
-        // Run R scripts
-        $RscriptPath = config('services.R.rscript_path');
-        $agOut = Process::path(base_path('packages/holpa-r-scripts'))
-            ->run($RscriptPath . ' data_processing/holpa_agroecology_scores.R');
-        $perfOut = Process::path(base_path('packages/holpa-r-scripts'))
-            ->run($RscriptPath . ' data_processing/key_performance_indicators.R');
+
+        // only run R scripts if both surveys are complete for the farm
+        if ($farm->household_form_completed && $farm->fieldwork_form_completed) {
+
+            // Run R scripts
+            $RscriptPath = config('services.R.rscript_path');
+            $agOut = Process::path(base_path('packages/holpa-r-scripts'))
+                ->run($RscriptPath . ' data_processing/holpa_agroecology_scores.R');
+            $perfOut = Process::path(base_path('packages/holpa-r-scripts'))
+                ->run($RscriptPath . ' data_processing/key_performance_indicators.R');
+
+            ray($agOut->output());
+            ray($perfOut->output());
+        }
+
+
     }
 
     public static function processHouseholdSubmission(Submission $submission): void
@@ -89,7 +105,31 @@ class SubmissionController extends Controller
 
     public static function processFieldworkSubmission(Submission $submission): void
     {
-        //
+        // ONLY NEEDED DURING TESTING WITH EXISTING FAKE DATA.
+        // TODO: remove when we move to real beta testing
+        $farmDataEntity = $submission->rootEntity;
+
+        $siteNoManagement = [
+            1 => 3,
+            2 => 4,
+            3 => 2,
+        ];
+
+        $farmDataEntity->children->each(function (Entity $entity) {
+            if ($entity->values->pluck('dataset_variable_name')->doesntContain('management')) {
+
+                $siteNo = $entity->values->filter(fn($value) => $value->dataset_variable_name === 'site_no')->first()?->value ?? 1;
+
+                $entityValue = EntityValue::make([
+                    'dataset_variable_name' => 'management',
+                    'value' => $siteNoManagement[$siteNo] ?? 1,
+                ]);
+
+                $entity->addValues(collect([$entityValue]));
+            }
+        });
+
+
     }
 
     // ******************** //
