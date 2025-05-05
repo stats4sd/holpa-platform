@@ -2,14 +2,20 @@
 
 namespace App\Livewire\DataCollection;
 
+use App\Filament\App\Pages\DataCollection\MonitorDataCollection;
+use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Columns\ColumnGroup;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Filters\Filter;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Reactive;
@@ -23,8 +29,13 @@ class DataCollectionByLocation extends Component implements HasTable, HasForms, 
     use InteractsWithForms;
     use InteractsWithTable;
 
+    public ?int $locationLevelId;
+
     #[Reactive]
-    public int $locationLevelId;
+    public bool $visible = false;
+
+    #[Url]
+    public ?array $tableFilters = null;
 
 
     #[Computed]
@@ -36,14 +47,34 @@ class DataCollectionByLocation extends Component implements HasTable, HasForms, 
 
     public function table(Table $table): Table
     {
+        $parentLocationLevel = $this->locationLevel?->parent;
+        $filters = [];
+
+        if ($parentLocationLevel) {
+            $filters[] = SelectFilter::make('parent_' . $parentLocationLevel->id)
+                ->relationship('parent', 'name', fn(Builder $query) => $query->where('location_level_id', $parentLocationLevel->id));
+        }
+
         return $table
             ->relationship(fn() => $this->locationLevel->locations())
-            ->heading(fn() => Str::plural($this->locationLevel->name))
+            ->heading(fn() => Str::of($this->locationLevel->name)->title()->plural())
+            ->filters($filters)
             ->columns([
-                TextColumn::make('name')->label('Location'),
-                TextColumn::make('farms_all_count')->label('Total Farms'),
-                TextColumn::make('farms_tes')->label('No. Farms with Household Survey'),
-                TextColumn::make('farms_tes2')->label('No. Farms with Fieldwork Survey'),
+                ColumnGroup::make('Location', [
+                    TextColumn::make('name')->label('')
+                        ->url(fn(Location $record) => MonitorDataCollection::getUrl() . '?' . http_build_query([
+                'locationLevelId' => $record->locationLevel->children->first()?->id,
+                'tableFilters' => [
+                    'parent_' . $record->locationLevel->id => ['value' => $record->id],
+                ],
+            ])),
+                ]),
+                ColumnGroup::make('Farm Counts', [
+                    TextColumn::make('farms_all_count')->label('Total'),
+                    TextColumn::make('farms_tes')->label('Household Complete'),
+                    TextColumn::make('farms_tes2')->label('Fieldwork Complete'),
+                    TextColumn::make('farms_tes3')->label('All Complete'),
+                ]),
             ]);
     }
 

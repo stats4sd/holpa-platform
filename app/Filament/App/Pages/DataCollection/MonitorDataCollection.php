@@ -21,6 +21,9 @@ class MonitorDataCollection extends Page
     #[Url]
     public ?int $locationLevelId = null;
 
+    #[Url]
+    public ?array $tableFilters;
+
     public function mount(): void
     {
         $this->team = HelperService::getCurrentOwner();
@@ -33,6 +36,18 @@ class MonitorDataCollection extends Page
             DatacollectionIndex::getUrl() => 'Data Collection',
             static::getUrl() => 'Monitor Data Collection',
         ];
+    }
+
+    public function showTable(string $locationLevelId)
+    {
+        if ($locationLevelId === 'farms') {
+            $this->locationLevelId = null;
+            // reset table filter url query param
+            $this->tableFilters = [];
+        } else {
+            $this->locationLevelId = $locationLevelId;
+            $this->tableFilters = [];
+        }
     }
 
 }

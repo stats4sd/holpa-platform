@@ -12,8 +12,10 @@ use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
@@ -25,6 +27,8 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
     use InteractsWithForms;
     use InteractsWithTable;
 
+    public bool $test = true;
+
     public function render()
     {
         return view('livewire.submissions-table-view');
@@ -33,8 +37,8 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
     public function table(Table $table): Table
     {
         return $table
-            ->heading('Pilot Test Submissions')
-            ->description("These are the submissions that have been submitted during the pilot test. You can review them here, even after the pilot is complete.")
+            ->heading(fn() => $this->test ? 'Pilot Test Submissions' : 'Survey Submissions')
+            ->description(fn() => $this->test ? 'These are the submissions that have been submitted during the pilot test. You can review them here, even after the pilot is complete.' : '')
             ->groups([
                 \Filament\Tables\Grouping\Group::make('xlsformVersion.xlsform.title')->label('Form'),
                 Group::make('primary_data_subject_id')
@@ -44,7 +48,7 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
             ->query(fn() => Submission::whereHas('xlsformVersion',
                 fn($query) => $query->whereHas('xlsform',
                     fn($query) => $query->where('owner_id', HelperService::getCurrentOwner()->id)
-                ))->where('test_data', true)
+                ))->where('test_data', $this->test)
             )
             ->columns([
 
@@ -66,7 +70,7 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
                     ->label('Mark selected submissions as real data')
                     ->requiresConfirmation()
                     ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
-                        $records->each(function(Submission $record) {
+                        $records->each(function (Submission $record) {
                             $record->test_data = false;
                             $record->save();
                         });
