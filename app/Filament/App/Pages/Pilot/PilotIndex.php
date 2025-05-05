@@ -5,12 +5,21 @@ namespace App\Filament\App\Pages\Pilot;
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Models\Team;
 use App\Services\HelperService;
+use Filament\Actions\Action;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 use Livewire\Attributes\Url;
 
-class PilotIndex extends Page
+class PilotIndex extends Page implements HasActions, HasForms
 {
+
+    use InteractsWithActions;
+    use InteractsWithForms;
+
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.pilot.pilot-index';
@@ -43,4 +52,35 @@ class PilotIndex extends Page
     {
         $this->team = HelperService::getCurrentOwner();
     }
+
+    public function markPilotCompleteAction(): Action
+    {
+        return Action::make('markPilotComplete')
+            ->color('success')
+            ->action(function () {
+                ray('hi');
+                $this->team->pilot_complete = true;
+                $this->team->save();
+
+                $this->team->refresh();
+            });
+    }
+
+    public function markPilotIncompleteAction(): Action
+    {
+        return Action::make('markPilotIncomplete')
+            ->button()
+            ->color('warning')
+            ->modalHeading('Are you sure?')
+            ->modalDescription('Any data collected while the pilot is in progress will be marked as "test" data, and not included in your final dataset by default')
+            ->modalSubmitActionLabel('Yes, return to pilot test')
+            ->action(function () {
+                $this->team->pilot_complete = false;
+                $this->team->save();
+
+                $this->team->refresh();
+            });
+    }
+
+
 }
