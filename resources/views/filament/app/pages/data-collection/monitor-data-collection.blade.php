@@ -67,27 +67,25 @@
                     <x-filament::tabs>
 
                         @foreach ($team->locationLevels as $level)
-                            <x-filament::tabs.item :active="$level->id === $this->locationLevelId" wire:click="showTable({{$level->id}})" :key="'location-level-'.$level->id.'-tab'" class="cursor-pointer">
+                            <x-filament::tabs.item :active="$level->id === $this->locationLevelId" wire:click="showTable('location_level', {{$level->id}})" :key="'location-level-'.$level->id.'-tab'" class="cursor-pointer">
                                 {{ \Illuminate\Support\Str::plural($level->name) }}
                             </x-filament::tabs.item>
                         @endforeach
 
-                        <x-filament::tabs.item :active="!$locationLevelId" wire:click="showTable('farms')" :key="'location-level-null-tab'" class="cursor-pointer">
+                        <x-filament::tabs.item :active="$table==='farms'" wire:click="showTable('farms')" :key="'farms-tab'" class="cursor-pointer">
                             Farms
+                        </x-filament::tabs.item>
+                        <x-filament::tabs.item :active="$table==='submissions'" wire:click="showTable('submissions')" :key="'submissions-tab'" class="cursor-pointer">
+                            Submissions
                         </x-filament::tabs.item>
                     </x-filament::tabs>
                 </div>
                 @foreach($team->locationLevels as $level)
-                    <livewire:data-collection.data-collection-by-location :location-level-id="$level->id" :visible="$locationLevelId === $level->id" :key="'location-level-'.$level->id"/>
+                    <livewire:data-collection.data-collection-by-location :location-level-id="$level->id" :visible="$table === 'location_level' && $locationLevelId === $level->id" :key="'location-level-'.$level->id"/>
                 @endforeach
 
-                @if(!$locationLevelId)
-                    <livewire:data-collection.data-collection-by-farm :visible="$locationLevelId === null"
-                                                                      :key="'location-level-null'"
-                                                                      :team="$team"
-                    />
-                    {{--                    <livewire:submissions-table-view :test="false"/>--}}
-                @endif
+                <livewire:data-collection.data-collection-by-farm :visible="$table === 'farms'" :team="$team"/>
+                <livewire:submissions-table-view :test="false" :visible="$table === 'submissions'" :team="$team"/>
 
             @endif
         </div>

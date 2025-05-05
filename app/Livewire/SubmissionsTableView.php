@@ -17,6 +17,7 @@ use Filament\Tables\Grouping\Group;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Services\HelperService;
@@ -28,6 +29,10 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
     use InteractsWithTable;
 
     public bool $test = true;
+
+
+    #[Reactive]
+    public bool $visible = false;
 
     public function render()
     {

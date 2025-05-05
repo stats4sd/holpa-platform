@@ -19,10 +19,15 @@ class MonitorDataCollection extends Page
 
     protected static string $view = 'filament.app.pages.data-collection.monitor-data-collection';
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public Team $team;
 
     #[Url]
     public ?int $locationLevelId = null;
+
+    #[Url]
+    public ?string $table = null;
 
     #[Url]
     public ?array $tableFilters;
@@ -65,16 +70,10 @@ class MonitorDataCollection extends Page
         ];
     }
 
-    public function showTable(string $locationLevelId)
+    public function showTable(string $table, ?int $locationLevelId = null)
     {
-        if ($locationLevelId === 'farms') {
-            $this->locationLevelId = null;
-            // reset table filter url query param
-            $this->tableFilters = [];
-        } else {
-            $this->locationLevelId = $locationLevelId;
-            $this->tableFilters = [];
-        }
+        $this->locationLevelId = $locationLevelId;
+        $this->table = $table;
     }
 
 }

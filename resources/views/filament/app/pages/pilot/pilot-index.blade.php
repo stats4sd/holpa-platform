@@ -74,7 +74,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 </div>
 
             <div class="mt-10"
-                <livewire:submissions-table-view/>
+                <livewire:submissions-table-view :visible="true"/>
 
             @else
                 <div class="mb-10">
@@ -179,7 +179,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 @if ($tab === 'xlsforms')
                     <livewire:xlsforms-table-view/>
                 @elseif ($tab === 'submissions')
-                    <livewire:submissions-table-view/>
+                    <livewire:submissions-table-view :visible="true"/>
                 @endif
 
                 <h3 class="my-4">Begin Live Data Collection</h3>

@@ -45,6 +45,7 @@ class DataCollectionByFarm extends Component implements HasTable, HasForms, HasA
         $locationLevel = $this->team->locationLevels()->where('has_farms', true)->first();
 
         return $table
+            ->heading('Farms')
             ->relationship(fn() => $this->team->farms())
             ->filters([
                 SelectFilter::make('parent_' . $locationLevel->id)
