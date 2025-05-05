@@ -21,9 +21,22 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
+        // check if test or live data
+        /** @var Team $team */
+        $team = $submission->xlsformVersion->xlsform->owner;
+
+        $completionVariable = '_form_completed';
+
+        if (!$team->pilot_complete) {
+            $submission->test_data = true;
+
+            $completionVariable = '_pilot_completed';
+            $submission->save();
+        }
 
         static::handleLocationData($submission);
 
+        /** @var Farm $farm */
         $farm = $submission->primaryDataSubject;
 
         // application specific business logic goes here
@@ -42,18 +55,17 @@ class SubmissionController extends Controller
         }
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
             static::processHouseholdSubmission($submission);
-            $farm->update(['household_form_completed' => true]);
-
+            $farm->update(['household' . $completionVariable => true]);
         }
 
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
             static::processFieldworkSubmission($submission);
-            $farm->update(['fieldwork_form_completed' => true]);
+            $farm->update(['fieldwork' . $completionVariable => true]);
         }
 
 
         // only run R scripts if both surveys are complete for the farm
-        if ($farm->household_form_completed && $farm->fieldwork_form_completed) {
+        if ($farm['household' . $completionVariable] && $farm['fieldwork' . $completionVariable]) {
 
             // Run R scripts
             $RscriptPath = config('services.R.rscript_path');
@@ -62,8 +74,6 @@ class SubmissionController extends Controller
             $perfOut = Process::path(base_path('packages/holpa-r-scripts'))
                 ->run($RscriptPath . ' data_processing/key_performance_indicators.R');
 
-            ray($agOut->output());
-            ray($perfOut->output());
         }
 
 
@@ -340,8 +350,6 @@ class SubmissionController extends Controller
 
     public static function handleLocationData(Submission $submission): void
     {
-
-        ray($submission->content['context']);
 
         /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
