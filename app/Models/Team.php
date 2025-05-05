@@ -149,36 +149,7 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
     }
 
     /** @return Attribute<string, never> */
-    protected function lispProgress(): Attribute
-    {
-        return new Attribute(
-            get: function () {
-                if ($this->lisp_complete) {
-                    return 'complete';
-                }
-
-                return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
-
-            }
-        );
-    }
-
-    /** @return Attribute<string, never> */
-    protected function samplingProgress(): Attribute
-    {
-        return new Attribute(
-            get: function () {
-                if ($this->sampling_complete) {
-                    return 'complete';
-                }
-
-                return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
-
-            });
-    }
-
-    /** @return Attribute<string, never> */
-    protected function LanguagesProgress(): Attribute
+    protected function languagesProgress(): Attribute
     {
         return new Attribute(
             get: function () {
@@ -199,6 +170,20 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
                 return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
             });
 
+    }
+
+    /** @return Attribute<string, never> */
+    protected function samplingProgress(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                if ($this->sampling_complete) {
+                    return 'complete';
+                }
+
+                return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
+
+            });
     }
 
     /** @return Attribute<string, never> */
@@ -223,6 +208,59 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
             });
 
     }
+
+    /** @return Attribute<string, never> */
+    protected function lispProgress(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                if ($this->lisp_complete) {
+                    return 'complete';
+                }
+
+                return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
+
+            }
+        );
+    }
+
+    /** @return Attribute<string, never> */
+    protected function pilotProgress(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                if ($this->pilot_complete) {
+                    return 'complete';
+                }
+
+                // $farm->household_form_completed + fieldwork_form_completed are only marked for 'live' submissions, so here we can just count if any submissions have come in.
+                if ($this->farms->some(fn(Farm $farm) => $farm->submissions()->count() > 0)) {
+                    return 'in_progress';
+                }
+
+                return 'not_started';
+            }
+        );
+    }
+
+    /** @return Attribute<string, never> */
+    protected function dataCollectionProgress(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                if ($this->data_collection_complete) {
+                    return 'complete';
+                }
+
+                if($this->farms->some(fn(Farm $farm) => $farm->household_form_completed || $farm->fieldwork_form_completed)) {
+                    return 'in_progress';
+                }
+
+                return 'not_started';
+            }
+        );
+    }
+
 
     // For HOLPA, teams should automatically receive a version of all available XlsformTemplates.
 
