@@ -2,13 +2,9 @@
     <x-instructions-sidebar>
         <x-slot:heading>Instructions</x-slot:heading>
         <x-slot:instructions>
-
             <div class="mx-12 mb-4">
-
-
                 <h5>Monitor data collection</h5>
                 <p class="my-2">
-
                     This page lets you see incoming data. You can track progress and review submissions for quality assurance purposes.
                 </p>
                 <p class="my-2">
@@ -20,28 +16,35 @@
                 </p>
                 <p class="my-2">
                     If you find you need to correct an error in the data, you can directly edit a submission. This should be used sparingly, only where it has been confirmed with an enumerator that something was inputted incorrectly.
-
                 </p>
-
+            </div>
         </x-slot:instructions>
     </x-instructions-sidebar>
     <div class="container mx-auto xl:px-12">
         <div class="surveyblocks p-8 md:p-16 results-summary">
-            @if ($team->locationLevels->count() === 0)
+            @if ($team->locationLevels->where('has_farms', true)->count() === 0 || $team->farms()->count() === 0)
                 <div class="bg-red-500 text-white p-4">
-                    It looks like your team has not yet added any locations to conduct the survey. Please make sure you do so before proceeding.
+                    It looks like your team has not yet added locations and farms to conduct the survey. Please make sure you do so before proceeding.
                 </div>
             @else
 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
                     <x-filament::section heading="Data Collected">
-                        Household Submissions: {NUMBER}<br/>
-                        Fieldwork Submissions: {NUMBER}<br/>
+                        <div class="grid grid-cols-2">
+                            <div>Household Submissions:</div>
+                            <div class="font-semibold">{{ $householdSubmissionCount }}</div>
+                            <div>Fieldwork Submissions:</div>
+                            <div class="font-semibold">{{ $fieldworkSubmissionCount }}</div>
+                        </div>
                     </x-filament::section>
 
                     <x-filament::section heading="Summary">
-                        Farms Fully Surveyed: {NUMBER} / {TOTAL}<br/>
-                        Non-consenting Farms: {NUMBER}
+                        <div class="grid grid-cols-2">
+                            <div>Farms Fully Surveyed:</div>
+                            <div class="font-semibold">{{ $completeFarmCount }}</div>
+                            <div>Non-consenting Farms:</div>
+                            <div class="font-semibold">{{ $nonConsentingFarmCount }}</div>
+                        </div>
                     </x-filament::section>
 
                 </div>

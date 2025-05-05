@@ -71,9 +71,9 @@ class DataCollectionByLocation extends Component implements HasTable, HasForms, 
                 ]),
                 ColumnGroup::make('Farm Counts', [
                     TextColumn::make('farms_all_count')->label('Total'),
-                    TextColumn::make('farms_tes')->label('Household Complete'),
-                    TextColumn::make('farms_tes2')->label('Fieldwork Complete'),
-                    TextColumn::make('farms_tes3')->label('All Complete'),
+                    TextColumn::make('farms_household_complete_count')->label('Household Complete'),
+                    TextColumn::make('farms_fieldwork_complete_count')->label('Fieldwork Complete'),
+                    TextColumn::make('farms_all_complete_count')->label('All Complete'),
                 ]),
             ]);
     }

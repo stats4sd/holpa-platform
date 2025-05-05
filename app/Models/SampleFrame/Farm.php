@@ -22,7 +22,8 @@ class Farm extends Model implements IsPrimaryDataSubject
         'identifiers' => 'collection',
         'properties' => 'collection',
         'household_form_completed' => 'boolean',
-        'first_visit_form_completed' => 'boolean',
+        'fieldwork_form_completed' => 'boolean',
+        'refused' => 'boolean',
     ];
 
     /** @return BelongsTo<Team, $this> */
@@ -64,24 +65,44 @@ class Farm extends Model implements IsPrimaryDataSubject
         );
     }
 
-    public function checkCompletionStatus(): void
+    public function updateCompletionStatus(): void
     {
-        $this->submissions->each(function (Submission $submission) {
+        ray('updating completion status for farm ' . $this->id . ' with name ' . $this->identifying_attribute);
 
-            $completionVariable = '_form_completed';
+        // check pilot completion
+        $this->submissions
+            ->filter(fn(Submission $submission) => $submission->test_data)
+            ->each(function (Submission $submission) {
 
-            if (!$this->owner->pilot_complete) {
-                $completionVariable = '_pilot_completed';
-            }
+                ray('found fake submission id ' . $submission->id);
 
-            if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
-                $this->update(['household' . $completionVariable => true]);
-            }
+                if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
+                    $this->household_pilot_completed = true;
+                }
 
-            if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
-                $this->update(['fieldwork' . $completionVariable => true]);
-            }
-        });
+                if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
+                    $this->fieldwork_pilot_completed = true;
+                }
+
+                $this->save();
+            });
+
+        $this->submissions
+            ->filter(fn(Submission $submission) => !$submission->test_data)
+            ->each(function (Submission $submission) {
+
+                ray('found live submission id ' . $submission->id);
+
+                if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
+                    $this->household_form_completed = true;
+                }
+
+                if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
+                    $this->fieldwork_form_completed = true;
+                }
+
+                $this->save();
+            });
 
 
     }

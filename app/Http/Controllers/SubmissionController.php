@@ -32,9 +32,20 @@ class SubmissionController extends Controller
 
         static::handleLocationData($submission);
 
-        /** @var Farm $farm */ 
+        /** @var Farm $farm */
         $farm = $submission->primaryDataSubject;
-        $farm->checkCompletionStatus();
+        $farm->updateCompletionStatus();
+
+        // TODO: consolidate to 1 default consent module?
+        if (isset($submission->content['consent_group'])) {
+            $consent = $submission->content['consent_group']['consent_1'];
+        } else {
+            $consent = $submission->content['consent']['consent_interview'];
+        }
+
+        $farm->refused = $consent == '0';
+        $farm->save();
+
 
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
@@ -60,7 +71,14 @@ class SubmissionController extends Controller
 
 
         // only run R scripts if both surveys are complete for the farm
-        if ($farm['household' . $completionVariable] && $farm['fieldwork' . $completionVariable]) {
+        if ($submission->test_data) {
+            $farmDone = $farm->household_pilot_completed && $farm->fieldwork_pilot_completed;
+        } else {
+            $farmDone = $farm->household_form_completed && $farm->fieldwork_form_completed;
+        }
+
+
+        if ($farmDone) {
 
             // Run R scripts
             $RscriptPath = config('services.R.rscript_path');
@@ -423,5 +441,7 @@ class SubmissionController extends Controller
 
             $submission->primaryDataSubject()->associate($farm);
         }
+
+        $submission->save();
     }
 }

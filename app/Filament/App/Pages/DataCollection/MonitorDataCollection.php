@@ -3,12 +3,15 @@
 namespace App\Filament\App\Pages\DataCollection;
 
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Livewire\SubmissionsTableView;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Pages\Page;
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 
 class MonitorDataCollection extends Page
 {
@@ -24,9 +27,33 @@ class MonitorDataCollection extends Page
     #[Url]
     public ?array $tableFilters;
 
+    public int $householdSubmissionCount;
+    public int $fieldworkSubmissionCount;
+    public int $completeFarmCount;
+    public int $nonConsentingFarmCount;
+
     public function mount(): void
     {
+        /** @var Team team */
         $this->team = HelperService::getCurrentOwner();
+
+        // summary
+
+        $this->householdSubmissionCount = Submission::onlyRealData()
+            ->whereHas('xlsformVersion', fn(Builder $query) => $query->whereHas('xlsform', fn(Builder $query) => $query->whereLike('title', '%HOLPA Household Form%')))->count();
+
+        $this->fieldworkSubmissionCount = Submission::onlyRealData()
+            ->whereHas('xlsformVersion', fn(Builder $query) => $query->whereHas('xlsform', fn(Builder $query) => $query->whereLike('title', '%HOLPA Fieldwork Form%')))->count();
+
+
+        $this->completeFarmCount = $this->team->farms()
+            ->where('household_form_completed', true)
+            ->where('fieldwork_form_completed', true)
+            ->count();
+
+        $this->nonConsentingFarmCount = $this->team->farms()
+            ->where('refused', true)
+            ->count();
     }
 
     public function getBreadcrumbs(): array
