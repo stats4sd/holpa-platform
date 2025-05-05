@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use Dom\Attr;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -36,30 +37,6 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
         'languages_complete' => 'boolean',
         'pba_complete' => 'boolean',
     ];
-
-    public function users(): BelongsToMany
-    {
-        return parent::users()
-            ->using(TeamMembership::class);
-    }
-
-    public function admins(): BelongsToMany
-    {
-        return parent::admins()
-            ->using(TeamMembership::class);
-    }
-
-    public function members(): BelongsToMany
-    {
-        return parent::members()
-            ->using(TeamMembership::class);
-    }
-
-    /** @return  HasMany<TeamMembership, $this> */
-    public function teamMemberships(): HasMany
-    {
-        return $this->hasMany(TeamMembership::class);
-    }
 
     protected static function booted(): void
     {
@@ -100,31 +77,64 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
     }
 
+    /** @return BelongsToMany<User, $this> */
+    public function users(): BelongsToMany
+    {
+        return parent::users()
+            ->using(TeamMembership::class);
+    }
+
+    /** @return BelongsToMany<User, $this> */
+    public function admins(): BelongsToMany
+    {
+        return parent::admins()
+            ->using(TeamMembership::class);
+    }
+
+    /** @return BelongsToMany<User, $this> */
+    public function members(): BelongsToMany
+    {
+        return parent::members()
+            ->using(TeamMembership::class);
+    }
+
+    /** @return  HasMany<TeamMembership, $this> */
+    public function teamMemberships(): HasMany
+    {
+        return $this->hasMany(TeamMembership::class);
+    }
+
+    /** @return HasMany<LocalIndicator, $this> */
     public function localIndicators(): HasMany
     {
         return $this->hasMany(LocalIndicator::class);
     }
 
+    /** @return BelongsTo<Country, $this> */
     public function country(): BelongsTo
     {
         return $this->belongsTo(Country::class);
     }
 
+    /** @return HasMany<LocationLevel, $this> */
     public function locationLevels(): HasMany
     {
         return $this->hasMany(LocationLevel::class, 'owner_id');
     }
 
+    /** @return HasMany<Location, $this> */
     public function locations(): HasMany
     {
         return $this->hasMany(Location::class, 'owner_id');
     }
 
+    /** @return HasMany<Farm, $this> */
     public function farms(): HasMany
     {
         return $this->hasMany(Farm::class, 'owner_id');
     }
 
+    /** @return HasMany<Import, $this> */
     public function imports(): HasMany
     {
         return $this->hasMany(Import::class);
@@ -132,97 +142,95 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
     // Customisations
 
+    /** @return BelongsTo<XlsformModuleVersion, $this> */
     public function dietDiversityModuleVersion(): BelongsTo
     {
         return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
     }
 
-    public function getXlsformHhModuleVersionAttribute()
+    /** @return Attribute<string, never> */
+    protected function lispProgress(): Attribute
     {
-        $xlsform_HH = $this->xlsforms()->first(); // Get the first XLSForm belong to this team (hh)
+        return new Attribute(
+            get: function () {
+                if ($this->lisp_complete) {
+                    return 'complete';
+                }
 
-        if ($xlsform_HH) {
-            $xlsform_HH_custom_module = $xlsform_HH->xlsformModules->first(); // Get the first module
-            if ($xlsform_HH_custom_module) {
-                return $xlsform_HH_custom_module->xlsformModuleVersions()->first(); // Get the first version
+                return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
+
             }
-        }
-
-        return null;
+        );
     }
 
-    public function getXlsformFwModuleVersionAttribute()
+    /** @return Attribute<string, never> */
+    protected function samplingProgress(): Attribute
     {
-        $xlsform_FW = $this->xlsforms()->skip(1)->first(); // Get the second XLSForm belong to this team (fw)
+        return new Attribute(
+            get: function () {
+                if ($this->sampling_complete) {
+                    return 'complete';
+                }
 
-        if ($xlsform_FW) {
-            $xlsform_FW_custom_module = $xlsform_FW->xlsformModules->first(); // Get the first module
-            if ($xlsform_FW_custom_module) {
-                return $xlsform_FW_custom_module->xlsformModuleVersions()->first(); // Get the first version
-            }
-        }
+                return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
 
-        return null;
+            });
     }
 
-    public function getLispProgressAttribute(): string
+    /** @return Attribute<string, never> */
+    protected function LanguagesProgress(): Attribute
     {
-        if ($this->lisp_complete) {
-            return 'complete';
-        }
+        return new Attribute(
+            get: function () {
 
-        return $this->localIndicators()->exists() ? 'in_progress' : 'not_started';
+                if ($this->languages_complete) {
+                    return 'complete';
+                }
+
+                // teams have English as a language as default, check for others
+                $englishLanguageId = Language::where('name', 'English')->first()->id;
+
+                $hasAddedLanguages = $this->languages()
+                    ->where('language_id', '!=', $englishLanguageId)
+                    ->exists();
+
+                $hasCountry = $this->country()->exists();
+
+                return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
+            });
+
     }
 
-    public function getSamplingProgressAttribute(): string
+    /** @return Attribute<string, never> */
+    protected function PbaProgress(): Attribute
     {
-        if ($this->sampling_complete) {
-            return 'complete';
-        }
+        return new Attribute(
+            get: function () {
 
-        return $this->locationLevels()->exists() ? 'in_progress' : 'not_started';
-    }
+                if ($this->pba_complete) {
+                    return 'complete';
+                }
 
-    public function getLanguagesProgressAttribute(): string
-    {
-        if ($this->languages_complete) {
-            return 'complete';
-        }
+                if (
+                    $this->time_frame !== null ||
+                    $this->diet_diversity_module_version_id !== null ||
+                    $this->choiceListEntries()->exists()
+                ) {
+                    return 'in_progress';
+                }
 
-        // teams have English as a language as default, check for others
-        $englishLanguageId = Language::where('name', 'English')->first()->id;
+                return 'not_started';
+            });
 
-        $hasAddedLanguages = $this->languages()
-            ->where('language_id', '!=', $englishLanguageId)
-            ->exists();
-
-        $hasCountry = $this->country()->exists();
-
-        return $hasAddedLanguages || $hasCountry ? 'in_progress' : 'not_started';
-    }
-
-    public function getPbaProgressAttribute(): string
-    {
-        if ($this->pba_complete) {
-            return 'complete';
-        }
-
-        if (
-            $this->time_frame !== null ||
-            $this->diet_diversity_module_version_id !== null ||
-            $this->choiceListEntries()->exists()
-        ) {
-            return 'in_progress';
-        }
-
-        return 'not_started';
     }
 
     // For HOLPA, teams should automatically receive a version of all available XlsformTemplates.
-    public function shouldReceiveAllXlsformTemplates(): Attribute
+
+    /** @return Attribute<bool, never> */
+    protected function shouldReceiveAllXlsformTemplates(): Attribute
     {
         return new Attribute(
-            get: fn (): bool => true,
+            get: fn(): bool => true,
         );
     }
 }
