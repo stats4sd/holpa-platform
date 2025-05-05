@@ -233,4 +233,12 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
             get: fn(): bool => true,
         );
     }
+
+    /** @return Attribute<boolean, never> */
+    public function readyForLive(): Attribute
+    {
+        return new Attribute(
+            get: fn(): bool => $this->languages_complete && $this->sampling_complete && $this->pba_complete && $this->lisp_complete,
+        );
+    }
 }

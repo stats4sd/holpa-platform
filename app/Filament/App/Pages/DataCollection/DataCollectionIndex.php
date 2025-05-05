@@ -3,6 +3,7 @@
 namespace App\Filament\App\Pages\DataCollection;
 
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
 use Filament\Pages\Page;
@@ -19,8 +20,14 @@ class DataCollectionIndex extends Page
 
     protected ?string $summary = 'View and manage the survey and incoming data.';
 
-
     protected $listeners = ['refreshPage' => '$refresh'];
+
+    public Team $team;
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getCurrentOwner();
+    }
 
     public function getBreadcrumbs(): array
     {
