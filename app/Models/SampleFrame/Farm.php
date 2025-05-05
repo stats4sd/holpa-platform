@@ -8,8 +8,10 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\IsPrimaryDataSubject;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Interfaces\WithXlsforms;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Traits\HasSubmissions;
 
 class Farm extends Model implements IsPrimaryDataSubject
@@ -60,5 +62,27 @@ class Farm extends Model implements IsPrimaryDataSubject
         return new Attribute(
             get: fn() => $this->identifiers['name'] ?? ($this->identifiers->first() ?? null),
         );
+    }
+
+    public function checkCompletionStatus(): void
+    {
+        $this->submissions->each(function (Submission $submission) {
+
+            $completionVariable = '_form_completed';
+
+            if (!$this->owner->pilot_complete) {
+                $completionVariable = '_pilot_completed';
+            }
+
+            if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
+                $this->update(['household' . $completionVariable => true]);
+            }
+
+            if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
+                $this->update(['fieldwork' . $completionVariable => true]);
+            }
+        });
+
+
     }
 }

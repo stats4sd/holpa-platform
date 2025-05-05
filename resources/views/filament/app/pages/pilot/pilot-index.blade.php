@@ -73,6 +73,9 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     </div>
                 </div>
 
+            <div class="mt-10"
+                <livewire:submissions-table-view/>
+
             @else
                 <div class="mb-10">
                     <div class="mb-10">

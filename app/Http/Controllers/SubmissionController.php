@@ -25,19 +25,16 @@ class SubmissionController extends Controller
         /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
 
-        $completionVariable = '_form_completed';
-
         if (!$team->pilot_complete) {
             $submission->test_data = true;
-
-            $completionVariable = '_pilot_completed';
             $submission->save();
         }
 
         static::handleLocationData($submission);
 
-        /** @var Farm $farm */
+        /** @var Farm $farm */ 
         $farm = $submission->primaryDataSubject;
+        $farm->checkCompletionStatus();
 
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
@@ -55,12 +52,10 @@ class SubmissionController extends Controller
         }
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
             static::processHouseholdSubmission($submission);
-            $farm->update(['household' . $completionVariable => true]);
         }
 
         if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
             static::processFieldworkSubmission($submission);
-            $farm->update(['fieldwork' . $completionVariable => true]);
         }
 
 
