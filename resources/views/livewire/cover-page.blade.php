@@ -93,7 +93,7 @@
                 <p>Teams wishing to implement HOLPA can download the survey tool in ODK, alongside the guidance for localisations. Alternatively, teams can request access to the beta version of the "HOLPA Online Tool" - a web-based platform that guides teams through the process of setting up, localising and implementing the survey. For more information about this tool, or to register your interest in trying the beta version, please use the links below. If you already have an account, you can log in below.</p>
                 <div class="mt-8 place-content-center flex flex-row w-full">
                     <a href="{{ url('app') }} " class="buttona mx-2 px-4">Log in</a>
-                    <a href="" class="buttonb px-4 mx-2">Register interest</a>
+                    {{ $this->registerInterestAction }}
                 </div>
             </div>
             <div class="col-span-1 h-96 mx-12 mb-6 lg:mr-6 lg:ml-0 lg:mb-0 rounded-2xl" style="background-image:url('images/crop1.jpg');  background-position:center; background-size: cover;" alt="Picture of crops">
@@ -116,4 +116,7 @@
 
 
     </div>
+
+    <x-filament-actions::modals />
+
 </div>
