@@ -74,12 +74,34 @@ class SubmissionController extends Controller
         // only run R scripts if both surveys are complete for the farm
         if ($submission->test_data) {
             $farmDone = $farm->household_pilot_completed && $farm->fieldwork_pilot_completed;
+            ray($farmDone);
         } else {
             $farmDone = $farm->household_form_completed && $farm->fieldwork_form_completed;
+            ray('should not happen');
         }
 
-
         if ($farmDone) {
+
+            // Temp Fix for fake data generated
+            $farm->submissions->each(function (Submission $submission) {
+                $submission->entities()->each(function (Entity $entity) {
+                    $entity->values->each(function (EntityValue $entityValue) use ($entity) {
+                        if ($entityValue->dataset_variable_name === 'practice_number') {
+                            $entityValue->value = $entity->values->filter(fn($value) => $value->dataset_variable_name === 'practice_id')->first()->value;
+                            $entityValue->save();
+                        }
+
+                        if($entityValue->dataset_variable_name === 'livestock_use_name') {
+                            $entityValue->value = Str::random(10);
+                            $entityValue->save();
+                        }
+
+                        if($entityValue->dataset_variable_name === 'livestock_count') {
+                            $entityValue->value = rand(1, 10);
+                        }
+                    });
+                });
+            });
 
             // Run R scripts
             $RscriptPath = config('services.R.rscript_path');
@@ -120,7 +142,15 @@ class SubmissionController extends Controller
         $farmDataEntity->addChildEntities(SubmissionController::handleSeasonalLaboursData($submission), $seasonalWorkersDataset);
 
         $farmProductsDataset = Dataset::firstWhere('name', 'Products');
+
+        // For the otherProducts, first delete the auto-generated entities, and then create the new ones in the correct format
+        $farmDataEntity->children->where('dataset_id', $farmProductsDataset->id)->each(function (Entity $entity) {
+            $entity->delete();
+        });
+
         $farmDataEntity->addChildEntities(SubmissionController::handleProductsData($submission), $farmProductsDataset);
+
+
         $farmDataEntity->addChildEntities(SubmissionController::handleOtherProductData($submission), $farmProductsDataset);
 
         // handle multi-selects for new / updated data
@@ -349,11 +379,23 @@ class SubmissionController extends Controller
         return collect($submission->content['survey']['farm_characteristics']['other_product_use_sales'])
             ->map(function (array $otherProduct): ?array {
 
-                // name is included in the other_product_use_sales repeat group, so we don't need to set it.
+
                 $result = [];
 
                 foreach ($otherProduct as $key => $value) {
-                    $newKey = Str::replace('other_prod_', '', $key);
+
+                    // need the product_name with specific naming to match the other product entities
+                    if ($key === 'other_prod_name') {
+                        $newKey = 'product_name';
+                        // TODO: remove temp code...
+                        if($value = 'TODO: CALCULATE VALUE') {
+                            // product names should be unique
+                            $value = Str::random(10);
+                        }
+                    } else {
+                        $newKey = Str::replace('other_prod_', '', $key);
+                    }
+
                     $result[$newKey] = $value;
                 }
 
@@ -400,12 +442,14 @@ class SubmissionController extends Controller
                     $code = $locationData["{$odkName}_id"];
                 }
 
-                $parentLocation = $level->locations()->create([
+                $parentLocation = $level->locations()->updateOrCreate([
                     'owner_id' => $team->id,
                     'code' => $code,
-                    'name' => $locationData["{$odkName}_name"],
-                    'parent_id' => $parentLocation?->id,
-                ]);
+                ],
+                    [
+                        'name' => $locationData["{$odkName}_name"],
+                        'parent_id' => $parentLocation?->id,
+                    ]);
             }
         }
 
