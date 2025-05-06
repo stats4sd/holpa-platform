@@ -48,7 +48,7 @@ class Location extends Model
     public function hasFarms(): Attribute
     {
         return new Attribute(
-            get: fn (): bool => $this->locationLevel?->has_households ?? false,
+            get: fn(): bool => $this->locationLevel?->has_households ?? false,
         );
     }
 
@@ -59,10 +59,52 @@ class Location extends Model
     {
         return new Attribute(
             get: function () {
-                return Cache::remember($this->cacheKey().':farmsAllCount', now()->addMinutes(5), function () {
+                return Cache::remember($this->cacheKey() . ':farmsAllCount', now()->addMinutes(5), function () {
                     return $this->children->reduce(function ($carry, $location) {
-                        return $carry + $location->farmsAllCount;
+                        return $carry + $location->farms_all_count;
                     }, $this->farms->count());
+                });
+            }
+        );
+    }
+
+    public function farmsHouseholdCompleteCount(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                return Cache::remember($this->cacheKey() . ':farmsHouseholdCompleteCount', now()->addMinutes(5), function () {
+                    return $this->children->reduce(function ($carry, $location) {
+                        return $carry + $location->farms_household_complete_count;
+                    }, $this->farms()->where('household_form_completed', true)->count());
+                });
+            }
+        );
+    }
+
+    public function farmsFieldworkCompleteCount(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                return Cache::remember($this->cacheKey() . ':farmsFieldworkCompleteCount', now()->addMinutes(5), function () {
+                    return $this->children->reduce(function ($carry, $location) {
+                        return $carry + $location->farms_fieldwork_complete_count;
+                    }, $this->farms()->where('fieldwork_form_completed', true)->count());
+                });
+            }
+        );
+    }
+
+    public function farmsAllCompleteCount(): Attribute
+    {
+        return new Attribute(
+            get: function () {
+                return Cache::remember($this->cacheKey() . ':farmsAllCompleteCount', now()->addMinutes(5), function () {
+                    return $this->children->reduce(function ($carry, $location) {
+                        return $carry + $location->farms_all_complete_count;
+                    }, $this->farms()
+                        ->where('household_form_completed', true)
+                        ->where('fieldwork_form_completed', true)
+                        ->count());
                 });
             }
         );
@@ -89,7 +131,7 @@ class Location extends Model
             'parent_id' => $this->parent_id,
             'parent_name' => $this->parent?->name,
             'has_farms' => $this->locationLevel?->has_farms,
-            'farms_all_count' => $this->farmsAllCount,
+            'farms_all_count' => $this->farms_all_count,
         ];
     }
 }

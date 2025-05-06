@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Dataset;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
+use App\Models\SampleFrame\LocationLevel;
+use App\Models\Team;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Process;
 use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
@@ -17,6 +21,32 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
+        // check if test or live data
+        /** @var Team $team */
+        $team = $submission->xlsformVersion->xlsform->owner;
+
+        if (!$team->pilot_complete) {
+            $submission->test_data = true;
+            $submission->save();
+        }
+
+        static::handleLocationData($submission);
+
+        /** @var Farm $farm */
+        $farm = $submission->primaryDataSubject;
+        $farm->updateCompletionStatus();
+
+        // TODO: consolidate to 1 default consent module?
+        if (isset($submission->content['consent_group'])) {
+            $consent = $submission->content['consent_group']['consent_1'];
+        } else {
+            $consent = $submission->content['consent']['consent_interview'];
+        }
+
+        $farm->refused = $consent == '0';
+        $farm->save();
+
+
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
         if (isset($submission->content['start']) && isset($submission->content['end'])) {
@@ -39,10 +69,26 @@ class SubmissionController extends Controller
             static::processFieldworkSubmission($submission);
         }
 
-        // TODO: farms table, update column household_form_completed, fieldwork_form_completed
 
-        // custom handling to create new locations
-        // SubmissionController::handleLocationData($submission);
+        // only run R scripts if both surveys are complete for the farm
+        if ($submission->test_data) {
+            $farmDone = $farm->household_pilot_completed && $farm->fieldwork_pilot_completed;
+        } else {
+            $farmDone = $farm->household_form_completed && $farm->fieldwork_form_completed;
+        }
+
+
+        if ($farmDone) {
+
+            // Run R scripts
+            $RscriptPath = config('services.R.rscript_path');
+            $agOut = Process::path(base_path('packages/holpa-r-scripts'))
+                ->run($RscriptPath . ' data_processing/holpa_agroecology_scores.R');
+            $perfOut = Process::path(base_path('packages/holpa-r-scripts'))
+                ->run($RscriptPath . ' data_processing/key_performance_indicators.R');
+
+        }
+
 
     }
 
@@ -82,7 +128,31 @@ class SubmissionController extends Controller
 
     public static function processFieldworkSubmission(Submission $submission): void
     {
-        //
+        // ONLY NEEDED DURING TESTING WITH EXISTING FAKE DATA.
+        // TODO: remove when we move to real beta testing
+        $farmDataEntity = $submission->rootEntity;
+
+        $siteNoManagement = [
+            1 => 3,
+            2 => 4,
+            3 => 2,
+        ];
+
+        $farmDataEntity->children->each(function (Entity $entity) {
+            if ($entity->values->pluck('dataset_variable_name')->doesntContain('management')) {
+
+                $siteNo = $entity->values->filter(fn($value) => $value->dataset_variable_name === 'site_no')->first()?->value ?? 1;
+
+                $entityValue = EntityValue::make([
+                    'dataset_variable_name' => 'management',
+                    'value' => $siteNoManagement[$siteNo] ?? 1,
+                ]);
+
+                $entity->addValues(collect([$entityValue]));
+            }
+        });
+
+
     }
 
     // ******************** //
@@ -291,84 +361,87 @@ class SubmissionController extends Controller
             ->filter();
     }
 
-    // custom handling for location
-    // to create new locations
-    // TODO: this code segment is tested with location selection test form, not yet tested with Fieldwork form and Household form
     public static function handleLocationData(Submission $submission): void
     {
-        // find owner (team) of this submission
+
+        /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
+        $locationData = $submission->content['context']['location'];
 
-        // get locations array
-        // TODO: update array location of "location" section in Fieldwork form and Household form
-        $locations = $submission->content['location']['location_levels_rpt'];
+        /** @var Collection<LocationLevel> $locationLevels */
+        $locationLevels = $team->locationLevels;
 
-        $parentLocationId = null;
+        /** @var ?Location $parentLocation */
+        $parentLocation = null;
 
-        foreach ($locations as $location) {
-            $locationId = $location['location_id'];
 
-            // assumes locations are ordered from top level to bottom level
-            if ($locationId == '-999') {
-                // check if new location has been created in previous submission retrieval
-                $parentLocation = Location::where('location_level_id', $location['level_id'])
-                    ->where('parent_id', $parentLocationId)
-                    ->where('code', $location['location_other'])
-                    ->where('name', $location['location_other'])->first();
+        // loop through location levels; find or create locations as needed;
+        foreach ($locationLevels as $level) {
 
-                // create new location if it is not existed
-                if ($parentLocation == null) {
-                    $parentLocation = $team->locations()->create([
-                        'location_level_id' => $location['level_id'],
-                        'parent_id' => $parentLocationId,
-                        'code' => $location['location_other'],
-                        'name' => $location['location_other'],
-                    ]);
-                }
+            $odkName = Str::of($level->name)->slug('_')->singular();
+
+            /** @var ?Location $location */
+            $location = $level->locations()
+                ->where('code', $locationData["{$odkName}_id"])
+                ->first();
+
+            if ($location) {
+                $parentLocation = $location;
+
             } else {
-                // check if new location has been created in previous submission retrieval
-                $parentLocation = Location::find($locationId);
-            }
 
-            $parentLocationId = $parentLocation->id;
-        }
+                // if _id from form is -999, then it's a new entry with no pre-defined code;
+                if ($locationData["{$odkName}_id"] == '-999') {
 
-        // get farm details
-        $rootSection = $submission->content['location'];
+                    $code = Str::slug($locationData["{$odkName}_name"]);
+                } else {
+                    // in this case the location should exist, but doesn't for some reason; we can re-create it from the odk data
+                    $code = $locationData["{$odkName}_id"];
+                }
 
-        $farmId = $rootSection['farm_id'];
-
-        // if farm id is not -999, assumes farm is existed, therefore no need to do anything
-        if ($farmId == '-999') {
-            // check if new farm has been created in previous submission retrieval
-            $farm = Farm::where('location_id', $parentLocationId)
-                ->whereJsonContains('identifiers->name', $rootSection['farm_name'])->first();
-
-            if ($farm == null) {
-                // create new farm if it is not existed
-                $identifiers['name'] = $rootSection['farm_name'];
-
-                $farm = $team->farms()->create([
-                    'location_id' => $parentLocationId,
-                    // there is no team_code in location selection test ODK form, use a timestamp as a unique id temporary
-                    // TODO: get team_code from ODK submission content
-                    'team_code' => 'C' . Carbon::now()->getTimestampMs(),
-                    'identifiers' => $identifiers,
+                $parentLocation = $level->locations()->create([
+                    'code' => $code,
+                    'name' => $locationData['{$odkName}_name'],
+                    'parent_id' => $parentLocation?->id,
                 ]);
             }
         }
-    }
 
-    public static function prepareNewRecordData($items, $columnNames): array
-    {
-        $result = [];
+        $farmId = $submission->content['context']['farm_location']['farm_id'];
 
-        foreach ($items as $key => $value) {
-            if (in_array($key, $columnNames)) {
-                $result[$key] = $value;
+        // Key identifier is 'farm_id' in form; farm_code in database, (code is unique at team-level; id is unique at database level).
+
+        $farm = Farm::where('location_id', $parentLocation->id)
+            ->where('team_code', $submission->content['context']['farm_location']['farm_id'])
+            ->first();
+
+        if ($farm) {
+            $submission->primaryDataSubject()->associate($farm);
+        } else {
+
+            // farm is not found; create it!
+            // if _id from form is -999, then it's a new entry with no pre-defined code;
+            if ($farmId == '-999') {
+
+                $code = Str::slug($submission->content['context']['farm_location']['farm_name']);
+            } else {
+                // in this case the location should exist, but doesn't for some reason; we can re-create it from the odk data
+                $code = $farmId;
             }
+            $farm = $parentLocation->farms()
+                ->create([
+                    'owner_id' => $team->id,
+                    'team_code' => $farmId,
+                    'identifiers' => ['name' => $submission->content['context']['farm_location']['farm_name']],
+                    'latitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][0],
+                    'longitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][1],
+                    'altitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][2],
+                    'accuracy' => $submission->content['context']['location_confirm']['gps']['properties']['accuracy'],
+                ]);
+
+            $submission->primaryDataSubject()->associate($farm);
         }
 
-        return $result;
+        $submission->save();
     }
 }

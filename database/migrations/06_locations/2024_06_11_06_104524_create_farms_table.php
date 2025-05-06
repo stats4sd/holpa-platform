@@ -29,6 +29,11 @@ return new class() extends Migration {
             $table->boolean('household_form_completed')->default(false)->comment('Is household form completed for this farm?');
             $table->boolean('fieldwork_form_completed')->default(false)->comment('Is fieldwork form completed for this farm?');
 
+            $table->boolean('household_pilot_completed')->default(false)->comment('Is household form completed for this farm with a pilot-test submission?');
+            $table->boolean('fieldwork_pilot_completed')->default(false)->comment('Is fieldwork form completed for this farm with a pilot test submission?');
+
+            $table->boolean('refused')->default(false);
+
             $table->json('properties')->nullable(); // other properties;
 
             $table->timestamps();

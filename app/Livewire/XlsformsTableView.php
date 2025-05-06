@@ -14,6 +14,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\HtmlString;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
@@ -59,9 +60,9 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                     ->label('Status'),
 
                 TextColumn::make('live_submissions_count')
-                    ->label('No. of Submissions'),
+                    ->label(fn() => new HtmlString('No. of Submissions <br/>in ODK Central')),
                 TextColumn::make('submissions_count')
-                    ->label('Submissions in database')
+                    ->label(fn() => new HtmlString('No. of Submissions <br/>in database'))
                     ->counts('submissions'),
             ])
             ->filters([
@@ -69,7 +70,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
             ])
             ->actions([
                 Action::make('update_published_version')
-                    // ->visible(fn(Xlsform $record) => !$record->has_latest_template)
+                    ->visible(fn(Xlsform $record) => $record->live_needs_update)
                     ->label('Publish changes')
                     ->extraAttributes(['class' => 'buttona text-white font-normal'])
                     ->action(function (Xlsform $record) {

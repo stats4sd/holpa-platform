@@ -18,6 +18,7 @@ class GlobalIndicatorResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-bar';
     protected static ?string $navigationGroup = 'HOLPA Indicators';
+
     // protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
@@ -31,6 +32,19 @@ class GlobalIndicatorResource extends Resource
                     ->relationship('theme', 'name')
                     ->options(Theme::all()->pluck('displayName', 'id'))
                     ->required()
+                    ->createOptionForm([
+                        Forms\Components\Select::make('domain_id')
+                            ->relationship('domain', 'name')
+                            ->searchable()
+                            ->preload(),
+                        Forms\Components\Select::make('module')
+                            ->options([
+                                'Context' => 'Context',
+                                'Agroecology' => 'Agroecology',
+                                'Performance' => 'Performance',
+                            ]),
+                        Forms\Components\TextInput::make('name'),
+                    ])
                     ->preload()
                     ->searchable(),
             ]);

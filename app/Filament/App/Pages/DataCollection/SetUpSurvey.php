@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\App\Pages\Pilot;
+namespace App\Filament\App\Pages\DataCollection;
 
 use App\Filament\App\Pages\SurveyDashboard;
 use App\Models\Team;
@@ -14,27 +14,34 @@ use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
 use Livewire\Attributes\Url;
 
-class PilotIndex extends Page implements HasActions, HasForms
-{
 
-    use InteractsWithActions;
+class SetUpSurvey extends Page implements HasActions, HasForms
+{
     use InteractsWithForms;
+    use InteractsWithActions;
 
     protected static bool $shouldRegisterNavigation = false;
 
-    protected static string $view = 'filament.app.pages.pilot.pilot-index';
+    protected static string $view = 'filament.app.pages.data-collection.set-up-survey';
 
-    protected ?string $heading = 'Survey Testing - Pilot and Enumerator Training';
+    protected ?string $heading = 'Set up the survey';
+
+    public Team $team;
 
     #[Url]
     public string $tab = 'xlsforms';
-    public Team $team;
+
+    public function mount(): void
+    {
+        $this->team = HelperService::getCurrentOwner();
+    }
 
     public function getBreadcrumbs(): array
     {
         return [
             SurveyDashboard::getUrl() => 'Survey Dashboard',
-            PilotIndex::getUrl() => 'Localisation: Pilot',
+            DatacollectionIndex::getUrl() => 'Data Collection',
+            static::getUrl() => static::getTitle(),
         ];
     }
 
@@ -48,20 +55,19 @@ class PilotIndex extends Page implements HasActions, HasForms
         return [];
     }
 
-    public function mount(): void
+    public function getRecord(): Team
     {
-        $this->team = HelperService::getCurrentOwner();
+        return HelperService::getCurrentOwner();
     }
 
     public function markPilotCompleteAction(): Action
     {
         return Action::make('markPilotComplete')
-            ->color('success')
+            ->extraAttributes(['class' => 'buttona'])
+            ->label('Mark Pilot Complete')
             ->action(function () {
-                ray('hi');
                 $this->team->pilot_complete = true;
                 $this->team->save();
-
                 $this->team->refresh();
             });
     }
@@ -69,15 +75,14 @@ class PilotIndex extends Page implements HasActions, HasForms
     public function markPilotIncompleteAction(): Action
     {
         return Action::make('markPilotIncomplete')
-            ->button()
-            ->color('warning')
+            ->extraAttributes(['class' => 'buttonb'])
+            ->label('Mark Pilot Incomplete')
             ->modalHeading('Are you sure?')
             ->modalDescription('Any data collected while the pilot is in progress will be marked as "test" data, and not included in your final dataset by default')
             ->modalSubmitActionLabel('Yes, return to pilot test')
             ->action(function () {
                 $this->team->pilot_complete = false;
                 $this->team->save();
-
                 $this->team->refresh();
             });
     }

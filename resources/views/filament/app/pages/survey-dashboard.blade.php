@@ -107,19 +107,6 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                             @endif
                         </div>
                     </div>
-                    <!-- White Section -->
-                    <!-- <div class="whitesection">
-                        <div class="whiteborderbox">
-                            <div class=" whitecard ">
-                                <div class="dashdescdiv">
-                                    <h3 class="mb-2">Add or manage additional data</h3>
-                                    <p class="text-gray-600 mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vehicula efficitur metus, id fermentum urna volutpat in.</p>
-                                </div>
-                                <div class="dashbuttondiv">
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
@@ -182,7 +169,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                         </div>
                     </div>
                     <!-- White Section -->
-                    <div class="whitesection"> 
+                    <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
                                 <h3 class="mb-2">Survey Locations</h3>
@@ -398,8 +385,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                                         <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
                                     </div>
                                 @endif
-                                {{-- TODO: fix links to monitoring page --}}
-                                <a href="#" class="buttona">
+                                <a href="{{ \App\Filament\App\Pages\DataCollection\DataCollectionIndex::getUrl() }}" class="buttona">
                                     VIEW AND UPDATE
                                 </a>
                             </div>
@@ -414,17 +400,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                     <div class=" greensection">
                         <img src="/images/data_analysis_icon.png" alt="Data Aanalysis Icon" class="w-8 mb-2 ml-8 lg:ml-0">
                         <div class="w-3/4 mx-10 lg:w-full lg:mx-0 lg:text-center">
-                            <span class="mt-2 text-center">Data Analysis</span>
-                            <!-- Progress bar -->
-                            @if ($team->data_analysis_progress === 'complete')
-                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                    <div class="bg-white h-2.5 rounded-full w-full"></div>
-                                </div>
-                            @else
-                                <div class="w-3/4 bg-white bg-opacity-50 rounded-full h-2.5 mt-8 lg:mx-auto">
-                                    <div class="bg-white h-2.5 rounded-full w-1/12"></div>
-                                </div>
-                            @endif
+                            <span class="mt-2 text-center">Datasets</span>
                         </div>
                     </div>
                     <!-- White Section -->
@@ -435,30 +411,8 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                                 <p class="text-gray-600 mb-4">Download data to conduct data analysis.</p>
                             </div>
                             <div class="dashbuttondiv">
-                                @if ($team->data_analysis_progress === 'not_started')
-                                    <div class="mb-6">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"/>
-                                        </svg>
-                                        <span class="ml-1 inline text-xs font-semibold">NOT STARTED</span>
-                                    </div>
-                                @elseif ($team->data_analysis_progress === 'in_progress')
-                                    <div class="mb-6">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/>
-                                        </svg>
-                                        <span class="ml-1 inline text-xs font-semibold">IN PROGRESS</span>
-                                    </div>
-                                @elseif ($team->data_collection_progress === 'complete')
-                                    <div class="mb-6">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
-                                        </svg>
-                                        <span class="ml-1 inline text-xs font-semibold">COMPLETE</span>
-                                    </div>
-                                @endif
                                 <a href="{{ DataAnalysisIndex::getUrl() }}" class="buttona">
-                                    VIEW AND UPDATE
+                                    VIEW DATA
                                 </a>
                             </div>
                         </div>
