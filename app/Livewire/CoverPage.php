@@ -36,20 +36,19 @@ class CoverPage extends Component implements HasActions, HasForms
             ->label('Register Interest')
             ->form([
                 Shout::make('message')
-                    ->content('Thanks you for your interest in the HOLPA online tool. Please fill in your details below - your email address will be used to contact you.'),
+                    ->content('Please fill in your details below - your email address will be used to contact you.'),
                 TextInput::make('email')->required()
                     ->email()
-                    ->label('Enter you email address'),
+                    ->label('Enter your email address'),
                 TextInput::make('name')
                     ->label('Enter your name'),
                 Textarea::make('organisation')
                     ->label('Enter your organisation name'),
                 Textarea::make('details')
                     ->rows(5)
-                    ->label('Do you intend to impliment HOLPA? If so, please give some details about your project / work, etc.'),
+                    ->label('Do you intend to implement HOLPA? If so, please give some details about your project / work, etc.'),
             ])
             ->action(function (array $data) {
-                // send an email to the support email address
 
                 Mail::to(config('mail.to.support'))->send(new RegisterInterestEmail($data));
                 Mail::to($data['email'])->send(new RegisterInterestEmailResponse($data));
