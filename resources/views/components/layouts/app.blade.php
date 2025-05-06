@@ -6,6 +6,7 @@
 
         <title>{{ $title ?? 'HOLPA' }}</title>
 
+        @filamentStyles
         @vite('resources/css/filament/app/theme.css')
         @vite('resources/css/cover-page.css')
 
