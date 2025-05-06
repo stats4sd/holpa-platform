@@ -57,6 +57,7 @@ class PilotIndex extends Page implements HasActions, HasForms
     {
         return Action::make('markPilotComplete')
             ->color('success')
+            ->label('Switch to live data collection')
             ->action(function () {
                 ray('hi');
                 $this->team->pilot_complete = true;
@@ -70,6 +71,7 @@ class PilotIndex extends Page implements HasActions, HasForms
     {
         return Action::make('markPilotIncomplete')
             ->button()
+            ->label('Return to pilot testing mode')
             ->color('warning')
             ->modalHeading('Are you sure?')
             ->modalDescription('Any data collected while the pilot is in progress will be marked as "test" data, and not included in your final dataset by default')
@@ -81,6 +83,35 @@ class PilotIndex extends Page implements HasActions, HasForms
                 $this->team->refresh();
             });
     }
+    public function markCompleteAction(): Action
+    {
+        return Action::make('markComplete')
+            ->label('MARK AS COMPLETE')
+            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
+            ->action(function () {
+                $team = HelperService::getCurrentOwner();
+                $team->data_analysis_progress = 'complete';
+                $team->save();
+
+                $this->dispatch('refreshPage');
+            });
+    }
+
+    public function markIncompleteAction(): Action
+    {
+        return Action::make('markIncomplete')
+            ->label('MARK AS INCOMPLETE')
+            ->extraAttributes(['class' => 'buttona block md:inline-block mb-6 md:mb-0 max-w-sm mx-auto'])
+            ->action(function () {
+                $team = HelperService::getCurrentOwner();
+                $team->data_analysis_progress = 'not_started';
+                $team->save();
+
+                $this->dispatch('refreshPage');
+            });
+    }
+
+
 
 
 }

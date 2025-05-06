@@ -64,7 +64,7 @@ class SetUpSurvey extends Page implements HasActions, HasForms
     {
         return Action::make('markPilotComplete')
             ->extraAttributes(['class' => 'buttona'])
-            ->label('Mark Pilot Complete')
+            ->label('Switch to live data collection')
             ->action(function () {
                 $this->team->pilot_complete = true;
                 $this->team->save();
@@ -76,7 +76,7 @@ class SetUpSurvey extends Page implements HasActions, HasForms
     {
         return Action::make('markPilotIncomplete')
             ->extraAttributes(['class' => 'buttonb'])
-            ->label('Mark Pilot Incomplete')
+            ->label('Return to pilot testing mode')
             ->modalHeading('Are you sure?')
             ->modalDescription('Any data collected while the pilot is in progress will be marked as "test" data, and not included in your final dataset by default')
             ->modalSubmitActionLabel('Yes, return to pilot test')
