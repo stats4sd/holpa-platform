@@ -23,6 +23,7 @@
         "laravel/tinker": "^2.9",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^3.8",
+        "sentry/sentry-laravel": "^4.13",
         "shiftonelabs/laravel-cascade-deletes": "^2.0",
         "spatie/laravel-ignition": "^2.9",
         "stats4sd/filament-odk-link": "*",
