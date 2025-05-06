@@ -11,8 +11,6 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
         <x-slot:instructions>
 
             <div class="mx-12 mb-4">
-
-
                 <p class="my-2">
                     Once you have tested and finalised the details of your localised HOLPA survey, data collection may begin.
                 </p>
@@ -21,7 +19,6 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                 <p class="my-2">
                     Up until this point, all the forms used for pilot testing have been labelled as "test" forms, and the submissions are stored as test data, not to be included in the results. To begin actual data collection, you need to use this section to set your survey to "live". There are some notes on this page to prompt you to double check all the necessary tasks have been completed. Read through these, and when you are ready, click the button to make your survey live.
                 </p>
-
                 <h5>Access live forms </h5>
                 <p class="my-2">
                     Once your survey is live, this section will display the QR code to set up new devices with the correct forms. Enumerators who have already joined the project using the QR code at the pilot phase can alternatively sync their devices to receive the updated forms.
@@ -34,13 +31,10 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     <a href="{{ \App\Filament\App\Pages\DataCollection\MonitorDataCollection::getUrl() }}" class="font-semibold text-green">Monitor data collection</a>.
                 </p>
 
-
                 <h5>Forms overview</h5>
                 <p class="my-2">
                     Here you can see the titles and published status of your forms. There are options here to publish changes if this still needs to be done before commencing data collection.
                 </p>
-                {{-- (Not sure if we actually need this lsat bit - obviously forms and submissions are on the next step.) --}}
-
             </div>
         </x-slot:instructions>
     </x-instructions-sidebar>

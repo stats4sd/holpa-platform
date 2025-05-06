@@ -9,6 +9,7 @@ use App\Models\SampleFrame\LocationLevel;
 use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Pages\Page;
+use Filament\Support\Enums\MaxWidth;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Url;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
@@ -36,6 +37,11 @@ class MonitorDataCollection extends Page
     public int $fieldworkSubmissionCount;
     public int $completeFarmCount;
     public int $nonConsentingFarmCount;
+
+    public function getMaxContentWidth(): MaxWidth
+    {
+        return MaxWidth::Full;
+    }
 
     public function mount(): void
     {

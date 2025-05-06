@@ -11,6 +11,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
@@ -29,6 +30,11 @@ class DietDiversity extends Page implements HasForms, HasTable
     protected static bool $shouldRegisterNavigation = false;
 
     protected static string $view = 'filament.app.pages.place-adaptations.diet-diversity';
+
+    public function getMaxContentWidth(): MaxWidth|string|null
+    {
+        return MaxWidth::Full;
+    }
 
     public function getBreadcrumbs(): array
     {

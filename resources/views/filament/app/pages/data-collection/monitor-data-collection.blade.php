@@ -1,4 +1,4 @@
-<x-filament-panels::page>
+<x-filament-panels::page class="px-10 h-full">
     <x-instructions-sidebar>
         <x-slot:heading>Instructions</x-slot:heading>
         <x-slot:instructions>
