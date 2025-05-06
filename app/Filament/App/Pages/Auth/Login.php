@@ -49,8 +49,6 @@ class Login extends \Filament\Pages\Auth\Login
             $this->throwFailureValidationException();
         }
 
-        ray('hi', $user->odk_id);
-
         if (! $user->odk_id && $user instanceof WithOdkCentralAccount) {
             $user->registerOnOdkCentral($this->getCredentialsFromFormData($data)['password']);
         }

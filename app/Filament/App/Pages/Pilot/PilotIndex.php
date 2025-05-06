@@ -59,7 +59,6 @@ class PilotIndex extends Page implements HasActions, HasForms
             ->color('success')
             ->label('Switch to live data collection')
             ->action(function () {
-                ray('hi');
                 $this->team->pilot_complete = true;
                 $this->team->save();
 

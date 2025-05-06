@@ -121,8 +121,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
                 ->send();
         } catch (ValidationException $e) {
 
-            ray($e->validator->errors());
-
             $errors = collect($e->validator->errors())
                 ->map(function ($errors, $key) {
                     $keyRow = explode('.', $key)[0];
@@ -131,8 +129,6 @@ class UploadLocalIndicators extends Component implements HasForms, HasTable
 
                     return "Row $keyRow, Column $keyColumn: $errors";
                 });
-
-            ray(new HtmlString('It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>')));
 
             $this->addError('local_indicator_list', 'It looks like the file you uploaded is not valid. Please check the file and try again. Errors Found: <br/><br/>' . $errors->join('<br/>'));
         } catch (Exception $e) {

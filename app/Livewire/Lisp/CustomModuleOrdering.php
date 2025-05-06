@@ -30,9 +30,6 @@ class CustomModuleOrdering extends Component
     public function updateOrder(array $order, Xlsform $xlsform)
     {
 
-        ray($order);
-        ray($xlsform->id);
-
         $orderWithKeys = collect($order)->mapWithKeys(fn ($item, $key) => [$item => ['order' => $key]]);
         $xlsform->xlsformModuleVersions()->sync($orderWithKeys);
         $this->setupLists();
