@@ -16,14 +16,17 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // ODK Platform setup
-        $this->call(PlatformSeeder::class);
+        if (app()->environment('local')) {
+            $this->call(PlatformSeeder::class);
+        }
+
         $this->call(Un49LocationSeeder::class);
 
         // call the prep seeders always.
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
             $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
             $this->call($class);
-    }
+        }
 
         // Call the test seeders locally
         if (app()->environment('local')) {
