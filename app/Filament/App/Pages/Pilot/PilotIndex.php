@@ -58,7 +58,6 @@ class PilotIndex extends Page implements HasActions, HasForms
         return Action::make('markPilotComplete')
             ->color('success')
             ->action(function () {
-                ray('hi');
                 $this->team->pilot_complete = true;
                 $this->team->save();
 

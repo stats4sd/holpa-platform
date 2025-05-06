@@ -13,8 +13,6 @@ class TeamMembership extends Pivot
     {
         static::created(function (self $teamMembership) {
 
-            ray('created Team Membership');
-
             // update user on Odk Central
             $odkLinkService = app()->make(OdkLinkService::class);
 
@@ -24,8 +22,6 @@ class TeamMembership extends Pivot
         });
 
         static::deleted(function (self $teamMembership) {
-            ray('deleted Team Membership');
-
             $odkLinkService = app()->make(OdkLinkService::class);
 
             $odkLinkService->removeUserFromProject($teamMembership->user, $teamMembership->team->odkProject);

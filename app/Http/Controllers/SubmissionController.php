@@ -25,12 +25,13 @@ class SubmissionController extends Controller
         /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
 
-        if (!$team->pilot_complete) {
-            $submission->test_data = true;
-            $submission->save();
-        }
 
         static::handleLocationData($submission);
+
+        if (!$team->pilot_complete) {
+            $submission->test_data = true;
+            $submission->saveQuietly();
+        }
 
         /** @var Farm $farm */
         $farm = $submission->primaryDataSubject;
@@ -254,7 +255,7 @@ class SubmissionController extends Controller
     // custom handling for seasonal_worker_seasons data
     // create records from nested repeat groups for seasonal_worker_seasons
     // /survey/income/labour/labourers/sesaonal_labourers/seasonal_labourers_s/
-    /** @return Collection<<array> */
+    /** @return Collection<array> */
     public static function handleSeasonalLaboursData(Submission $submission): Collection
     {
 
@@ -400,8 +401,9 @@ class SubmissionController extends Controller
                 }
 
                 $parentLocation = $level->locations()->create([
+                    'owner_id' => $team->id,
                     'code' => $code,
-                    'name' => $locationData['{$odkName}_name'],
+                    'name' => $locationData["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
                 ]);
             }
@@ -433,10 +435,10 @@ class SubmissionController extends Controller
                     'owner_id' => $team->id,
                     'team_code' => $farmId,
                     'identifiers' => ['name' => $submission->content['context']['farm_location']['farm_name']],
-                    'latitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][0],
-                    'longitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][1],
-                    'altitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][2],
-                    'accuracy' => $submission->content['context']['location_confirm']['gps']['properties']['accuracy'],
+                    'latitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][0] ?? null,
+                    'longitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][1] ?? null,
+                    'altitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][2] ?? null,
+                    'accuracy' => $submission->content['context']['location_confirm']['gps']['properties']['accuracy'] ?? null,
                 ]);
 
             $submission->primaryDataSubject()->associate($farm);

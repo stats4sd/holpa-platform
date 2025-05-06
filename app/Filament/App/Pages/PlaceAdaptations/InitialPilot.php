@@ -54,7 +54,6 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
 
         $this->xlsforms->each(function (Xlsform $xlsform) {
             if ($xlsform->draft_needs_update) {
-                ray('deploying . ' . $xlsform->id);
                 $xlsform->deployDraft();
             }
         });

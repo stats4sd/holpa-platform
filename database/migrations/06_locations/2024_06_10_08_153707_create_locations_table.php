@@ -17,11 +17,14 @@ return new class () extends Migration {
             $table->foreignId('owner_id')->constrained('teams')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('location_level_id')->constrained('location_levels')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('parent_id')->nullable()->constrained('locations')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->string('code')->unique();
+            $table->string('code');
             $table->string('name');
             $table->text('description')->nullable();
 
             $table->timestamps();
+
+
+            $table->unique(['owner_id', 'code']);
         });
 
         Schema::enableForeignKeyConstraints();

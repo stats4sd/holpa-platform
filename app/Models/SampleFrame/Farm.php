@@ -67,14 +67,10 @@ class Farm extends Model implements IsPrimaryDataSubject
 
     public function updateCompletionStatus(): void
     {
-        ray('updating completion status for farm ' . $this->id . ' with name ' . $this->identifying_attribute);
-
         // check pilot completion
         $this->submissions
             ->filter(fn(Submission $submission) => $submission->test_data)
             ->each(function (Submission $submission) {
-
-                ray('found fake submission id ' . $submission->id);
 
                 if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
                     $this->household_pilot_completed = true;
@@ -90,8 +86,6 @@ class Farm extends Model implements IsPrimaryDataSubject
         $this->submissions
             ->filter(fn(Submission $submission) => !$submission->test_data)
             ->each(function (Submission $submission) {
-
-                ray('found live submission id ' . $submission->id);
 
                 if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
                     $this->household_form_completed = true;

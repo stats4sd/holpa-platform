@@ -18,9 +18,8 @@ class LocationsTableSeeder extends Seeder
 
         \DB::table('locations')->delete();
 
-        \DB::table('locations')->insert(array (
-            0 =>
-            array (
+        \DB::table('locations')->insert([
+            [
                 'id' => 1,
                 'owner_id' => 1,
                 'location_level_id' => 1,
@@ -30,9 +29,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            1 =>
-            array (
+            ], [
                 'id' => 2,
                 'owner_id' => 1,
                 'location_level_id' => 2,
@@ -42,9 +39,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            2 =>
-            array (
+            ], [
                 'id' => 3,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -54,9 +49,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            3 =>
-            array (
+            ], [
                 'id' => 9,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -66,9 +59,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            4 =>
-            array (
+            ], [
                 'id' => 14,
                 'owner_id' => 1,
                 'location_level_id' => 2,
@@ -78,9 +69,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            5 =>
-            array (
+            ], [
                 'id' => 15,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -90,9 +79,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            6 =>
-            array (
+            ], [
                 'id' => 21,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -102,9 +89,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            7 =>
-            array (
+            ], [
                 'id' => 25,
                 'owner_id' => 1,
                 'location_level_id' => 1,
@@ -114,9 +99,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            8 =>
-            array (
+            ], [
                 'id' => 26,
                 'owner_id' => 1,
                 'location_level_id' => 2,
@@ -126,9 +109,7 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            9 =>
-            array (
+            ], [
                 'id' => 27,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -138,9 +119,8 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            10 =>
-            array (
+            ],
+            [
                 'id' => 33,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -150,9 +130,8 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            11 =>
-            array (
+            ],
+            [
                 'id' => 38,
                 'owner_id' => 1,
                 'location_level_id' => 2,
@@ -162,9 +141,8 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            12 =>
-            array (
+            ],
+            [
                 'id' => 39,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -174,9 +152,8 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-            13 =>
-            array (
+            ],
+            [
                 'id' => 45,
                 'owner_id' => 1,
                 'location_level_id' => 3,
@@ -186,8 +163,126 @@ class LocationsTableSeeder extends Seeder
                 'description' => NULL,
                 'created_at' => '2025-04-17 14:21:17',
                 'updated_at' => '2025-04-17 14:21:17',
-            ),
-        ));
+            ],
+
+        ]);
+
+        \DB::table('locations')->insert([
+            [
+                'id' => 46,
+                'owner_id' => 3,
+                'location_level_id' => 4,
+                'parent_id' => NULL,
+                'code' => '1',
+                'name' => 'District 1',
+            ],
+            [
+                'id' => 47,
+                'owner_id' => 3,
+                'location_level_id' => 5,
+                'parent_id' => 46,
+                'code' => '2',
+                'name' => 'Sub District 2',
+            ],
+            [
+                'id' => 48,
+                'owner_id' => 3,
+                'location_level_id' => 5,
+                'parent_id' => 46,
+                'code' => '3',
+                'name' => 'Sub District 3',
+            ],
+            [
+                'id' => 49,
+                'owner_id' => 3,
+                'location_level_id' => 5,
+                'parent_id' => 46,
+                'code' => '4',
+                'name' => 'Sub District 4',
+            ],
+
+            [
+                'id' => 50,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 47,
+                'code' => '5',
+                'name' => 'Village 1',
+            ],
+            [
+                'id' => 51,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 47,
+                'code' => '6',
+                'name' => 'Village 2',
+            ],
+            [
+                'id' => 52,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 48,
+                'code' => '7',
+                'name' => 'Village 3',
+            ],
+            [
+                'id' => 53,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 48,
+                'code' => '8',
+                'name' => 'Village 4',
+            ],
+            [
+                'id' => 54,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '9',
+                'name' => 'Village 5',
+            ],
+            [
+                'id' => 55,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '10',
+                'name' => 'Village 6',
+            ],
+            [
+                'id' => 56,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '11',
+                'name' => 'Village 7',
+            ],
+            [
+                'id' => 57,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '12',
+                'name' => 'Village 8',
+            ],
+            [
+                'id' => 58,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '13',
+                'name' => 'Village 9',
+            ],
+            [
+                'id' => 59,
+                'owner_id' => 3,
+                'location_level_id' => 6,
+                'parent_id' => 49,
+                'code' => '14',
+                'name' => 'Village 10',
+            ],
+
+        ]);
 
 
     }

@@ -18,9 +18,8 @@ class LocationLevelsTableSeeder extends Seeder
 
         \DB::table('location_levels')->delete();
 
-        \DB::table('location_levels')->insert(array (
-            0 =>
-            array (
+        \DB::table('location_levels')->insert([
+            [
                 'id' => 1,
                 'owner_id' => 1,
                 'parent_id' => NULL,
@@ -30,9 +29,8 @@ class LocationLevelsTableSeeder extends Seeder
                 'has_farms' => 0,
                 'created_at' => '2025-04-17 14:17:03',
                 'updated_at' => '2025-04-17 14:17:03',
-            ),
-            1 =>
-            array (
+            ],
+            [
                 'id' => 2,
                 'owner_id' => 1,
                 'parent_id' => 1,
@@ -42,9 +40,8 @@ class LocationLevelsTableSeeder extends Seeder
                 'has_farms' => 0,
                 'created_at' => '2025-04-17 14:17:07',
                 'updated_at' => '2025-04-17 14:17:07',
-            ),
-            2 =>
-            array (
+            ],
+            [
                 'id' => 3,
                 'owner_id' => 1,
                 'parent_id' => 2,
@@ -54,8 +51,35 @@ class LocationLevelsTableSeeder extends Seeder
                 'has_farms' => 1,
                 'created_at' => '2025-04-17 14:17:11',
                 'updated_at' => '2025-04-17 14:17:44',
-            ),
-        ));
+            ],
+        ]);
+
+        \DB::table('location_levels')->insert([
+            [
+                'id' => 4,
+                'owner_id' => 3,
+                'parent_id' => NULL,
+                'name' => 'district',
+                'slug' => 'district',
+                'has_farms' => 0,
+            ],
+            [
+                'id' => 5,
+                'owner_id' => 3,
+                'parent_id' => 4,
+                'name' => 'sub-district',
+                'slug' => 'sub-district',
+                'has_farms' => 0,
+            ],
+            [
+                'id' => 6,
+                'owner_id' => 3,
+                'parent_id' => 5,
+                'name' => 'village',
+                'slug' => 'village',
+                'has_farms' => 1,
+            ],
+        ]);
 
 
     }

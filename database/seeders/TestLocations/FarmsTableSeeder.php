@@ -3,6 +3,7 @@
 namespace Database\Seeders\TestLocations;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class FarmsTableSeeder extends Seeder
 {
@@ -18,9 +19,8 @@ class FarmsTableSeeder extends Seeder
 
         \DB::table('farms')->delete();
 
-        \DB::table('farms')->insert(array (
-            0 =>
-            array (
+        \DB::table('farms')->insert([
+            [
                 'id' => 1,
                 'owner_id' => 1,
                 'location_id' => 3,
@@ -35,9 +35,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            1 =>
-            array (
+            ],
+            [
                 'id' => 2,
                 'owner_id' => 1,
                 'location_id' => 3,
@@ -52,9 +51,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            2 =>
-            array (
+            ],
+            [
                 'id' => 3,
                 'owner_id' => 1,
                 'location_id' => 9,
@@ -69,9 +67,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            3 =>
-            array (
+            ],
+            [
                 'id' => 4,
                 'owner_id' => 1,
                 'location_id' => 9,
@@ -86,9 +83,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            4 =>
-            array (
+            ],
+            [
                 'id' => 5,
                 'owner_id' => 1,
                 'location_id' => 15,
@@ -103,9 +99,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            5 =>
-            array (
+            ],
+            [
                 'id' => 6,
                 'owner_id' => 1,
                 'location_id' => 15,
@@ -120,9 +115,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            6 =>
-            array (
+            ],
+            [
                 'id' => 7,
                 'owner_id' => 1,
                 'location_id' => 21,
@@ -137,9 +131,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            7 =>
-            array (
+            ],
+            [
                 'id' => 8,
                 'owner_id' => 1,
                 'location_id' => 21,
@@ -154,9 +147,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            8 =>
-            array (
+            ],
+            [
                 'id' => 9,
                 'owner_id' => 1,
                 'location_id' => 27,
@@ -171,9 +163,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            9 =>
-            array (
+            ],
+            [
                 'id' => 10,
                 'owner_id' => 1,
                 'location_id' => 27,
@@ -188,9 +179,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            10 =>
-            array (
+            ],
+            [
                 'id' => 11,
                 'owner_id' => 1,
                 'location_id' => 33,
@@ -205,9 +195,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            11 =>
-            array (
+            ],
+            [
                 'id' => 12,
                 'owner_id' => 1,
                 'location_id' => 33,
@@ -222,9 +211,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            12 =>
-            array (
+            ],
+            [
                 'id' => 13,
                 'owner_id' => 1,
                 'location_id' => 39,
@@ -239,9 +227,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            13 =>
-            array (
+            ],
+            [
                 'id' => 14,
                 'owner_id' => 1,
                 'location_id' => 39,
@@ -256,9 +243,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            14 =>
-            array (
+            ],
+            [
                 'id' => 15,
                 'owner_id' => 1,
                 'location_id' => 45,
@@ -273,9 +259,8 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-            15 =>
-            array (
+            ],
+            [
                 'id' => 16,
                 'owner_id' => 1,
                 'location_id' => 45,
@@ -290,8 +275,124 @@ class FarmsTableSeeder extends Seeder
                 'properties' => '[]',
                 'created_at' => '2025-04-17 14:21:45',
                 'updated_at' => '2025-04-17 14:21:45',
-            ),
-        ));
+            ],
+        ]);
+
+        \DB::table('farms')->insert([
+
+            [
+                'owner_id' => 3,
+                'location_id' => 50,
+                'team_code' => '1',
+                'identifiers' => '{"name": "Farm 1", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 50,
+                'team_code' => '2',
+                'identifiers' => '{"name": "Farm 2", "name_en": "Farm 2"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 51,
+                'team_code' => '3',
+                'identifiers' => '{"name": "Farm 3", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 51,
+                'team_code' => '4',
+                'identifiers' => '{"name": "Farm 4", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 52,
+                'team_code' => '5',
+                'identifiers' => '{"name": "Farm 5", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 52,
+                'team_code' => '6',
+                'identifiers' => '{"name": "Farm 6", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 53,
+                'team_code' => '7',
+                'identifiers' => '{"name": "Farm 7", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 53,
+                'team_code' => '8',
+                'identifiers' => '{"name": "Farm 8", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 54,
+                'team_code' => '9',
+                'identifiers' => '{"name": "Farm 9", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 54,
+                'team_code' => '10',
+                'identifiers' => '{"name": "Farm 10", "name_en": "Farm 1"}',
+            ], [
+                'owner_id' => 3,
+                'location_id' => 55,
+                'team_code' => '11',
+                'identifiers' => '{"name": "Farm 11", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 55,
+                'team_code' => '12',
+                'identifiers' => '{"name": "Farm 12", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 56,
+                'team_code' => '13',
+                'identifiers' => '{"name": "Farm 13", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 56,
+                'team_code' => '14',
+                'identifiers' => '{"name": "Farm 14", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 57,
+                'team_code' => '15',
+                'identifiers' => '{"name": "Farm 15", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 57,
+                'team_code' => '16',
+                'identifiers' => '{"name": "Farm 16", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 58,
+                'team_code' => '17',
+                'identifiers' => '{"name": "Farm 17", "name_en": "Farm 1"}',
+            ],
+            [
+                'owner_id' => 3,
+                'location_id' => 58,
+                'team_code' => '18',
+                'identifiers' => '{"name": "Farm 18", "name_en": "Farm 1"}',
+            ], [
+                'owner_id' => 3,
+                'location_id' => 59,
+                'team_code' => '19',
+                'identifiers' => '{"name": "Farm 19", "name_en": "Farm 1"}',
+            ],
+        ]);
 
 
     }

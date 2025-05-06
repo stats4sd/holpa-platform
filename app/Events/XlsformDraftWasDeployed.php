@@ -16,9 +16,8 @@ class XlsformDraftWasDeployed implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public int $xlsformId) // passing xlsform as the serialised xlsform is large (it includes the full schema as json... maybe it shouldn't )
+    public function __construct(public int $xlsformId)
     {
-        ray('boo '.$xlsformId);
     }
 
     /**
