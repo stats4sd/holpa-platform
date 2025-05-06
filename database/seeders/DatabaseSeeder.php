@@ -16,10 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // ODK Platform setup
-        if (app()->environment('local')) {
-            $this->call(PlatformSeeder::class);
-        }
-
+        $this->call(PlatformSeeder::class);
         $this->call(Un49LocationSeeder::class);
 
         // call the prep seeders always.
