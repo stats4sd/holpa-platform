@@ -12,6 +12,7 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
@@ -53,7 +54,10 @@ class CoverPage extends Component implements HasActions, HasForms
                 Mail::to(config('mail.to.support'))->send(new RegisterInterestEmail($data));
                 Mail::to($data['email'])->send(new RegisterInterestEmailResponse($data));
 
-                ray('hi');
+                Notification::make('success')
+                    ->title('Thank you')
+                    ->body('Thank you for your interest in HOLPA. You should receive an automated email to confirm your registration of interest.')
+                    ->send();
             });
 
     }
