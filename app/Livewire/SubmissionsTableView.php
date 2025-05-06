@@ -28,7 +28,7 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
     use InteractsWithForms;
     use InteractsWithTable;
 
-    public bool $test = true;
+    public bool $test;
 
 
     #[Reactive]
@@ -71,12 +71,17 @@ class SubmissionsTableView extends Component implements HasActions, HasForms, Ha
                     ->url(fn(Submission $record) => SubmissionResource::getUrl('view', ['record' => $record])),
             ])
             ->bulkActions([
-                BulkAction::make('mark_as_live')
-                    ->label('Mark selected submissions as real data')
+                BulkAction::make('toggle_live')
+                    ->label(function() {
+
+                        $newType = $this->test === false ? 'pilot' : 'live';
+
+                        return "Mark selected submissions as {$newType} data";
+                    })
                     ->requiresConfirmation()
                     ->action(function (\Illuminate\Database\Eloquent\Collection $records) {
                         $records->each(function (Submission $record) {
-                            $record->test_data = false;
+                            $record->test_data = !$record->test_data;
                             $record->save();
                         });
                     }),
