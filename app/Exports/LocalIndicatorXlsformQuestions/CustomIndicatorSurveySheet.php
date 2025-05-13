@@ -49,14 +49,14 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
             array_push($record, $surveyRow->name);
 
             foreach ($locales as $locale) {
-                array_push($record, $surveyRow->getLanguageString('label', $locale->language->iso_alpha2));
-                array_push($record, $surveyRow->getLanguageString('hint', $locale->language->iso_alpha2));
+                array_push($record, $surveyRow->getLanguageString('label', $locale));
+                array_push($record, $surveyRow->getLanguageString('hint', $locale));
             }
 
             array_push($record, $surveyRow->required);
 
             foreach ($locales as $locale) {
-                array_push($record, $surveyRow->getLanguageString('required_message', 'en'));
+                array_push($record, $surveyRow->getLanguageString('required_message', $locale));
             }
 
             array_push($record, $surveyRow->calculation);
@@ -65,7 +65,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
             array_push($record, $surveyRow->constraint);
 
             foreach ($locales as $locale) {
-                array_push($record, $surveyRow->getLanguageString('constraint_message', 'en'));
+                array_push($record, $surveyRow->getLanguageString('constraint_message', $locale));
             }
 
             array_push($record, $surveyRow->choice_filter);
@@ -75,7 +75,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
             array_push($record, $surveyRow->trigger);
 
             foreach ($locales as $locale) {
-                array_push($record, $surveyRow->getLanguageString('mediaimage', 'en'));
+                array_push($record, $surveyRow->getLanguageString('mediaimage', $locale));
             }
 
             $records->add($record);

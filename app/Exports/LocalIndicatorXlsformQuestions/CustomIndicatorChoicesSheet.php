@@ -11,19 +11,45 @@ use Maatwebsite\Excel\Concerns\WithStyles;
 use Maatwebsite\Excel\Concerns\WithTitle;
 use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 
 class CustomIndicatorChoicesSheet implements FromCollection, ShouldAutoSize, WithHeadings, WithStyles, WithTitle
 {
-    protected Team $team;
 
-    public function __construct($team)
+    public function __construct(public Team $team)
     {
-        $this->team = $team;
     }
 
     public function collection(): Collection
     {
-        return collect([]);
+        $locales = $this->team->locales()->with('language')->get();
+
+        $xlsformModuleVersionIds = $this->team->localIndicators->pluck('xlsform_module_version_id')->toArray();
+
+        $records = collect();
+
+        $choiceListEntries = ChoiceListEntry::whereHas('XlsformModuleVersion', fn($query) => $query->whereIn('xlsform_module_versions.id', $xlsformModuleVersionIds))
+            ->with('choiceList')
+            ->get();
+
+        foreach ($choiceListEntries as $choiceListEntry) {
+
+            $record = [];
+
+            array_push($record, $choiceListEntry->choiceList->list_name);
+            array_push($record, $choiceListEntry->name);
+
+            foreach ($locales as $locale) {
+                array_push($record, $choiceListEntry->getLanguageString('label', $locale));
+            }
+
+            array_push($record, $choiceListEntry->filter);
+
+            $records->add($record);
+        }
+
+        return $records;
     }
 
     public function title(): string
