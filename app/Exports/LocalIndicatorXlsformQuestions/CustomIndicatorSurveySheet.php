@@ -5,16 +5,17 @@ namespace App\Exports\LocalIndicatorXlsformQuestions;
 use App\Models\Team;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Enumerable;
+use Maatwebsite\Excel\Events\AfterSheet;
+use PhpOffice\PhpSpreadsheet\Style\Fill;
+use Maatwebsite\Excel\Concerns\WithTitle;
+use Maatwebsite\Excel\Concerns\WithEvents;
+use Maatwebsite\Excel\Concerns\WithStyles;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
-use Maatwebsite\Excel\Concerns\WithEvents;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithStyles;
-use Maatwebsite\Excel\Concerns\WithTitle;
-use Maatwebsite\Excel\Events\AfterSheet;
 use PhpOffice\PhpSpreadsheet\Cell\DataValidation;
-use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, WithEvents, WithHeadings, WithStyles, WithTitle
 {
@@ -22,7 +23,65 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
 
     public function collection(): Enumerable|Collection
     {
-        return collect();
+        $locales = $this->team->locales()->with('language')->get();
+
+        // find related xlsform module version Ids
+        $xlsformModuleVersionIds = $this->team->localIndicators->pluck('xlsform_module_version_id')->toArray();
+
+        // create an empty collection for one excel sheet
+        $records = collect();
+
+        // find related custom questions
+        $surveyRows = SurveyRow::whereIn('xlsform_module_version_id', $xlsformModuleVersionIds)
+            ->get();
+
+        // add custom questions to collection one by one
+        foreach ($surveyRows as $surveyRow) {
+
+            // create a new record for one row
+            $record = [];
+
+            // find local indicator name
+            $localIndicator = $this->team->localIndicators->where('xlsform_module_version_id', $surveyRow->xlsform_module_version_id)->first();
+            array_push($record, $localIndicator->name);
+
+            array_push($record, $surveyRow->type);
+            array_push($record, $surveyRow->name);
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('label', $locale));
+                array_push($record, $surveyRow->getLanguageString('hint', $locale));
+            }
+
+            array_push($record, $surveyRow->required);
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('required_message', $locale));
+            }
+
+            array_push($record, $surveyRow->calculation);
+            array_push($record, $surveyRow->relevant);
+            array_push($record, $surveyRow->appearance);
+            array_push($record, $surveyRow->constraint);
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('constraint_message', $locale));
+            }
+
+            array_push($record, $surveyRow->choice_filter);
+            array_push($record, $surveyRow->repeat_count);
+            array_push($record, $surveyRow->default);
+            array_push($record, $surveyRow->note);
+            array_push($record, $surveyRow->trigger);
+
+            foreach ($locales as $locale) {
+                array_push($record, $surveyRow->getLanguageString('mediaimage', $locale));
+            }
+
+            $records->add($record);
+        }
+
+        return $records;
     }
 
     public function title(): string
@@ -115,7 +174,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
                 $indicatorLookupList->setErrorTitle('Input error');
                 $indicatorLookupList->setError('Please select an indicator from the list.');
                 $indicatorLookupList->setPromptTitle('Pick an indicator');
-                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$'.$count + 3);
+                $indicatorLookupList->setFormula1('\'indicators\'!$B$3:$B$' . $count + 3);
 
                 $sheet->setDataValidation('A:A', $indicatorLookupList);
             },
