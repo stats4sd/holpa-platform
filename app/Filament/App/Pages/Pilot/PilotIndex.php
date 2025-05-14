@@ -89,9 +89,9 @@ class PilotIndex extends Page implements HasActions, HasForms
             ->label('MARK AS COMPLETE')
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = HelperService::getCurrentOwner();
-                $team->data_analysis_progress = 'complete';
-                $team->save();
+                HelperService::getCurrentOwner()->update([
+                    'pilot_complete' => 1,
+                ]);
 
                 $this->dispatch('refreshPage');
             });
@@ -101,11 +101,11 @@ class PilotIndex extends Page implements HasActions, HasForms
     {
         return Action::make('markIncomplete')
             ->label('MARK AS INCOMPLETE')
-            ->extraAttributes(['class' => 'buttona block md:inline-block mb-6 md:mb-0 max-w-sm mx-auto'])
+            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
-                $team = HelperService::getCurrentOwner();
-                $team->data_analysis_progress = 'not_started';
-                $team->save();
+                HelperService::getCurrentOwner()->update([
+                    'pilot_complete' => 0,
+                ]);
 
                 $this->dispatch('refreshPage');
             });
