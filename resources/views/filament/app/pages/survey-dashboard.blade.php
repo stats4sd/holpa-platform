@@ -359,7 +359,7 @@ use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
                     <div class="whitesection">
                         <div class=" whitecard ">
                             <div class="dashdescdiv">
-                                <h3 class="mb-2">Monitor data collection</h3>
+                                <h3 class="mb-2">Data collection</h3>
                                 <p class="text-gray-600 mb-4">View and manage the survey and incoming data.</p>
                             </div>
                             <div class="dashbuttondiv">
