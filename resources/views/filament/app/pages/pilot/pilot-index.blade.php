@@ -163,7 +163,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
 
                     </div>
                 </div>
-                <h3 class="mb-4" id="forms"> Pilot test and enumerator training</h3>
+                <h3 class="mb-4" id="forms"> Forms and submissions</h3>
                 <div class="flex justify-center mb-8">
 
                     <x-filament::tabs>
@@ -182,7 +182,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     <livewire:submissions-table-view :visible="true" :test="true"/>
                 @endif
 
-                <h3 class="my-4">Begin Live Data Collection</h3>
+                <h3 class="mt-10 mb-4">Begin Live Data Collection</h3>
                 <p>When you have completed the pilot test and are ready to begin live data collection, click below. This will disable this page and mark all future submissions as "live" data.</p>
 
                 <div class="mt-4 text-center">

@@ -4,9 +4,7 @@
     </div>
 
     <div class="text-black pb-4 mb-9">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ac venenatis elit.
-        Vivamus non urna ac turpis hendrerit tincidunt ut eget risus. Curabitur sagittis, ex a consectetur convallis,
-        libero nisi efficitur sapien, non eleifend enim lectus vel leo.
+        Here, you can browse through the list of core and optional indicators already present in the global HOLPA survey. If your indicators match up to the ones already available, you can add them easily by matching them. Select an indicator on the left and see if an appropriate match is available on the right.
     </div>
 
     <div class="grid grid-cols-3 gap-6">

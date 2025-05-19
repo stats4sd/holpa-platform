@@ -89,6 +89,7 @@
             <!-- Content -->
             <div class="px-6">
                 @if ($activeTab === 'local')
+                
                     <livewire:lisp.upload-local-indicators/>
                 @elseif ($activeTab === 'match')
                     @include('livewire.lisp.match-indicators')

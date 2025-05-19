@@ -55,14 +55,14 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
                     <h3 class="mb-4">Set up live forms for data collection</h3>
                     <p class="mb-2">
                         Your team is currently in
-                        <span class="font-semibold text-green hover:underline">pilot testing mode</span>. To switch to live data collection, please confirm that your team is ready to commence live data collection. This means:
+                        <span class="font-semibold text-green ">pilot testing mode</span>. To switch to live data collection, please confirm that your team is ready to commence live data collection. This means:
 
                     </p>
                     <ul class="mb-2 ml-12 list-disc">
                         <li class="mb-1">
                             All the required changes to the survey have been made and published.<br>
                             {{-- If there are unpublished changes! --}}
-                            <span class="text-orange"> One or more of your forms has changes that have not been published. This may be intentional, but take the time to check that you have published all the required changes before continuing. <a class="font-semibold text-red" href="#forms">Click here</a> to review the status of the forms. </span>
+                            <span class="text-orange"> One or more of your forms has changes that have not been published. This may be intentional, but take the time to check that you have published all the required changes before continuing. <a class="font-semibold text-red" href="{{ \App\Filament\App\Pages\Pilot\PilotIndex::getUrl() }}#forms">Click here</a> to return to the pilot page and review the status of the forms. </span>
                             {{-- / If there are unpublished changes! --}}
                         </li>
                         <li class="mb-1">

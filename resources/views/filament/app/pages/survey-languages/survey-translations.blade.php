@@ -50,7 +50,7 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
     <div id="languages">
         <!-- Main Section -->
         <div class=" container mx-auto xl:px-12 ">
-            <div class="surveyblocks px-10 h-full pt-10 pb-16">
+            <div class="surveyblocks p-12 lg:p-16  h-full">
 
                 <div class="mb-8 dropdown_tables">
                     <div class="pb-4">
