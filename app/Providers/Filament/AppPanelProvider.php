@@ -139,11 +139,7 @@ class AppPanelProvider extends PanelProvider
                 EditProfile::class,
             ])
             ->renderHook(
-                PanelsRenderHook::SIDEBAR_NAV_START,
-                fn () => view('filament-team-management::appPanelTitle'),
-            )
-            ->renderHook(
-                PanelsRenderHook::HEAD_START,
+                PanelsRenderHook::BODY_START,
                 fn () => view('filament.app.pages.info-panels.team-without-xlsform'),
             )
             ->middleware([

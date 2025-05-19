@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "eae569c4d8f86296c439036c67febcf0",
+    "content-hash": "30bec8ebbf6f3a1e2ce90f71fc6a113d",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -8534,17 +8534,11 @@
         },
         {
             "name": "stats4sd/filament-team-management",
-            "version": "v1.05",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stats4sd/filament-team-management.git",
-                "reference": "e2c475ea1f0ed420b059004a4777c85da42ba1dd"
-            },
+            "version": "dev-main",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stats4sd/filament-team-management/zipball/e2c475ea1f0ed420b059004a4777c85da42ba1dd",
-                "reference": "e2c475ea1f0ed420b059004a4777c85da42ba1dd",
-                "shasum": ""
+                "type": "path",
+                "url": "packages/filament-team-management",
+                "reference": "63dc62f5a496bfa1bd9ef0656fcf1db620c2a655"
             },
             "require": {
                 "althinect/filament-spatie-roles-permissions": "^2.2",
@@ -8569,22 +8563,43 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "aliases": {
-                        "FilamentTeamManagement": "Stats4sd\\FilamentTeamManagement\\Facades\\FilamentTeamManagement"
-                    },
                     "providers": [
                         "Stats4sd\\FilamentTeamManagement\\FilamentTeamManagementServiceProvider"
-                    ]
+                    ],
+                    "aliases": {
+                        "FilamentTeamManagement": "Stats4sd\\FilamentTeamManagement\\Facades\\FilamentTeamManagement"
+                    }
                 }
             },
             "autoload": {
                 "psr-4": {
                     "Stats4sd\\FilamentTeamManagement\\": "src/",
-                    "Stats4sd\\FilamentTeamManagement\\Database\\Seeders\\": "database/seeders/",
-                    "Stats4sd\\FilamentTeamManagement\\Database\\Factories\\": "database/factories/"
+                    "Stats4sd\\FilamentTeamManagement\\Database\\Factories\\": "database/factories/",
+                    "Stats4sd\\FilamentTeamManagement\\Database\\Seeders\\": "database/seeders/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Stats4sd\\FilamentTeamManagement\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "@php ./vendor/bin/testbench package:discover --ansi"
+                ],
+                "analyse": [
+                    "vendor/bin/phpstan analyse"
+                ],
+                "test": [
+                    "vendor/bin/pest"
+                ],
+                "test-coverage": [
+                    "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "vendor/bin/pint"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -8606,13 +8621,10 @@
                 "issues": "https://github.com/stats4sd/filament-team-management/issues",
                 "source": "https://github.com/stats4sd/filament-team-management"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/stats4sd",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-03-03T12:28:05+00:00"
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "stats4sd/laravel-sql-views",

@@ -49,7 +49,7 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
-                fn () => view('filament-team-management::adminPanelTitle'),
+                fn () => view('filament-team-management::admin-panel-title'),
             )
             ->middleware([
                 EncryptCookies::class,

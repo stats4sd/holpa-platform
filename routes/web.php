@@ -23,7 +23,7 @@ Route::get('/downloads/{file}', [DownloadController::class, 'download'])
     ->middleware('auth');
 
 Route::get('/app/profile', function () {
-    return redirect('/app/'.Auth::user()->latest_team_id.'/profile');
+    return redirect('/app/' . Auth::user()->latest_team_id . '/profile');
 
 })->middleware('auth')
     ->name('filament.app.auth.profile');

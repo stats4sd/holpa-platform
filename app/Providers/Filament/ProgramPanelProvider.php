@@ -59,7 +59,7 @@ class ProgramPanelProvider extends PanelProvider
             ])
             ->renderHook(
                 PanelsRenderHook::SIDEBAR_NAV_START,
-                fn () => view('filament-team-management::programAdminPanelTitle'),
+                fn () => view('filament-team-management::program-admin-panel-title'),
             )
             ->middleware([
                 EncryptCookies::class,
