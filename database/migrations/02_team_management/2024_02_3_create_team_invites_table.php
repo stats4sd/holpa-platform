@@ -10,17 +10,26 @@ return new class extends Migration {
      */
     public function up(): void
     {
-           Schema::create('invites', function (Blueprint $table) {
+        Schema::create('invites', function (Blueprint $table) {
             $table->id();
             $table->string('email');
             $table->foreignId('team_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('role_id')->nullable()->constrained()->onDelete('cascade');
-            $table->foreignId('program_id')->nullable()->constrained()->onDelete('cascade');
             $table->foreignId('inviter_id');
             $table->string('token');
             $table->tinyInteger('is_confirmed')->default(0);
             $table->timestamps();
         });
+
+        // Only add the program_id column if the app is using programs
+        if(config('filament-team-management.use_programs')) {
+            Schema::table('invites', function (Blueprint $table) {
+                $table->foreignId('program_id')
+                    ->after('role_id')
+                    ->nullable()->constrained()->onDelete('cascade');
+            });
+        }
+
     }
 
     /**

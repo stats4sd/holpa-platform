@@ -29,9 +29,6 @@ class RegisterNewUserToOdkCentral
         /** @var User $user */
         $user = $event->user;
 
-        ray('registering to ODK Central with email: ' . $event->user->email);
-        ray('registering to ODK Central with password: ' . $event->data['original_password']);
-
         try {
             $user->registerOnOdkCentral($event->data['original_password']);
         } catch (\Throwable $e) {
