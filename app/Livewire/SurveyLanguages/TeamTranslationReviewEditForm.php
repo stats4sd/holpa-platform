@@ -4,6 +4,7 @@ namespace App\Livewire\SurveyLanguages;
 
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\Actions;
@@ -80,12 +81,12 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
                                     )
                                     ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                                     ->maxSize(10240)
-                                ->afterStateUpdated(function($state) {
-                                    if ($state instanceof TemporaryUploadedFile) {
-                                        $this->enableSave();
-                                    }
+                                    ->afterStateUpdated(function ($state) {
+                                        if ($state instanceof TemporaryUploadedFile) {
+                                            $this->enableSave();
+                                        }
 
-                                        }),
+                                    }),
                             ])
                             ->columnSpan(1),
                     )->toArray(),
@@ -112,7 +113,15 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
 
             $path = $file->getPath();
 
-            Excel::import(new XlsformTemplateLanguageImport($xlsformTemplate, $this->locale), $path);
+
+            Excel::queueImport(new XlsformTemplateLanguageImport($xlsformTemplate, $this->locale), $path);
+
+            // we probably need to update the form to loop over xlsforms, not xlsform templates (so that the downloaded worksheet includes custom module_versions for the team's form?).
+            // for now, let's find the xlsform to update the status here:
+            $xlsform = $this->team->xlsforms->where('xlsform_template_id', $xlsformTemplate->id)->first();
+
+            $xlsform->draft_needs_update = true;
+            $xlsform->save();
         }
 
         // submit modal close event

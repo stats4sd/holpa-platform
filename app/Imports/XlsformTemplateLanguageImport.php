@@ -3,9 +3,12 @@
 namespace App\Imports;
 
 use Exception;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithValidation;
@@ -17,33 +20,12 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
-class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHeadingRow, WithStrictNullComparison, WithValidation
+class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHeadingRow, WithStrictNullComparison, WithValidation, ShouldQueue, WithChunkReading, WithCalculatedFormulas
 {
     protected array $headerMap = [];
 
     public function __construct(public XlsformTemplate $xlsformTemplate, public Locale $locale) {}
 
-    // Normalize header names for comparison
-    protected function normalizeHeading($heading): string
-    {
-        return Str::slug($heading);
-
-    }
-
-    // Preprocess headers to create a map of normalized column names to actual column names
-    public function prepareForImport(array $headings): array
-    {
-        $output = [];
-
-        foreach ($headings as $heading) {
-            $normalizedHeading = $this->normalizeHeading($heading);
-            $output[$normalizedHeading] = $heading;
-        }
-
-        return $output;
-    }
-
-    // Specify the heading row
     public function headingRow(): int
     {
         return 1;
@@ -56,17 +38,14 @@ class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHe
     {
         $rowData = $row->toArray();
 
-        // Check if this is the first row
-        if (empty($this->headerMap)) {
-            $this->headerMap = $this->prepareForImport(array_keys($rowData));
-        }
+
+       // dump($rowData);
 
         // Get the actual column for the current language using the header map
-        $normalizedLanguageLabel = $this->normalizeHeading($this->locale->language_label);
-        $actualLanguageColumn = $this->headerMap[$normalizedLanguageLabel] ?? null;
+        $normalizedLanguageLabel = Str::slug($this->locale->language_label, '_');
 
         // Fetch the translation from the row data
-        $translation = $actualLanguageColumn ? $rowData[$actualLanguageColumn] ?? null : null;
+        $translation = $rowData[$normalizedLanguageLabel];
 
         // Find the corresponding language string type
         $languageStringType = LanguageStringType::where('language_string_types.name', $rowData['translation_type'])->first();
@@ -134,5 +113,10 @@ class XlsformTemplateLanguageImport implements OnEachRow, SkipsEmptyRows, WithHe
             'name' => 'required',
             'translation_type' => 'required',
         ];
+    }
+
+    public function chunkSize(): int
+    {
+        return 500;
     }
 }
