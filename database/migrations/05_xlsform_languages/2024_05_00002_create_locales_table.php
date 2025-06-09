@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->boolean('is_default')->default(false);
             $table->text('description')->nullable();
 
+            $table->unsignedInteger('processing_count')->default(0);
             $table->timestamps();
         });
     }

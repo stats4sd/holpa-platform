@@ -84,7 +84,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                             }),
                     ),
 
-                TextColumn::make('status')->label('Status'),
+                TextColumn::make('status')->label('Status')
             ])
             ->paginated(false)
             ->emptyStateHeading('No translations available.')
@@ -185,5 +185,14 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
 
             return true;
         };
+    }
+
+    #[On('echo:xlsforms,NotifyUserThatLanguageImportIsComplete')]
+    public function refreshLocales(): void
+    {
+
+    ray('YO there, saw an event');
+
+        $this->resetTable();
     }
 }
