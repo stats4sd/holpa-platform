@@ -20,7 +20,7 @@ class NotifyUserThatLanguageImportIsComplete implements ShouldBroadcast
     /**
      * Create a new event instance.
      */
-    public function __construct(public Locale $locale, public XlsformTemplate $xlsformTemplate, public User $user)
+    public function __construct(public int $localeId, public int $xlsformTemplateId, public int $userId)
     {
         //
     }

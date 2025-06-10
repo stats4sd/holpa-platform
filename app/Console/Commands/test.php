@@ -15,7 +15,7 @@ class test extends Command
      *
      * @var string
      */
-    protected $signature = 'app:test';
+    protected $signature = 'app:test-notice';
 
     /**
      * The console command description.
@@ -30,9 +30,9 @@ class test extends Command
     public function handle()
     {
         NotifyUserThatLanguageImportIsComplete::dispatch(
-            Locale::find(18),
-            XlsformTemplate::find(1),
-            User::find(2),
+            18,
+            1,
+            2
         );
     }
 }

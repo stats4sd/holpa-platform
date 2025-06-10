@@ -53,6 +53,6 @@ class NotifyUserThatLanguageImportIsComplete implements ShouldQueue
             ->broadcast($this->user)
             ->send();
 
-        \App\Events\NotifyUserThatLanguageImportIsComplete::dispatch($this->locale, $this->xlsformTemplate, $this->user);
+        \App\Events\NotifyUserThatLanguageImportIsComplete::dispatch($this->locale->id, $this->xlsformTemplate->id, $this->user->id);
     }
 }
