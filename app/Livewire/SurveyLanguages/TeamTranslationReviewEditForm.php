@@ -2,8 +2,10 @@
 
 namespace App\Livewire\SurveyLanguages;
 
+use App\Jobs\NotifyUserThatLanguageImportIsComplete;
 use App\Imports\XlsformTemplateLanguageImport;
 use App\Models\Team;
+use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\Actions;
@@ -13,6 +15,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Support\Collection;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,6 +24,8 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Stats4sd\FilamentOdkLink\Exports\XlsformTemplateTranslationsExport;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModule;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
 class TeamTranslationReviewEditForm extends Component implements HasActions, HasForms
@@ -59,14 +64,18 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
                                         // ->link()
                                         ->label('Download existing translations')
                                         ->extraAttributes(['class' => 'buttona w-full'])
-                                        ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
+                                        ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport(
+                                            $xlsformTemplate,
+                                            $this->locale,
+                                            withExistingStrings: true
+                                        ), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
 
                                     // download blank template if needed
                                     Actions\Action::make('download_' . $xlsformTemplate->id)
                                         ->extraAttributes(['class' => 'buttona w-full'])
                                         ->visible(fn() => $this->locale->is_editable)
                                         ->label('Download empty translation template')
-                                        ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale, empty: true), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
+                                        ->action(fn() => Excel::download(new XlsformTemplateTranslationsExport($xlsformTemplate, $this->locale, withExistingStrings: true), "{$xlsformTemplate->title} translation - {$this->locale->language_label}.xlsx")),
                                 ]),
                                 SpatieMediaLibraryFileUpload::make('upload_for_template_' . $xlsformTemplate->id)
                                     ->collection('xlsform_template_translation_files')
@@ -80,12 +89,12 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
                                     )
                                     ->acceptedFileTypes(['application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel']) // Accept only Excel files
                                     ->maxSize(10240)
-                                ->afterStateUpdated(function($state) {
-                                    if ($state instanceof TemporaryUploadedFile) {
-                                        $this->enableSave();
-                                    }
+                                    ->afterStateUpdated(function ($state) {
+                                        if ($state instanceof TemporaryUploadedFile) {
+                                            $this->enableSave();
+                                        }
 
-                                        }),
+                                    }),
                             ])
                             ->columnSpan(1),
                     )->toArray(),
@@ -101,6 +110,7 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
         $this->locale->refresh();
 
         foreach (XlsformTemplate::all() as $xlsformTemplate) {
+
             $file = $this->locale->getMedia('xlsform_template_translation_files', function (Media $media) use ($xlsformTemplate) {
                 return isset($media->custom_properties['xlsform_template_id']) && $media->custom_properties['xlsform_template_id'] === $xlsformTemplate->id;
             })->first();
@@ -112,7 +122,16 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
 
             $path = $file->getPath();
 
-            Excel::import(new XlsformTemplateLanguageImport($xlsformTemplate, $this->locale), $path);
+
+            // Update locale's count of number of active import processes;
+            $this->locale->processing_count++;
+            $this->locale->save();
+
+            Excel::queueImport(new XlsformTemplateLanguageImport($this->locale), $path)
+                ->chain([
+                    new NotifyUserThatLanguageImportIsComplete($this->locale, $xlsformTemplate, request()->user()),
+                ]);
+
         }
 
         // submit modal close event

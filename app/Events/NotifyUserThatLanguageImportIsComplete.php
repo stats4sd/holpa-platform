@@ -2,22 +2,27 @@
 
 namespace App\Events;
 
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
+use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
-class XlsformDraftWasDeployed implements ShouldBroadcast
+class NotifyUserThatLanguageImportIsComplete implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(public int $xlsformId)
+    public function __construct(public int $localeId, public int $xlsformTemplateId, public int $userId)
     {
+        //
     }
 
     /**
