@@ -19,6 +19,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
@@ -45,11 +46,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
         $this->team = HelperService::getCurrentOwner();
         $this->xlsforms = $this->team->xlsforms()->get();
 
-        $this->xlsforms->each(function (Xlsform $xlsform) {
-            if ($xlsform->draft_needs_update) {
-                $xlsform->deployDraft();
-            }
-        });
+        $this->team->deployDraftForms();
     }
 
     #[On('echo:xlsforms,XlsformDraftWasDeployed')]

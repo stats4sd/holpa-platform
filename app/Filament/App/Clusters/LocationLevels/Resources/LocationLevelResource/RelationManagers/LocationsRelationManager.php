@@ -11,6 +11,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 
 class LocationsRelationManager extends RelationManager
 {
@@ -89,4 +90,11 @@ class LocationsRelationManager extends RelationManager
                 ]),
             ]);
     }
+
+    #[On('echo:xlsforms,LocationImportCompleted')]
+    public function refreshTable(): void
+    {
+       $this->resetTable();
+    }
+
 }

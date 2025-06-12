@@ -6,6 +6,7 @@ use App\Models\Holpa\LocalIndicator;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
+use App\Services\LocationSectionBuilder;
 use Dom\Attr;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -252,7 +253,7 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
                     return 'complete';
                 }
 
-                if($this->farms->some(fn(Farm $farm) => $farm->household_form_completed || $farm->fieldwork_form_completed)) {
+                if ($this->farms->some(fn(Farm $farm) => $farm->household_form_completed || $farm->fieldwork_form_completed)) {
                     return 'in_progress';
                 }
 
@@ -279,4 +280,24 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
             get: fn(): bool => $this->languages_complete && $this->sampling_complete && $this->pba_complete && $this->lisp_complete,
         );
     }
+
+    public function localiseXlsforms(): void
+    {
+        LocationSectionBuilder::createCustomLocationModuleVersion($this);
+    }
+
+    public function deployDraftForms(): void
+    {
+        // if no team forms need a draft update; abort.
+        if(! $this->xlsforms->some(fn(Xlsform $xlsform) => $xlsform->draft_needs_update)) {
+            return;
+        }
+
+        $this->localiseXlsforms();
+
+        $this->xlsforms->each(function (Xlsform $xlsform) {
+            $xlsform->deployDraft();
+        });
+    }
+
 }

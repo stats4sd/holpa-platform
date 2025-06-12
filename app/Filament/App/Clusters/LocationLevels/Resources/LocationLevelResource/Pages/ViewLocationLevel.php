@@ -11,6 +11,7 @@ use App\Services\HelperService;
 use Filament\Resources\Pages\ViewRecord;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 
 class ViewLocationLevel extends ViewRecord
 {

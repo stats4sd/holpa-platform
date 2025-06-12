@@ -13,6 +13,7 @@ use Filament\Resources\Pages\ListRecords;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Forms\Components\Actions as ComponentActions;
 use Filament\Forms\Components\Actions\Action as ComponentAction;
+use Livewire\Attributes\On;
 
 class ListFarms extends ListRecords
 {
@@ -52,5 +53,11 @@ class ListFarms extends ListRecords
                 ->color('primary')
                 ->label('Import Farm list'),
         ];
+    }
+
+    #[On('echo:xlsforms,FarmImportCompleted')]
+    public function refreshTable(): void
+    {
+        $this->resetTable();
     }
 }
