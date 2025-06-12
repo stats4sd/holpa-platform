@@ -26,6 +26,13 @@ class Farm extends Model implements IsPrimaryDataSubject
         'refused' => 'boolean',
     ];
 
+    protected static function booted()
+    {
+        static::saved(function (self $location) {
+            $location->owner->xlsforms()->update(['draft_needs_update' => true]);
+        });
+    }
+
     /** @return BelongsTo<Team, $this> */
     public function owner(): BelongsTo
     {

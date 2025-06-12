@@ -22,7 +22,6 @@ class Location extends Model
     protected static function booted()
     {
         static::saved(function (self $location) {
-
            $location->owner->xlsforms()->update(['draft_needs_update' => true]);
         });
     }

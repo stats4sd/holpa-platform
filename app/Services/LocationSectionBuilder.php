@@ -220,18 +220,18 @@ class LocationSectionBuilder
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'location_confirm',
+                'type' => 'begin_group',
             ],
             [
-                'type' => 'begin_group',
                 'row_number' => $levelCount * 5 + 15,
             ]);
 
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'confirm_farm',
+                'type' => 'select_one yn',
             ],
             [
-                'type' => 'select_one yn',
                 'required' => true,
                 'row_number' => $levelCount * 5 + 16,
                 'properties' => collect([
@@ -242,9 +242,9 @@ class LocationSectionBuilder
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'reselect_farm_note',
+                'type' => 'note',
             ],
             [
-                'type' => 'note',
                 'required' => true,
                 'relevant' => '${confirm_farm} = 0',
                 'row_number' => $levelCount * 5 + 17,
@@ -256,9 +256,9 @@ class LocationSectionBuilder
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'gps',
+                'type' => 'geopoint',
             ],
             [
-                'type' => 'geopoint',
                 'row_number' => $levelCount * 5 + 18,
                 'properties' => collect([
                     'label::English (en)' => "**Please take a GPS point**",
@@ -268,9 +268,9 @@ class LocationSectionBuilder
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'gps_location_alt',
+                'type' => 'text',
             ],
             [
-                'type' => 'text',
                 'row_number' => $levelCount * 5 + 19,
                 'properties' => collect([
                     'label::English (en)' => "**If the GPS point you just took was not at the location of the household, please specify where it was taken.",
@@ -280,9 +280,9 @@ class LocationSectionBuilder
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'location_confirm',
+                'type' => 'end_group',
             ],
             [
-                'type' => 'end_group',
                 'row_number' => $levelCount * 5 + 20,
             ]);
 
