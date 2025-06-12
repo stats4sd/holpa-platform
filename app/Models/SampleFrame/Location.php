@@ -19,6 +19,13 @@ class Location extends Model
         'parent',
     ];
 
+    protected static function booted()
+    {
+        static::saved(function (self $location) {
+           $location->owner->xlsforms()->update(['draft_needs_update' => true]);
+        });
+    }
+
     public function owner(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'owner_id');

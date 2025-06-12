@@ -16,7 +16,14 @@ class LocationLevel extends Model
     protected static function booted(): void
     {
         static::saving(function (self $locationLevel) {
-            $locationLevel->slug = $locationLevel->slug ?? Str::slug($locationLevel->name);
+            $locationLevel->slug = $locationLevel->slug ?? Str::slug($locationLevel->name, '_');
+        });
+
+        static::saved(function (self $locationLevel) {
+
+            // mark forms as needing a new deployment
+            $locationLevel->owner->xlsforms()
+                ->update(['draft_needs_update' => true]);
         });
 
         if (Filament::hasTenancy() && Filament::getTenant() instanceof Team) {
@@ -24,6 +31,8 @@ class LocationLevel extends Model
                 $query->where('owner_id', Filament::getTenant()->id);
             });
         }
+
+
     }
 
     public function getRouteKeyName(): string
