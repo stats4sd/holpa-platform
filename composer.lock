@@ -8496,7 +8496,7 @@
         },
         {
             "name": "stats4sd/filament-odk-link",
-            "version": "dev-dev",
+            "version": "dev-5d8339c2f0140eea207e554417b9c8cc6b4b5625",
             "dist": {
                 "type": "path",
                 "url": "packages/filament-odk-link",
@@ -8600,11 +8600,17 @@
         },
         {
             "name": "stats4sd/filament-team-management",
-            "version": "dev-generalise-team-model",
+            "version": "v2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stats4sd/filament-team-management.git",
+                "reference": "bc4d30c30f8e1a278475b6006aad5dc7cee0fcaf"
+            },
             "dist": {
-                "type": "path",
-                "url": "packages/filament-team-management",
-                "reference": "63dc62f5a496bfa1bd9ef0656fcf1db620c2a655"
+                "type": "zip",
+                "url": "https://api.github.com/repos/stats4sd/filament-team-management/zipball/bc4d30c30f8e1a278475b6006aad5dc7cee0fcaf",
+                "reference": "bc4d30c30f8e1a278475b6006aad5dc7cee0fcaf",
+                "shasum": ""
             },
             "require": {
                 "althinect/filament-spatie-roles-permissions": "^2.2",
@@ -8629,43 +8635,22 @@
             "type": "library",
             "extra": {
                 "laravel": {
-                    "providers": [
-                        "Stats4sd\\FilamentTeamManagement\\FilamentTeamManagementServiceProvider"
-                    ],
                     "aliases": {
                         "FilamentTeamManagement": "Stats4sd\\FilamentTeamManagement\\Facades\\FilamentTeamManagement"
-                    }
+                    },
+                    "providers": [
+                        "Stats4sd\\FilamentTeamManagement\\FilamentTeamManagementServiceProvider"
+                    ]
                 }
             },
             "autoload": {
                 "psr-4": {
                     "Stats4sd\\FilamentTeamManagement\\": "src/",
-                    "Stats4sd\\FilamentTeamManagement\\Database\\Factories\\": "database/factories/",
-                    "Stats4sd\\FilamentTeamManagement\\Database\\Seeders\\": "database/seeders/"
+                    "Stats4sd\\FilamentTeamManagement\\Database\\Seeders\\": "database/seeders/",
+                    "Stats4sd\\FilamentTeamManagement\\Database\\Factories\\": "database/factories/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Stats4sd\\FilamentTeamManagement\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "@php ./vendor/bin/testbench package:discover --ansi"
-                ],
-                "analyse": [
-                    "vendor/bin/phpstan analyse"
-                ],
-                "test": [
-                    "vendor/bin/pest"
-                ],
-                "test-coverage": [
-                    "vendor/bin/pest --coverage"
-                ],
-                "format": [
-                    "vendor/bin/pint"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -8687,10 +8672,13 @@
                 "issues": "https://github.com/stats4sd/filament-team-management/issues",
                 "source": "https://github.com/stats4sd/filament-team-management"
             },
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "funding": [
+                {
+                    "url": "https://github.com/stats4sd",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-06-16T10:39:11+00:00"
         },
         {
             "name": "stats4sd/laravel-sql-views",
