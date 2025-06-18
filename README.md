@@ -55,9 +55,9 @@ php artisan app:update-xlsform-versions-from-odk-central
 
 This setup will give you 3 teams, all linked to the following ODK Projects on our ODK Staging site: 
 
-- HOLPA Real Forms - Local Test Team 1: https://odk-test.stats4sdtest.online/#/projects/1655
-- HOLPA Real Forms - Local Test Team 2 : https://odk-test.stats4sdtest.online/#/projects/1656
-- HOLPA Real Forms - Local Non-Program Test Team: https://odk-test.stats4sdtest.online/#/projects/1657
+- HOLPA Real Forms - Local Test Team 1: https://odk-test.stats4sdtest.online/#/projects/2728
+- HOLPA Real Forms - Local Test Team 2 : https://odk-test.stats4sdtest.online/#/projects/2729
+- HOLPA Real Forms - Local Non-Program Test Team: https://odk-test.stats4sdtest.online/#/projects/2730
 
 Each team has copies of the 2 real HOLPA forms, which have the required parts to be compatible with the existing HOLPA localisation setup, and very little else. 
 

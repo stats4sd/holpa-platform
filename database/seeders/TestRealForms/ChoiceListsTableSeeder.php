@@ -28,71 +28,71 @@ class ChoiceListsTableSeeder extends Seeder
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             1 =>
             array (
                 'id' => 2,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 2,
                 'list_name' => 'district',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             2 =>
             array (
                 'id' => 3,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 2,
                 'list_name' => 'sub_district',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             3 =>
             array (
                 'id' => 4,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 2,
                 'list_name' => 'village',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             4 =>
             array (
                 'id' => 5,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 2,
                 'list_name' => 'farm',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             5 =>
             array (
                 'id' => 6,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 2,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -100,13 +100,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:46',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             6 =>
             array (
+                'id' => 7,
+                'xlsform_module_version_id' => 3,
+                'list_name' => 'yn',
+                'description' => NULL,
+                'is_localisable' => 0,
+                'is_dataset' => 0,
+                'can_be_hidden_from_context' => 0,
+                'has_custom_handling' => 0,
+                'properties' => NULL,
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
+            ),
+            7 =>
+            array (
                 'id' => 11,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'relationship',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -114,13 +128,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            7 =>
+            8 =>
             array (
                 'id' => 12,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'relationship_dm',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -128,13 +142,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            8 =>
+            9 =>
             array (
                 'id' => 13,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'gender',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -142,13 +156,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            9 =>
+            10 =>
             array (
                 'id' => 14,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'marital_status',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -156,13 +170,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            10 =>
+            11 =>
             array (
                 'id' => 15,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'read_write',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -170,13 +184,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            11 =>
+            12 =>
             array (
                 'id' => 16,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'education',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -184,13 +198,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            12 =>
+            13 =>
             array (
                 'id' => 17,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'grade',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -198,13 +212,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            13 =>
+            14 =>
             array (
                 'id' => 18,
-                'xlsform_module_version_id' => 1,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'occupation',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -212,27 +226,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
-            ),
-            14 =>
-            array (
-                'id' => 23,
-                'xlsform_module_version_id' => 1,
-                'list_name' => 'yn_dk',
-                'description' => NULL,
-                'is_localisable' => 0,
-                'is_dataset' => 0,
-                'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 0,
-                'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:47',
-                'updated_at' => '2025-03-05 10:38:09',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             15 =>
             array (
-                'id' => 27,
-                'xlsform_module_version_id' => 2,
+                'id' => 23,
+                'xlsform_module_version_id' => 3,
                 'list_name' => 'yn_dk',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -240,13 +240,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-03-05 10:38:11',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
             16 =>
             array (
+                'id' => 27,
+                'xlsform_module_version_id' => 4,
+                'list_name' => 'yn_dk',
+                'description' => NULL,
+                'is_localisable' => 0,
+                'is_dataset' => 0,
+                'can_be_hidden_from_context' => 0,
+                'has_custom_handling' => 0,
+                'properties' => NULL,
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
+            ),
+            17 =>
+            array (
                 'id' => 28,
-                'xlsform_module_version_id' => 2,
+                'xlsform_module_version_id' => 4,
                 'list_name' => 'ae_understand',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -254,13 +268,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-03-05 10:38:11',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            17 =>
+            18 =>
             array (
                 'id' => 29,
-                'xlsform_module_version_id' => 2,
+                'xlsform_module_version_id' => 4,
                 'list_name' => 'agree',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -268,13 +282,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:51',
-                'updated_at' => '2025-03-05 10:38:11',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:35',
             ),
-            18 =>
+            19 =>
             array (
                 'id' => 42,
-                'xlsform_module_version_id' => 3,
+                'xlsform_module_version_id' => 5,
                 'list_name' => 'satisfaction',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -282,13 +296,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:54',
-                'updated_at' => '2025-03-05 10:38:14',
+                'created_at' => '2025-06-16 17:27:35',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            19 =>
+            20 =>
             array (
                 'id' => 54,
-                'xlsform_module_version_id' => 4,
+                'xlsform_module_version_id' => 6,
                 'list_name' => 'step_power',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -296,13 +310,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:56',
-                'updated_at' => '2025-03-05 10:38:16',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            20 =>
+            21 =>
             array (
                 'id' => 59,
-                'xlsform_module_version_id' => 4,
+                'xlsform_module_version_id' => 6,
                 'list_name' => 'step_differ',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -310,13 +324,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:40:57',
-                'updated_at' => '2025-03-05 10:38:16',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            21 =>
+            22 =>
             array (
                 'id' => 62,
-                'xlsform_module_version_id' => 6,
+                'xlsform_module_version_id' => 8,
                 'list_name' => 'participation',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -324,13 +338,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-03-05 10:38:21',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            22 =>
+            23 =>
             array (
                 'id' => 63,
-                'xlsform_module_version_id' => 6,
+                'xlsform_module_version_id' => 8,
                 'list_name' => 'contribution',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -338,13 +352,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-03-05 10:38:21',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            23 =>
+            24 =>
             array (
                 'id' => 64,
-                'xlsform_module_version_id' => 6,
+                'xlsform_module_version_id' => 8,
                 'list_name' => 'management',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -352,13 +366,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:00',
-                'updated_at' => '2025-03-05 10:38:21',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            24 =>
+            25 =>
             array (
                 'id' => 65,
-                'xlsform_module_version_id' => 7,
+                'xlsform_module_version_id' => 9,
                 'list_name' => 'associations',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -366,13 +380,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:02',
-                'updated_at' => '2025-03-05 10:38:23',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            25 =>
+            26 =>
             array (
                 'id' => 66,
-                'xlsform_module_version_id' => 7,
+                'xlsform_module_version_id' => 9,
                 'list_name' => 'effectiveness',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -380,27 +394,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:02',
-                'updated_at' => '2025-03-05 10:38:23',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            26 =>
+            27 =>
             array (
                 'id' => 67,
-                'xlsform_module_version_id' => 8,
+                'xlsform_module_version_id' => 10,
                 'list_name' => 'area_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-03-05 10:38:25',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            27 =>
+            28 =>
             array (
                 'id' => 68,
-                'xlsform_module_version_id' => 8,
+                'xlsform_module_version_id' => 10,
                 'list_name' => 'likelihood',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -408,13 +422,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:04',
-                'updated_at' => '2025-03-05 10:38:25',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            28 =>
+            29 =>
             array (
                 'id' => 69,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'shocks',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -422,13 +436,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            29 =>
+            30 =>
             array (
                 'id' => 70,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'coping_strategies',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -436,13 +450,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            30 =>
+            31 =>
             array (
                 'id' => 71,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'recovery',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -450,13 +464,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            31 =>
+            32 =>
             array (
                 'id' => 72,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'insurance',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -464,13 +478,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            32 =>
+            33 =>
             array (
                 'id' => 73,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'coverage',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -478,13 +492,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:05',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            33 =>
+            34 =>
             array (
                 'id' => 74,
-                'xlsform_module_version_id' => 9,
+                'xlsform_module_version_id' => 11,
                 'list_name' => 'yn_dk',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -492,13 +506,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:06',
-                'updated_at' => '2025-03-05 10:38:28',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            34 =>
+            35 =>
             array (
                 'id' => 87,
-                'xlsform_module_version_id' => 10,
+                'xlsform_module_version_id' => 12,
                 'list_name' => 'income_sources',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -506,13 +520,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-03-05 10:38:30',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            35 =>
+            36 =>
             array (
                 'id' => 88,
-                'xlsform_module_version_id' => 10,
+                'xlsform_module_version_id' => 12,
                 'list_name' => 'sufficient_income',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -520,13 +534,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-03-05 10:38:30',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            36 =>
+            37 =>
             array (
                 'id' => 89,
-                'xlsform_module_version_id' => 10,
+                'xlsform_module_version_id' => 12,
                 'list_name' => 'income_stability',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -534,13 +548,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-03-05 10:38:30',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            37 =>
+            38 =>
             array (
                 'id' => 90,
-                'xlsform_module_version_id' => 10,
+                'xlsform_module_version_id' => 12,
                 'list_name' => 'yn_dk',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -548,13 +562,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:08',
-                'updated_at' => '2025-03-05 10:38:30',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            38 =>
+            39 =>
             array (
                 'id' => 91,
-                'xlsform_module_version_id' => 12,
+                'xlsform_module_version_id' => 14,
                 'list_name' => 'credit_access',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -562,13 +576,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-03-05 10:38:38',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            39 =>
+            40 =>
             array (
                 'id' => 92,
-                'xlsform_module_version_id' => 12,
+                'xlsform_module_version_id' => 14,
                 'list_name' => 'credit_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -576,13 +590,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-03-05 10:38:38',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            40 =>
+            41 =>
             array (
                 'id' => 93,
-                'xlsform_module_version_id' => 12,
+                'xlsform_module_version_id' => 14,
                 'list_name' => 'investments',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -590,13 +604,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-03-05 10:38:38',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            41 =>
+            42 =>
             array (
                 'id' => 94,
-                'xlsform_module_version_id' => 12,
+                'xlsform_module_version_id' => 14,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -604,13 +618,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-03-05 10:38:38',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            42 =>
+            43 =>
             array (
                 'id' => 95,
-                'xlsform_module_version_id' => 12,
+                'xlsform_module_version_id' => 14,
                 'list_name' => 'debt_repay',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -618,13 +632,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:11',
-                'updated_at' => '2025-03-05 10:38:38',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            43 =>
+            44 =>
             array (
                 'id' => 96,
-                'xlsform_module_version_id' => 13,
+                'xlsform_module_version_id' => 15,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -632,13 +646,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:13',
-                'updated_at' => '2025-03-05 10:38:42',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            44 =>
+            45 =>
             array (
                 'id' => 126,
-                'xlsform_module_version_id' => 13,
+                'xlsform_module_version_id' => 15,
                 'list_name' => 'food_access',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -646,13 +660,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-03-05 10:38:42',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            45 =>
+            46 =>
             array (
                 'id' => 130,
-                'xlsform_module_version_id' => 13,
+                'xlsform_module_version_id' => 15,
                 'list_name' => 'percent',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -660,13 +674,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-03-05 10:38:42',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            46 =>
+            47 =>
             array (
                 'id' => 131,
-                'xlsform_module_version_id' => 13,
+                'xlsform_module_version_id' => 15,
                 'list_name' => 'meals',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -674,13 +688,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:14',
-                'updated_at' => '2025-03-05 10:38:42',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            47 =>
+            48 =>
             array (
                 'id' => 132,
-                'xlsform_module_version_id' => 14,
+                'xlsform_module_version_id' => 16,
                 'list_name' => 'roof_material',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -688,13 +702,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-03-05 10:38:44',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            48 =>
+            49 =>
             array (
                 'id' => 133,
-                'xlsform_module_version_id' => 14,
+                'xlsform_module_version_id' => 16,
                 'list_name' => 'wall_material',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -702,13 +716,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-03-05 10:38:44',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            49 =>
+            50 =>
             array (
                 'id' => 134,
-                'xlsform_module_version_id' => 14,
+                'xlsform_module_version_id' => 16,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -716,13 +730,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-03-05 10:38:44',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            50 =>
+            51 =>
             array (
                 'id' => 140,
-                'xlsform_module_version_id' => 14,
+                'xlsform_module_version_id' => 16,
                 'list_name' => 'distance',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -730,13 +744,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-03-05 10:38:44',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            51 =>
+            52 =>
             array (
                 'id' => 141,
-                'xlsform_module_version_id' => 14,
+                'xlsform_module_version_id' => 16,
                 'list_name' => 'transport',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -744,13 +758,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:16',
-                'updated_at' => '2025-03-05 10:38:44',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            52 =>
+            53 =>
             array (
                 'id' => 156,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'percent_veg',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -758,13 +772,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            53 =>
+            54 =>
             array (
                 'id' => 166,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'diversity',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -772,13 +786,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            54 =>
+            55 =>
             array (
                 'id' => 173,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'diversity2',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -786,13 +800,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            55 =>
+            56 =>
             array (
                 'id' => 176,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'diversity3',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -800,13 +814,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            56 =>
+            57 =>
             array (
                 'id' => 177,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'diversity4',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -814,13 +828,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            57 =>
+            58 =>
             array (
                 'id' => 178,
-                'xlsform_module_version_id' => 15,
+                'xlsform_module_version_id' => 17,
                 'list_name' => 'diversity5',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -828,13 +842,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:19',
-                'updated_at' => '2025-03-05 10:38:48',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            58 =>
+            59 =>
             array (
                 'id' => 179,
-                'xlsform_module_version_id' => 16,
+                'xlsform_module_version_id' => 18,
                 'list_name' => 'farm_products',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -842,13 +856,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:21',
-                'updated_at' => '2025-03-05 10:38:50',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:36',
             ),
-            59 =>
+            60 =>
             array (
                 'id' => 180,
-                'xlsform_module_version_id' => 16,
+                'xlsform_module_version_id' => 18,
                 'list_name' => 'percent_produce',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -856,13 +870,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:41:21',
-                'updated_at' => '2025-03-05 10:39:24',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            60 =>
+            61 =>
             array (
                 'id' => 186,
-                'xlsform_module_version_id' => 16,
+                'xlsform_module_version_id' => 18,
                 'list_name' => 'buyer',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -870,13 +884,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:01',
-                'updated_at' => '2025-03-05 10:39:24',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            61 =>
+            62 =>
             array (
                 'id' => 187,
-                'xlsform_module_version_id' => 16,
+                'xlsform_module_version_id' => 18,
                 'list_name' => 'fair_price',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -884,13 +898,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:01',
-                'updated_at' => '2025-03-05 10:39:24',
+                'created_at' => '2025-06-16 17:27:36',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            62 =>
+            63 =>
             array (
                 'id' => 230,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'farm_products',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -898,13 +912,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            63 =>
+            64 =>
             array (
                 'id' => 231,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'crop_activities',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -912,13 +926,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            64 =>
+            65 =>
             array (
                 'id' => 232,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'livestock_activities',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -926,13 +940,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            65 =>
+            66 =>
             array (
                 'id' => 233,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'fish_activities',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -940,13 +954,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:03',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            66 =>
+            67 =>
             array (
                 'id' => 234,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'tree_activities',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -954,13 +968,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            67 =>
+            68 =>
             array (
                 'id' => 235,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'honey_activities',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -968,13 +982,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            68 =>
+            69 =>
             array (
                 'id' => 236,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'seasons',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -982,13 +996,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            69 =>
+            70 =>
             array (
                 'id' => 237,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'months',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -996,13 +1010,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            70 =>
+            71 =>
             array (
                 'id' => 244,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'labourers',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1010,13 +1024,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            71 =>
+            72 =>
             array (
                 'id' => 245,
-                'xlsform_module_version_id' => 17,
+                'xlsform_module_version_id' => 19,
                 'list_name' => 'labour_group',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1024,13 +1038,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:04',
-                'updated_at' => '2025-03-05 10:39:26',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            72 =>
+            73 =>
             array (
                 'id' => 261,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'crops',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1038,13 +1052,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            73 =>
+            74 =>
             array (
                 'id' => 262,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'practices',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1052,13 +1066,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            74 =>
+            75 =>
             array (
                 'id' => 264,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'practices2',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1066,13 +1080,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            75 =>
+            76 =>
             array (
                 'id' => 265,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'trees1',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1080,13 +1094,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            76 =>
+            77 =>
             array (
                 'id' => 271,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'trees_num',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1094,13 +1108,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            77 =>
+            78 =>
             array (
                 'id' => 274,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'tree_diversity',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1108,13 +1122,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:06',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            78 =>
+            79 =>
             array (
                 'id' => 277,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'trees_arrg',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1122,27 +1136,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            79 =>
+            80 =>
             array (
                 'id' => 280,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'yield_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            80 =>
+            81 =>
             array (
                 'id' => 281,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'crop_use',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1150,13 +1164,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            81 =>
+            82 =>
             array (
                 'id' => 282,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'seed_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1164,13 +1178,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            82 =>
+            83 =>
             array (
                 'id' => 283,
-                'xlsform_module_version_id' => 18,
+                'xlsform_module_version_id' => 20,
                 'list_name' => 'seed_type',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1178,13 +1192,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:07',
-                'updated_at' => '2025-03-05 10:39:28',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            83 =>
+            84 =>
             array (
                 'id' => 284,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'slope',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1192,13 +1206,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            84 =>
+            85 =>
             array (
                 'id' => 285,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'erosion',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1206,13 +1220,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            85 =>
+            86 =>
             array (
                 'id' => 286,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'fertility',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1220,13 +1234,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            86 =>
+            87 =>
             array (
                 'id' => 287,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'sf_methods',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1234,27 +1248,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            87 =>
+            88 =>
             array (
                 'id' => 288,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'fert_unit',
                 'description' => NULL,
-                'is_localisable' => 1,
+                'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            88 =>
+            89 =>
             array (
                 'id' => 289,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'manure_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1262,13 +1276,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:08',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            89 =>
+            90 =>
             array (
                 'id' => 292,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'sf_practices',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1276,13 +1290,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            90 =>
+            91 =>
             array (
                 'id' => 293,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'pd_methods',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1290,13 +1304,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            91 =>
+            92 =>
             array (
                 'id' => 296,
-                'xlsform_module_version_id' => 19,
+                'xlsform_module_version_id' => 21,
                 'list_name' => 'pd_practices',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1304,13 +1318,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:09',
-                'updated_at' => '2025-03-05 10:39:30',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            92 =>
+            93 =>
             array (
                 'id' => 297,
-                'xlsform_module_version_id' => 20,
+                'xlsform_module_version_id' => 22,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1318,13 +1332,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:10',
-                'updated_at' => '2025-03-05 10:39:32',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            93 =>
+            94 =>
             array (
                 'id' => 298,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1332,13 +1346,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:11',
-                'updated_at' => '2025-03-05 10:39:34',
+                'created_at' => '2025-06-16 17:27:37',
+                'updated_at' => '2025-06-16 17:27:37',
             ),
-            94 =>
+            95 =>
             array (
                 'id' => 299,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock2',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1346,13 +1360,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            95 =>
+            96 =>
             array (
                 'id' => 300,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock_uses',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1360,13 +1374,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            96 =>
+            97 =>
             array (
                 'id' => 301,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock_unit',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1374,13 +1388,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            97 =>
+            98 =>
             array (
                 'id' => 302,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock_use_output',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1388,13 +1402,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            98 =>
+            99 =>
             array (
                 'id' => 303,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1402,13 +1416,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            99 =>
+            100 =>
             array (
                 'id' => 304,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'exotic_local',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1416,13 +1430,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            100 =>
+            101 =>
             array (
                 'id' => 305,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'feed',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1430,13 +1444,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            101 =>
+            102 =>
             array (
                 'id' => 306,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1444,13 +1458,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            102 =>
+            103 =>
             array (
                 'id' => 308,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'livestock_disease',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1458,13 +1472,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            103 =>
+            104 =>
             array (
                 'id' => 309,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'disease_management',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1472,13 +1486,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            104 =>
+            105 =>
             array (
                 'id' => 310,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'animal_health',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1486,13 +1500,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            105 =>
+            106 =>
             array (
                 'id' => 311,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'animal_health_management',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1500,13 +1514,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            106 =>
+            107 =>
             array (
                 'id' => 312,
-                'xlsform_module_version_id' => 21,
+                'xlsform_module_version_id' => 23,
                 'list_name' => 'grazing_practices',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1514,13 +1528,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:38',
-                'updated_at' => '2025-03-05 10:40:02',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            107 =>
+            108 =>
             array (
                 'id' => 313,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_location',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1528,13 +1542,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            108 =>
+            109 =>
             array (
                 'id' => 314,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1542,13 +1556,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            109 =>
+            110 =>
             array (
                 'id' => 315,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish2',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1556,13 +1570,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            110 =>
+            111 =>
             array (
                 'id' => 316,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_production_use',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1570,13 +1584,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            111 =>
+            112 =>
             array (
                 'id' => 317,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_unit',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1584,13 +1598,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            112 =>
+            113 =>
             array (
                 'id' => 318,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_use_output',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1598,13 +1612,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            113 =>
+            114 =>
             array (
                 'id' => 319,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'spawn_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1612,13 +1626,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            114 =>
+            115 =>
             array (
                 'id' => 320,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_feed_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1626,13 +1640,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            115 =>
+            116 =>
             array (
                 'id' => 321,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_feed_type',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1640,13 +1654,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            116 =>
+            117 =>
             array (
                 'id' => 322,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_disease',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1654,13 +1668,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            117 =>
+            118 =>
             array (
                 'id' => 323,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_disease_management',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1668,13 +1682,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            118 =>
+            119 =>
             array (
                 'id' => 324,
-                'xlsform_module_version_id' => 22,
+                'xlsform_module_version_id' => 24,
                 'list_name' => 'fish_land_practice',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1682,13 +1696,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:40',
-                'updated_at' => '2025-03-05 10:40:04',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            119 =>
+            120 =>
             array (
                 'id' => 325,
-                'xlsform_module_version_id' => 23,
+                'xlsform_module_version_id' => 25,
                 'list_name' => 'relationship_actions',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1696,13 +1710,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:42',
-                'updated_at' => '2025-03-05 10:40:05',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            120 =>
+            121 =>
             array (
                 'id' => 326,
-                'xlsform_module_version_id' => 24,
+                'xlsform_module_version_id' => 26,
                 'list_name' => 'change',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1710,13 +1724,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-03-05 10:40:06',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            121 =>
+            122 =>
             array (
                 'id' => 328,
-                'xlsform_module_version_id' => 24,
+                'xlsform_module_version_id' => 26,
                 'list_name' => 'timing_change',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1724,13 +1738,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-03-05 10:40:06',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            122 =>
+            123 =>
             array (
                 'id' => 329,
-                'xlsform_module_version_id' => 24,
+                'xlsform_module_version_id' => 26,
                 'list_name' => 'yn_dk',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1738,13 +1752,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:43',
-                'updated_at' => '2025-03-05 10:40:06',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            123 =>
+            124 =>
             array (
                 'id' => 331,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1752,13 +1766,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            124 =>
+            125 =>
             array (
                 'id' => 332,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'irrigation_methods',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1766,13 +1780,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            125 =>
+            126 =>
             array (
                 'id' => 333,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'irrigation_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1780,13 +1794,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            126 =>
+            127 =>
             array (
                 'id' => 334,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'seasons',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1794,13 +1808,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            127 =>
+            128 =>
             array (
                 'id' => 335,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'months',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1808,13 +1822,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            128 =>
+            129 =>
             array (
                 'id' => 337,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'rainwater',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1822,13 +1836,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:44',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            129 =>
+            130 =>
             array (
                 'id' => 338,
-                'xlsform_module_version_id' => 25,
+                'xlsform_module_version_id' => 27,
                 'list_name' => 'months2',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1836,13 +1850,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:45',
-                'updated_at' => '2025-03-05 10:40:07',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            130 =>
+            131 =>
             array (
                 'id' => 341,
-                'xlsform_module_version_id' => 26,
+                'xlsform_module_version_id' => 28,
                 'list_name' => 'irrig_energy',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1850,13 +1864,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-03-05 10:40:08',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            131 =>
+            132 =>
             array (
                 'id' => 342,
-                'xlsform_module_version_id' => 26,
+                'xlsform_module_version_id' => 28,
                 'list_name' => 'tillage_energy',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1864,13 +1878,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-03-05 10:40:08',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            132 =>
+            133 =>
             array (
                 'id' => 343,
-                'xlsform_module_version_id' => 26,
+                'xlsform_module_version_id' => 28,
                 'list_name' => 'cooking_energy',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1878,13 +1892,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-03-05 10:40:08',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            133 =>
+            134 =>
             array (
                 'id' => 344,
-                'xlsform_module_version_id' => 26,
+                'xlsform_module_version_id' => 28,
                 'list_name' => 'food_energy',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1892,13 +1906,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:46',
-                'updated_at' => '2025-03-05 10:40:09',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            134 =>
+            135 =>
             array (
                 'id' => 345,
-                'xlsform_module_version_id' => 26,
+                'xlsform_module_version_id' => 28,
                 'list_name' => 'energy_source',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1906,13 +1920,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:42:47',
-                'updated_at' => '2025-03-05 10:40:09',
+                'created_at' => '2025-06-16 17:27:40',
+                'updated_at' => '2025-06-16 17:27:40',
             ),
-            135 =>
+            136 =>
             array (
                 'id' => 346,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 30,
                 'list_name' => 'language',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1920,69 +1934,69 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            136 =>
+            137 =>
             array (
                 'id' => 347,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 31,
                 'list_name' => 'district',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            137 =>
+            138 =>
             array (
                 'id' => 348,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 31,
                 'list_name' => 'sub_district',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            138 =>
+            139 =>
             array (
                 'id' => 349,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 31,
                 'list_name' => 'village',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            139 =>
+            140 =>
             array (
                 'id' => 350,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 31,
                 'list_name' => 'farm',
                 'description' => NULL,
                 'is_localisable' => 0,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
-                'has_custom_handling' => 1,
+                'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            140 =>
+            141 =>
             array (
                 'id' => 351,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 31,
                 'list_name' => 'yn',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -1990,13 +2004,27 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            141 =>
+            142 =>
+            array (
+                'id' => 352,
+                'xlsform_module_version_id' => 32,
+                'list_name' => 'yn',
+                'description' => NULL,
+                'is_localisable' => 0,
+                'is_dataset' => 0,
+                'can_be_hidden_from_context' => 0,
+                'has_custom_handling' => 0,
+                'properties' => NULL,
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
+            ),
+            143 =>
             array (
                 'id' => 355,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 32,
                 'list_name' => 'relationship',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2004,13 +2032,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            142 =>
+            144 =>
             array (
                 'id' => 356,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 32,
                 'list_name' => 'relationship_dm',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2018,13 +2046,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            143 =>
+            145 =>
             array (
                 'id' => 357,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 32,
                 'list_name' => 'gender',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2032,13 +2060,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            144 =>
+            146 =>
             array (
                 'id' => 358,
-                'xlsform_module_version_id' => 28,
+                'xlsform_module_version_id' => 32,
                 'list_name' => 'data_type',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2046,13 +2074,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:41',
-                'updated_at' => '2025-03-05 10:36:33',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            145 =>
+            147 =>
             array (
                 'id' => 359,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'tree_arrangement',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2060,13 +2088,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            146 =>
+            148 =>
             array (
                 'id' => 360,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'vegetation',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2074,13 +2102,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            147 =>
+            149 =>
             array (
                 'id' => 361,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'veg_area',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2088,13 +2116,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            148 =>
+            150 =>
             array (
                 'id' => 362,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'prod_system',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2102,13 +2130,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            149 =>
+            151 =>
             array (
                 'id' => 363,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'structure',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2116,13 +2144,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            150 =>
+            152 =>
             array (
                 'id' => 364,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'compaction',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2130,13 +2158,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            151 =>
+            153 =>
             array (
                 'id' => 365,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'depth',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2144,13 +2172,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            152 =>
+            154 =>
             array (
                 'id' => 366,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'residues',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2158,13 +2186,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            153 =>
+            155 =>
             array (
                 'id' => 367,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'colour',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2172,13 +2200,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            154 =>
+            156 =>
             array (
                 'id' => 368,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'moisture',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2186,13 +2214,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            155 =>
+            157 =>
             array (
                 'id' => 369,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'cover',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2200,13 +2228,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            156 =>
+            158 =>
             array (
                 'id' => 370,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'erosion',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2214,13 +2242,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            157 =>
+            159 =>
             array (
                 'id' => 371,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'invertebrate',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2228,13 +2256,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            158 =>
+            160 =>
             array (
                 'id' => 372,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'microbe',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2242,13 +2270,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            159 =>
+            161 =>
             array (
                 'id' => 373,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'appearance',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2256,13 +2284,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            160 =>
+            162 =>
             array (
                 'id' => 374,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'growth',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2270,13 +2298,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            161 =>
+            163 =>
             array (
                 'id' => 375,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'disease',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2284,13 +2312,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            162 =>
+            164 =>
             array (
                 'id' => 376,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'insect',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2298,13 +2326,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            163 =>
+            165 =>
             array (
                 'id' => 377,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'enemy',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2312,13 +2340,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            164 =>
+            166 =>
             array (
                 'id' => 378,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'weeds',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2326,13 +2354,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            165 =>
+            167 =>
             array (
                 'id' => 379,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'natural',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2340,13 +2368,13 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
-            166 =>
+            168 =>
             array (
                 'id' => 380,
-                'xlsform_module_version_id' => 29,
+                'xlsform_module_version_id' => 33,
                 'list_name' => 'management',
                 'description' => NULL,
                 'is_localisable' => 0,
@@ -2354,8 +2382,8 @@ class ChoiceListsTableSeeder extends Seeder
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
                 'properties' => NULL,
-                'created_at' => '2025-02-20 15:51:43',
-                'updated_at' => '2025-03-05 10:36:35',
+                'created_at' => '2025-06-16 17:29:16',
+                'updated_at' => '2025-06-16 17:29:16',
             ),
         ));
 
