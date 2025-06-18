@@ -33,12 +33,12 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
         $this->info('Updating xlsform versions from ODK Central');
 
         // for each xlsform, get all the versions from ODK Central
-        Xlsform::all()->each(function (Xlsform $xlsform) {
+        Xlsform::with('owner')->get()->each(function (Xlsform $xlsform) {
 
             $odkLinkService = app()->make(OdkLinkService::class);
 
             $baseUrl = config('filament-odk-link.odk.base_endpoint');
-            $projectId = $xlsform->odk_project_id;
+            $projectId = $xlsform->owner->odkProject->id;
             $formId = $xlsform->odk_id;
 
             $versions = Http::withToken($odkLinkService->authenticate())
