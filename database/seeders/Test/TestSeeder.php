@@ -55,7 +55,7 @@ class TestSeeder extends Seeder
         $programAdmin = User::create([
             'name' => 'Test Program Admin',
             'email' => 'program_admin@example.com',
-            'password' => bcrypt('passwor123'),
+            'password' => bcrypt('password123'),
         ]);
 
         // link users to OdkCentral

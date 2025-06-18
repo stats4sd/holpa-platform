@@ -2,7 +2,23 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\TestRealForms\AppUsersTableSeeder;
+use Database\Seeders\TestRealForms\ChoiceListEntriesTableSeeder;
+use Database\Seeders\TestRealForms\ChoiceListsTableSeeder;
+use Database\Seeders\TestRealForms\DatasetsTableSeeder;
+use Database\Seeders\TestRealForms\LanguageStringsTableSeeder;
+use Database\Seeders\TestRealForms\LocalesTableSeeder;
+use Database\Seeders\TestRealForms\MediaTableSeeder;
+use Database\Seeders\TestRealForms\OdkProjectsTableSeeder;
+use Database\Seeders\TestRealForms\RequiredMediaTableSeeder;
+use Database\Seeders\TestRealForms\SelectedXlsformModuleVersionsTableSeeder;
 use Database\Seeders\TestRealForms\SurveyRowsTableSeeder;
+use Database\Seeders\TestRealForms\XlsformModulesTableSeeder;
+use Database\Seeders\TestRealForms\XlsformModuleVersionsTableSeeder;
+use Database\Seeders\TestRealForms\XlsformsTableSeeder;
+use Database\Seeders\TestRealForms\XlsformTemplateSectionsTableSeeder;
+use Database\Seeders\TestRealForms\XlsformTemplatesTableSeeder;
+use Database\Seeders\TestRealForms\XlsformVersionsTableSeeder;
 use Illuminate\Database\Seeder;
 use Stats4sd\FilamentOdkLink\Database\Seeders\PlatformSeeder;
 
@@ -23,7 +39,24 @@ class DatabaseSeeder extends Seeder
         foreach (glob(database_path('seeders/Prep/*.php')) as $file) {
             $class = 'Database\\Seeders\\Prep\\' . pathinfo($file, PATHINFO_FILENAME);
             $this->call($class);
-        }
+            $this->call(AppUsersTableSeeder::class);
+        $this->call(ChoiceListEntriesTableSeeder::class);
+        $this->call(ChoiceListsTableSeeder::class);
+        $this->call(DatasetsTableSeeder::class);
+        $this->call(LanguageStringsTableSeeder::class);
+        $this->call(LocalesTableSeeder::class);
+        $this->call(MediaTableSeeder::class);
+        $this->call(OdkProjectsTableSeeder::class);
+        $this->call(RequiredMediaTableSeeder::class);
+        $this->call(SelectedXlsformModuleVersionsTableSeeder::class);
+        $this->call(SurveyRowsTableSeeder::class);
+        $this->call(XlsformModulesTableSeeder::class);
+        $this->call(XlsformModuleVersionsTableSeeder::class);
+        $this->call(XlsformsTableSeeder::class);
+        $this->call(XlsformTemplateSectionsTableSeeder::class);
+        $this->call(XlsformTemplatesTableSeeder::class);
+        $this->call(XlsformVersionsTableSeeder::class);
+    }
 
         // Call the test seeders locally
         if (app()->environment('local')) {
