@@ -191,8 +191,6 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
     public function refreshLocales(): void
     {
 
-    ray('YO there, saw an event');
-
-        $this->resetTable();
+    $this->resetTable();
     }
 }
