@@ -155,7 +155,7 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
     public function localContextModuleVersion(): HasOne
     {
         return $this->hasOne(XlsformModuleVersion::class, 'owner_id')
-            ->where('name', 'Local Context Module Version');
+            ->where('name', 'Local Context');
     }
 
     /** @return Attribute<string, never> */

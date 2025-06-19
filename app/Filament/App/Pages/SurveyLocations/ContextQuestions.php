@@ -60,7 +60,6 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
         $this->form->fill($this->xlsformModuleVersion->toArray());
     }
 
-// show questions in a table for better readability
     public function table(Table $table): Table
     {
 
