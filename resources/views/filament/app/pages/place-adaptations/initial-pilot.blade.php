@@ -123,7 +123,7 @@
                         <span class="font-semibold"> All submissions to the test forms are temporary </span> and will be reset whenever you take an action using the survey dashboard that changes the forms.
                     </div>
                 </div>
-                <div class="text-center mt-8 p-4 flex justify-around align-items-center space-x-0 md:space-x-8 md:space-y-0 space-y-4 md:flex-row flex-col">
+                <div class="text-center mt-8 p-4 grid md:grid-cols-2 grid-cols-1 justify-around align-items-center space-x-0 md:space-x-8 md:space-y-0 space-y-4">
                     @foreach($xlsforms as $xlsform)
 
                         @if($xlsform->draft_needs_update)

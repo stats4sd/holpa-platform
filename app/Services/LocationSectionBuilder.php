@@ -14,7 +14,7 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 class LocationSectionBuilder
 {
 
-    public static function createCustomLocationModuleVersion(Team $team)
+    public static function createCustomLocationModuleVersion(Team $team): void
     {
         $defaultLocationModuleId = XlsformModuleVersion::firstWhere('name', 'Global location')->id;
 
@@ -23,6 +23,16 @@ class LocationSectionBuilder
                 'xlsform_module_id' => $defaultLocationModuleId,
                 'name' => "{$team->name} Locations",
             ]);
+
+        // Check that the team has locations + farms. If not, ensure we're using the default / test module for locations.
+        if($team->locations()->count() === 0 || $team->farms()->count() === 0) {
+            $team->xlsforms->each(function (Xlsform $xlsform) use ($defaultLocationModuleId, $locationModuleVersion) {
+                $xlsform->xlsformModuleVersions()->detach($locationModuleVersion->id);
+                $xlsform->xlsformModuleVersions()->sync([$locationModuleVersion->id => ['order' => 2]], false);
+            });
+
+            return;
+        }
 
         static::createCustomSurveyRows($locationModuleVersion);
         static::createCustomChoiceLists($locationModuleVersion);
@@ -35,7 +45,7 @@ class LocationSectionBuilder
 
     }
 
-    public static function createCustomSurveyRows(XlsformModuleVersion $locationModuleVersion)
+    public static function createCustomSurveyRows(XlsformModuleVersion $locationModuleVersion): void
     {
         $team = $locationModuleVersion->owner;
 
@@ -288,7 +298,7 @@ class LocationSectionBuilder
 
     }
 
-    public static function createCustomChoiceLists(XlsformModuleVersion $locationModuleVersion)
+    public static function createCustomChoiceLists(XlsformModuleVersion $locationModuleVersion): void
     {
         $team = $locationModuleVersion->owner;
 

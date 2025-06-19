@@ -224,15 +224,17 @@ h3 {
 .lispboxselected {
     @apply bg-green border-l-4 border-green  text-white;
 }
+
 button:disabled {
-    background-color: #e0dfdf;
-    color: rgb(93, 93, 93);
+    /*background-color: #e0dfdf;*/
+    /*color: rgb(93, 93, 93);*/
     cursor: not-allowed;
     border: none;
 }
+
 button:disabled:hover {
-    background-color: #e0dfdf;
-    color: rgb(93, 93, 93);
+    /*background-color: #e0dfdf;*/
+    /*color: rgb(93, 93, 93);*/
     cursor: not-allowed;
     border: none;
 }
@@ -317,10 +319,12 @@ padding-left: 0px ;
     @apply !bg-lightgreen;
 }
 
-button:disabled.outline-none {
-    background-color: transparent !important;
-    color: var(--green) !important;
-}
+
+/*!* Remove grey background on some button *!*/
+/*button:disabled.outline-none {*/
+/*    background-color: transparent !important;*/
+/*    color: var(--green) !important;*/
+/*}*/
 
 .fi-ta-ctn {
     @apply !rounded-none;

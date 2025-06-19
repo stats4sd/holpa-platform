@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Stats4sd\FilamentOdkLink\Models\Country;
@@ -64,6 +65,7 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
             // manually set the default time_frame
             $owner->time_frame = 'in the last 12 months';
+
             $owner->save();
         });
     }
@@ -147,6 +149,13 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
     public function dietDiversityModuleVersion(): BelongsTo
     {
         return $this->belongsTo(XlsformModuleVersion::class, 'diet_diversity_module_version_id');
+    }
+
+    /** @return HasOne<XlsformModuleVersion, $this> */
+    public function localContextModuleVersion(): HasOne
+    {
+        return $this->hasOne(XlsformModuleVersion::class, 'owner_id')
+            ->where('name', 'Local Context');
     }
 
     /** @return Attribute<string, never> */
@@ -283,19 +292,23 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
     public function localiseXlsforms(): void
     {
-        LocationSectionBuilder::createCustomLocationModuleVersion($this);
+        if ($this->has_updated_locations) {
+            LocationSectionBuilder::createCustomLocationModuleVersion($this);
+        }
+
+        $this->has_updated_locations = false;
+        $this->saveQuietly();
     }
 
     public function deployDraftForms(): void
     {
         // if no team forms need a draft update; abort.
-        if(! $this->xlsforms->some(fn(Xlsform $xlsform) => $xlsform->draft_needs_update)) {
-            return;
-        }
+
+        $xlsformsToUpdate = $this->xlsforms->filter(fn(Xlsform $xlsform) => $xlsform->draft_needs_update);
 
         $this->localiseXlsforms();
 
-        $this->xlsforms->each(function (Xlsform $xlsform) {
+        $xlsformsToUpdate->each(function (Xlsform $xlsform) {
             $xlsform->deployDraft();
         });
     }

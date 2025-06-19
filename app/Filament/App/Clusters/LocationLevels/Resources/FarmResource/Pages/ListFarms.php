@@ -7,6 +7,7 @@ use App\Filament\App\Pages\SurveyDashboard;
 use App\Filament\App\Pages\SurveyLocations\SurveyLocationsIndex;
 use App\Filament\Tables\Actions\ImportFarmsAction;
 use App\Imports\FarmImport;
+use App\Services\HelperService;
 use Filament\Actions;
 use Filament\Forms\Components\Wizard;
 use Filament\Resources\Pages\ListRecords;
@@ -46,11 +47,17 @@ class ListFarms extends ListRecords
             // add a button to divert to import custom page
             Actions\Action::make('import')
                 ->label('Import Locations and Farm List')
+                ->extraAttributes(['class' => 'buttonb'])
+                ->tooltip('Use this if you have your location and farm data all in one spreadsheet.')
+                ->disabled(fn() => HelperService::getCurrentOwner()->locationLevels()->count() < 1)
                 ->url('farms/import'),
 
             ImportFarmsAction::make()
-                ->use(FarmImport::class)
                 ->color('primary')
+                ->extraAttributes(['class' => 'buttonb'])
+                ->tooltip('Use this if you have already added your locations')
+                ->disabled(fn() => HelperService::getCurrentOwner()->locations()->count() < 1)
+                ->use(FarmImport::class)
                 ->label('Import Farm list'),
         ];
     }
