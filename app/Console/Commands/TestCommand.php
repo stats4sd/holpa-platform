@@ -3,7 +3,15 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Builder;
+use phpDocumentor\Reflection\DocBlock\Tags\Template;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplateSection;
 
 class TestCommand extends Command
 {
@@ -26,8 +34,6 @@ class TestCommand extends Command
      */
     public function handle(): void
     {
-        $xlsform = Xlsform::find(1);
-
-        $xlsform->generateXlsfile();
+        dump('Use this as a scratch space for testing things!');
     }
 }
