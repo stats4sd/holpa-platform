@@ -8,6 +8,7 @@ use Awcodes\TableRepeater\Components\TableRepeater;
 use Awcodes\TableRepeater\Header;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
+use Filament\Actions\EditAction;
 use Filament\Actions\StaticAction;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Hidden;
@@ -101,6 +102,16 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     'lg' => 2,
                 ])
                 ->schema([
+                    Hidden::make('row_number')
+                        ->default(function () {
+
+                            // find the largest row_number of survey_rows records
+                            $number = $this->xlsformModuleVersion->surveyRows->last()?->row_number ?? 0;
+
+                            return $number + 1;
+
+
+                        }),
                     Select::make('type')->options([
                         'select_one' => 'select_one',
                         'select_multiple' => 'select_multiple',
@@ -157,8 +168,9 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     'lg' => 1,
                 ])
                 ->live()
-                ->relationship('choiceList')
                 ->visible(fn(Get $get) => Str::startsWith($get('type'), 'select_one') || Str::startsWith($get('type'), 'select_multiple'))
+                ->relationship('choiceList')
+                ->saveRelationshipsBeforeChildrenUsing(fn(Fieldset $component) => $component->saveRelationships())
                 ->schema([
                     Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
                     Hidden::make('list_name')->live()
@@ -235,14 +247,6 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     ->modalCancelAction(fn(StaticAction $action) => $action
                         ->extraAttributes(['class' => 'buttonb shadow-none !ring-0 ']))
                     ->createAnother(false)
-                    ->mutateFormDataUsing(function (array $data): array {
-                        // find the largest row_number of survey_rows records
-                        $lastRowNumber = $this->xlsformModuleVersion->surveyRows->count() != 0 ? $this->xlsformModuleVersion->surveyRows->last()->row_number : 0;
-
-                        $data['row_number'] = $lastRowNumber + 1;
-
-                        return $data;
-                    })
                     ->form($questionForm),
             ])
 
@@ -263,23 +267,22 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     // fill the form with existing data
-                    // Question: why the changes of type and name cannot be saved into survey_rows record?
                     ->fillForm(fn(SurveyRow $record): array => [
                         'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
                         'id' => $record->id,
                         'type' => $record->type,
                         'name' => $record->name,
                     ])
-                    ->form($questionForm)
+                    ->form($questionForm),
                     // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
-                    ->action(function (array $data) {
-                        $surveyRow = SurveyRow::find($data['id']);
-
-                        $surveyRow->type = $data['type'];
-                        $surveyRow->name = $data['name'];
-
-                        $surveyRow->save();
-                    }),
+//                    ->action(function (array $data) {
+//                        $surveyRow = SurveyRow::find($data['id']);
+//
+//                        $surveyRow->type = $data['type'];
+//                        $surveyRow->name = $data['name'];
+//
+//                        $surveyRow->save();
+//                    }),
 
                 // add "DELETE QUESTION" button in table row instead of inside modal popup
                 DeleteAction::make()
