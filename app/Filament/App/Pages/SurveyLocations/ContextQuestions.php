@@ -104,13 +104,9 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                 ->schema([
                     Hidden::make('row_number')
                         ->default(function () {
-
                             // find the largest row_number of survey_rows records
-                            $number = $this->xlsformModuleVersion->surveyRows->last()?->row_number ?? 0;
-
+                            $number = $this->xlsformModuleVersion->surveyRows->last()->row_number ?? 0;
                             return $number + 1;
-
-
                         }),
                     Select::make('type')->options([
                         'select_one' => 'select_one',
@@ -135,7 +131,7 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
 
                             return $state;
                         })
-                        ->live()
+                        ->live(onBlur: true)
                         ->required(),
                     TextInput::make('name')->label('Variable Name')->live()->required()
                         ->helperText('The variable name should only have alphanumeric characters or underscores. Any spaces will be automatically replaced with underscores when saving this question.')
@@ -158,23 +154,23 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                                 ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
                         ])
                         ->default($defaultLanguageStringState)
-                        ->live(),
+                        ->live(onBlur: true),
 
-                ])->live(),
+                ])->live(onBlur: true),
             Fieldset::make('Choice List')
                 ->columns([
                     'sm' => 1,
                     'md' => 1,
                     'lg' => 1,
                 ])
-                ->live()
+                ->live(onBlur: true)
                 ->visible(fn(Get $get) => Str::startsWith($get('type'), 'select_one') || Str::startsWith($get('type'), 'select_multiple'))
                 ->relationship('choiceList')
                 ->saveRelationshipsBeforeChildrenUsing(fn(Fieldset $component) => $component->saveRelationships())
                 ->schema([
                     Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-                    Hidden::make('list_name')->live()
-                        ->dehydrateStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+                    Hidden::make('list_name')->live(onBlur: true)
+                        ->dehydrateStateUsing(fn(Get $get) => $get('../name') . '_choices_' . Str::random(8)),
                     Repeater::make('choiceListEntries')
                         ->relationship('choiceListEntries')
                         ->label('Options list for the select question')
@@ -203,7 +199,7 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                                         ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
                                 ])
                                 ->default($defaultChoiceLanguageStringState)
-                                ->live(),
+                                ->live(onBlur: true),
                         ]),
                 ]),
 
@@ -257,6 +253,11 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     ->label('VIEW/EDIT QUESTION')
                     ->icon('heroicon-m-pencil')
                     ->extraAttributes(['class' => 'py-2 shadow-none'])
+                    ->extraModalWindowAttributes(['class' => 'add_questions_modal'])
+                    ->modalSubmitAction(fn(StaticAction $action) => $action
+                        ->extraAttributes(['class' => 'buttona shadow-none !ring-0 border-0']))
+                    ->modalCancelAction(fn(StaticAction $action) => $action
+                        ->extraAttributes(['class' => 'buttonb shadow-none !ring-0 ']))
                     ->button()
                     ->color('blue')
                     // disable editing uploaded custom questions
@@ -274,7 +275,7 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                         'name' => $record->name,
                     ])
                     ->form($questionForm),
-                    // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
+                // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
 //                    ->action(function (array $data) {
 //                        $surveyRow = SurveyRow::find($data['id']);
 //
@@ -289,7 +290,24 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                     ->label('DELETE QUESTION')
                     ->extraAttributes(['class' => 'py-2 shadow-none'])
                     ->button()
-                    ->modalHeading('Delete Question'),
+                    ->modalHeading('Delete Question')
+                    ->action(function (DeleteAction $action) {
+
+                        $choiceList = $action->process(static fn(Model $record) => $record->choiceList);
+
+                        $result = $action->process(static fn(Model $record) => $record->delete());
+
+                        if (!$result) {
+                            $this->failure();
+
+                            return;
+                        }
+
+                        // Lists for these custom questions are always only for the individual question.
+                        $choiceList->delete();
+
+                        $action->success();
+                    }),
 
             ]);
     }
