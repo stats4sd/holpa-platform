@@ -63,6 +63,8 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
         $this->form->fill($this->xlsformModuleVersion->toArray());
     }
 
+    protected static bool $shouldRegisterNavigation = false;
+
     public function table(Table $table): Table
     {
 
