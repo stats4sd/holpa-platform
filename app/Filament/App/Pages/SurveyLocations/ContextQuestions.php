@@ -44,16 +44,18 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
 
     protected static string $view = 'filament.app.pages.survey-locations.context-questions';
 
-    public Team|Model|null $team;
+    public Team $team;
     public XlsformModuleVersion $xlsformModuleVersion;
 
     public function mount(): void
     {
-        $this->team = HelperService::getCurrentOwner();
+        $team = HelperService::getCurrentOwner();
 
-        if ($this->team === null) {
+        if ($team === null) {
             abort(404);
         }
+
+        $this->team = $team;
 
         $this->xlsformModuleVersion = $this->team->localContextModuleVersion->load(['surveyRows.languageStrings', 'surveyRows.choiceList.choiceListEntries.languageStrings']);
 
@@ -64,12 +66,6 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
     {
 
         $locales = $this->team->locales;
-
-        $choiceListHeaders = $locales->map(function (Locale $locale) {
-            return [
-                Header::make('label_' . $locale->id)->label('Label - ' . $locale->language_label),
-            ];
-        })->flatten()->toArray();
 
         // for new questions, set the default languageStrings to 'label' + 'hint' - one for each of the team locales.
         $defaultLanguageStringState = $locales->map(function (Locale $locale) {
@@ -94,6 +90,112 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                 'text' => '',
             ];
         })->toArray();
+
+        $questionForm = [
+            Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+            Hidden::make('id'),
+            Fieldset::make('Question Information')
+                ->columns([
+                    'sm' => 1,
+                    'md' => 2,
+                    'lg' => 2,
+                ])
+                ->schema([
+                    Select::make('type')->options([
+                        'select_one' => 'select_one',
+                        'select_multiple' => 'select_multiple',
+                        'decimal' => 'decimal',
+                        'integer' => 'integer',
+                        'text' => 'text',
+                    ])
+                        ->afterStateHydrated(function (Select $component, ?string $state) {
+                            if (Str::startsWith($state, 'select_one')) {
+                                $component->state('select_one');
+                            }
+
+                            if (Str::startsWith($state, 'select_multiple')) {
+                                $component->state('select_multiple');
+                            }
+                        })
+                        ->dehydrateStateUsing(function ($state, Get $get) {
+                            if ($state === 'select_one' || $state === 'select_multiple') {
+                                $state = $state . ' ' . Str::lower(Str::slug($get('name'), separator: '_'));
+                            }
+
+                            return $state;
+                        })
+                        ->live()
+                        ->required(),
+                    TextInput::make('name')->label('Variable Name')->live()->required()
+                        ->helperText('The variable name should only have alphanumeric characters or underscores. Any spaces will be automatically replaced with underscores when saving this question.')
+                        ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, separator: '_'))),
+                    Repeater::make('languageStrings')
+                        ->extraAttributes(['class' => 'inline-repeater'])
+                        ->label('')
+                        ->columnSpan(2)
+                        ->addable(false)
+                        ->deletable(false)
+                        ->grid(2)
+                        ->relationship('languageStrings')
+                        ->saveRelationshipsWhenHidden(true)
+                        ->schema([
+                            Hidden::make('locale_id'),
+                            Hidden::make('language_string_type_id'),
+
+                            TextInput::make('text')
+                                ->required(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name === 'label')
+                                ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
+                        ])
+                        ->default($defaultLanguageStringState)
+                        ->live(),
+
+                ])->live(),
+            Fieldset::make('Choice List')
+                ->columns([
+                    'sm' => 1,
+                    'md' => 1,
+                    'lg' => 1,
+                ])
+                ->live()
+                ->relationship('choiceList')
+                ->visible(fn(Get $get) => Str::startsWith($get('type'), 'select_one') || Str::startsWith($get('type'), 'select_multiple'))
+                ->schema([
+                    Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+                    Hidden::make('list_name')->live()
+                        ->dehydrateStateUsing(fn(Get $get) => $get('../name') . '_choices'),
+                    Repeater::make('choiceListEntries')
+                        ->relationship('choiceListEntries')
+                        ->label('Options list for the select question')
+                        ->itemLabel(fn(array $state): ?string => $state['name'] ?? null)
+                        ->schema([
+                            TextInput::make('name')
+                                ->label('Option name')
+                                ->helperText('This is the "name" column in ODK, and is the value that appears in the data when the option is selected')
+                                ->required(),
+                            Hidden::make('owner_id')->default(HelperService::getCurrentOwner()->id),
+                            Repeater::make('languageStrings')
+                                ->extraAttributes(['class' => 'inline-repeater'])
+                                ->columnSpan(2)
+                                ->grid(2)
+                                ->label('')
+                                ->addable(false)
+                                ->deletable(false)
+                                ->relationship('languageStrings')
+                                ->saveRelationshipsWhenHidden(true)
+                                ->schema([
+                                    Hidden::make('locale_id'),
+                                    Hidden::make('language_string_type_id'),
+
+                                    TextInput::make('text')
+                                        ->required()
+                                        ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
+                                ])
+                                ->default($defaultChoiceLanguageStringState)
+                                ->live(),
+                        ]),
+                ]),
+
+        ];
 
         return $table
             ->query(
@@ -141,89 +243,7 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
 
                         return $data;
                     })
-                    ->form([
-                        Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-                        Hidden::make('id'),
-                        Fieldset::make('Question Information')
-                            ->columns([
-                                'sm' => 1,
-                                'md' => 2,
-                                'lg' => 2,
-                            ])
-                            ->schema([
-                                Select::make('type')->options([
-                                    'select_one' => 'select_one',
-                                    'select_multiple' => 'select_multiple',
-                                    'decimal' => 'decimal',
-                                    'integer' => 'integer',
-                                    'text' => 'text',
-                                ])->live()
-                                    ->required(),
-                                TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
-                                Repeater::make('languageStrings')
-                                    ->extraAttributes(['class' => 'inline-repeater'])
-                                    ->label('')
-                                    ->columnSpan(2)
-                                    ->addable(false)
-                                    ->deletable(false)
-                                    ->grid(2)
-                                    ->relationship('languageStrings')
-                                    ->saveRelationshipsWhenHidden(true)
-                                    ->schema([
-                                        Hidden::make('locale_id'),
-                                        Hidden::make('language_string_type_id'),
-
-                                        TextInput::make('text')
-                                            ->required()
-                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
-                                    ])
-                                    ->default($defaultLanguageStringState)
-                                    ->live(),
-
-                            ])->live(),
-                        Fieldset::make('Choice List')
-                            ->columns([
-                                'sm' => 1,
-                                'md' => 1,
-                                'lg' => 1,
-                            ])
-                            ->live()
-                            ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
-                            ->schema([
-                                Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-                                Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
-                                TableRepeater::make('choiceListEntries')
-                                    ->relationship('choiceListEntries')
-                                    ->headers([
-                                        Header::make('name')->label('Name'),
-                                        ...$choiceListHeaders,
-                                    ])
-                                    ->schema([
-                                        TextInput::make('name')->required(),
-                                        Hidden::make('owner_id')->default(HelperService::getCurrentOwner()->id),
-                                        Repeater::make('languageStrings')
-                                            ->extraAttributes(['class' => 'inline-repeater'])
-                                            ->label('')
-                                            ->addable(false)
-                                            ->deletable(false)
-                                            ->relationship('languageStrings')
-                                            ->saveRelationshipsWhenHidden(true)
-                                            ->schema([
-                                                Hidden::make('locale_id'),
-                                                Hidden::make('language_string_type_id'),
-
-                                                TextInput::make('text')
-                                                    ->label(''),
-                                            ])
-                                            ->default($defaultChoiceLanguageStringState)
-                                            ->live(),
-                                    ]),
-                            ]),
-
-                    ]),
+                    ->form($questionForm),
             ])
 
             // show form content in modal popup
@@ -250,89 +270,7 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
                         'type' => $record->type,
                         'name' => $record->name,
                     ])
-                    ->form([
-                        Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-                        Hidden::make('id'),
-                        Fieldset::make('Question Information')
-                            ->columns([
-                                'sm' => 1,
-                                'md' => 2,
-                                'lg' => 2,
-                            ])
-                            ->schema([
-                                Select::make('type')->options([
-                                    'select_one' => 'select_one',
-                                    'select_multiple' => 'select_multiple',
-                                    'decimal' => 'decimal',
-                                    'integer' => 'integer',
-                                    'text' => 'text',
-                                ])->live()
-                                    ->required(),
-                                TextInput::make('name')->label('Variable Name')->live()->required()
-                                    ->dehydrateStateUsing(fn($state): string => Str::lower(Str::slug($state, '_'))),
-                                Repeater::make('languageStrings')
-                                    ->extraAttributes(['class' => 'inline-repeater'])
-                                    ->label('')
-                                    ->columnSpan(2)
-                                    ->addable(false)
-                                    ->deletable(false)
-                                    ->grid(2)
-                                    ->relationship('languageStrings')
-                                    ->saveRelationshipsWhenHidden(true)
-                                    ->schema([
-                                        Hidden::make('locale_id'),
-                                        Hidden::make('language_string_type_id'),
-
-                                        TextInput::make('text')
-                                            ->required()
-                                            ->label(fn(Get $get) => LanguageStringType::find($get('language_string_type_id'))->name . ' - ' . Locale::find($get('locale_id'))->language_label),
-                                    ])
-                                    ->default($defaultLanguageStringState)
-                                    ->live(),
-
-                            ])->live(),
-                        Fieldset::make('Choice List')
-                            ->columns([
-                                'sm' => 1,
-                                'md' => 1,
-                                'lg' => 1,
-                            ])
-                            ->live()
-                            ->relationship('choiceList')
-                            ->visible(fn(Get $get) => $get('type') === 'select_one' || $get('type') === 'select_multiple')
-                            ->schema([
-                                Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
-                                Hidden::make('list_name')->live()
-                                    ->formatStateUsing(fn(Get $get) => $get('../name') . '_choices'),
-                                TableRepeater::make('choiceListEntries')
-                                    ->relationship('choiceListEntries')
-                                    ->headers([
-                                        Header::make('name')->label('Name'),
-                                        ...$choiceListHeaders,
-                                    ])
-                                    ->schema([
-                                        TextInput::make('name')->required(),
-                                        Hidden::make('owner_id')->default(HelperService::getCurrentOwner()->id),
-                                        Repeater::make('languageStrings')
-                                            ->extraAttributes(['class' => 'inline-repeater'])
-                                            ->label('')
-                                            ->addable(false)
-                                            ->deletable(false)
-                                            ->relationship('languageStrings')
-                                            ->saveRelationshipsWhenHidden(true)
-                                            ->schema([
-                                                Hidden::make('locale_id'),
-                                                Hidden::make('language_string_type_id'),
-
-                                                TextInput::make('text')
-                                                    ->label('test'),
-                                            ])
-                                            ->default($defaultChoiceLanguageStringState)
-                                            ->live(),
-                                    ]),
-                            ]),
-
-                    ])
+                    ->form($questionForm)
                     // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
                     ->action(function (array $data) {
                         $surveyRow = SurveyRow::find($data['id']);
