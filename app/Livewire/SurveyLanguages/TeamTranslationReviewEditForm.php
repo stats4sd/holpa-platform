@@ -127,7 +127,13 @@ class TeamTranslationReviewEditForm extends Component implements HasActions, Has
             $this->locale->processing_count++;
             $this->locale->save();
 
-            Excel::queueImport(new XlsformTemplateLanguageImport($this->locale), $path)
+
+
+            Excel::queueImport(new XlsformTemplateLanguageImport(
+                $this->locale,
+                $xlsformTemplate,
+                auth()->user()
+            ), $path)
                 ->chain([
                     new NotifyUserThatLanguageImportIsComplete($this->locale, $xlsformTemplate, request()->user()),
                 ]);

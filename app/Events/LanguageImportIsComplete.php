@@ -13,14 +13,14 @@ use Illuminate\Queue\SerializesModels;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 
-class NotifyUserThatLanguageImportIsComplete implements ShouldBroadcast
+class LanguageImportIsComplete implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * Create a new event instance.
      */
-    public function __construct(public int $localeId, public int $xlsformTemplateId, public int $userId)
+    public function __construct(public int $localeId, public int $xlsformTemplateId)
     {
         //
     }
