@@ -12,12 +12,12 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
         <x-slot:instructions>
 
             <div class="mx-12 mb-4">
-                <p class="mb-2">                
-In this section, you can download the dataset for your survey. The download will include all the data from the live data collection, some calculated agroecology and performance indicators, and a data dictionary. 
-From here, your team can conduct whatever data analysis is needed, and organise storing and sharing of the data as required. 
+                <p class="mb-2">
+In this section, you can download the dataset for your survey. The download will include all the data from the live data collection, some calculated agroecology and performance indicators, and a data dictionary.
+From here, your team can conduct whatever data analysis is needed, and organise storing and sharing of the data as required.
             </p>
 
-                  
+
         </div>
     </x-slot:instructions>
 </x-instructions-sidebar>
@@ -52,25 +52,19 @@ From here, your team can conduct whatever data analysis is needed, and organise 
                         <x-slot:description>Download the complete dataset from your survey. This export includes calculated agro-ecology and performance indicators and a detailed data dictionary.</x-slot:description>
                         <x-slot:buttonLabel>Download .xlsx</x-slot:buttonLabel>
                 </x-download-section>
-       
+
 
         </div>
     </div>
 
     <!-- Footer -->
-    <div class="completebar">
-        @if(auth()->user()->latestTeam->data_collection_progress === 'complete')
-        <div class="mb-6 mx-auto md:mr-24 md:ml-0 md:inline-block block text-green ">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 inline " fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                </svg>
-                <span class="ml-1 inline text-sm font-bold">SECTION COMPLETE </span>
-            </div>
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb block max-w-sm mx-auto md:mx-4 md:inline-block mb-6 md:mb-0">Go back</a>
-            {{ $this->markIncompleteAction }}
-        @else
-            <a href="{{ $surveyDashboardUrl }}" class="buttonb mx-4 inline-block">Go back</a>
-            {{ $this->markCompleteAction }}
-        @endif
-    </div>
+    <!-- Footer -->
+    <x-complete-section-status-bar :completion-prop="$completionProp">
+        <x-slot:markCompleteAction>
+            {{ $this->markCompleteAction() }}
+        </x-slot:markCompleteAction>
+        <x-slot:markIncompleteAction>
+            {{ $this->markIncompleteAction() }}
+        </x-slot:markIncompleteAction>
+    </x-complete-section-status-bar>
 </x-filament-panels::page>

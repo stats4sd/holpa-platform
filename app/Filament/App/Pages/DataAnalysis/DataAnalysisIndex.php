@@ -25,8 +25,6 @@ class DataAnalysisIndex extends Page implements HasActions, HasForms
 
     protected static ?string $title = 'Data Analysis';
 
-
-
     protected $listeners = ['refreshPage' => '$refresh'];
 
     public function getBreadcrumbs(): array

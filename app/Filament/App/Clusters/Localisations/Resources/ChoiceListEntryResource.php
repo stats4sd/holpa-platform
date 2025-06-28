@@ -88,12 +88,14 @@ class ChoiceListEntryResource extends Resource
     /** @noinspection PhpRedundantOptionalArgumentInspection */
     public static function getFormSchema(ChoiceList $choiceList): array
     {
+        ray($choiceList);
+
         if (isset($choiceList->properties['extra_properties'])) {
 
             $propFields = collect($choiceList->properties['extra_properties'])
                 ->map(fn ($property) => TextInput::make('properties.'.$property['name'])
                     ->label($property['label'])
-                    ->helperText($property['helper_text'])
+                    ->helperText($property['hint'])
                 );
         } else {
             $propFields = collect([]);

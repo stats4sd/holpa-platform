@@ -17,6 +17,15 @@ use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class EditProfile extends \Filament\Pages\Auth\EditProfile
 {
+
+    protected static ?string $navigationLabel = 'My Account';
+    protected static ?string $navigationUri = '/my-account';
+
+    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+
+    protected ?string $heading = 'My Account';
+
+
     /**
      * @throws \Exception
      */

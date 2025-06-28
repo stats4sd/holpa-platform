@@ -93,6 +93,8 @@ class CustomModuleVersions extends Component implements HasForms
             return;
         }
 
+        $this->dispatch('XlsformModuleVersionProcessing');
+
         $file = reset($customQuestionList);
 
         // follow process for importing XlsformTemplates

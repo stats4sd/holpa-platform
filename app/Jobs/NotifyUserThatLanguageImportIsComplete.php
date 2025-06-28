@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Events\LanguageImportIsComplete;
 use App\Models\User;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -53,6 +54,6 @@ class NotifyUserThatLanguageImportIsComplete implements ShouldQueue
             ->broadcast($this->user)
             ->send();
 
-        \App\Events\NotifyUserThatLanguageImportIsComplete::dispatch($this->locale->id, $this->xlsformTemplate->id, $this->user->id);
+        LanguageImportIsComplete::dispatch($this->locale->id, $this->xlsformTemplate->id);
     }
 }

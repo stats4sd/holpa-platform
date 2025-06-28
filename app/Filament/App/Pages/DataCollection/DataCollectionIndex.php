@@ -3,6 +3,7 @@
 namespace App\Filament\App\Pages\DataCollection;
 
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\Shared\WithCompletionStatusBar;
 use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
@@ -12,6 +13,9 @@ use Illuminate\Contracts\View\View;
 
 class DataCollectionIndex extends Page
 {
+    use WithCompletionStatusBar;
+    public string $completionProp = 'data_collection_complete';
+
     protected static string $view = 'filament.app.pages.data-collection.data-collection-index';
 
     protected static bool $shouldRegisterNavigation = false;
@@ -19,8 +23,6 @@ class DataCollectionIndex extends Page
     protected static ?string $title = 'Data Collection';
 
     protected ?string $summary = 'View and manage the survey and incoming data.';
-
-    protected $listeners = ['refreshPage' => '$refresh'];
 
     public Team $team;
 
@@ -48,38 +50,10 @@ class DataCollectionIndex extends Page
         ]);
     }
 
-
     public function getMaxContentWidth(): MaxWidth
     {
         return MaxWidth::Full;
     }
 
-    public function markCompleteAction(): Action
-    {
-        return Action::make('markComplete')
-            ->label('MARK AS COMPLETE')
-            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
-            ->action(function () {
-                $team = HelperService::getCurrentOwner();
-                $team->data_collection_progress = 'complete';
-                $team->save();
-
-                $this->dispatch('refreshPage');
-            });
-    }
-
-    public function markIncompleteAction(): Action
-    {
-        return Action::make('markIncomplete')
-            ->label('MARK AS INCOMPLETE')
-            ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
-            ->action(function () {
-                $team = HelperService::getCurrentOwner();
-                $team->data_collection_progress = 'not_started';
-                $team->save();
-
-                $this->dispatch('refreshPage');
-            });
-    }
 
 }

@@ -12,10 +12,13 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Enums\MaxWidth;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 
 class TimeFrame extends Page implements HasForms, HasTable
@@ -32,6 +35,8 @@ class TimeFrame extends Page implements HasForms, HasTable
     // protected ?string $subheading = 'Specify the time frame for your survey';
 
     public ?array $data = [];
+
+    public bool $showCompiledText = false;
 
     public Team $team;
 
@@ -63,7 +68,7 @@ class TimeFrame extends Page implements HasForms, HasTable
             ->schema([
                 TextInput::make('time_frame')
                     ->live()
-                    ->afterStateUpdated(fn (self $livewire) => $livewire->saveData()),
+                    ->afterStateUpdated(fn(self $livewire) => $livewire->saveData()),
             ]);
     }
 
@@ -82,15 +87,31 @@ class TimeFrame extends Page implements HasForms, HasTable
     {
 
         return $table
+            ->heading('Questions that reference the time frame')
+            ->description(fn(self $livewire) => $livewire->showCompiledText
+                ? 'Showing the text as it will appear to enumerators'
+                : 'Showing the text including the ODK form ${time_frame} variable placeholder'
+            )
+            ->headerActions([
+                Action::make('toggle_text')
+                    ->label(fn(self $livewire) => $livewire->showCompiledText ? 'Show ODK Variable in labels' : 'Show final question text')
+                    ->action(fn(self $livewire) => $livewire->showCompiledText = !$livewire->showCompiledText),
+            ])
+            ->defaultPaginationPageOption(50)
             ->query(
-                fn () => SurveyRow::query()
-                    ->whereHas('xlsformModuleVersion', fn ($query) => $query->where('is_default', 1))
-                    ->whereHas('languageStrings', fn ($query) => $query->whereLike('text', '%${time_frame}%'))
+                fn() => SurveyRow::query()
+                    ->whereHas('xlsformModuleVersion', fn($query) => $query->where('is_default', 1))
+                    ->whereHas('languageStrings', fn($query) => $query->whereLike('text', '%${time_frame}%'))
             )
             ->columns([
                 TextColumn::make('name')->label('Name'),
-                TextColumn::make('default_label')->label('Label (en)')->wrap(),
-                TextColumn::make('default_hint')->label('Hint (en)')->wrap(),
+                TextColumn::make('defaultLabel.text')->label('Label (en)')->wrap()
+                    ->formatStateUsing(fn(?string $state, self $livewire) => $livewire->showCompiledText
+                        ? new HtmlString(Str::replace('${time_frame}', '<b>'.$livewire->team->time_frame.'</b>', $state))
+                        : new HtmlString(Str::replace('${time_frame}', '<b>${time_frame}</b>', $state))
+                    ),
+                TextColumn::make('defaultHint.text')->label('Hint (en)')->wrap()
+                    ->formatStateUsing(fn(?string $state, self $livewire) => $livewire->showCompiledText ? Str::replace('${time_frame}', $livewire->team->time_frame, $state) : $state),
             ]);
     }
 }

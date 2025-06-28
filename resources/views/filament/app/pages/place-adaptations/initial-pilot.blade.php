@@ -48,8 +48,10 @@
 
                 <x-red-alert-box>
                     <x-slot:content>
-                        The QR codes below are <span class="font-semibold">DRAFTS</span>.<br>
-                        Please <span class="font-semibold">do not share </span>these codes with enumerators!<br>
+                        The QR codes below are
+                        <span class="font-semibold">DRAFTS</span>.<br>
+                        Please
+                        <span class="font-semibold">do not share </span>these codes with enumerators!<br>
                         <span class="font-semibold"> All submissions to the test forms are temporary </span> and will be reset whenever you take an action using the survey dashboard that changes the forms.<br>
                         Do not use these forms for live data collection.
                     </x-slot:content>
@@ -128,9 +130,9 @@
 
                         @if($xlsform->draft_needs_update)
 
-                            <div class="border border-gray-600 rounded-lg p-4 flex flex-col items-center justify-center space-y-4 space-x-4 h-100 px-20">
+                            <div class="border border-gray-600 rounded-lg p-1 flex flex-col items-center justify-center space-y-4 h-100 px-4">
                                 <div class="mx-auto"></div>
-                                <div class="mx-auto">This XLSForm is currently being updated. This may take up to 2 minutes. The QR code will appear when the new draft is ready. The form processing will continue even if you leave this page and return later.</div>
+                                <div class="mx-auto">This XLSForm is currently being updated. This may take 2-3 minutes. The QR code will appear when the new draft is ready. The form processing will continue even if you leave this page and return later.</div>
                                 <div role="status">
                                     <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>

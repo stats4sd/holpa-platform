@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Events\NotifyUserThatLanguageImportIsComplete;
+use App\Events\LanguageImportIsComplete;
 use App\Models\Team;
 use App\Models\User;
 use App\Services\LocationSectionBuilder;

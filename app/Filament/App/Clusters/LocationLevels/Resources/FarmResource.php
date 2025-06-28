@@ -6,6 +6,7 @@ use App\Filament\App\Clusters\LocationLevels;
 use App\Filament\App\Clusters\LocationLevels\Resources\FarmResource\Pages;
 use App\Models\SampleFrame\Farm;
 use App\Models\SampleFrame\LocationLevel;
+use Faker\Extension\Helper;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -33,6 +34,8 @@ class FarmResource extends Resource
         return $form
             ->schema([
 
+                Forms\Components\Hidden::make('owner_id')
+            ->default(HelperService::getCurrentOwner()->id),
                 Forms\Components\Select::make('location_id')
                     ->label('Select the ' . $locationLevelWithFarms->name . ' for this farm')
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),

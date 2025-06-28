@@ -331,9 +331,9 @@ padding-left: 0px ;
 }
 
 /* For complex repeater items in forms; make the borders around each item more clear */
-/* .fi-fo-repeater-item {
+ .fi-fo-repeater-item {
     @apply border-2 border-green;
-} */
+}
 
 
 /* For 'inline repeater' elements, hide the defuault border, ring and shadow around items - to make the repeated fields look like they are 'in line' with the other fields and not a separate section of the form.

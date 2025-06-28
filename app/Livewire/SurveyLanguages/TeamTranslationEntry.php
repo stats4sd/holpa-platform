@@ -187,7 +187,7 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
         };
     }
 
-    #[On('echo:xlsforms,NotifyUserThatLanguageImportIsComplete')]
+    #[On('echo:xlsforms,LanguageImportIsComplete')]
     public function refreshLocales(): void
     {
 
