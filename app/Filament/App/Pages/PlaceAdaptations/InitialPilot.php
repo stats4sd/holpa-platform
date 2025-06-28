@@ -3,6 +3,7 @@
 namespace App\Filament\App\Pages\PlaceAdaptations;
 
 use App\Filament\App\Pages\SurveyDashboard;
+use App\Filament\Shared\WithCompletionStatusBar;
 use App\Models\Team;
 use App\Services\HelperService;
 use Filament\Actions\Action;
