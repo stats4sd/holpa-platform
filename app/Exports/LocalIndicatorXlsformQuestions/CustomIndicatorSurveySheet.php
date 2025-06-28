@@ -45,7 +45,7 @@ class CustomIndicatorSurveySheet implements FromCollection, ShouldAutoSize, With
             $localIndicator = $this->team->localIndicators->where('xlsform_module_version_id', $surveyRow->xlsform_module_version_id)->first();
             array_push($record, $localIndicator->name);
 
-            array_push($record, $surveyRow->type);
+            array_push($record, $surveyRow->type_and_choice_list);
             array_push($record, $surveyRow->name);
 
             foreach ($locales as $locale) {

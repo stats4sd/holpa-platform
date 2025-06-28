@@ -50,6 +50,8 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
 
     public bool $expanded = true;
 
+    public bool $processing = false;
+
     public array $data;
 
     public function mount(): void
@@ -74,12 +76,19 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
         return $this->customModuleQuestionTable($table, $locales, $this->xlsformModuleVersion);
     }
 
-   #[On('echo:xlsforms,.FilamentOdkLink.XlsformModuleVersionWasImported')]
+    #[On('echo:xlsforms,.FilamentOdkLink.XlsformModuleVersionWasImported')]
     public function refreshTable()
     {
+        $this->processing = false;
         $this->reset('xlsformModuleVersion');
-        //$this->resetTable();
     }
+
+    #[On('XlsformModuleVersionProcessing')]
+    public function disableEditing(): void
+    {
+        $this->processing = true;
+    }
+
 
     public function render(): \Illuminate\Contracts\View\View
     {

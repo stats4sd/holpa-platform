@@ -194,14 +194,17 @@ trait WithXlsformModuleVersionQuestionEditing
                 fn(Action $action, bool $isReordering) => $action
                     ->button()
                     ->label($isReordering ? 'Disable reordering' : 'Enable reordering')
-                    ->extraAttributes(['class' => 'buttona border-0 !ring-0 !shadow-none -ml-2  mb-4']))
+                    ->extraAttributes(['class' => 'buttona border-0 !ring-0 !shadow-none -ml-2  mb-4'])
+                    ->icon(fn(self $livewire) => $livewire->processing ? 'heroicon-o-arrow-path' : 'heroicon-m-plus')
+                    ->disabled(fn(self $livewire) => $livewire->processing ?? false)
+            )
             ->paginated(false)
 
             // add "create new record" button in table header
             ->headerActions([
                 CreateAction::make()
                     ->label('ADD QUESTION')
-                    ->icon('heroicon-m-plus')
+                    ->icon(fn(self $livewire) => $livewire->processing ? 'heroicon-o-arrow-path' : 'heroicon-m-plus')
                     ->button()
                     ->color('danger')
                     ->extraAttributes(['class' => 'add_questions_btn'])
@@ -213,14 +216,15 @@ trait WithXlsformModuleVersionQuestionEditing
                     ->modalCancelAction(fn(StaticAction $action) => $action
                         ->extraAttributes(['class' => 'buttonb shadow-none !ring-0 ']))
                     ->createAnother(false)
-                    ->form($questionForm),
+                    ->form($questionForm)
+                    ->disabled(fn(self $livewire) => $livewire->processing ?? false),
             ])
 
             // show form content in modal popup
             ->actions([
 
                 Action::make('view_edit_question')
-                    ->label('VIEW/EDIT QUESTION')
+                    ->label('EDIT QUESTION')
                     ->icon('heroicon-m-pencil')
                     ->extraAttributes(['class' => 'py-2 shadow-none'])
                     ->extraModalWindowAttributes(['class' => 'add_questions_modal'])
@@ -234,7 +238,8 @@ trait WithXlsformModuleVersionQuestionEditing
                     // Note: we use survey_rows.path to determine if a custom question is uploaded or not now,
                     // when we start using survey_rows.path for matching submissions to SurveyRow entries,
                     // we will need to create a new column as a flag for indication
-                    ->disabled(fn(SurveyRow $record) => $record->path != null)
+                    ->disabled(fn(self $livewire, SurveyRow $record) => $record->path != null || $livewire->processing)
+                    ->tooltip(fn(SurveyRow $record) => $record->path == null ? 'You cannot directly edit questions created via an Excel Import. Please download the template above and edit the question inside Excel' : '')
                     // set more horizontal space for modal popup
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     // fill the form with existing data
@@ -244,16 +249,10 @@ trait WithXlsformModuleVersionQuestionEditing
                         'type' => $record->type,
                         'name' => $record->name,
                     ])
-                    ->form($questionForm),
-                // save changes of type and name to survey_rows record after user clicking modal popup form "Submit" button
-//                    ->action(function (array $data) {
-//                        $surveyRow = SurveyRow::find($data['id']);
-//
-//                        $surveyRow->type = $data['type'];
-//                        $surveyRow->name = $data['name'];
-//
-//                        $surveyRow->save();
-//                    }),
+                    ->form($questionForm)
+                    ->icon(fn(self $livewire) => $livewire->processing ? 'heroicon-o-arrow-path' : 'heroicon-o-pencil'),
+
+
 
                 // add "DELETE QUESTION" button in table row instead of inside modal popup
                 DeleteAction::make()
@@ -274,12 +273,14 @@ trait WithXlsformModuleVersionQuestionEditing
                         }
 
                         // Lists for these custom questions are always only for the individual question.
-                        if($choiceList instanceof ChoiceList) {
+                        if ($choiceList instanceof ChoiceList) {
                             $choiceList->delete();
                         }
 
                         $action->success();
-                    }),
+                    })
+                    ->icon(fn(self $livewire) => $livewire->processing ? 'heroicon-o-arrow-path' : 'heroicon-o-trash')
+                    ->disabled(fn(self $livewire) => $livewire->processing ?? false),
 
             ]);
     }
