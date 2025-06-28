@@ -2,9 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Events\TestEvent;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
 use phpDocumentor\Reflection\DocBlock\Tags\Template;
+use Stats4sd\FilamentOdkLink\Events\XlsformDraftWasDeployed;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceListEntry;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\LanguageString;
@@ -35,5 +37,8 @@ class TestCommand extends Command
     public function handle(): void
     {
         dump('Use this as a scratch space for testing things!');
+
+        TestEvent::dispatch();
+        XlsformDraftWasDeployed::dispatch(4);
     }
 }

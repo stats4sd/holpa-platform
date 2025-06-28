@@ -28,6 +28,7 @@ use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
@@ -71,6 +72,13 @@ class LocalIndicatorQuestionForm extends Component implements HasActions, HasFor
     {
         $locales = $this->localIndicator->team->locales;
         return $this->customModuleQuestionTable($table, $locales, $this->xlsformModuleVersion);
+    }
+
+   #[On('echo:xlsforms,.FilamentOdkLink.XlsformModuleVersionWasImported')]
+    public function refreshTable()
+    {
+        $this->reset('xlsformModuleVersion');
+        //$this->resetTable();
     }
 
     public function render(): \Illuminate\Contracts\View\View

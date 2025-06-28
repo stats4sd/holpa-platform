@@ -19,6 +19,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\SurveyRow;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\LanguageStringType;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
@@ -62,7 +63,7 @@ trait WithXlsformModuleVersionQuestionEditing
         })->toArray();
 
         $questionForm = [
-            Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+            Hidden::make('xlsform_module_version_id')->default($xlsformModuleVersion->id)->live(),
             Hidden::make('id'),
             Fieldset::make('Question Information')
                 ->columns([
@@ -74,7 +75,7 @@ trait WithXlsformModuleVersionQuestionEditing
                     Hidden::make('row_number')
                         ->default(function () {
                             // find the largest row_number of survey_rows records
-                            $number = $this->xlsformModuleVersion->surveyRows->last()->row_number ?? 0;
+                            $number = $xlsformModuleVersion->surveyRows->last()->row_number ?? 0;
                             return $number + 1;
                         }),
                     Select::make('type')->options([
@@ -137,7 +138,7 @@ trait WithXlsformModuleVersionQuestionEditing
                 ->relationship('choiceList')
                 ->saveRelationshipsBeforeChildrenUsing(fn(Fieldset $component) => $component->saveRelationships())
                 ->schema([
-                    Hidden::make('xlsform_module_version_id')->default($this->xlsformModuleVersion->id)->live(),
+                    Hidden::make('xlsform_module_version_id')->default($xlsformModuleVersion->id)->live(),
                     Hidden::make('list_name')->live(onBlur: true)
                         ->dehydrateStateUsing(fn(Get $get) => $get('../name') . '_choices_' . Str::random(8)),
                     Repeater::make('choiceListEntries')
@@ -177,7 +178,7 @@ trait WithXlsformModuleVersionQuestionEditing
         return $table
             ->query(
                 fn() => SurveyRow::query()
-                    ->where('xlsform_module_version_id', $this->xlsformModuleVersion->id)
+                    ->where('xlsform_module_version_id', $xlsformModuleVersion->id)
                     // sort record by row_number, to reflect the user defined ordering by drag and drop
                     ->orderBy('row_number'),
             )
@@ -238,7 +239,7 @@ trait WithXlsformModuleVersionQuestionEditing
                     ->modalWidth(MaxWidth::SevenExtraLarge)
                     // fill the form with existing data
                     ->fillForm(fn(SurveyRow $record): array => [
-                        'xlsform_module_version_id' => $this->xlsformModuleVersion->id,
+                        'xlsform_module_version_id' => $xlsformModuleVersion->id,
                         'id' => $record->id,
                         'type' => $record->type,
                         'name' => $record->name,
@@ -273,7 +274,9 @@ trait WithXlsformModuleVersionQuestionEditing
                         }
 
                         // Lists for these custom questions are always only for the individual question.
-                        $choiceList->delete();
+                        if($choiceList instanceof ChoiceList) {
+                            $choiceList->delete();
+                        }
 
                         $action->success();
                     }),

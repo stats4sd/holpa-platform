@@ -21,6 +21,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
+use Stats4sd\FilamentOdkLink\Events\XlsformDraftWasDeployed;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
@@ -49,7 +50,7 @@ class InitialPilot extends Page implements HasTable, HasInfolists, HasActions
         $this->team->deployDraftForms();
     }
 
-    #[On('echo:xlsforms,XlsformDraftWasDeployed')]
+    #[On('echo:xlsforms,.FilamentOdkLink.XlsformDraftWasDeployed')]
     public function handleXlsformDraftWasDeployed($event): void
     {
         $this->xlsforms->find($event['xlsformId'])->refresh();
