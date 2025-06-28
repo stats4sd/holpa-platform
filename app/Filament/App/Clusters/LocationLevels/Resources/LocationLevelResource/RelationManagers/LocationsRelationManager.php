@@ -2,6 +2,7 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers;
 
+use App\Services\HelperService;
 use Exception;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -47,6 +48,8 @@ class LocationsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('code')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Hidden::make('owner_id')
+                ->default(HelperService::getCurrentOwner()->id)
             ])
             ->columns(1);
     }
