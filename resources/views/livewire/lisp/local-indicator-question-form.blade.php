@@ -2,7 +2,7 @@
     <div class="py-6 px-8 border-b border-gray-300 flex justify-between items-center space-x-8">
         <div class="w-full flex justify-start">
         <h6 class="w-full ">{{ $localIndicator->name }}</h6>
-           
+
         </div>
         <div class="self-end ">
 
@@ -19,7 +19,5 @@
     <div class="p-4 transition ease-in-out delay-150 {{ $expanded ? 'visible' : 'hidden' }}">
         {{ $this->table }}
     </div>
-
-    <!-- TODO: show the original form for further testing after revising front end styling -->
 
 </div>

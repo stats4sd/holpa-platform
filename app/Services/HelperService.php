@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class HelperService
 {
     // Get the current team with the correct namespacing so phpstan doesn't complain whenever we get the current team
-    public static function getCurrentOwner(): Team|Model|null
+    public static function getCurrentOwner(): Team|null
     {
         if (Filament::hasTenancy() && is_a(Filament::getTenant(), Team::class)) {
 
