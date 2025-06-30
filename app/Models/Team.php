@@ -50,7 +50,12 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
             // all teams get a default locale of english
             $en = Language::where('iso_alpha2', 'en')->first();
 
-            $owner->languages()->sync($en->id, false);
+            $owner->languages()->sync([
+                    $en->id => [
+                        'locale_id' => $en->defaultLocale->id,
+                    ],
+                ]
+                , false);
 
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
