@@ -60,6 +60,11 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
             // create xlsform models for all active xlsform template for this newly created team
             $xlsformTemplates = XlsformTemplate::where('available', 1)->get();
 
+            // Create the "local context" module version for the team to add custom questions about the farm
+            $owner->localContextModuleVersion()->create([
+               'name' => 'Local Context',
+            ]);
+
             // suppose a newly created team does not have any xlsform, it is not necessary to do checking
             foreach ($xlsformTemplates as $xlsformTemplate) {
                 Xlsform::create([
