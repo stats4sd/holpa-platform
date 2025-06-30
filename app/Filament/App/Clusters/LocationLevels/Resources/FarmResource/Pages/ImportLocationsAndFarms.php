@@ -86,7 +86,6 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
         $locationImport->addMedia(Storage::path($data['upload']))->toMediaCollection();
         $data['import_id'] = $locationImport->id;
-        Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
 
 
         // import farms
@@ -98,7 +97,12 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
         $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
         $data['import_id'] = $farmImport->id;
-        Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
+
+
+        Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath())
+            ->chain([
+                Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath()),
+            ]);
 
         // send notification
         Notification::make()
@@ -264,7 +268,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
                                         ->helperText('For example: family name, farm name, telephone numbers, etc. These are columns that can be useful for enumerators or project team members to identify the farm, but that should not be shared outside the project for data protection purposes.')
                                         ->options(fn(Get $get): array => $get('header_columns'))
                                         ->disableOptionWhen(
-                                            fn(string $value, Get $get): bool => $value === (string) $get('farm_code_column') ||
+                                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
                                                 collect($get('farm_properties'))->contains($value) ||
                                                 $value === 'na'
                                         )
@@ -276,7 +280,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
                                         ->helperText('These are not identifiers, but are properties of the farm that are useful for analysis. For example: size of the farm, year of first engagement, etc. These are columns that can potentially be shared outside the project for analysis purposes.')
                                         ->options(fn(Get $get) => $get('header_columns'))
                                         ->disableOptionWhen(
-                                            fn(string $value, Get $get): bool => $value === (string) $get('farm_code_column') ||
+                                            fn(string $value, Get $get): bool => $value === (string)$get('farm_code_column') ||
                                                 collect($get('farm_identifiers'))->contains($value) ||
                                                 $value === 'na'
                                         )
@@ -293,7 +297,7 @@ class ImportLocationsAndFarms extends Page implements HasForms
 
                         ]),
 
-                ])
+                ]),
 
             ])->statePath('data');
     }
