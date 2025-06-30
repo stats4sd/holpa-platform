@@ -196,7 +196,6 @@ class SubmissionController extends Controller
 
         // do nothing if irrigation_percentage is null or "null"
         if ($irrigationPercentage == null || $irrigationPercentage == 'null') {
-            // ray('irrigation_percentage is null, do nothing');
             return $irrigationValues;
         }
 

@@ -95,7 +95,6 @@ class ViewSubmission extends ViewRecord
     public function matchContentToSurveyRow(string|array|null $value, string $key): ?Collection
     {
 
-        // ray()->count();
 
         /** @var ?SurveyRow $surveyRow */
         $surveyRow = $this->surveyRows->where('name', $key)->first();

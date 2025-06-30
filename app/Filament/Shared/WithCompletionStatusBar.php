@@ -14,8 +14,6 @@ trait WithCompletionStatusBar
             ->extraAttributes(['class' => 'buttona mx-4 inline-block'])
             ->action(function () {
 
-                ray($this->completionProp);
-
                 HelperService::getCurrentOwner()->update([
                     $this->completionProp => 1,
                 ]);
