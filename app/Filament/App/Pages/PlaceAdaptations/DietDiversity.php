@@ -74,7 +74,7 @@ class DietDiversity extends Page implements HasForms, HasTable
                         'name',
                         fn ($query) => $query
                             ->where('is_default', 0)
-                            ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
+                            ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_diversity'))
                     )
                     ->afterStateUpdated(fn (self $livewire) => $livewire->saveData()),
             ]);
@@ -100,7 +100,7 @@ class DietDiversity extends Page implements HasForms, HasTable
         } else {
             //  default to the 'default' diet diversity module version;
             $moduleVersion = XlsformModuleVersion::where('is_default', 1)
-                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
+                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_diversity'))
                 ->first();
         }
 
@@ -113,7 +113,8 @@ class DietDiversity extends Page implements HasForms, HasTable
                 TextColumn::make('type')->label('Question Type'),
                 TextColumn::make('name')->label('Name'),
                 TextColumn::make('defaultLabel.text')->label('Label (en)')->wrap(),
-                TextColumn::make('defaultHint.text')->label('Hint (en)')->wrap(),
+                TextColumn::make('defaultHint.text')->label('Hint (en)')->wrap()
+                ->width('40%'),
             ]);
     }
 }

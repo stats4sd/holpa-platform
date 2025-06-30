@@ -11,7 +11,8 @@
                 </p>
                 <p class="mb-2">
                     The platform can incorporate localised versions of the questions from the
-                    <a href="https://www.dietquality.org/tools" class="text-green font-semibold">Global Diet Quality Project</a>, which add relevant example foods for each category customised for over 100 countries. If you would like to include these in your survey, select the suitable country from the list of available countries. The page shows the questions that will appear in the survey, so you can review the default and the localised versions with examples, and decide what to use for your survey.
+                    <a href="https://www.dietquality.org/tools" class="text-green font-semibold" target="_blank"
+                    >Global Diet Quality Project</a>, which add relevant example foods for each category customised for over 100 countries. If you would like to include these in your survey, select the suitable country from the list of available countries. The page shows the questions that will appear in the survey, so you can review the default and the localised versions with examples, and decide what to use for your survey.
                 </p>
             </div>
         </x-slot:instructions>
