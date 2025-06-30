@@ -100,7 +100,7 @@ class DietDiversity extends Page implements HasForms, HasTable
         } else {
             //  default to the 'default' diet diversity module version;
             $moduleVersion = XlsformModuleVersion::where('is_default', 1)
-                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_quality'))
+                ->whereHas('xlsformModule', fn ($query) => $query->where('name', 'diet_diversity'))
                 ->first();
         }
 

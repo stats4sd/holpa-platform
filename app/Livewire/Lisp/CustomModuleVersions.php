@@ -98,7 +98,7 @@ class CustomModuleVersions extends Component implements HasForms
         $file = reset($customQuestionList);
 
         // follow process for importing XlsformTemplates
-        $handler = new HandleXlsformTemplateAdded;
+        $handler = new HandleXlsformTemplateAdded(importedBy: auth()->user());
 
         $moduleVersions = $this->unmatchedLocalIndicators->map(fn(LocalIndicator $localIndicator) => $localIndicator->xlsformModuleVersion);
 
