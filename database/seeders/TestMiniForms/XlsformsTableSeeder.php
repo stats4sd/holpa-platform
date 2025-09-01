@@ -23,7 +23,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'xlsform_template_id' => 1,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'odk_project_id' => 1447,
                 'title' => 'Test Mini HOLPA Household Survey',
                 'odk_id' => 'test-mini-holpa-household-survey',
@@ -45,7 +45,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'xlsform_template_id' => 1,
-                'owner_id' => 2,
+                'owner_id' => 4,
                 'odk_project_id' => 1448,
                 'title' => 'Test Mini HOLPA Household Survey',
                 'odk_id' => 'test-mini-holpa-household-survey',
@@ -67,7 +67,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'xlsform_template_id' => 1,
-                'owner_id' => 3,
+                'owner_id' => 5,
                 'odk_project_id' => 1449,
                 'title' => 'Test Mini HOLPA Household Survey',
                 'odk_id' => 'test-mini-holpa-household-survey',
@@ -89,7 +89,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 11,
                 'xlsform_template_id' => 2,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'odk_project_id' => 1447,
                 'title' => 'Test Mini HOLPA Fieldwork Survey',
                 'odk_id' => 'test-mini-holpa-fieldwork-survey',
@@ -111,7 +111,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 12,
                 'xlsform_template_id' => 2,
-                'owner_id' => 2,
+                'owner_id' => 4,
                 'odk_project_id' => 1448,
                 'title' => 'Test Mini HOLPA Fieldwork Survey',
                 'odk_id' => 'test-mini-holpa-fieldwork-survey',
@@ -133,7 +133,7 @@ class XlsformsTableSeeder extends Seeder
             array (
                 'id' => 13,
                 'xlsform_template_id' => 2,
-                'owner_id' => 3,
+                'owner_id' => 5,
                 'odk_project_id' => 1449,
                 'title' => 'Test Mini HOLPA Fieldwork Survey',
                 'odk_id' => 'test-mini-holpa-fieldwork-survey',
