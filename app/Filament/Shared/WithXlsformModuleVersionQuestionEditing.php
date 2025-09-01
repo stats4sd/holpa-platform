@@ -73,7 +73,7 @@ trait WithXlsformModuleVersionQuestionEditing
                 ])
                 ->schema([
                     Hidden::make('row_number')
-                        ->default(function (XlsformModuleVersion $xlsformModuleVersion) {
+                        ->default(function () use ($xlsformModuleVersion) {
                             // find the largest row_number of survey_rows records
                             $number = $xlsformModuleVersion->surveyRows->last()->row_number ?? 0;
                             return $number + 1;
