@@ -27,18 +27,18 @@ class TestSeeder extends Seeder
         ]);
 
         $teamP1 = Team::create([
-            'id' => 3,
+            'id' => 1,
             'name' => 'P1 Test Team',
         ]);
         $teamP2 = Team::create([
-            'id' => 4,
+            'id' => 2,
             'name' => 'P1 Test Team 2',
         ]);
 
         $program->teams()->sync([$teamP1->id, $teamP2->id]);
 
         $nonProgramTeam = Team::create([
-            'id' => 5,
+            'id' => 3,
             'name' => 'Non Program Test Team',
         ]);
 
