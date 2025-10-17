@@ -14,7 +14,7 @@ return [
          */
         'team_model' => env('ODK_TEAM_MODEL', Team::class),
         'user_model' => env('ODK_USER_MODEL', User::class),
-
+        'form_owner' => env('ODK_TEAM_MODEL', Team::class),
     ],
 
     'odk' => [
