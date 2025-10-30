@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Stats4sd\FilamentOdkLink\Services\HelperService;
+use Illuminate\Validation\Rules\Unique;
 
 class FarmResource extends Resource
 {
@@ -41,7 +42,12 @@ class FarmResource extends Resource
                     ->options($locationLevelWithFarms->locations->pluck('name', 'id')),
 
                 Forms\Components\TextInput::make('team_code')
-                    ->label('Please enter a unique code to identify this farm for your team')
+                    ->label('Unique code')
+                    ->helperText('Please enter a unique code to identify this farm for your team')
+                    // team code should be unique per team, as other teams may have the same team code
+                    ->unique(modifyRuleUsing: function (Unique $rule) {
+                        return $rule->where('owner_id', HelperService::getCurrentOwner()->id);
+                    })
                     ->maxLength(255),
 
                 Forms\Components\Section::make('Personally Identifiable information')
