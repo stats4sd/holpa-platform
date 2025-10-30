@@ -121,7 +121,11 @@ class FarmResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                Tables\Actions\CreateAction::make()
+                    // disable New Farm button if there is no location level with farm
+                    ->disabled(fn() => HelperService::getCurrentOwner()->locationLevels()->where('has_farms', 1)->count() < 1),
+
+                    // TODO: We have two location levels: district and sub-district. Can user select which location level when creating a new farm manually?
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
