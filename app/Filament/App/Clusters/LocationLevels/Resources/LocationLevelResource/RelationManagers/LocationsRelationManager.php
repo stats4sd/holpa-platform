@@ -53,7 +53,7 @@ class LocationsRelationManager extends RelationManager
                 Forms\Components\TextInput::make('code')
                     ->required()
                     // Note: Column locations.code has unique constraint in database. We can only have unique location code among all teams
-                    // Question: Should we remove the unique constraint? One team can never know what location codes have been used by other teams...
+                    // Question: Should we remove the unique constraint? A team can never know what location codes have been used by other teams...
                     ->unique()
                     ->maxLength(255),
                 Forms\Components\Hidden::make('owner_id')
