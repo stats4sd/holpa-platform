@@ -44,12 +44,14 @@ class LocationsRelationManager extends RelationManager
                     ->visible(fn () => $this->getOwnerRecord()->parent !== null),
                 Forms\Components\TextInput::make('name')
                     ->required()
+                    ->unique()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('code')
                     ->required()
+                    ->unique()
                     ->maxLength(255),
                 Forms\Components\Hidden::make('owner_id')
-                ->default(HelperService::getCurrentOwner()->id)
+                    ->default(HelperService::getCurrentOwner()->id)
             ])
             ->columns(1);
     }
