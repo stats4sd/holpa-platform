@@ -59,20 +59,36 @@ class SurveyCountry extends Page implements HasForms
                     ->searchable()
                     ->preload()
                     ->createOptionForm(fn () => [
+                        // add validations
                         Select::make('region_id')
                             ->relationship('region', 'name')
-                            ->label('Select the region for this country'),
+                            ->label('Select the region for this country')
+                            ->required(),
                         TextInput::make('name')
-                            ->label('Enter the name of this country'),
+                            ->label('Enter the name of this country')
+                            ->required()
+                            ->unique()
+                            ->maxLength(255),
                         TextInput::make('iso_alpha2')
-                            ->label('Enter the ISO Alpha-2 code for this country'),
+                            ->label('Enter the ISO Alpha-2 code for this country')
+                            ->required()
+                            ->unique()
+                            ->maxLength(2),
                         TextInput::make('iso_alpha3')
-                            ->label('Enter the ISO Alpha-3 code for this country'),
+                            ->label('Enter the ISO Alpha-3 code for this country')
+                            ->required()
+                            ->unique()
+                            ->maxLength(3),
                     ])
                     ->createOptionUsing(function (array $data): string {
+                        // set iso_alpha3 as country record id
                         $data['id'] = $data['iso_alpha3'];
 
-                        return Country::create($data)->getKey();
+                        // create new country model
+                        $newCountry = Country::create($data);
+
+                        // new country record id is 0 now, return iso_alphas so the newly created country record will be selected automatically
+                        return $data['iso_alpha3'];
                     })
                     ->afterStateUpdated(fn (self $livewire) => $livewire->saveData())
                     ->live(),
