@@ -12,6 +12,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Unique;
 use Livewire\Attributes\On;
 
 class LocationsRelationManager extends RelationManager
@@ -44,10 +45,15 @@ class LocationsRelationManager extends RelationManager
                     ->visible(fn () => $this->getOwnerRecord()->parent !== null),
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    ->unique()
+                    // location name should be uniqeu per team, as other teams may have the same location name
+                    ->unique(modifyRuleUsing: function (Unique $rule) {
+                        return $rule->where('owner_id', HelperService::getCurrentOwner()->id);
+                    })
                     ->maxLength(255),
                 Forms\Components\TextInput::make('code')
                     ->required()
+                    // Note: Column locations.code has unique constraint in database. We can only have unique location code among all teams
+                    // Question: Should we remove the unique constraint? One team can never know what location codes have been used by other teams...
                     ->unique()
                     ->maxLength(255),
                 Forms\Components\Hidden::make('owner_id')
