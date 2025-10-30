@@ -40,8 +40,7 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('app')
             ->tenant(Team::class)
-            // disable "Register New Team" option in multi-tenancy
-            // new team should be created by admin, user should not be able to create a new team
+            // any user can create a new team
             ->tenantRegistration(RegisterTeam::class)
             ->tenantMiddleware([
                 SetLatestTeamMiddleware::class,
