@@ -22,7 +22,7 @@ class LanguageStringsTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'language_string_type_id' => 1,
                 'linked_entry_type' => 'Stats4sd\\FilamentOdkLink\\Models\\OdkLink\\SurveyRow',
                 'linked_entry_id' => 6,
