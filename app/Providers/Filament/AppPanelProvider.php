@@ -166,6 +166,11 @@ class AppPanelProvider extends PanelProvider
                     ->url(url('admin'))
                     ->visible(fn () => auth()->user()->can('access admin panel')),
                 NavigationItem::make()
+                    ->label(__('Program Admin Panel'))
+                    ->icon('heroicon-o-adjustments-horizontal')
+                    ->url(url('program'))
+                    ->visible(fn () => auth()->user()->can('access program admin panel')),
+                NavigationItem::make()
                 ->label(__('My Team'))
                 ->icon('heroicon-o-home')
                 ->url(fn() => ViewTeam::getUrl(['record' => Filament::getTenant()])),
