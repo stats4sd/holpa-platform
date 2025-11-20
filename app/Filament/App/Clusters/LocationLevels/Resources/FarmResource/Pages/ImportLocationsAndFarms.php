@@ -98,11 +98,11 @@ class ImportLocationsAndFarms extends Page implements HasForms
         $farmImport->addMedia(Storage::path($data['upload']) . '_duplicate')->toMediaCollection();
         $data['import_id'] = $farmImport->id;
 
+        // import locations
+        Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath());
 
-        Excel::import(new LocationImport($data), $locationImport->getFirstMediaPath())
-            ->chain([
-                Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath()),
-            ]);
+        // import farms
+        Excel::import(new FarmImport($data), $farmImport->getFirstMediaPath());
 
         // send notification
         Notification::make()
