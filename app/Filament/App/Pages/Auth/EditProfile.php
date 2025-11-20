@@ -60,10 +60,12 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
     protected function getCurrentPasswordFormComponent(): Component
     {
+        // user should only enter current password when changing to a new password
         return TextInput::make('current_password')
             ->label(__('Current Password'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
+            // current password is required when new password is entered
             ->requiredWith('password')
             ->rule('current_password')
             ->autocomplete('current-password');
@@ -71,13 +73,16 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
     protected function getPasswordFormComponent(): Component
     {
+        // user 
         return TextInput::make('password')
             ->label(__('filament-panels::pages/auth/edit-profile.form.password.label'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
-            ->rule(Password::default())
-            ->minLength(10)
+            // new password is required when current password is entered
+            ->requiredWith('current_password')
+            ->rule(Password::default())            
             ->autocomplete('new-password')
+            ->minLength(10)
             ->same('passwordConfirmation');
     }
 
@@ -87,7 +92,8 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
             ->label(__('filament-panels::pages/auth/edit-profile.form.password_confirmation.label'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
-            ->required()
+            // new password for confirmation is required when new password is entered
+            ->requiredWith('password')
             ->dehydrated(false);
     }
 
@@ -115,12 +121,17 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
         $record->update($updateData);
 
-        if (isset($data['password']) && $data['password'] !== '') {
+        // we should check password_plain content.
+        // password contentn is encrypted, it always has content even password_plain is empty.
+        if (isset($data['password_plain']) && $data['password_plain'] !== '') {
 
             $record->update(['password' => $data['password']]);
 
             if ($record instanceof WithOdkCentralAccount) {
                 $odkLinkService = app()->make(OdkLinkService::class);
+
+                // TODO: below error occurred when update user password via ODK link service:
+                // HTTP request returned status code 401: {"message":"Could not authenticate with the provided credentials.","code":401.2} 
                 $odkLinkService->updateUserPassword($record, $data['current_password'], $data['password_plain']);
             }
 
