@@ -135,6 +135,7 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
                 $odkLinkService->updateUserPassword($record, $data['current_password'], $data['password_plain']);
             }
 
+            // TODO: clear user entered value in three password related fields
         }
 
         return $record;
