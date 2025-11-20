@@ -62,6 +62,10 @@ class ContextQuestions extends Page implements HasActions, HasForms, HasTable
     public Team $team;
     public XlsformModuleVersion $xlsformModuleVersion;
 
+    // add variable $processing here to avoid program change in WithXlsformModuleVersionQuestionEditing.php (which should be commonly used by other programs)
+    // $processing always have value 0, that means there is nothing being processed.
+    public int $processing = 0;
+
     public function mount(): void
     {
         $team = HelperService::getCurrentOwner();
