@@ -25,7 +25,10 @@ class ChoiceListsTableSeeder extends Seeder
                 'xlsform_module_version_id' => 1,
                 'list_name' => 'language',
                 'description' => NULL,
-                'is_localisable' => 0,
+                // we need to have at least one choice_lists record with column is_localisable set to 1,
+                // so that below page can be loaded successfully.
+                //  - Survey dashboard > Place-based adaptations > Contextualise choice lists 
+                'is_localisable' => 1,
                 'is_dataset' => 0,
                 'can_be_hidden_from_context' => 0,
                 'has_custom_handling' => 0,
