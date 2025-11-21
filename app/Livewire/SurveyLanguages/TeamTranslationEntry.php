@@ -94,8 +94,10 @@ class TeamTranslationEntry extends Component implements HasActions, HasForms, Ha
                     ->extraAttributes(['class' => 'buttonb my-4 shadow-none !py-21'])
                     ->icon('heroicon-o-plus-circle')
                     ->form([
-                        TextInput::make('description')->label('Enter a label for the translation')
-                            ->helperText('E.g. "Portuguese (Brazil)"'),
+                        TextInput::make('description')
+                            ->label('Enter a label for the translation')
+                            ->helperText('E.g. "Portuguese (Brazil)"')
+                            ->required(),
                     ])
                     ->action(function (array $data) {
                         $this->language->locales()->create([
