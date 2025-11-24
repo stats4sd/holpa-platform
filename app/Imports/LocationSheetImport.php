@@ -47,31 +47,50 @@ class LocationSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, 
 
             // go through parents in order from highest to lowest. Ensure all parents exist in the database (and create them if they do not)
             foreach ($this->parentIds as $parentId) {
-                Location::upsert(
-                    values: [
+
+                // upsert() requires columns specified in "uniqueBy" with "primary" or "unique" index in database level.
+                // we removed the unique constraint of column locations.code. This column does not have unique index now.
+                // modify program to check record existence, create new record if it is not existed.
+                // do not update anything if location is existed. As it is possible to have two different locations with same location code accidentally.
+
+                // check if location is already existed for this team
+                $noOfRecords = Location::where('owner_id', $this->data['owner_id'])
+                                ->where('code', $row[$this->data["parent_{$parentId}_code_column"]])
+                                ->get()
+                                ->count();
+
+                // create new location record if it is not existed for this team
+                if ($noOfRecords == 0) {
+                    Location::create([
                         'owner_id' => $this->data['owner_id'],
                         'code' => $row[$this->data["parent_{$parentId}_code_column"]],
                         'name' => $row[$this->data["parent_{$parentId}_name_column"]],
                         'location_level_id' => $parentId,
                         'parent_id' => $currentParent?->id,
-                    ],
-                    uniqueBy: 'code'
-                );
+                    ]);
+                }
 
                 $currentParent = Location::where('code', $row[$this->data["parent_{$parentId}_code_column"]])->first();
             }
 
-            // Create the location if it doesn't already exist
-            Location::upsert(
-                values: [
+            
+            // check if location is already existed for this team
+            $noOfLocation = Location::where('owner_id', $this->data['owner_id'])
+                                ->where('code', $row[$this->data['code_column']])
+                                ->get()
+                                ->count();
+
+            // create new location record if it is not existed for this team
+            if ($noOfLocation == 0) {
+                Location::create([
                     'owner_id' => $this->data['owner_id'],
                     'location_level_id' => $locationLevel->id,
                     'parent_id' => $currentParent?->id ?? null,
                     'code' => $row[$this->data['code_column']],
                     'name' => $row[$this->data['name_column']],
-                ],
-                uniqueBy: 'code'
-            );
+                ]);
+            }
+
 
             $currentLocation = Location::where('code', $row[$this->data['code_column']])->first();
 
