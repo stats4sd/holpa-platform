@@ -2,18 +2,18 @@
 
 namespace App\Filament\App\Clusters\LocationLevels\Resources\LocationLevelResource\RelationManagers;
 
-use App\Services\HelperService;
 use Exception;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Illuminate\Validation\Rules\Unique;
 use Livewire\Attributes\On;
+use App\Services\HelperService;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rules\Unique;
+use Illuminate\Database\Eloquent\Builder;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class LocationsRelationManager extends RelationManager
 {
@@ -43,19 +43,25 @@ class LocationsRelationManager extends RelationManager
                     ->searchable()
                     ->preload()
                     ->visible(fn () => $this->getOwnerRecord()->parent !== null),
+
+                // location name should be uniqeu per team, as other teams may have the same location name.
+                // ignore the current record to allow user update current record with same location name
                 Forms\Components\TextInput::make('name')
                     ->required()
-                    // location name should be uniqeu per team, as other teams may have the same location name
-                    ->unique(modifyRuleUsing: function (Unique $rule) {
+                    ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule) {
                         return $rule->where('owner_id', HelperService::getCurrentOwner()->id);
                     })
                     ->maxLength(255),
+
+                // location code should be unique per team, as other teams may have the same location code
+                // ignore the current record to allow user update current record with same location code
                 Forms\Components\TextInput::make('code')
                     ->required()
-                    // Note: Column locations.code has unique constraint in database. We can only have unique location code among all teams
-                    // Question: Should we remove the unique constraint? A team can never know what location codes have been used by other teams...
-                    ->unique()
+                    ->unique(ignoreRecord: true, modifyRuleUsing: function (Unique $rule) {
+                        return $rule->where('owner_id', HelperService::getCurrentOwner()->id);
+                    })
                     ->maxLength(255),
+
                 Forms\Components\Hidden::make('owner_id')
                     ->default(HelperService::getCurrentOwner()->id)
             ])
