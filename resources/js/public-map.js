@@ -5,6 +5,8 @@ console.log('public map js loaded');
 import { createApp } from 'vue';
 import PublicMap from './components/PublicMap.vue';
 
+document.documentElement.style.setProperty("--vs-menu-z-index", 2000);
+
 createApp({})
     .component('publicMap', PublicMap)
     .mount('#public-map-app');

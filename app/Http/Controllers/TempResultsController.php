@@ -10,6 +10,6 @@ class TempResultsController extends Controller
     // index
     public function index()
     {
-        return TempResult::with('country')->get()->groupBy('country_id');
+        return TempResult::with('country')->get();
     }
 }
