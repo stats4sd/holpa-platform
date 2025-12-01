@@ -10,6 +10,8 @@
     @vite('resources/css/filament/app/theme.css')
     @vite('resources/css/cover-page.css')
 
+    {{ $viteScripts ?? '' }}
+
 </head>
 <body>
     {{ $slot }}

@@ -19,6 +19,11 @@
         "vite": "6.3.4"
     },
     "dependencies": {
-        "sortablejs": "^1.15.6"
+        "@vitejs/plugin-vue": "^6.0.2",
+        "leaflet": "^1.9.4",
+        "leaflet.markercluster": "^1.5.3",
+        "sortablejs": "^1.15.6",
+        "vue": "^3.5.25",
+        "vue-spinner": "^1.0.4"
     }
 }

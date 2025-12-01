@@ -61,8 +61,11 @@
                             <h3 class="text-white text-lg lg:text-xl mb-4 lg:my-4">RESULTS</h3>
                             <p class="mb-4 lg:mb-6">Results from previous implementations.</p>
                         </div>
-                        <a href="{{ url('#results') }}" class="button bg-blue hover:bg-white b-white border-2 rounded-full  px-4 py-2 text-white hover:text-blue font-semibold w-auto flex justify-center items-center text-center">
+                        <a href="{{ url('#results') }}" class="button bg-blue hover:bg-white b-white border-2 rounded-full px-4 py-2 text-white hover:text-blue font-semibold w-auto flex justify-center items-center text-center mb-4">
                             LEARN MORE
+                        </a>
+                        <a href="{{ url('results') }}" class="button bg-blue hover:bg-white b-white border-2 rounded-full  px-4 py-2 text-white hover:text-blue font-semibold w-auto flex justify-center items-center text-center">
+                            PREVIOUS SURVEYS
                         </a>
                     </div>
                 </div>
