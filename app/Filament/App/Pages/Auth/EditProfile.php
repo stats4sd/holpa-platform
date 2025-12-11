@@ -73,14 +73,14 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
     protected function getPasswordFormComponent(): Component
     {
-        // user 
+        // user
         return TextInput::make('password')
             ->label(__('filament-panels::pages/auth/edit-profile.form.password.label'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
             // new password is required when current password is entered
             ->requiredWith('current_password')
-            ->rule(Password::default())            
+            ->rule(Password::default())
             ->autocomplete('new-password')
             ->minLength(10)
             ->same('passwordConfirmation');
@@ -130,12 +130,11 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
             if ($record instanceof WithOdkCentralAccount) {
                 $odkLinkService = app()->make(OdkLinkService::class);
 
-                // TODO: below error occurred when update user password via ODK link service:
-                // HTTP request returned status code 401: {"message":"Could not authenticate with the provided credentials.","code":401.2} 
                 $odkLinkService->updateUserPassword($record, $data['current_password'], $data['password_plain']);
             }
 
             // TODO: clear user entered value in three password related fields
+            $this->fillForm();
         }
 
         return $record;
