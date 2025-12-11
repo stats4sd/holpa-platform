@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\TeamResource\Pages;
 use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 use App\Models\Team;
+use Filament\Actions\ForceDeleteAction;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
@@ -42,6 +43,13 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->sortable(),
+            ])
+            ->actions([
+                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\RestoreAction::make()
+            ])
+            ->filters([
+                Tables\Filters\TrashedFilter::make(),
             ]);
     }
 

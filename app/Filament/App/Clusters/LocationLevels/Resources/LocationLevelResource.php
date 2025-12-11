@@ -20,6 +20,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
 
 class LocationLevelResource extends Resource
 {
@@ -67,7 +68,8 @@ class LocationLevelResource extends Resource
                 Select::make('parent_id')
                     ->label('Is this location level a sub-level of another level?')
                     ->helperText('E.g. "Village" may be a sub-level of "District", and "District" may be a sub-level of "Province".')
-                    ->relationship('parent', 'name')
+                    // exclude the current location level record, to prevent self-referencing loops
+                    ->relationship('parent', 'name', ignoreRecord: true)
                     ->hidden(fn (?LocationLevel $record) => $record && $record->top_level === 1),
                 TextInput::make('name')
                     ->required()

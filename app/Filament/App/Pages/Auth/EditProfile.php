@@ -60,10 +60,12 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
     protected function getCurrentPasswordFormComponent(): Component
     {
+        // user should only enter current password when changing to a new password
         return TextInput::make('current_password')
             ->label(__('Current Password'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
+            // current password is required when new password is entered
             ->requiredWith('password')
             ->rule('current_password')
             ->autocomplete('current-password');
@@ -71,13 +73,16 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
     protected function getPasswordFormComponent(): Component
     {
+        // user
         return TextInput::make('password')
             ->label(__('filament-panels::pages/auth/edit-profile.form.password.label'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
+            // new password is required when current password is entered
+            ->requiredWith('current_password')
             ->rule(Password::default())
-            ->minLength(10)
             ->autocomplete('new-password')
+            ->minLength(10)
             ->same('passwordConfirmation');
     }
 
@@ -87,7 +92,8 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
             ->label(__('filament-panels::pages/auth/edit-profile.form.password_confirmation.label'))
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
-            ->required()
+            // new password for confirmation is required when new password is entered
+            ->requiredWith('password')
             ->dehydrated(false);
     }
 
@@ -115,15 +121,20 @@ class EditProfile extends \Filament\Pages\Auth\EditProfile
 
         $record->update($updateData);
 
-        if (isset($data['password']) && $data['password'] !== '') {
+        // we should check password_plain content.
+        // password contentn is encrypted, it always has content even password_plain is empty.
+        if (isset($data['password_plain']) && $data['password_plain'] !== '') {
 
             $record->update(['password' => $data['password']]);
 
             if ($record instanceof WithOdkCentralAccount) {
                 $odkLinkService = app()->make(OdkLinkService::class);
+
                 $odkLinkService->updateUserPassword($record, $data['current_password'], $data['password_plain']);
             }
 
+            // TODO: clear user entered value in three password related fields
+            $this->fillForm();
         }
 
         return $record;
