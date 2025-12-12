@@ -45,7 +45,8 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
                     ->sortable(),
             ])
             ->actions([
-                Tables\Actions\ForceDeleteAction::make(),
+                Tables\Actions\ForceDeleteAction::make()
+                ->modalDescription('WARNING: Force Deleting a team will permanently remove all associated data, including users, xlsforms, and any survey data collected through this platform. This action is irreversible. Please ensure that you have backed up any important data before proceeding. Are you sure you would like to force delete this team?'),
                 Tables\Actions\RestoreAction::make()
             ])
             ->filters([
