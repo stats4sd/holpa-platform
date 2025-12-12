@@ -49,6 +49,10 @@
                         <li>
                             <span class="font-semibold">Place custom questions in survey</span><br>
                             This option allows you to indicate where in the survey the custom questions should be placed. In the left column is a list of your local indicators, and you can click to drop down to see the questions you have added for each one. On the right hand side are all the modules of the Household and Fieldwork surveys. To place the questions, drag an indicator from the list on the left to the desired position in the list on the right.
+                            <br/><br/>
+                            The order of the questions within each module cannot be changed here. To change the order of questions within a module, you will need to go back to the "Add custom survey questions" section and reorder them there.
+                            <br/><br/>
+                            Once you have placed all your custom questions, click "Confirm Ordering" to finalize the order and add your custom questions to the surveys for testing. If you need to reset the order at any time, click "Reset Ordering" to revert to the default ordering (this will remove your local indicator modules from the survey forms).
                         </li>
                     </ul>
 
@@ -89,7 +93,7 @@
             <!-- Content -->
             <div class="px-6">
                 @if ($activeTab === 'local')
-                
+
                     <livewire:lisp.upload-local-indicators/>
                 @elseif ($activeTab === 'match')
                     @include('livewire.lisp.match-indicators')
