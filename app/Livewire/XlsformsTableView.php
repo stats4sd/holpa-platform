@@ -75,11 +75,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                     ->extraAttributes(['class' => 'buttona text-white font-normal'])
                     ->action(function (Xlsform $record) {
 
-                        $record->syncWithTemplate();
-
-                        $record->deployDraft()->afterResponse();
-
-                        $record->refresh();
+                        $record->publishForm();
 
                         Notification::make('update_success')
                             ->title('Success!')
