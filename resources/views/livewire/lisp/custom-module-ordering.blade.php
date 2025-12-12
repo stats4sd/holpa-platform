@@ -5,7 +5,7 @@
     </div>
 
     <div class="text-black pb-4 mb-9">
-        To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right. Updates to the module ordering will be saved automatically. Once you have finished arranging your custom questions, click "Confirm Ordering" to finalize the order and add your custom questions to the surveys for testing.
+        To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right. Updates to the module ordering will be saved automatically. Once you have finished arranging your custom questions, click "Confirm Ordering" to finalize the order and add your custom questions to the surveys for testing. If you need to reset the order at any time, click "Reset Ordering" to revert to the default ordering (this will remove your local indicator modules from the survey forms).
     </div>
     <div class="grid grid-cols-2 gap-4">
 
