@@ -30,7 +30,7 @@ class CustomModuleOrdering extends Component
     public function updateOrder(array $order, Xlsform $xlsform)
     {
 
-        $orderWithKeys = collect($order)->mapWithKeys(fn ($item, $key) => [$item => ['order' => $key]]);
+        $orderWithKeys = collect($order)->mapWithKeys(fn($item, $key) => [$item => ['order' => $key]]);
         $xlsform->xlsformModuleVersions()->sync($orderWithKeys);
         $this->setupLists();
 
@@ -55,5 +55,31 @@ class CustomModuleOrdering extends Component
             })
             ->with('xlsformModuleVersion.surveyRows')
             ->get();
+    }
+
+    public function resetOrdering(): void
+    {
+        foreach ($this->xlsforms as $xlsform) {
+
+            // Reattach with default order
+            $defaultModules = $xlsform->xlsformTemplate->xlsformModules->sortBy('default_order')->values();
+
+            $xlsform->xlsformModuleVersions()->sync(
+                collect($defaultModules)->mapWithKeys(fn($item, $key) => [$item->id => ['order' => $key]])
+            );
+
+        }
+
+        $this->setupLists();
+    }
+
+    public function confirmOrdering(): void
+    {
+        foreach ($this->xlsforms as $xlsform) {
+            // mark the forms as ready for an update
+            $xlsform->update([
+                'draft_needs_update' => true,
+            ]);
+        }
     }
 }
