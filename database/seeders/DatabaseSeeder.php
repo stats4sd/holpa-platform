@@ -48,5 +48,7 @@ class DatabaseSeeder extends Seeder
                 $this->call($class);
             }
         }
+
+        $this->call(TempResultSeeder::class);
     }
 }

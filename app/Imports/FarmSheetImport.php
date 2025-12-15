@@ -3,17 +3,17 @@
 namespace App\Imports;
 
 use App\Models\SampleFrame\Farm;
+use Illuminate\Support\Collection;
 use App\Models\SampleFrame\Location;
 use App\Models\SampleFrame\LocationLevel;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\ToCollection;
-use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
-use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\SkipsEmptyRows;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithChunkReading;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\WithStrictNullComparison;
 
 class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, WithCalculatedFormulas, WithChunkReading, WithHeadingRow, WithStrictNullComparison, WithValidation
 {
@@ -44,17 +44,26 @@ class FarmSheetImport implements ShouldQueue, SkipsEmptyRows, ToCollection, With
             // Get the data from those columns;
             $propertyData = $propertyColumns->mapWithKeys(fn ($column) => [$column => $row[$column]]);
 
-            // Create the farm
-            $farm = new Farm([
-                'owner_id' => $this->data['owner_id'],
-                'location_id' => $location->id,
-                'team_code' => $row[$farmCodeColumn],
-                'identifiers' => $identifierData,
-                'properties' => $propertyData,
-            ]);
-            $farm->save();
+            // check if farm with unique code existed in this team.
+            // it is not advised to use upsert here. The old farm and new farm with unique code could be two different farms.
+            // human intervention is required to handle this sitation.
+            // If they are two different farms, this can be resolved by assigning a new unique code to the new farm.
+            $noOfRecords = Farm::where('owner_id', $this->data['owner_id'])->where('team_code', $row[$farmCodeColumn])->get()->count();
 
-            $importedFarms[] = $farm;
+            // only create farms record if unique code is not existed for this team
+            if ($noOfRecords == 0) {
+                // Create the farm
+                $farm = new Farm([
+                    'owner_id' => $this->data['owner_id'],
+                    'location_id' => $location->id,
+                    'team_code' => $row[$farmCodeColumn],
+                    'identifiers' => $identifierData,
+                    'properties' => $propertyData,
+                ]);
+                $farm->save();
+
+                $importedFarms[] = $farm;
+            }
         }
 
         return $importedFarms;

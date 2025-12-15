@@ -5,6 +5,7 @@ namespace App\Filament\Admin\Resources;
 use App\Filament\Admin\Resources\TeamResource\Pages;
 use App\Filament\Admin\Resources\TeamResource\RelationManagers\XlsformsRelationManager;
 use App\Models\Team;
+use Filament\Actions\ForceDeleteAction;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Stats4sd\FilamentTeamManagement\Filament\Admin\Resources\TeamResource\RelationManagers\InvitesRelationManager;
@@ -42,6 +43,14 @@ class TeamResource extends \Stats4sd\FilamentTeamManagement\Filament\Admin\Resou
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->sortable(),
+            ])
+            ->actions([
+                Tables\Actions\ForceDeleteAction::make()
+                ->modalDescription('WARNING: Force Deleting a team will permanently remove all associated data, including users, xlsforms, and any survey data collected through this platform. This action is irreversible. Please ensure that you have backed up any important data before proceeding. Are you sure you would like to force delete this team?'),
+                Tables\Actions\RestoreAction::make()
+            ])
+            ->filters([
+                Tables\Filters\TrashedFilter::make(),
             ]);
     }
 

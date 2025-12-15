@@ -49,14 +49,16 @@ class ListFarms extends ListRecords
                 ->label('Import Locations and Farm List')
                 ->extraAttributes(['class' => 'buttonb'])
                 ->tooltip('Use this if you have your location and farm data all in one spreadsheet.')
-                ->disabled(fn() => HelperService::getCurrentOwner()->locationLevels()->count() < 1)
+                // disable if there is no location level with farms
+                ->disabled(fn() => HelperService::getCurrentOwner()->locationLevels()->where('has_farms', 1)->count() < 1)
                 ->url('farms/import'),
 
             ImportFarmsAction::make()
                 ->color('primary')
                 ->extraAttributes(['class' => 'buttonb'])
                 ->tooltip('Use this if you have already added your locations')
-                ->disabled(fn() => HelperService::getCurrentOwner()->locations()->count() < 1)
+                // disable if there is no location level with farms
+                ->disabled(fn() => HelperService::getCurrentOwner()->locationLevels()->where('has_farms', 1)->count() < 1)
                 ->use(FarmImport::class)
                 ->label('Import Farm list'),
         ];
