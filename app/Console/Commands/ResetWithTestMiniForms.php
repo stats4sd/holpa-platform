@@ -30,7 +30,7 @@ class ResetWithTestMiniForms extends Command
         $this->call('migrate:fresh');
         $this->call('db:seed');
         $this->call('db:seed', ['class' => 'TestWithMiniForms']);
-        $this->call('app:copy-media-real', ['programatic' => 1]); // add programatic argument to automate
+        $this->call('app:copy-media-test', ['programatic' => 1]); // add programatic argument to automate
         $this->call('app:update-xlsform-versions-from-odk-central');
 
     }
