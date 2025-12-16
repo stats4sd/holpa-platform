@@ -15,6 +15,7 @@ use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\HtmlString;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 
@@ -32,31 +33,29 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
     public function table(Table $table): Table
     {
         return $table
-            ->relationship(fn (): HasMany => HelperService::getCurrentOwner()->xlsforms())
+            ->relationship(fn(): HasMany => HelperService::getCurrentOwner()->xlsforms())
             ->inverseRelationship('owner')
             ->recordTitleAttribute('title')
             ->columns([
                 TextColumn::make('title')
                     ->grow(false),
                 TextColumn::make('status')
-                    ->color(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'danger',
+                    ->color(fn($state) => match ($state) {
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->iconColor(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'danger',
+                    ->iconColor(fn($state) => match ($state) {
                         'LIVE' => 'success',
                         'DRAFT' => 'info',
                         default => 'light',
                     })
-                    ->icon(fn ($state) => match ($state) {
-                        'UPDATES AVAILABLE' => 'heroicon-o-exclamation-circle',
+                    ->icon(fn($state) => match ($state) {
                         'LIVE' => 'heroicon-o-check',
                         'DRAFT' => 'heroicon-o-pencil',
                         default => 'heroicon-o-information-circle',
                     })
+                    ->description(fn(Xlsform $record): ?HtmlString => $record->live_needs_update ? new HtmlString('<span class="text-red-600">updates available to publish</span>') : null)
                     ->label('Status'),
 
                 TextColumn::make('live_submissions_count')
@@ -91,14 +90,30 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         $submissionCount = $record->getSubmissions();
 
                         $record->refresh();
-                        Notification::make('update_success')
-                            ->title('Success!')
+                        Notification::make('update_started')
+                            ->title('Form publishing started')
                             ->body("{$submissionCount} submissions have been pulled from the ODK server for the form {$record->title} (they may take a moment to process).")
-                            ->color('success')
+                            ->persistent()
                             ->send();
+
+                        // reset table to update the status
+                        $this->resetTable();
                     }),
 
             ])
             ->bulkActions([]);
     }
+
+    #[On('echo:xlsforms,.FilamentOdkLink.XlsformWasPublished')]
+    public function handleXlsformPublished(): void
+    {
+        $this->resetTable();
+        Notification::make('publish_success')
+            ->title('Success!')
+            ->body("The form has been published successfully.")
+            ->color('success')
+            ->send();
+    }
+
+
 }
