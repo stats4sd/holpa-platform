@@ -1,5 +1,5 @@
 <template>
-    <div class="public-map">
+    <div class="w-full">
         <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
         <div class="border border-blue-500 rounded-lg p-4 mb-8 space-y-4">
             <p class="">
@@ -47,8 +47,23 @@
             </div>
         </div>
 
-        <div id="map" style="height: 60vh; width: 100%; background-color: #e0e0e0;">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
 
+            <div class="col-span-1">
+                <MapComponent
+                    :allCountries="allCountries"
+                    :selectedCountries="selectedCountries"
+                    :filteredResults="filteredResults"
+                    v-model:loadingState="loadingState"
+                />
+            </div>
+
+            <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
+                <h4 class="mb-4">Agroecology Scores</h4>
+
+                <p>Placeholder for agroecology scores visualization or information.</p>
+
+            </div>
         </div>
         <div v-if="loadingState" class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
@@ -67,6 +82,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.markercluster';
 import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
+import MapComponent from "./MapComponent.vue";
 
 const allCountries = ref([
     {
@@ -105,7 +121,6 @@ const allCountries = ref([
 const selectedCountries = ref([]);
 
 
-const initialMap = ref(null)
 const loadingState = ref(true);
 const allresults = ref([]);
 const filteredResults = ref([]);
@@ -129,116 +144,44 @@ const selectCountries = function () {
 const selectedGender = ref(null);
 const selectedEducationLevel = ref(null);
 
-watch(selectedCountries, () => {
-    loadingState.value = true;
-    selectCountries();
+const updateFilteredResults = function () {
+    filteredResults.value = allresults.value;
+
+    if (selectedCountries.value.length > 0) {
+        filteredResults.value = filteredResults.value.filter(result =>
+            selectedCountries.value.includes(result.country_id.toString())
+        );
+    }
 
     if (selectedGender.value) {
-        filteredResults.value = allresults.value.filter(result => result.gender === selectedGender.value);
+        filteredResults.value = filteredResults.value.filter(result => result.gender === selectedGender.value);
     }
 
     if (selectedEducationLevel.value) {
         filteredResults.value = filteredResults.value.filter(result => result.education_level === selectedEducationLevel.value);
     }
 
+    console.log(filteredResults.value.length);
+}
 
-    updateMapMarkers();
+
+watch(selectedCountries, () => {
+    updateFilteredResults();
 }, {deep: true});
 
 
 watch(selectedGender, () => {
-    loadingState.value = true;
-    selectCountries();
-    if (selectedGender.value) {
-        filteredResults.value = allresults.value.filter(result => result.gender === selectedGender.value);
-    }
-
-    if (selectedEducationLevel.value) {
-        filteredResults.value = filteredResults.value.filter(result => result.education_level === selectedEducationLevel.value);
-    }
-
-    updateMapMarkers();
+    updateFilteredResults();
 })
 
 watch(selectedEducationLevel, () => {
-    loadingState.value = true;
-    selectCountries();
-
-    if (selectedGender.value) {
-        filteredResults.value = allresults.value.filter(result => result.gender === selectedGender.value);
-    }
-
-
-    if (selectedEducationLevel.value) {
-        filteredResults.value = filteredResults.value.filter(result => result.education_level === selectedEducationLevel.value);
-    }
-    updateMapMarkers();
+    updateFilteredResults();
 })
-
-const updateMapMarkers = function () {
-
-    allCountries.value.forEach(country => country.markerClusterGroup.clearLayers());
-
-
-    let uniqueCountryIds = selectedCountries.value.map(country => country);
-
-    // if no countries are seleted, show all countries
-    if (uniqueCountryIds.length === 0) {
-        uniqueCountryIds = allCountries.value.map(country => country.value);
-    }
-
-
-    uniqueCountryIds.forEach(countryId => {
-
-        const results = filteredResults.value.filter(result => result.country_id === countryId.toString());
-
-        results.forEach(result => {
-            if (result.latitude && result.longitude) {
-                const marker = L.marker([result.latitude, result.longitude]);
-                allCountries.value.find(country => country.value === countryId.toString())
-                    .markerClusterGroup
-                    .addLayer(marker);
-            }
-        });
-    })
-    loadingState.value = false;
-}
 
 
 // You can add any necessary imports or setup logic here
 onMounted(() => {
     loadingState.value = true;
-    // Initialize the map when the component is mounted
-    initialMap.value = L.map('map').setView([5.4, 19.3], 3);
-
-    const temp = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-
-    L.tileLayer(temp, {
-        maxZoom: 18,
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(initialMap.value);
-
-    initialMap.value.on('zoomend', function () {
-        console.log('Map zoomed');
-        console.log(initialMap.value.getZoom());
-    });
-
-    initialMap.value.on('moveend', function () {
-        console.log('Map panned');
-        console.log(initialMap.value.getCenter());
-    });
-
-    initialMap.value.on('click', function (e) {
-        console.log('Map clicked at ' + e.latlng);
-    });
-
-    // create marker cluster
-
-    // set up country layers
-    allCountries.value.forEach((country) => {
-        country.markerClusterGroup = L.markerClusterGroup().addTo(initialMap.value);
-    })
-
 
     // get TempResults data
     axios.get('/temp-results')
@@ -257,9 +200,7 @@ onMounted(() => {
         })
         .finally(() => {
             filteredResults.value = allresults.value;
-            updateMapMarkers();
         });
-
 });
 
 </script>

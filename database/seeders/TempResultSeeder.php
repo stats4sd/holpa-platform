@@ -316,5 +316,62 @@ class TempResultSeeder extends Seeder
                 'longitude' => rand(-441600, -314200) / 100000,
             ]);
         }
+
+
+        // for every temp results score, add random AE scores between 1 and 5
+        $tempResults = \DB::table('temp_results')->get();
+        foreach ($tempResults as $tempResult) {
+            \DB::table('temp_results')->where('id', $tempResult->id)
+                ->update([
+                    'recycling_1_score' => rand(1, 5),
+                    'recycling_2_score' => rand(1, 5),
+                    'recycling_3_score' => rand(1, 5),
+                    'recycling_4_score' => rand(1, 5),
+                    'recycling_5_score' => rand(1, 5),
+                    'overall_recycling_score' => rand(1, 5),
+                    'input_reduction_1_score' => rand(1, 5),
+                    'input_reduction_2_score' => rand(1, 5),
+                    'input_reduction_3_score' => rand(1, 5),
+                    'input_reduction_4_score' => rand(1, 5),
+                    'input_reduction_5_score' => rand(1, 5),
+                    'input_reduction_6_score' => rand(1, 5),
+                    'overall_input_reduction_score' => rand(1, 5),
+                    'soil_health_score' => rand(1, 5),
+                    'animal_health_1_score' => rand(1, 5),
+                    'animal_health_2_score' => rand(1, 5),
+                    'animal_health_3_score' => rand(1, 5),
+                    'overall_animal_health_score' => rand(1, 5),
+                    'synergy_1_score' => rand(1, 5),
+                    'synergy_2_score' => rand(1, 5),
+                    'synergy_3_score' => rand(1, 5),
+                    'synergy_4_score' => rand(1, 5),
+                    'synergy_5_score' => rand(1, 5),
+                    'synergy_6_score' => rand(1, 5),
+                    'overall_synergy_score' => rand(1, 5),
+                    'economic_diversification_score' => rand(1, 5),
+                    'co_creation_knowledge_1_score' => rand(1, 5),
+                    'co_creation_knowledge_2_score' => rand(1, 5),
+                    'co_creation_knowledge_3_score' => rand(1, 5),
+                    'co_creation_knowledge_4_score' => rand(1, 5),
+                    'co_creation_knowledge_5_score' => rand(1, 5),
+                    'co_creation_knowledge_6_score' => rand(1, 5),
+                    'co_creation_knowledge_7_score' => rand(1, 5),
+                    'overall_co_creation_knowledge_score' => rand(1, 5),
+                    'social_values_diet_1_score' => rand(1, 5),
+                    'social_values_diet_2_score' => rand(1, 5),
+                    'social_values_diet_3_score' => rand(1, 5),
+                    'social_values_diet_4_score' => rand(1, 5),
+
+                    'overall_social_values_diet_score' => rand(1, 5),
+
+                    'governance_1_score' => rand(1, 5),
+                    'governance_2_score' => rand(1, 5),
+                    'governance_3_score' => rand(1, 5),
+
+                    'overall_governance_score' => rand(1, 5),
+
+                    'participation_score' => rand(1, 5),
+                ]);
+        }
     }
 }
