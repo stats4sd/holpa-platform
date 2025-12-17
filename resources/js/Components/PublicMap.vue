@@ -125,22 +125,6 @@ const loadingState = ref(true);
 const allresults = ref([]);
 const filteredResults = ref([]);
 
-const selectCountries = function () {
-
-    console.log(allCountries.value);
-    console.log(selectedCountries.value.length);
-
-    if (selectedCountries.value.length === 0) {
-        filteredResults.value = allresults.value;
-    } else {
-        filteredResults.value = allresults.value.filter(result =>
-            selectedCountries.value.includes(result.country_id.toString())
-        );
-    }
-
-    console.log(filteredResults.value.length);
-}
-
 const selectedGender = ref(null);
 const selectedEducationLevel = ref(null);
 
