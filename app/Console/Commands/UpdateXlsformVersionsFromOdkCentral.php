@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
@@ -46,6 +47,10 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
                 ->throw()
                 ->json();
 
+
+            dump($xlsform->owner->name . ' - ' . $xlsform->odk_id);
+            dump($versions);
+
             collect($versions)->each(function ($version) use ($xlsform) {
                 $versionName = $version['version'];
 
@@ -56,7 +61,19 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
                         // schema will be null, but I don't think we use the xlsform version schema at the moment.
                     ]);
                 }
+
+                // if the version has an enketoId, it is the active version
+                if (isset($version['enketoId'])) {
+                    $xlsform->update([
+                        'odk_published_at' => Carbon::make($version['publishedAt']),
+                        'is_active' => true,
+                        'enketo_id' => $version['enketoId'],
+                    ]);
+                }
+
             });
+
+
 
 
             // create a draft version
@@ -82,11 +99,24 @@ class UpdateXlsformVersionsFromOdkCentral extends Command
                         'odk_version' => $draft['version'],
                     ],
                 );
+
+                // update draft status of xlsform
+                $xlsform->update([
+                    'enketo_draft_id' => $draft['enketoId'] ?? null,
+                    'odk_draft_updated_at' => Carbon::make($draft['updatedAt']) ?? null,
+                    'has_draft' => true,
+                ]);
             }
+
 
         });
 
         $this->info('Xlsform versions updated successfully!');
+
+
+
+
+
 
     }
 }
