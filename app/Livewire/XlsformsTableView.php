@@ -55,7 +55,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         'DRAFT' => 'heroicon-o-pencil',
                         default => 'heroicon-o-information-circle',
                     })
-                    ->description(fn(Xlsform $record): ?HtmlString => $record->live_needs_update ? new HtmlString('<span class="text-red-600">updates available to publish</span>') : null)
+                    ->description(fn(Xlsform $record): ?HtmlString => $record->live_needs_update || $record->draft_needs_update ? new HtmlString('<span class="text-red-600">updates available to publish</span>') : null)
                     ->label('Status'),
 
                 TextColumn::make('live_submissions_count')
@@ -69,7 +69,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
             ])
             ->actions([
                 Action::make('update_published_version')
-                    ->visible(fn(Xlsform $record) => $record->live_needs_update)
+                    ->visible(fn(Xlsform $record) => $record->live_needs_update || $record->draft_needs_update)
                     ->label('Publish changes')
                     ->extraAttributes(['class' => 'buttona text-white font-normal'])
                     ->action(function (Xlsform $record) {
