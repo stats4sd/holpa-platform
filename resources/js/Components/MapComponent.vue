@@ -4,14 +4,15 @@
 </template>
 
 <script setup>
+import "leaflet/dist/leaflet.css"
+import * as L from 'leaflet';
+import 'leaflet.markercluster/dist/MarkerCluster.css';
+import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
+import 'leaflet.markercluster';
 
 import {onMounted, ref, watch} from "vue";
 
 const initialMap = ref(null)
-const loadingState = defineModel('loadingState', {
-    type: Boolean,
-    required: true
-})
 
 const props = defineProps({
     allCountries: {
@@ -25,8 +26,12 @@ const props = defineProps({
     filteredResults: {
         type: Array,
         required: true
-    }
+    },
 })
+
+const emit = defineEmits([
+    'loadComplete'
+])
 
 watch(() => props.filteredResults, () => {
     console.log('Filtered results changed, updating map markers...');
@@ -36,7 +41,6 @@ watch(() => props.filteredResults, () => {
 
 const updateMapMarkers = function () {
 
-    loadingState.value = true;
     props.allCountries.forEach(country => country.markerClusterGroup.clearLayers());
 
 
@@ -61,13 +65,14 @@ const updateMapMarkers = function () {
             }
         });
     })
-    loadingState.value = false;
+
+    console.log('should emit map markers loaded');
+    emit('loadComplete');
+
 }
 
 
 onMounted(() => {
-
-    loadingState.value = true;
 
     // Initialize the map when the component is mounted
     initialMap.value = L.map('map').setView([5.4, 19.3], 3);
@@ -97,6 +102,10 @@ onMounted(() => {
     props.allCountries.forEach((country) => {
         country.markerClusterGroup = L.markerClusterGroup().addTo(initialMap.value);
     })
+
+
+    console.log('Initial map setup complete, updating map markers...');
+    updateMapMarkers();
 
 })
 

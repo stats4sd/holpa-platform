@@ -1,5 +1,16 @@
 <template>
+
     <div class="w-full">
+
+        <div class="flex">
+
+        <div @click="setLoading" class="w-48 h-4 bg-blue-50 p-2 rounded-lg shadow-lg border border-blue-500">
+            Set Loading
+        </div>
+        <div @click="clearLoading" class=" w-48 h-4 bg-blue-50 p-2 rounded-lg shadow-lg border border-blue-500">
+            Clear Loading
+        </div>
+        </div>
         <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
         <div class="border border-blue-500 rounded-lg p-4 mb-8 space-y-4">
             <p class="">
@@ -54,35 +65,34 @@
                     :allCountries="allCountries"
                     :selectedCountries="selectedCountries"
                     :filteredResults="filteredResults"
-                    v-model:loadingState="loadingState"
+                    @load-complete="mapLoadComplete"
                 />
             </div>
 
             <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
                 <h4 class="mb-4">Agroecology Scores</h4>
-
-                <p>Placeholder for agroecology scores visualization or information.</p>
-
+                <AeChartsComponent
+                :allCountries="allCountries"
+                :selectedCountries="selectedCountries"
+                :filteredResults="filteredResults"
+                @load-complete="chartsLoadComplete"
+                />
             </div>
         </div>
-        <div v-if="loadingState" class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
+        <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>
     </div>
 </template>
 
 <script setup>
-import "leaflet/dist/leaflet.css"
-import * as L from 'leaflet';
-import {onMounted, ref, watch} from 'vue';
+import {computed, nextTick, onMounted, ref, watch} from 'vue';
 import axios from 'axios';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
-import 'leaflet.markercluster/dist/MarkerCluster.css';
-import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import 'leaflet.markercluster';
 import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
+import AeChartsComponent from "./AeChartsComponent.vue";
 
 const allCountries = ref([
     {
@@ -121,51 +131,63 @@ const allCountries = ref([
 const selectedCountries = ref([]);
 
 
-const loadingState = ref(true);
+const mapLoading = ref(true);
+const chartLoading = ref(true);
+const loadingState = computed(() => mapLoading.value || chartLoading.value);
+
+const mapLoadComplete = function () {
+    console.log('Map loading complete');
+    mapLoading.value = false;
+}
+
+const chartsLoadComplete = function () {
+    console.log('Charts loading complete');
+    chartLoading.value = false;
+}
+
+
 const allresults = ref([]);
-const filteredResults = ref([]);
 
 const selectedGender = ref(null);
 const selectedEducationLevel = ref(null);
 
-const updateFilteredResults = function () {
-    filteredResults.value = allresults.value;
+const filteredResults = computed(() => {
+
+    console.log('updating filtered results...');
+
+
+    let newResults = allresults.value;
 
     if (selectedCountries.value.length > 0) {
-        filteredResults.value = filteredResults.value.filter(result =>
+        newResults = newResults.filter(result =>
             selectedCountries.value.includes(result.country_id.toString())
         );
     }
 
     if (selectedGender.value) {
-        filteredResults.value = filteredResults.value.filter(result => result.gender === selectedGender.value);
+        newResults = newResults.filter(result => result.gender === selectedGender.value);
     }
 
     if (selectedEducationLevel.value) {
-        filteredResults.value = filteredResults.value.filter(result => result.education_level === selectedEducationLevel.value);
+        newResults = newResults.filter(result => result.education_level === selectedEducationLevel.value);
     }
-
-    console.log(filteredResults.value.length);
-}
-
-
-watch(selectedCountries, () => {
-    updateFilteredResults();
+    return newResults;
 }, {deep: true});
 
 
-watch(selectedGender, () => {
-    updateFilteredResults();
-})
+const setLoading = function() {
+    mapLoading.value = true;
+    chartLoading.value = true;
+}
 
-watch(selectedEducationLevel, () => {
-    updateFilteredResults();
-})
+const clearLoading = function() {
+    mapLoading.value = false;
+    chartLoading.value = false;
+}
 
 
 // You can add any necessary imports or setup logic here
 onMounted(() => {
-    loadingState.value = true;
 
     // get TempResults data
     axios.get('/temp-results')
@@ -182,9 +204,9 @@ onMounted(() => {
         .catch(error => {
             console.error('Error fetching TempResults:', error);
         })
-        .finally(() => {
-            filteredResults.value = allresults.value;
-        });
+
+
+
 });
 
 </script>

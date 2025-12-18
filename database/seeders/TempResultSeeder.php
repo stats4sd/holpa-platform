@@ -23,7 +23,9 @@ class TempResultSeeder extends Seeder
                 $x = mt_rand() / mt_getrandmax();
                 $y = mt_rand() / mt_getrandmax();
 
-                return sqrt(-2 * log($x)) * cos(2 * pi() * $y) * $sd + $av;
+                $value = sqrt(-2 * log($x)) * cos(2 * pi() * $y) * $sd + $av;
+
+                return $value > 0 ? $value : 0.2;
             }
         }
 
@@ -319,59 +321,68 @@ class TempResultSeeder extends Seeder
 
 
         // for every temp results score, add random AE scores between 1 and 5
-        $tempResults = \DB::table('temp_results')->get();
-        foreach ($tempResults as $tempResult) {
-            \DB::table('temp_results')->where('id', $tempResult->id)
-                ->update([
-                    'recycling_1_score' => rand(1, 5),
-                    'recycling_2_score' => rand(1, 5),
-                    'recycling_3_score' => rand(1, 5),
-                    'recycling_4_score' => rand(1, 5),
-                    'recycling_5_score' => rand(1, 5),
-                    'overall_recycling_score' => rand(1, 5),
-                    'input_reduction_1_score' => rand(1, 5),
-                    'input_reduction_2_score' => rand(1, 5),
-                    'input_reduction_3_score' => rand(1, 5),
-                    'input_reduction_4_score' => rand(1, 5),
-                    'input_reduction_5_score' => rand(1, 5),
-                    'input_reduction_6_score' => rand(1, 5),
-                    'overall_input_reduction_score' => rand(1, 5),
-                    'soil_health_score' => rand(1, 5),
-                    'animal_health_1_score' => rand(1, 5),
-                    'animal_health_2_score' => rand(1, 5),
-                    'animal_health_3_score' => rand(1, 5),
-                    'overall_animal_health_score' => rand(1, 5),
-                    'synergy_1_score' => rand(1, 5),
-                    'synergy_2_score' => rand(1, 5),
-                    'synergy_3_score' => rand(1, 5),
-                    'synergy_4_score' => rand(1, 5),
-                    'synergy_5_score' => rand(1, 5),
-                    'synergy_6_score' => rand(1, 5),
-                    'overall_synergy_score' => rand(1, 5),
-                    'economic_diversification_score' => rand(1, 5),
-                    'co_creation_knowledge_1_score' => rand(1, 5),
-                    'co_creation_knowledge_2_score' => rand(1, 5),
-                    'co_creation_knowledge_3_score' => rand(1, 5),
-                    'co_creation_knowledge_4_score' => rand(1, 5),
-                    'co_creation_knowledge_5_score' => rand(1, 5),
-                    'co_creation_knowledge_6_score' => rand(1, 5),
-                    'co_creation_knowledge_7_score' => rand(1, 5),
-                    'overall_co_creation_knowledge_score' => rand(1, 5),
-                    'social_values_diet_1_score' => rand(1, 5),
-                    'social_values_diet_2_score' => rand(1, 5),
-                    'social_values_diet_3_score' => rand(1, 5),
-                    'social_values_diet_4_score' => rand(1, 5),
+        $tempResults = \DB::table('temp_results')->get()->groupBy('country_id');
 
-                    'overall_social_values_diet_score' => rand(1, 5),
 
-                    'governance_1_score' => rand(1, 5),
-                    'governance_2_score' => rand(1, 5),
-                    'governance_3_score' => rand(1, 5),
+        // modify the distribution to get different averages per country
+        foreach ($tempResults as $countryId => $countryResults) {
 
-                    'overall_governance_score' => rand(1, 5),
+            $mean = rand(24, 41) / 10; // mean between 2.4 and 4.1
+            $stddev = rand(10, 20) / 10; // stddev between 1.0 and 2.0
 
-                    'participation_score' => rand(1, 5),
-                ]);
+            foreach ($countryResults as $tempResult) {
+                \DB::table('temp_results')->where('id', $tempResult->id)
+                    ->update([
+                        'recycling_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'recycling_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'recycling_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'recycling_4_score' => stats_rand_gen_normal($mean, $stddev),
+                        'recycling_5_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_recycling_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_4_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_5_score' => stats_rand_gen_normal($mean, $stddev),
+                        'input_reduction_6_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_input_reduction_score' => stats_rand_gen_normal($mean, $stddev),
+                        'soil_health_score' => stats_rand_gen_normal($mean, $stddev),
+                        'animal_health_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'animal_health_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'animal_health_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_animal_health_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_4_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_5_score' => stats_rand_gen_normal($mean, $stddev),
+                        'synergy_6_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_synergy_score' => stats_rand_gen_normal($mean, $stddev),
+                        'economic_diversification_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_4_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_5_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_6_score' => stats_rand_gen_normal($mean, $stddev),
+                        'co_creation_knowledge_7_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_co_creation_knowledge_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_4_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'overall_social_values_diet_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'governance_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'governance_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'governance_3_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'overall_governance_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'participation_score' => stats_rand_gen_normal($mean, $stddev),
+                    ]);
+            }
         }
     }
 }
