@@ -5,6 +5,11 @@
     <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
         <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
         <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
+
+        <p class="mb-8">
+        <a href="/" class="text-blue-500 underline">Return to Home Page</a>
+        </p>
+
         <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
     </div>
 </div>
