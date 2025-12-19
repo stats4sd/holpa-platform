@@ -19,8 +19,8 @@ const props = defineProps({
         type: Array,
         required: true
     },
-    selectedCountries: {
-        type: Array,
+    selectedCountry: {
+        type: Object,
         required: true
     },
     filteredResults: {
@@ -44,12 +44,20 @@ const updateMapMarkers = function () {
     props.allCountries.forEach(country => country.markerClusterGroup.clearLayers());
 
 
-    let uniqueCountryIds = props.selectedCountries.map(country => country);
+    let uniqueCountryIds = [];
+
+    if (props.selectedCountry.hasOwnProperty('value')) {
+        uniqueCountryIds.push(props.selectedCountry.value);
+    }
 
     // if no countries are seleted, show all countries
     if (uniqueCountryIds.length === 0) {
         uniqueCountryIds = props.allCountries.map(country => country.value);
     }
+
+    console.log(uniqueCountryIds);
+    console.log(props.selectedCountry);
+    console.log(props.allCountries);
 
 
     uniqueCountryIds.forEach(countryId => {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d70a5bb3bbe038684f250609933880b",
+    "content-hash": "8412dcdbc04089ff787a944319711627",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -2905,6 +2905,58 @@
             ],
             "description": "A library that can provide of a list of classes in a given namespace",
             "time": "2023-06-18T17:43:01+00:00"
+        },
+        {
+            "name": "hi-folks/statistics",
+            "version": "v1.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Hi-Folks/statistics.git",
+                "reference": "752cd2c344fb20193e973721abcc88e0589a13e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Hi-Folks/statistics/zipball/752cd2c344fb20193e973721abcc88e0589a13e3",
+                "reference": "752cd2c344fb20193e973721abcc88e0589a13e3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1|^8.2|^8.3|^8.4"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.18",
+                "pestphp/pest": "^2.0",
+                "phpstan/phpstan": "^2",
+                "rector/rector": "^2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "HiFolks\\Statistics\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roberto B.",
+                    "email": "roberto.butti@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP package that provides functions for calculating mathematical statistics of numeric data.",
+            "homepage": "https://github.com/hi-folks/statistics",
+            "keywords": [
+                "hi-folks",
+                "statistics"
+            ],
+            "support": {
+                "issues": "https://github.com/Hi-Folks/statistics/issues",
+                "source": "https://github.com/Hi-Folks/statistics/tree/v1.1.4"
+            },
+            "time": "2025-04-25T07:56:47+00:00"
         },
         {
             "name": "jean85/pretty-package-versions",
@@ -8496,7 +8548,7 @@
         },
         {
             "name": "stats4sd/filament-odk-link",
-            "version": "dev-5d8339c2f0140eea207e554417b9c8cc6b4b5625",
+            "version": "dev-holpa-2025",
             "dist": {
                 "type": "path",
                 "url": "packages/filament-odk-link",

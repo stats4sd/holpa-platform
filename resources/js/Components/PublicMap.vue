@@ -2,31 +2,36 @@
 
     <div class="w-full">
 
-        <div class="flex">
-
-        <div @click="setLoading" class="w-48 h-4 bg-blue-50 p-2 rounded-lg shadow-lg border border-blue-500">
-            Set Loading
-        </div>
-        <div @click="clearLoading" class=" w-48 h-4 bg-blue-50 p-2 rounded-lg shadow-lg border border-blue-500">
-            Clear Loading
-        </div>
-        </div>
         <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
-        <div class="border border-blue-500 rounded-lg p-4 mb-8 space-y-4">
-            <p class="">
-                Placeholder text describing the previous implementations shown on the map below. This text can provide context and information about what users are seeing.
-            </p>
+
+        <div class="grid grid-cols-12 mb-8 gap-4">
+
+            <div class="col-span-6 lg:col-span-4 xl:col-span-3">
+                <div class="border border-green-700 p-4">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">
+                        Showing {{ selectedCountry.value ?? 'All Countries' }}
+                    </h3>
+                    <VueSelect
+                        v-model="selectedCountry"
+                        :is-multi="true"
+                        :options="allCountries"
+                        placeholder="Select country"
+                        class="menu"
+                    />
+                </div>
+            </div>
+            <div class="col-span-6 lg:col-span-8 xl:col-span-9">
+                <h4 class="ps-4">Summary</h4>
+                <p class="ps-4">Total Surveys Conducted: {{ filteredResults.length }}</p>
+
+                <p class="ps-4">Female-headed farm households: {{ filteredResults.filter(result => result.gender === 'Female').length }}</p>
+                <p class="ps-4">Male-headed farm households: {{ filteredResults.filter(result => result.gender === 'Male').length }}</p>
+            </div>
         </div>
 
         <div class="border border-blue-500 rounded-lg p-4 mb-8 grid grid-cols-3">
             <div class="col-span-1 space-y-2">
 
-                <VueSelect
-                    v-model="selectedCountries"
-                    :is-multi="true"
-                    :options="allCountries"
-                    placeholder="Filter by country"
-                />
                 <VueSelect
                     v-model="selectedGender"
                     :is-multi="false"
@@ -36,26 +41,8 @@
                     ]"
                     placeholder="Filter by gender"
                 />
-                <VueSelect
-                    v-model="selectedEducationLevel"
-                    :is-multi="false"
-                    :options="[
-                        { label: 'No formal education', value: 'None' },
-                        { label: 'Primary education', value: 'Primary' },
-                        { label: 'Secondary education', value: 'Secondary' },
-                        { label: 'Tertiary education', value: 'Tertiary' },
-                    ]"
-                    placeholder="Filter by education level"
-                />
             </div>
-            <div class="col-span-2 ps-4">
-                <h4 class="ps-4">Summary</h4>
-                <p class="ps-4">Total Surveys Conducted: {{ filteredResults.length }}</p>
 
-                <p class="ps-4">Female-headed farm households: {{ filteredResults.filter(result => result.gender === 'Female').length }}</p>
-                <p class="ps-4">Male-headed farm households: {{ filteredResults.filter(result => result.gender === 'Male').length }}</p>
-
-            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
@@ -63,8 +50,8 @@
             <div class="col-span-1">
                 <MapComponent
                     :allCountries="allCountries"
-                    :selectedCountries="selectedCountries"
-                    :filteredResults="filteredResults"
+                    :selectedCountry="selectedCountry"
+                    :filteredResults="deferredFilteredResults"
                     @load-complete="mapLoadComplete"
                 />
             </div>
@@ -72,10 +59,10 @@
             <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
                 <h4 class="mb-4">Agroecology Scores</h4>
                 <AeChartsComponent
-                :allCountries="allCountries"
-                :selectedCountries="selectedCountries"
-                :filteredResults="filteredResults"
-                @load-complete="chartsLoadComplete"
+                    :allCountries="allCountries"
+                    :selectedCountry="selectedCountry"
+                    :filteredResults="deferredFilteredResults"
+                    @load-complete="chartsLoadComplete"
                 />
             </div>
         </div>
@@ -128,7 +115,7 @@ const allCountries = ref([
         value: '716'
     },
 ]);
-const selectedCountries = ref([]);
+const selectedCountry = ref({});
 
 
 const mapLoading = ref(true);
@@ -146,21 +133,19 @@ const chartsLoadComplete = function () {
 }
 
 
-const allresults = ref([]);
+const allResults = ref([]);
 
 const selectedGender = ref(null);
-const selectedEducationLevel = ref(null);
 
 const filteredResults = computed(() => {
 
     console.log('updating filtered results...');
 
+    let newResults = allResults.value;
 
-    let newResults = allresults.value;
-
-    if (selectedCountries.value.length > 0) {
+    if (selectedCountry.hasOwnProperty('value')) {
         newResults = newResults.filter(result =>
-            selectedCountries.value.includes(result.country_id.toString())
+            selectedCountry.value === result.country_id.toString()
         );
     }
 
@@ -168,23 +153,27 @@ const filteredResults = computed(() => {
         newResults = newResults.filter(result => result.gender === selectedGender.value);
     }
 
-    if (selectedEducationLevel.value) {
-        newResults = newResults.filter(result => result.education_level === selectedEducationLevel.value);
-    }
+    // TODO: add farm size
     return newResults;
 }, {deep: true});
 
 
-const setLoading = function() {
+const deferredFilteredResults = ref([]);
+
+// Watch the filters and set loading state before the computed updates
+watch([selectedCountry, selectedGender], async () => {
+
+    console.log('watcha!')
     mapLoading.value = true;
     chartLoading.value = true;
-}
 
-const clearLoading = function() {
-    mapLoading.value = false;
-    chartLoading.value = false;
-}
+    await nextTick();
+    setTimeout(() => {
+        deferredFilteredResults.value = filteredResults.value;
+    }, 50);
 
+
+}, {deep: true});
 
 // You can add any necessary imports or setup logic here
 onMounted(() => {
@@ -192,26 +181,22 @@ onMounted(() => {
     // get TempResults data
     axios.get('/temp-results')
         .then(response => {
-            const tempResults = response.data;
+            allResults.value = response.data;
 
-            // results are grouped by country
-            console.log(tempResults);
-
-            tempResults.forEach(result => {
-                allresults.value.push(result);
-            });
+            if (deferredFilteredResults.value.length === 0) {
+                deferredFilteredResults.value = allResults.value;
+            }
         })
         .catch(error => {
             console.error('Error fetching TempResults:', error);
         })
 
 
-
 });
 
 </script>
 
-<style scoped>
+<style>
 .menu {
     z-index: 2000;
 }

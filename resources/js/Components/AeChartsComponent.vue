@@ -7,16 +7,8 @@
         :clearable="false"
     ></VueSelect>
 
-    <div v-if="barChartData['all']" v-show="selectedPrinciple === ''" class="text-center py-8">
-        <Bar
-            :key="'bar_all'"
-            :data="barChartData['all']"
-            :options="barChartOptions"/>
-    </div>
-
-
     <div v-for="principle in principles" :key="principle.value">
-        <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper h-40">
+        <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper">
             <Bar
                 :key="'bar_'+principle.value"
                 :data="barChartData[principle.value]"
@@ -25,14 +17,10 @@
 
         </div>
     </div>
-    <div class="violinChart h-40">
+    <div class="violinChart">
         <canvas :id="'violin_principle'" :ref="'violin_principle'"></canvas>
     </div>
 
-
-    <div class="h-40">
-        <canvas :id="'test_violin'" :ref="'test_violin'"></canvas>
-    </div>
 </template>
 
 <script setup>
@@ -52,8 +40,8 @@ const props = defineProps({
         type: Array,
         required: true
     },
-    selectedCountries: {
-        type: Array,
+    selectedCountry: {
+        type: Object,
         required: true
     },
     filteredResults: {
@@ -69,7 +57,7 @@ const emit = defineEmits([
 const principles = ref([
     {
         label: 'Overall AE',
-        value: 'overall_ae',
+        value: 'ae',
     },
     {
         label: 'Recycling',
@@ -96,12 +84,12 @@ const principles = ref([
         value: 'synergy',
     },
     {
-        label: 'Economic Diversifiction',
-        value: 'economic_diversifiction',
+        label: 'Economic Diversification',
+        value: 'economic_diversification',
     },
     {
         label: 'Co-creation of Knowledge',
-        value: 'co_creation_of_knowledge',
+        value: 'co_creation_knowledge',
     },
     {
         label: 'Governance',
@@ -109,7 +97,7 @@ const principles = ref([
     },
     {
         label: 'Social Values and Diet',
-        value: 'social_values_and_diet',
+        value: 'social_values_diet',
     },
     {
         label: 'Fairness',
@@ -125,7 +113,7 @@ const principles = ref([
     },
 ])
 
-const selectedPrinciple = ref('overall_ae')
+const selectedPrinciple = ref('ae')
 
 
 // returns the filtered dataset in a format ready for ChartJS charts
@@ -188,38 +176,12 @@ const violinPlot = ref(null);
 watch(selectedPrinciple, () => {
     console.log('Selected principle changed to ' + selectedPrinciple.value);
 
-    // if a violin plot exists, destory it
-    if (violinPlot.value) {
-        violinPlot.value.destroy();
-    }
-
-    console.log(violinChartData.value[selectedPrinciple.value])
-
-    violinPlot.value = new ViolinChart(violinCanvas.value, {
-        type: 'violin',
-        data: violinChartData.value[selectedPrinciple.value],
-        options: {
-            responsive: true,
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Violin Plot for ' + selectedPrinciple.value
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 5,
-                }
-            }
-        }
-    });
-
-    console.log(violinPlot.value);
+    reRenderViolins();
 
 })
 
 onMounted(() => {
+
 })
 
 
@@ -254,10 +216,45 @@ const updateCharts = function () {
 
     })
 
+
+    reRenderViolins();
+
+    console.log(violinPlot.value);
+
     console.log('should emit charts loaded');
     emit('loadComplete')
 
+
 }
 
+
+const reRenderViolins = function () {
+        // if a violin plot exists, destory it
+    if (violinPlot.value) {
+        violinPlot.value.destroy();
+    }
+
+    console.log(violinChartData.value[selectedPrinciple.value])
+
+    violinPlot.value = new ViolinChart(violinCanvas.value, {
+        type: 'violin',
+        data: violinChartData.value[selectedPrinciple.value],
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Violin Plot for ' + selectedPrinciple.value
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 5,
+                }
+            }
+        }
+    });
+}
 
 </script>

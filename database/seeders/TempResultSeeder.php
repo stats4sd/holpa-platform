@@ -339,6 +339,7 @@ class TempResultSeeder extends Seeder
                         'recycling_4_score' => stats_rand_gen_normal($mean, $stddev),
                         'recycling_5_score' => stats_rand_gen_normal($mean, $stddev),
                         'overall_recycling_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'input_reduction_1_score' => stats_rand_gen_normal($mean, $stddev),
                         'input_reduction_2_score' => stats_rand_gen_normal($mean, $stddev),
                         'input_reduction_3_score' => stats_rand_gen_normal($mean, $stddev),
@@ -346,11 +347,17 @@ class TempResultSeeder extends Seeder
                         'input_reduction_5_score' => stats_rand_gen_normal($mean, $stddev),
                         'input_reduction_6_score' => stats_rand_gen_normal($mean, $stddev),
                         'overall_input_reduction_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'soil_health_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_social_values_diet_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'animal_health_1_score' => stats_rand_gen_normal($mean, $stddev),
                         'animal_health_2_score' => stats_rand_gen_normal($mean, $stddev),
                         'animal_health_3_score' => stats_rand_gen_normal($mean, $stddev),
                         'overall_animal_health_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'overall_biodiversity_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'synergy_1_score' => stats_rand_gen_normal($mean, $stddev),
                         'synergy_2_score' => stats_rand_gen_normal($mean, $stddev),
                         'synergy_3_score' => stats_rand_gen_normal($mean, $stddev),
@@ -358,7 +365,10 @@ class TempResultSeeder extends Seeder
                         'synergy_5_score' => stats_rand_gen_normal($mean, $stddev),
                         'synergy_6_score' => stats_rand_gen_normal($mean, $stddev),
                         'overall_synergy_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'economic_diversification_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_economic_diversification_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'co_creation_knowledge_1_score' => stats_rand_gen_normal($mean, $stddev),
                         'co_creation_knowledge_2_score' => stats_rand_gen_normal($mean, $stddev),
                         'co_creation_knowledge_3_score' => stats_rand_gen_normal($mean, $stddev),
@@ -367,20 +377,25 @@ class TempResultSeeder extends Seeder
                         'co_creation_knowledge_6_score' => stats_rand_gen_normal($mean, $stddev),
                         'co_creation_knowledge_7_score' => stats_rand_gen_normal($mean, $stddev),
                         'overall_co_creation_knowledge_score' => stats_rand_gen_normal($mean, $stddev),
-                        'social_values_diet_1_score' => stats_rand_gen_normal($mean, $stddev),
-                        'social_values_diet_2_score' => stats_rand_gen_normal($mean, $stddev),
-                        'social_values_diet_3_score' => stats_rand_gen_normal($mean, $stddev),
-                        'social_values_diet_4_score' => stats_rand_gen_normal($mean, $stddev),
 
-                        'overall_social_values_diet_score' => stats_rand_gen_normal($mean, $stddev),
 
                         'governance_1_score' => stats_rand_gen_normal($mean, $stddev),
                         'governance_2_score' => stats_rand_gen_normal($mean, $stddev),
                         'governance_3_score' => stats_rand_gen_normal($mean, $stddev),
-
                         'overall_governance_score' => stats_rand_gen_normal($mean, $stddev),
 
+                        'social_values_diet_1_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_2_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_3_score' => stats_rand_gen_normal($mean, $stddev),
+                        'social_values_diet_4_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_social_values_diet_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'overall_fairness_score' => stats_rand_gen_normal($mean, $stddev),
+
+                        'overall_connectivity_score' => stats_rand_gen_normal($mean, $stddev),
+
                         'participation_score' => stats_rand_gen_normal($mean, $stddev),
+                        'overall_participation_score' => stats_rand_gen_normal($mean, $stddev),
                     ]);
             }
         }

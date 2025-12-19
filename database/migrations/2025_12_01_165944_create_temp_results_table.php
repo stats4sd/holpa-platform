@@ -36,16 +36,17 @@ return new class extends Migration {
             $table->integer('input_reduction_4_score')->nullable();
             $table->integer('input_reduction_5_score')->nullable();
             $table->integer('input_reduction_6_score')->nullable();
-
             $table->integer('overall_input_reduction_score')->nullable();
 
             $table->integer('soil_health_score')->nullable();
+            $table->integer('overall_soil_health_score')->nullable();
 
             $table->integer('animal_health_1_score')->nullable();
             $table->integer('animal_health_2_score')->nullable();
             $table->integer('animal_health_3_score')->nullable();
-
             $table->integer('overall_animal_health_score')->nullable();
+
+            $table->integer('overall_biodiversity_score')->nullable();
 
             $table->integer('synergy_1_score')->nullable();
             $table->integer('synergy_2_score')->nullable();
@@ -53,10 +54,10 @@ return new class extends Migration {
             $table->integer('synergy_4_score')->nullable();
             $table->integer('synergy_5_score')->nullable();
             $table->integer('synergy_6_score')->nullable();
-
             $table->integer('overall_synergy_score')->nullable();
 
             $table->integer('economic_diversification_score')->nullable();
+            $table->integer('overall_economic_diversification_score')->nullable();
 
             $table->integer('co_creation_knowledge_1_score')->nullable();
             $table->integer('co_creation_knowledge_2_score')->nullable();
@@ -65,23 +66,25 @@ return new class extends Migration {
             $table->integer('co_creation_knowledge_5_score')->nullable();
             $table->integer('co_creation_knowledge_6_score')->nullable();
             $table->integer('co_creation_knowledge_7_score')->nullable();
-
             $table->integer('overall_co_creation_knowledge_score')->nullable();
+
+            $table->integer('governance_1_score')->nullable();
+            $table->integer('governance_2_score')->nullable();
+            $table->integer('governance_3_score')->nullable();
+            $table->integer('overall_governance_score')->nullable();
 
             $table->integer('social_values_diet_1_score')->nullable();
             $table->integer('social_values_diet_2_score')->nullable();
             $table->integer('social_values_diet_3_score')->nullable();
             $table->integer('social_values_diet_4_score')->nullable();
-
             $table->integer('overall_social_values_diet_score')->nullable();
 
-            $table->integer('governance_1_score')->nullable();
-            $table->integer('governance_2_score')->nullable();
-            $table->integer('governance_3_score')->nullable();
+            $table->integer('overall_fairness_score')->nullable();
 
-            $table->integer('overall_governance_score')->nullable();
+            $table->integer('overall_connectivity_score')->nullable();
 
             $table->integer('participation_score')->nullable();
+            $table->integer('overall_participation_score')->nullable();
 
             $table->timestamps();
         });
