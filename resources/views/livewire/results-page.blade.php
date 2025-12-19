@@ -1,0 +1,28 @@
+<x-slot:vite-scripts>
+    @vite('resources/js/public-map.js')
+</x-slot:vite-scripts>
+
+<div class="explore-page">
+
+
+    <div class="relative h-auto">
+        <!-- Background Image (absolutely positioned to go as a backdrop) -->
+        <img src="images/landscape.jpg" alt="Background Image" class="w-full h-24 object-cover absolute" style="object-position:center; z-index: 0">
+
+        <!-- Overlay Content -->
+        <div class="relative inset-0 flex text-center items-center justify-center h-24 bg-black bg-opacity-50 lg:pt-2 z-10">
+            <div class="w-max flex flex-col items-left relative">
+                <!-- Headings -->
+                <div class="relative flex items-center mb-0  text-center lg:text-left px-4">
+                    <h2 class="text-white text-5xl mb-2 lg:mb-4 font-extralight" style="letter-spacing: 0.3em;">HOLPA</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{-- MAIN CONTENT --}}
+    <div class="mx-auto mt-12 sm:px-8 lg:px-12" id="public-map-app">
+        <public-map></public-map>
+    </div>
+
+</div>
