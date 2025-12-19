@@ -101,6 +101,17 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         $this->resetTable();
                     }),
 
+                // TODO: change it to a single button to download submissions extraction excel file for both fieldwork form and household form
+                // 
+                // Get tenant (latest team) from logged in user
+                // Get all xlsforms belong to the tenant (team)
+                // Call Laravel Excel to generate excel file for fieldwork form, save it to harddisk temporary
+                // Call Laravel Excel to generate excel file for household form, save it to harddisk temporary
+                // Compress both submissions extraction excel files into one zip file
+                // Download the zip file
+
+                // Generate submissions extraction excel file for a particular form
+                // Verify the correctness of extraction excel file first
                 Action::make('download-submissions')
                     ->label('Download Submissions')
                     ->action(function (Xlsform $record) {
