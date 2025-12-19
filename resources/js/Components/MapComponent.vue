@@ -83,7 +83,7 @@ const updateMapMarkers = function () {
 onMounted(() => {
 
     // Initialize the map when the component is mounted
-    initialMap.value = L.map('map').setView([5.4, 19.3], 3);
+    initialMap.value = L.map('map').setView([5.4, 19.3], 2);
 
     const temp = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 

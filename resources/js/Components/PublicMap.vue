@@ -1,24 +1,32 @@
 <template>
 
+<!-- A temporary overlay that covers the whole page content, greying out the content behind it and explaining that the dashboard will be available shortly -->
+<div v-if="showOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center" style="z-index:50000">
+    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
+        <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
+        <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
+        <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
+    </div>
+</div>
+
     <div class="w-full">
 
         <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
 
-        <div class="grid grid-cols-12 mb-8 gap-4">
 
-            <div class="col-span-6 lg:col-span-4 xl:col-span-3">
-                <div class="border border-green-700 p-4">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4">
-                        Showing {{ selectedCountry.value ?? 'All Countries' }}
-                    </h3>
-                    <VueSelect
-                        v-model="selectedCountry"
-                        :is-multi="true"
-                        :options="allCountries"
-                        placeholder="Select country"
-                        class="menu"
-                    />
-                </div>
+        <div class="border border-green-700 p-4 flex">
+
+            <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-4">
+                    Showing {{ selectedCountry.value ?? 'All Countries' }}
+                </h3>
+                <VueSelect
+                    v-model="selectedCountry"
+                    :is-multi="true"
+                    :options="allCountries"
+                    placeholder="Select country"
+                    class="menu"
+                />
             </div>
             <div class="col-span-6 lg:col-span-8 xl:col-span-9">
                 <h4 class="ps-4">Summary</h4>
@@ -28,6 +36,7 @@
                 <p class="ps-4">Male-headed farm households: {{ filteredResults.filter(result => result.gender === 'Male').length }}</p>
             </div>
         </div>
+
 
         <div class="border border-blue-500 rounded-lg p-4 mb-8 grid grid-cols-3">
             <div class="col-span-1 space-y-2">
@@ -58,12 +67,12 @@
 
             <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
                 <h4 class="mb-4">Agroecology Scores</h4>
-                <AeChartsComponent
-                    :allCountries="allCountries"
-                    :selectedCountry="selectedCountry"
-                    :filteredResults="deferredFilteredResults"
-                    @load-complete="chartsLoadComplete"
-                />
+                <!--                <AeChartsComponent-->
+                <!--                    :allCountries="allCountries"-->
+                <!--                    :selectedCountry="selectedCountry"-->
+                <!--                    :filteredResults="deferredFilteredResults"-->
+                <!--                    @load-complete="chartsLoadComplete"-->
+                <!--                />-->
             </div>
         </div>
         <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
@@ -80,6 +89,8 @@ import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
 import AeChartsComponent from "./AeChartsComponent.vue";
+
+const showOverlay = ref(true); // Set to false to hide the overlay
 
 const allCountries = ref([
     {
@@ -120,7 +131,10 @@ const selectedCountry = ref({});
 
 const mapLoading = ref(true);
 const chartLoading = ref(true);
-const loadingState = computed(() => mapLoading.value || chartLoading.value);
+//const loadingState = computed(() => mapLoading.value || chartLoading.value);
+
+// temp:
+const loadingState = ref(false);
 
 const mapLoadComplete = function () {
     console.log('Map loading complete');

@@ -113,13 +113,105 @@
 
             <div class="col-span-1  flex-col px-16 place-content-center">
                 <h3 class="text-3xl mb-8 text-hyellow">Results </h3>
-                <p>HOLPA has so far been implemented across 7 different countries, and the analysis by the core HOLPA team is ongoing. This section will be updated with more information, highlights and downloadable reports when they become available. </p>
+                <p class="mb-8">HOLPA has so far been implemented across 7 different countries. Some country reports and working documents are already available on the CGSpace site. See the Reports section below for links.</p>
+                <p class="mb-8">You can also explore the Agroecology Performance Dashboard to visualise the results from previous HOLPA implementations: </p>
+                <a href="{{ url('results') }}" class="button bg-blue hover:bg-white b-white border-2 rounded-full  px-4 py-2 text-white hover:text-blue font-semibold w-auto flex justify-center items-center text-center">
+                    VIEW DASHBOARD
+                </a>
+                </p>
             </div>
+        </div>
+
+        <div id="citations" class="py-6 mb-12">
+            <h3 class="text-3xl mb-8 text-hyellow">Reports </h3>
+            <p>The following is a set of the working papers and reports that have been published based on the completed implementations of HOLPA across 7 countries:</p>
+            <ul class="list-disc list-inside space-y-2 my-2">
+                <li>
+                    <b>Burkina Faso:</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Orounladji, B.M.; Kouakou, P.; Ouedraogo, A.; Sanogo, S.; Sib, O.; Vall, E. (2024) Preliminary results of the agroecological performance assessment of milk-producing farms in the Bobo-Dioulasso production basin using the HOLPA tool. Working Document Work Package 2. 27 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/168608">View online</a>
+                        </li>
+                        <li>Orounladji Boko, M.; Kouakou, P.; Ollo, S.; Sanogo, S.; Ouedraogo, A.; Vall, E. (2024) Restitution workshop report of the results of the HOLPA survey in Burkina Faso. 21 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/168683">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                   <b>India</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Krishnan, S.; Gupta, S.; Malaiappan, S.; Singh, S.; Kumar, G.; Alvi, M.; Shijagurumayum, M.; Samaddar, A.; Sikka, A. (2024) Performance assessment of agroecology in India. 34 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/170182">View online</a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <b>Kenya</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Nyawira, S.S.; Korir, H.; Bolo, P.; Omondi, K..; Owili, S.O.; Letty, B.; Wamaitha, C.; Njogu, M.; Anyango, E.; Baijukya, F. (2024) Performance assessment of agroecology in Makueni and Kiambu counties, Kenya. 46 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/169052">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Lao PDR</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Douangsavanh, S.; Xaydala, V.; Chanthalath, A.; Dubois, M. 2024. Performance assessment of agroecology in Attapeu, Lao PDR. Colombo, Sri Lanka: International Water Management Institute (IWMI). CGIAR Initiative on Agroecology. 24p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/173047">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Peru</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Pareja, P.; Orjuela, G.; Arce, A.; Sanchez, J.; Beltran, M.; Tristan, M.C. (2024) Evaluación de desempeño agroecológico, Ucayali - Perú. 64 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/169551">View online</a>
+                        </li>
+                        <li>Arce, A.; Pareja, P.; Tristan, M.C.; Sanchez Choy, J. (2023) Desarrollo de indicadores locales en el corredor pucallpa – Aguaytía Ucayali, Peru. Iniciativa de Agroecología. WP2 Reporte de Taller. 29 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/137474">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Senegal</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Lairez, J.; Modou, G.F.; Finda, B.; Koffi, K.P.; El Hadji Kabe, G.; Banna, M.; Syaka Assemblée, M.C.; Bilal, D.P.; Ibrahima, D.; Moussa, S.; Diao, C.A. (2024) Evaluation des performances de l'agroécologie au Sénégal. Rapport technique de l'initiative agroécologie. 47 p.
+
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/170306">View online</a>
+                        </li>
+                        <li>Lairez, J.; Modou Gueye, F.; Bayo, F.; Kouakou, P.; Gaye, E.H.K.; Mbaye, B.; Diakhate, P.B.; Man, C.A.; Sall, M.; Ba, K. (2024) Rapport de l’atelier de restitution des résultats de l’enquête HOLPA. 16 p.
+
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/168765">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Tunisia</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li> Veronique Alary, Wael Toukebri, Zahra Shiri, Layal Atassi, Abeyou Abeyou, Haithem Bahri, Meriem Barbouchi, Zied Idoudi, Quang Bao Le, Hatem Cheikh M'hamed, Maryline Darmaun, Aymen Frija. (20/12/2024). HOLPA Country Report: Tunisia. Beirut, Lebanon: International Center for Agricultural Research in the Dry Areas (ICARDA).
+
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/168608">View online</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <b>Zimbabwe</b>
+                    <ul class="list-inside space-y-2 my-2 ml-6">
+                        <li>Falconnier, G.N.; Sibanda, T.; Choruma, D.J.; Chimonyo, V.G. (2024) Performance assessment of agroecology In Zimbabwe. Agroecology Initiative Technical Report. 25 p.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/163494">View online</a>
+                        </li>
+                        <li>Choruma, D. J., Sibanda, T., Chimonyo, V. G. P., & Falconnier, G. N. (2023). Local Indicator Selection Process (LISP) - Zimbabwe workshops report. CGIAR.
+                            <a class="underline text-blue-800 hover:text-blue-600" href="https://hdl.handle.net/10568/135759">View online</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
 
     </div>
 
-    <x-filament-actions::modals />
+    <x-filament-actions::modals/>
 
 </div>

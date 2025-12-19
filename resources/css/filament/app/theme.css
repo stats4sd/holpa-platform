@@ -573,7 +573,7 @@ div:has(> .fi-page-sub-navigation-sidebar-ctn) {
 /** PUBLIC DASHBOARD STYLES **/
 
 .public-map {
-    height: 60vh;
+    height: 30vh;
 }
 
 @media only screen and (max-width: 500px) {
