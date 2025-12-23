@@ -2,19 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dataset;
-use App\Models\SampleFrame\Farm;
-use App\Models\SampleFrame\Location;
-use App\Models\SampleFrame\LocationLevel;
-use App\Models\Team;
 use Carbon\Carbon;
+use App\Models\Team;
+use App\Models\Dataset;
+use Illuminate\Support\Str;
+use Filament\Facades\Filament;
+use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use App\Models\SampleFrame\Location;
 use Illuminate\Support\Facades\Process;
-use Illuminate\Support\Str;
+use App\Models\SampleFrame\LocationLevel;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 
 class SubmissionController extends Controller
 {
@@ -400,8 +401,10 @@ class SubmissionController extends Controller
 
                 $parentLocation = $level->locations()->create([
                     'code' => $code,
-                    'name' => $locationData['{$odkName}_name'],
+                    'name' => $locationData["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
+                    // set column locations.owner_id as logged in user's latest team id (the current team)
+                    'owner_id' => auth()->user()->latest_team_id,
                 ]);
             }
         }
