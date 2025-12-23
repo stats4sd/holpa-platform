@@ -31,7 +31,7 @@ class SubmissionController extends Controller
             $submission->save();
         }
 
-        static::handleLocationData($submission);
+        static::handleLocationData($submission, $team);
 
         /** @var Farm $farm */
         $farm = $submission->primaryDataSubject;
@@ -361,7 +361,7 @@ class SubmissionController extends Controller
             ->filter();
     }
 
-    public static function handleLocationData(Submission $submission): void
+    public static function handleLocationData(Submission $submission, Team $team): void
     {
 
         /** @var Team $team */
@@ -403,8 +403,7 @@ class SubmissionController extends Controller
                     'code' => $code,
                     'name' => $locationData["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
-                    // set column locations.owner_id as logged in user's latest team id (the current team)
-                    'owner_id' => auth()->user()->latest_team_id,
+                    'owner_id' => $team->id,
                 ]);
             }
         }
