@@ -2,22 +2,23 @@
 
 namespace App\Livewire;
 
+use Livewire\Component;
+use Filament\Tables\Table;
+use Livewire\Attributes\On;
 use App\Services\HelperService;
-use Filament\Actions\Concerns\InteractsWithActions;
+use Illuminate\Support\HtmlString;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Notifications\Notification;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
+use Filament\Actions\Concerns\InteractsWithActions;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\HtmlString;
-use Livewire\Attributes\On;
-use Livewire\Component;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class XlsformsTableView extends Component implements HasActions, HasForms, HasTable
 {
@@ -98,6 +99,17 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
 
                         // reset table to update the status
                         $this->resetTable();
+                    }),
+
+                // Temporary add a form level download button to test submission extractions quickly
+                //
+                // TODO: we will have a single "Download Submissions" button in filament table header
+                Action::make('download-submissions')
+                    ->label('Download Submissions')
+                    ->action(function (Xlsform $record) {
+                        $odkLinkService = app()->make(OdkLinkService::class);
+
+                        return $odkLinkService->exportAsExcelFile($record);
                     }),
 
             ])
