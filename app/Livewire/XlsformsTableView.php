@@ -100,16 +100,14 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         // reset table to update the status
                         $this->resetTable();
                     }),
-
-                // Temporary add a form level download button to test submission extractions quickly
-                //
-                // TODO: we will have a single "Download Submissions" button in filament table header
+            ])
+            ->headerActions([
                 Action::make('download-submissions')
                     ->label('Download Submissions')
-                    ->action(function (Xlsform $record) {
+                    ->action(function () {
                         $odkLinkService = app()->make(OdkLinkService::class);
 
-                        return $odkLinkService->exportAsExcelFile($record);
+                        return $odkLinkService->exportDatasetsAsExcelFile();
                     }),
 
             ])
