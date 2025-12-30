@@ -7,6 +7,7 @@
         :clearable="false"
     ></VueSelect>
 
+
     <div v-for="principle in principles" :key="principle.value">
         <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper">
             <Bar
@@ -21,6 +22,10 @@
         <canvas :id="'violin_principle'" :ref="'violin_principle'"></canvas>
     </div>
 
+    <div class="boxPlot">
+        <canvas :id="'boxplot_principle'" :ref="'boxplot_principle'"></canvas>
+    </div>
+
 </template>
 
 <script setup>
@@ -30,7 +35,11 @@ import {Bar} from 'vue-chartjs'
 import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, BarController} from 'chart.js';
 import VueSelect from "vue3-select-component";
 import * as ss from 'simple-statistics'
-import {ViolinChart} from "@sgratzl/chartjs-chart-boxplot";
+import {BoxPlotChart, ViolinChart} from "@sgratzl/chartjs-chart-boxplot";
+import { Colors } from 'chart.js';
+
+ChartJS.register(Colors);
+
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Title, Tooltip, Legend, ViolinChart);
 
@@ -159,6 +168,7 @@ watch(() => props.filteredResults, () => {
 // BarChartData will contain 14 sets of data, one per principle + one for 'all'
 const barChartData = ref({})
 const violinChartData = ref({})
+const boxPlotData = ref({})
 
 const barChartOptions = ref({
     maintainAspectRatio: true,
@@ -173,10 +183,14 @@ const barChartOptions = ref({
 const violinCanvas = useTemplateRef('violin_principle');
 const violinPlot = ref(null);
 
+const boxPlotCanvas = useTemplateRef('boxplot_principle');
+const boxPlot = ref(null);
+
 watch(selectedPrinciple, () => {
     console.log('Selected principle changed to ' + selectedPrinciple.value);
 
     reRenderViolins();
+    reRenderBoxPlots()
 
 })
 
@@ -212,12 +226,20 @@ const updateCharts = function () {
                     data: prepareChartData(principle.value)
                 }],
             }
+            boxPlotData.value[principle.value] = {
+                labels: props.allCountries.map(country => country.label) ?? ["1", "2", "3"],
+                datasets: [{
+                    label: principle.value + ' Score',
+                    data: prepareChartData(principle.value)
+                }],
+            }-
         })
 
     })
 
 
     reRenderViolins();
+    reRenderBoxPlots();
 
     console.log(violinPlot.value);
 
@@ -227,9 +249,35 @@ const updateCharts = function () {
 
 }
 
+const reRenderBoxPlots = function () {
+    // if a box plot exists, destroy it
+    if (boxPlot.value) {
+        boxPlot.value.destroy();
+    }
+
+    boxPlot.value = new BoxPlotChart(boxPlotCanvas.value, {
+        type: 'boxplot',
+        data: boxPlotData.value[selectedPrinciple.value],
+        options: {
+            responsive: true,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Box Plot for ' + selectedPrinciple.value
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 5,
+                }
+            }
+        }
+    });
+}
 
 const reRenderViolins = function () {
-        // if a violin plot exists, destory it
+    // if a violin plot exists, destroy it
     if (violinPlot.value) {
         violinPlot.value.destroy();
     }

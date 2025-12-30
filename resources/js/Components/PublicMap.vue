@@ -1,44 +1,45 @@
 <template>
 
-<!-- A temporary overlay that covers the whole page content, greying out the content behind it and explaining that the dashboard will be available shortly -->
-<div v-if="showOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center" style="z-index:50000">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
-        <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
-        <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
+    <!-- A temporary overlay that covers the whole page content, greying out the content behind it and explaining that the dashboard will be available shortly -->
+    <div v-if="showOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center" style="z-index:50000">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
+            <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
+            <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
+        </div>
     </div>
-</div>
 
-    <div class="w-full">
+    <div class="w-full max-w-7xl mx-auto">
 
         <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
 
 
-        <div class="border border-green-700 p-4 flex">
+        <!-- SUMMARY -->
+        <div class="p-4 grid grid-cols-12">
 
-            <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">
-                    Showing {{ selectedCountry.value ?? 'All Countries' }}
+            <div class="col-span-12 md:col-span-5">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center space-x-8">
+                    <span>Showing</span>
+                    <VueSelect
+                        v-model="selectedCountryId"
+                        :is-multi="false"
+                        :options="allCountries"
+                        placeholder="All Countries"
+                        class="menu"
+                    />
                 </h3>
-                <VueSelect
-                    v-model="selectedCountry"
-                    :is-multi="true"
-                    :options="allCountries"
-                    placeholder="Select country"
-                    class="menu"
-                />
             </div>
-            <div class="col-span-6 lg:col-span-8 xl:col-span-9">
-                <h4 class="ps-4">Summary</h4>
-                <p class="ps-4">Total Surveys Conducted: {{ filteredResults.length }}</p>
-
-                <p class="ps-4">Female-headed farm households: {{ filteredResults.filter(result => result.gender === 'Female').length }}</p>
-                <p class="ps-4">Male-headed farm households: {{ filteredResults.filter(result => result.gender === 'Male').length }}</p>
+            <div class="col-span-12 md:col-span-5 md:col-start-7 grid grid-cols-6">
+                <div class="col-span-6 md:col-span-3">
+                    <h1 class="font-bold">{{ filteredResults.length }}</h1>
+                    <h5>Farms Surveyed</h5>
+                </div>
             </div>
         </div>
 
 
-        <div class="border border-blue-500 rounded-lg p-4 mb-8 grid grid-cols-3">
+        <!-- FILTERS -->
+        <div class="p-4 mb-8 grid grid-cols-3">
             <div class="col-span-1 space-y-2">
 
                 <VueSelect
@@ -67,15 +68,16 @@
 
             <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
                 <h4 class="mb-4">Agroecology Scores</h4>
-                <!--                <AeChartsComponent-->
-                <!--                    :allCountries="allCountries"-->
-                <!--                    :selectedCountry="selectedCountry"-->
-                <!--                    :filteredResults="deferredFilteredResults"-->
-                <!--                    @load-complete="chartsLoadComplete"-->
-                <!--                />-->
+                <CountryComparisonChartsComponent
+                    :allCountries="allCountries"
+                    :selectedCountry="selectedCountry"
+                    :filteredResults="deferredFilteredResults"
+                    @load-complete="chartsLoadComplete"
+                />
             </div>
         </div>
-        <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
+        <div class="absolute w-full h-[70vh] top-24 left-0 bg-gray-200 opacity-80" v-if="loadingState" style="z-index:99999;"></div>
+        <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>
     </div>
@@ -88,9 +90,9 @@ import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
-import AeChartsComponent from "./AeChartsComponent.vue";
+import CountryComparisonChartsComponent from "./CountryComparisonChartsComponent.vue";
 
-const showOverlay = ref(true); // Set to false to hide the overlay
+const showOverlay = ref(false); // Set to false to hide the overlay
 
 const allCountries = ref([
     {
@@ -126,15 +128,17 @@ const allCountries = ref([
         value: '716'
     },
 ]);
-const selectedCountry = ref({});
-
+const selectedCountryId = ref(null);
+const selectedCountry = computed(() => {
+    return allCountries.value.find(country => country.value === selectedCountryId.value) || {};
+});
 
 const mapLoading = ref(true);
 const chartLoading = ref(true);
-//const loadingState = computed(() => mapLoading.value || chartLoading.value);
+const loadingState = computed(() => mapLoading.value || chartLoading.value);
 
 // temp:
-const loadingState = ref(false);
+
 
 const mapLoadComplete = function () {
     console.log('Map loading complete');
@@ -195,6 +199,7 @@ onMounted(() => {
     // get TempResults data
     axios.get('/temp-results')
         .then(response => {
+            console.log('Fetched TempResults:', response.data);
             allResults.value = response.data;
 
             if (deferredFilteredResults.value.length === 0) {

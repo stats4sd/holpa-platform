@@ -46,7 +46,6 @@ class SubmissionController extends Controller
         $farm->refused = $consent == '0';
         $farm->save();
 
-
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
         if (isset($submission->content['start']) && isset($submission->content['end'])) {
