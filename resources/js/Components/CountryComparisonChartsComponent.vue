@@ -1,4 +1,16 @@
 <template>
+    <div class="flex justify-between">
+        <h4 class="mb-4">Agroecology Scores</h4>
+        <div class="mr-4">
+            <input type="radio" id="bar" value="bar" v-model="chartType" class="mr-1">
+            <label for="bar" class="mr-4">Bar Chart</label>
+            <input type="radio" id="violin" value="violin" v-model="chartType" class="mr-1">
+            <label for="violin">Violin Plot</label>
+            <input type="radio" id="boxplot" value="boxplot" v-model="chartType" class="mr-1 ml-4">
+            <label for="boxplot">Box Plot</label>
+        </div>
+    </div>
+
     <VueSelect
         v-model="selectedPrinciple"
         :options="principles"
@@ -8,7 +20,7 @@
     ></VueSelect>
 
 
-    <div v-for="principle in principles" :key="principle.value">
+    <div v-for="principle in principles" :key="principle.value" v-if="chartType=='bar'">
         <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper">
             <Bar
                 :key="'bar_'+principle.value"
@@ -18,11 +30,11 @@
 
         </div>
     </div>
-    <div class="violinChart">
+    <div class="violinChart" v-show="chartType==='violin'">
         <canvas :id="'violin_principle'" :ref="'violin_principle'"></canvas>
     </div>
 
-    <div class="boxPlot">
+    <div class="boxPlot" v-show="chartType==='boxplot'">
         <canvas :id="'boxplot_principle'" :ref="'boxplot_principle'"></canvas>
     </div>
 
@@ -37,6 +49,7 @@ import VueSelect from "vue3-select-component";
 import * as ss from 'simple-statistics'
 import {BoxPlotChart, ViolinChart} from "@sgratzl/chartjs-chart-boxplot";
 import {Colors} from 'chart.js';
+import {RadioGroup, RadioGroupOption} from "@headlessui/vue";
 
 ChartJS.register(Colors);
 
@@ -123,7 +136,7 @@ const principles = ref([
 ])
 
 const selectedPrinciple = ref('ae')
-
+const chartType = ref('bar');
 
 // returns the filtered dataset in a format ready for ChartJS charts
 const prepareChartData = function (principle_value) {
@@ -284,6 +297,12 @@ const reRenderBoxPlots = function () {
         data: boxPlotData.value[selectedPrinciple.value],
         options: {
             responsive: true,
+            animation: {
+                animateScale: true,
+                animateRotate: false,
+                easing: 'easeOutQuart',
+                duration: 500
+            },
             plugins: {
                 title: {
                     display: true,
@@ -313,6 +332,12 @@ const reRenderViolins = function () {
         data: violinChartData.value[selectedPrinciple.value],
         options: {
             responsive: true,
+            animation: {
+                animateScale: true,
+                animateRotate: false,
+                easing: 'easeOutQuart',
+                duration: 500
+            },
             plugins: {
                 title: {
                     display: true,

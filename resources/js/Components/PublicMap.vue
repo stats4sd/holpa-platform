@@ -29,7 +29,6 @@
                 <!-- FILTERS -->
                 <div class="p-4 mb-8 w-full">
                     <div class="space-y-2">
-
                         <VueSelect
                             v-model="selectedGender"
                             :is-multi="false"
@@ -64,7 +63,7 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
 
-            <div class="col-span-1">
+            <div class="col-span-1 p-0 border border-green">
                 <MapComponent
                     :allCountries="allCountries"
                     :selectedCountry="selectedCountry"
@@ -73,8 +72,7 @@
                 />
             </div>
 
-            <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
-                <h4 class="mb-4">Agroecology Scores</h4>
+            <div class="col-span-1 p-4 border border-green">
                 <CountryComparisonChartsComponent
                     :allCountries="allCountries"
                     :selectedCountry="selectedCountry"
@@ -83,7 +81,7 @@
                 />
             </div>
         </div>
-        <div class="absolute w-full h-[70vh] top-24 left-0 bg-gray-200 opacity-80" v-if="loadingState" style="z-index:99999;"></div>
+        <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-if="loadingState" style="z-index:99999;"></div>
         <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>

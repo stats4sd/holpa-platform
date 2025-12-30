@@ -1,5 +1,5 @@
 <template>
-    <div id="map" class="public-map">
+    <div id="map" class="public-map h-full">
     </div>
 </template>
 
