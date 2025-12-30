@@ -9,15 +9,12 @@
         </div>
     </div>
 
-    <div class="w-full max-w-7xl mx-auto">
-
-        <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
-
+    <div class="w-full max-w-7xl mx-auto space-y-4">
 
         <!-- SUMMARY -->
-        <div class="p-4 grid grid-cols-12">
+        <div class="rounded-lg p-0 grid grid-cols-12 space-x-4">
 
-            <div class="col-span-12 md:col-span-5">
+            <div class="border border-green col-span-12 md:col-span-5 p-4">
                 <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center space-x-8">
                     <span>Showing</span>
                     <VueSelect
@@ -28,31 +25,41 @@
                         class="menu"
                     />
                 </h3>
-            </div>
-            <div class="col-span-12 md:col-span-5 md:col-start-7 grid grid-cols-6">
-                <div class="col-span-6 md:col-span-3">
-                    <h1 class="font-bold">{{ filteredResults.length }}</h1>
-                    <h5>Farms Surveyed</h5>
-                </div>
-            </div>
-        </div>
 
+                <!-- FILTERS -->
+                <div class="p-4 mb-8 w-full">
+                    <div class="space-y-2">
 
-        <!-- FILTERS -->
-        <div class="p-4 mb-8 grid grid-cols-3">
-            <div class="col-span-1 space-y-2">
-
-                <VueSelect
-                    v-model="selectedGender"
-                    :is-multi="false"
-                    :options="[
+                        <VueSelect
+                            v-model="selectedGender"
+                            :is-multi="false"
+                            :options="[
                         { label: 'Female-headed farm households', value: 'Female' },
                         { label: 'Male-headed farm households', value: 'Male' },
                     ]"
-                    placeholder="Filter by gender"
-                />
+                            placeholder="Filter by gender"
+                        />
+                    </div>
+
+                </div>
             </div>
 
+            <div class="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-3">
+                <div class="h-full space-y-4 flex md:flex-col w-full">
+                    <div class="border border-green p-4">
+                        <h2 class="font-bold text-nowrap mb-2">{{ filteredResults.length }}</h2>
+                        <h5 class="mt-0">Farms Surveyed</h5>
+                    </div>
+                    <div class="border border-green p-4 w-full">
+                        <h2 class="font-bold text-nowrap mb-2">50000 ha</h2>
+                        <h5 class="mt-0">Total Production Area <br/>Assessed</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-green pt-4 pb-0 px-4 h-full col-span-12 lg:col-span-4">
+                <SummaryChart :current-value="averageScore"/>
+                <h5 class="text-center mt-2">Avg. Agroecology Score</h5>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
@@ -91,6 +98,7 @@ import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
 import CountryComparisonChartsComponent from "./CountryComparisonChartsComponent.vue";
+import SummaryChart from "./SummaryChart.vue";
 
 const showOverlay = ref(false); // Set to false to hide the overlay
 
@@ -175,6 +183,14 @@ const filteredResults = computed(() => {
     return newResults;
 }, {deep: true});
 
+
+const averageScore = computed(() => {
+    if (filteredResults.value.length === 0) {
+        return 0;
+    }
+    const totalScore = filteredResults.value.reduce((sum, result) => sum + parseFloat(result.overall_ae_score), 0);
+    return (totalScore / filteredResults.value.length).toFixed(2);
+});
 
 const deferredFilteredResults = ref([]);
 

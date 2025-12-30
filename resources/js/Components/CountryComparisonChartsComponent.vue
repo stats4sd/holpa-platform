@@ -36,7 +36,7 @@ import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, Lin
 import VueSelect from "vue3-select-component";
 import * as ss from 'simple-statistics'
 import {BoxPlotChart, ViolinChart} from "@sgratzl/chartjs-chart-boxplot";
-import { Colors } from 'chart.js';
+import {Colors} from 'chart.js';
 
 ChartJS.register(Colors);
 
@@ -160,7 +160,26 @@ watch(() => props.filteredResults, () => {
             return;
         }
 
-        updateCharts();
+        // if there is cached data, use it
+        const cachedViolinData = localStorage.getItem('violinChartData');
+        const cachedBoxPlotData = localStorage.getItem('boxPlotData');
+        const cachedBarChartData = localStorage.getItem('barChartData');
+
+        if (cachedViolinData && cachedBoxPlotData && cachedBarChartData) {
+            console.log('Using cached chart data');
+            violinChartData.value = JSON.parse(cachedViolinData);
+            boxPlotData.value = JSON.parse(cachedBoxPlotData);
+            barChartData.value = JSON.parse(cachedBarChartData);
+
+            reRenderViolins();
+            reRenderBoxPlots();
+
+            emit('loadComplete')
+            return;
+        } else {
+            console.log('No cached data found, generating new chart data');
+            updateCharts();
+        }
 
     }, {deep: true}
 )
@@ -232,7 +251,12 @@ const updateCharts = function () {
                     label: principle.value + ' Score',
                     data: prepareChartData(principle.value)
                 }],
-            }-
+            }
+
+            localStorage.setItem('violinChartData', JSON.stringify(violinChartData.value));
+            localStorage.setItem('boxPlotData', JSON.stringify(boxPlotData.value));
+            localStorage.setItem('barChartData', JSON.stringify(barChartData.value));
+
         })
 
     })
