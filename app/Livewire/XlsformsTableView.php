@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Exports\DataExport\FarmSurveyDataExport;
 use Livewire\Component;
 use Filament\Tables\Table;
 use Livewire\Attributes\On;
@@ -17,6 +18,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Maatwebsite\Excel\Facades\Excel;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
 use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
@@ -105,9 +107,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                 Action::make('download-submissions')
                     ->label('Download Submissions')
                     ->action(function () {
-                        $odkLinkService = app()->make(OdkLinkService::class);
-
-                        return $odkLinkService->exportDatasetsAsExcelFile();
+                        return Excel::download(new FarmSurveyDataExport(HelperService::getCurrentOwner()), 'submissions.xlsx');
                     }),
 
             ])
