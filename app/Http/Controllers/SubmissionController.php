@@ -129,29 +129,8 @@ class SubmissionController extends Controller
 
     public static function processFieldworkSubmission(Submission $submission): void
     {
-        // ONLY NEEDED DURING TESTING WITH EXISTING FAKE DATA.
-        // TODO: remove when we move to real beta testing
-        $farmDataEntity = $submission->rootEntity;
+        // put the site data as child entities of the household submission... if the household submission exists
 
-        $siteNoManagement = [
-            1 => 3,
-            2 => 4,
-            3 => 2,
-        ];
-
-        $farmDataEntity->children->each(function (Entity $entity) {
-            if ($entity->values->pluck('dataset_variable_name')->doesntContain('management')) {
-
-                $siteNo = $entity->values->filter(fn($value) => $value->dataset_variable_name === 'site_no')->first()?->value ?? 1;
-
-                $entityValue = EntityValue::make([
-                    'dataset_variable_name' => 'management',
-                    'value' => $siteNoManagement[$siteNo] ?? 1,
-                ]);
-
-                $entity->addValues(collect([$entityValue]));
-            }
-        });
 
 
     }
@@ -384,8 +363,10 @@ class SubmissionController extends Controller
                 ->first();
 
             if ($location) {
-                $parentLocation = $location;
-
+                if($level->has_farms) {
+                    // location exists; use it as parent for next level
+                    $parentLocation = $location;
+                }
             } else {
 
                 // if _id from form is -999, then it's a new entry with no pre-defined code;
@@ -397,19 +378,18 @@ class SubmissionController extends Controller
                     $code = $locationData["{$odkName}_id"];
                 }
 
-                $parentLocation = $level->locations()->create([
+                $newLocation = $level->locations()->create([
                     'code' => $code,
                     'name' => $locationData["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
                     'owner_id' => $team->id,
                 ]);
+
+                if($level->has_farms) {
+                    $parentLocation = $newLocation;
+                }
             }
-
-            ray("Location level {$level->name} processed; location id: {$parentLocation->id}");
-
         }
-
-        ray('final location: ' . $parentLocation->name);
 
         $farmId = $submission->content['context']['farm_location']['farm_id'];
 
