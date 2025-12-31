@@ -2,25 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Dataset;
-use App\Models\SampleFrame\Farm;
-use App\Models\SampleFrame\Location;
-use App\Models\SampleFrame\LocationLevel;
-use App\Models\Team;
 use Carbon\Carbon;
+use App\Models\Team;
+use App\Models\Dataset;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Filament\Facades\Filament;
+use App\Models\SampleFrame\Farm;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use App\Models\SampleFrame\Location;
 use Illuminate\Support\Facades\Process;
-use Illuminate\Support\Str;
+use App\Models\SampleFrame\LocationLevel;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\DatasetVariable;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Entity;
-use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Submission;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\EntityValue;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplateSection;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class SubmissionController extends Controller
 {
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
+        ray('processing custom for HOLPA');
+
         // check if test or live data
         /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
@@ -30,7 +37,7 @@ class SubmissionController extends Controller
             $submission->save();
         }
 
-        static::handleLocationData($submission);
+        static::handleLocationData($submission, $team);
 
         /** @var Farm $farm */
         $farm = $submission->primaryDataSubject;
@@ -61,11 +68,11 @@ class SubmissionController extends Controller
             $submission->save();
 
         }
-        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household Form')) {
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Household')) {
             static::processHouseholdSubmission($submission);
         }
 
-        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork Form')) {
+        if (Str::contains($submission->xlsformVersion->xlsform->xlsformTemplate->title, 'HOLPA Fieldwork')) {
             static::processFieldworkSubmission($submission);
         }
 
@@ -86,6 +93,86 @@ class SubmissionController extends Controller
                 ->run($RscriptPath . ' data_processing/holpa_agroecology_scores.R');
             $perfOut = Process::path(base_path('packages/holpa-r-scripts'))
                 ->run($RscriptPath . ' data_processing/key_performance_indicators.R');
+
+        }
+
+
+        // check through the new entities and update the dataset_variables list
+        $newEntities = $submission->entities->load('dataset.variables', 'values');
+
+        ray('updating dataset variables based on new entities');
+        ray($newEntities->count());
+
+        foreach ($newEntities as $entity) {
+            $dataset = $entity->dataset;
+
+            // get list of existing variable names in the dataset
+            $existingVariables = $dataset->variables->sortBy('order')->pluck('name');
+
+            // get list of variable names in the entity
+            $entityVariables = $entity->values->sortBy('id')->pluck('dataset_variable_name');
+
+            // go thorugh entityVariables. When a new one is found, add it to the dataset variables immediately after the previous checked entityVariable
+
+            ray('checking entity for dataset: ' . $dataset->name);
+            ray('existing variables: ' . $existingVariables->count());
+            ray('entity variables: ' . $entityVariables->count());
+
+            for ($i = 0; $i < count($entityVariables); $i++) {
+                $currentVariable = $entityVariables[$i];
+
+                if ($i > 0) {
+                    $previousVariable = $entityVariables[$i - 1];
+                } else {
+                    $previousVariable = null;
+                }
+
+                if ($existingVariables->contains($currentVariable)) {
+                    // variable exists; do nothing
+                    continue;
+                } else {
+
+                    // new list with inserted new variable
+                    $updatedList = [];
+                    $j = 0;
+
+
+                    // new variable found; add it to dataset variables after previousVariable
+                    if($previousVariable == null) {
+                        // insert at beginning
+                        $updatedList[$j] = $currentVariable;
+                        $j++;
+                    }
+
+                    foreach ($existingVariables as $var) {
+                        $updatedList[$j] = $var;
+                        if ($var == $previousVariable) {
+                            $j++;
+                            $updatedList[$j] = $currentVariable;
+                        }
+                        $j++;
+                    }
+
+                    $existingVariables = collect($updatedList);
+
+                }
+
+            }
+
+            // replace database list with new list
+            $existingVariables->each(function ($varName, $index) use ($dataset) {
+                DatasetVariable::updateOrCreate(
+                    [
+                        'dataset_id' => $dataset->id,
+                        'name' => $varName,
+                        'label' => $varName,
+                    ],
+                    [
+                        'order' => $index,
+                    ]
+                );
+            });
+
 
         }
 
@@ -128,31 +215,94 @@ class SubmissionController extends Controller
 
     public static function processFieldworkSubmission(Submission $submission): void
     {
-        // ONLY NEEDED DURING TESTING WITH EXISTING FAKE DATA.
-        // TODO: remove when we move to real beta testing
-        $farmDataEntity = $submission->rootEntity;
+        // no entities have been created yet, because the ODK package skips creating entities if the 'root' section is not linked to a dataset.
+        $siteDataset = Dataset::firstWhere('name', 'Fieldwork Sites');
 
-        $siteNoManagement = [
-            1 => 3,
-            2 => 4,
-            3 => 2,
+
+        $farmInfo = [
+            'farm_id' => $submission->primaryDataSubject->id,
+            'farm_code' => $submission->primaryDataSubject->team_code,
+            'farm_name' => $submission->primaryDataSubject->identifiers['name'] ?? ($submission->primaryDataSubject->identifiers->first() ?? null),
         ];
 
-        $farmDataEntity->children->each(function (Entity $entity) {
-            if ($entity->values->pluck('dataset_variable_name')->doesntContain('management')) {
+        // create site entities from repeat groups
+        if (isset($submission->content['survey']['field_survey']['sites'])) {
+            $sitesData = $submission->content['survey']['field_survey']['sites'];
 
-                $siteNo = $entity->values->filter(fn($value) => $value->dataset_variable_name === 'site_no')->first()?->value ?? 1;
-
-                $entityValue = EntityValue::make([
-                    'dataset_variable_name' => 'management',
-                    'value' => $siteNoManagement[$siteNo] ?? 1,
+            // there should be 3 sites. Create a new entity for each
+            foreach ($sitesData as $siteData) {
+                $siteEntity = Entity::create([
+                    'submission_id' => $submission->id,
+                    'dataset_id' => $siteDataset->id,
+                    'parent_id' => null,
+                    'owner_id' => $submission->owner->id,
                 ]);
 
-                $entity->addValues(collect([$entityValue]));
+                $farmInfoEntityValues = collect($farmInfo)->map(function ($value, $key) {
+                    return EntityValue::make([
+                        'dataset_variable_name' => $key,
+                        'value' => $value,
+                    ]);
+                });
+
+                // add farmInfo to entity
+                $siteEntity->addValues($farmInfoEntityValues);
+
+                // get and flatten the rest of the site data from the submission content
+
+                $siteFormSection = $siteDataset->xlsformTemplateSections->first();
+                $schema = $siteFormSection->schema->where('type', '!=', 'structure');
+
+                // get all choices lists once to avoid multiple db calls when preparing select_multiple values
+                $xlsform = $submission->xlsform;
+                $choices = $xlsform->choiceLists()
+                    ->with('choiceListEntries', function ($query) use ($xlsform) {
+                        $query
+                            ->whereHas('owner', function ($query) use ($xlsform) {
+                                $query->where('id', $xlsform->owner->id);
+                            })
+                            ->orWhereNull('owner_id');
+                    })
+                    ->get();
+
+                $entityValues = [];
+
+                $siteData = ['site_root' => $siteData];
+                $siteRepeatPath = '/survey/field_survey/sites';
+
+                foreach ($schema as $schemaItem) {
+
+
+                    // remove the repeat group path from the beginning of the schema item path
+                    $path = Str::replaceFirst($siteRepeatPath, '', $schemaItem['path']);
+
+                    // replace '/' with '.' to match the way Arr::get works with nested arrays
+                    $path = Str::replace('/', '.', $path);
+                    $path = 'site_root' . $path;
+
+                    $value = Arr::get($siteData, $path, null);
+
+
+                    if ($schemaItem['type'] != 'repeat' && $value !== null && $value != '' && !is_array($value)) {
+                        $entityValues[] = EntityValue::make([
+                            'dataset_variable_name' => $schemaItem['name'],
+                            'value' => $value,
+                        ]);
+
+
+                        // for select_multiples, add binary/ boolean columns for each possible response
+                        $odkLinkService = app()->make(OdkLinkService::class);
+                        $booleanEntityValues = $odkLinkService->makeMultiSelectBooleans($siteEntity, $schemaItem, $choices, $value);
+                        $entityValues = array_merge($entityValues, $booleanEntityValues);
+                    } else {
+                    }
+                }
+
+                $siteEntity->addValues(collect($entityValues));
+
             }
-        });
 
-
+        }
     }
 
     // ******************** //
@@ -211,7 +361,6 @@ class SubmissionController extends Controller
 
         return $irrigationValues;
     }
-
 
 
     // custom handling for seasonal_worker_seasons data
@@ -360,11 +509,9 @@ class SubmissionController extends Controller
             ->filter();
     }
 
-    public static function handleLocationData(Submission $submission): void
+    public static function handleLocationData(Submission $submission, Team $team): void
     {
 
-        /** @var Team $team */
-        $team = $submission->xlsformVersion->xlsform->owner;
         $locationData = $submission->content['context']['location'];
 
         /** @var Collection<LocationLevel> $locationLevels */
@@ -385,8 +532,10 @@ class SubmissionController extends Controller
                 ->first();
 
             if ($location) {
-                $parentLocation = $location;
-
+                if ($level->has_farms) {
+                    // location exists; use it as parent for next level
+                    $parentLocation = $location;
+                }
             } else {
 
                 // if _id from form is -999, then it's a new entry with no pre-defined code;
@@ -398,11 +547,16 @@ class SubmissionController extends Controller
                     $code = $locationData["{$odkName}_id"];
                 }
 
-                $parentLocation = $level->locations()->create([
+                $newLocation = $level->locations()->create([
                     'code' => $code,
-                    'name' => $locationData['{$odkName}_name'],
+                    'name' => $locationData["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
+                    'owner_id' => $team->id,
                 ]);
+
+                if ($level->has_farms) {
+                    $parentLocation = $newLocation;
+                }
             }
         }
 
