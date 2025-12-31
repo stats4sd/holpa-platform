@@ -22,7 +22,7 @@ class LocationLevelsTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'parent_id' => NULL,
                 'name' => 'district',
                 'slug' => 'district',
@@ -34,7 +34,7 @@ class LocationLevelsTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'parent_id' => 1,
                 'name' => 'sub-district',
                 'slug' => 'sub-district',
@@ -46,7 +46,7 @@ class LocationLevelsTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'parent_id' => 2,
                 'name' => 'village',
                 'slug' => 'village',

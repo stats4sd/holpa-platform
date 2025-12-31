@@ -30,6 +30,7 @@ class ResetWithRealForms extends Command
         $this->call('migrate:fresh');
         $this->call('db:seed');
         $this->call('db:seed', ['class' => 'TestWithRealForms']);
+        $this->call('db:seed', ['class' => 'TestLocationsSeeder']);
         $this->call('app:copy-media-real', ['programatic' => 1]); // add programatic argument to automate
         $this->call('app:update-xlsform-versions-from-odk-central');
 

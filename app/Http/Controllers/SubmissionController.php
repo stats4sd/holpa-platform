@@ -364,8 +364,6 @@ class SubmissionController extends Controller
     public static function handleLocationData(Submission $submission, Team $team): void
     {
 
-        /** @var Team $team */
-        $team = $submission->xlsformVersion->xlsform->owner;
         $locationData = $submission->content['context']['location'];
 
         /** @var Collection<LocationLevel> $locationLevels */
@@ -406,7 +404,12 @@ class SubmissionController extends Controller
                     'owner_id' => $team->id,
                 ]);
             }
+
+            ray("Location level {$level->name} processed; location id: {$parentLocation->id}");
+
         }
+
+        ray('final location: ' . $parentLocation->name);
 
         $farmId = $submission->content['context']['farm_location']['farm_id'];
 

@@ -22,7 +22,7 @@ class LocationsTableSeeder extends Seeder
             0 =>
             array (
                 'id' => 1,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 1,
                 'parent_id' => NULL,
                 'code' => '1',
@@ -34,7 +34,7 @@ class LocationsTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 2,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 2,
                 'parent_id' => 1,
                 'code' => '3',
@@ -46,7 +46,7 @@ class LocationsTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 3,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 2,
                 'code' => '7',
@@ -58,7 +58,7 @@ class LocationsTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 9,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 2,
                 'code' => '8',
@@ -70,7 +70,7 @@ class LocationsTableSeeder extends Seeder
             4 =>
             array (
                 'id' => 14,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 2,
                 'parent_id' => 1,
                 'code' => '4',
@@ -82,7 +82,7 @@ class LocationsTableSeeder extends Seeder
             5 =>
             array (
                 'id' => 15,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 14,
                 'code' => '9',
@@ -94,7 +94,7 @@ class LocationsTableSeeder extends Seeder
             6 =>
             array (
                 'id' => 21,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 14,
                 'code' => '10',
@@ -106,7 +106,7 @@ class LocationsTableSeeder extends Seeder
             7 =>
             array (
                 'id' => 25,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 1,
                 'parent_id' => NULL,
                 'code' => '2',
@@ -118,7 +118,7 @@ class LocationsTableSeeder extends Seeder
             8 =>
             array (
                 'id' => 26,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 2,
                 'parent_id' => 25,
                 'code' => '5',
@@ -130,7 +130,7 @@ class LocationsTableSeeder extends Seeder
             9 =>
             array (
                 'id' => 27,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 26,
                 'code' => '11',
@@ -142,7 +142,7 @@ class LocationsTableSeeder extends Seeder
             10 =>
             array (
                 'id' => 33,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 26,
                 'code' => '12',
@@ -154,7 +154,7 @@ class LocationsTableSeeder extends Seeder
             11 =>
             array (
                 'id' => 38,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 2,
                 'parent_id' => 25,
                 'code' => '6',
@@ -166,7 +166,7 @@ class LocationsTableSeeder extends Seeder
             12 =>
             array (
                 'id' => 39,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 38,
                 'code' => '13',
@@ -178,7 +178,7 @@ class LocationsTableSeeder extends Seeder
             13 =>
             array (
                 'id' => 45,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'location_level_id' => 3,
                 'parent_id' => 38,
                 'code' => '14',
