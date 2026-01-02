@@ -42,8 +42,6 @@ class DatasetExport implements FromCollection, WithHeadings, WithTitle
             /** @var Farm $farm */
             $farm = $entity->submission->primaryDataSubject;
 
-            ray('primary subject', $farm);
-
             $row = [
                 'farm_id' => $farm ? $farm->team_code : null,
                 'farm_name' => $farm ? $farm->identifying_attribute : null,
