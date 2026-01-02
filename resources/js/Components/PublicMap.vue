@@ -27,14 +27,14 @@
                 </h3>
 
                 <!-- FILTERS -->
-                <div class="p-4 mb-8 w-full">
+                <div class="p-0 mb-8 w-full">
                     <div class="space-y-2">
                         <VueSelect
                             v-model="selectedGender"
                             :is-multi="false"
                             :options="[
-                        { label: 'Female-headed farm households', value: 'Female' },
-                        { label: 'Male-headed farm households', value: 'Male' },
+                        { label: 'Female-headed farm households', value: 'female' },
+                        { label: 'Male-headed farm households', value: 'male' },
                     ]"
                             placeholder="Filter by gender"
                         />
@@ -50,7 +50,7 @@
                         <h5 class="mt-0">Farms Surveyed</h5>
                     </div>
                     <div class="border border-green p-4 w-full">
-                        <h2 class="font-bold text-nowrap mb-2">50000 ha</h2>
+                        <h2 class="font-bold text-nowrap mb-2">{{ totalProductionArea }} ha</h2>
                         <h5 class="mt-0">Total Production Area
                             <br/>Assessed
                         </h5>
@@ -85,10 +85,22 @@
                     v-if="selectedCountryId"
                     :selectedCountry="selectedCountry"
                     :filteredResults="deferredFilteredResults"
+                    :selected-gender="selectedGender"
                     @load-complete="chartsLoadComplete"
+
                 />
             </div>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+            <div class="col-span-1 p-4 border border-green">
+                <RadarChartComponent
+                    :filteredResults="deferredFilteredResults"
+                    :selected-country="selectedCountry"
+                />
+            </div>
+        </div>
+
         <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-show="loadingState" style="z-index:99999;"></div>
         <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
@@ -106,6 +118,7 @@ import MapComponent from "./MapComponent.vue";
 import CountryComparisonChartsComponent from "./CountryComparisonChartsComponent.vue";
 import SummaryChart from "./SummaryChart.vue";
 import SubCountryComparisonChartsComponent from "./SubCountryComparisonChartsComponent.vue";
+import RadarChartComponent from "./RadarChartComponent.vue";
 
 const showOverlay = ref(false); // Set to false to hide the overlay
 
@@ -232,6 +245,11 @@ onMounted(() => {
         })
 
 
+});
+
+
+const totalProductionArea = computed(() => {
+    return filteredResults.value.reduce((sum, result) => sum + parseFloat(result.farm_size), 0).toFixed(2);
 });
 
 </script>

@@ -23,7 +23,7 @@
 
 
     <div class="grid grid-cols-12">
-        <div class="col-span-12 md:col-span-6 lg:col-span-4">
+        <div class="col-span-12 md:col-span-12 lg:col-span-12">
 
             <div v-for="principle in principles" :key="principle.value" v-if="chartType=='bar'">
                 <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper h-72">
@@ -39,35 +39,36 @@
                 <canvas :id="'violin_principle_sub'" :ref="'violin_principle_sub'"></canvas>
             </div>
 
-            <div class="boxPlot h-h-72" v-show="chartType==='boxplot'">
-                <canvas :id="'boxplot_principle_sub'" :ref="'boxplot_principle_sub'" ></canvas>
+            <div class="boxPlot h-72" v-show="chartType==='boxplot'">
+                <canvas :id="'boxplot_principle_sub'" :ref="'boxplot_principle_sub'"></canvas>
             </div>
         </div>
-
     </div>
 </template>
 
 <script setup>
 
-import {onMounted, ref, useTemplateRef, watch} from "vue";
-import {Bar} from 'vue-chartjs'
-import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale, BarController} from 'chart.js';
+import {computed, onMounted, ref, useTemplateRef, watch} from "vue";
+import {Bar, Radar} from 'vue-chartjs'
+import {RadialLinearScale, PointElement, LineElement, Filler, BarController, BarElement, CategoryScale, Chart as ChartJS, Colors, Legend, LinearScale, Title, Tooltip} from 'chart.js';
 import VueSelect from "vue3-select-component";
 import * as ss from 'simple-statistics'
 import {BoxPlotChart, ViolinChart} from "@sgratzl/chartjs-chart-boxplot";
-import {Colors} from 'chart.js';
-import {RadioGroup, RadioGroupOption} from "@headlessui/vue";
 
 ChartJS.register(Colors);
 
 
-ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Title, Tooltip, Legend, ViolinChart);
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, CategoryScale, LinearScale, BarElement, BarController, Title, Tooltip, Legend, ViolinChart);
 
 
 const props = defineProps({
     selectedCountry: {
         type: Object,
         required: true
+    },
+    selectedGender: {
+        type: String,
+        required: false
     },
     filteredResults: {
         type: Array,
@@ -142,6 +143,17 @@ const selectedPrinciple = ref('ae')
 const chartType = ref('bar');
 
 
+const genders = ref([
+    {
+        label: 'Male',
+        value: 'male'
+    },
+    {
+        label: 'Female',
+        value: 'female'
+    },
+]);
+
 // returns the filtered dataset in a format ready for ChartJS charts
 const prepareChartData = function (principle_value) {
 
@@ -149,24 +161,33 @@ const prepareChartData = function (principle_value) {
     const principle_overall_variable = 'overall_' + principle_value.toLowerCase().replace(/ /g, '_') + '_score';
 
 
-    let filteredData = props.filteredResults
-    if (filteredData.length === 0) {
-        return [];
-    }
-
-
-    return [ filteredData
-        .map(result => {
-            return result[principle_overall_variable]
+    return genders.value
+        .filter(gender => {
+            // if a gender is selected, only include that gender
+            if (props.selectedGender) {
+                return gender.value === props.selectedGender;
+            }
+            return true;
         })
-    ]
+        .map(gender => {
+            let filteredData = props.filteredResults.filter(result => result.gender === gender.value);
+
+            if (filteredData.length === 0) {
+                return [];
+            }
+
+            return filteredData
+                .map(result => {
+                    return result[principle_overall_variable]
+                })
+        });
 }
 
 const prepareBarChartData = function (principle_value) {
 
     const dataValues = prepareChartData(principle_value)
 
-
+    console.log(dataValues)
     return dataValues.map(data => {
         if (!data || data.length === 0) {
             return 0;
@@ -212,8 +233,18 @@ const boxPlotData = ref({})
 
 const barChartOptions = ref({
     maintainAspectRatio: false,
+    indexAxis: 'y',
     scales: {
-        y: {
+        x: {
+            beginAtZero: true,
+            max: 5,
+        }
+    }
+})
+const radarChartOptions = ref({
+    maintainAspectRatio: false,
+    scales: {
+        r: {
             beginAtZero: true,
             max: 5,
         }
@@ -250,7 +281,14 @@ const updateCharts = function () {
         // chart data per country
         principles.value.forEach(principle => {
             barChartData.value[principle.value] = {
-                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
+                labels: genders.value
+                    .filter(gender => {
+                        // if a gender is selected, only include that gender
+                        if (props.selectedGender) {
+                            return gender.value === props.selectedGender;
+                        }
+                        return true;
+                    }).map(gender => gender.label),
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareBarChartData(principle.value)
@@ -258,14 +296,28 @@ const updateCharts = function () {
             }
 
             violinChartData.value[principle.value] = {
-                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
+                labels: genders.value
+                    .filter(gender => {
+                        // if a gender is selected, only include that gender
+                        if (props.selectedGender) {
+                            return gender.value === props.selectedGender;
+                        }
+                        return true;
+                    }).map(gender => gender.label),
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareChartData(principle.value)
                 }],
             }
             boxPlotData.value[principle.value] = {
-                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
+                labels: genders.value
+                    .filter(gender => {
+                        // if a gender is selected, only include that gender
+                        if (props.selectedGender) {
+                            return gender.value === props.selectedGender;
+                        }
+                        return true;
+                    }).map(gender => gender.label),
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareChartData(principle.value)
@@ -309,7 +361,8 @@ const reRenderBoxPlots = function () {
         data: boxPlotData.value[selectedPrinciple.value],
         options: {
             responsive: true,
-            aspectRatio: 0.5,
+            aspectRatio: 2.5,
+            indexAxis: 'y',
             animation: {
                 animateScale: true,
                 animateRotate: false,
@@ -323,7 +376,7 @@ const reRenderBoxPlots = function () {
                 }
             },
             scales: {
-                y: {
+                x: {
                     beginAtZero: true,
                     max: 5,
                 }
@@ -344,7 +397,8 @@ const reRenderViolins = function () {
         data: violinChartData.value[selectedPrinciple.value],
         options: {
             responsive: true,
-            aspectRatio: 0.5,
+            aspectRatio: 2.5,
+            indexAxis: 'y',
             animation: {
                 animateScale: true,
                 animateRotate: false,
@@ -358,7 +412,7 @@ const reRenderViolins = function () {
                 }
             },
             scales: {
-                y: {
+                x: {
                     beginAtZero: true,
                     max: 5,
                 }
