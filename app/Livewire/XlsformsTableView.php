@@ -2,22 +2,25 @@
 
 namespace App\Livewire;
 
+use App\Exports\DataExport\FarmSurveyDataExport;
+use Livewire\Component;
+use Filament\Tables\Table;
+use Livewire\Attributes\On;
 use App\Services\HelperService;
-use Filament\Actions\Concerns\InteractsWithActions;
+use Illuminate\Support\HtmlString;
+use Filament\Tables\Actions\Action;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Contracts\HasTable;
+use Filament\Notifications\Notification;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Concerns\InteractsWithTable;
-use Filament\Tables\Contracts\HasTable;
-use Filament\Tables\Table;
+use Filament\Actions\Concerns\InteractsWithActions;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\HtmlString;
-use Livewire\Attributes\On;
-use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\Xlsform;
+use Stats4sd\FilamentOdkLink\Services\OdkLinkService;
 
 class XlsformsTableView extends Component implements HasActions, HasForms, HasTable
 {
@@ -55,7 +58,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         'DRAFT' => 'heroicon-o-pencil',
                         default => 'heroicon-o-information-circle',
                     })
-                    ->description(fn(Xlsform $record): ?HtmlString => $record->live_needs_update ? new HtmlString('<span class="text-red-600">updates available to publish</span>') : null)
+                    ->description(fn(Xlsform $record): ?HtmlString => $record->live_needs_update || $record->draft_needs_update ? new HtmlString('<span class="text-red-600">updates available to publish</span>') : null)
                     ->label('Status'),
 
                 TextColumn::make('live_submissions_count')
@@ -69,7 +72,7 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
             ])
             ->actions([
                 Action::make('update_published_version')
-                    ->visible(fn(Xlsform $record) => $record->live_needs_update)
+                    ->visible(fn(Xlsform $record) => $record->live_needs_update || $record->draft_needs_update)
                     ->label('Publish changes')
                     ->extraAttributes(['class' => 'buttona text-white font-normal'])
                     ->action(function (Xlsform $record) {
@@ -98,6 +101,13 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
 
                         // reset table to update the status
                         $this->resetTable();
+                    }),
+            ])
+            ->headerActions([
+                Action::make('download-submissions')
+                    ->label('Download Submissions')
+                    ->action(function () {
+                        return Excel::download(new FarmSurveyDataExport(HelperService::getCurrentOwner()), 'submissions.xlsx');
                     }),
 
             ])
