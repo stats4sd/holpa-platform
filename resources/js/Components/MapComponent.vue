@@ -35,7 +35,6 @@ const emit = defineEmits([
 ])
 
 watch(() => props.filteredResults, () => {
-    console.log('Filtered results changed, updating map markers...');
     updateMapMarkers();
 })
 
@@ -56,9 +55,6 @@ const updateMapMarkers = function () {
         uniqueCountryIds = props.allCountries.map(country => country.value);
     }
 
-    console.log(uniqueCountryIds);
-    console.log(props.selectedCountry);
-    console.log(props.allCountries);
 
 
     uniqueCountryIds.forEach(countryId => {
@@ -75,7 +71,6 @@ const updateMapMarkers = function () {
         });
     })
 
-    console.log('should emit map markers loaded');
     emit('loadComplete');
 
 }
@@ -98,20 +93,10 @@ onMounted(() => {
     initialMap.value.setMaxZoom(8);
 
     initialMap.value.on('zoomend', function () {
-        console.log('Map zoomed');
-        console.log(initialMap.value.getZoom());
+
 
         const currentZoom = initialMap.value.getZoom();
 
-    });
-
-    initialMap.value.on('moveend', function () {
-        console.log('Map panned');
-        console.log(initialMap.value.getCenter());
-    });
-
-    initialMap.value.on('click', function (e) {
-        console.log('Map clicked at ' + e.latlng);
     });
 
     // set up country layers
@@ -119,8 +104,6 @@ onMounted(() => {
         country.markerClusterGroup = L.markerClusterGroup().addTo(initialMap.value);
     })
 
-
-    console.log('Initial map setup complete, updating map markers...');
     updateMapMarkers();
 
 })

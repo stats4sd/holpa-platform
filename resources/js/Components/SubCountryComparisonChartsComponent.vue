@@ -1,6 +1,8 @@
-<template>
+<template class="flex flex-col">
     <div class="flex justify-between">
-        <h4 class="mb-4">Agroecology Scores</h4>
+        <h4 class="mb-4">Agroecology Scores
+            <br/> {{ props.selectedCountry.label }}
+        </h4>
         <div class="mr-4">
             <input type="radio" id="bar" value="bar" v-model="chartType" class="mr-1">
             <label for="bar" class="mr-4">Bar Chart</label>
@@ -20,24 +22,29 @@
     ></VueSelect>
 
 
-    <div v-for="principle in principles" :key="principle.value" v-if="chartType=='bar'">
-        <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper">
-            <Bar
-                :key="'bar_'+principle.value"
-                :data="barChartData[principle.value]"
-                :options="barChartOptions"
-            />
+    <div class="grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 lg:col-span-4">
 
+            <div v-for="principle in principles" :key="principle.value" v-if="chartType=='bar'">
+                <div v-if="barChartData[principle.value]" v-show="selectedPrinciple === principle.value" class="chart-wrapper h-72">
+                    <Bar
+                        :key="'sub_bar_'+principle.value"
+                        :data="barChartData[principle.value]"
+                        :options="barChartOptions"
+                    />
+
+                </div>
+            </div>
+            <div class="violinChart h-72" v-show="chartType==='violin'">
+                <canvas :id="'violin_principle_sub'" :ref="'violin_principle_sub'"></canvas>
+            </div>
+
+            <div class="boxPlot h-h-72" v-show="chartType==='boxplot'">
+                <canvas :id="'boxplot_principle_sub'" :ref="'boxplot_principle_sub'" ></canvas>
+            </div>
         </div>
-    </div>
-    <div class="violinChart h-full" v-show="chartType==='violin'">
-        <canvas :id="'violin_principle'" :ref="'violin_principle'"></canvas>
-    </div>
 
-    <div class="boxPlot h-full" v-show="chartType==='boxplot'">
-        <canvas :id="'boxplot_principle'" :ref="'boxplot_principle'"></canvas>
     </div>
-
 </template>
 
 <script setup>
@@ -58,8 +65,8 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, BarController, Title, T
 
 
 const props = defineProps({
-    allCountries: {
-        type: Array,
+    selectedCountry: {
+        type: Object,
         required: true
     },
     filteredResults: {
@@ -134,26 +141,36 @@ const principles = ref([
 const selectedPrinciple = ref('ae')
 const chartType = ref('bar');
 
+
 // returns the filtered dataset in a format ready for ChartJS charts
 const prepareChartData = function (principle_value) {
 
+
     const principle_overall_variable = 'overall_' + principle_value.toLowerCase().replace(/ /g, '_') + '_score';
 
-    return props.allCountries.map(country => {
 
-        let filteredData = props.filteredResults.filter(result => result.country_id === country.value);
-        if (filteredData.length === 0) {
-            return [];
-        }
-        return filteredData
-            .map(result => {
-                return result[principle_overall_variable]
-            })
-    })
+    let filteredData = props.filteredResults
+    if (filteredData.length === 0) {
+        return [];
+    }
+
+
+    return [ filteredData
+        .map(result => {
+            return result[principle_overall_variable]
+        })
+    ]
 }
 
 const prepareBarChartData = function (principle_value) {
-    return prepareChartData(principle_value).map(data => {
+
+    const dataValues = prepareChartData(principle_value)
+
+
+    return dataValues.map(data => {
+        if (!data || data.length === 0) {
+            return 0;
+        }
         return ss.mean(data)
     });
 }
@@ -166,11 +183,11 @@ watch(() => props.filteredResults, () => {
             return;
         }
 
-        // // if there is cached data, use it
+        // if there is cached data, use it
         // const cachedViolinData = localStorage.getItem('violinChartData');
         // const cachedBoxPlotData = localStorage.getItem('boxPlotData');
         // const cachedBarChartData = localStorage.getItem('barChartData');
-        //
+
         // if (cachedViolinData && cachedBoxPlotData && cachedBarChartData) {
         //     violinChartData.value = JSON.parse(cachedViolinData);
         //     boxPlotData.value = JSON.parse(cachedBoxPlotData);
@@ -182,7 +199,7 @@ watch(() => props.filteredResults, () => {
         //     emit('loadComplete')
         //     return;
         // } else {
-            updateCharts();
+        updateCharts();
         // }
 
     }, {deep: true}
@@ -194,7 +211,7 @@ const violinChartData = ref({})
 const boxPlotData = ref({})
 
 const barChartOptions = ref({
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     scales: {
         y: {
             beginAtZero: true,
@@ -203,13 +220,13 @@ const barChartOptions = ref({
     }
 })
 
-const violinCanvas = useTemplateRef('violin_principle');
+const violinCanvas = useTemplateRef('violin_principle_sub');
 const violinPlot = ref(null);
 
-const boxPlotCanvas = useTemplateRef('boxplot_principle');
+const boxPlotCanvas = useTemplateRef('boxplot_principle_sub');
 const boxPlot = ref(null);
 
-watch(selectedPrinciple, () => {
+watch([selectedPrinciple, chartType], () => {
 
     reRenderViolins();
     reRenderBoxPlots()
@@ -233,7 +250,7 @@ const updateCharts = function () {
         // chart data per country
         principles.value.forEach(principle => {
             barChartData.value[principle.value] = {
-                labels: props.allCountries.map(country => country.label) ?? ["1", "2", "3"],
+                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareBarChartData(principle.value)
@@ -241,24 +258,24 @@ const updateCharts = function () {
             }
 
             violinChartData.value[principle.value] = {
-                labels: props.allCountries.map(country => country.label) ?? ["1", "2", "3"],
+                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareChartData(principle.value)
                 }],
             }
             boxPlotData.value[principle.value] = {
-                labels: props.allCountries.map(country => country.label) ?? ["1", "2", "3"],
+                labels: [props.selectedCountry.value ? props.selectedCountry.label : "All Countries"],
                 datasets: [{
                     label: principle.value + ' Score',
                     data: prepareChartData(principle.value)
                 }],
             }
 
-            localStorage.setItem('violinChartData', JSON.stringify(violinChartData.value));
-            localStorage.setItem('boxPlotData', JSON.stringify(boxPlotData.value));
-            localStorage.setItem('barChartData', JSON.stringify(barChartData.value));
 
+            // localStorage.setItem('violinChartData', JSON.stringify(violinChartData.value));
+            // localStorage.setItem('boxPlotData', JSON.stringify(boxPlotData.value));
+            // localStorage.setItem('barChartData', JSON.stringify(barChartData.value));
 
             console.log('data for principle ' + principle.value, {
                 bar: barChartData.value[principle.value],
@@ -274,6 +291,7 @@ const updateCharts = function () {
     reRenderViolins();
     reRenderBoxPlots();
 
+
     emit('loadComplete')
 
 
@@ -285,11 +303,13 @@ const reRenderBoxPlots = function () {
         boxPlot.value.destroy();
     }
 
+
     boxPlot.value = new BoxPlotChart(boxPlotCanvas.value, {
         type: 'boxplot',
         data: boxPlotData.value[selectedPrinciple.value],
         options: {
             responsive: true,
+            aspectRatio: 0.5,
             animation: {
                 animateScale: true,
                 animateRotate: false,
@@ -324,6 +344,7 @@ const reRenderViolins = function () {
         data: violinChartData.value[selectedPrinciple.value],
         options: {
             responsive: true,
+            aspectRatio: 0.5,
             animation: {
                 animateScale: true,
                 animateRotate: false,

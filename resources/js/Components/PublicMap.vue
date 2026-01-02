@@ -51,7 +51,9 @@
                     </div>
                     <div class="border border-green p-4 w-full">
                         <h2 class="font-bold text-nowrap mb-2">50000 ha</h2>
-                        <h5 class="mt-0">Total Production Area <br/>Assessed</h5>
+                        <h5 class="mt-0">Total Production Area
+                            <br/>Assessed
+                        </h5>
                     </div>
                 </div>
             </div>
@@ -74,7 +76,13 @@
 
             <div class="col-span-1 p-4 border border-green">
                 <CountryComparisonChartsComponent
+                    v-if="!selectedCountryId"
                     :allCountries="allCountries"
+                    :filteredResults="deferredFilteredResults"
+                    @load-complete="chartsLoadComplete"
+                />
+                <SubCountryComparisonChartsComponent
+                    v-if="selectedCountryId"
                     :selectedCountry="selectedCountry"
                     :filteredResults="deferredFilteredResults"
                     @load-complete="chartsLoadComplete"
@@ -97,6 +105,7 @@ import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
 import CountryComparisonChartsComponent from "./CountryComparisonChartsComponent.vue";
 import SummaryChart from "./SummaryChart.vue";
+import SubCountryComparisonChartsComponent from "./SubCountryComparisonChartsComponent.vue";
 
 const showOverlay = ref(false); // Set to false to hide the overlay
 
@@ -134,9 +143,8 @@ const allCountries = ref([
         value: '716'
     },
 ]);
-const selectedCountryId = ref(null);
+const selectedCountryId = ref("854");
 const selectedCountry = computed(() => {
-    console.log('selectedCountryId:', selectedCountryId.value);
     return allCountries.value.find(country => country.value === selectedCountryId.value) || {};
 });
 
@@ -150,13 +158,11 @@ const checkLoadingComplete = function () {
     }
 }
 const mapLoadComplete = function () {
-    console.log('Map loading complete');
     mapLoading.value = false;
     checkLoadingComplete()
 }
 
 const chartsLoadComplete = function () {
-    console.log('Charts loading complete');
     chartLoading.value = false;
     checkLoadingComplete()
 }
@@ -168,19 +174,13 @@ const selectedGender = ref(null);
 
 const filteredResults = computed(() => {
 
-    console.log('updating filtered results...');
 
     let newResults = allResults.value;
-
-    console.log('sodfjasodifjasodifjaosidfjaosidfjaosdifjasodijfas')
-    console.log(selectedCountry.value);
-    console.log(selectedCountryId.value);
 
     if (selectedCountry.value.hasOwnProperty('value')) {
         newResults = newResults.filter(result =>
             selectedCountry.value.value === result.country_id.toString()
         );
-        console.log('Filtered by country:', selectedCountry.value);
     }
 
     if (selectedGender.value) {
@@ -205,7 +205,6 @@ const deferredFilteredResults = ref([]);
 // Watch the filters and set loading state before the computed updates
 watch([selectedCountry, selectedGender], async () => {
 
-    console.log('watcha!')
     loadingState.value = true;
 
     await nextTick();
@@ -222,7 +221,6 @@ onMounted(() => {
     // get TempResults data
     axios.get('/temp-results')
         .then(response => {
-            console.log('Fetched TempResults:', response.data);
             allResults.value = response.data;
 
             if (deferredFilteredResults.value.length === 0) {
