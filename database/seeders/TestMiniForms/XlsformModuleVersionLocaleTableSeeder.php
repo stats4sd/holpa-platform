@@ -24,7 +24,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 1,
                 'xlsform_module_version_id' => 3,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -34,7 +34,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 2,
                 'xlsform_module_version_id' => 2,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -44,7 +44,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 3,
                 'xlsform_module_version_id' => 4,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -54,7 +54,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'xlsform_module_version_id' => 5,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -64,7 +64,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'xlsform_module_version_id' => 1,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -74,7 +74,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'xlsform_module_version_id' => 7,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -84,7 +84,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'xlsform_module_version_id' => 7,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -94,7 +94,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'xlsform_module_version_id' => 9,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -104,7 +104,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'xlsform_module_version_id' => 9,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -114,7 +114,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 10,
                 'xlsform_module_version_id' => 8,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -124,7 +124,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 11,
                 'xlsform_module_version_id' => 8,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -134,7 +134,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 12,
                 'xlsform_module_version_id' => 6,
-                'locale_id' => 41,
+                'locale_id' => 1,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,
@@ -144,7 +144,7 @@ class XlsformModuleVersionLocaleTableSeeder extends Seeder
             array (
                 'id' => 13,
                 'xlsform_module_version_id' => 6,
-                'locale_id' => 144,
+                'locale_id' => 2,
                 'needs_update' => 0,
                 'updated_during_import' => 0,
                 'created_at' => NULL,

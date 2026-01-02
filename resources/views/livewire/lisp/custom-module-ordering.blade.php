@@ -5,7 +5,7 @@
     </div>
 
     <div class="text-black pb-4 mb-9">
-        To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right.
+        To add your custom questions into the survey, drag and drop each item into the correct place in the list on the right. Updates to the module ordering will be saved automatically. Once you have finished arranging your custom questions, click "Confirm Ordering" to finalize the order and add your custom questions to the surveys for testing. If you need to reset the order at any time, click "Reset Ordering" to revert to the default ordering (this will remove your local indicator modules from the survey forms).
     </div>
     <div class="grid grid-cols-2 gap-4">
 
@@ -17,42 +17,58 @@
         >
 
             <span class="text-base font-semibold ">Local Indicator Questions</span>
+            <br/>
 
-            @foreach($localIndicators as $indicator)
+            <div x-data
+                 x-data
+                 x-sortable-source
+                 class="!mb-8 overflow-y-scroll max-h-[40vh] inset-shadow-sm/50 p-4"
 
-                <x-filament::section
-                    :heading="$indicator->name"
-                    x-sortable-item="{{ $indicator->xlsformModuleVersion->id }}"
-                    class="draggable indicator"
-                    collapsible
-                    collapsed
-                >
+            >
 
-                    @foreach($indicator->xlsformModuleVersion->surveyRows as $surveyRow)
+                @foreach($localIndicators as $indicator)
 
-                        <div class="flex items-center indicator_questions">{{ $surveyRow->name }}
-                            <br>( {{ $surveyRow->type }} )
-                        </div>
+                    <x-filament::section
+                        :heading="$indicator->name"
+                        x-sortable-item="{{ $indicator->xlsformModuleVersion->id }}"
+                        class="draggable indicator rounded-none border my-2"
+                        collapsible
+                        collapsed
+                    >
 
-                    @endforeach
+                        @foreach($indicator->xlsformModuleVersion->surveyRows as $surveyRow)
+
+                            <div class="flex items-center indicator_questions">{{ $surveyRow->name }}
+                                <br>( {{ $surveyRow->type }} )
+                            </div>
+
+                        @endforeach
 
 
-                </x-filament::section>
+                    </x-filament::section>
 
-            @endforeach
+                @endforeach
+            </div>
         </div>
 
         <div
-            class="py-4 pl-2 space-y-2 "
+            class="p-4 py-4 pl-2 space-y-2"
         >
             @foreach($xlsforms as $xlsform)
 
                 <span class="text-base font-semibold  ">{{ $xlsform->title }}</span>
+                <span>( {{ $xlsform->xlsformModuleVersions->count() }} modules )</span>
+                <br/>
+                @if($xlsform->xlsformModuleVersions->count() > 111)
+                    <div class="text-sm italic text-gray-600 pb-2">
+                        (Tip: This form has many modules. Scroll the list below to see them all.)
+                    </div>
+                @endif
 
                 <div x-data
                      x-sortable-target
                      x-on:sorted="$wire.updateOrder($event.detail, '{{ $xlsform->id }}')"
-                     class="!mb-8"
+                     class="!mb-8 overflow-y-scroll max-h-[40vh] inset-shadow-sm/50 p-4"
 
                 >
 
@@ -85,6 +101,20 @@
 
     </div>
     <div class="w-100 text-center">
-        <a class="buttonb"> Reset all </a>
+        <x-filament::button
+            wire:click="resetOrdering"
+            class="mt-4"
+            color="warning"
+        >
+            Reset Ordering
+        </x-filament::button>
+
+        <x-filament::button
+            wire:click="confirmOrdering"
+            class="mt-4"
+            color="success"
+        >
+            Confirm Ordering
+        </x-filament::button>
     </div>
 </div>

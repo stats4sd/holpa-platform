@@ -24,11 +24,13 @@ use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformModuleVersion;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformTemplate;
 use Stats4sd\FilamentTeamManagement\Models\Team as FilamentTeamManagementTeam;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 {
     use HasXlsforms;
     use InteractsWithMedia;
+    use SoftDeletes;
 
     protected $table = 'teams';
 

@@ -34,7 +34,7 @@ class OdkProjectsTableSeeder extends Seeder
             1 =>
             array (
                 'id' => 1447,
-                'owner_id' => 1,
+                'owner_id' => 3,
                 'owner_type' => 'App\\Models\\Team',
                 'name' => 'HOLPA Data Platform LOCAL- P1 Test Team',
                 'description' => NULL,
@@ -45,7 +45,7 @@ class OdkProjectsTableSeeder extends Seeder
             2 =>
             array (
                 'id' => 1448,
-                'owner_id' => 2,
+                'owner_id' => 4,
                 'owner_type' => 'App\\Models\\Team',
                 'name' => 'HOLPA Data Platform LOCAL- P1 Test Team 2',
                 'description' => NULL,
@@ -56,7 +56,7 @@ class OdkProjectsTableSeeder extends Seeder
             3 =>
             array (
                 'id' => 1449,
-                'owner_id' => 3,
+                'owner_id' => 5,
                 'owner_type' => 'App\\Models\\Team',
                 'name' => 'HOLPA Data Platform LOCAL- Non Program Test Team',
                 'description' => NULL,

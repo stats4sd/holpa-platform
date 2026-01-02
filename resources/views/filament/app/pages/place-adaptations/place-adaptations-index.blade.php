@@ -1,6 +1,7 @@
 <?php
 
 use App\Filament\App\Pages\SurveyDashboard;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\ChoiceList;
 
 $surveyDashboardUrl = SurveyDashboard::getUrl();
 ?>
@@ -107,16 +108,21 @@ $surveyDashboardUrl = SurveyDashboard::getUrl();
             <x-slot:description>HOLPA uses an international standard "Diet Quality" module. This module is available for over 100 countries. We recommend you select the version most suited to your context.
             </x-slot:description>
 
-            <x-rounded-section
-                heading='Contextualise choice lists'
-                description='Adapt units, crops, and other choice list entries to be locally relevant..'
-                buttonLabel='Update'
-                :url='\App\Filament\App\Clusters\Localisations::getUrl()'/>
+            @if(ChoiceList::where('is_localisable', true)->where('has_custom_handling', false)->count() > 0)
+                <x-rounded-section
+                    heading='Contextualise choice lists'
+                    description='Adapt units, crops, and other choice list entries to be locally relevant..'
+                    buttonLabel='Update'
+                    :url='\App\Filament\App\Clusters\Localisations::getUrl()'/>
+            @endif
+
+
             <x-offline-action-section
                 heading='Initial Pilot'
                 description='Initial piloting should be conducted to check the sense and functionality of the survey.'
                 buttonLabel='View details'
                 :url="\App\Filament\App\Pages\PlaceAdaptations\InitialPilot::getUrl()"/>
+
         </div>
     </div>
 

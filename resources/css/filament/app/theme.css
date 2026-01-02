@@ -568,3 +568,16 @@ button.font-normal span {
 div:has(> .fi-page-sub-navigation-sidebar-ctn) {
     @apply bg-white p-16 shadow-xl;
 }
+
+
+/** PUBLIC DASHBOARD STYLES **/
+
+.public-map {
+    height: 30vh;
+}
+
+@media only screen and (max-width: 500px) {
+    .public-map {
+        height: 50vh;
+    }
+}

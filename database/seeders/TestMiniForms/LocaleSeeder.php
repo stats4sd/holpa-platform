@@ -4,6 +4,7 @@ namespace Database\Seeders\TestMiniForms;
 
 use App\Models\Team;
 use Illuminate\Database\Seeder;
+use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Locale;
 use Stats4sd\FilamentOdkLink\Models\OdkLink\XlsformLanguages\Language;
 
 class LocaleSeeder extends Seeder
@@ -13,14 +14,10 @@ class LocaleSeeder extends Seeder
      */
     public function run(): void
     {
-        // create en + es locales
+        // retreive en locale, which was creted when creating a team
+        $localeEn = Locale::where('language_id', 41)->first();
 
-        $localeEn = Language::firstWhere('iso_alpha2', 'en')
-            ->locales()
-            ->create([
-                'is_default' => true,
-            ]);
-
+        // create es locale
         $localeEs = Language::firstWhere('iso_alpha2', 'es')
             ->locales()
             ->create([
@@ -28,7 +25,7 @@ class LocaleSeeder extends Seeder
             ]);
 
         Team::all()->each(function (Team $team) use ($localeEs, $localeEn) {
-            $team->languages()->updateExistingPivot($localeEn->language->id, ['locale_id' => $localeEn->id]);
+            $team->languages()->updateExistingPivot($localeEn->language_id, ['locale_id' => $localeEn->id]);
 
             $team->languages()->updateExistingPivot($localeEs->language->id, ['locale_id' => $localeEs->id]);
         });
