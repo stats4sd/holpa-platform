@@ -1,67 +1,78 @@
 <template>
 
-<!-- A temporary overlay that covers the whole page content, greying out the content behind it and explaining that the dashboard will be available shortly -->
-<div v-if="showOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center" style="z-index:50000">
-    <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
-        <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
-        <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
+    <!-- A temporary overlay that covers the whole page content, greying out the content behind it and explaining that the dashboard will be available shortly -->
+    <div v-if="showOverlay" class="fixed inset-0 bg-gray-900 bg-opacity-75 flex items-center justify-center" style="z-index:50000">
+        <div class="bg-white p-8 rounded-lg shadow-lg max-w-md text-center">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
+            <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
 
         <p class="mb-8">
         <a href="/" class="text-blue-500 underline">Return to Home Page</a>
         </p>
 
-        <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
-    </div>
-</div>
-
-    <div class="w-full">
-
-        <h2 class="mb-8 text-3xl font-bold">Previous implementations</h2>
-
-
-        <div class="border border-green-700 p-4 flex">
-
-            <div>
-                <h3 class="text-xl font-bold text-gray-900 mb-4">
-                    Showing {{ selectedCountry.value ?? 'All Countries' }}
-                </h3>
-                <VueSelect
-                    v-model="selectedCountry"
-                    :is-multi="true"
-                    :options="allCountries"
-                    placeholder="Select country"
-                    class="menu"
-                />
-            </div>
-            <div class="col-span-6 lg:col-span-8 xl:col-span-9">
-                <h4 class="ps-4">Summary</h4>
-                <p class="ps-4">Total Surveys Conducted: {{ filteredResults.length }}</p>
-
-                <p class="ps-4">Female-headed farm households: {{ filteredResults.filter(result => result.gender === 'Female').length }}</p>
-                <p class="ps-4">Male-headed farm households: {{ filteredResults.filter(result => result.gender === 'Male').length }}</p>
-            </div>
+            <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
         </div>
+    </div>
 
+    <div class="w-full max-w-7xl mx-auto space-y-4">
 
-        <div class="border border-blue-500 rounded-lg p-4 mb-8 grid grid-cols-3">
-            <div class="col-span-1 space-y-2">
+        <!-- SUMMARY -->
+        <div class="rounded-lg p-0 grid grid-cols-12 space-x-4">
 
-                <VueSelect
-                    v-model="selectedGender"
-                    :is-multi="false"
-                    :options="[
-                        { label: 'Female-headed farm households', value: 'Female' },
-                        { label: 'Male-headed farm households', value: 'Male' },
+            <div class="border border-green col-span-12 md:col-span-5 p-4">
+                <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center space-x-8">
+                    <span>Showing</span>
+                    <VueSelect
+                        v-model="selectedCountryId"
+                        :is-multi="false"
+                        :options="allCountries"
+                        placeholder="All Countries"
+                        class="menu"
+                        :clearable="false"
+                    />
+                        <!-- Temporarily disabled, until we get more countries -->
+                </h3>
+
+                <!-- FILTERS -->
+                <div class="p-0 mb-8 w-full">
+                    <div class="space-y-2">
+                        <VueSelect
+                            v-model="selectedGender"
+                            :is-multi="false"
+                            :options="[
+                        { label: 'Female-headed farm households', value: 'female' },
+                        { label: 'Male-headed farm households', value: 'male' },
                     ]"
-                    placeholder="Filter by gender"
-                />
+                            placeholder="Filter by gender"
+                        />
+                    </div>
+
+                </div>
             </div>
 
+            <div class="col-span-12 md:col-span-5 md:col-start-7 lg:col-span-3">
+                <div class="h-full space-y-4 flex md:flex-col w-full">
+                    <div class="border border-green p-4">
+                        <h2 class="font-bold text-nowrap mb-2">{{ filteredResults.length }}</h2>
+                        <h5 class="mt-0">Farms Surveyed</h5>
+                    </div>
+                    <div class="border border-green p-4 w-full">
+                        <h2 class="font-bold text-nowrap mb-2">{{ totalProductionArea }} ha</h2>
+                        <h5 class="mt-0">Total Production Area
+                            <br/>Assessed
+                        </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="border border-green pt-4 pb-0 px-4 h-full col-span-12 lg:col-span-4">
+                <SummaryChart :current-value="averageScore"/>
+                <h5 class="text-center mt-2">Avg. Agroecology Score</h5>
+            </div>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
 
-            <div class="col-span-1">
+            <div class="col-span-1 p-0 border border-green">
                 <MapComponent
                     :allCountries="allCountries"
                     :selectedCountry="selectedCountry"
@@ -70,17 +81,35 @@
                 />
             </div>
 
-            <div class="col-span-1 p-4 border border-blue-500 rounded-lg">
-                <h4 class="mb-4">Agroecology Scores</h4>
-                <!--                <AeChartsComponent-->
-                <!--                    :allCountries="allCountries"-->
-                <!--                    :selectedCountry="selectedCountry"-->
-                <!--                    :filteredResults="deferredFilteredResults"-->
-                <!--                    @load-complete="chartsLoadComplete"-->
-                <!--                />-->
+            <div class="col-span-1 p-4 border border-green">
+                <CountryComparisonChartsComponent
+                    v-if="!selectedCountryId"
+                    :allCountries="allCountries"
+                    :filteredResults="deferredFilteredResults"
+                    @load-complete="chartsLoadComplete"
+                />
+                <SubCountryComparisonChartsComponent
+                    v-if="selectedCountryId"
+                    :selectedCountry="selectedCountry"
+                    :filteredResults="deferredFilteredResults"
+                    :selected-gender="selectedGender"
+                    @load-complete="chartsLoadComplete"
+
+                />
             </div>
         </div>
-        <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:1000;">
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-8">
+            <div class="col-span-1 p-4 border border-green">
+                <RadarChartComponent
+                    :filteredResults="deferredFilteredResults"
+                    :selected-country="selectedCountry"
+                />
+            </div>
+        </div>
+
+        <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-show="loadingState" style="z-index:99999;"></div>
+        <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>
     </div>
@@ -93,62 +122,69 @@ import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 import VueSelect from "vue3-select-component";
 import "vue3-select-component/styles";
 import MapComponent from "./MapComponent.vue";
-import AeChartsComponent from "./AeChartsComponent.vue";
+import CountryComparisonChartsComponent from "./CountryComparisonChartsComponent.vue";
+import SummaryChart from "./SummaryChart.vue";
+import SubCountryComparisonChartsComponent from "./SubCountryComparisonChartsComponent.vue";
+import RadarChartComponent from "./RadarChartComponent.vue";
 
-const showOverlay = ref(true); // Set to false to hide the overlay
+const showOverlay = ref(false); // Set to false to hide the overlay
 
 const allCountries = ref([
     {
         label: 'Burkina Faso',
         value: '854'
     },
-    {
-        label: 'India',
-        value: '356'
-    },
-    {
-        label: 'Kenya',
-        value: '404'
-    },
-    {
-        label: 'Laos',
-        value: '418'
-    },
-    {
-        label: 'Peru',
-        value: '604'
-    },
-    {
-        label: 'Senegal',
-        value: '686'
-    },
-    {
-        label: 'Tunisia',
-        value: '788'
-    },
-    {
-        label: 'Zimbabwe',
-        value: '716'
-    },
+    // {
+    //     label: 'India',
+    //     value: '356'
+    // },
+    // {
+    //     label: 'Kenya',
+    //     value: '404'
+    // },
+    // {
+    //     label: 'Laos',
+    //     value: '418'
+    // },
+    // {
+    //     label: 'Peru',
+    //     value: '604'
+    // },
+    // {
+    //     label: 'Senegal',
+    //     value: '686'
+    // },
+    // {
+    //     label: 'Tunisia',
+    //     value: '788'
+    // },
+    // {
+    //     label: 'Zimbabwe',
+    //     value: '716'
+    // },
 ]);
-const selectedCountry = ref({});
+const selectedCountryId = ref("854");
+const selectedCountry = computed(() => {
+    return allCountries.value.find(country => country.value === selectedCountryId.value) || {};
+});
 
-
+const loadingState = ref(true);
 const mapLoading = ref(true);
 const chartLoading = ref(true);
-//const loadingState = computed(() => mapLoading.value || chartLoading.value);
 
-// temp:
-const loadingState = ref(false);
-
+const checkLoadingComplete = function () {
+    if (!mapLoading.value && !chartLoading.value) {
+        loadingState.value = false;
+    }
+}
 const mapLoadComplete = function () {
-    console.log('Map loading complete');
     mapLoading.value = false;
+    checkLoadingComplete()
 }
 
 const chartsLoadComplete = function () {
-    console.log('Charts loading complete');
     chartLoading.value = false;
+    checkLoadingComplete()
 }
 
 
@@ -158,13 +194,12 @@ const selectedGender = ref(null);
 
 const filteredResults = computed(() => {
 
-    console.log('updating filtered results...');
 
     let newResults = allResults.value;
 
-    if (selectedCountry.hasOwnProperty('value')) {
+    if (selectedCountry.value.hasOwnProperty('value')) {
         newResults = newResults.filter(result =>
-            selectedCountry.value === result.country_id.toString()
+            selectedCountry.value.value === result.country_id.toString()
         );
     }
 
@@ -177,20 +212,26 @@ const filteredResults = computed(() => {
 }, {deep: true});
 
 
+const averageScore = computed(() => {
+    if (filteredResults.value.length === 0) {
+        return 0;
+    }
+    const totalScore = filteredResults.value.reduce((sum, result) => sum + parseFloat(result.overall_ae_score), 0);
+    return (totalScore / filteredResults.value.length).toFixed(2);
+});
+
 const deferredFilteredResults = ref([]);
 
 // Watch the filters and set loading state before the computed updates
 watch([selectedCountry, selectedGender], async () => {
 
-    console.log('watcha!')
-    mapLoading.value = true;
-    chartLoading.value = true;
+    loadingState.value = true;
 
     await nextTick();
     setTimeout(() => {
         deferredFilteredResults.value = filteredResults.value;
-    }, 50);
-
+        loadingState.value = false;
+    }, 250);
 
 }, {deep: true});
 
@@ -211,6 +252,11 @@ onMounted(() => {
         })
 
 
+});
+
+
+const totalProductionArea = computed(() => {
+    return filteredResults.value.reduce((sum, result) => sum + parseFloat(result.farm_size), 0).toFixed(2);
 });
 
 </script>
