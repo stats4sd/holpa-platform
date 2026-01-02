@@ -23,6 +23,10 @@
         </div>
     </div>
 
+    <div class="h-12 w-full bg-yellow-100 p-4 text-center">
+        NOTE: The results presented on this page are not yet finalised and are subject to change pending verification.
+    </div>
+
     {{-- MAIN CONTENT --}}
     <div class="mx-auto mt-12 sm:px-8 lg:px-12" id="public-map-app">
         <public-map></public-map>

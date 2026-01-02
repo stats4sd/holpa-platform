@@ -109,10 +109,15 @@ const radarChartData = computed(() => {
                         const principle_overall_variable = 'overall_' + principle.value.toLowerCase().replace(/ /g, '_') + '_score';
                         const filteredData = props.filteredResults
                             .map(result => result[principle_overall_variable]);
+
                         if (filteredData.length === 0) {
                             return 0;
                         }
-                        return ss.mean(filteredData);
+
+                        // filter out NAs
+                        const filteredDataNoNA = filteredData.filter(value => !isNaN(value) && value !== null);
+
+                        return ss.mean(filteredDataNoNA);
                     }),
                 fill: true,
                 backgroundColor: 'rgba(54, 162, 235, 0.2)',

@@ -23,7 +23,9 @@
                         :options="allCountries"
                         placeholder="All Countries"
                         class="menu"
+                        :clearable="false"
                     />
+                        <!-- Temporarily disabled, until we get more countries -->
                 </h3>
 
                 <!-- FILTERS -->
@@ -127,34 +129,34 @@ const allCountries = ref([
         label: 'Burkina Faso',
         value: '854'
     },
-    {
-        label: 'India',
-        value: '356'
-    },
-    {
-        label: 'Kenya',
-        value: '404'
-    },
-    {
-        label: 'Laos',
-        value: '418'
-    },
-    {
-        label: 'Peru',
-        value: '604'
-    },
-    {
-        label: 'Senegal',
-        value: '686'
-    },
-    {
-        label: 'Tunisia',
-        value: '788'
-    },
-    {
-        label: 'Zimbabwe',
-        value: '716'
-    },
+    // {
+    //     label: 'India',
+    //     value: '356'
+    // },
+    // {
+    //     label: 'Kenya',
+    //     value: '404'
+    // },
+    // {
+    //     label: 'Laos',
+    //     value: '418'
+    // },
+    // {
+    //     label: 'Peru',
+    //     value: '604'
+    // },
+    // {
+    //     label: 'Senegal',
+    //     value: '686'
+    // },
+    // {
+    //     label: 'Tunisia',
+    //     value: '788'
+    // },
+    // {
+    //     label: 'Zimbabwe',
+    //     value: '716'
+    // },
 ]);
 const selectedCountryId = ref("854");
 const selectedCountry = computed(() => {

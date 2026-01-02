@@ -192,6 +192,10 @@ const prepareBarChartData = function (principle_value) {
         if (!data || data.length === 0) {
             return 0;
         }
+
+        // filter out NAs
+        data = data.filter(value => value !== null && value !== undefined && !isNaN(value));
+
         return ss.mean(data)
     });
 }
