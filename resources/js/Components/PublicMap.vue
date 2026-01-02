@@ -81,7 +81,7 @@
                 />
             </div>
         </div>
-        <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-if="loadingState" style="z-index:99999;"></div>
+        <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-show="loadingState" style="z-index:99999;"></div>
         <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>
@@ -136,24 +136,29 @@ const allCountries = ref([
 ]);
 const selectedCountryId = ref(null);
 const selectedCountry = computed(() => {
+    console.log('selectedCountryId:', selectedCountryId.value);
     return allCountries.value.find(country => country.value === selectedCountryId.value) || {};
 });
 
+const loadingState = ref(true);
 const mapLoading = ref(true);
 const chartLoading = ref(true);
-const loadingState = computed(() => mapLoading.value || chartLoading.value);
 
-// temp:
-
-
+const checkLoadingComplete = function () {
+    if (!mapLoading.value && !chartLoading.value) {
+        loadingState.value = false;
+    }
+}
 const mapLoadComplete = function () {
     console.log('Map loading complete');
     mapLoading.value = false;
+    checkLoadingComplete()
 }
 
 const chartsLoadComplete = function () {
     console.log('Charts loading complete');
     chartLoading.value = false;
+    checkLoadingComplete()
 }
 
 
@@ -167,10 +172,15 @@ const filteredResults = computed(() => {
 
     let newResults = allResults.value;
 
-    if (selectedCountry.hasOwnProperty('value')) {
+    console.log('sodfjasodifjasodifjaosidfjaosidfjaosdifjasodijfas')
+    console.log(selectedCountry.value);
+    console.log(selectedCountryId.value);
+
+    if (selectedCountry.value.hasOwnProperty('value')) {
         newResults = newResults.filter(result =>
-            selectedCountry.value === result.country_id.toString()
+            selectedCountry.value.value === result.country_id.toString()
         );
+        console.log('Filtered by country:', selectedCountry.value);
     }
 
     if (selectedGender.value) {
@@ -196,14 +206,13 @@ const deferredFilteredResults = ref([]);
 watch([selectedCountry, selectedGender], async () => {
 
     console.log('watcha!')
-    mapLoading.value = true;
-    chartLoading.value = true;
+    loadingState.value = true;
 
     await nextTick();
     setTimeout(() => {
         deferredFilteredResults.value = filteredResults.value;
-    }, 50);
-
+        loadingState.value = false;
+    }, 250);
 
 }, {deep: true});
 

@@ -51,7 +51,7 @@ const updateMapMarkers = function () {
         uniqueCountryIds.push(props.selectedCountry.value);
     }
 
-    // if no countries are seleted, show all countries
+    // if no countries are selected, show all countries
     if (uniqueCountryIds.length === 0) {
         uniqueCountryIds = props.allCountries.map(country => country.value);
     }
@@ -93,25 +93,15 @@ onMounted(() => {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(initialMap.value);
 
+    // set min zoom to 2
+    initialMap.value.setMinZoom(2);
+    initialMap.value.setMaxZoom(8);
+
     initialMap.value.on('zoomend', function () {
         console.log('Map zoomed');
         console.log(initialMap.value.getZoom());
 
         const currentZoom = initialMap.value.getZoom();
-
-        if (currentZoom >= 8) {
-            initialMap.value.eachLayer(function (layer) {
-                if (layer instanceof L.MarkerClusterGroup) {
-                    layer.freezeAtZoom(8);
-                }
-            });
-        } else {
-            initialMap.value.eachLayer(function (layer) {
-                if (layer instanceof L.MarkerClusterGroup) {
-                    layer.unfreeze();
-                }
-            });
-        }
 
     });
 
