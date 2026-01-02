@@ -11,6 +11,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.markercluster';
 
 import {onMounted, ref, watch} from "vue";
+import 'leaflet.markercluster.freezable';
 
 const initialMap = ref(null)
 
@@ -95,6 +96,23 @@ onMounted(() => {
     initialMap.value.on('zoomend', function () {
         console.log('Map zoomed');
         console.log(initialMap.value.getZoom());
+
+        const currentZoom = initialMap.value.getZoom();
+
+        if (currentZoom >= 8) {
+            initialMap.value.eachLayer(function (layer) {
+                if (layer instanceof L.MarkerClusterGroup) {
+                    layer.freezeAtZoom(8);
+                }
+            });
+        } else {
+            initialMap.value.eachLayer(function (layer) {
+                if (layer instanceof L.MarkerClusterGroup) {
+                    layer.unfreeze();
+                }
+            });
+        }
+
     });
 
     initialMap.value.on('moveend', function () {
