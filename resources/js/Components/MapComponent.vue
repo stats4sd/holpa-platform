@@ -1,5 +1,5 @@
 <template>
-    <div id="map" class="public-map">
+    <div id="map" class="public-map h-full">
     </div>
 </template>
 
@@ -11,6 +11,7 @@ import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
 import 'leaflet.markercluster';
 
 import {onMounted, ref, watch} from "vue";
+import 'leaflet.markercluster.freezable';
 
 const initialMap = ref(null)
 
@@ -34,7 +35,6 @@ const emit = defineEmits([
 ])
 
 watch(() => props.filteredResults, () => {
-    console.log('Filtered results changed, updating map markers...');
     updateMapMarkers();
 })
 
@@ -50,14 +50,11 @@ const updateMapMarkers = function () {
         uniqueCountryIds.push(props.selectedCountry.value);
     }
 
-    // if no countries are seleted, show all countries
+    // if no countries are selected, show all countries
     if (uniqueCountryIds.length === 0) {
         uniqueCountryIds = props.allCountries.map(country => country.value);
     }
 
-    console.log(uniqueCountryIds);
-    console.log(props.selectedCountry);
-    console.log(props.allCountries);
 
 
     uniqueCountryIds.forEach(countryId => {
@@ -74,7 +71,6 @@ const updateMapMarkers = function () {
         });
     })
 
-    console.log('should emit map markers loaded');
     emit('loadComplete');
 
 }
@@ -92,18 +88,15 @@ onMounted(() => {
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(initialMap.value);
 
+    // set min zoom to 2
+    initialMap.value.setMinZoom(2);
+    initialMap.value.setMaxZoom(8);
+
     initialMap.value.on('zoomend', function () {
-        console.log('Map zoomed');
-        console.log(initialMap.value.getZoom());
-    });
 
-    initialMap.value.on('moveend', function () {
-        console.log('Map panned');
-        console.log(initialMap.value.getCenter());
-    });
 
-    initialMap.value.on('click', function (e) {
-        console.log('Map clicked at ' + e.latlng);
+        const currentZoom = initialMap.value.getZoom();
+
     });
 
     // set up country layers
@@ -111,8 +104,6 @@ onMounted(() => {
         country.markerClusterGroup = L.markerClusterGroup().addTo(initialMap.value);
     })
 
-
-    console.log('Initial map setup complete, updating map markers...');
     updateMapMarkers();
 
 })

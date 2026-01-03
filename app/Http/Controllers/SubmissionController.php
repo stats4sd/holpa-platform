@@ -26,8 +26,6 @@ class SubmissionController extends Controller
     // This function will be called when there are new submissions to be pulled from ODK central
     public static function process(Submission $submission): void
     {
-        ray('processing custom for HOLPA');
-
         // check if test or live data
         /** @var Team $team */
         $team = $submission->xlsformVersion->xlsform->owner;
@@ -52,7 +50,6 @@ class SubmissionController extends Controller
 
         $farm->refused = $consent == '0';
         $farm->save();
-
 
         // application specific business logic goes here
         // find survey start, survey end, survey duration in minutes
@@ -100,9 +97,6 @@ class SubmissionController extends Controller
         // check through the new entities and update the dataset_variables list
         $newEntities = $submission->entities->load('dataset.variables', 'values');
 
-        ray('updating dataset variables based on new entities');
-        ray($newEntities->count());
-
         foreach ($newEntities as $entity) {
             $dataset = $entity->dataset;
 
@@ -111,12 +105,6 @@ class SubmissionController extends Controller
 
             // get list of variable names in the entity
             $entityVariables = $entity->values->sortBy('id')->pluck('dataset_variable_name');
-
-            // go thorugh entityVariables. When a new one is found, add it to the dataset variables immediately after the previous checked entityVariable
-
-            ray('checking entity for dataset: ' . $dataset->name);
-            ray('existing variables: ' . $existingVariables->count());
-            ray('entity variables: ' . $entityVariables->count());
 
             for ($i = 0; $i < count($entityVariables); $i++) {
                 $currentVariable = $entityVariables[$i];
