@@ -6,9 +6,9 @@
             <h3 class="text-xl font-semibold text-gray-800 mb-4">Dashboard Coming Soon</h3>
             <p class="text-gray-600 mb-4">We are currently validating the agroecology scores results. The dashboard will be available here when that is complete. Please check back in a few days.</p>
 
-        <p class="mb-8">
-        <a href="/" class="text-blue-500 underline">Return to Home Page</a>
-        </p>
+            <p class="mb-8">
+                <a href="/" class="text-blue-500 underline">Return to Home Page</a>
+            </p>
 
             <p class="text-gray-600 text-xs">Last updated 2025-12-19</p>
         </div>
@@ -30,7 +30,7 @@
                         class="menu"
                         :clearable="false"
                     />
-                        <!-- Temporarily disabled, until we get more countries -->
+                    <!-- Temporarily disabled, until we get more countries -->
                 </h3>
 
                 <!-- FILTERS -->
@@ -77,7 +77,6 @@
                     :allCountries="allCountries"
                     :selectedCountry="selectedCountry"
                     :filteredResults="deferredFilteredResults"
-                    @load-complete="mapLoadComplete"
                 />
             </div>
 
@@ -86,14 +85,12 @@
                     v-if="!selectedCountryId"
                     :allCountries="allCountries"
                     :filteredResults="deferredFilteredResults"
-                    @load-complete="chartsLoadComplete"
                 />
                 <SubCountryComparisonChartsComponent
                     v-if="selectedCountryId"
                     :selectedCountry="selectedCountry"
                     :filteredResults="deferredFilteredResults"
                     :selected-gender="selectedGender"
-                    @load-complete="chartsLoadComplete"
 
                 />
             </div>
@@ -108,7 +105,7 @@
             </div>
         </div>
 
-        <div class="absolute w-full h-[70vh] top-32 left-0 bg-gray-200 opacity-80" v-show="loadingState" style="z-index:99999;"></div>
+        <div class="absolute w-full h-full top-32 left-0 bg-gray-200 opacity-80" v-show="loadingState" style="z-index:99999;"></div>
         <div class="mx-auto" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index:100000;">
             <pulse-loader :loading="loadingState" :size="'100px'"/>
         </div>
@@ -163,29 +160,30 @@ const allCountries = ref([
     //     value: '716'
     // },
 ]);
+
+// As of Jan 02 2026, we have only Burkina Faso data available
 const selectedCountryId = ref("854");
+
 const selectedCountry = computed(() => {
     return allCountries.value.find(country => country.value === selectedCountryId.value) || {};
 });
 
-const loadingState = ref(true);
-const mapLoading = ref(true);
-const chartLoading = ref(true);
+const loadingState = ref(false);
 
-const checkLoadingComplete = function () {
-    if (!mapLoading.value && !chartLoading.value) {
-        loadingState.value = false;
-    }
-}
-const mapLoadComplete = function () {
-    mapLoading.value = false;
-    checkLoadingComplete()
-}
-
-const chartsLoadComplete = function () {
-    chartLoading.value = false;
-    checkLoadingComplete()
-}
+// const checkLoadingComplete = function () {
+//     if (!mapLoading.value && !chartLoading.value) {
+//         loadingState.value = false;
+//     }
+// }
+// const mapLoadComplete = function () {
+//     mapLoading.value = false;
+//     checkLoadingComplete()
+// }
+//
+// const chartsLoadComplete = function () {
+//     chartLoading.value = false;
+//     checkLoadingComplete()
+// }
 
 
 const allResults = ref([]);
@@ -223,12 +221,14 @@ const averageScore = computed(() => {
 const deferredFilteredResults = ref([]);
 
 // Watch the filters and set loading state before the computed updates
-watch([selectedCountry, selectedGender], async () => {
+watch([selectedCountryId, selectedGender], async () => {
 
+    console.log('Filters changed, updating deferred results...');
     loadingState.value = true;
 
     await nextTick();
     setTimeout(() => {
+
         deferredFilteredResults.value = filteredResults.value;
         loadingState.value = false;
     }, 250);
@@ -238,6 +238,7 @@ watch([selectedCountry, selectedGender], async () => {
 // You can add any necessary imports or setup logic here
 onMounted(() => {
 
+    loadingState.value = true;
     // get TempResults data
     axios.get('/temp-results')
         .then(response => {
@@ -246,6 +247,12 @@ onMounted(() => {
             if (deferredFilteredResults.value.length === 0) {
                 deferredFilteredResults.value = allResults.value;
             }
+
+            setTimeout(() => {
+
+                deferredFilteredResults.value = filteredResults.value;
+                loadingState.value = false;
+            }, 250);
         })
         .catch(error => {
             console.error('Error fetching TempResults:', error);
