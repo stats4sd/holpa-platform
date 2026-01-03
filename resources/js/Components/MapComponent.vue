@@ -71,7 +71,7 @@ const updateMapMarkers = function () {
         });
     })
 
-    emit('loadComplete');
+    // emit('loadComplete');
 
 }
 
@@ -79,7 +79,7 @@ const updateMapMarkers = function () {
 onMounted(() => {
 
     // Initialize the map when the component is mounted
-    initialMap.value = L.map('map').setView([5.4, 19.3], 2);
+    initialMap.value = L.map('map').setView([12.0, -1.8], 6);
 
     const temp = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 
@@ -92,19 +92,31 @@ onMounted(() => {
     initialMap.value.setMinZoom(2);
     initialMap.value.setMaxZoom(8);
 
-    initialMap.value.on('zoomend', function () {
-
-
-        const currentZoom = initialMap.value.getZoom();
-
-    });
+    // // DEBUGGING TOOLS
+    // initialMap.value.on('zoomend', function () {
+    //
+    //     const currentZoom = initialMap.value.getZoom();
+    //
+    //     // get the current zoom level
+    //     console.log(currentZoom)
+    //
+    // });
+    //
+    // initialMap.value.on('moveend', function () {
+    //     console.log('Map panned');
+    //     console.log(initialMap.value.getCenter());
+    // });
+    //
+    // initialMap.value.on('click', function (e) {
+    //     console.log('Map clicked at ' + e.latlng);
+    // });
 
     // set up country layers
     props.allCountries.forEach((country) => {
         country.markerClusterGroup = L.markerClusterGroup().addTo(initialMap.value);
     })
 
-    updateMapMarkers();
+     updateMapMarkers();
 
 })
 
