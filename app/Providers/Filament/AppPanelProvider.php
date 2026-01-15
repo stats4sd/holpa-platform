@@ -174,6 +174,10 @@ class AppPanelProvider extends PanelProvider
                 ->label(__('My Team'))
                 ->icon('heroicon-o-home')
                 ->url(fn() => ViewTeam::getUrl(['record' => Filament::getTenant()])),
+                NavigationItem::make()
+                ->label(__('Download User Guide'))
+                ->icon('heroicon-o-arrow-down-tray')
+                ->url(url('HOLPA Online tool guidance 2025.pdf')),
             ])
             ->darkMode(false)
             ->topNavigation()
