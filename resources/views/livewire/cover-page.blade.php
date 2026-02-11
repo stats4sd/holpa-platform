@@ -37,6 +37,9 @@
                             <h3 class="text-white text-lg lg:text-xl mb-4 lg:my-4 ">What is HOLPA?</h3>
                             <p class="mb-4 lg:mb-6">Read about the purpose of the tool and find out more.</p>
                         </div>
+                        <a href="https://docs.holpa.org" class="button bg-orange hover:bg-white b-white border-2 rounded-full  px-4 py-2 text-white hover:text-orange font-semibold w-auto flex justify-center items-center text-center mb-4">
+                            WHAT INDICATORS ARE INCLUDED?
+                        </a>
                         <a href="{{ url('#what-is-holpa') }}" class="button bg-orange hover:bg-white b-white border-2 rounded-full  px-4 py-2 text-white hover:text-orange font-semibold w-auto flex justify-center items-center text-center">
                             FIND OUT MORE
                         </a>
