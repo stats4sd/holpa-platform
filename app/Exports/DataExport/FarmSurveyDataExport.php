@@ -4,6 +4,7 @@ namespace App\Exports\DataExport;
 
 use App\Models\Dataset;
 use App\Models\Team;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class FarmSurveyDataExport implements WithMultipleSheets

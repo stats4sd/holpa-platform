@@ -44,27 +44,16 @@ From here, your team can conduct whatever data analysis is needed, and organise 
             <p class="mb-8">
                 Once you have downloaded the data, you can conduct data analysis as required, and it is up to your team or organisation to manage storage and sharing of the dataset as appropriate. Download the complete dataset from your survey. This export includes the agro-ecology and performance indicators, automatically calculated at farm-level, along with a detailed data dictionary to help you navigate through the data.
             </p>
-{{-- This was the previous export data button - I wanted to make it look like the other downloads from other sections (I think just the workshop section) but couldn't figure out how to make that work so ....--}}
-                 {{-- {{ $this->exportDataAction }} --}}
+{{-- This was the previous export data button - I wanted to make it look like the other downloads from other sections (I think just the workshop section) but couldn't figure out how to make that work so .... --}}
 
-                <x-download-section :url="url('#')">
+                <x-download-section>
                     <x-slot:heading>Survey Dataset</x-slot:heading>
                         <x-slot:description>Download the complete dataset from your survey. This export includes calculated agro-ecology and performance indicators and a detailed data dictionary.</x-slot:description>
                         <x-slot:buttonLabel>Download .xlsx</x-slot:buttonLabel>
+                    <x-slot:action>{{ $this->exportDataAction }}</x-slot:action>
                 </x-download-section>
 
 
         </div>
     </div>
-
-    <!-- Footer -->
-    <!-- Footer -->
-    <x-complete-section-status-bar :completion-prop="$completionProp">
-        <x-slot:markCompleteAction>
-            {{ $this->markCompleteAction() }}
-        </x-slot:markCompleteAction>
-        <x-slot:markIncompleteAction>
-            {{ $this->markIncompleteAction() }}
-        </x-slot:markIncompleteAction>
-    </x-complete-section-status-bar>
 </x-filament-panels::page>

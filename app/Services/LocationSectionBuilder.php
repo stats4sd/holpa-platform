@@ -25,10 +25,10 @@ class LocationSectionBuilder
             ]);
 
         // Check that the team has locations + farms. If not, ensure we're using the default / test module for locations.
-        if($team->locations()->count() === 0 || $team->farms()->count() === 0) {
+        if ($team->locations()->count() === 0) {
             $team->xlsforms->each(function (Xlsform $xlsform) use ($defaultLocationModuleId, $locationModuleVersion) {
                 $xlsform->xlsformModuleVersions()->detach($locationModuleVersion->id);
-                $xlsform->xlsformModuleVersions()->sync([$locationModuleVersion->id => ['order' => 2]], false);
+                $xlsform->xlsformModuleVersions()->sync([$defaultLocationModuleId->id => ['order' => 2]], false);
             });
 
             return;
@@ -38,6 +38,10 @@ class LocationSectionBuilder
         static::createCustomChoiceLists($locationModuleVersion);
 
         $team->xlsforms->each(function (Xlsform $xlsform) use ($defaultLocationModuleId, $locationModuleVersion) {
+
+            ray('syncing location module version for form ' . $xlsform->name);
+            ray('default location module id: ' . $defaultLocationModuleId);
+            ray('new location module version id: ' . $locationModuleVersion->id);
 
             $xlsform->xlsformModuleVersions()->detach($defaultLocationModuleId);
             $xlsform->xlsformModuleVersions()->sync([$locationModuleVersion->id => ['order' => 2]], false);
@@ -236,7 +240,7 @@ class LocationSectionBuilder
                 'row_number' => $levelCount * 5 + 15,
             ]);
 
-        $locationModuleVersion->surveyRows()->updateOrCreate(
+        $confirmFarmQuestion = $locationModuleVersion->surveyRows()->updateOrCreate(
             [
                 'name' => 'confirm_farm',
                 'type' => 'select_one yn',
@@ -248,6 +252,29 @@ class LocationSectionBuilder
                     'label::English (en)' => $confirmationText,
                 ]),
             ]);
+
+        $ynChoiceList = $locationModuleVersion->choiceLists()->firstOrCreate([
+            'list_name' => 'yn',
+        ]);
+
+        $ynChoiceList->choiceListEntries()->firstOrCreate([
+            'name' => '1',
+        ], [
+            'properties' => collect([
+                'label::English (en)' => 'Yes',
+            ]),
+        ]);
+
+        $ynChoiceList->choiceListEntries()->firstOrCreate([
+            'name' => '0',
+        ], [
+            'properties' => collect([
+                'label::English (en)' => 'No',
+            ]),
+        ]);
+
+        $confirmFarmQuestion->choiceList()->associate($ynChoiceList);
+        $confirmFarmQuestion->save();
 
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
@@ -262,6 +289,7 @@ class LocationSectionBuilder
                     'label::English (en)' => "Please go back to the farm selection question and select the correct farm.",
                 ]),
             ]);
+
 
         $locationModuleVersion->surveyRows()->updateOrCreate(
             [
@@ -309,6 +337,13 @@ class LocationSectionBuilder
                 'list_name' => $locationLevel->slug,
             ]);
 
+            // link to survey row
+            $surveyRow = $locationModuleVersion
+                ->surveyRows()
+                ->firstWhere('name', '=', "{$locationLevel->slug}_id");
+            $surveyRow->choiceList()->associate($choiceList);
+            $surveyRow->save();
+
             foreach ($locationLevel->locations as $location) {
 
                 // not using relationship so we can use the choice_list_id as a upsert prop
@@ -348,6 +383,15 @@ class LocationSectionBuilder
             'xlsform_module_version_id' => $locationModuleVersion->id,
             'list_name' => 'farms',
         ]);
+
+        // link to survey row
+        $surveyRow = $locationModuleVersion
+            ->surveyRows()
+            ->firstWhere('name', '=', "farm_id");
+        $surveyRow->choiceList()->associate($choiceList);
+        $surveyRow->save();
+
+
         foreach ($team->farms as $farm) {
             ChoiceListEntry::updateOrCreate(
                 [
