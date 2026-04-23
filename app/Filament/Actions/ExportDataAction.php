@@ -3,6 +3,7 @@
 namespace App\Filament\Actions;
 
 use App\Exports\DataExport\FarmSurveyDataExport;
+use App\Services\HelperService;
 use Filament\Actions\Action;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
@@ -27,7 +28,7 @@ class ExportDataAction extends Action
 
         // $filePath = 'HOLPA-data-export' . '-' . now()->toDateTimeString() . '.xlsx';
         $filePath = 'HOLPA-data-export.xlsx';
-        Excel::store(new FarmSurveyDataExport, $filePath);
+        Excel::store(new FarmSurveyDataExport(HelperService::getCurrentOwner()), $filePath);
 
         return $filePath;
     }
