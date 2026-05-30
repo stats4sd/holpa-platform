@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Exports\DataExport\FarmSurveyDataExport;
+use App\Jobs\NotifyUserOfCompletedExport;
+use Carbon\Carbon;
 use Livewire\Component;
 use Filament\Tables\Table;
 use Livewire\Attributes\On;
@@ -102,12 +104,38 @@ class XlsformsTableView extends Component implements HasActions, HasForms, HasTa
                         // reset table to update the status
                         $this->resetTable();
                     }),
+
+                Action::make('get-one-submission')
+                    ->label('Get one submission for testing')
+                    ->action(function (Xlsform $record) {
+                        $submissionCount = $record->getOneSubmission();
+
+                        $record->refresh();
+                        Notification::make('update_started')
+                            ->title('Form publishing started')
+                            ->body("{$submissionCount} submission has been pulled from the ODK server for the form {$record->title} (they may take a moment to process).")
+                            ->persistent()
+                            ->send();
+
+                        // reset table to update the status
+                        $this->resetTable();
+                    }),
             ])
             ->headerActions([
                 Action::make('download-submissions')
                     ->label('Download Submissions')
                     ->action(function () {
-                        return Excel::download(new FarmSurveyDataExport(HelperService::getCurrentOwner()), 'submissions.xlsx');
+
+                        $filename = 'HOLPA Submissions -' . HelperService::getCurrentOwner()->name . ' - ' . Carbon::now()->toISOString() . '.xlsx';
+
+                        ray($filename);
+                        ray('generating');
+
+                        return Excel::download(new FarmSurveyDataExport(HelperService::getCurrentOwner()), $filename);
+
+//                        Notification::make('download_started')
+//                            ->title('Form downloading started')
+//                            ->body("The submissions are being compiled into an Excel file and will be available shortly");
                     }),
 
             ])

@@ -52,22 +52,7 @@ class XlsformsRelationManager extends RelationManager
                     ->icon('heroicon-m-arrow-up-tray')
                     ->requiresConfirmation()
                     ->action(function (Xlsform $record) {
-
-                        // create draft if there is no draft yet
-                        if (! $record->has_draft) {
-                            $record->deployDraft(true);
-                        }
-
-                        if ($record->has_draft) {
                             $record->publishForm();
-                        } else {
-                            Notification::make('no_draft_deployed')
-                                ->title('No Draft Deployed')
-                                ->body("It looks like this form doesn't have a draft deployed yet. Please deploy a draft before publishing.s")
-                                ->warning()
-                                ->send();
-                        }
-
                     }),
             ])
             ->headerActions([

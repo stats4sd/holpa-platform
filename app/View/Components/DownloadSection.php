@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use Filament\Actions\Action;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\HtmlString;
@@ -14,7 +15,8 @@ class DownloadSection extends Component
         public ?string $heading,
         public string|HtmlString|null $description,
         public ?string $buttonLabel,
-        public ?string $url
+        public ?string $url,
+        public ?Action $action,
     ){}
 
     public function render(): Factory|Application|\Illuminate\Contracts\View\View|View|null

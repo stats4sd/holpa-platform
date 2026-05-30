@@ -22,8 +22,8 @@ class LocationLevel extends Model
         static::saved(function (self $locationLevel) {
 
             // mark forms as needing a new deployment
-            $locationLevel->owner->xlsforms()
-                ->update(['draft_needs_update' => true]);
+            $locationLevel->owner->xlsforms()->update(['draft_needs_update' => true]);
+            $locationLevel->owner->update(['has_updated_locations' => true]);
         });
 
         if (Filament::hasTenancy() && Filament::getTenant() instanceof Team) {
@@ -79,7 +79,7 @@ class LocationLevel extends Model
     public function pos(): Attribute
     {
         return new Attribute(
-            get: fn () => $this->getPos(),
+            get: fn() => $this->getPos(),
         );
     }
 

@@ -23,6 +23,7 @@ class Location extends Model
     {
         static::saved(function (self $location) {
            $location->owner->xlsforms()->update(['draft_needs_update' => true]);
+           $location->owner->update(['has_updated_locations' => true]);
         });
     }
 

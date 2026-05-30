@@ -502,6 +502,8 @@ class SubmissionController extends Controller
 
         $locationData = $submission->content['context']['location'];
 
+        ray($locationData);
+
         /** @var Collection<LocationLevel> $locationLevels */
         $locationLevels = $team->locationLevels;
 
@@ -516,7 +518,7 @@ class SubmissionController extends Controller
 
             /** @var ?Location $location */
             $location = $level->locations()
-                ->where('code', $locationData["{$odkName}_id"])
+                ->where('code', $locationData["group_location_level_{$odkName}"]["{$odkName}_id"])
                 ->first();
 
             if ($location) {
@@ -527,17 +529,17 @@ class SubmissionController extends Controller
             } else {
 
                 // if _id from form is -999, then it's a new entry with no pre-defined code;
-                if ($locationData["{$odkName}_id"] == '-999') {
+                if ($locationData["group_location_level_{$odkName}"]["{$odkName}_id"] == '-999') {
 
-                    $code = Str::slug($locationData["{$odkName}_name"]);
+                    $code = Str::slug($locationData["group_location_level_{$odkName}"]["{$odkName}_name"]);
                 } else {
                     // in this case the location should exist, but doesn't for some reason; we can re-create it from the odk data
-                    $code = $locationData["{$odkName}_id"];
+                    $code = $locationData["group_location_level_{$odkName}"]["{$odkName}_id"];
                 }
 
                 $newLocation = $level->locations()->create([
                     'code' => $code,
-                    'name' => $locationData["{$odkName}_name"],
+                    'name' => $locationData["group_location_level_{$odkName}"]["{$odkName}_name"],
                     'parent_id' => $parentLocation?->id,
                     'owner_id' => $team->id,
                 ]);
@@ -574,10 +576,10 @@ class SubmissionController extends Controller
                     'owner_id' => $team->id,
                     'team_code' => $farmId,
                     'identifiers' => ['name' => $submission->content['context']['farm_location']['farm_name']],
-                    'latitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][0],
-                    'longitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][1],
-                    'altitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][2],
-                    'accuracy' => $submission->content['context']['location_confirm']['gps']['properties']['accuracy'],
+                    'latitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][0] ?? null,
+                    'longitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][1] ?? null,
+                    'altitude' => $submission->content['context']['location_confirm']['gps']['coordinates'][2] ?? null,
+                    'accuracy' => $submission->content['context']['location_confirm']['gps']['properties']['accuracy'] ?? null,
                 ]);
 
             $submission->primaryDataSubject()->associate($farm);

@@ -357,7 +357,11 @@ class Team extends FilamentTeamManagementTeam implements HasMedia, WithXlsforms
 
         $this->localiseXlsforms();
 
+        ray('deploying...');
+
         $xlsformsToUpdate->each(function (Xlsform $xlsform) {
+
+            ray('deploying... ' . $xlsform->title);
             $xlsform->deployDraft();
         });
     }
